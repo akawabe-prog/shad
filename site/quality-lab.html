@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quality Lab｜SHAD JAPAN — 壊し尽くした、あとに残る品質</title>
+<meta name="description" content="バルセロナの自社ラボで行う振動・荷重・防水・耐候・開閉耐久・施錠の限界試験。市場に出るのは、想定を超えて壊し尽くしたあとに残った設計だけ。SHADの品質保証を紹介します。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+      fontFamily: {
+        disp: ['"Barlow Condensed"', '"Noto Sans JP"', 'sans-serif'],
+        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+      },
+      maxWidth: { site: '1180px' },
+    },
+  },
+};
+</script>
+<link rel="stylesheet" href="css/custom.css">
+<style>
+.ql-hero{position:relative;background:#000;color:#fff;min-height:58vh;display:flex;align-items:flex-end;overflow:hidden;}
+.ql-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}
+.ql-hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,.4) 55%,rgba(0,0,0,.25));}
+.test-ic{width:54px;height:54px;border-radius:13px;background:rgba(227,30,36,.1);color:#E31E24;display:flex;align-items:center;justify-content:center;font-size:27px;flex:none;}
+.stat-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(38px,5vw,60px);line-height:1;color:#E31E24;letter-spacing:.02em;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/" class="shrink-0">
+      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
+      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
+      <li><a class="text-white" href="engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+      <a href="#" aria-label="カート" class="relative text-white/80 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg>
+        <span class="absolute -top-1.5 -right-2 w-[15px] h-[15px] bg-shad rounded-full text-[9.5px] leading-[15px] text-center font-bold text-white">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== ① HERO ===== -->
+<header class="ql-hero">
+  <img src="img/thumb_quality.webp" alt="" aria-hidden="true">
+  <div class="ql-hero-shade"></div>
+  <div class="relative w-full max-w-site mx-auto px-7 pb-12 md:pb-[72px] [text-shadow:0_1px_18px_rgba(0,0,0,.5)]">
+    <p class="hero-kick font-disp font-semibold text-[16px] tracking-[.34em] uppercase text-shad flex items-center gap-3.5">
+      <span class="inline-block w-[34px] h-[2px] bg-shad"></span>Quality Lab
+    </p>
+    <h1 class="hero-title font-bold leading-[1.2] tracking-[.02em] text-[clamp(36px,5.8vw,68px)] mt-4 mb-3.5">壊し尽くした、<br class="md:hidden">あとに残る品質。</h1>
+    <p class="hero-sub text-[16px] text-white/80 max-w-[620px]">バルセロナの自社ラボで、限界まで試す。市場に出るのは、想定を超えて壊し尽くしたあとに残った設計だけです。</p>
+  </div>
+</header>
+
+<!-- ===== ② PHILOSOPHY ===== -->
+<section class="bg-ink2 text-white py-[100px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.32em] uppercase text-shad mb-6" data-reveal>Why We Test</p>
+    <h2 class="text-[clamp(26px,3.6vw,44px)] font-bold leading-[1.5] max-w-[940px]" data-reveal>見えない場所こそ、<br class="hidden md:block">品質が宿る。</h2>
+    <p class="text-[16px] md:text-[17px] text-white/75 leading-[2.1] max-w-[760px] mt-8" data-reveal>荷物を預けるということは、安全を預けるということ。だからSHADは、製品化の前に徹底的に壊します。振動、荷重、雨、紫外線、何万回もの開閉——。実走では数年分にあたる負荷を、ラボの中で先に経験させる。試験に裏づけられていない技術は、SHADの技術とは呼びません。</p>
+  </div>
+</section>
+
+<!-- ===== ③ TEST BATTERY ===== -->
+<section class="bg-white py-[88px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3" data-reveal>Test Battery</p>
+    <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.4]" data-reveal>市場に出る前に、<br class="hidden md:block">あらゆる限界を試す。</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-11">
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="test-ic"><i class="ti ti-activity"></i></span>
+        <h3 class="text-[17px] font-bold mt-4">振動・走行試験</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">実走の振動を再現し、長距離・悪路の負荷を反復。マウントとケースの緩み・疲労を徹底検証します。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="test-ic"><i class="ti ti-barbell"></i></span>
+        <h3 class="text-[17px] font-bold mt-4">荷重・耐荷重試験</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">規定の最大積載量で繰り返し負荷。MaxLoad表記の数値は、この試験に裏づけられています。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="test-ic"><i class="ti ti-droplet"></i></span>
+        <h3 class="text-[17px] font-bold mt-4">防水試験</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">散水・噴射で浸水を検証。特にTERRA防水バッグは、突然の雨でも荷物を守る密閉性能を確認します。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="test-ic"><i class="ti ti-sun"></i></span>
+        <h3 class="text-[17px] font-bold mt-4">耐候・UV試験</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">高温・低温・紫外線にさらし、色あせや素材劣化を評価。屋外保管でも長く使える耐久性へ。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="test-ic"><i class="ti ti-refresh"></i></span>
+        <h3 class="text-[17px] font-bold mt-4">開閉・着脱耐久試験</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">フタの開閉やワンタッチ着脱を何万回も反復。毎日使っても変わらない操作感を担保します。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="test-ic"><i class="ti ti-lock"></i></span>
+        <h3 class="text-[17px] font-bold mt-4">施錠・セキュリティ試験</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">施錠機構の耐久と確実性を検証。走行中の脱落や、こじ開けに対する強度を確認します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ④ PRINCIPLE（数値風）===== -->
+<section class="bg-black text-white py-[92px]">
+  <div class="max-w-site mx-auto px-7">
+    <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.4] max-w-[820px]" data-reveal>合格ラインは、<br class="hidden md:block">「壊れるまで」ではなく「壊し尽くすまで」。</h2>
+    <div class="grid sm:grid-cols-3 gap-8 mt-12">
+      <div data-reveal>
+        <p class="stat-num">数年分</p>
+        <p class="text-[14.5px] text-white/70 leading-[1.9] mt-3">実走で数年に相当する振動・負荷を、ラボで先に経験させる。</p>
+      </div>
+      <div data-reveal>
+        <p class="stat-num">数万回</p>
+        <p class="text-[14.5px] text-white/70 leading-[1.9] mt-3">開閉・着脱を反復し、操作感が変わらないことを確認する。</p>
+      </div>
+      <div data-reveal>
+        <p class="stat-num">全数思想</p>
+        <p class="text-[14.5px] text-white/70 leading-[1.9] mt-3">設計・素材・量産の各工程で品質を作り込み、ばらつきを抑える。</p>
+      </div>
+    </div>
+    <p class="text-[12px] text-white/40 mt-8" data-reveal>※試験項目・基準は製品カテゴリにより異なります。表現は品質思想を示すものです。</p>
+  </div>
+</section>
+
+<!-- ===== ⑤ MADE IN BARCELONA ===== -->
+<section class="bg-mist py-[88px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white order-2 md:order-1" data-reveal>
+      <img src="img/thumb_production.webp" alt="バルセロナの自社生産・試験" class="w-full h-full object-cover">
+    </div>
+    <div class="order-1 md:order-2" data-reveal>
+      <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3">Made in Barcelona</p>
+      <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.45]">設計から試験まで、<br class="hidden md:block">ひとつ屋根の下で。</h2>
+      <p class="text-[15.5px] text-neutral-600 leading-[2.1] mt-6">SHADは設計・試験・量産をバルセロナの拠点に集約。試験で見つかった課題が、すぐ次の設計に還る。このサイクルの速さと一貫性が、品質を磨き続ける原動力です。</p>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="about" class="btn border border-black/25 text-ink hover:bg-white"><i class="ti ti-arrow-right"></i>ブランドストーリー</a>
+        <a href="engineered-for-riding" class="btn border border-black/25 text-ink hover:bg-white"><i class="ti ti-arrow-right"></i>技術を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑥ CTA ===== -->
+<section class="bg-ink2 text-white py-[88px]">
+  <div class="max-w-site mx-auto px-7 text-center">
+    <h2 class="text-[clamp(26px,3.6vw,42px)] font-bold leading-[1.4]" data-reveal>試験を越えた一台を、あなたに。</h2>
+    <div class="flex flex-wrap gap-3.5 justify-center mt-8" data-reveal>
+      <a href="products" class="btn bg-shad text-white hover:bg-[#c4151b]">製品を見る</a>
+      <a href="/#finder" class="btn border border-white/45 text-white hover:border-white">適合モデルを探す</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

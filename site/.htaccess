@@ -1,0 +1,129 @@
+# ============================================================
+# SHAD JAPAN (shad.customjapan.net) — Apache .htaccess
+# クリーンURL対応（eXs / exs.customjapan.net と同方式）
+#  必要: mod_rewrite / AllowOverride FileInfo (または All)
+# ============================================================
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^www\.shad\.customjapan\.net$ [NC]
+RewriteRule ^ https://shad.customjapan.net%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^index/?$ / [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+index\.html(?:[\s?]|$) [NC]
+RewriteRule ^index\.html/?$ / [R=301,L,NC]
+
+# 直接 .html アクセスはクリーンURLへ 301
+RewriteCond %{THE_REQUEST} \s/+about\.html(?:[\s?]|$) [NC]
+RewriteRule ^about\.html/?$ /about [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+awards\.html(?:[\s?]|$) [NC]
+RewriteRule ^awards\.html/?$ /awards [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+company\.html(?:[\s?]|$) [NC]
+RewriteRule ^company\.html/?$ /company [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+contact\.html(?:[\s?]|$) [NC]
+RewriteRule ^contact\.html/?$ /contact [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+engineered-for-riding\.html(?:[\s?]|$) [NC]
+RewriteRule ^engineered-for-riding\.html/?$ /engineered-for-riding [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+expandable\.html(?:[\s?]|$) [NC]
+RewriteRule ^expandable\.html/?$ /expandable [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+faq\.html(?:[\s?]|$) [NC]
+RewriteRule ^faq\.html/?$ /faq [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+form-error\.html(?:[\s?]|$) [NC]
+RewriteRule ^form-error\.html/?$ /form-error [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+install-guide\.html(?:[\s?]|$) [NC]
+RewriteRule ^install-guide\.html/?$ /install-guide [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+movies\.html(?:[\s?]|$) [NC]
+RewriteRule ^movies\.html/?$ /movies [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+privacy\.html(?:[\s?]|$) [NC]
+RewriteRule ^privacy\.html/?$ /privacy [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-e48\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-e48\.html/?$ /product-e48 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-lock\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-lock\.html/?$ /product-lock [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-seat\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-seat\.html/?$ /product-seat [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh23\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh23\.html/?$ /product-sh23 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh33\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh33\.html/?$ /product-sh33 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh34\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh34\.html/?$ /product-sh34 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh38x\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh38x\.html/?$ /product-sh38x [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh44\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh44\.html/?$ /product-sh44 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh47\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh47\.html/?$ /product-sh47 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh48\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh48\.html/?$ /product-sh48 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh51\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh51\.html/?$ /product-sh51 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sh58x\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sh58x\.html/?$ /product-sh58x [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sl18\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sl18\.html/?$ /product-sl18 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-sw80\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-sw80\.html/?$ /product-sw80 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr10\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr10\.html/?$ /product-tr10 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr27\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr27\.html/?$ /product-tr27 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr30\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr30\.html/?$ /product-tr30 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr36\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr36\.html/?$ /product-tr36 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr37\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr37\.html/?$ /product-tr37 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr40\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr40\.html/?$ /product-tr40 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr41\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr41\.html/?$ /product-tr41 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr46\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr46\.html/?$ /product-tr46 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr47\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr47\.html/?$ /product-tr47 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr48\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr48\.html/?$ /product-tr48 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr50\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr50\.html/?$ /product-tr50 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+product-tr55\.html(?:[\s?]|$) [NC]
+RewriteRule ^product-tr55\.html/?$ /product-tr55 [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+products\.html(?:[\s?]|$) [NC]
+RewriteRule ^products\.html/?$ /products [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+quality-lab\.html(?:[\s?]|$) [NC]
+RewriteRule ^quality-lab\.html/?$ /quality-lab [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+store-locator\.html(?:[\s?]|$) [NC]
+RewriteRule ^store-locator\.html/?$ /store-locator [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+sustainability\.html(?:[\s?]|$) [NC]
+RewriteRule ^sustainability\.html/?$ /sustainability [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+terms\.html(?:[\s?]|$) [NC]
+RewriteRule ^terms\.html/?$ /terms [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+terra\.html(?:[\s?]|$) [NC]
+RewriteRule ^terra\.html/?$ /terra [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+thanks\.html(?:[\s?]|$) [NC]
+RewriteRule ^thanks\.html/?$ /thanks [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+tokushoho\.html(?:[\s?]|$) [NC]
+RewriteRule ^tokushoho\.html/?$ /tokushoho [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+warranty\.html(?:[\s?]|$) [NC]
+RewriteRule ^warranty\.html/?$ /warranty [R=301,L,NC]
+
+# 実在ファイル/ディレクトリはそのまま
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# クリーンURL → 実ファイル（クエリ保持）
+RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.html [L,QSA]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg  "access plus 30 days"
+  ExpiresByType image/png   "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType video/mp4   "access plus 30 days"
+  ExpiresByType text/css    "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>

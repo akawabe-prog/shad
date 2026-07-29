@@ -1,0 +1,25 @@
+# ===== OS / エディタ =====
+.DS_Store
+._*
+Thumbs.db
+
+# ===== 原本素材（13GB・GitHubの100MB/ファイル上限を超えるため除外）=====
+# SHAD から支給された生素材。サイトに使う分は site/img, site/media に配置済み。
+assets/
+mockups/
+
+# ===== ビルド出力（site/ から rsync で生成できるため除外）=====
+# 本番アップロード用フォルダ。再生成コマンドは DEPLOY.md 参照。
+dist/
+
+# ===== 商品マスターCSV（社内情報：仕入単価・仕入先等を含むため除外）=====
+# 更新手順は tools/README.md を参照。
+# ローカルの data-source/ItemList_SHAD.csv を差し替えて
+#   python3 tools/build_catalog.py
+# を実行すると、公開用の site/data/catalog/*.json が再生成されます。
+data-source/
+*.csv
+
+# ===== 作業ファイル =====
+*.pptx
+~$*

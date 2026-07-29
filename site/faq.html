@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ・よくあるご質問｜SHAD JAPAN</title>
+<meta name="description" content="SHAD JAPAN のよくあるご質問。適合・取り付け、製品、購入・お届け、返品・交換、保証・修理、SHAD BASE についてお答えします。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+      fontFamily: {
+        disp: ['"Barlow Condensed"', '"Noto Sans JP"', 'sans-serif'],
+        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+      },
+      maxWidth: { site: '1180px' },
+    },
+  },
+};
+</script>
+<link rel="stylesheet" href="css/custom.css">
+<style>
+.faq-chip{font-size:13.5px;font-weight:500;border:1px solid rgba(0,0,0,.18);border-radius:999px;padding:8px 16px;color:#333;transition:.15s;white-space:nowrap;}
+.faq-chip:hover{border-color:#E31E24;color:#E31E24;}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.1);}
+.faq-q{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:14px;padding:20px 0;font-weight:700;font-size:16px;line-height:1.6;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-q .qmark{color:#E31E24;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:20px;line-height:1.4;flex:none;}
+.faq-q .chev{margin-left:auto;color:#E31E24;transition:transform .2s;flex:none;}
+.faq-item[open] .faq-q .chev{transform:rotate(180deg);}
+.faq-a{padding:0 0 22px 34px;color:#555;font-size:14.5px;line-height:2.05;}
+.faq-a a{color:#E31E24;text-decoration:underline;text-underline-offset:3px;}
+.faq-a b{color:#333;}
+.cat-h{scroll-margin-top:90px;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/" class="shrink-0">
+      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
+      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
+      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+      <a href="#" aria-label="カート" class="relative text-white/80 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg>
+        <span class="absolute -top-1.5 -right-2 w-[15px] h-[15px] bg-shad rounded-full text-[9.5px] leading-[15px] text-center font-bold text-white">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
+<header class="bg-ink text-white">
+  <div class="max-w-site mx-auto px-7 pt-14 pb-12">
+    <p class="font-disp font-semibold text-[14px] tracking-[.32em] uppercase text-shad mb-3 flex items-center gap-3"><span class="inline-block w-[30px] h-[2px] bg-shad"></span>Support</p>
+    <h1 class="text-[clamp(34px,5vw,56px)] font-bold leading-[1.15]">よくあるご質問</h1>
+    <p class="text-white/70 text-[15px] mt-4 max-w-[660px]">適合・取り付けから製品、購入、保証まで。お困りの内容をカテゴリーから探せます。解決しない場合は、お近くの取扱店・SHAD BASE、またはカスタムジャパンのお問い合わせ窓口へご連絡ください。</p>
+    <div class="flex flex-wrap gap-2.5 mt-8">
+      <a href="#fit" class="faq-chip !border-white/25 !text-white/85 hover:!border-shad hover:!text-shad">適合・取り付け</a>
+      <a href="#product" class="faq-chip !border-white/25 !text-white/85 hover:!border-shad hover:!text-shad">製品について</a>
+      <a href="#buy" class="faq-chip !border-white/25 !text-white/85 hover:!border-shad hover:!text-shad">購入・お届け</a>
+      <a href="#return" class="faq-chip !border-white/25 !text-white/85 hover:!border-shad hover:!text-shad">返品・交換</a>
+      <a href="#warranty" class="faq-chip !border-white/25 !text-white/85 hover:!border-shad hover:!text-shad">保証・修理</a>
+      <a href="#base" class="faq-chip !border-white/25 !text-white/85 hover:!border-shad hover:!text-shad">店舗・SHAD BASE</a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-[860px] mx-auto px-7 py-[72px]">
+
+  <!-- 適合・取り付け -->
+  <section class="mb-14">
+    <h2 id="fit" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-motorbike text-shad"></i>適合・取り付け</h2>
+    <details class="faq-item" open>
+      <summary class="faq-q"><span class="qmark">Q</span>自分のバイクに取り付けられますか？<i class="ti ti-chevron-down chev"></i></summary>
+      <div class="faq-a"><a href="/#finder">あなたのバイクから探す</a>でメーカー・車種・年式を選ぶと、適合する製品と必要な車種専用フィッティングキットが確認できます。万一適合が見つからない場合も、お問い合わせいただければお調べいたします。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>トップケース（リアボックス）の取り付けにフィッティングキットは必要ですか？</summary>
+      <div class="faq-a">リアキャリアが付いている場合は、リアボックスに付属する<b>汎用ベースプレート</b>で取り付けできます。汎用性の高いベースプレートを採用していますが、極太パイプキャリアや極小のデザインキャリアなど、一部特殊な形状では取り付けできない場合があります。キャリアがない車両やサイドケースは、車種専用フィッティングキットが必要です。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>取り付けに加工は必要ですか？</summary>
+      <div class="faq-a">フィッティングキット・ケース本体ともに、特殊な加工は必要ありません。ネジ・ボルト類の締め付け程度の作業で装着できます。※バックレストやパネル等を追加で装着する場合は加工が必要になることがあります。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>ケースの開け方・操作方法が分かりません。</summary>
+      <div class="faq-a">サイズ・モデルにより操作方法が異なります。各製品ページに操作動画・ユーザーガイドを掲載していますのでご確認ください。取り付け手順は<a href="install-guide">取付ガイド</a>もご覧いただけます。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>取扱説明書が見当たりません。</summary>
+      <div class="faq-a">環境配慮の方針により、取扱説明書は順次デジタル化しています。ケース内部に貼付されたQRコードを読み取ると、取扱説明書サイトにアクセスできます。</div>
+    </details>
+  </section>
+
+  <!-- 製品について -->
+  <section class="mb-14">
+    <h2 id="product" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-box text-shad"></i>製品について</h2>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>SHAD はどこの国のブランドですか？</summary>
+      <div class="faq-a">1973年にスペイン・バルセロナで誕生したブランドです。国内外の有名車両メーカーの純正（OEM）も受注生産しており、いまでは世界60ヶ国以上で愛用されています。詳しくは<a href="about">ブランドストーリー</a>をご覧ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>雨の日に使用しても大丈夫ですか？</summary>
+      <div class="faq-a">ハードケースには最低限の防水設計が施されていますが、豪雨などシビアコンディションでのご使用をお考えの場合は、別途防水対策をおすすめします。高い防水性能が必要な場合は、TERRA の防水バッグもご検討ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>ヘルメットは収納できますか？</summary>
+      <div class="faq-a">モデルにより異なります。各製品ページの容量・サイズ表記をご確認ください。たとえば可変容量サイドケース SH38X は、XLサイズのモジュラーヘルメット（ECE 22-06）の収納に対応します。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>種類が多くて、どのケースを選べばよいか分かりません。</summary>
+      <div class="faq-a">ご使用目的にもよりますが、目安として——原付二種まで：SH26〜SH33／中型：SH29〜SH45／大型：SH40〜SH58X、が選ばれています。<a href="/#finder">車種適合検索</a>で、お持ちのバイクに合うモデルから絞り込むのがおすすめです。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>トップケースとサイドケースの鍵を1本にまとめられますか？</summary>
+      <div class="faq-a">対応モデルでは、予備キーシリンダーへの交換により鍵を統一できます。鍵単体の作成はできず、シリンダーごとの交換が必要です。適合する補修シリンダーの品番は製品・サイズにより異なりますので、製品ページまたは取扱店でご確認ください。</div>
+    </details>
+  </section>
+
+  <!-- 購入・お届け -->
+  <section class="mb-14">
+    <h2 id="buy" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-shopping-bag text-shad"></i>購入・お届け</h2>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>どこで購入できますか？</summary>
+      <div class="faq-a">オンラインは、日本総代理店カスタムジャパンの公式EC（moto.customjapan.net）でご購入いただけます。実物をご覧になりたい場合は<a href="store-locator?tab=display">お近くの店舗</a>、購入から取り付けまで一度に済ませたい場合は <a href="store-locator?tab=base">SHAD BASE</a> をご利用ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>価格を知りたいです。</summary>
+      <div class="faq-a">各製品ページの「ご購入」に、本体およびフィッティングキットの<b>メーカー希望小売価格</b>を掲載しています。「購入する」ボタンから、カスタムジャパンECの該当商品ページ（販売価格・在庫）に進めます。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>支払方法を教えてください。</summary>
+      <div class="faq-a">カスタムジャパンECでは、クレジットカード（VISA / Mastercard / JCB / AMEX / Diners）・代金引換・まとめて支払いサービスがご利用いただけます。クレジットカードはWEBサイトからのご注文でご利用いただけます。詳細・最新の条件はご注文画面でご確認ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>送料はかかりますか？</summary>
+      <div class="faq-a">送料は一律300円（税別）、代金引換手数料は一律350円（税別）です。北海道は別途500円（税別）、沖縄・一部地域は別途1,000円（税別）の特別配送料金がかかります。最新の送料・条件はカスタムジャパンECのご注文画面をご確認ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>商品はいつ届きますか？</summary>
+      <div class="faq-a">商品ごとに出荷目安（納期アイコン）が異なります。複数同時にご注文の場合は、最も納期の遅い商品に合わせてまとめて出荷されます。欠品時はメール等でご連絡します。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>注文後にキャンセル・変更はできますか？</summary>
+      <div class="faq-a">ご注文完了後15分間は、カスタムジャパンECのマイページから無条件でキャンセル・内容変更が可能です。15分を過ぎると発送準備に入るため、取寄品など一部はキャンセル・変更ができなくなる場合があります。</div>
+    </details>
+  </section>
+
+  <!-- 返品・交換 -->
+  <section class="mb-14">
+    <h2 id="return" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-arrow-back-up text-shad"></i>返品・交換</h2>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>返品はできますか？</summary>
+      <div class="faq-a">商品到着後30日以内にカスタムジャパンへご連絡ください。ただし開封済・使用済の商品、取寄商品、純正商品など、返品・交換できない商品は除きます。お客様のご都合による返品の場合、送料等の諸費用はお客様のご負担となります。返送時は弊社より回収の手配をいたしますので、ご連絡なしでの返送はお控えください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>商品の交換はできますか？</summary>
+      <div class="faq-a">お客様都合による交換は、いったん返品として承り、ご希望の商品を新規にご注文いただく形となります。お届けまでにお時間をいただく場合があります。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>届いた商品に不具合・破損がありました。</summary>
+      <div class="faq-a">カスタムジャパンのお問い合わせフォームまたはお電話で、状態と不具合の詳細をご連絡ください。輸送中の外装破損などは、運送会社が良品とのお取り替えに伺います。車両情報や状況を添えていただくと、ご案内がスムーズです。</div>
+    </details>
+  </section>
+
+  <!-- 保証・修理 -->
+  <section class="mb-14">
+    <h2 id="warranty" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-shield-check text-shad"></i>保証・修理</h2>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>保証はありますか？</summary>
+      <div class="faq-a">商品により内容の異なる保証サービスがあります。詳細は故障・不具合の内容とあわせてお問い合わせください。なお、ご購入時に同梱されている<b>色紙が製品の識別番号</b>となりますので、お問い合わせの際にご準備ください。詳しくは<a href="warranty">保証について</a>をご覧ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>壊れたら修理できますか？</summary>
+      <div class="faq-a">恐れ入りますが、修理のお受付は行っておりません。製品によっては関連パーツ単体のお取り扱いがありますので、交換でご対応いただけます。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>補修部品（キーシリンダー等）は購入できますか？</summary>
+      <div class="faq-a">キーシリンダーやマウント部品など、一部のパーツは補修部品としてお取り扱いがあります。適合する品番は製品・サイズにより異なりますので、カスタムジャパンEC または取扱店でご確認ください。</div>
+    </details>
+  </section>
+
+  <!-- 店舗・SHAD BASE -->
+  <section class="mb-4">
+    <h2 id="base" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-map-pin text-shad"></i>店舗・SHAD BASE</h2>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>実物を見たいのですが、どこで見られますか？</summary>
+      <div class="faq-a">SHAD BASE（体験拠点）やお近くの取扱店で展示しています。<a href="store-locator">店舗検索</a>から、地図・エリア・現在地で展示店・SHAD BASE を探せます。展示の有無は店舗により異なります。</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q"><span class="qmark">Q</span>SHAD BASE とは何ですか？</summary>
+      <div class="faq-a">SHAD BASE は、製品の購入から<b>商品の取り付けまで</b>対応する体験拠点です。「お近くの店舗」は、実物の展示やお取り寄せに対応する取扱店です。</div>
+    </details>
+  </section>
+
+  <!-- お問い合わせ CTA -->
+  <div class="bg-mist rounded-2xl p-8 md:p-10 mt-12 text-center">
+    <h2 class="text-[20px] font-bold">解決しませんでしたか？</h2>
+    <p class="text-[14px] text-neutral-600 mt-2">お近くの取扱店・SHAD BASE、またはカスタムジャパンのお問い合わせ窓口へお気軽にご相談ください。</p>
+    <div class="flex flex-wrap gap-3 justify-center mt-6">
+      <a href="store-locator" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-map-pin"></i>店舗を探す</a>
+      <a href="/#finder" class="btn border border-black/25 text-ink hover:bg-white"><i class="ti ti-motorbike"></i>適合を確認する</a>
+    </div>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

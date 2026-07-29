@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会社情報（運営者情報）｜SHAD JAPAN</title>
+<meta name="description" content="SHAD JAPAN ブランドサイトの運営者情報。日本総代理店 株式会社カスタムジャパンの会社情報です。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+    fontFamily: { disp: ['"Barlow Condensed"','"Noto Sans JP"','sans-serif'], sans: ['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif'] },
+    maxWidth: { site: '1180px' },
+  } },
+};
+</script>
+<link rel="stylesheet" href="css/custom.css">
+<style>
+.legal dt{font-weight:700;color:#111;}
+.legal dd{color:#444;line-height:1.9;}
+.legal a{color:#E31E24;text-decoration:underline;text-underline-offset:3px;}
+.legal .row{display:grid;grid-template-columns:200px 1fr;gap:10px 28px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+@media (max-width:640px){.legal .row{grid-template-columns:1fr;gap:4px;}}
+.rel{display:flex;gap:10px;align-items:center;border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:14px 16px;transition:.15s;color:#222;font-weight:700;font-size:14px;}
+.rel:hover{border-color:#E31E24;color:#E31E24;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/" class="shrink-0"><img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
+    <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
+      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
+      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+      <a href="#" aria-label="カート" class="relative text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg><span class="absolute -top-1.5 -right-2 w-[15px] h-[15px] bg-shad rounded-full text-[9.5px] leading-[15px] text-center font-bold text-white">0</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
+<header class="bg-ink text-white">
+  <div class="max-w-site mx-auto px-7 pt-14 pb-12">
+    <p class="font-disp font-semibold text-[14px] tracking-[.32em] uppercase text-shad mb-3 flex items-center gap-3"><span class="inline-block w-[30px] h-[2px] bg-shad"></span>Company</p>
+    <h1 class="text-[clamp(30px,4.4vw,48px)] font-bold leading-[1.15]">会社情報</h1>
+    <p class="text-white/70 text-[15px] mt-4 max-w-[680px]">本サイト「SHAD JAPAN」は、SHAD（スペイン）の日本総代理店である <b class="text-white">株式会社カスタムジャパン</b> が運営しています。</p>
+  </div>
+</header>
+
+<main class="max-w-[860px] mx-auto px-7 py-[64px]">
+  <h2 class="sec-ttl text-ink !text-[24px] mb-2">会社概要</h2>
+
+  <div class="legal mt-6">
+    <div class="row"><dt>会社名</dt><dd>株式会社カスタムジャパン</dd></div>
+    <div class="row"><dt>代表者</dt><dd>村井 基輝</dd></div>
+    <div class="row"><dt>所在地</dt><dd>〒542-0073<br>大阪府大阪市中央区日本橋2-9-16<br>日本橋センタービル6F</dd></div>
+    <div class="row"><dt>電話番号</dt><dd>06-6634-1739<br><span class="text-[13px] text-neutral-500">受付時間：10:00〜17:30（定休日：日・祝）</span></dd></div>
+    <div class="row"><dt>メールアドレス</dt><dd><a href="mailto:info@customjapan.jp">info@customjapan.jp</a></dd></div>
+    <div class="row"><dt>事業内容</dt><dd>オートバイ・自転車・自動車用品の輸入・卸・販売<br>SHAD（スペイン）日本総代理店</dd></div>
+    <div class="row"><dt>公式サイト</dt><dd><a href="https://www.customjapan.net" target="_blank" rel="noopener">https://www.customjapan.net</a></dd></div>
+    <div class="row"><dt>オンラインストア</dt><dd>moto.customjapan.net（バイク）ほか</dd></div>
+  </div>
+
+  <p class="text-[13px] text-neutral-500 mt-7 leading-[1.9]">
+    ※ 設立・資本金など、その他の会社概要の詳細につきましては、<a href="https://www.customjapan.net" target="_blank" rel="noopener" class="text-shad underline underline-offset-2">株式会社カスタムジャパン公式サイト</a>をご覧ください。
+  </p>
+
+  <!-- 関連リンク -->
+  <h2 class="sec-ttl text-ink !text-[22px] mt-16 mb-5">関連情報</h2>
+  <div class="grid sm:grid-cols-2 gap-3">
+    <a href="tokushoho" class="rel"><i class="ti ti-file-description text-shad text-[20px]"></i>特定商取引法に基づく表記</a>
+    <a href="privacy" class="rel"><i class="ti ti-shield-lock text-shad text-[20px]"></i>プライバシーポリシー</a>
+    <a href="terms" class="rel"><i class="ti ti-file-text text-shad text-[20px]"></i>利用規約</a>
+    <a href="contact" class="rel"><i class="ti ti-mail text-shad text-[20px]"></i>お問い合わせ</a>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1">
+        <a href="company" class="hover:text-white transition">会社情報</a>
+        <a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a>
+        <a href="privacy" class="hover:text-white transition">プライバシーポリシー</a>
+        <a href="terms" class="hover:text-white transition">利用規約</a>
+      </span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

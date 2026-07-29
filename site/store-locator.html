@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>取扱店・SHAD BASE｜SHAD JAPAN</title>
+<meta name="description" content="SHADの体験ショールーム「SHAD BASE」と展示店を、地図と現在地から探せます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#161616',mist:'#F4F3F1'},fontFamily:{disp:['"Barlow Condensed"','"Noto Sans JP"','sans-serif'],sans:['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif']},maxWidth:{site:'1180px'}}}};</script>
+<link rel="stylesheet" href="css/custom.css">
+<style>
+.chip{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;padding:8px 18px;border-radius:9999px;border:1px solid rgba(0,0,0,.18);color:#5F5E5A;cursor:pointer;transition:.18s;white-space:nowrap;}
+.chip:hover{border-color:#0E0E0E;color:#0E0E0E;}
+.chip.on{background:#0E0E0E;color:#fff;border-color:#0E0E0E;}
+.tabbtn{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:16px;letter-spacing:.06em;padding:12px 22px;border-bottom:2px solid transparent;color:#9A9994;cursor:pointer;}
+.tabbtn.on{color:#0E0E0E;border-color:#E31E24;}
+.scard{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:20px 22px;transition:.2s;cursor:pointer;}
+.scard:hover{box-shadow:0 14px 34px rgba(0,0,0,.08);transform:translateY(-2px);}
+.scard.active{border-color:#E31E24;box-shadow:0 0 0 2px rgba(227,30,36,.25);}
+#map{height:420px;width:100%;border-radius:14px;z-index:0;}
+.geobtn{display:inline-flex;align-items:center;gap:8px;background:#0E0E0E;color:#fff;border:0;border-radius:9999px;padding:10px 20px;font-size:13.5px;font-weight:500;cursor:pointer;transition:.2s;}
+.geobtn:hover{background:#000;}
+.leaflet-popup-content{font-family:var(--font-sans),sans-serif;font-size:13px;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/" class="shrink-0">
+      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
+      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
+      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="about">Brand</a></li>
+      <li><a class="text-white" href="store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+      <a href="#" aria-label="カート" class="relative text-white/80 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg>
+        <span class="absolute -top-1.5 -right-2 w-[15px] h-[15px] bg-shad rounded-full text-[9.5px] leading-[15px] text-center font-bold text-white">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="bg-ink text-white">
+  <div class="max-w-site mx-auto px-7 pt-14 pb-10">
+    <h1 class="sec-ttl text-white" style="font-size:38px;">Store</h1>
+    <p class="text-white/65 text-[15px] mt-4 max-w-[660px]">店舗は2種類から探せます。<b class="text-white">お近くの店舗</b>では製品の展示・お取り寄せに対応。<b class="text-white">SHAD BASE</b>は購入から<b class="text-white">商品の取り付けまで</b>対応する体験拠点です。気になる製品は<a href="/#finder" class="text-white underline decoration-shad decoration-2 underline-offset-4 hover:text-shad transition">あなたのバイクから探す</a>で適合確認のうえ、お近くの店舗でもお取り寄せ・取付いただけます。</p>
+  </div>
+</header>
+
+<main class="bg-mist py-10">
+  <div class="max-w-site mx-auto px-7">
+    <div id="map"></div>
+
+    <div class="flex flex-wrap items-center gap-4 mt-7 mb-5">
+      <div class="flex gap-3 border-b border-black/10 flex-1 min-w-[200px]">
+        <button class="tabbtn on" data-tab="base">SHAD BASE 取り付け対応可</button>
+        <button class="tabbtn" data-tab="display">お近くの店舗</button>
+      </div>
+      <button id="geo" class="geobtn"><i class="ti ti-current-location"></i>現在地から探す</button>
+    </div>
+    <div id="regions" class="flex gap-2.5 flex-wrap mb-5"></div>
+    <p id="count" class="text-[13px] text-neutral-500 mb-4"></p>
+    <div id="list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </div>
+</main>
+
+<section class="bg-white py-14">
+  <div class="max-w-site mx-auto px-7 md:flex items-center gap-10">
+    <div class="flex-1">
+      <h2 class="text-[22px] font-bold leading-[1.5]">取扱店は全国に。<br>まずはバイクから適合を確認。</h2>
+      <p class="text-neutral-500 text-[14px] mt-3">SHAD BASE・展示店以外でも、全国の取扱店で製品のお取り寄せと取付に対応しています。</p>
+    </div>
+    <a href="/#finder" class="btn bg-shad text-white hover:bg-[#c4151b] mt-6 md:mt-0 shrink-0"><i class="ti ti-motorbike"></i>あなたのバイクから探す</a>
+  </div>
+</section>
+
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+var DATA={base:[],display:[]}, state={tab:'base',region:'ALL'}, map, markers={}, userLL=null, userMarker=null;
+// 展示店は正確な座標が無いため、地方エリア中心座標で「現在地に近い順」を近似
+var REGION_CENTERS={'北海道':[43.06,141.35],'東北':[38.27,140.87],'関東':[35.68,139.76],'甲信越':[36.65,138.18],'北陸':[36.59,136.63],'東海':[35.18,136.91],'関西':[34.69,135.50],'中国':[34.40,132.46],'四国':[33.84,132.77],'九州':[33.59,130.40],'沖縄':[26.21,127.68]};
+
+function dist(a,b){var R=6371,dx=(b[0]-a[0])*Math.PI/180,dy=(b[1]-a[1])*Math.PI/180,la1=a[0]*Math.PI/180,la2=b[0]*Math.PI/180;var x=Math.sin(dx/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dy/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
+function distOf(s){ if(!userLL) return Infinity; if(s.ll) return dist(userLL,s.ll); var c=REGION_CENTERS[s.region]; return c?dist(userLL,c):Infinity; }
+function mapsLink(s){var q=encodeURIComponent((s.pref||'')+(s.addr?(' '+s.addr):(' '+s.name)));return 'https://www.google.com/maps/search/?api=1&query='+q;}
+
+var CJ=[34.6646,135.5066], firstDraw=true; // 大阪・日本橋駅あたり（カスタムジャパン近郊）
+function initMap(){
+  map=L.map('map',{scrollWheelZoom:false}).setView(CJ,12); // 初期表示：大阪・日本橋駅あたり
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap'}).addTo(map);
+}
+function keyOf(s){return s.code||s.name;}
+function drawMarkers(stores){
+  Object.values(markers).forEach(function(m){map.removeLayer(m);}); markers={};
+  var pts=[];
+  stores.forEach(function(s){
+    if(!s.ll) return;
+    var isBase=!!s.code, key=keyOf(s);
+    var m=L.circleMarker(s.ll,{radius:isBase?9:7,color:'#fff',weight:2,fillColor:isBase?'#E31E24':'#0E0E0E',fillOpacity:1}).addTo(map);
+    var ttl=isBase?('SHAD BASE '+s.code):'展示店';
+    m.bindPopup('<b>'+ttl+'</b><br>'+s.name+'<br>'+(s.pref||'')+(s.addr||'')+'<br>'+(s.tel||'')+'<br><a href="'+mapsLink(s)+'" target="_blank" rel="noopener">Googleマップで開く</a>');
+    m.on('click',function(){highlight(key);});
+    markers[key]=m; pts.push(s.ll);
+  });
+  if(userLL){ pts.push(userLL); }
+  // 初回ロードは東京駅のまま。タブ/エリア切替・現在地取得時のみフィット
+  if(pts.length && (!firstDraw || userLL)){ map.fitBounds(pts,{padding:[40,40],maxZoom: userLL?12:11}); }
+  firstDraw=false;
+}
+function highlight(code){
+  document.querySelectorAll('.scard').forEach(function(c){c.classList.toggle('active',c.dataset.code===code);});
+  var el=document.querySelector('.scard[data-code="'+code+'"]'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function baseCard(s){
+  var d=userLL&&s.ll? '<span class="text-[12px] text-shad font-medium">現在地から約'+dist(userLL,s.ll).toFixed(0)+'km</span>':'<span class="text-[11px] text-neutral-400">'+s.region+'</span>';
+  return '<div class="scard" data-code="'+s.code+'">'
+    +'<div class="flex items-center justify-between gap-2"><span class="font-disp text-[13px] tracking-[.18em] uppercase text-shad">SHAD BASE '+s.code+'</span>'+d+'</div>'
+    +'<h3 class="text-[18px] font-bold mt-1.5">'+s.name+'</h3>'
+    +'<div class="text-[13px] text-neutral-600 mt-3 leading-relaxed">'
+      +'<div><i class="ti ti-map-pin text-shad" style="vertical-align:-2px"></i> 〒'+s.zip+' '+s.pref+s.addr+'</div>'
+      +'<div class="mt-1"><i class="ti ti-phone text-shad" style="vertical-align:-2px"></i> '+s.tel+'</div>'
+      +'<div class="mt-1"><i class="ti ti-clock text-shad" style="vertical-align:-2px"></i> '+s.hours+'（定休：'+s.closed+'）</div></div>'
+    +'<a href="'+mapsLink(s)+'" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-4 text-[13px] font-medium text-ink border border-black/20 rounded-md px-3.5 py-2 hover:bg-mist transition"><i class="ti ti-map-2"></i>地図で見る</a>'
+    +'</div>';
+}
+function dispCard(s){
+  var d=userLL&&s.ll? '<span class="text-[12px] text-shad font-medium">現在地から約'+dist(userLL,s.ll).toFixed(0)+'km</span>':'<span class="text-[11px] text-neutral-400">'+(s.region||'')+'</span>';
+  return '<div class="scard" data-code="'+s.name+'">'
+    +'<div class="flex items-center justify-between gap-2"><span class="font-disp text-[12px] tracking-[.18em] uppercase text-neutral-400">展示店</span>'+d+'</div>'
+    +'<h3 class="text-[16px] font-bold mt-1.5 leading-snug">'+s.name+'</h3>'
+    +'<div class="text-[12.5px] text-neutral-600 mt-2.5 leading-relaxed">'
+      +(s.addr?'<div><i class="ti ti-map-pin text-shad" style="vertical-align:-2px"></i> '+(s.pref&&s.addr.indexOf(s.pref)!==0?s.pref:'')+s.addr+'</div>':'')
+      +(s.tel?'<div class="mt-1"><i class="ti ti-phone text-shad" style="vertical-align:-2px"></i> '+s.tel+'</div>':'')
+      +(s.hours?'<div class="mt-1"><i class="ti ti-clock text-shad" style="vertical-align:-2px"></i> '+s.hours+(s.closed?'（定休：'+s.closed+'）':'')+'</div>':'')
+    +'</div>'
+    +'<a href="'+mapsLink(s)+'" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-3.5 text-[12.5px] font-medium text-ink border border-black/20 rounded-md px-3.5 py-2 hover:bg-mist transition"><i class="ti ti-map-2"></i>地図で見る</a>'
+    +'</div>';
+}
+function render(){
+  var arr=(DATA[state.tab]||[]).slice();
+  var regions=['ALL'].concat([...new Set(arr.map(function(s){return s.region;}).filter(Boolean))]);
+  document.getElementById('regions').innerHTML=regions.map(function(r){return '<button class="chip'+(state.region===r?' on':'')+'" data-r="'+r+'">'+(r==='ALL'?'すべて':r)+'</button>';}).join('');
+  var list=arr.filter(function(s){return state.region==='ALL'||s.region===state.region;});
+  if(userLL){ list.sort(function(a,b){ return distOf(a)-distOf(b); }); }
+  var note=userLL?'（現在地から近い順）':'';
+  document.getElementById('count').textContent=list.length+' 店舗'+note;
+  document.getElementById('list').innerHTML=list.map(state.tab==='base'?baseCard:dispCard).join('');
+  drawMarkers(list);
+  if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){ gsap.fromTo('#list .scard',{y:16,opacity:0},{y:0,opacity:1,duration:.45,ease:'power3.out',stagger:.05}); }
+}
+function locate(ll){
+  userLL=ll; // タブは強制しない：お近くの店舗・SHAD BASE どちらも現在地で並べ替え
+  if(userMarker) map.removeLayer(userMarker);
+  userMarker=L.circleMarker(ll,{radius:8,color:'#fff',weight:2,fillColor:'#1F5FA5',fillOpacity:1}).addTo(map).bindPopup('現在地');
+  render();
+}
+document.querySelector('main').addEventListener('click',function(e){
+  var t=e.target.closest('.tabbtn'), r=e.target.closest('.chip'), c=e.target.closest('.scard');
+  if(t){ document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.remove('on');}); t.classList.add('on'); state.tab=t.dataset.tab; state.region='ALL'; render(); }
+  if(r){ state.region=r.dataset.r; render(); }
+  if(c&&c.dataset.code&&markers[c.dataset.code]){ map.setView(markers[c.dataset.code].getLatLng(),12); markers[c.dataset.code].openPopup(); highlight(c.dataset.code); }
+});
+document.getElementById('geo').addEventListener('click',function(){
+  if(!navigator.geolocation){ alert('お使いの環境では現在地を取得できません'); return; }
+  this.innerHTML='<i class="ti ti-loader-2"></i>取得中…';
+  var btn=this;
+  navigator.geolocation.getCurrentPosition(function(p){ locate([p.coords.latitude,p.coords.longitude]); btn.innerHTML='<i class="ti ti-current-location"></i>現在地から探す'; },
+    function(){ alert('現在地を取得できませんでした。位置情報の許可をご確認ください。'); btn.innerHTML='<i class="ti ti-current-location"></i>現在地から探す'; },{enableHighAccuracy:true,timeout:8000});
+});
+initMap();
+fetch('stores.json').then(function(r){return r.json();}).then(function(d){
+  DATA=d;
+  // ?tab=display / base で初期タブ切替（商品ページ「商品を見て購入する」→展示店 等）
+  var q=new URLSearchParams(location.search), tab=q.get('tab');
+  if(tab==='display'||tab==='base'){ state.tab=tab; document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('on',b.dataset.tab===tab);}); }
+  render();
+  // TOPからの ?lat&lng で現在地ソート
+  var la=parseFloat(q.get('lat')), ln=parseFloat(q.get('lng'));
+  if(!isNaN(la)&&!isNaN(ln)){ locate([la,ln]); }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</body>
+</html>

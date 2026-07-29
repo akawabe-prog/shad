@@ -1,0 +1,337 @@
+/* =========================================================
+   SHAD JAPAN — custom layer on top of Tailwind
+   Tailwindで表現しにくいコンポーネント/アニメーションのみ定義
+   ========================================================= */
+
+/* ---- shared ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Barlow Condensed","Noto Sans JP",sans-serif;
+  font-weight:600;font-size:16px;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px 30px;border-radius:4px;transition:.2s;
+}
+.sec-ttl{
+  display:flex;align-items:center;gap:13px;
+  font-family:"Barlow Condensed","Noto Sans JP",sans-serif;
+  font-size:30px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+}
+.sec-ttl::before{content:"";width:7px;height:26px;background:#E31E24;}
+
+/* 「魅せる」セクションの見出しは静かに：小さめ＋名札として控える
+   （語るセクション＝HERO/WHY SHAD の言葉と対比させる強弱設計） */
+.sec-ttl-quiet{font-size:21px;letter-spacing:.22em;opacity:.92;}
+.sec-ttl-quiet::before{width:5px;height:18px;}
+
+.badge{
+  position:absolute;left:14px;top:13px;z-index:2;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;background:#0E0E0E;padding:4px 10px;border-radius:4px;
+}
+
+.play-circle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:9999px;border:2px solid rgba(255,255,255,.8);color:#fff;
+  transition:.25s;
+}
+.group:hover .play-circle{background:rgba(227,30,36,.9);border-color:#E31E24;}
+
+/* ---- finder ---- */
+.finder-label{
+  display:flex;align-items:center;gap:8px;margin-bottom:8px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);
+}
+.finder-step{
+  width:17px;height:17px;border-radius:9999px;background:#E31E24;color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;letter-spacing:0;
+}
+.finder-select{
+  width:100%;height:48px;border:0;border-radius:7px;padding:0 14px;
+  font-size:14px;color:#1A1A1A;background:#fff;
+  font-family:"Noto Sans JP",sans-serif;
+}
+.finder-select:disabled{background:rgba(255,255,255,.14);color:rgba(255,255,255,.4);}
+
+.fit-result{margin-top:22px;}
+.fit-result-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+  padding:18px 0;border-bottom:1px solid rgba(0,0,0,.1);
+}
+.fit-result-head h3{font-size:20px;font-weight:700;line-height:1.45;}
+.fit-result-head span{
+  flex:none;background:#0E0E0E;color:#fff;border-radius:9999px;
+  font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;font-size:14px;padding:5px 12px;
+}
+.fit-result-kick,.fit-card-kick{
+  font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:#E31E24;font-size:11px;
+}
+.fit-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px;}
+.fit-card{
+  display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;
+  background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:8px;
+  padding:12px;transition:.18s;
+}
+.fit-card:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.08);}
+.fit-card-media{
+  display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;
+  background:#F4F3F1;border-radius:7px;overflow:hidden;
+}
+.fit-card-media img{width:100%;height:100%;object-fit:contain;padding:8px;}
+.fit-card-placeholder{
+  font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:600;color:#0E0E0E;
+}
+.fit-card-body{min-width:0;}
+.fit-card h3{
+  font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-size:25px;
+  font-weight:600;letter-spacing:.05em;text-transform:uppercase;line-height:1.1;margin-top:3px;
+}
+.fit-card h3 a{transition:.18s;}
+.fit-card h3 a:hover{color:#E31E24;}
+.fit-card-meta{font-size:12.5px;color:#666;margin-top:5px;line-height:1.5;}
+.fit-fitting-list{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+.fit-fitting-list-wide{margin-top:14px;}
+.fit-fitting-link{
+  display:flex;align-items:center;gap:6px;width:max-content;max-width:100%;
+  color:#555;background:#F4F3F1;border-radius:6px;padding:5px 8px;
+  font-size:12px;line-height:1.35;transition:.18s;
+}
+.fit-fitting-link:hover{color:#E31E24;background:#fff;border-color:#E31E24;}
+.fit-fitting-link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.fit-fitting-product{
+  display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;
+  width:100%;min-height:76px;padding:6px;background:#F4F3F1;
+  border:1px solid transparent;border-radius:7px;transition:.18s;
+}
+.fit-fitting-product:hover{background:#fff;border-color:#E31E24;}
+.fit-fitting-product-media{
+  display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;
+  overflow:hidden;background:#fff;border-radius:5px;
+}
+.fit-fitting-product-media img{width:100%;height:100%;object-fit:contain;padding:3px;}
+.fit-fitting-product-placeholder{font-size:22px;color:#999;}
+.fit-fitting-product-body{display:flex;flex-direction:column;min-width:0;padding:2px 2px 1px 0;}
+.fit-fitting-product-body small{font-size:10px;font-weight:700;color:#E31E24;line-height:1.3;}
+.fit-fitting-product-body strong{
+  display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  margin-top:2px;color:#222;font-size:12px;line-height:1.4;
+}
+.fit-fitting-product-code{margin-top:2px;color:#888;font-size:10px;}
+.fit-fitting-product-foot{
+  display:flex;align-items:center;gap:5px;margin-top:auto;color:#666;font-size:10px;line-height:1.3;
+}
+.fit-fitting-product-foot span,.fit-fitting-product-foot b{white-space:nowrap;}
+.fit-fitting-product-foot b{margin-left:auto;color:#111;font-size:10.5px;}
+.fit-fitting-product-foot i{color:#E31E24;font-size:13px;}
+.fit-more{font-size:12px;color:#888;}
+.fit-match-badge{
+  display:inline-flex;align-items:center;gap:5px;margin-top:10px;
+  color:#E31E24;background:rgba(227,30,36,.08);border-radius:9999px;
+  padding:4px 9px;font-size:12px;font-weight:700;
+}
+.fit-detail-link{
+  display:inline-flex;align-items:center;gap:5px;margin-top:11px;
+  font-size:12.5px;color:#555;transition:.18s;
+}
+.fit-detail-link:hover{color:#E31E24;}
+.fit-empty{
+  display:flex;align-items:center;gap:12px;background:#F4F3F1;border:1px solid rgba(0,0,0,.08);
+  border-radius:8px;padding:16px;color:#555;
+}
+.fit-empty i{font-size:22px;color:#E31E24;}
+.fit-empty p{font-weight:700;color:#222;}
+.fit-empty span{display:block;font-size:12.5px;color:#777;margin-top:2px;}
+.fit-ok{
+  display:flex;align-items:center;gap:12px;background:#101010;color:#fff;border-radius:8px;padding:16px;
+}
+.fit-ok i{font-size:25px;color:#E31E24;}
+.fit-ok p{font-weight:700;}
+.fit-ok span{display:block;color:rgba(255,255,255,.62);font-size:12.5px;margin-top:2px;}
+.fit-checker{
+  background:#F4F3F1;border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08);
+  padding:46px 0;margin-top:10px;
+}
+.fit-checker-panel{
+  background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:22px;
+}
+.fit-checker-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end;margin-top:18px;}
+.fit-checker .finder-label{color:#666;}
+.fit-checker .finder-select{border:1px solid rgba(0,0,0,.14);background:#fff;}
+.fit-checker .finder-select:disabled{background:#eee;color:#aaa;}
+@media(max-width:920px){
+  .fit-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .fit-checker-form{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .fit-result-head{display:block;}
+  .fit-result-head span{display:inline-flex;margin-top:10px;}
+  .fit-card-grid{grid-template-columns:1fr;}
+  .fit-card{grid-template-columns:96px minmax(0,1fr);}
+  .fit-checker-form{grid-template-columns:1fr;}
+}
+
+/* ---- reels ---- */
+.reel-row{scroll-snap-type:x proximity;}
+.reel-row::-webkit-scrollbar{height:0;}
+.rtile{
+  flex:0 0 clamp(260px,21vw,340px);aspect-ratio:9/16;border-radius:14px;position:relative;overflow:hidden;
+  scroll-snap-align:start;background:#101010;
+}
+.rtile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+
+/* ---- story marquee（自動横流し・ホバー停止） ---- */
+.mq{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+}
+.mq-track{display:flex;gap:12px;width:max-content;animation:mq 40s linear infinite;}
+.mq:hover .mq-track{animation-play-state:paused;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.mtile{width:212px;flex:0 0 auto;}
+.mtile .th{
+  aspect-ratio:16/10;border-radius:10px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#232325 0%,#111 80%);
+  display:flex;align-items:center;justify-content:center;
+}
+.mtile .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.mtile .th i{position:relative;z-index:2;color:rgba(255,255,255,.85);font-size:20px;}
+.mtile .th .du{
+  position:absolute;right:8px;bottom:7px;z-index:2;
+  background:rgba(0,0,0,.65);color:#fff;font-size:10.5px;padding:1px 6px;border-radius:4px;
+}
+.mtile .cg{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:#E31E24;margin-top:8px;
+}
+.mtile .tt{font-size:13px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* ---- store ---- */
+.store-map{
+  background:
+    linear-gradient(0deg,rgba(0,0,0,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px),
+    #EDEBE6;
+  background-size:44px 44px,44px 44px,auto;
+}
+.tab{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 16px;border-radius:9999px;border:1px solid rgba(0,0,0,.2);transition:.2s;
+}
+.tab.on{background:#0E0E0E;color:#fff;border-color:#0E0E0E;}
+
+/* ---- news ---- */
+.tag{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 13px;border-radius:9999px;border:1px solid rgba(0,0,0,.2);color:#5F5E5A;
+}
+.ncard{display:block;background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.1);}
+
+/* ---- motion safety ----
+   アニメーションはJS（GSAP）が初期状態を設定するため、
+   JS無効環境では全要素がそのまま表示される（CSSでは隠さない） */
+@media (prefers-reduced-motion: reduce){
+  .mq-track{animation:none;}
+  *{transition-duration:.01ms !important;}
+}
+
+/* ---- video modal (Story) ---- */
+.vmodal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.93);padding:24px;opacity:0;transition:opacity .22s ease;}
+.vmodal.on{display:flex;opacity:1;}
+.vmodal video{max-width:min(96vw,1120px);max-height:84vh;width:auto;height:auto;border-radius:10px;background:#000;box-shadow:0 30px 90px rgba(0,0,0,.6);}
+.vmodal-close{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:9999px;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;border:0;cursor:pointer;transition:.15s;}
+.vmodal-close:hover{background:rgba(227,30,36,.92);}
+body.vmodal-open{overflow:hidden;}
+/* ---- editorial story tiles (button reset) ---- */
+.film,.sfilm{display:block;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer;color:inherit;}
+.mtile{cursor:pointer;background:none;border:0;padding:0;text-align:left;color:inherit;display:block;}
+
+/* ---- Story slider (3段目) ---- */
+.story-slider{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:0 24px;scrollbar-width:none;-ms-overflow-style:none;}
+.story-slider::-webkit-scrollbar{display:none;}
+.story-slider>.ss-tile{flex:0 0 auto;width:clamp(260px,30vw,400px);scroll-snap-align:start;}
+.ss-wrap{position:relative;}
+.ss-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:9999px;background:rgba(255,255,255,.14);color:#fff;border:0;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;transition:.15s;backdrop-filter:blur(4px);}
+.ss-arrow:hover{background:rgba(227,30,36,.92);}
+.ss-prev{left:14px;}
+.ss-next{right:14px;}
+@media(max-width:740px){.ss-arrow{display:none;}}
+
+/* ---- TOP 新商品：4:5 イメージバナー（3カラム / ポスター調）---- */
+.nabanner{
+  position:relative;display:block;aspect-ratio:4/5;overflow:hidden;
+  border-radius:16px;transition:.3s cubic-bezier(.2,.7,.3,1);
+  background:linear-gradient(155deg,#EFEDE9 0%,#E3E0DA 58%,#D9D5CD 100%);
+}
+.nabanner--b{background:linear-gradient(155deg,#E9E7E3 0%,#DBD8D2 58%,#CFCBC3 100%);}
+.nabanner--c{background:linear-gradient(155deg,#F2F0EC 0%,#E6E3DD 58%,#DBD7CF 100%);}
+.nabanner:hover{transform:translateY(-5px);box-shadow:0 24px 52px rgba(0,0,0,.16);}
+/* 斜めの赤アクセント（SHAD のブランド要素） */
+.nabanner::after{
+  content:"";position:absolute;right:-16%;top:-10%;width:46%;height:130%;
+  background:linear-gradient(180deg,rgba(227,30,36,.9),rgba(227,30,36,.55));
+  transform:rotate(18deg);opacity:.14;transition:.45s;
+}
+.nabanner:hover::after{opacity:.24;right:-12%;}
+/* 背面の巨大な型番タイポ */
+.nabanner-ghost{
+  position:absolute;left:-.04em;top:.06em;z-index:1;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  font-size:clamp(76px,13vw,132px);line-height:.82;letter-spacing:.01em;
+  color:rgba(14,14,14,.075);white-space:nowrap;pointer-events:none;
+}
+.nabanner-media{position:absolute;inset:0;z-index:2;display:block;}
+.nabanner-media img{
+  position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);
+  width:88%;max-height:60%;object-fit:contain;
+  filter:drop-shadow(0 18px 26px rgba(0,0,0,.26));transition:.5s cubic-bezier(.2,.7,.3,1);
+}
+.nabanner:hover .nabanner-media img{transform:translate(-50%,-52%) scale(1.07);}
+.nabanner-badge{
+  position:absolute;left:18px;top:18px;z-index:4;background:#E31E24;color:#fff;
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;padding:5px 11px;border-radius:3px;
+}
+.nabanner-body{position:absolute;left:0;right:0;bottom:0;z-index:3;display:block;padding:24px 22px 26px;}
+.nabanner-name{
+  display:block;font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  font-size:34px;line-height:1;letter-spacing:.05em;text-transform:uppercase;color:#0E0E0E;
+}
+.nabanner-tag{display:block;font-size:14.5px;font-weight:700;color:#3A3A38;margin-top:7px;line-height:1.5;}
+.nabanner-arrow{
+  position:absolute;right:18px;bottom:22px;z-index:4;
+  width:38px;height:38px;border-radius:9999px;background:#0E0E0E;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:17px;transition:.25s;
+}
+.nabanner:hover .nabanner-arrow{background:#E31E24;transform:translateX(3px);}
+@media(max-width:767px){
+  .nabanner{aspect-ratio:4/3;}
+  .nabanner-media img{top:44%;max-height:54%;width:72%;}
+  .nabanner-ghost{font-size:92px;}
+}
+
+/* ---- 商品詳細：カラー／仕様バリエーション選択チップ ---- */
+.cvchip{
+  font-size:13px;font-weight:500;line-height:1;
+  border:1px solid rgba(0,0,0,.22);border-radius:999px;
+  padding:10px 16px;background:#fff;color:#333;cursor:pointer;transition:.15s;white-space:nowrap;
+}
+.cvchip:hover{border-color:#0E0E0E;}
+.cvchip.on{background:#0E0E0E;border-color:#0E0E0E;color:#fff;}
+
+/* ---- ワイド画面向けフルブリード ----
+   本文（max-w-site=1180px 中央寄せ）は維持したまま、
+   ビジュアル要素だけを画面端まで広げる。中央寄せコンテナ直下の要素に付与。 */
+.full-bleed{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);}
+/* フルブリード内側の左右ガター（ヘッダー/HEROと同じ 24px / md:48px） */
+.fb-pad{padding-left:24px;padding-right:24px;}
+@media(min-width:768px){.fb-pad{padding-left:48px;padding-right:48px;}}
+/* 100vw によるわずかな横スクロールを抑止（sticky を壊さない clip を使用） */
+html{overflow-x:clip;}

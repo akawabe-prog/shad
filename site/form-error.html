@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>送信できませんでした｜SHAD JAPAN</title>
+<meta name="description" content="お問い合わせの送信に失敗しました。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+    fontFamily: { disp: ['"Barlow Condensed"','"Noto Sans JP"','sans-serif'], sans: ['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif'] },
+    maxWidth: { site: '1180px' },
+  } },
+};
+</script>
+<link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased flex flex-col min-h-screen">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/" class="shrink-0"><img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
+    <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
+      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
+      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main class="flex-1 flex items-center justify-center px-7 py-20">
+  <div class="max-w-[560px] w-full text-center">
+    <div class="w-16 h-16 rounded-full bg-mist text-shad flex items-center justify-center mx-auto text-[32px] border border-shad/30"><i class="ti ti-alert-triangle"></i></div>
+    <p class="font-disp font-semibold text-[13px] tracking-[.28em] uppercase text-shad mt-6">Error</p>
+    <h1 class="text-[clamp(24px,3.4vw,34px)] font-bold leading-tight mt-2">送信できませんでした</h1>
+    <p class="text-[14.5px] text-neutral-600 mt-4 leading-[1.95]">
+      申し訳ございません。お問い合わせの送信中に問題が発生した、または入力内容に不備がありました。<br>
+      お手数ですが、入力内容（特にメールアドレス）をご確認のうえ、もう一度お試しください。
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center mt-8">
+      <a href="contact" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-arrow-left"></i>フォームに戻る</a>
+      <a href="faq" class="btn border border-black/25 text-ink hover:bg-mist"><i class="ti ti-help-circle"></i>よくあるご質問</a>
+    </div>
+    <p class="text-[12.5px] text-neutral-400 mt-6">問題が続く場合は、お手数ですが <a href="mailto:info@customjapan.jp" class="text-shad underline underline-offset-2">info@customjapan.jp</a> まで直接ご連絡ください。</p>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white py-7">
+  <div class="max-w-site mx-auto px-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+    <span class="flex flex-wrap gap-x-4 gap-y-1">
+      <a href="company" class="hover:text-white transition">会社情報</a>
+      <a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a>
+      <a href="privacy" class="hover:text-white transition">プライバシーポリシー</a>
+      <a href="terms" class="hover:text-white transition">利用規約</a>
+    </span>
+    <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+  </div>
+</footer>
+
+</body>
+</html>
