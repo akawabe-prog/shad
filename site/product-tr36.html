@@ -17,6 +17,7 @@
 .g-thumb{width:72px;height:72px;border-radius:10px;overflow:hidden;border:2px solid rgba(0,0,0,.12);background:#fff;cursor:pointer;transition:.15s;}
 .g-thumb img{width:100%;height:100%;object-fit:cover;}
 .g-thumb.on{border-color:#E31E24;}
+@media(max-width:480px){.g-thumb{width:58px;height:58px;}}
 .new-badge{background:#E31E24;color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
 .feat-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:2.5px 8px;border-radius:4px;}
 .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px;border-top:1px solid rgba(0,0,0,.1);padding-top:22px;}
@@ -76,6 +77,7 @@
       <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
       <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
       <a href="#" aria-label="カート" class="relative text-white/80 hover:text-white transition">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg>
@@ -84,6 +86,15 @@
     </div>
   </div>
 </nav>
+<div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
 
 <div class="max-w-site mx-auto px-7 pt-6">
   <a href="products" class="inline-flex items-center gap-2 text-[13px] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>製品一覧</a>
@@ -92,7 +103,7 @@
 <main class="max-w-site mx-auto px-7 py-8 grid md:grid-cols-2 gap-10 items-start">
   <div>
     <div class="g-main"><img id="gMain" src="img/products/tr36_0.webp" alt="TR36 TERRA サイドケース"></div>
-    <div class="flex gap-3 mt-3"><button class="g-thumb on" data-src="img/products/tr36_0.webp"><img src="img/products/tr36_0.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr36_1.webp"><img src="img/products/tr36_1.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr36_2.webp"><img src="img/products/tr36_2.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr36_3.webp"><img src="img/products/tr36_3.webp" alt=""></button></div>
+    <div class="flex flex-wrap gap-2.5 mt-3"><button class="g-thumb on" data-src="img/products/tr36_0.webp"><img src="img/products/tr36_0.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr36_1.webp"><img src="img/products/tr36_1.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr36_2.webp"><img src="img/products/tr36_2.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr36_3.webp"><img src="img/products/tr36_3.webp" alt=""></button></div>
   </div>
   <div>
     <p class="flex items-center gap-2"><span class="font-disp text-[13px] tracking-[.22em] uppercase text-neutral-400">TERRA</span></p>
@@ -155,7 +166,7 @@
 
 
 <section class="max-w-site mx-auto px-7 py-10 grid md:grid-cols-2 gap-10">
-  <div>
+  <div class="min-w-0">
     <h2 class="sec-ttl sec-ttl-quiet">Description</h2>
     <p class="text-[14.5px] leading-[2] mt-5">世界中のバイヤーより支持されている高い機能性とスタイリッシュなデザイン。SHAD(シャッド)ブランドは1973年にスペインのバルセロナで誕生しました。BMWやKTMなどのグローバルメーカー向けのデザイン性・機能性にこだわったトップケースの商品開発に特化しており80年代にPIAGGIOEspana(ピアジオエスパーニャ)サプライをスタートさせたことでSHADは世界的なプロバイダーとなり、HONDA、YAMAHA、そしてSUZUKIといった日本メーカーへの商品提供が始まりました。続けて90年代にもPEUGEOT、BMW、MBK(YAMAHAFrance)など海外ビジネスパートナーを増やし、今では80ヵ国以上で愛用されているブランドです。</p>
     <p class="text-[13.5px] leading-[1.9] text-neutral-500 mt-4">国際的に権威のある「世界三大デザイン賞」2賞を受賞。Red Dot Design Award と iF DESIGN AWARD 2021受賞をした唯一のバイク用サイドケースです。<br>メーカー純正アルミパニアケースや他社アルミパニアケース以上に洗練されたデザインと、アルミボディによる強靭さ、SHADのノウハウを蓄積した利便性を備えているサイドケースとなっております。<br>・設計から製造まで完全スペイン製<br>・本体は軽量で丈夫なアルミ素材、ロックシステムは頑丈なステンレスを使用<br>・アルミケース特有のリベット打ちやつなぎ目を極力抑えた、他社ケースとは一線を画すデザイン<br>・薄さ約1.2mmのアルミボディで軽量化<br>・アルミケース特有のロック部分の出っ張りがなく、セキュリティ面も万全のプレミアムキー<br>・キーシリンダーの統一でトップ＆サイドケースをワンキーで開閉が可能<br>・片手でスムーズな開閉と、ベースプレート脱着が可能<br>・ロック部分にはダストや砂などが入りにくい防塵キャップ付き<br>・持ち運びに便利なハンドル付き<br>・蓋の接合部分には防水シーリング加工を施し、防水性能を発揮<br>・手前に倒せるインナートレーで物の出し入れがスムーズ、積載物も保護<br>【About TERRA(テラ)】<br>「TERRA」はスペイン語で「地球」を意味します。母なる大地である地球に敬意を表して名付けられました。この惑星とその自然の豊かさは、すべてのオートバイ愛好家に冒険の無限の可能性を与えます。<br>そしてアルミケース「TERRA」は、ロングツーリングや旅行において最高の相棒となるよう設計されており、今まで以上に楽しいライディングを体験いただける事を保証します。タフな旅の味方として多くのライダーを満足させるのがこのTERRAシリーズです。</p>
@@ -163,7 +174,7 @@
   </div>
   <div>
     <h2 class="sec-ttl sec-ttl-quiet">Spec</h2>
-    <table class="w-full mt-5 text-[14px]"><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">質量</th><td class="py-3 text-[14px] leading-relaxed">約5.8kg</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">材質</th><td class="py-3 text-[14px] leading-relaxed">本体：アルミニウム合金材<br>ロックシステム：ステンレススチール</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">サイズ</th><td class="py-3 text-[14px] leading-relaxed">本体サイズ：H282mm×W495mm×D418mm</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">仕様</th><td class="py-3 text-[14px] leading-relaxed">インナーメッシュ付き<br>対応キーシリンダー品番：19708799、27727454(持ち手が黒いキーです。)<br>※ヘルメットを収納することはできません。</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">セット内容・付属品</th><td class="py-3 text-[14px] leading-relaxed">予備のキーシリンダー×3、鍵×2</td></tr></table>
+    <table class="w-full mt-5 text-[14px] table-fixed"><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">質量</th><td class="py-3 text-[14px] leading-relaxed">約5.8kg</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">材質</th><td class="py-3 text-[14px] leading-relaxed">本体：アルミニウム合金材<br>ロックシステム：ステンレススチール</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">サイズ</th><td class="py-3 text-[14px] leading-relaxed">本体サイズ：H282mm×W495mm×D418mm</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">仕様</th><td class="py-3 text-[14px] leading-relaxed">インナーメッシュ付き<br>対応キーシリンダー品番：19708799、27727454(持ち手が黒いキーです。)<br>※ヘルメットを収納することはできません。</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">セット内容・付属品</th><td class="py-3 text-[14px] leading-relaxed">予備のキーシリンダー×3、鍵×2</td></tr></table>
   </div>
 </section>
 
@@ -243,5 +254,6 @@ if(rv.length){
 <script src="js/ec_links.js"></script>
 <script src="js/ec_products.js"></script>
 <script src="js/purchase.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>

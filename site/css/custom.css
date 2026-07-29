@@ -334,4 +334,4 @@ body.vmodal-open{overflow:hidden;}
 .fb-pad{padding-left:24px;padding-right:24px;}
 @media(min-width:768px){.fb-pad{padding-left:48px;padding-right:48px;}}
 /* 100vw によるわずかな横スクロールを抑止（sticky を壊さない clip を使用） */
-html{overflow-x:clip;}
+html,body{overflow-x:clip;max-width:100%;}

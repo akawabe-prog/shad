@@ -17,6 +17,7 @@
 .g-thumb{width:72px;height:72px;border-radius:10px;overflow:hidden;border:2px solid rgba(0,0,0,.12);background:#fff;cursor:pointer;transition:.15s;}
 .g-thumb img{width:100%;height:100%;object-fit:cover;}
 .g-thumb.on{border-color:#E31E24;}
+@media(max-width:480px){.g-thumb{width:58px;height:58px;}}
 .new-badge{background:#E31E24;color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
 .feat-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:2.5px 8px;border-radius:4px;}
 .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px;border-top:1px solid rgba(0,0,0,.1);padding-top:22px;}
@@ -76,6 +77,7 @@
       <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
       <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
       <a href="#" aria-label="カート" class="relative text-white/80 hover:text-white transition">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg>
@@ -84,6 +86,15 @@
     </div>
   </div>
 </nav>
+<div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
 
 <div class="max-w-site mx-auto px-7 pt-6">
   <a href="products" class="inline-flex items-center gap-2 text-[13px] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>製品一覧</a>
@@ -92,7 +103,7 @@
 <main class="max-w-site mx-auto px-7 py-8 grid md:grid-cols-2 gap-10 items-start">
   <div>
     <div class="g-main"><img id="gMain" src="img/products/tr46_0.webp" alt="TR46 TERRA トップケース"></div>
-    <div class="flex gap-3 mt-3"><button class="g-thumb on" data-src="img/products/tr46_0.webp"><img src="img/products/tr46_0.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr46_1.webp"><img src="img/products/tr46_1.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr46_2.webp"><img src="img/products/tr46_2.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr46_3.webp"><img src="img/products/tr46_3.webp" alt=""></button></div>
+    <div class="flex flex-wrap gap-2.5 mt-3"><button class="g-thumb on" data-src="img/products/tr46_0.webp"><img src="img/products/tr46_0.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr46_1.webp"><img src="img/products/tr46_1.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr46_2.webp"><img src="img/products/tr46_2.webp" alt=""></button><button class="g-thumb" data-src="img/products/tr46_3.webp"><img src="img/products/tr46_3.webp" alt=""></button></div>
   </div>
   <div>
     <p class="flex items-center gap-2"><span class="new-badge" style="position:static;display:inline-block;">New</span> <span class="font-disp text-[13px] tracking-[.22em] uppercase text-neutral-400">TERRA</span></p>
@@ -157,7 +168,7 @@
       <div class="lp-reel-row"><div class="lp-reel"><video src="media/products/tr46/reel1.mp4" muted loop playsinline preload="none"></video></div><div class="lp-reel"><video src="media/products/tr46/reel2.mp4" muted loop playsinline preload="none"></video></div></div></div></section>
 
 <section class="max-w-site mx-auto px-7 py-10 grid md:grid-cols-2 gap-10">
-  <div>
+  <div class="min-w-0">
     <h2 class="sec-ttl sec-ttl-quiet">Description</h2>
     <p class="text-[14.5px] leading-[2] mt-5">アドベンチャー向けのタフなケース、TR46。高強度素材と補強された基部設計で堅牢性を実現。TR27サイドケースとの相性も抜群です。ステンレス製ロックと一体型ハンドルを備え、フルフェイス＋JETの2個を収納、最大積載6kg。Red Dot デザイン賞 2026を受賞しています。</p>
     
@@ -165,7 +176,7 @@
   </div>
   <div>
     <h2 class="sec-ttl sec-ttl-quiet">Spec</h2>
-    <table class="w-full mt-5 text-[14px]"><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">容量</th><td class="py-3 text-[14px] leading-relaxed">46L</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">質量</th><td class="py-3 text-[14px] leading-relaxed">約5.5kg</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">材質</th><td class="py-3 text-[14px] leading-relaxed">本体：PP(ポリプロピレン)<br>ロックシステム：ステンレススチール</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">サイズ</th><td class="py-3 text-[14px] leading-relaxed">外寸：H320mm×W515mm×D408mm<br>内寸：H315mm×W500mm×D335mm</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">仕様</th><td class="py-3 text-[14px] leading-relaxed">最大耐荷重：6kg<br>キーの位置が「OPEN」の状態にしていただくとキーレスでの開閉が可能です。<br>対応キーシリンダー品番：201722R(持ち手が赤いキーです。)</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">セット内容・付属品</th><td class="py-3 text-[14px] leading-relaxed">汎用取付ベースプレート(品番：D1B40PAR 商品名：ベースプレートM)<br>取付用金具セット<br>スペアキー2本</td></tr></table>
+    <table class="w-full mt-5 text-[14px] table-fixed"><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">容量</th><td class="py-3 text-[14px] leading-relaxed">46L</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">質量</th><td class="py-3 text-[14px] leading-relaxed">約5.5kg</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">材質</th><td class="py-3 text-[14px] leading-relaxed">本体：PP(ポリプロピレン)<br>ロックシステム：ステンレススチール</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">サイズ</th><td class="py-3 text-[14px] leading-relaxed">外寸：H320mm×W515mm×D408mm<br>内寸：H315mm×W500mm×D335mm</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">仕様</th><td class="py-3 text-[14px] leading-relaxed">最大耐荷重：6kg<br>キーの位置が「OPEN」の状態にしていただくとキーレスでの開閉が可能です。<br>対応キーシリンダー品番：201722R(持ち手が赤いキーです。)</td></tr><tr class="border-b border-black/10"><th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">セット内容・付属品</th><td class="py-3 text-[14px] leading-relaxed">汎用取付ベースプレート(品番：D1B40PAR 商品名：ベースプレートM)<br>取付用金具セット<br>スペアキー2本</td></tr></table>
   </div>
 </section>
 
@@ -254,5 +265,6 @@ if(rv.length){
 <script src="js/ec_links.js"></script>
 <script src="js/ec_products.js"></script>
 <script src="js/purchase.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>
