@@ -7,6 +7,7 @@
   "category": "その他車載バッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "25L",
   "msrpTaxIn": 16500,
   "makerCode": "X0SC25",
@@ -29,7 +30,8 @@
    "/items/10807156_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/10807156_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SC25 スクーターバッグ 25L ブラック"
  },
  {
   "cjCode": "13448110",
@@ -39,6 +41,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 2200,
   "makerCode": "D1B6TIR",
@@ -59,7 +62,8 @@
   "forCodes": [
    "TR48",
    "SH58X"
-  ]
+  ],
+  "displayName": "SHADトップケース用ストッパー"
  },
  {
   "cjCode": "13448660",
@@ -69,6 +73,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "3L",
   "msrpTaxIn": 16500,
   "makerCode": "X0SE04",
@@ -88,7 +93,8 @@
    "/items/13448660_3.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/13448660_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E04 タンクバッグ 3L ブラック"
  },
  {
   "cjCode": "17369435",
@@ -98,6 +104,7 @@
   "category": "サイドバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラウン/ブラック",
+  "colorMain": "ブラウン/ブラック",
   "size": "10L",
   "msrpTaxIn": 27500,
   "makerCode": "X0SR38",
@@ -123,7 +130,8 @@
    "/items/17369435_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/17369435_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SR38 カフェレーサー サイドバッグ 10L"
  },
  {
   "cjCode": "17380133",
@@ -132,7 +140,8 @@
   "series": "サイドケース",
   "category": "パニア・サイドケース・サイドボックス",
   "mainCategory": "収納・BOX",
-  "color": "ブラック/アルミ",
+  "color": "アルミパネル",
+  "colorMain": "ブラック/アルミ",
   "size": "35L/35L",
   "msrpTaxIn": 93500,
   "makerCode": "D0B35200",
@@ -154,7 +163,8 @@
    "/items/17380133_5.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/17380133_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH35 サイドケース アルミパネル"
  },
  {
   "cjCode": "17460897",
@@ -163,7 +173,8 @@
   "series": "サイドケース",
   "category": "パニア・サイドケース・サイドボックス",
   "mainCategory": "収納・BOX",
-  "color": "ブラック",
+  "color": "カーボン",
+  "colorMain": "ブラック",
   "size": "36L/36L",
   "msrpTaxIn": 89100,
   "makerCode": "D0B36200",
@@ -186,7 +197,8 @@
    "/items/17460897_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/17460897_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH36 サイドケース カーボン"
  },
  {
   "cjCode": "17460903",
@@ -195,7 +207,8 @@
   "series": "トップケース",
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
-  "color": "ブラック/アルミ",
+  "color": "アルミパネル",
+  "colorMain": "ブラック/アルミ",
   "size": "46-58L",
   "msrpTaxIn": 74800,
   "makerCode": "D0B59200",
@@ -218,7 +231,8 @@
    "/items/17460903_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/17460903_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH59X トップケース アルミパネル"
  },
  {
   "cjCode": "19708768",
@@ -228,6 +242,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 15400,
   "makerCode": "X0IB47",
@@ -258,7 +273,8 @@
    "TR46",
    "TR47",
    "TR48"
-  ]
+  ],
+  "displayName": "TERRA専用インナーバッグ"
  },
  {
   "cjCode": "19708775",
@@ -268,6 +284,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 18700,
   "makerCode": "D0RI75",
@@ -296,7 +313,8 @@
    "TR37",
    "TR48",
    "TR55"
-  ]
+  ],
+  "displayName": "バックレスト"
  },
  {
   "cjCode": "19708782",
@@ -306,6 +324,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 3300,
   "makerCode": "X0TR01",
@@ -327,7 +346,8 @@
   "forCodes": [
    "TR36",
    "TR47"
-  ]
+  ],
+  "displayName": "TERRA専用インナーメッシュ"
  },
  {
   "cjCode": "19708799",
@@ -337,6 +357,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 5500,
   "makerCode": "D1TRBOR",
@@ -354,7 +375,8 @@
    "/items/19708799_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/19708799_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "TERRA専用キーシリンダー 3個セット"
  },
  {
   "cjCode": "26354293",
@@ -364,6 +386,7 @@
   "category": "リュックサック・ナップサック",
   "mainCategory": "アパレル",
   "color": "グレー",
+  "colorMain": "グレー",
   "size": "",
   "msrpTaxIn": 5500,
   "makerCode": "X0IB20",
@@ -381,7 +404,8 @@
    "/items/26354293_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/26354293_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "IB20 TERRA 防水ダッフルバッグ 20L"
  },
  {
   "cjCode": "27120132",
@@ -391,6 +415,7 @@
   "category": "サイドバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "23-29L/23-29L",
   "msrpTaxIn": 28600,
   "makerCode": "X0SL58",
@@ -413,7 +438,8 @@
    "/items/27120132_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27120132_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SL58 サイドバッグ ブラック"
  },
  {
   "cjCode": "27362327",
@@ -423,6 +449,7 @@
   "category": "スマートフォンホルダー・マウント",
   "mainCategory": "電子機器",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "",
   "msrpTaxIn": 11000,
   "makerCode": "X0SG00M",
@@ -445,7 +472,8 @@
    "/items/27362327_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27362327_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "X-FRAME スマートフォンホルダー(ミラークランプ式)"
  },
  {
   "cjCode": "27362334",
@@ -455,6 +483,7 @@
   "category": "スマートフォンホルダー・マウント",
   "mainCategory": "電子機器",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "",
   "msrpTaxIn": 11000,
   "makerCode": "X0SG00H",
@@ -477,7 +506,8 @@
    "/items/27362334_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27362334_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "X-FRAME スマートフォンホルダー(ハンドルバークランプ式)"
  },
  {
   "cjCode": "27666111",
@@ -487,6 +517,7 @@
   "category": "スマートフォンホルダー・マウント",
   "mainCategory": "電子機器",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "",
   "msrpTaxIn": 11000,
   "makerCode": "X0SG71H",
@@ -508,7 +539,8 @@
    "/items/27666111_5.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27666111_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "スマートフォンホルダー(ハンドルバークランプ式)"
  },
  {
   "cjCode": "27666128",
@@ -518,6 +550,7 @@
   "category": "スマートフォンホルダー・マウント",
   "mainCategory": "電子機器",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "",
   "msrpTaxIn": 11000,
   "makerCode": "X0SG71M",
@@ -539,7 +572,8 @@
    "/items/27666128_5.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27666128_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "スマートフォンホルダー(ミラークランプ式)"
  },
  {
   "cjCode": "27727454",
@@ -549,6 +583,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 3300,
   "makerCode": "D1TRBO1R",
@@ -566,7 +601,8 @@
    "/items/27727454_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27727454_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "TERRA専用キーシリンダー 1個セット"
  },
  {
   "cjCode": "27798539",
@@ -576,6 +612,7 @@
   "category": "サイドバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "10L",
   "msrpTaxIn": 27500,
   "makerCode": "X0SR3821",
@@ -598,7 +635,8 @@
    "/items/27798539_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27798539_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SR38 カフェレーサー サイドバッグ ブラック 10L"
  },
  {
   "cjCode": "27798737",
@@ -608,6 +646,7 @@
   "category": "スマートフォンホルダー・マウント",
   "mainCategory": "電子機器",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 11000,
   "makerCode": "X0SG76H",
@@ -629,7 +668,8 @@
    "/items/27798737_5.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27798737_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "スマートフォンホルダー(ハンドルバークランプ式)"
  },
  {
   "cjCode": "27807880",
@@ -639,6 +679,7 @@
   "category": "書籍・カタログ",
   "mainCategory": "スマホ・事務日用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "",
@@ -656,7 +697,8 @@
    "/makers/418_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27807880_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD 日本版カタログ 2023"
  },
  {
   "cjCode": "27819692",
@@ -666,6 +708,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "3L",
   "msrpTaxIn": 13200,
   "makerCode": "X0SE03C",
@@ -691,7 +734,8 @@
    "/items/27819692_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27819692_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E03C クリックシステムタンクバッグ 3L スタンダード"
  },
  {
   "cjCode": "27819715",
@@ -701,6 +745,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "5L",
   "msrpTaxIn": 19800,
   "makerCode": "X0SE09C",
@@ -726,7 +771,8 @@
    "/items/27819715_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27819715_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E09C クリックシステムタンクバッグ 5L スタンダード"
  },
  {
   "cjCode": "27819753",
@@ -736,6 +782,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "13L",
   "msrpTaxIn": 37400,
   "makerCode": "X0TR15CL",
@@ -761,7 +808,8 @@
    "/items/27819753_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27819753_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "TR15CL TERRA クリックシステムタンクバッグ 13L キーロック"
  },
  {
   "cjCode": "27873663",
@@ -771,6 +819,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 3300,
   "makerCode": "X1SESTLR",
@@ -788,7 +837,8 @@
    "/items/27873663_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27873663_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "クリックシステムタンクバッグ用キーシリンダー"
  },
  {
   "cjCode": "27944271",
@@ -798,6 +848,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 2200,
   "makerCode": "X1SESTRIR",
@@ -816,7 +867,8 @@
    "/items/27944271_2.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944271_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "クリックシステムタンクバッグ用 樹脂製U字アタッチメント"
  },
  {
   "cjCode": "27944288",
@@ -826,6 +878,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0EX201",
@@ -843,7 +896,8 @@
    "/items/27944288_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944288_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "樹脂ケース用 キューブディスプレイセット"
  },
  {
   "cjCode": "27944295",
@@ -853,6 +907,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0TR201",
@@ -870,7 +925,8 @@
    "/items/27944295_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944295_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "TERRA用 キューブディスプレイセット"
  },
  {
   "cjCode": "27944301",
@@ -880,6 +936,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0EXP4P",
@@ -897,7 +954,8 @@
    "/items/27944301_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944301_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "4Pシステム用 壁面固定ディスプレイ"
  },
  {
   "cjCode": "27944318",
@@ -907,6 +965,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0EXPIF",
@@ -924,7 +983,8 @@
    "/items/27944318_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944318_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "3Pシステム用 壁面固定ディスプレイ"
  },
  {
   "cjCode": "27944325",
@@ -934,6 +994,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0EX14",
@@ -951,7 +1012,8 @@
    "/items/27944325_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944325_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "クリックシステム用 壁面固定ディスプレイ"
  },
  {
   "cjCode": "27944332",
@@ -961,6 +1023,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0EX01CS",
@@ -979,7 +1042,8 @@
    "/items/27944332_2.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944332_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "クリックシステム用 テーブルディスプレイ"
  },
  {
   "cjCode": "27944349",
@@ -989,6 +1053,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "999102",
@@ -1006,7 +1071,8 @@
    "/items/27944349_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944349_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD 2023年度版 コットントートバッグ"
  },
  {
   "cjCode": "27944356",
@@ -1016,6 +1082,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "",
@@ -1033,7 +1100,8 @@
    "/items/27944356_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944356_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD パワーバンク"
  },
  {
   "cjCode": "27944363",
@@ -1043,6 +1111,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "999105",
@@ -1060,7 +1129,8 @@
    "/items/27944363_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944363_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD キャップ"
  },
  {
   "cjCode": "27944370",
@@ -1070,6 +1140,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "999319",
@@ -1088,7 +1159,8 @@
    "/items/27944370_2.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27944370_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD バフ(フェイスマスク)"
  },
  {
   "cjCode": "27952931",
@@ -1098,6 +1170,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 19800,
   "makerCode": "D0EX23",
@@ -1116,7 +1189,8 @@
    "/items/27952931_2.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27952931_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD専用シェルフディスプレイスタンド"
  },
  {
   "cjCode": "27952948",
@@ -1126,6 +1200,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 14300,
   "makerCode": "D0EX02",
@@ -1149,7 +1224,8 @@
    "SH34",
    "SH44",
    "SH47"
-  ]
+  ],
+  "displayName": "SHAD専用ウォールディスプレイスタンド SH26/SH29/SH33/SH34/SH39/SH40/SH40CG/SH44/SH45/SH47用"
  },
  {
   "cjCode": "27952955",
@@ -1159,6 +1235,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 14300,
   "makerCode": "D0EX10",
@@ -1177,7 +1254,8 @@
    "/items/27952955_2.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27952955_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD専用ウォールディスプレイスタンド 樹脂トップケース用"
  },
  {
   "cjCode": "27952962",
@@ -1187,6 +1265,7 @@
   "category": "書籍・カタログ",
   "mainCategory": "スマホ・事務日用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "",
@@ -1204,7 +1283,8 @@
    "/default/noimage_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27952962_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD 日本版カタログ 2024"
  },
  {
   "cjCode": "27956922",
@@ -1214,6 +1294,7 @@
   "category": "POP・ディスプレイ用品",
   "mainCategory": "店舗用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "D0EXTRP",
@@ -1231,7 +1312,8 @@
    "/default/noimage_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27956922_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "トップケース用 壁面固定ディスプレイ"
  },
  {
   "cjCode": "27956977",
@@ -1241,6 +1323,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "3-4L",
   "msrpTaxIn": 20900,
   "makerCode": "X0SE03CLP",
@@ -1266,7 +1349,8 @@
    "/items/27956977_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27956977_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E03CL PRO クリックシステムタンクバッグ 3-4L ダブルロック/拡張機能"
  },
  {
   "cjCode": "27956984",
@@ -1276,6 +1360,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "5-8L",
   "msrpTaxIn": 25300,
   "makerCode": "X0SE09CLP",
@@ -1301,7 +1386,8 @@
    "/items/27956984_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27956984_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E09CL PRO クリックシステムタンクバッグ 5-8L ダブルロック/拡張機能"
  },
  {
   "cjCode": "27957004",
@@ -1311,6 +1397,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "5L",
   "msrpTaxIn": 18700,
   "makerCode": "X0SE09CM",
@@ -1335,7 +1422,8 @@
    "/items/27957004_8.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27957004_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E09CM クリックシステムタンクバッグ 5L スタンダード/ミドルポジション"
  },
  {
   "cjCode": "27957011",
@@ -1345,6 +1433,7 @@
   "category": "タンクバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "3L",
   "msrpTaxIn": 13200,
   "makerCode": "X0SE02C",
@@ -1370,7 +1459,8 @@
    "/items/27957011_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/27957011_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "E02C クリックシステムタンクバッグ 3L スタンダード"
  },
  {
   "cjCode": "28032809",
@@ -1380,6 +1470,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 3300,
   "makerCode": "X1TR03",
@@ -1400,7 +1491,8 @@
   "forCodes": [
    "TR40",
    "TR50"
-  ]
+  ],
+  "displayName": "TR40/TR50専用ドライバッグ+バッグホルダー"
  },
  {
   "cjCode": "28032816",
@@ -1410,6 +1502,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 3300,
   "makerCode": "X1TR05",
@@ -1430,7 +1523,8 @@
   "forCodes": [
    "TR40",
    "TR50"
-  ]
+  ],
+  "displayName": "TR40/TR50専用ボトルハーネス"
  },
  {
   "cjCode": "28181866",
@@ -1440,6 +1534,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 3300,
   "makerCode": "X0B3801",
@@ -1459,7 +1554,8 @@
   "thumb": "https://img.customjapan.net/items/28181866_1.jpg",
   "forCodes": [
    "SH38X"
-  ]
+  ],
+  "displayName": "SH38X専用 インナーメッシュ"
  },
  {
   "cjCode": "29044290",
@@ -1469,6 +1565,7 @@
   "category": "書籍・カタログ",
   "mainCategory": "スマホ・事務日用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "",
@@ -1486,7 +1583,8 @@
    "/makers/418_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/29044290_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD 日本版カタログ 2025"
  },
  {
   "cjCode": "29044405",
@@ -1496,6 +1594,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "",
   "msrpTaxIn": 4400,
   "makerCode": "D0RI41",
@@ -1515,7 +1614,8 @@
   "thumb": "https://img.customjapan.net/items/29044405_1.jpg",
   "forCodes": [
    "TR41"
-  ]
+  ],
+  "displayName": "TR41 TERRA専用 バックレスト"
  },
  {
   "cjCode": "29130436",
@@ -1525,6 +1625,7 @@
   "category": "梱包資材",
   "mainCategory": "物流用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "501192",
@@ -1544,7 +1645,8 @@
   "thumb": "https://img.customjapan.net/items/29130436_1.jpg",
   "forCodes": [
    "SH33"
-  ]
+  ],
+  "displayName": "SHADパッケージ"
  },
  {
   "cjCode": "29130443",
@@ -1554,6 +1656,7 @@
   "category": "梱包資材",
   "mainCategory": "物流用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "501542",
@@ -1571,7 +1674,8 @@
    "/default/noimage_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/29130443_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHADパッケージ"
  },
  {
   "cjCode": "29130450",
@@ -1581,6 +1685,7 @@
   "category": "梱包資材",
   "mainCategory": "物流用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "501945",
@@ -1601,7 +1706,8 @@
   "forCodes": [
    "TR47",
    "TR48"
-  ]
+  ],
+  "displayName": "SHADパッケージ"
  },
  {
   "cjCode": "29320301",
@@ -1611,6 +1717,7 @@
   "category": "書籍・カタログ",
   "mainCategory": "スマホ・事務日用品",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": 0,
   "makerCode": "",
@@ -1628,7 +1735,8 @@
    "/default/noimage_1.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/29320301_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SHAD 日本版カタログ 2026"
  },
  {
   "cjCode": "29351732",
@@ -1638,6 +1746,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "",
   "msrpTaxIn": 4400,
   "makerCode": "D0RI46",
@@ -1657,7 +1766,8 @@
   "thumb": "https://img.customjapan.net/items/29351732_1.jpg",
   "forCodes": [
    "TR46"
-  ]
+  ],
+  "displayName": "TR46 TERRA専用 バックレスト"
  },
  {
   "cjCode": "29469031",
@@ -1667,6 +1777,7 @@
   "category": "サイドバッグ",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "8L",
   "msrpTaxIn": 14300,
   "makerCode": "X0TR08",
@@ -1692,7 +1803,8 @@
    "/items/29469031_9.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/29469031_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "TR08 TERRA クラッシュバーバッグ 8L"
  },
  {
   "cjCode": "29585397",
@@ -1702,6 +1814,7 @@
   "category": "ケース・バッグアクセサリー",
   "mainCategory": "収納・BOX",
   "color": "",
+  "colorMain": "",
   "size": "",
   "msrpTaxIn": null,
   "makerCode": "X0IB27",
@@ -1721,7 +1834,8 @@
   "thumb": "https://img.customjapan.net/items/29585397_1.jpg",
   "forCodes": [
    "TR27"
-  ]
+  ],
+  "displayName": "TERRA専用インナーバッグ"
  },
  {
   "cjCode": "SH26",
@@ -1731,6 +1845,7 @@
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "26L",
   "msrpTaxIn": 11000,
   "makerCode": "D0B26100",
@@ -1753,7 +1868,8 @@
    "/items/SH26_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/SH26_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH26 トップケース 無塗装ブラック"
  },
  {
   "cjCode": "SH29",
@@ -1763,6 +1879,7 @@
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "29L",
   "msrpTaxIn": 11000,
   "makerCode": "D0B29100",
@@ -1785,7 +1902,8 @@
    "/items/SH29_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/SH29_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH29 トップケース 無塗装ブラック"
  },
  {
   "cjCode": "SH39BK",
@@ -1795,6 +1913,7 @@
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "39L",
   "msrpTaxIn": 19800,
   "makerCode": "D0B39100",
@@ -1817,7 +1936,8 @@
    "/items/SH39BK_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/SH39BK_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH39 トップケース 無塗装ブラック"
  },
  {
   "cjCode": "SH40",
@@ -1827,6 +1947,7 @@
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "40L",
   "msrpTaxIn": 19800,
   "makerCode": "D0B40100",
@@ -1851,7 +1972,8 @@
    "/items/SH40_8.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/SH40_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH40 トップケース 無塗装ブラック"
  },
  {
   "cjCode": "SH40CG",
@@ -1861,6 +1983,7 @@
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "40L",
   "msrpTaxIn": 24200,
   "makerCode": "D0B40199",
@@ -1883,7 +2006,8 @@
    "/items/SH40CG_6.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/SH40CG_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH40 CARGO トップケース 無塗装ブラック"
  },
  {
   "cjCode": "SH45",
@@ -1893,6 +2017,7 @@
   "category": "トップケース・リアボックス",
   "mainCategory": "収納・BOX",
   "color": "ブラック",
+  "colorMain": "ブラック",
   "size": "45L",
   "msrpTaxIn": 24200,
   "makerCode": "D0B45100",
@@ -1916,6 +2041,7 @@
    "/items/SH45_7.jpg"
   ],
   "thumb": "https://img.customjapan.net/items/SH45_1.jpg",
-  "forCodes": []
+  "forCodes": [],
+  "displayName": "SH45 トップケース 無塗装ブラック"
  }
 ]

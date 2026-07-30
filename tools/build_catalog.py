@@ -90,9 +90,106 @@ SITE_CODES_SORTED = sorted(SITE_CODES, key=len, reverse=True)
 
 IMG_BASE = "https://img.customjapan.net/items/{}_1.jpg"
 
+# 「メインカラー」だけでは区別できないカラー違い（例：TR55のブラックとピュアブラックは
+# どちらもメインカラー＝ブラック）があるため、商品名の色名を優先して表示ラベルにする。
+COLOR_TOKENS = (
+    "ピュアブラック", "マットブラック", "ブラックメタル", "ダークグレー", "アルミパネル",
+    "チタニウム", "カーボン", "ガンメタ", "チタン",
+    "シルバー", "ブラック", "ホワイト", "グレー", "レッド", "ブルー", "イエロー", "ベージュ",
+)
+
 
 def cell(row, key):
     return (row.get(key) or "").strip()
+
+
+def color_label(row):
+    """カラー表示名。商品名に含まれる色名を出現順に並べる（例：ホワイト/カーボン）。
+    「ピュアブラック」のように長い語が優先され、内包される「ブラック」は無視する。"""
+    name = cell(row, "商品名")
+    spans = []
+    for token in sorted(COLOR_TOKENS, key=len, reverse=True):
+        start = 0
+        while True:
+            i = name.find(token, start)
+            if i < 0:
+                break
+            end = i + len(token)
+            if not any(i < e and s < end for s, e in spans):
+                spans.append((i, end))
+            start = end
+    if spans:
+        spans.sort()
+        return "/".join(name[s:e] for s, e in spans)
+    return cell(row, "メインカラー")
+
+
+# 同じモデル内で表示名が重複するときに優先して使う区別語（左右・マウント種別）
+VARIANT_QUALIFIERS = ("右用", "左用", "左右", "3P", "4P")
+
+
+def _differing_part(name, others):
+    """同一モデルの他の商品名と共通する前後を落として、違う部分だけを返す。"""
+    head = 0
+    while all(len(o) > head and len(name) > head and o[head] == name[head] for o in others):
+        head += 1
+    tail = 0
+    while all(
+        len(o) > head + tail and len(name) > head + tail and o[-1 - tail] == name[-1 - tail]
+        for o in others
+    ):
+        tail += 1
+    part = name[head:len(name) - tail] if tail else name[head:]
+    # 「38cm / 44cm」のように単位が共通末尾に含まれる場合は単位まで戻す
+    if tail and part and part[-1].isalnum():
+        unit = name[len(name) - tail:].split(" ")[0].split("　")[0]
+        if len(unit) <= 4:
+            part += unit
+    part = part.strip(" 　/・")
+    # 括弧が開いたまま切れないように整える
+    if part.count("(") > part.count(")"):
+        part = part[:part.rfind("(")].strip()
+    return part
+
+
+def dedupe_variant_labels(variants):
+    """同一モデル内でカラー表示名が重複する場合、商品名の違う部分で区別する。"""
+    groups = {}
+    for v in variants:
+        groups.setdefault(v["color"], []).append(v)
+    for label, group in groups.items():
+        if len(group) < 2:
+            continue
+        names = [v["name"] for v in group]
+        for v in group:
+            q = next((t for t in VARIANT_QUALIFIERS if t in v["name"]), "")
+            if not q:
+                q = _differing_part(v["name"], [n for n in names if n != v["name"]])
+                if len(q) > 24:
+                    q = q[:24]
+                    if q.count("(") > q.count(")"):
+                        q = q[:q.rfind("(")].strip()
+            if not q:
+                continue
+            v["color"] = (label + " " + q) if (label and label not in q) else q
+
+
+# アクセサリー名の末尾にある「対応ボックスの型番リスト」を落とすための判定
+_ACC_CODE = r"(?:[A-Z]{1,3}\d{1,3}[A-Z]{0,2}|TERRA)"
+ACC_TAIL_CODES = re.compile(
+    r"(?:\s(?:対応|専用|用))?\s+" + _ACC_CODE + r"(?:\s*[/／]\s*" + _ACC_CODE
+    + r"|\s+" + _ACC_CODE + r")*\s*$"
+)
+
+
+def strip_tail_codes(name):
+    """「バックレスト SH58X/SH59X」→「バックレスト」。
+    型番が先頭にある名前（SH33専用カラーパネル 等）はそのまま返す。"""
+    short = ACC_TAIL_CODES.sub("", name).strip(" 　/・")
+    # 型番だけの名前になってしまう場合や、極端に短くなる場合は元の名前を使う
+    if len(short) < 3:
+        return name
+    return short
 
 
 def to_int(value):
@@ -177,7 +274,8 @@ def base_item(row):
         ("series", cell(row, "メインシリーズ")),
         ("category", cell(row, "カテゴリ名")),
         ("mainCategory", cell(row, "メインカテゴリ名")),
-        ("color", cell(row, "メインカラー")),
+        ("color", color_label(row)),
+        ("colorMain", cell(row, "メインカラー")),
         ("size", cell(row, "メインサイズ")),
         ("msrpTaxIn", to_int(cell(row, "希望小売価格(税込)"))),
         ("makerCode", cell(row, "メーカー品番")),
@@ -239,6 +337,8 @@ def main():
 
         # ③ アクセサリー・補修パーツ（対応する本体コードを紐づける）
         item["forCodes"] = codes_in_name(r)
+        # 表示用：末尾の対応ボックス型番リストを外した短い名前
+        item["displayName"] = strip_tail_codes(item["name"])
         if any(s in series for s in ACCESSORY_SERIES):
             accessories.append(item)
         else:
@@ -247,6 +347,7 @@ def main():
     # 本体商品：価格の安い順に並べ、代表情報をトップに持たせる
     for code, entry in products.items():
         entry["variants"].sort(key=lambda v: (v["msrpTaxIn"] or 10**9))
+        dedupe_variant_labels(entry["variants"])
         first = entry["variants"][0]
         entry["name"] = first["name"]
         entry["series"] = first["series"]

@@ -10,6 +10,7 @@
    ========================================================= */
 (function () {
   var IMG_HOST = "https://img.customjapan.net";
+  var BUY_BASE = "https://moto.customjapan.net/i/";   // 品番を付けて購入ページへ
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
@@ -101,7 +102,7 @@
                : '<i class="ti ti-photo text-[26px] text-neutral-300"></i>')
         + "</span>"
         + '<span class="block px-3.5 py-3">'
-        +   '<span class="block text-[13px] font-medium leading-snug text-neutral-800">' + esc(a.name) + "</span>"
+        +   '<span class="block text-[13px] font-medium leading-snug text-neutral-800">' + esc(a.displayName || a.name) + "</span>"
         +   '<span class="block text-[12px] text-neutral-500 mt-1.5">品番：' + esc(a.cjCode) + "</span>"
         +   (a.msrpTaxIn ? '<span class="block text-[14px] font-bold mt-1">' + yen(a.msrpTaxIn)
                           + '<span class="text-[11px] text-neutral-400 font-normal ml-1">（税込）</span></span>' : "")
@@ -112,6 +113,17 @@
       + '<h3 class="text-[19px] font-bold mt-1">対応アクセサリー・補修パーツ</h3>'
       + '<p class="text-[13px] text-neutral-500 mt-2">この商品にお使いいただけるアクセサリー・補修パーツです。</p>'
       + '<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">' + cards + "</div>"
+      + "</div>";
+  }
+
+  /* ---- ④ 購入導線（日本総代理店カスタムジャパンの商品ページへ）---- */
+  function buyBlock(entry) {
+    if (!entry) return "";
+    return '<div class="mt-5 rounded-[18px] bg-mist p-6 md:p-8 text-center">'
+      + '<p class="text-[13.5px] text-neutral-700 leading-relaxed">ご購入は日本総代理店<br class="sm:hidden">株式会社カスタムジャパンの通販サイトにて承ります。</p>'
+      + '<a data-buy-link href="' + BUY_BASE + '" target="_blank" rel="noopener"'
+      +   ' class="btn bg-shad text-white hover:bg-[#c4151b] mt-4"><i class="ti ti-shopping-cart"></i>購入はこちらから</a>'
+      + '<p class="text-[11.5px] text-neutral-400 mt-3">選択中のカラー・仕様の商品ページが開きます。</p>'
       + "</div>";
   }
 
@@ -144,6 +156,10 @@
     var s = root.querySelector("[data-sku]");
     if (p) p.textContent = yen(v.msrpTaxIn) || "お問い合わせください";
     if (s) s.textContent = v.cjCode || "—";
+    // 購入ボタンは選択中のカラー・仕様の商品ページへ
+    document.querySelectorAll("[data-buy-link]").forEach(function (a) {
+      a.href = v.cjCode ? BUY_BASE + encodeURIComponent(v.cjCode) : BUY_BASE;
+    });
     applyGallery(v);
   }
 
@@ -170,6 +186,17 @@
 
       if (!entry && !accs.length) return;  // データが無い製品は何も出さない
 
+      /* ②③ 対応アクセサリー＋購入導線 → SPEC の後
+         （購入ボタンの href はこの後の applyVariant で選択中の品番に更新される）*/
+      var body = accessoryBlock(accs) + buyBlock(entry);
+      if (body) {
+        var sec = document.createElement("section");
+        sec.className = "max-w-site mx-auto px-7 pt-10 pb-2";
+        sec.setAttribute("data-catalog-parts", "");
+        sec.innerHTML = body;
+        insertSection(sec);
+      }
+
       /* ① 定価＋カラー選択 → 商品情報エリア（ギャラリー横）の器に描画 */
       var slot = document.querySelector("[data-variant-slot]");
       if (entry && slot) {
@@ -192,14 +219,6 @@
         }
       }
 
-      /* ② 対応アクセサリー・補修パーツ → SPEC の後 */
-      if (accs.length) {
-        var sec = document.createElement("section");
-        sec.className = "max-w-site mx-auto px-7 pt-10 pb-2";
-        sec.setAttribute("data-catalog-parts", "");
-        sec.innerHTML = accessoryBlock(accs);
-        insertSection(sec);
-      }
     });
   });
 })();
