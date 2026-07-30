@@ -116,35 +116,10 @@
     <p class="text-[17px] font-bold mt-5 leading-relaxed">タフさとロックを兼ね備えたソフト。</p>
     <div class="feat-grid"><div class="feat-cell"><span class="feat-ic"><i class="ti ti-box " aria-hidden="true"></i></span><span class="feat-tx"><b>容量</b><span>40L</span></span></div><div class="feat-cell"><span class="feat-ic"><i class="ti ti-droplet " aria-hidden="true"></i></span><span class="feat-tx"><b>防水</b></span></div><div class="feat-cell"><span class="feat-ic"><i class="ti ti-lock " aria-hidden="true"></i></span><span class="feat-tx"><b>ロック機能</b></span></div><div class="feat-cell"><span class="feat-ic"><img src="img/feat/SSBHE.webp" alt="" class="feat-oimg" loading="lazy"></span><span class="feat-tx"><b>サイドバッグホルダー</b></span></div></div>
     <div class="border border-black/12 rounded-[14px] p-5 mt-7 bg-mist"><p class="font-bold text-[14px] flex items-center gap-2"><i class="ti ti-shield-check text-shad"></i>1年保証</p><p class="text-[13px] text-neutral-600 mt-2.5 leading-relaxed">保証期間：1年。商品の不具合に関するお問い合わせの際は、製品ロット番号と納品書をご用意のうえ、ご連絡ください。<br>※トップケースのロット番号は、ケース本体内部の青色シールに記載されています。ロット番号確認のため、梱包箱および製品情報はご購入後1年間保管してください。</p></div>
+    <a href="#fitment" data-fit-jump class="btn w-full justify-center mt-5 border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-search"></i>適合確認はこちら</a>
+    <p class="text-[12px] text-neutral-400 mt-2 text-center">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p>
   </div>
 </main>
-<section class="fit-checker" data-product-fitment-checker data-product-code="TR40">
-  <div class="max-w-site mx-auto px-7">
-    <div class="fit-checker-panel">
-      <p class="font-disp font-semibold text-[13px] tracking-[.28em] uppercase text-shad">Fitment Check</p>
-      <h2 class="text-[26px] font-bold tracking-[.02em] mt-2">この商品が取り付けできるか確認</h2>
-      <p class="text-neutral-500 text-[14px] mt-2 max-w-[620px]">メーカー・車種・年式を選択すると、この商品に必要な車種専用フィッティングを表示します。</p>
-      <div class="fit-checker-form">
-        <div>
-          <label class="finder-label"><span class="finder-step">1</span>メーカー</label>
-          <select class="finder-select" data-fitment-maker><option value="">選択してください</option></select>
-        </div>
-        <div>
-          <label class="finder-label"><span class="finder-step">2</span>車種</label>
-          <select class="finder-select" data-fitment-model disabled><option>—</option></select>
-        </div>
-        <div>
-          <label class="finder-label"><span class="finder-step">3</span>年式</label>
-          <select class="finder-select" data-fitment-year disabled><option>—</option></select>
-        </div>
-        <button class="h-12 bg-shad rounded-[7px] px-6 font-disp font-semibold text-[15px] tracking-[.12em] uppercase inline-flex items-center justify-center gap-2 text-white disabled:opacity-40 disabled:cursor-default transition hover:bg-[#c4151b]" data-fitment-submit disabled>
-          <i class="ti ti-search"></i>確認する
-        </button>
-      </div>
-      <div class="fit-result" data-fitment-result></div>
-    </div>
-  </div>
-</section>
 
 
 <section class="lp-story"><div class="max-w-site mx-auto px-7"><div class="lp-block">
@@ -181,6 +156,34 @@
 </section>
 
 
+
+<section id="fitment" class="fit-checker scroll-mt-[84px]" data-product-fitment-checker data-product-code="TR40">
+  <div class="max-w-site mx-auto px-7">
+    <div class="fit-checker-panel">
+      <p class="font-disp font-semibold text-[13px] tracking-[.28em] uppercase text-shad">Fitment Check</p>
+      <h2 class="text-[26px] font-bold tracking-[.02em] mt-2">この商品が取り付けできるか確認</h2>
+      <p class="text-neutral-500 text-[14px] mt-2 max-w-[620px]">メーカー・車種・年式を選択すると、この商品に必要な車種専用フィッティングを表示します。</p>
+      <div class="fit-checker-form">
+        <div>
+          <label class="finder-label"><span class="finder-step">1</span>メーカー</label>
+          <select class="finder-select" data-fitment-maker><option value="">選択してください</option></select>
+        </div>
+        <div>
+          <label class="finder-label"><span class="finder-step">2</span>車種</label>
+          <select class="finder-select" data-fitment-model disabled><option>—</option></select>
+        </div>
+        <div>
+          <label class="finder-label"><span class="finder-step">3</span>年式</label>
+          <select class="finder-select" data-fitment-year disabled><option>—</option></select>
+        </div>
+        <button class="h-12 bg-shad rounded-[7px] px-6 font-disp font-semibold text-[15px] tracking-[.12em] uppercase inline-flex items-center justify-center gap-2 text-white disabled:opacity-40 disabled:cursor-default transition hover:bg-[#c4151b]" data-fitment-submit disabled>
+          <i class="ti ti-search"></i>確認する
+        </button>
+      </div>
+      <div class="fit-result" data-fitment-result></div>
+    </div>
+  </div>
+</section>
 
 <section class="bg-mist py-12 mt-8">
   <div class="max-w-site mx-auto px-7">
@@ -256,6 +259,7 @@ if(rv.length){
 <script src="js/ec_links.js"></script>
 <script src="js/ec_products.js"></script>
 <script src="js/purchase.js"></script>
+<script src="js/gallery.js"></script>
 <script src="js/nav.js"></script>
 </body>
 </html>

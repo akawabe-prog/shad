@@ -55,8 +55,9 @@
   }
   function insertSection(sec) {
     var pt = findInsertPoint();
-    if (pt.after && pt.after.parentNode) pt.after.parentNode.insertBefore(sec, pt.after.nextSibling);
-    else if (pt.before && pt.before.parentNode) pt.before.parentNode.insertBefore(sec, pt.before);
+    // 適合確認セクションの後（＝SAME SERIES の直前）に置き、購入導線を最後に見せる
+    if (pt.before && pt.before.parentNode) pt.before.parentNode.insertBefore(sec, pt.before);
+    else if (pt.after && pt.after.parentNode) pt.after.parentNode.insertBefore(sec, pt.after.nextSibling);
     else {
       var f = document.querySelector("footer");
       if (f && f.parentNode) f.parentNode.insertBefore(sec, f);
