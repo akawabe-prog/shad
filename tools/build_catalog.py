@@ -77,6 +77,7 @@ NON_BODY_KEYWORDS = (
     "インナーバッグ", "アッパーラック", "キーシリンダー", "ベースプレート",
     "テールランプ", "ストッパー", "付属パーツ", "ドライバッグ", "ボトルハーネス",
     "シーシーバー", "専用パネル", "補修", "スペアキー",
+    "交換用ラック", "ウォールラック", "エンドキャップ", "アタッチメント",
 )
 
 # サイトに製品ページがあるモデルコード（site/product-*.html と対応）
@@ -84,11 +85,23 @@ SITE_CODES = [
     "TR55", "TR50", "TR48", "TR47", "TR46", "TR41", "TR40", "TR37", "TR36", "TR30", "TR27", "TR10",
     "SH58X", "SH51", "SH48", "SH47", "SH44", "SH38X", "SH34", "SH33", "SH23",
     "SW80", "SL18", "E48", "LOCK", "SEAT",
+    # 2026-07 追加（マスターにあるがページが無かった商品）
+    "SH59X", "SH45", "SH40CG", "SH40", "SH39", "SH36", "SH35", "SH29", "SH26",
+    "TR15CL", "TR08", "SL58", "SR38", "SC25", "IB20",
+    "E09CL", "E09CM", "E09C", "E03CL", "E03C", "E02C", "E04",
+    "XFRAME",
 ]
 # 長いコードから先に判定（SH58X が SH5 に誤マッチしないように）
 SITE_CODES_SORTED = sorted(SITE_CODES, key=len, reverse=True)
 
 IMG_BASE = "https://img.customjapan.net/items/{}_1.jpg"
+
+# 商品名が製品コードで始まらないモデルの対応表（先に判定する）
+NAME_ALIASES = (
+    (re.compile(r"^\s*SH40\s*CARGO", re.I), "SH40CG"),
+    (re.compile(r"^\s*X-?FRAME\s*スマートフォンホルダー"), "XFRAME"),
+    (re.compile(r"^\s*スマートフォンホルダー"), "XFRAME"),
+)
 
 # 「メインカラー」だけでは区別できないカラー違い（例：TR55のブラックとピュアブラックは
 # どちらもメインカラー＝ブラック）があるため、商品名の色名を優先して表示ラベルにする。
@@ -125,7 +138,8 @@ def color_label(row):
 
 
 # 同じモデル内で表示名が重複するときに優先して使う区別語（左右・マウント種別）
-VARIANT_QUALIFIERS = ("右用", "左用", "左右", "3P", "4P")
+VARIANT_QUALIFIERS = ("右用", "左用", "左右", "3P", "4P",
+                      "ミラークランプ式", "ハンドルバークランプ式")
 
 
 def _differing_part(name, others):
@@ -172,6 +186,14 @@ def dedupe_variant_labels(variants):
             if not q:
                 continue
             v["color"] = (label + " " + q) if (label and label not in q) else q
+        # まだ同名なら品番で区別する（マスターに同名品番が複数ある場合）
+        seen = {}
+        for v in group:
+            seen.setdefault(v["color"], []).append(v)
+        for lab, same in seen.items():
+            if len(same) > 1:
+                for v in same:
+                    v["color"] = lab + "（" + v["cjCode"] + "）"
 
 
 # アクセサリー名の末尾にある「対応ボックスの型番リスト」を落とすための判定
@@ -229,6 +251,11 @@ def codes_in_name(row):
 def detect_body_code(row):
     """本体商品なら、そのサイト製品コードを返す。本体でなければ None。"""
     series = cell(row, "メインシリーズ")
+    raw = cell(row, "商品名")
+    if not any(k in raw for k in NON_BODY_KEYWORDS):
+        for pat, code in NAME_ALIASES:
+            if pat.match(raw):
+                return code
     if not any(s in series for s in BODY_SERIES):
         return None
     if any(s in series for s in FITTING_SERIES):
@@ -331,6 +358,10 @@ def main():
         # ② 本体商品（カラー／仕様バリエーションとしてまとめる）
         code = detect_body_code(r)
         if code:
+            # 製品ページ用の説明文は本体商品にだけ持たせる（他のJSONを軽く保つ）
+            item["descSub"] = cell(r, "商品説明サブ")
+            item["remarks"] = cell(r, "備考")
+            item["note"] = cell(r, "注意")
             entry = products.setdefault(code, OrderedDict([("code", code), ("variants", [])]))
             entry["variants"].append(item)
             continue

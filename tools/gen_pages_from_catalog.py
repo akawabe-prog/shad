@@ -1,0 +1,316 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+=============================================================================
+SHAD JAPAN — 商品ページ生成（カタログJSONベース）
+=============================================================================
+site/data/catalog/products.json から、まだページが無いモデルの
+site/product-<code>.html を生成します。
+
+■ 使い方
+    1. python3 tools/build_catalog.py            # カタログJSONを更新
+    2. python3 tools/gen_pages_from_catalog.py   # 足りないページだけ生成
+       --force を付けると既存ページも上書き（手を入れたページは消えるので注意）
+
+■ 既存の tools/gen_product_pages.py との違い
+    あちらは Excel＋アセットフォルダから、キャッチコピーや
+    ストーリーブロックまで作り込むツール（初期26ページを生成）。
+    こちらはマスターCSVの記載だけでページを作るため、
+    独自コピーを入れずに商品を追加できます。
+
+■ 生成内容
+    ヘッダー / 適合確認 / フッターは既存ページ（TEMPLATE）から流用。
+    ギャラリー・特徴アイコン・説明・スペックはマスターの値のみ。
+    価格・カラー・対応アクセサリー・購入ボタンは purchase.js が実行時に描画。
+=============================================================================
+"""
+
+import json
+import os
+import re
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE = os.path.join(ROOT, "site")
+CATALOG = os.path.join(SITE, "data", "catalog", "products.json")
+TEMPLATE = os.path.join(SITE, "product-tr55.html")
+IMG_HOST = "https://img.customjapan.net"
+FORCE = "--force" in sys.argv
+
+SERIES_KICK = {
+    "TERRA": "TERRA",
+    "トップケース": "TOP CASE",
+    "サイドケース": "SIDE CASE",
+    "クリックシステム": "CLICK SYSTEM",
+    "ソフトバッグ": "SOFT LUGGAGE",
+    "システムバッグ": "SYSTEM BAG",
+    "カフェレーサーバッグ": "CAFE RACER",
+    "X-FRAME": "X-FRAME",
+    "SHADロック": "SHAD LOCKS",
+    "コンフォートシート": "COMFORT SEAT",
+}
+
+# マスターの商品名から機械的に作ると長くなるモデルの表示名（手当て）
+DISPLAY_CODE = {"XFRAME": "X-FRAME", "SH40CG": "SH40 CARGO"}
+
+JP_OVERRIDES = {
+    "XFRAME": "スマートフォンホルダー",
+    "SH40CG": "CARGO トップケース",
+    "E02C": "クリックシステム タンクバッグ",
+    "E03C": "クリックシステム タンクバッグ",
+    "E09C": "クリックシステム タンクバッグ",
+    "E09CM": "クリックシステム タンクバッグ",
+    "E03CL": "クリックシステム タンクバッグ PRO",
+    "E09CL": "クリックシステム タンクバッグ PRO",
+    "TR15CL": "TERRA クリックシステム タンクバッグ",
+    "E04": "タンクバッグ",
+}
+
+COLOR_WORDS = (
+    "無塗装ブラック", "ピュアブラック", "マットブラック", "ブラックメタル", "ダークグレー",
+    "アルミパネル", "チタニウム", "カーボン", "ガンメタ", "チタン", "シルバー", "ブラック",
+    "ホワイト", "グレー", "レッド", "ブルー", "イエロー", "ベージュ", "ブラウン",
+)
+
+
+def esc(s):
+    return (str(s or "").replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+def nl2br(s):
+    return "<br>".join(esc(x) for x in str(s or "").split("\n") if x.strip())
+
+
+def img_url(p):
+    if not p:
+        return ""
+    return p if str(p).startswith("http") else IMG_HOST + p
+
+
+def jp_subtitle(code, name):
+    """商品名から型番とカラー名を落とした日本語の商品種別。"""
+    if code in JP_OVERRIDES:
+        return JP_OVERRIDES[code]
+    s = re.sub(r"^\s*" + re.escape(code) + r"\s*", "", name or "", flags=re.I)
+    s = re.sub(r"^\s*(CARGO|PRO)\s*", "", s, flags=re.I)
+    for w in sorted(COLOR_WORDS, key=len, reverse=True):
+        s = s.replace(w, "")
+    s = re.sub(r"\s*\d+(?:[-–]\d+)?\s*L(?:\(.*?\))?", "", s)
+    s = re.sub(r"\s{2,}", " ", s).strip(" 　/・")
+    return s or (name or code)
+
+
+def capacity_of(entry, variant):
+    for src in (variant.get("capacity"), variant.get("name"), entry.get("name")):
+        m = re.search(r"(\d+(?:[-–]\d+)?)\s*L", str(src or ""))
+        if m:
+            return m.group(1)
+    return ""
+
+
+def material_short(material):
+    m = str(material or "")
+    for key, label in (("アルミ", "アルミ"), ("ポリプロピレン", "ポリプロピレン"), ("PP", "ポリプロピレン"),
+                       ("ターポリン", "ターポリン"), ("ポリエステル", "ポリエステル"),
+                       ("ナイロン", "ナイロン"), ("ポリカーボネート", "ポリカーボネート")):
+        if key in m:
+            return label
+    return ""
+
+
+def helmet_count(text):
+    m = re.search(r"(ジェット|フルフェイス|ヘルメット)[^\n。]{0,12}?([12])\s*個", str(text or ""))
+    return "×" + m.group(2) if m else ""
+
+
+def max_load(spec):
+    m = re.search(r"最大耐荷重[：: ]*([0-9.]+)\s*kg", str(spec or ""))
+    return m.group(1) + "kg" if m else ""
+
+
+def feat_cell(icon, label, value=""):
+    return ('<div class="feat-cell"><span class="feat-ic"><i class="ti ti-' + icon
+            + '" aria-hidden="true"></i></span><span class="feat-tx"><b>' + esc(label) + "</b>"
+            + ("<span>" + esc(value) + "</span>" if value else "") + "</span></div>")
+
+
+def spec_row(th, td):
+    return ('<tr class="border-b border-black/10">'
+            '<th class="text-left align-top py-3 pr-6 font-medium text-neutral-500 w-[140px] whitespace-nowrap">'
+            + esc(th) + '</th><td class="py-3 text-[14px] leading-relaxed">' + nl2br(td) + "</td></tr>")
+
+
+def load_template():
+    s = open(TEMPLATE, encoding="utf-8").read()
+    head = s[:s.index("</head>")]
+    nav = s[s.index("<body "):s.index('<div class="max-w-site mx-auto px-7 pt-6">')]
+    i = s.index('<section id="fitment"')
+    fit = s[i:s.index("\n</section>\n", i) + len("\n</section>\n")]
+    foot = s[s.index("<footer "):]
+    # 生成ページには LP ヒーロー動画・縦リールが無いので、その制御スクリプトは外す
+    foot = re.sub(r"// ヒーロー動画は確実に再生.*?\n}\n</script>", "</script>", foot, flags=re.S)
+    return head, nav, fit, foot
+
+
+PAGE = """<div class="max-w-site mx-auto px-7 pt-6">
+  <a href="products" class="inline-flex items-center gap-2 text-[13px] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>製品一覧</a>
+</div>
+
+<main class="max-w-site mx-auto px-7 py-8 grid md:grid-cols-2 gap-10 items-start">
+  <div>
+    <div class="g-main"><img id="gMain" src="{main_img}" alt="{code} {jp}"></div>
+    <div class="flex flex-wrap gap-2.5 mt-3">{thumbs}</div>
+  </div>
+  <div>
+    <p class="flex items-center gap-2"><span class="font-disp text-[13px] tracking-[.22em] uppercase text-neutral-400">{kick}</span></p>
+    <div class="flex items-end justify-between gap-4 mt-2">
+      <h1 class="font-disp font-semibold text-[52px] leading-none tracking-[.04em] uppercase">{code}</h1>
+      {cap_html}
+    </div>
+    <p class="text-[15px] text-neutral-500 mt-1.5">{jp}</p>
+    <div data-variant-slot class="mt-4"></div>
+    {catch_html}
+    {feat_grid}
+    {warranty}
+    <a href="#fitment" data-fit-jump class="btn w-full justify-center mt-5 border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-search"></i>適合確認はこちら</a>
+    <p class="text-[12px] text-neutral-400 mt-2 text-center">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p>
+  </div>
+</main>
+
+<section class="max-w-site mx-auto px-7 py-10 grid md:grid-cols-2 gap-10">
+  <div class="min-w-0">
+    <h2 class="sec-ttl sec-ttl-quiet">Description</h2>
+    <p class="text-[14.5px] leading-[2] mt-5">{body_txt}</p>
+    {note_html}
+  </div>
+  <div>
+    <h2 class="sec-ttl sec-ttl-quiet">Spec</h2>
+    {spec_table}
+  </div>
+</section>
+
+{fit}
+{same_sec}
+"""
+
+
+def main():
+    products = json.load(open(CATALOG, encoding="utf-8"))
+    head, nav, fit_tpl, foot = load_template()
+
+    by_series = {}
+    for code, e in products.items():
+        by_series.setdefault(e.get("series") or "", []).append(code)
+
+    made, skipped = [], []
+    for code, entry in products.items():
+        path = os.path.join(SITE, "product-%s.html" % code.lower())
+        if os.path.exists(path) and not FORCE:
+            skipped.append(code)
+            continue
+
+        v = entry["variants"][0]
+        series = entry.get("series") or ""
+        kick = SERIES_KICK.get(series, series or "SHAD")
+        jp = jp_subtitle(code, entry.get("name"))
+        label = DISPLAY_CODE.get(code, code)
+        cap = capacity_of(entry, v)
+        catch = v.get("catch") or ""
+        descsub = v.get("descSub") or ""
+
+        imgs = [img_url(p) for p in (v.get("images") or [])][:6]
+        if not imgs and v.get("thumb"):
+            imgs = [v["thumb"]]
+        thumbs = "".join(
+            '<button class="g-thumb%s" data-src="%s"><img src="%s" alt="" loading="lazy"></button>'
+            % (" on" if i == 0 else "", esc(s), esc(s)) for i, s in enumerate(imgs)
+        )
+
+        cells = []
+        if cap:
+            cells.append(feat_cell("box", "容量", cap + "L"))
+        hc = helmet_count(descsub)
+        if hc:
+            cells.append(feat_cell("motorbike", "ヘルメット", hc))
+        mat = material_short(v.get("material"))
+        if mat:
+            cells.append(feat_cell("shield", "素材", mat))
+        ml = max_load(v.get("spec"))
+        if ml:
+            cells.append(feat_cell("arrow-down-circle", "最大耐荷重", ml))
+        if "クリックシステム" in series and len(cells) < 4:
+            cells.append(feat_cell("click", "クリックシステム"))
+        if "ステンレス" in (v.get("material") or "") and len(cells) < 4:
+            cells.append(feat_cell("lock", "ステンレスロック"))
+        if v.get("weight") and len(cells) < 4:
+            cells.append(feat_cell("weight", "質量",
+                                   re.sub(r"^本体[：:]\s*", "", v["weight"]).split("\n")[0]))
+        feat_grid = ('<div class="feat-grid">' + "".join(cells[:4]) + "</div>") if cells else ""
+
+        rows = []
+        for th, key in (("容量", "capacity"), ("質量", "weight"), ("材質", "material"),
+                        ("サイズ", "dimensions"), ("仕様", "spec"), ("セット内容・付属品", "included")):
+            if v.get(key):
+                rows.append(spec_row(th, v[key]))
+        spec_table = ('<table class="w-full mt-5 text-[14px] table-fixed">' + "".join(rows) + "</table>"
+                      ) if rows else '<p class="text-[13.5px] text-neutral-500 mt-5">仕様は準備中です。詳細はお問い合わせください。</p>'
+
+        warranty = ""
+        if "保証期間：1年" in (v.get("remarks") or ""):
+            warranty = ('<div class="border border-black/12 rounded-[14px] p-5 mt-7 bg-mist">'
+                        '<p class="font-bold text-[14px] flex items-center gap-2">'
+                        '<i class="ti ti-shield-check text-shad"></i>1年保証</p>'
+                        '<p class="text-[13px] text-neutral-600 mt-2 leading-relaxed">'
+                        'ご購入から1年間の保証付き。お問い合わせの際は、製品ロット番号と納品書をご用意ください。</p></div>')
+
+        same_cards = ""
+        for c in [x for x in by_series.get(series, []) if x != code][:3]:
+            e2 = products[c]
+            local = "img/products/%s.webp" % c.lower()
+            src = local if os.path.exists(os.path.join(SITE, local)) else (e2["variants"][0].get("thumb") or "")
+            same_cards += (
+                '<a href="product-%s" class="pcard group bg-white rounded-[14px] overflow-hidden border border-black/10 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,.10)]">'
+                '<span class="block aspect-square overflow-hidden bg-white"><img src="%s" alt="%s" loading="lazy" class="w-full h-full object-cover transition duration-300 group-hover:scale-[1.04]"></span>'
+                '<span class="block px-5 py-4"><span class="font-disp font-semibold text-[20px] tracking-[.05em] uppercase">%s</span>'
+                '<span class="block text-[12.5px] text-neutral-500 mt-0.5">%s</span></span></a>'
+                % (c.lower(), esc(src), esc(c), esc(c), esc(jp_subtitle(c, e2.get("name"))))
+            )
+        same_sec = ""
+        if same_cards:
+            same_sec = ('<section class="bg-mist py-12 mt-8"><div class="max-w-site mx-auto px-7">'
+                        '<h2 class="sec-ttl sec-ttl-quiet">Same Series</h2>'
+                        '<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mt-6">'
+                        + same_cards + "</div></div></section>")
+
+        page_head = (head
+                     .replace("<title>TR55｜TERRA トップケース — SHAD JAPAN</title>",
+                              "<title>%s｜%s — SHAD JAPAN</title>" % (esc(label), esc(jp)))
+                     .replace('<meta name="description" content="シリーズ最大55L。長旅のための容量。">',
+                              '<meta name="description" content="%s">' % esc(catch or jp)))
+
+        html = page_head + "</head>\n" + nav + PAGE.format(
+            main_img=esc(imgs[0] if imgs else ""), thumbs=thumbs, code=esc(label), jp=esc(jp), kick=esc(kick),
+            cap_html=('<div class="text-right shrink-0"><span class="cap-num" style="font-size:56px;">'
+                      '%s<small style="font-size:28px;">L</small></span></div>' % esc(cap)) if cap else "",
+            catch_html=('<p class="text-[17px] font-bold mt-5 leading-relaxed">%s</p>' % esc(catch)) if catch else "",
+            feat_grid=feat_grid, warranty=warranty,
+            body_txt=nl2br(descsub) or esc(catch) or "詳細はお問い合わせください。",
+            note_html=('<p class="text-[12px] leading-[1.8] text-neutral-400 mt-5 border-t border-black/10 pt-4">%s</p>'
+                       % nl2br(v.get("note"))) if v.get("note") else "",
+            spec_table=spec_table,
+            fit=fit_tpl.replace('data-product-code="TR55"', 'data-product-code="%s"' % code),
+            same_sec=same_sec,
+        ) + foot
+
+        open(path, "w", encoding="utf-8").write(html)
+        made.append(code)
+
+    print("生成: %d ページ" % len(made))
+    for c in made:
+        print("   product-%s.html" % c.lower())
+    print("既存のためスキップ: %d ページ" % len(skipped))
+
+
+if __name__ == "__main__":
+    main()

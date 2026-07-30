@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-30T10:43:20+09:00",
+ "generatedAt": "2026-07-30T15:05:39+09:00",
  "source": "data-source/ItemList_SHAD.csv",
  "totalRows": 1824,
  "kept": 901,
@@ -9,12 +9,12 @@
   "社内用品番(YY/ZZ)": 2
  },
  "counts": {
-  "products": 23,
-  "productVariants": 50,
+  "products": 46,
+  "productVariants": 78,
   "fitting": 674,
   "accessories": 114,
-  "others": 63,
-  "accessoryIndexCodes": 21
+  "others": 35,
+  "accessoryIndexCodes": 33
  },
  "exclusionRules": [
   "CJ廃番 = 1（廃盤）",
