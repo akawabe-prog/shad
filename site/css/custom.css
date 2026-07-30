@@ -377,3 +377,18 @@ html{scroll-behavior:smooth;}
   .g-thumbs{display:none !important;}
   .g-slider{display:block;}
 }
+
+.lp-shot{border-radius:14px;overflow:hidden;background:#F0EEE9;aspect-ratio:4/3;}
+.lp-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ── 商品ページ：1年保証（クリックで内容を開く） ── */
+.warranty{border:1px solid rgba(0,0,0,.12);border-radius:14px;background:#F4F3F1;}
+.warranty>summary{display:flex;align-items:center;gap:9px;padding:15px 18px;cursor:pointer;
+  font-weight:700;font-size:14px;list-style:none;}
+.warranty>summary::-webkit-details-marker{display:none;}
+.warranty>summary>i:first-child{color:#E31E24;font-size:18px;}
+.warranty .warranty-mark{margin-left:auto;color:#888;font-size:18px;transition:transform .2s;}
+.warranty[open] .warranty-mark{transform:rotate(180deg);}
+.warranty>summary:hover{color:#E31E24;}
+.warranty-body{padding:0 18px 16px;font-size:13px;line-height:1.95;color:#555;
+  border-top:1px solid rgba(0,0,0,.08);padding-top:13px;margin:0 0 0 0;}

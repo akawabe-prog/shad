@@ -53,6 +53,12 @@ SERIES_KICK = {
 # マスターの商品名から機械的に作ると長くなるモデルの表示名（手当て）
 DISPLAY_CODE = {"XFRAME": "X-FRAME", "SH40CG": "SH40 CARGO"}
 
+# 容量欄が空でも、マスターの本文・寸法から確定できるモデル（根拠をコメントに残す）
+CAP_OVERRIDES = {
+    "SH45": "45",       # 商品説明サブ「実用性重視の超絶大容量45Lモデル」
+    "SH59X": "46-58",   # 商品サイズ「46L/52L/58L(本体外寸)」の3段階
+}
+
 JP_OVERRIDES = {
     "XFRAME": "スマートフォンホルダー",
     "SH40CG": "CARGO トップケース",
@@ -102,6 +108,9 @@ def jp_subtitle(code, name):
 
 
 def capacity_of(entry, variant):
+    code = entry.get("code") or ""
+    if code in CAP_OVERRIDES:
+        return CAP_OVERRIDES[code]
     for src in (variant.get("capacity"), variant.get("name"), entry.get("name")):
         m = re.search(r"(\d+(?:[-–]\d+)?)\s*L", str(src or ""))
         if m:
@@ -141,6 +150,59 @@ def spec_row(th, td):
             + esc(th) + '</th><td class="py-3 text-[14px] leading-relaxed">' + nl2br(td) + "</td></tr>")
 
 
+STORY_KICKS = (
+    ("可変", "EXPANDABLE"), ("拡大", "EXPANDABLE"),
+    ("ロック", "SECURITY"), ("セキュリティ", "SECURITY"), ("防犯", "SECURITY"),
+    ("防水", "WATERPROOF"), ("雨", "WATERPROOF"),
+    ("クリックシステム", "CLICK SYSTEM"), ("ワンタッチ", "QUICK RELEASE"),
+    ("脱着", "QUICK RELEASE"), ("取り付け", "MOUNTING"), ("装着", "MOUNTING"),
+    ("ヘルメット", "CAPACITY"), ("容量", "CAPACITY"), ("収納", "CAPACITY"),
+    ("デザイン", "DESIGN"), ("受賞", "AWARDED"), ("アルミ", "MATERIAL"),
+    ("軽", "LIGHTWEIGHT"), ("ツーリング", "TOURING"), ("タンデム", "TOURING"),
+)
+
+
+def _kick_for(text):
+    for word, kick in STORY_KICKS:
+        if word in text:
+            return kick
+    return "FEATURE"
+
+
+def appeal_section(variant, imgs, catch):
+    """マスターの商品説明サブ＋商品写真から、LP的な訴求セクションを組み立てる。
+    文章はマスターの記載そのまま（独自コピーは足さない）。"""
+    raw = str(variant.get("descSub") or "")
+    bullets = []
+    for part in re.split(r"\n+", raw):
+        t = re.sub(r"^[・\s]*(?:【\d+】)?\s*", "", part).strip()
+        t = re.sub(r"\s+", " ", t)
+        if len(t) < 8:
+            continue
+        bullets.append(t)
+    photos = imgs[1:4] if len(imgs) > 1 else imgs[:1]
+    if not bullets and not photos:
+        return ""
+
+    photo_html = ""
+    if photos:
+        photo_html = ('<div class="grid grid-cols-2 md:grid-cols-3 gap-3.5 md:gap-5 mt-8">'
+                      + "".join('<div class="lp-shot"><img src="%s" alt="" loading="lazy"></div>' % esc(p)
+                                for p in photos) + "</div>")
+    list_html = ""
+    if bullets:
+        list_html = ('<ul class="grid md:grid-cols-2 gap-x-10 gap-y-3.5 mt-9">'
+                     + "".join('<li class="flex gap-2.5"><i class="ti ti-circle-check text-shad text-[18px] '
+                               'shrink-0 mt-[3px]" aria-hidden="true"></i>'
+                               '<span class="text-[14.5px] leading-[1.95] text-neutral-700">%s</span></li>' % esc(b)
+                               for b in bullets[:6]) + "</ul>")
+    lead = ('<h2 class="text-[clamp(21px,2.9vw,30px)] font-bold leading-[1.55] mt-2 max-w-[840px]">%s</h2>'
+            % esc(catch)) if catch else ""
+    return ('<section class="lp-story"><div class="max-w-site mx-auto px-7">'
+            '<p class="lp-block-kick">Highlights</p>' + lead + photo_html + list_html
+            + "</div></section>")
+
+
 def load_template():
     s = open(TEMPLATE, encoding="utf-8").read()
     head = s[:s.index("</head>")]
@@ -178,18 +240,17 @@ PAGE = """<div class="max-w-site mx-auto px-7 pt-6">
   </div>
 </main>
 
+{story}
+
 <section class="max-w-site mx-auto px-7 py-10 grid md:grid-cols-2 gap-10">
-  <div class="min-w-0">
-    <h2 class="sec-ttl sec-ttl-quiet">Description</h2>
-    <p class="text-[14.5px] leading-[2] mt-5">{body_txt}</p>
-    {note_html}
-  </div>
   <div>
     <h2 class="sec-ttl sec-ttl-quiet">Spec</h2>
     {spec_table}
   </div>
+  <div class="min-w-0">
+    {note_html}
+  </div>
 </section>
-
 {fit}
 {same_sec}
 """
@@ -206,9 +267,13 @@ def main():
     made, skipped = [], []
     for code, entry in products.items():
         path = os.path.join(SITE, "product-%s.html" % code.lower())
-        if os.path.exists(path) and not FORCE:
-            skipped.append(code)
-            continue
+        if os.path.exists(path):
+            existing = open(path, encoding="utf-8").read()
+            generated = "generated-by: tools/gen_pages_from_catalog.py" in existing
+            # --force でも、手作業で作ったページは上書きしない
+            if not (FORCE and generated):
+                skipped.append(code)
+                continue
 
         v = entry["variants"][0]
         series = entry.get("series") or ""
@@ -256,13 +321,14 @@ def main():
         spec_table = ('<table class="w-full mt-5 text-[14px] table-fixed">' + "".join(rows) + "</table>"
                       ) if rows else '<p class="text-[13.5px] text-neutral-500 mt-5">仕様は準備中です。詳細はお問い合わせください。</p>'
 
+        # 保証は見出しだけ見せて、クリックで内容を開く（内容はマスターの備考そのまま）
         warranty = ""
-        if "保証期間：1年" in (v.get("remarks") or ""):
-            warranty = ('<div class="border border-black/12 rounded-[14px] p-5 mt-7 bg-mist">'
-                        '<p class="font-bold text-[14px] flex items-center gap-2">'
-                        '<i class="ti ti-shield-check text-shad"></i>1年保証</p>'
-                        '<p class="text-[13px] text-neutral-600 mt-2 leading-relaxed">'
-                        'ご購入から1年間の保証付き。お問い合わせの際は、製品ロット番号と納品書をご用意ください。</p></div>')
+        remarks = v.get("remarks") or ""
+        if "保証期間：1年" in remarks:
+            warranty = ('<details class="warranty mt-7"><summary>'
+                        '<i class="ti ti-shield-check" aria-hidden="true"></i>'
+                        '<span>1年保証</span><i class="ti ti-chevron-down warranty-mark" aria-hidden="true"></i>'
+                        "</summary><div class=\"warranty-body\">" + nl2br(remarks) + "</div></details>")
 
         same_cards = ""
         for c in [x for x in by_series.get(series, []) if x != code][:3]:
@@ -289,16 +355,16 @@ def main():
                      .replace('<meta name="description" content="シリーズ最大55L。長旅のための容量。">',
                               '<meta name="description" content="%s">' % esc(catch or jp)))
 
-        html = page_head + "</head>\n" + nav + PAGE.format(
+        html = page_head + "\n<!-- generated-by: tools/gen_pages_from_catalog.py -->\n</head>\n" + nav + PAGE.format(
             main_img=esc(imgs[0] if imgs else ""), thumbs=thumbs, code=esc(label), jp=esc(jp), kick=esc(kick),
             cap_html=('<div class="text-right shrink-0"><span class="cap-num" style="font-size:56px;">'
                       '%s<small style="font-size:28px;">L</small></span></div>' % esc(cap)) if cap else "",
             catch_html=('<p class="text-[17px] font-bold mt-5 leading-relaxed">%s</p>' % esc(catch)) if catch else "",
             feat_grid=feat_grid, warranty=warranty,
-            body_txt=nl2br(descsub) or esc(catch) or "詳細はお問い合わせください。",
-            note_html=('<p class="text-[12px] leading-[1.8] text-neutral-400 mt-5 border-t border-black/10 pt-4">%s</p>'
+            note_html=('<h2 class="sec-ttl sec-ttl-quiet">Notes</h2>'
+                       '<p class="text-[12.5px] leading-[1.95] text-neutral-500 mt-5">%s</p>'
                        % nl2br(v.get("note"))) if v.get("note") else "",
-            spec_table=spec_table,
+            spec_table=spec_table, story=appeal_section(v, imgs, catch),
             fit=fit_tpl.replace('data-product-code="TR55"', 'data-product-code="%s"' % code),
             same_sec=same_sec,
         ) + foot

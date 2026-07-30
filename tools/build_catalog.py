@@ -113,7 +113,11 @@ COLOR_TOKENS = (
 
 
 def cell(row, key):
-    return (row.get(key) or "").strip()
+    """CSVの値を取り出す。
+    マスターでは改行が「\n」という2文字で入っているため、実際の改行に直す。
+    （そのまま出すとサイト上に \n の文字が見えてしまう）"""
+    value = (row.get(key) or "").replace("\\n", "\n").replace("\\r", "")
+    return value.strip()
 
 
 def color_label(row):
