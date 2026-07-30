@@ -264,6 +264,26 @@ body.vmodal-open{overflow:hidden;}
 .ss-next{right:14px;}
 @media(max-width:740px){.ss-arrow{display:none;}}
 
+/* ---- SP HERO：TR46 / TR41 縦型ムービーのフェードスライダー（3:4）---- */
+.hero-sp{position:absolute;inset:0;background:#000;}
+.hero-sp-v{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.1s ease-in-out;will-change:opacity;
+}
+.hero-sp-v.is-on{opacity:.92;}
+/* 切替インジケーター */
+.hero-sp-dots{
+  position:absolute;left:24px;bottom:calc(100% + 0px);z-index:3;
+  display:flex;gap:7px;
+}
+.hero-sp-dot{
+  width:22px;height:3px;border-radius:2px;background:rgba(255,255,255,.32);transition:.4s;
+}
+.hero-sp-dot.on{background:#E31E24;width:34px;}
+@media(prefers-reduced-motion:reduce){
+  .hero-sp-v{transition:none;}
+}
+
 /* ---- TOP 新商品：4:5 イメージバナー（3カラム / ポスター調）---- */
 .nabanner{
   position:relative;display:block;aspect-ratio:4/5;overflow:hidden;

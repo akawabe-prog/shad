@@ -65,13 +65,26 @@ tailwind.config = {
 
 
 <!-- ===== ① HERO ===== -->
-<header class="hero relative bg-black text-white aspect-[9/16] md:aspect-video w-full flex items-end overflow-hidden">
-  <video class="hero-video absolute inset-0 w-full h-full object-cover opacity-90"
+<header class="hero relative bg-black text-white aspect-[3/4] md:aspect-video w-full flex items-end overflow-hidden">
+  <!-- SP：TR46 / TR41 の縦型ムービーをフェードで切替（3:4）-->
+  <div id="heroSp" class="hero-sp md:hidden" aria-hidden="true">
+    <video class="hero-sp-v is-on" data-src="media/hero_sp_tr46.mp4" poster="img/hero_sp_tr46.webp"
+           muted loop playsinline preload="none"></video>
+    <video class="hero-sp-v" data-src="media/hero_sp_tr41.mp4" poster="img/hero_sp_tr41.webp"
+           muted loop playsinline preload="none"></video>
+  </div>
+  <!-- PC：ブランドフィルム（16:9）-->
+  <video class="hero-video hidden md:block absolute inset-0 w-full h-full object-cover opacity-90"
          data-src-desktop="media/hero_brand.mp4" data-poster-desktop="img/hero_poster.webp"
-         data-src-mobile="media/hero_brand_v.mp4" data-poster-mobile="img/hero_poster_v.webp"
+         data-src-mobile="media/hero_brand.mp4" data-poster-mobile="img/hero_poster.webp"
          autoplay muted loop playsinline aria-hidden="true"></video>
-  <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" aria-hidden="true"></div>
+  <div class="absolute inset-0 hidden md:block bg-gradient-to-t from-black/55 via-black/15 to-transparent" aria-hidden="true"></div>
+  <!-- SP：映像が明るいカットでもコピーが読めるよう黒マスクを強めに -->
+  <div class="absolute inset-0 md:hidden bg-[linear-gradient(0deg,rgba(0,0,0,.9)_0%,rgba(0,0,0,.78)_28%,rgba(0,0,0,.5)_52%,rgba(0,0,0,.22)_76%,rgba(0,0,0,.06)_100%)]" aria-hidden="true"></div>
   <div class="relative w-full px-6 md:px-12 pb-12 md:pb-[76px] [text-shadow:0_1px_18px_rgba(0,0,0,.5)]">
+    <div id="heroSpDots" class="md:hidden flex gap-[7px] mb-5" aria-hidden="true">
+      <span class="hero-sp-dot on"></span><span class="hero-sp-dot"></span>
+    </div>
     <p class="hero-kick font-disp font-semibold text-[13px] tracking-[.3em] uppercase text-shad flex items-center gap-3 mb-3">
       <span class="inline-block w-[30px] h-[2px] bg-shad"></span>SHAD Concept
     </p>
@@ -166,12 +179,11 @@ tailwind.config = {
       <h2 class="text-[30px] font-bold tracking-[.02em]">カテゴリから探す</h2>
       <p class="text-neutral-500 text-[14.5px] mt-2.5 max-w-[640px]">用途とサイズから、SHADのボックスをお選びいただけます。</p>
     </div>
-    <!-- 特集ページ（専用ページへ遷移＝赤バッジで区別）-->
+    <!-- 特集ページ（専用ページへ遷移＝赤い枠線で区別）-->
     <div class="grid sm:grid-cols-2 gap-4 md:gap-5" data-reveal>
       <a href="terra" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
         <img src="img/banner_terra.webp" alt="TERRA シリーズ" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
-        <span class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></span>
-        <span class="absolute top-4 left-4 bg-shad text-white font-disp font-semibold text-[11px] tracking-[.2em] uppercase px-2.5 py-1 rounded">特集 Feature</span>
+        <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.94)_0%,rgba(0,0,0,.82)_30%,rgba(0,0,0,.48)_54%,rgba(0,0,0,.14)_76%,rgba(0,0,0,0)_92%)]"></span>
         <span class="absolute left-5 right-5 bottom-4 text-white">
           <span class="block font-disp font-semibold text-[28px] tracking-[.05em] uppercase leading-none">TERRA</span>
           <span class="inline-flex items-center gap-1.5 text-white/85 text-[13px] mt-1.5 group-hover:gap-2.5 transition-all">旅の道具の、最高峰。シリーズを見る<i class="ti ti-arrow-right"></i></span>
@@ -179,8 +191,7 @@ tailwind.config = {
       </a>
       <a href="expandable" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
         <img src="img/story_sh38x.webp" alt="EXPANDABLE 可変容量" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
-        <span class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></span>
-        <span class="absolute top-4 left-4 bg-shad text-white font-disp font-semibold text-[11px] tracking-[.2em] uppercase px-2.5 py-1 rounded">特集 Feature</span>
+        <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.94)_0%,rgba(0,0,0,.82)_30%,rgba(0,0,0,.48)_54%,rgba(0,0,0,.14)_76%,rgba(0,0,0,0)_92%)]"></span>
         <span class="absolute left-5 right-5 bottom-4 text-white">
           <span class="block font-disp font-semibold text-[28px] tracking-[.05em] uppercase leading-none">Expandable</span>
           <span class="inline-flex items-center gap-1.5 text-white/85 text-[13px] mt-1.5 group-hover:gap-2.5 transition-all">容量が、変わる。仕組みを見る<i class="ti ti-arrow-right"></i></span>
@@ -241,29 +252,29 @@ tailwind.config = {
     <div class="grid md:grid-cols-3 gap-4 md:gap-5">
       <a href="expandable" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
         <img src="img/story_sh38x.webp" alt="Expandable 可変容量" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
-        <span class="absolute inset-0 bg-gradient-to-t from-black/88 via-black/25 to-transparent"></span>
-        <span class="absolute left-5 right-5 bottom-5">
+        <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.96)_0%,rgba(0,0,0,.88)_28%,rgba(0,0,0,.58)_50%,rgba(0,0,0,.2)_72%,rgba(0,0,0,0)_90%)]"></span>
+        <span class="absolute left-5 right-5 bottom-5 [text-shadow:0_1px_10px_rgba(0,0,0,.6)]">
           <span class="inline-block bg-shad font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Patented</span>
           <span class="block font-disp font-semibold text-[22px] tracking-[.06em] uppercase mt-2">Expandable</span>
-          <span class="block text-white/70 text-[12.5px] mt-1 leading-relaxed">走行時はスリム、停車時は大容量。容量が変わるケース。</span>
+          <span class="block text-white/80 text-[12.5px] mt-1 leading-relaxed">走行時はスリム、停車時は大容量。容量が変わるケース。</span>
         </span>
       </a>
       <a href="engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
         <img src="img/thumb_tr41ride.webp" alt="3P / 4P System" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
-        <span class="absolute inset-0 bg-gradient-to-t from-black/88 via-black/25 to-transparent"></span>
-        <span class="absolute left-5 right-5 bottom-5">
+        <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.96)_0%,rgba(0,0,0,.88)_28%,rgba(0,0,0,.58)_50%,rgba(0,0,0,.2)_72%,rgba(0,0,0,0)_90%)]"></span>
+        <span class="absolute left-5 right-5 bottom-5 [text-shadow:0_1px_10px_rgba(0,0,0,.6)]">
           <span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Mount</span>
           <span class="block font-disp font-semibold text-[22px] tracking-[.06em] uppercase mt-2">3P / 4P System</span>
-          <span class="block text-white/70 text-[12.5px] mt-1 leading-relaxed">車体に溶け込むマウント。使わないときは、すっきり。</span>
+          <span class="block text-white/80 text-[12.5px] mt-1 leading-relaxed">車体に溶け込むマウント。使わないときは、すっきり。</span>
         </span>
       </a>
       <a href="engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
         <img src="img/prod_click.webp" alt="Click System" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
-        <span class="absolute inset-0 bg-gradient-to-t from-black/88 via-black/25 to-transparent"></span>
-        <span class="absolute left-5 right-5 bottom-5">
+        <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.96)_0%,rgba(0,0,0,.88)_28%,rgba(0,0,0,.58)_50%,rgba(0,0,0,.2)_72%,rgba(0,0,0,0)_90%)]"></span>
+        <span class="absolute left-5 right-5 bottom-5 [text-shadow:0_1px_10px_rgba(0,0,0,.6)]">
           <span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Quick</span>
           <span class="block font-disp font-semibold text-[22px] tracking-[.06em] uppercase mt-2">Click System</span>
-          <span class="block text-white/70 text-[12.5px] mt-1 leading-relaxed">ワンタッチ着脱。給油のたびのストレスを、設計で消した。</span>
+          <span class="block text-white/80 text-[12.5px] mt-1 leading-relaxed">ワンタッチ着脱。給油のたびのストレスを、設計で消した。</span>
         </span>
       </a>
     </div>
@@ -565,6 +576,61 @@ tailwind.config = {
   } else {
     row.querySelectorAll("video").forEach(function(v){v.play().catch(function(){});});
   }
+})();
+</script>
+<script>
+/* SP HERO：TR46 / TR41 の縦型ムービーをフェードで切替
+   ※ PC では src を設定せず、動画を一切ダウンロードしない */
+(function(){
+  var wrap=document.getElementById('heroSp');
+  if(!wrap) return;
+  var vids=[].slice.call(wrap.querySelectorAll('.hero-sp-v'));
+  var dots=[].slice.call(document.querySelectorAll('#heroSpDots .hero-sp-dot'));
+  if(vids.length<2) return;
+  var mq=window.matchMedia('(max-width: 767px)');
+  var i=0, timer=null;
+  var HOLD=6000;   // 1本の表示時間
+
+  function load(n){
+    var v=vids[n];
+    if(v.getAttribute('src')) return v;
+    v.setAttribute('src', v.dataset.src);
+    v.load();
+    return v;
+  }
+  function show(n){
+    load(n);
+    vids.forEach(function(v,k){
+      if(k===n){ v.classList.add('is-on'); v.play().catch(function(){}); }
+      else { v.classList.remove('is-on'); setTimeout(function(){ if(!v.classList.contains('is-on')) v.pause(); },1100); }
+    });
+    dots.forEach(function(d,k){ d.classList.toggle('on', k===n); });
+    i=n;
+    load((n+1)%vids.length);   // 次の1本を先読み
+  }
+  function next(){ show((i+1)%vids.length); }
+  function start(){
+    if(!mq.matches || timer) return;
+    show(i);
+    timer=setInterval(next,HOLD);
+  }
+  function stop(){
+    if(timer){ clearInterval(timer); timer=null; }
+    vids.forEach(function(v){ v.pause(); });
+  }
+  function apply(){ mq.matches ? start() : stop(); }
+  apply();
+  (mq.addEventListener? mq.addEventListener('change',apply) : mq.addListener(apply));
+
+  /* 画面外・非表示タブでは止める（通信とバッテリーの節約）*/
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.isIntersecting ? start() : stop(); });
+    },{threshold:.15}).observe(wrap);
+  }
+  document.addEventListener('visibilitychange',function(){
+    document.hidden ? stop() : apply();
+  });
 })();
 </script>
 <script src="js/nav.js"></script>

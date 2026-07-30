@@ -52,6 +52,11 @@
   var mq = window.matchMedia("(max-width: 767px)");
   function apply() {
     var mobile = mq.matches;
+    // 非表示（TOPのSPなど、別のスライダーが担当する場合）は読み込まない
+    if (v.offsetParent === null && getComputedStyle(v).display === "none") {
+      v.pause();
+      return;
+    }
     var src = v.dataset[mobile ? "srcMobile" : "srcDesktop"];
     if (v.getAttribute("src") === src) return;
     v.setAttribute("poster", v.dataset[mobile ? "posterMobile" : "posterDesktop"]);
