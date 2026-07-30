@@ -1,0 +1,745 @@
+{
+ "generatedAt": "2026-06-15T10:27:11.192Z",
+ "source": "data-source/ItemList_SHAD.csv",
+ "counts": {
+  "kits": 47,
+  "matched": 45,
+  "unmatched": 2,
+  "vehicles": 60
+ },
+ "unmatched": [
+  {
+   "cjCode": "27474792",
+   "name": "シーシーバーキット Keeway Superlight 125(11-24)/Blackster 250(15-24)",
+   "maker": "Keeway",
+   "groups": [
+    "SUPERLIGHT125[11-24]",
+    "BLACKSTER250[15-24]"
+   ]
+  },
+  {
+   "cjCode": "28032687",
+   "name": "シーシーバーキット エリミネーター/SE(24-26)",
+   "maker": "カワサキ",
+   "groups": [
+    "エリミネーター 500[24-26]"
+   ]
+  }
+ ],
+ "byVehicle": {
+  "44Kr44Ov44K144KtfOODkOODq-OCq-ODs1MoMTUtMjUpfDE1LTI1": [
+   {
+    "cjCode": "13348809",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット バルカンS(15-25)",
+    "url": "https://moto.customjapan.net/i/13348809",
+    "image": "https://img.customjapan.net/items/13348809_1.jpg",
+    "priceTaxIn": 34100,
+    "fit": "バルカン S 650[15-25]"
+   }
+  ],
+  "UElBR0dJT3xQSUFHR0lPIE1QMyAzMDAgWW91cmJhbi9TUE9SVCgxMS0yNCl8MTEtMjQ": [
+   {
+    "cjCode": "13721992",
+    "type": "バックレスト",
+    "name": "バックレストキット PIAGGIO MP3 125/300 Yourban(11-18)/HPE SPORT(11-24)",
+    "url": "https://moto.customjapan.net/i/13721992",
+    "image": "https://img.customjapan.net/items/13721992_1.jpg",
+    "priceTaxIn": 11000,
+    "fit": "MP3 125/300 Yourban[11-18]｜MP3 300 Yourban 300/Yourban SPORT 300/300 HPE/300/HPE SPORT[11-24]"
+   }
+  ],
+  "RHVjYXRpfER1Y2F0aSBEaWF2ZWwgMTIwMCgxMi0xOCl8MTItMTg": [
+   {
+    "cjCode": "13722050",
+    "type": "バックレスト",
+    "name": "バックレストキット Ducati Diavel 1200(12-18)",
+    "url": "https://moto.customjapan.net/i/13722050",
+    "image": "https://img.customjapan.net/items/13722050_1.jpg",
+    "priceTaxIn": 22000,
+    "fit": "Diavel 1200[12-18]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gU3VwZXIgRGluay9Eb3duVG93biAxMjUvMzUwKDE2LTI0KXwxNi0yNA": [
+   {
+    "cjCode": "13722074",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO Super Dink/ダウンタウン 125/350(16-24)",
+    "url": "https://moto.customjapan.net/i/13722074",
+    "image": "https://img.customjapan.net/items/13722074_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "Super Dink125/350[16-24]｜Downtown125i/350i[16-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gU1VQRVIgOCA1MC8xMjUvMTUwKDIxLTI0KXwyMS0yNA": [
+   {
+    "cjCode": "13722074",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO Super Dink/ダウンタウン 125/350(16-24)",
+    "url": "https://moto.customjapan.net/i/13722074",
+    "image": "https://img.customjapan.net/items/13722074_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "Super Dink125/350[16-24]｜Downtown125i/350i[16-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gQUs1NTAoMTctMjQpfDE3LTI0": [
+   {
+    "cjCode": "27944264",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO AK550 PREMIUM(2023)",
+    "url": "https://moto.customjapan.net/i/27944264",
+    "image": "https://img.customjapan.net/items/27944264_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "AK550 PREMIUM[2023]"
+   },
+   {
+    "cjCode": "13722104",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO AK550(17-24)",
+    "url": "https://moto.customjapan.net/i/13722104",
+    "image": "https://img.customjapan.net/items/13722104_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "AK550[17-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gQUs1NTAgUFJFTUlVTSgyMy0yNCl8MjAyNA": [
+   {
+    "cjCode": "13722104",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO AK550(17-24)",
+    "url": "https://moto.customjapan.net/i/13722104",
+    "image": "https://img.customjapan.net/items/13722104_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "AK550[17-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gQUs1NTAgUFJFTUlVTSgyMy0yNCl8MjMtMjQ": [
+   {
+    "cjCode": "27944264",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO AK550 PREMIUM(2023)",
+    "url": "https://moto.customjapan.net/i/27944264",
+    "image": "https://img.customjapan.net/items/27944264_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "AK550 PREMIUM[2023]"
+   },
+   {
+    "cjCode": "13722104",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO AK550(17-24)",
+    "url": "https://moto.customjapan.net/i/13722104",
+    "image": "https://img.customjapan.net/items/13722104_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "AK550[17-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gRy1ESU5LMTI1LzMwMCgxNi0yNCkvWC1UT1dOMTI1aS8zMDBpKDE2LTI0KXwxNi0yNA": [
+   {
+    "cjCode": "27294420",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO X-TOWN125/300CITY/CT(20-24)",
+    "url": "https://moto.customjapan.net/i/27294420",
+    "image": "https://img.customjapan.net/items/27294420_1.jpg",
+    "priceTaxIn": 5500,
+    "fit": "X-TOWN125[20-24]｜X-TOWN300CITY[20-24]｜X-TOWN300CT[20-24]"
+   },
+   {
+    "cjCode": "13722111",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO GRAND DINK 125/300/X-TOWN 125i/300i(16-24)",
+    "url": "https://moto.customjapan.net/i/13722111",
+    "image": "https://img.customjapan.net/items/13722111_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "GRAND DINK 125[16-24]｜GRAND DINK 300[16-24]｜X-TOWN 125i[16-24]｜X-TOWN 300i[16-24]"
+   }
+  ],
+  "44Ok44Oe44OPfFRNQVggNTAwKDA4LTEyKXwwOC0xMg": [
+   {
+    "cjCode": "13722135",
+    "type": "バックレスト",
+    "name": "バックレストキット TMAX 500(08-12)/530(12-16)",
+    "url": "https://moto.customjapan.net/i/13722135",
+    "image": "https://img.customjapan.net/items/13722135_1.jpg",
+    "priceTaxIn": 9900,
+    "fit": "T-MAX XP500/ABS[08-12]｜T-MAX 530[12-16]"
+   }
+  ],
+  "44K544K644KtfOODkOODvOOCsOODnuODszEyNS8yMDAoMDctMjEpfDA3LTIx": [
+   {
+    "cjCode": "13722180",
+    "type": "バックレスト",
+    "name": "バックレストキット スカイウェイブ250(07-17)/バーグマン200(14-22)",
+    "url": "https://moto.customjapan.net/i/13722180",
+    "image": "https://img.customjapan.net/items/13722180_1.jpg",
+    "priceTaxIn": 11000,
+    "fit": "スカイウェイブ250[07-17]｜バーグマン125/UH125[07-21]｜バーグマン200/UH200[07-21]"
+   }
+  ],
+  "44Kr44Ov44K144KtfEoxMjUoMTYtMTcpL0ozMDAoMTMtMjApfDE2LTE3IC8gMTMtMjA": [
+   {
+    "cjCode": "13722227",
+    "type": "バックレスト",
+    "name": "バックレストキット J125(16-17)/J300(13-22)",
+    "url": "https://moto.customjapan.net/i/13722227",
+    "image": "https://img.customjapan.net/items/13722227_1.jpg",
+    "priceTaxIn": 4400,
+    "fit": "J300[13-22]｜J125[16-17]"
+   }
+  ],
+  "44Ob44Oz44OAfFBDWDEyNS8xNTAvMTYwKDEwLTI2KXwxMC0yNg": [
+   {
+    "cjCode": "13722241",
+    "type": "バックレスト",
+    "name": "バックレストキット PCX 125/150(10-24)",
+    "url": "https://moto.customjapan.net/i/13722241",
+    "image": "https://img.customjapan.net/items/13722241_1.jpg",
+    "priceTaxIn": 5500,
+    "fit": "PCX125(JF28/JF56/JF81/JK05)[10-25]｜PCX150(KF12/KF18/KF30)[10-20]｜PCX160(KF47)[21-25]"
+   }
+  ],
+  "44Ob44Oz44OAfENUWDcwMCgxNC0xOCl8UkM2OSAvIDE0LTE4": [
+   {
+    "cjCode": "13722265",
+    "type": "バックレスト",
+    "name": "バックレストキット CTX700(14-18)",
+    "url": "https://moto.customjapan.net/i/13722265",
+    "image": "https://img.customjapan.net/items/13722265_1.jpg",
+    "priceTaxIn": 15400,
+    "fit": "CTX700N(RC69)[14-18]"
+   }
+  ],
+  "44Ob44Oz44OAfENUWDcwMCgxNC0xOCl8MTQtMTg": [
+   {
+    "cjCode": "13722265",
+    "type": "バックレスト",
+    "name": "バックレストキット CTX700(14-18)",
+    "url": "https://moto.customjapan.net/i/13722265",
+    "image": "https://img.customjapan.net/items/13722265_1.jpg",
+    "priceTaxIn": 15400,
+    "fit": "CTX700N(RC69)[14-18]"
+   }
+  ],
+  "SHlvc3VuZ3xIeW9zdW5nIEdWMTI1IEFxdWlsYSgxOC0yMyl8MTgtMjM": [
+   {
+    "cjCode": "17838443",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット Hyosung GV 125 AQUILA(18-23)",
+    "url": "https://moto.customjapan.net/i/17838443",
+    "image": "https://img.customjapan.net/items/17838443_1.jpg",
+    "priceTaxIn": 27500,
+    "fit": "GV 125 AQUILA[18-23]"
+   }
+  ],
+  "Qk1XfEJNVyBDNDAwR1QoMTktMjYpfDE5LTI2": [
+   {
+    "cjCode": "18241846",
+    "type": "バックレスト",
+    "name": "バックレストキット BMW C400GT(19-25)",
+    "url": "https://moto.customjapan.net/i/18241846",
+    "image": "https://img.customjapan.net/items/18241846_1.jpg",
+    "priceTaxIn": 13200,
+    "fit": "C400GT[19-25]"
+   }
+  ],
+  "44Ok44Oe44OPfFhNQVg0MDAoMTctMjMpfDE3LTIz": [
+   {
+    "cjCode": "19708836",
+    "type": "バックレスト",
+    "name": "バックレストキット XMAX 250(18-22)/トリシティ300(20-25)",
+    "url": "https://moto.customjapan.net/i/19708836",
+    "image": "https://img.customjapan.net/items/19708836_1.jpg",
+    "priceTaxIn": 14300,
+    "fit": "X-MAX 250[18-22]｜X-MAX 125[17-24]｜X-MAX 400[17-24]｜TRICITY 300[21-25]"
+   }
+  ],
+  "44Ok44Oe44OPfFhNQVgxMjUoMTQtMTYpLzI1MC80MDAoMTQtMTcpfDE0LTE2IC8gMTQtMTc": [
+   {
+    "cjCode": "19708836",
+    "type": "バックレスト",
+    "name": "バックレストキット XMAX 250(18-22)/トリシティ300(20-25)",
+    "url": "https://moto.customjapan.net/i/19708836",
+    "image": "https://img.customjapan.net/items/19708836_1.jpg",
+    "priceTaxIn": 14300,
+    "fit": "X-MAX 250[18-22]｜X-MAX 125[17-24]｜X-MAX 400[17-24]｜TRICITY 300[21-25]"
+   }
+  ],
+  "44Ok44Oe44OPfFhNQVgxMjUvMzAwKDIzLTI0KXwyMy0yNA": [
+   {
+    "cjCode": "19708836",
+    "type": "バックレスト",
+    "name": "バックレストキット XMAX 250(18-22)/トリシティ300(20-25)",
+    "url": "https://moto.customjapan.net/i/19708836",
+    "image": "https://img.customjapan.net/items/19708836_1.jpg",
+    "priceTaxIn": 14300,
+    "fit": "X-MAX 250[18-22]｜X-MAX 125[17-24]｜X-MAX 400[17-24]｜TRICITY 300[21-25]"
+   },
+   {
+    "cjCode": "28032700",
+    "type": "バックレスト",
+    "name": "バックレストキット XMAX125/300(23-24)",
+    "url": "https://moto.customjapan.net/i/28032700",
+    "image": "https://img.customjapan.net/items/28032700_1.jpg",
+    "priceTaxIn": 14300,
+    "fit": "XMAX125[23-24]｜XMAX300[23-24]"
+   }
+  ],
+  "44Ok44Oe44OPfFhNQVgyNTAoMTctMjUpfDE3LTI1": [
+   {
+    "cjCode": "19708836",
+    "type": "バックレスト",
+    "name": "バックレストキット XMAX 250(18-22)/トリシティ300(20-25)",
+    "url": "https://moto.customjapan.net/i/19708836",
+    "image": "https://img.customjapan.net/items/19708836_1.jpg",
+    "priceTaxIn": 14300,
+    "fit": "X-MAX 250[18-22]｜X-MAX 125[17-24]｜X-MAX 400[17-24]｜TRICITY 300[21-25]"
+   }
+  ],
+  "44Ok44Oe44OPfFhNQVgxMjUoMjEtMjIpfDIxLTIy": [
+   {
+    "cjCode": "19708836",
+    "type": "バックレスト",
+    "name": "バックレストキット XMAX 250(18-22)/トリシティ300(20-25)",
+    "url": "https://moto.customjapan.net/i/19708836",
+    "image": "https://img.customjapan.net/items/19708836_1.jpg",
+    "priceTaxIn": 14300,
+    "fit": "X-MAX 250[18-22]｜X-MAX 125[17-24]｜X-MAX 400[17-24]｜TRICITY 300[21-25]"
+   }
+  ],
+  "U1lNfFNZTSBNQVhTWU0gNTAwVEwoMjAtMjQpfDIwLTI0": [
+   {
+    "cjCode": "26165899",
+    "type": "バックレスト",
+    "name": "バックレストキット SYM MAXSYM 500TL(20-24)",
+    "url": "https://moto.customjapan.net/i/26165899",
+    "image": "https://img.customjapan.net/items/26165899_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "MAXSYM 500 TL[20-24]"
+   }
+  ],
+  "44Ob44Oz44OAfOODleOCqeODq-ODhOOCoSgyMS0yMil8MjEtMjI": [
+   {
+    "cjCode": "26594897",
+    "type": "バックレスト",
+    "name": "バックレストキット フォルツァ(21-22)",
+    "url": "https://moto.customjapan.net/i/26594897",
+    "image": "https://img.customjapan.net/items/26594897_1.jpg",
+    "priceTaxIn": 17600,
+    "fit": "フォルツァ(MF15)[21-22]｜FORZA125[21-22]｜FORZA300[21-22]"
+   }
+  ],
+  "44Ob44Oz44OAfOODleOCqeODq-ODhOOCoSgxOC0yMC8yMy0yNSl8MTgtMjAvMjMtMjU": [
+   {
+    "cjCode": "27705964",
+    "type": "バックレスト",
+    "name": "バックレストキット フォルツァ(18-20/2023)",
+    "url": "https://moto.customjapan.net/i/27705964",
+    "image": "https://img.customjapan.net/items/27705964_1.jpg",
+    "priceTaxIn": 13200,
+    "fit": "フォルツァ(MF13)[18-20]｜フォルツァ(MF17)[23-25]｜FORZA300[18-20]｜FORZA300[2023]｜FORZA125[18-20]｜FORZA125[23-25]｜FORZA350[23-25]｜ADV350[22-25]"
+   },
+   {
+    "cjCode": "26594897",
+    "type": "バックレスト",
+    "name": "バックレストキット フォルツァ(21-22)",
+    "url": "https://moto.customjapan.net/i/26594897",
+    "image": "https://img.customjapan.net/items/26594897_1.jpg",
+    "priceTaxIn": 17600,
+    "fit": "フォルツァ(MF15)[21-22]｜FORZA125[21-22]｜FORZA300[21-22]"
+   }
+  ],
+  "U1lNfFNZTSBNQVhTWU0gNDAwKDIxLTIzKXwyMS0yMw": [
+   {
+    "cjCode": "26768700",
+    "type": "バックレスト",
+    "name": "バックレストキット SYM MAXSYM 400(21-23)",
+    "url": "https://moto.customjapan.net/i/26768700",
+    "image": "https://img.customjapan.net/items/26768700_1.jpg",
+    "priceTaxIn": 7700,
+    "fit": "マキシム/MAXSYM 400[21-23]"
+   }
+  ],
+  "U1lNfFNZTSBKT1lNQVggMTI1LzEyNWkvMjUwaSgxMy0yMikvMzAwaSgxMy0yNCl8MTMtMjIgLyAxMy0yNA": [
+   {
+    "cjCode": "26845548",
+    "type": "バックレスト",
+    "name": "バックレストキット SYM CRUISYM 125i/300i(18-24)/JOYMAX 125/125i/250i/300i(13-20)",
+    "url": "https://moto.customjapan.net/i/26845548",
+    "image": "https://img.customjapan.net/items/26845548_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "CRUISYM 125i/300i[18-24]｜CRUISYM 125i/300i ALPHA[22-24]｜JOYMAX 125/125i/250i[13-20]｜JOYMAX 300i[13-20]｜JOYMAX Z+ 125/300[24-24]"
+   }
+  ],
+  "U1lNfFNZTSBDUlVJU1lNIDEyNWkvMzAwaSgxOC0yNCkvSk9ZTUFYIForIDEyNS8zMDAoMjEtMjQpfDE4LTI0IC8gMjEtMjQ": [
+   {
+    "cjCode": "26845548",
+    "type": "バックレスト",
+    "name": "バックレストキット SYM CRUISYM 125i/300i(18-24)/JOYMAX 125/125i/250i/300i(13-20)",
+    "url": "https://moto.customjapan.net/i/26845548",
+    "image": "https://img.customjapan.net/items/26845548_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "CRUISYM 125i/300i[18-24]｜CRUISYM 125i/300i ALPHA[22-24]｜JOYMAX 125/125i/250i[13-20]｜JOYMAX 300i[13-20]｜JOYMAX Z+ 125/300[24-24]"
+   }
+  ],
+  "UElBR0dJT3xQSUFHR0lPIEJldmVybHkgMzAwLzMwMFMvNDAwLzQwMFMoMjEtMjQpfDIxLTI0": [
+   {
+    "cjCode": "26845555",
+    "type": "バックレスト",
+    "name": "バックレストキット PIAGGIO Beverly 300/300S/400/400S(21-24)",
+    "url": "https://moto.customjapan.net/i/26845555",
+    "image": "https://img.customjapan.net/items/26845555_1.jpg",
+    "priceTaxIn": 13200,
+    "fit": "BEVERLY(ビバリー) 300/300S/400/400S[21-24]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBEMTI1LzM1MCgyMy0yNCkvTTMxMCgyMS0yNCl8MjMtMjQgLyAyMS0yNA": [
+   {
+    "cjCode": "26845609",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES D125/350(23-24)/M310(21-24)",
+    "url": "https://moto.customjapan.net/i/26845609",
+    "image": "https://img.customjapan.net/items/26845609_1.jpg",
+    "priceTaxIn": 4400,
+    "fit": "D125[23-24]｜D350[23-24]｜M310[21-24]"
+   },
+   {
+    "cjCode": "27873557",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES E125(2024)/E350(23-24)",
+    "url": "https://moto.customjapan.net/i/27873557",
+    "image": "https://img.customjapan.net/items/27873557_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "E125[2024]｜E350[23-24]"
+   }
+  ],
+  "44Ob44Oz44OAfFgtQURWKDIxLTI1KXwyMS0yNQ": [
+   {
+    "cjCode": "27120101",
+    "type": "バックレスト",
+    "name": "バックレストキット X-ADV(21-25)",
+    "url": "https://moto.customjapan.net/i/27120101",
+    "image": "https://img.customjapan.net/items/27120101_1.jpg",
+    "priceTaxIn": 23100,
+    "fit": "X-ADV(RH10)[21-24]｜X-ADV(RH21)[2025]｜FORZA750(フォルツァ750)[21-25]"
+   }
+  ],
+  "44Ob44Oz44OAfFgtQURWKDIxLTI1KS9OVDExMDAoMjEtMjQpIOKAu-e0lOato-OCreODo-ODquOCouWPluS7mC8zUDRQ6Z2e5a--5b-cfDIxLTI1IC8gMjEtMjQ": [
+   {
+    "cjCode": "27120101",
+    "type": "バックレスト",
+    "name": "バックレストキット X-ADV(21-25)",
+    "url": "https://moto.customjapan.net/i/27120101",
+    "image": "https://img.customjapan.net/items/27120101_1.jpg",
+    "priceTaxIn": 23100,
+    "fit": "X-ADV(RH10)[21-24]｜X-ADV(RH21)[2025]｜FORZA750(フォルツァ750)[21-25]"
+   }
+  ],
+  "U2lsZW5jZXxTaWxlbmNlIFMwMSgyMC0yNCl8MjAtMjQ": [
+   {
+    "cjCode": "27293942",
+    "type": "バックレスト",
+    "name": "バックレストキット Silence S01(20-24)",
+    "url": "https://moto.customjapan.net/i/27293942",
+    "image": "https://img.customjapan.net/items/27293942_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "S01[20-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gWC1UT1dOMTI1LzMwMENJVFkoMjItMjQpfDIyLTI0": [
+   {
+    "cjCode": "27294420",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO X-TOWN125/300CITY/CT(20-24)",
+    "url": "https://moto.customjapan.net/i/27294420",
+    "image": "https://img.customjapan.net/items/27294420_1.jpg",
+    "priceTaxIn": 5500,
+    "fit": "X-TOWN125[20-24]｜X-TOWN300CITY[20-24]｜X-TOWN300CT[20-24]"
+   }
+  ],
+  "44Ob44Oz44OAfOODrOODluODqzExMDAvQ01YMTEwMCgyMS0yNil8MjEtMjY": [
+   {
+    "cjCode": "27294437",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット レブル1100/CMX1100(21-26)",
+    "url": "https://moto.customjapan.net/i/27294437",
+    "image": "https://img.customjapan.net/items/27294437_1.jpg",
+    "priceTaxIn": 31900,
+    "fit": "レブル1100[21-26]｜CMX1100 REBEL[21-26]"
+   }
+  ],
+  "44Ob44Oz44OAfOODrOODluODqzExMDAvQ01YMTEwMCgyMDIxKSDigLvml6fku5Xmp5h8U0M4MyAvIDIx": [
+   {
+    "cjCode": "27294437",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット レブル1100/CMX1100(21-26)",
+    "url": "https://moto.customjapan.net/i/27294437",
+    "image": "https://img.customjapan.net/items/27294437_1.jpg",
+    "priceTaxIn": 31900,
+    "fit": "レブル1100[21-26]｜CMX1100 REBEL[21-26]"
+   }
+  ],
+  "44Ob44Oz44OAfOODrOODluODqzI1MC81MDAoMTctMjUpfE1DNDkgLyBQQzYwIC8gMTctMjU": [
+   {
+    "cjCode": "27649848",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット レブル250/500(17-26)",
+    "url": "https://moto.customjapan.net/i/27649848",
+    "image": "https://img.customjapan.net/items/27649848_1.jpg",
+    "priceTaxIn": 30800,
+    "fit": "レブル250(MC49)[17-26]｜レブル500(PC60)[17-26]"
+   }
+  ],
+  "44Ob44Oz44OAfOODrOODluODqzI1MC81MDAoMTctMjYpfDE3LTI2": [
+   {
+    "cjCode": "27649848",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット レブル250/500(17-26)",
+    "url": "https://moto.customjapan.net/i/27649848",
+    "image": "https://img.customjapan.net/items/27649848_1.jpg",
+    "priceTaxIn": 30800,
+    "fit": "レブル250(MC49)[17-26]｜レブル500(PC60)[17-26]"
+   }
+  ],
+  "Qk1XfEJNVyBDRSAwNCgyMi0yNSl8MjItMjU": [
+   {
+    "cjCode": "27666074",
+    "type": "バックレスト",
+    "name": "バックレストキット BMW CE 04(22-25)",
+    "url": "https://moto.customjapan.net/i/27666074",
+    "image": "https://img.customjapan.net/items/27666074_1.jpg",
+    "priceTaxIn": 9900,
+    "fit": "CE 04[22-25]"
+   }
+  ],
+  "44Ok44Oe44OPfFRNQVg1NjAvVEVDSCBNQVgoMjItMjUpfDIyLTI1": [
+   {
+    "cjCode": "27666104",
+    "type": "バックレスト",
+    "name": "バックレストキット TMAX560/TECH MAX(22-25)",
+    "url": "https://moto.customjapan.net/i/27666104",
+    "image": "https://img.customjapan.net/items/27666104_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "TMAX560/TECH MAX[22-25]｜TMAX560 TECH MAX[22-25](ヨーロッパモデル)"
+   }
+  ],
+  "44Ok44Oe44OPfFRNQVggNTMwKDE3LTIwKS81NjAoMjAtMjEpfDE3LTIwIC8gMjAtMjE": [
+   {
+    "cjCode": "27666104",
+    "type": "バックレスト",
+    "name": "バックレストキット TMAX560/TECH MAX(22-25)",
+    "url": "https://moto.customjapan.net/i/27666104",
+    "image": "https://img.customjapan.net/items/27666104_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "TMAX560/TECH MAX[22-25]｜TMAX560 TECH MAX[22-25](ヨーロッパモデル)"
+   }
+  ],
+  "Qk1XfEJNVyBDNjUwR1QoMTItMjIpfDEyLTIy": [
+   {
+    "cjCode": "27721872",
+    "type": "バックレスト",
+    "name": "バックレストキット BMW C650GT(12-22)",
+    "url": "https://moto.customjapan.net/i/27721872",
+    "image": "https://img.customjapan.net/items/27721872_1.jpg",
+    "priceTaxIn": 6600,
+    "fit": "C650GT[12-22]"
+   }
+  ],
+  "Qk1XfEJNVyBDNjAwKDE1LTI0KS9DNjUwIFNQT1JUKDExLTIzKXwxNS0yNCAvIDExLTIz": [
+   {
+    "cjCode": "27721889",
+    "type": "バックレスト",
+    "name": "バックレストキット BMW C600 Sport(11-15)/C650 Sport(16-23)",
+    "url": "https://moto.customjapan.net/i/27721889",
+    "image": "https://img.customjapan.net/items/27721889_1.jpg",
+    "priceTaxIn": 7700,
+    "fit": "C600[15-24]｜C600 SPORT[11-15]｜C650 SPORT[16-23]"
+   }
+  ],
+  "UElBR0dJT3xQSUFHR0lPIE1QMyAxMjUvMjUwLzQwMC81MDAvU1BPUlQoMDctMjIpfDA3LTIy": [
+   {
+    "cjCode": "27798614",
+    "type": "バックレスト",
+    "name": "バックレストキット PIAGGIO MP3/SPORT 400(22-24)",
+    "url": "https://moto.customjapan.net/i/27798614",
+    "image": "https://img.customjapan.net/items/27798614_1.jpg",
+    "priceTaxIn": 7700,
+    "fit": "MP3 400[22-24]｜MP3 400 SPORT 400[22-24]｜MP3 400 EXCLUSIVE 530[22-24]"
+   }
+  ],
+  "UElBR0dJT3xQSUFHR0lPIE1QMy9TUE9SVCA0MDAvRVhDTFVTSVZFIDUzMCgyMi0yNCl8MjItMjQ": [
+   {
+    "cjCode": "27798614",
+    "type": "バックレスト",
+    "name": "バックレストキット PIAGGIO MP3/SPORT 400(22-24)",
+    "url": "https://moto.customjapan.net/i/27798614",
+    "image": "https://img.customjapan.net/items/27798614_1.jpg",
+    "priceTaxIn": 7700,
+    "fit": "MP3 400[22-24]｜MP3 400 SPORT 400[22-24]｜MP3 400 EXCLUSIVE 530[22-24]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBFMzUwKDIzLTI0KXwyMy0yNA": [
+   {
+    "cjCode": "27873557",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES E125(2024)/E350(23-24)",
+    "url": "https://moto.customjapan.net/i/27873557",
+    "image": "https://img.customjapan.net/items/27873557_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "E125[2024]｜E350[23-24]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBaMiBaVC9VUkJBTiAxMjUoMjEtMjQpfDIxLTI0": [
+   {
+    "cjCode": "27873557",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES E125(2024)/E350(23-24)",
+    "url": "https://moto.customjapan.net/i/27873557",
+    "image": "https://img.customjapan.net/items/27873557_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "E125[2024]｜E350[23-24]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBaVDEyNS1VKDIwLTI0KXwyMC0yNA": [
+   {
+    "cjCode": "27873557",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES E125(2024)/E350(23-24)",
+    "url": "https://moto.customjapan.net/i/27873557",
+    "image": "https://img.customjapan.net/items/27873557_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "E125[2024]｜E350[23-24]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBaVDEyNS1HMSgyMC0yNCl8MjAtMjQ": [
+   {
+    "cjCode": "27873557",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES E125(2024)/E350(23-24)",
+    "url": "https://moto.customjapan.net/i/27873557",
+    "image": "https://img.customjapan.net/items/27873557_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "E125[2024]｜E350[23-24]"
+   }
+  ],
+  "QmVuZGF8QmVuZGEgVi0zMDIgQy9WLUNSVUlTRVIxMjUvRk9YMTI1L0ZPWDMwMCgyMi0yNCl8MjItMjQ": [
+   {
+    "cjCode": "27873595",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット Benda V-302 C/V-CRUISER125/FOX125/FOX300(22-24)",
+    "url": "https://moto.customjapan.net/i/27873595",
+    "image": "https://img.customjapan.net/items/27873595_1.jpg",
+    "priceTaxIn": 29700,
+    "fit": "V-302C[22-24]｜V-CRUISER125[22-24]｜FOX125[22-24]｜FOX300[22-24]"
+   }
+  ],
+  "Um95YWwgRW5maWVsZHxSb3lhbCBFbmZpZWxkIFNVUEVSIE1FVEVPUjY1MCgyMy0yNCl8MjMtMjQ": [
+   {
+    "cjCode": "27873625",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット Royal Enfield SUPER METEOR650(23-24)",
+    "url": "https://moto.customjapan.net/i/27873625",
+    "image": "https://img.customjapan.net/items/27873625_1.jpg",
+    "priceTaxIn": 28600,
+    "fit": "SUPER METEOR 650[23-24]"
+   }
+  ],
+  "44K544K644KtfOODkOODvOOCsOODnuODs-OCueODiOODquODvOODiDEyNUVYKDI0LTI2KXwyNC0yNg": [
+   {
+    "cjCode": "28032755",
+    "type": "バックレスト",
+    "name": "バックレストキット バーグマンストリート125EX(24-26)",
+    "url": "https://moto.customjapan.net/i/28032755",
+    "image": "https://img.customjapan.net/items/28032755_1.jpg",
+    "priceTaxIn": 5500,
+    "fit": "バーグマンストリート125EX[24-26]"
+   }
+  ],
+  "UUogTW90b3J8UUogTW90b3IgU1JWMTI1KDIzLTI0KXwyMy0yNA": [
+   {
+    "cjCode": "28181804",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット QJ Motor SRV 125(23-24)",
+    "url": "https://moto.customjapan.net/i/28181804",
+    "image": "https://img.customjapan.net/items/28181804_1.jpg",
+    "priceTaxIn": 33000,
+    "fit": "SRV 125[23-24]"
+   }
+  ],
+  "S1lNQ098S1lNQ08gRE9XTlRPV04gR1QvU1VQRVJESU5LIEdUIDEyNS8zNTAoMjAyNSl8MjAyNQ": [
+   {
+    "cjCode": "28195535",
+    "type": "バックレスト",
+    "name": "バックレストキット KYMCO DOWNTOWN GT/SUPERDINK GT 125/350(2025)",
+    "url": "https://moto.customjapan.net/i/28195535",
+    "image": "https://img.customjapan.net/items/28195535_1.jpg",
+    "priceTaxIn": 17600,
+    "fit": "DOWNTOWN GT/SUPERDINK GT 125/350[2025]"
+   }
+  ],
+  "UElBR0dJT3xQSUFHR0lPIE1QMyAzMTAgSFBFL1NQT1JUIDMxMCgyMDI1KXwyMDI1": [
+   {
+    "cjCode": "29091645",
+    "type": "バックレスト",
+    "name": "バックレストキット PIAGGIO MP3 310 HPE/SPORT 310(2025)",
+    "url": "https://moto.customjapan.net/i/29091645",
+    "image": "https://img.customjapan.net/items/29091645_1.jpg",
+    "priceTaxIn": 9900,
+    "fit": "MP3 310 HPE[2025]｜SPORT 310[2025]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBBRFYgMzY4RygyMDI1KXwyMDI1": [
+   {
+    "cjCode": "29177226",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES ADV 368G(2025)",
+    "url": "https://moto.customjapan.net/i/29177226",
+    "image": "https://img.customjapan.net/items/29177226_1.jpg",
+    "priceTaxIn": 5500,
+    "fit": "ADV 368G[2025]"
+   }
+  ],
+  "U1lNfFNZTSBBRFggMzAwKDIwMjUpfDIwMjU": [
+   {
+    "cjCode": "29177233",
+    "type": "バックレスト",
+    "name": "バックレストキット SYM ADX 300(2025)",
+    "url": "https://moto.customjapan.net/i/29177233",
+    "image": "https://img.customjapan.net/items/29177233_1.jpg",
+    "priceTaxIn": 20900,
+    "fit": "ADX 300[2025]"
+   }
+  ],
+  "Wk9OVEVTfFpPTlRFUyBLMzY4KDIwMjUpfDIwMjU": [
+   {
+    "cjCode": "29187348",
+    "type": "バックレスト",
+    "name": "バックレストキット ZONTES K368(2025)",
+    "url": "https://moto.customjapan.net/i/29187348",
+    "image": "https://img.customjapan.net/items/29187348_1.jpg",
+    "priceTaxIn": 5500,
+    "fit": "K368[2025]"
+   }
+  ],
+  "TU9SQklERUxMSXxNT1JCSURFTExJIEMxMDAyVigyNC0yNSl8MjQtMjU": [
+   {
+    "cjCode": "29271399",
+    "type": "シーシーバー",
+    "name": "シーシーバーキット MORBIDELLI C1002V(24-25)",
+    "url": "https://moto.customjapan.net/i/29271399",
+    "image": "https://img.customjapan.net/items/29271399_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "C1002V[24-25]"
+   }
+  ],
+  "44Ok44Oe44OPfOODiOODquOCt-ODhuOCozEyNSgyMDI2KXwyMDI2": [
+   {
+    "cjCode": "29327409",
+    "type": "バックレスト",
+    "name": "バックレストキット トリシティ125(2026)",
+    "url": "https://moto.customjapan.net/i/29327409",
+    "image": "https://img.customjapan.net/items/29327409_1.jpg",
+    "priceTaxIn": 8800,
+    "fit": "トリシティ125[2026]"
+   }
+  ]
+ }
+}

@@ -9,8 +9,56 @@
     ? new URL("../data/fitment/fitment_index.json", scriptUrl).href
     : "data/fitment/fitment_index.json";
   var dataScriptUrl = dataUrl.replace(/fitment_index\.json$/, "fitment_index.js");
+  var optionsUrl = dataUrl.replace(/fitment_index\.json$/, "vehicle_options.json");
   var indexPromise = null;
+  var optionsPromise = null;
   var fittingProductsByCode = {};
+
+  /* 車種に紐づくオプション（バックレストキット / シーシーバーキット）。
+     ボックスの型番ではなく車種で決まる商品なので、適合結果に併記する。
+     データ生成： tools/build_vehicle_options.py */
+  function loadVehicleOptions() {
+    if (!optionsPromise) {
+      optionsPromise = fetch(optionsUrl)
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .catch(function () { return null; });
+    }
+    return optionsPromise;
+  }
+
+  function renderVehicleOptions(root, vehicles) {
+    var result = getEls(root).result;
+    if (!result || !vehicles || !vehicles.length) return;
+    loadVehicleOptions().then(function (data) {
+      if (!data || !data.byVehicle) return;
+      var seen = {}, items = [];
+      vehicles.forEach(function (v) {
+        (data.byVehicle[v.id] || []).forEach(function (o) {
+          if (seen[o.cjCode]) return;
+          seen[o.cjCode] = 1;
+          items.push(o);
+        });
+      });
+      if (!items.length) return;
+      var cards = items.map(function (o) {
+        var price = o.priceTaxIn ? "¥" + Number(o.priceTaxIn).toLocaleString("ja-JP") + "（税込）" : "";
+        return '<a class="fit-fitting-product" href="' + o.url + '" target="_blank" rel="noopener">'
+          + '<span class="fit-fitting-product-media"><img src="' + o.image + '" alt="" loading="lazy"></span>'
+          + '<span class="fit-fitting-product-body"><small>' + o.type + "</small>"
+          + "<strong>" + o.name + "</strong>"
+          + '<span class="fit-fitting-product-code">品番：' + o.cjCode + "</span>"
+          + '<span class="fit-fitting-product-foot"><i class="ti ti-shopping-cart"></i>'
+          + "<span>カスタムジャパンで購入</span><b>" + price + "</b></span></span></a>";
+      }).join("");
+      var sec = document.createElement("div");
+      sec.className = "fit-options";
+      sec.innerHTML = '<p class="fit-result-kick mt-8">Options for this Motorcycle</p>'
+        + '<h3 class="text-[19px] font-bold mt-1">この車種で使えるオプション</h3>'
+        + '<p class="text-[13px] text-neutral-500 mt-1.5">バックレスト・シーシーバーは車種専用のキットが必要です。</p>'
+        + '<div class="fit-fitting-list fit-fitting-list-wide">' + cards + "</div>";
+      result.appendChild(sec);
+    });
+  }
 
   function prepareIndex(index) {
     fittingProductsByCode = {};
@@ -253,6 +301,7 @@
       + '<div><p class="fit-result-kick">Fitment Result</p><h3>' + title + "</h3></div>"
       + '<span>' + groups.length + " モデル</span></div>"
       + '<div class="fit-card-grid">' + groups.map(renderProductCard).join("") + "</div>";
+    renderVehicleOptions(root, vehicles);
   }
 
   function renderProductCheck(root, productCode, vehicles) {
@@ -276,6 +325,7 @@
       + '<div><p>装着できます</p><span>必要な車種専用フィッティングを確認してください。</span></div>'
       + "</div>"
       + '<div class="fit-fitting-list fit-fitting-list-wide">' + fittings + "</div>";
+    renderVehicleOptions(root, vehicles);
   }
 
   function renderProductMismatch(root, vehicle) {
