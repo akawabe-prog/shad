@@ -419,7 +419,7 @@ def main():
         feat_grid = ('<div class="feat-grid">' + "".join(cells) + "</div>") if cells else ""
 
         rows = []
-        for th, key in (("容量", "capacity"), ("質量", "weight"), ("材質", "material"),
+        for th, key in (("容量", "capacitySpec"), ("質量", "weight"), ("材質", "material"),
                         ("サイズ", "dimensions"), ("仕様", "spec"), ("セット内容・付属品", "included")):
             if v.get(key):
                 rows.append(spec_row(th, v[key]))

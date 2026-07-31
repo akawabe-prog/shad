@@ -16,6 +16,11 @@
     "makerCode": "D0B33200",
     "jan": "8430358612105",
     "capacity": "33L",
+    "capacitySpec": "33L",
+    "capacityPerUnit": [
+     "33L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約3kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H310mm×W430mm×D420mm、内寸：H300mm×W400mm×D300mm",
@@ -61,7 +66,12 @@
     "msrpTaxIn": 16500,
     "makerCode": "X0SC25",
     "jan": "8430358621015",
-    "capacity": "",
+    "capacity": "25L",
+    "capacitySpec": "25L",
+    "capacityPerUnit": [
+     "25L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "ポリエステル",
     "dimensions": "W270×H260×D380mm",
@@ -106,7 +116,12 @@
     "msrpTaxIn": 30800,
     "makerCode": "D0B23100",
     "jan": "8430358620506",
-    "capacity": "",
+    "capacity": "23L",
+    "capacitySpec": "23L/23L　合計：46L",
+    "capacityPerUnit": [
+     "23L/23L"
+    ],
+    "capacityTotal": "合計：46L",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H350mm×W490mm×D260mm",
@@ -153,7 +168,12 @@
     "msrpTaxIn": 16500,
     "makerCode": "X0SE04",
     "jan": "8430358589254",
-    "capacity": "",
+    "capacity": "3L",
+    "capacitySpec": "3L",
+    "capacityPerUnit": [
+     "3L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "ポリエステル",
     "dimensions": "29×20×10",
@@ -195,7 +215,12 @@
     "msrpTaxIn": 51700,
     "makerCode": "D0B48300",
     "jan": "8430358505230",
-    "capacity": "",
+    "capacity": "48L",
+    "capacitySpec": "48L",
+    "capacityPerUnit": [
+     "48L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約5.9kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H311mm×W610mm×D460mm",
@@ -231,7 +256,12 @@
     "msrpTaxIn": 51700,
     "makerCode": "D0B48400",
     "jan": "8430358505247",
-    "capacity": "",
+    "capacity": "48L",
+    "capacitySpec": "48L",
+    "capacityPerUnit": [
+     "48L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約5.9kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H311mm×W610mm×D460mm",
@@ -279,7 +309,12 @@
     "msrpTaxIn": 67100,
     "makerCode": "D0B58206",
     "jan": "8430358666351",
-    "capacity": "",
+    "capacity": "46-58L",
+    "capacitySpec": "46-58L",
+    "capacityPerUnit": [
+     "46-58L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：46L(本体外寸)：H270mm×W610mm×D480mm\n52L(本体外寸)：H290mm×W610mm×D480mm\n58L(本体外寸)：H315mm×W610mm×D480mm",
@@ -324,7 +359,12 @@
     "msrpTaxIn": 27500,
     "makerCode": "X0SR38",
     "jan": "8430358664494",
-    "capacity": "",
+    "capacity": "10L",
+    "capacitySpec": "10L",
+    "capacityPerUnit": [
+     "10L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "合成皮革/ポリエステル",
     "dimensions": "本体：W240mm×D150mm×H340mm",
@@ -362,7 +402,12 @@
     "msrpTaxIn": 27500,
     "makerCode": "X0SR3821",
     "jan": "8430358683860",
-    "capacity": "",
+    "capacity": "10L",
+    "capacitySpec": "10L",
+    "capacityPerUnit": [
+     "10L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "合成皮革/ポリエステル",
     "dimensions": "本体：W240mm×D150mm×H340mm",
@@ -408,6 +453,9 @@
     "makerCode": "SHY0F7000",
     "jan": "8430358494916",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -442,6 +490,9 @@
     "makerCode": "SHH0I740C",
     "jan": "8430358566804",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -477,6 +528,9 @@
     "makerCode": "SHH0NS709CN",
     "jan": "8430358562769",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -511,6 +565,9 @@
     "makerCode": "SHH0B6200",
     "jan": "8430358525795",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -546,6 +603,9 @@
     "makerCode": "SHH0B6201",
     "jan": "8430358535657",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -581,6 +641,9 @@
     "makerCode": "SHK0Z1000C",
     "jan": "8430358504745",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -616,6 +679,9 @@
     "makerCode": "SHV0M2320",
     "jan": "8430358540620",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -651,6 +717,9 @@
     "makerCode": "SHY0T5320",
     "jan": "8430358540347",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -686,6 +755,9 @@
     "makerCode": "SHY0M9300",
     "jan": "8430358565227",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "",
     "dimensions": "",
@@ -730,7 +802,12 @@
     "msrpTaxIn": 93500,
     "makerCode": "D0B35200",
     "jan": "8430358665187",
-    "capacity": "",
+    "capacity": "35L",
+    "capacitySpec": "35L/35L　合計：70L",
+    "capacityPerUnit": [
+     "35L/35L"
+    ],
+    "capacityTotal": "合計：70L",
     "weight": "",
     "material": "PP(ポリプロピレン)",
     "dimensions": "本体：H380mm×W510mm×D300mm",
@@ -774,7 +851,12 @@
     "msrpTaxIn": 89100,
     "makerCode": "D0B36200",
     "jan": "8430358665170",
-    "capacity": "",
+    "capacity": "36L",
+    "capacitySpec": "36L/36L　合計：72L",
+    "capacityPerUnit": [
+     "36L/36L"
+    ],
+    "capacityTotal": "合計：72L",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H380mm×W510mm×D330mm",
@@ -819,7 +901,12 @@
     "msrpTaxIn": 74800,
     "makerCode": "D0B59200",
     "jan": "8430358666368",
-    "capacity": "",
+    "capacity": "46-58L",
+    "capacitySpec": "46-58L",
+    "capacityPerUnit": [
+     "46-58L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：46L(本体外寸)：H270mm×W610mm×D480mm\n52L(本体外寸)：H290mm×W610mm×D480mm\n58L(本体外寸)：H315mm×W610mm×D480mm",
@@ -865,6 +952,11 @@
     "makerCode": "D0B34106",
     "jan": "8430358627338",
     "capacity": "34L",
+    "capacitySpec": "34L",
+    "capacityPerUnit": [
+     "34L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約4kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H310mm×W420mm×D430mm",
@@ -909,7 +1001,12 @@
     "msrpTaxIn": 79200,
     "makerCode": "D0TR48100",
     "jan": "8430358667051",
-    "capacity": "",
+    "capacity": "48L",
+    "capacitySpec": "48L",
+    "capacityPerUnit": [
+     "48L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H322mm×W495mm×D418mm",
@@ -944,7 +1041,12 @@
     "msrpTaxIn": 85800,
     "makerCode": "D0TR48100B",
     "jan": "8430358675407",
-    "capacity": "",
+    "capacity": "48L",
+    "capacitySpec": "48L",
+    "capacityPerUnit": [
+     "48L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H322mm×W495mm×D418mm",
@@ -989,7 +1091,12 @@
     "msrpTaxIn": 72600,
     "makerCode": "D0TR37100",
     "jan": "8430358667068",
-    "capacity": "",
+    "capacity": "37L",
+    "capacitySpec": "37L",
+    "capacityPerUnit": [
+     "37L"
+    ],
+    "capacityTotal": "",
     "weight": "約5kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H259mm×W495mm×D418mm",
@@ -1024,7 +1131,12 @@
     "msrpTaxIn": 80300,
     "makerCode": "D0TR37100B",
     "jan": "8430358675391",
-    "capacity": "",
+    "capacity": "37L",
+    "capacitySpec": "37L",
+    "capacityPerUnit": [
+     "37L"
+    ],
+    "capacityTotal": "",
     "weight": "約5kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H259mm×W495mm×D418mm",
@@ -1069,7 +1181,12 @@
     "msrpTaxIn": 73700,
     "makerCode": "D0TR36100L",
     "jan": "8430358670105",
-    "capacity": "",
+    "capacity": "36L",
+    "capacitySpec": "36L",
+    "capacityPerUnit": [
+     "36L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.6kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H282mm×W495mm×D418mm",
@@ -1104,7 +1221,12 @@
     "msrpTaxIn": 79200,
     "makerCode": "D0TR36100R",
     "jan": "8430358670099",
-    "capacity": "",
+    "capacity": "36L",
+    "capacitySpec": "36L",
+    "capacityPerUnit": [
+     "36L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.8kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H282mm×W495mm×D418mm",
@@ -1139,7 +1261,12 @@
     "msrpTaxIn": 80300,
     "makerCode": "D0TR36100LB",
     "jan": "8430358675421",
-    "capacity": "",
+    "capacity": "36L",
+    "capacitySpec": "36L",
+    "capacityPerUnit": [
+     "36L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.6kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H282mm×W495mm×D418mm",
@@ -1174,7 +1301,12 @@
     "msrpTaxIn": 85800,
     "makerCode": "D0TR36100RB",
     "jan": "8430358675414",
-    "capacity": "",
+    "capacity": "36L",
+    "capacitySpec": "36L",
+    "capacityPerUnit": [
+     "36L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.8kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H282mm×W495mm×D418mm",
@@ -1219,7 +1351,12 @@
     "msrpTaxIn": 79200,
     "makerCode": "D0TR47100L",
     "jan": "8430358667075",
-    "capacity": "",
+    "capacity": "47L",
+    "capacitySpec": "47L",
+    "capacityPerUnit": [
+     "47L"
+    ],
+    "capacityTotal": "",
     "weight": "約6.2kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H345mm×W495mm×D418mm",
@@ -1254,7 +1391,12 @@
     "msrpTaxIn": 82500,
     "makerCode": "D0TR47100R",
     "jan": "8430358667082",
-    "capacity": "",
+    "capacity": "47L",
+    "capacitySpec": "47L",
+    "capacityPerUnit": [
+     "47L"
+    ],
+    "capacityTotal": "",
     "weight": "約6.4kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H345mm×W495mm×D418mm",
@@ -1289,7 +1431,12 @@
     "msrpTaxIn": 84700,
     "makerCode": "D0TR47100LB",
     "jan": "8430358675445",
-    "capacity": "",
+    "capacity": "47L",
+    "capacitySpec": "47L",
+    "capacityPerUnit": [
+     "47L"
+    ],
+    "capacityTotal": "",
     "weight": "約6.2kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H345mm×W495mm×D418mm",
@@ -1324,7 +1471,12 @@
     "msrpTaxIn": 93500,
     "makerCode": "D0TR47100RB",
     "jan": "8430358675438",
-    "capacity": "",
+    "capacity": "47L",
+    "capacitySpec": "47L",
+    "capacityPerUnit": [
+     "47L"
+    ],
+    "capacityTotal": "",
     "weight": "約6.4kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H345mm×W495mm×D418mm",
@@ -1370,6 +1522,9 @@
     "makerCode": "X0IB20",
     "jan": "8430358671355",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "",
     "material": "ターポリン(PVCをメインにした3層構造)",
     "dimensions": "",
@@ -1409,7 +1564,12 @@
     "msrpTaxIn": 31900,
     "makerCode": "D0B47106",
     "jan": "8430358673717",
-    "capacity": "",
+    "capacity": "47L",
+    "capacitySpec": "47L",
+    "capacityPerUnit": [
+     "47L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H312mm×W575mm×D420mm\n内寸：H310mm×W545mm×D360mm",
@@ -1444,7 +1604,12 @@
     "msrpTaxIn": 41800,
     "makerCode": "D0B47206",
     "jan": "8430358673724",
-    "capacity": "",
+    "capacity": "47L",
+    "capacitySpec": "47L",
+    "capacityPerUnit": [
+     "47L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H312mm×W575mm×D420mm\n内寸：H310mm×W545mm×D360mm",
@@ -1489,7 +1654,12 @@
     "msrpTaxIn": 28600,
     "makerCode": "X0SL58",
     "jan": "8430358606715",
-    "capacity": "46-58L(片側23-29L)",
+    "capacity": "23-29L",
+    "capacitySpec": "46-58L(片側23-29L)",
+    "capacityPerUnit": [
+     "23-29L/23-29L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "ポリエステル",
     "dimensions": "W47×H29×D18",
@@ -1535,6 +1705,9 @@
     "makerCode": "C0S203H",
     "jan": "8430358677746",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "0.80kg",
     "material": "亜鉛めっき鋼",
     "dimensions": "42×4.2×4.2(cm)",
@@ -1570,6 +1743,9 @@
     "makerCode": "C0S205H",
     "jan": "8430358677753",
     "capacity": "",
+    "capacitySpec": "",
+    "capacityPerUnit": [],
+    "capacityTotal": "",
     "weight": "0.88kg",
     "material": "亜鉛めっき鋼",
     "dimensions": "47.5×4.2×4.2(cm)",
@@ -1614,7 +1790,12 @@
     "msrpTaxIn": 20900,
     "makerCode": "D0B44100",
     "jan": "8430358675858",
-    "capacity": "",
+    "capacity": "44L",
+    "capacitySpec": "44L",
+    "capacityPerUnit": [
+     "44L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約4.85kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H315mm×W550mm×D435mm\n内寸：H300ｍm×W520mm×D365mm",
@@ -1659,7 +1840,12 @@
     "msrpTaxIn": 33000,
     "makerCode": "X0SE482",
     "jan": "8430358689978",
-    "capacity": "46-58L(片側23-29L)",
+    "capacity": "23-29L",
+    "capacitySpec": "46-58L(片側23-29L)",
+    "capacityPerUnit": [
+     "23-29L/23-29L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "ポリエステル(600D)",
     "dimensions": "全長：470mm、奥行：240mm(拡大時300mm)、全高290mm",
@@ -1697,7 +1883,12 @@
     "msrpTaxIn": 72600,
     "makerCode": "X0SE48SR",
     "jan": "8430358680470",
-    "capacity": "30L(片側15L)",
+    "capacity": "15L",
+    "capacitySpec": "30L(片側15L)",
+    "capacityPerUnit": [
+     "15L/15L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ABS樹脂",
     "dimensions": "本体：W450mm×D270mm×H290mm",
@@ -1745,7 +1936,12 @@
     "msrpTaxIn": 88000,
     "makerCode": "D0TR55100",
     "jan": "8430358679894",
-    "capacity": "",
+    "capacity": "55L",
+    "capacitySpec": "55L",
+    "capacityPerUnit": [
+     "55L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H322mm×W570mm×D418mm",
@@ -1780,7 +1976,12 @@
     "msrpTaxIn": 96800,
     "makerCode": "D0TR55100B",
     "jan": "8430358679900",
-    "capacity": "",
+    "capacity": "55L",
+    "capacitySpec": "55L",
+    "capacityPerUnit": [
+     "55L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：アルミニウム合金材\nロックシステム：ステンレススチール",
     "dimensions": "本体サイズ：H322mm×W570mm×D418mm",
@@ -1815,7 +2016,12 @@
     "msrpTaxIn": 96800,
     "makerCode": "D0TR55200B",
     "jan": "8430358687226",
-    "capacity": "",
+    "capacity": "55L",
+    "capacitySpec": "55L",
+    "capacityPerUnit": [
+     "55L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：アルミニウム\nロックシステム：ステンレス",
     "dimensions": "本体サイズ：H322mm×W570mm×D418mm",
@@ -1860,7 +2066,12 @@
     "msrpTaxIn": 45100,
     "makerCode": "X0TR50",
     "jan": "8430358685239",
-    "capacity": "",
+    "capacity": "40L",
+    "capacitySpec": "40L",
+    "capacityPerUnit": [
+     "40L"
+    ],
+    "capacityTotal": "",
     "weight": "3.65kg",
     "material": "本体：ポリエステル(PVCコーディング)",
     "dimensions": "本体：H315mm×W570mm×D350mm",
@@ -1908,7 +2119,12 @@
     "msrpTaxIn": 13200,
     "makerCode": "X0SE03C",
     "jan": "8430358683808",
-    "capacity": "",
+    "capacity": "3L",
+    "capacitySpec": "3L",
+    "capacityPerUnit": [
+     "3L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ABS樹脂、ナイロン",
     "dimensions": "本体：W230mm×D110mm×H210mm",
@@ -1956,7 +2172,12 @@
     "msrpTaxIn": 19800,
     "makerCode": "X0SE09C",
     "jan": "8430358684676",
-    "capacity": "",
+    "capacity": "5L",
+    "capacitySpec": "5L",
+    "capacityPerUnit": [
+     "5L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ABS樹脂、ナイロン",
     "dimensions": "本体：W300mm×D140mm×H240mm",
@@ -2004,7 +2225,12 @@
     "msrpTaxIn": 37400,
     "makerCode": "X0TR15CL",
     "jan": "8430358683853",
-    "capacity": "",
+    "capacity": "13L",
+    "capacitySpec": "13L",
+    "capacityPerUnit": [
+     "13L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ポリエステル(PVCコーディング)",
     "dimensions": "本体：W380mm×D290mm×H230mm",
@@ -2052,7 +2278,12 @@
     "msrpTaxIn": 121000,
     "makerCode": "D0B38106",
     "jan": "8430358686984",
-    "capacity": "",
+    "capacity": "23-32L",
+    "capacitySpec": "23-32L/23-32L　合計：46-64L",
+    "capacityPerUnit": [
+     "23-32L/23-32L"
+    ],
+    "capacityTotal": "合計：46-64L",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "拡張時(本体外寸)：H390mm×W500mm×D340mm\n収縮時(本体外寸)：H390mm×W500mm×D270mm",
@@ -2090,7 +2321,12 @@
     "msrpTaxIn": 137500,
     "makerCode": "D0B38200",
     "jan": "8430358686991",
-    "capacity": "",
+    "capacity": "23-32L",
+    "capacitySpec": "23-32L/23-32L　合計：46-64L",
+    "capacityPerUnit": [
+     "23-32L/23-32L"
+    ],
+    "capacityTotal": "合計：46-64L",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "拡張時(本体外寸)：H390mm×W500mm×D340mm\n収縮時(本体外寸)：H390mm×W500mm×D270mm",
@@ -2137,7 +2373,12 @@
     "msrpTaxIn": 20900,
     "makerCode": "X0SE03CLP",
     "jan": "8430358691520",
-    "capacity": "",
+    "capacity": "3-4L",
+    "capacitySpec": "3-4L",
+    "capacityPerUnit": [
+     "3-4L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ABS樹脂、ナイロン",
     "dimensions": "本体：W230mm×D110/170mm×H210mm",
@@ -2185,7 +2426,12 @@
     "msrpTaxIn": 25300,
     "makerCode": "X0SE09CLP",
     "jan": "8430358691544",
-    "capacity": "",
+    "capacity": "5-8L",
+    "capacitySpec": "5-8L",
+    "capacityPerUnit": [
+     "5-8L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ABS樹脂、ナイロン",
     "dimensions": "本体：W300mm×D140/200mm×H240mm",
@@ -2233,7 +2479,12 @@
     "msrpTaxIn": 18700,
     "makerCode": "X0SE09CM",
     "jan": "8430358691704",
-    "capacity": "",
+    "capacity": "5L",
+    "capacitySpec": "5L",
+    "capacityPerUnit": [
+     "5L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：ABS樹脂、ナイロン",
     "dimensions": "本体：W300mm×D140mm×H245mm",
@@ -2280,7 +2531,12 @@
     "msrpTaxIn": 13200,
     "makerCode": "X0SE02C",
     "jan": "8430358691506",
-    "capacity": "",
+    "capacity": "3L",
+    "capacitySpec": "3L",
+    "capacityPerUnit": [
+     "3L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：EVA",
     "dimensions": "",
@@ -2329,6 +2585,11 @@
     "makerCode": "X0TR10CL",
     "jan": "8430358693258",
     "capacity": "10L",
+    "capacitySpec": "10L",
+    "capacityPerUnit": [
+     "10L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "ターポリン(PVCをメインにした3層構造)",
     "dimensions": "",
@@ -2375,7 +2636,12 @@
     "msrpTaxIn": 86900,
     "makerCode": "X0TR30",
     "jan": "8430358691568",
-    "capacity": "60L(片側30L)",
+    "capacity": "30L",
+    "capacitySpec": "60L(片側30L)",
+    "capacityPerUnit": [
+     "30L/30L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "バッグ本体：ターポリン(PVCをメインにした3層構造)",
     "dimensions": "本体(片側)：W400mm×D230mm×H380mm",
@@ -2424,6 +2690,11 @@
     "makerCode": "D0TR41100",
     "jan": "8430358695184",
     "capacity": "41L",
+    "capacitySpec": "41L",
+    "capacityPerUnit": [
+     "41L"
+    ],
+    "capacityTotal": "",
     "weight": "約3.8kg",
     "material": "本体：PP(ポリプロピレン)\nロックシステム：ステンレススチール",
     "dimensions": "外寸：H325mm×W465mm×D408mm\n内寸：H320mm×W450mm×D335mm",
@@ -2462,6 +2733,11 @@
     "makerCode": "D0TR41200",
     "jan": "8430358695191",
     "capacity": "41L",
+    "capacitySpec": "41L",
+    "capacityPerUnit": [
+     "41L"
+    ],
+    "capacityTotal": "",
     "weight": "約4.1kg",
     "material": "本体：PP(ポリプロピレン)\nロックシステム：ステンレススチール",
     "dimensions": "外寸：H325mm×W465mm×D408mm\n内寸：H320mm×W450mm×D335mm",
@@ -2510,6 +2786,11 @@
     "makerCode": "D0TR46100",
     "jan": "8430358700031",
     "capacity": "46L",
+    "capacitySpec": "46L",
+    "capacityPerUnit": [
+     "46L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：PP(ポリプロピレン)\nロックシステム：ステンレススチール",
     "dimensions": "外寸：H320mm×W515mm×D408mm\n内寸：H315mm×W500mm×D335mm",
@@ -2548,6 +2829,11 @@
     "makerCode": "D0TR46200",
     "jan": "8430358700048",
     "capacity": "46L",
+    "capacitySpec": "46L",
+    "capacityPerUnit": [
+     "46L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：PP(ポリプロピレン)\nロックシステム：ステンレススチール",
     "dimensions": "外寸：H320mm×W515mm×D408mm\n内寸：H315mm×W500mm×D335mm",
@@ -2596,6 +2882,11 @@
     "makerCode": "D0B51106",
     "jan": "8430358703636",
     "capacity": "51L",
+    "capacitySpec": "51L",
+    "capacityPerUnit": [
+     "51L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "外寸：H300mm×W590mm×D455mm\n内寸：H295mm×W580mm×D445mm",
@@ -2633,6 +2924,11 @@
     "makerCode": "D0B51200",
     "jan": "8430358703629",
     "capacity": "51L",
+    "capacitySpec": "51L",
+    "capacityPerUnit": [
+     "51L"
+    ],
+    "capacityTotal": "",
     "weight": "約5.5kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "外寸：H300mm×W590mm×D455mm\n内寸：H295mm×W580mm×D445mm",
@@ -2679,7 +2975,12 @@
     "msrpTaxIn": 37400,
     "makerCode": "D0TR27100",
     "jan": "8430358702660",
-    "capacity": "27L/27L",
+    "capacity": "27L",
+    "capacitySpec": "27L/27L",
+    "capacityPerUnit": [
+     "27L/27L"
+    ],
+    "capacityTotal": "",
     "weight": "約7kg(左右セット)",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "外寸：H340mm×W500mm×D280mm\n内寸：H335mm×W490mm×D270mm",
@@ -2714,7 +3015,12 @@
     "msrpTaxIn": 44000,
     "makerCode": "D0TR27200",
     "jan": "8430358702691",
-    "capacity": "27L/27L",
+    "capacity": "27L",
+    "capacitySpec": "27L/27L",
+    "capacityPerUnit": [
+     "27L/27L"
+    ],
+    "capacityTotal": "",
     "weight": "約7kg(左右セット)",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "外寸：H340mm×W500mm×D280mm\n内寸：H335mm×W490mm×D270mm",
@@ -2762,6 +3068,11 @@
     "makerCode": "X0TR08",
     "jan": "8430358708488",
     "capacity": "8L",
+    "capacitySpec": "8L",
+    "capacityPerUnit": [
+     "8L"
+    ],
+    "capacityTotal": "",
     "weight": "約0.3kg",
     "material": "本体：ポリエステル(PVCコーティング仕様)",
     "dimensions": "本体：H130mm×W220mm×D280mm",
@@ -2810,6 +3121,11 @@
     "makerCode": "D0B26100",
     "jan": "8430358507258",
     "capacity": "26L",
+    "capacitySpec": "26L",
+    "capacityPerUnit": [
+     "26L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約2.7kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H282mm×W400mm×D405mm",
@@ -2855,6 +3171,11 @@
     "makerCode": "D0B29100",
     "jan": "8430358507265",
     "capacity": "29L",
+    "capacitySpec": "29L",
+    "capacityPerUnit": [
+     "29L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約3.0.kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H300mm×W400mm×D380mm",
@@ -2900,6 +3221,11 @@
     "makerCode": "D0B39100",
     "jan": "8430358548763",
     "capacity": "39L",
+    "capacitySpec": "39L",
+    "capacityPerUnit": [
+     "39L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：3kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H320mm×W510mm×D430mm",
@@ -2945,6 +3271,11 @@
     "makerCode": "D0B40100",
     "jan": "8430358507289",
     "capacity": "40L",
+    "capacitySpec": "40L",
+    "capacityPerUnit": [
+     "40L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約4kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H296mm×W495mm×D425mm",
@@ -2992,6 +3323,11 @@
     "makerCode": "D0B40199",
     "jan": "8430358507296",
     "capacity": "40L",
+    "capacitySpec": "40L",
+    "capacityPerUnit": [
+     "40L"
+    ],
+    "capacityTotal": "",
     "weight": "",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H296mm×W495mm×D425mm",
@@ -3036,7 +3372,12 @@
     "msrpTaxIn": 24200,
     "makerCode": "D0B45100",
     "jan": "8430358507302",
-    "capacity": "",
+    "capacity": "45L",
+    "capacitySpec": "45L",
+    "capacityPerUnit": [
+     "45L"
+    ],
+    "capacityTotal": "",
     "weight": "本体：約4.5kg",
     "material": "本体：PP(ポリプロピレン)",
     "dimensions": "本体：H314mm×W564mm×D410mm\n内寸：H310mm×W530mm ×D360mm",

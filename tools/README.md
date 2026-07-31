@@ -95,3 +95,27 @@ rsync -a --delete --exclude='.DS_Store' site/ dist/shad/
   マスターに登録されれば、次回ビルドで自動的に反映されます。
 - 商品名の付け方が変わると分類ルールに影響する場合があります。
   ビルド後のレポート（本体商品の件数・カラー展開）が想定と違うときはご連絡ください。
+
+---
+
+## 容量（サイズ）をECのAPIから取得する
+
+マスターCSVの「容量」欄は空のことがあり、可変容量モデル（SH38X / SH58X /
+SH59X など）は特に記載が抜けています。容量はECのAPIから取得してください。
+
+```bash
+python3 tools/fetch_api_sizes.py        # 全モデル
+python3 tools/fetch_api_sizes.py SH38X  # モデル指定
+python3 tools/build_catalog.py          # 取得した容量を反映
+python3 tools/gen_pages_from_catalog.py # 追加ページに反映（既存ページは対象外）
+```
+
+`fetch_api_sizes.py` は社内ドキュメントの認証手順に従います。
+
+1. `GET https://api-i.customjapan.net/api/v1/init`（`Cache-Control: no-cache`）
+   → `guid` / `authorization` が Cookie に発行される
+2. `POST https://api-e.customjapan.net/api/v1/items` に上記Cookieを付けて
+   `{"ids":[品番,...]}` を送る
+
+取得結果は `site/data/catalog/api_sizes.json` に保存され、`build_catalog.py` が
+容量として取り込みます（見出し＝1個ぶん／左右セットは片側、スペック表＝内訳つき）。

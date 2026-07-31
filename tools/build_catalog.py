@@ -43,6 +43,9 @@ from datetime import datetime, timezone, timedelta
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(ROOT, "data-source", "ItemList_SHAD.csv")
 OUT_DIR = os.path.join(ROOT, "site", "data", "catalog")
+# 容量はマスターの「容量」欄が空のことがあるため、ECのAPIから取得した値で補完する
+# （生成： python3 tools/fetch_api_sizes.py）
+API_SIZES_PATH = os.path.join(ROOT, "site", "data", "catalog", "api_sizes.json")
 CSV_ENCODING = "cp932"  # EC側エクスポートは Shift_JIS 系
 
 # ---------------------------------------------------------------- 除外ルール
@@ -125,12 +128,44 @@ COLOR_TOKENS = (
 )
 
 
+def load_api_sizes():
+    """fetch_api_sizes.py が保存した 品番 → 容量 の辞書。無ければ空。"""
+    if not os.path.exists(API_SIZES_PATH):
+        return {}
+    try:
+        return json.load(open(API_SIZES_PATH, encoding="utf-8")).get("byCjCode", {})
+    except (ValueError, OSError):
+        return {}
+
+
+API_SIZES = load_api_sizes()
+
+
 def cell(row, key):
     """CSVの値を取り出す。
     マスターでは改行が「\n」という2文字で入っているため、実際の改行に直す。
     （そのまま出すとサイト上に \n の文字が見えてしまう）"""
     value = (row.get(key) or "").replace("\\n", "\n").replace("\\r", "")
     return value.strip()
+
+
+def api_capacity(cj_code):
+    """APIの容量表記。左右セットは「23-32L/23-32L」なので片側だけを返し、
+    合計値（合計：46-64L）は capacityTotal 側に持たせる。"""
+    info = API_SIZES.get(cj_code) or {}
+    main = info.get("sizeMain") or []
+    if not main:
+        return ""
+    first = str(main[0]).split("/")[0].strip()
+    return first
+
+
+def api_capacity_full(cj_code):
+    """APIの容量表記（そのまま）。左右セットは「23-32L/23-32L 合計：46-64L」の形。"""
+    info = API_SIZES.get(cj_code) or {}
+    main = "/".join(str(x) for x in (info.get("sizeMain") or []))
+    sub = info.get("sizeSub") or ""
+    return (main + ("　" + sub if sub else "")).strip()
 
 
 def color_label(row):
@@ -327,7 +362,12 @@ def base_item(row):
         ("msrpTaxIn", to_int(cell(row, "希望小売価格(税込)"))),
         ("makerCode", cell(row, "メーカー品番")),
         ("jan", cell(row, "JANコード")),
-        ("capacity", cell(row, "容量")),
+        # 見出し用＝APIの1個ぶん（左右セットは片側）。無ければマスターの容量欄
+        ("capacity", api_capacity(cell(row, "品番")) or cell(row, "容量")),
+        # スペック表用＝マスターの記載（左右合計などの内訳を含む）。無ければAPIの表記
+        ("capacitySpec", cell(row, "容量") or api_capacity_full(cell(row, "品番"))),
+        ("capacityPerUnit", (API_SIZES.get(cell(row, "品番")) or {}).get("sizeMain") or []),
+        ("capacityTotal", (API_SIZES.get(cell(row, "品番")) or {}).get("sizeSub") or ""),
         ("weight", cell(row, "質量")),
         ("material", cell(row, "材質")),
         ("dimensions", cell(row, "商品サイズ")),
