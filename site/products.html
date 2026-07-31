@@ -21,6 +21,15 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
 .filter-lb{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45);}
 .cap-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:44px;line-height:1;letter-spacing:.02em;color:#E31E24;}
 .cap-num small{font-size:22px;letter-spacing:.04em;}
+/* 一覧カード：型番と容量を同じ行に置き、商品名は次の行で全幅を使う
+   （商品名が2行になっても容量がズレないようにするため） */
+.pcard-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.pcard-head .cap-num{font-size:34px;white-space:nowrap;}
+.pcard-head .cap-num small{font-size:18px;}
+/* 「23-32L」のような可変容量は桁が多いので一段小さく */
+.pcard-head .cap-num.cap-long{font-size:25px;letter-spacing:.01em;}
+.pcard-head .cap-num.cap-long small{font-size:15px;}
+.pcard-jp{min-height:2.5em;}
 
 .cat-tile{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:.18s;}
 .cat-img{width:84px;height:64px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid transparent;transition:.18s;}
@@ -195,19 +204,24 @@ var SERIES_JP={"TERRA":"Terra","EXPANDABLE":"Expandable","TOP CASE":"Top Case","
 
 function card(p){
   var cap='';
-  if(p.cap==='EXP'){ cap='<span class="cap-num" style="font-size:26px;letter-spacing:.06em;">EXPANDABLE</span>'; }
-  else if(p.cap){ var m=p.cap.match(/^([\d-]+)(L)$/); cap=m?'<span class="cap-num">'+m[1]+'<small>'+m[2]+'</small></span>':'<span class="cap-num">'+p.cap+'</span>'; }
+  if(p.cap){
+    var m=p.cap.match(/^([\d-]+)(L)$/);
+    /* 「23-32」のように4文字以上は cap-long で一段小さく表示 */
+    var long_=m&&m[1].length>=4?' cap-long':'';
+    cap=m?'<span class="cap-num'+long_+'">'+m[1]+'<small>'+m[2]+'</small></span>'
+         :'<span class="cap-num cap-long">'+p.cap+'</span>';
+  }
   var colors=p.colors>1?'<span class="text-[12px] text-neutral-400">'+p.colors+'色</span>':'';
   return '<a href="product-'+p.code.toLowerCase()+'" class="pcard group bg-white rounded-[14px] overflow-hidden border border-black/10 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,.10)]" data-series="'+p.series+'">'
     +'<div class="relative aspect-square bg-white overflow-hidden flex items-center justify-center p-3">'
     +'<span class="badge">'+SERIES_JP[p.series]+'</span>'+(p.status?'<span class="new-badge" style="background:#6b6b6b">'+p.status+'</span>':(p.new?'<span class="new-badge">New</span>':''))
     +'<img src="'+p.img+'" alt="'+p.code+' '+p.jp+'" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.04]"></div>'
     +'<div class="px-5 pt-4 pb-5">'
-    +'<div class="flex items-end justify-between gap-2">'
-    +'<div><h3 class="font-disp font-semibold text-[24px] tracking-[.05em] uppercase leading-none">'+(p.label||p.code)+'</h3>'
-    +'<p class="text-[12.5px] text-neutral-500 mt-1.5">'+p.jp+'　'+colors+'</p></div>'
-    +(cap?'<div class="text-right shrink-0">'+cap+'</div>':'')
+    +'<div class="pcard-head">'
+    +'<h3 class="font-disp font-semibold text-[24px] tracking-[.05em] uppercase leading-none">'+(p.label||p.code)+'</h3>'
+    +(cap||'')
     +'</div>'
+    +'<p class="pcard-jp text-[12.5px] text-neutral-500 mt-1.5 leading-[1.45]">'+p.jp+(colors?'　'+colors:'')+'</p>'
     +'<p class="text-[13.5px] font-medium mt-3 leading-relaxed">'+p.copy+'</p>'
     +featRow(p)
     +'<span class="inline-flex items-center gap-1.5 mt-3 text-[13px] text-neutral-500 group-hover:text-shad transition">詳しく見る <i class="ti ti-arrow-right"></i></span>'
