@@ -125,8 +125,10 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
 </header>
 
 <main class="bg-mist py-14">
-  <!-- ===== 機能訴求バナー（バナーゾーン上部）===== -->
-  <div class="max-w-site mx-auto px-7 mb-10">
+  <!-- ===== 機能訴求バナー =====
+       PCはグリッドの上／スマホは一番上に来ないよう、他のバナーと同じ位置（グリッド内）へ移動 -->
+  <div id="kfHost" class="max-w-site mx-auto px-7">
+   <div id="kfBanner" class="mb-10">
     <a href="engineered-for-riding" class="kfbanner group">
       <span class="kfbanner-txt">
         <span class="font-disp font-semibold text-[11.5px] tracking-[.26em] uppercase text-shad flex items-center gap-2.5"><span class="inline-block w-[22px] h-[2px] bg-shad"></span>Smart Lock</span>
@@ -139,6 +141,7 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
                autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       </span>
     </a>
+   </div>
   </div>
 
   <div class="max-w-site mx-auto px-7">
@@ -239,7 +242,37 @@ function capNum(p){ if(!p.cap) return null; var m=String(p.cap).match(/\d+/); re
 function inCap(p,cap){ if(cap==='ALL') return true; var n=capNum(p); if(n==null) return false; var a=cap.split('-'); return n>=+a[0]&&n<=+a[1]; }
 
 var state={cat:'ALL',cap:'ALL'};
+/* グリッドの実際の列数（レスポンシブで 1/2/4/5 に変わる）*/
+function colCount(){
+  var t=getComputedStyle(grid).gridTemplateColumns||'';
+  var n=t.split(' ').filter(function(x){return x&&x!=='0px';}).length;
+  return n||1;
+}
+/* 目安の位置を、列数の倍数（行の切れ目）に丸める */
+function snapToRow(target,cols){
+  if(cols<=1) return target;
+  return Math.max(cols, Math.round(target/cols)*cols);
+}
+var lastCols=0;
+/* 機能訴求バナーの置き場所：
+   PC（複数カラム）はグリッドの上、スマホ（1カラム）は商品3件のあとに差し込む。
+   ノードを移動させるだけなので、動画が二重に読み込まれることはない。 */
+function placeKeyless(cols){
+  var kf=document.getElementById('kfBanner'), host=document.getElementById('kfHost');
+  if(!kf||!host) return;
+  if(cols<=1){
+    var at=grid.children[3]||null;
+    kf.classList.add('col-span-full'); kf.classList.remove('mb-10');
+    grid.insertBefore(kf, at);
+  }else{
+    kf.classList.remove('col-span-full'); kf.classList.add('mb-10');
+    host.appendChild(kf);
+  }
+}
 function render(){
+  /* グリッドを作り替える前に、バナーを元の場所へ退避 */
+  var kfEl=document.getElementById('kfBanner'), kfHost=document.getElementById('kfHost');
+  if(kfEl&&kfHost&&kfEl.parentNode!==kfHost) kfHost.appendChild(kfEl);
   var countEl=document.getElementById('count');
   if(state.cat==='FITTING'){
     grid.innerHTML='<div class="col-span-full bg-white border border-black/10 rounded-[14px] p-8 md:p-10 text-center">'
@@ -256,13 +289,19 @@ function render(){
   });
   var cells=list.map(card);
   if(state.cat==='ALL' && state.cap==='ALL'){
-    if(cells.length>6) cells.splice(6,0,BAN_VIDEO);
-    if(cells.length>19) cells.splice(19,0,BAN_IMG); else cells.push(BAN_IMG);
+    /* バナーは全幅なので、行の途中に入ると手前に空きができる。
+       実際の列数に合わせて「行の切れ目」に丸めてから挿入する。 */
+    var cols=colCount();
+    var pos2=snapToRow(19,cols), pos1=snapToRow(6,cols);
+    if(cells.length>pos2) cells.splice(pos2,0,BAN_IMG); else cells.push(BAN_IMG);
+    if(cells.length>pos1) cells.splice(pos1,0,BAN_VIDEO); else cells.push(BAN_VIDEO);
   }
   grid.innerHTML=cells.length?cells.join(''):'<p class="col-span-full text-center text-neutral-500 py-12">該当する商品がありません。</p>';
   var bv=grid.querySelector('.pbanner video');
   if(bv){ if('IntersectionObserver' in window){ new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?e.target.play().catch(function(){}):e.target.pause();});},{threshold:.25}).observe(bv);} else bv.play().catch(function(){}); }
   countEl.textContent=list.length+' モデル';
+  lastCols=colCount();
+  placeKeyless(lastCols);
   if(window.gsap&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     gsap.fromTo('#grid .pcard',{y:24,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out',stagger:.05});
   }
@@ -290,6 +329,15 @@ bindChips('capChips','cap');
 render();
 </script>
 <script src="js/fitment.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/nav.js">
+/* 列数が変わったときだけ再描画（バナーが行の途中に入らないようにする）*/
+var colTimer=null;
+function watchCols(){
+  clearTimeout(colTimer);
+  colTimer=setTimeout(function(){ if(colCount()!==lastCols) render(); },140);
+}
+if('ResizeObserver' in window){ new ResizeObserver(watchCols).observe(grid); }
+window.addEventListener('resize',watchCols);
+</script>
 </body>
 </html>

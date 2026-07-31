@@ -129,8 +129,14 @@ def material_short(material):
 
 
 def helmet_count(text):
-    m = re.search(r"(ジェット|フルフェイス|ヘルメット)[^\n。]{0,12}?([12])\s*個", str(text or ""))
-    return "×" + m.group(2) if m else ""
+    t = str(text or "")
+    m = re.search(r"(ジェット|フルフェイス|ヘルメット)[^\n。]{0,12}?([12])\s*個", t)
+    if m:
+        return "×" + m.group(2)
+    # 「片側のみでフルフェイスが収まる」のように個数表記がない場合は1個として扱う
+    if re.search(r"(フルフェイス|ジェット)[^\n。]{0,16}?(収納可能|収まる|収納できる)", t):
+        return "×1"
+    return ""
 
 
 def max_load(spec):
@@ -138,10 +144,87 @@ def max_load(spec):
     return m.group(1) + "kg" if m else ""
 
 
-def feat_cell(icon, label, value=""):
-    return ('<div class="feat-cell"><span class="feat-ic"><i class="ti ti-' + icon
-            + '" aria-hidden="true"></i></span><span class="feat-tx"><b>' + esc(label) + "</b>"
+HELMET_SVG = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"'
+              ' stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em">'
+              '<path d="M3.5 14a8.5 8.5 0 0 1 17 0"/>'
+              '<path d="M3.5 14h17v1.5a1.5 1.5 0 0 1-1.5 1.5h-3.2l-.9 2.4a1 1 0 0 1-.94.6H10a1 1 0 0'
+              ' 1-.94-.6L8.2 17H5a1.5 1.5 0 0 1-1.5-1.5z"/></svg>')
+
+
+def feat_cell(icon, label, value="", oimg=""):
+    """既存ページと同じ特徴セル。
+    icon='helmet' はカスタムSVG、oimg があれば公式ピクトグラムを使う。"""
+    if oimg:
+        mark = '<img src="%s" alt="" class="feat-oimg" loading="lazy">' % esc(oimg)
+    elif icon == "helmet":
+        mark = HELMET_SVG
+    else:
+        mark = '<i class="ti ti-%s" aria-hidden="true"></i>' % icon
+    return ('<div class="feat-cell"><span class="feat-ic">' + mark + "</span>"
+            + '<span class="feat-tx"><b>' + esc(label) + "</b>"
             + ("<span>" + esc(value) + "</span>" if value else "") + "</span></div>")
+
+
+def _pict(name):
+    """site/img/feat/ にピクトグラムがあればパスを返す。"""
+    rel = "img/feat/%s.webp" % name
+    return rel if os.path.exists(os.path.join(SITE, rel)) else ""
+
+
+def water_grade(text):
+    m = re.search(r"(IPX?\d)", str(text or ""))
+    return m.group(1) if m else ""
+
+
+def feature_cells(entry, variant, cap, series):
+    """既存ページと同じ並び・粒度で特徴アイコンを組む（最大4つ）。
+    値スロットに入れるのは 41L / ×2 / 5kg のような短い値だけ。"""
+    v, cells = variant, []
+    blob = " ".join(str(v.get(k) or "") for k in ("descSub", "catch", "spec", "material", "name"))
+
+    if cap:
+        cells.append(feat_cell("box", "容量", cap + "L"))
+
+    hc = helmet_count(blob)
+    if hc:
+        cells.append(feat_cell("helmet", "ヘルメット", hc, _pict("2CI" if hc == "×2" else "1CI")))
+
+    ml = max_load(v.get("spec"))
+    if ml:
+        cells.append(feat_cell("weight", "耐荷重", ml, _pict("MaxLoad" + ml.replace("kg", ""))))
+
+    if "防水" in blob or "ウォータープルーフ" in blob:
+        cells.append(feat_cell("droplet", "防水", water_grade(blob)))
+
+    if "クリックシステム" in series or "クリックシステム" in blob:
+        cells.append(feat_cell("click", "クリックシステム", "", _pict("CS")))
+
+    if "ステンレス" in (v.get("material") or ""):
+        cells.append(feat_cell("lock", "ステンレスロック"))
+    elif "キーロック" in blob or "施錠" in blob:
+        cells.append(feat_cell("lock", "キーロック"))
+
+    mat = material_short(v.get("material"))
+    if mat:
+        cells.append(feat_cell("shield", mat))
+
+    if "3P" in blob or "4P" in blob:
+        cells.append(feat_cell("tool", "3P/4Pマウント", "", _pict("3P")))
+
+    if len(cells) < 3 and v.get("weight"):
+        w = re.sub(r"^本体[：:]\s*", "", str(v["weight"])).split("\n")[0]
+        w = re.sub(r"(\d)\.(?=kg)", r"\1", w.replace("..", "."))
+        cells.append(feat_cell("weight", "質量", w))
+
+    # 同じラベルが重複しないように整えて4つまで
+    out, seen = [], set()
+    for c in cells:
+        key = re.search(r"<b>(.*?)</b>", c).group(1)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(c)
+    return out[:4]
 
 
 def spec_row(th, td):
@@ -170,8 +253,9 @@ def _kick_for(text):
 
 
 def appeal_section(variant, imgs, catch):
-    """マスターの商品説明サブ＋商品写真から、LP的な訴求セクションを組み立てる。
-    文章はマスターの記載そのまま（独自コピーは足さない）。"""
+    """既存ページと同じ「大きな写真＋文章」の交互ブロックで訴求セクションを作る。
+    文章はマスターの記載のまま（独自コピーは足さない）。
+    説明が短い商品は写真を多めに使って、見た目のボリュームを揃える。"""
     raw = str(variant.get("descSub") or "")
     bullets = []
     for part in re.split(r"\n+", raw):
@@ -180,27 +264,62 @@ def appeal_section(variant, imgs, catch):
         if len(t) < 8:
             continue
         bullets.append(t)
-    photos = imgs[1:4] if len(imgs) > 1 else imgs[:1]
-    if not bullets and not photos:
+    if not imgs and not bullets:
         return ""
 
-    photo_html = ""
-    if photos:
-        photo_html = ('<div class="grid grid-cols-2 md:grid-cols-3 gap-3.5 md:gap-5 mt-8">'
-                      + "".join('<div class="lp-shot"><img src="%s" alt="" loading="lazy"></div>' % esc(p)
-                                for p in photos) + "</div>")
+    # 1枚目は商品単体カットなので、訴求ブロックには2枚目以降を優先して使う
+    pool = (imgs[1:] + imgs[:1]) if len(imgs) > 1 else list(imgs)
+    blocks, used = [], 0
+
+    def block(kick, head, body, img, rev):
+        return ('<div class="lp-block%s">' % (" lp-rev" if rev else "")
+                + ('<div class="lp-block-img"><img src="%s" alt="%s" loading="lazy"></div>'
+                   % (esc(img), esc(head)) if img else "")
+                + '<div class="lp-block-tx"><span class="lp-block-kick">%s</span>' % esc(kick)
+                + '<h3 class="lp-block-h">%s</h3>' % esc(head)
+                + ('<p class="lp-block-p">%s</p>' % esc(body) if body else "")
+                + "</div></div>")
+
+    # ① 先頭ブロック：キャッチコピーを見出しに、最初の説明を本文に
+    lead_body = bullets[0] if bullets else ""
+    if catch:
+        blocks.append(block("Highlights", catch, lead_body, pool[0] if pool else "", False))
+        used = 1
+        rest = bullets[1:]
+    else:
+        rest = bullets
+
+    # ② 以降のブロック：説明ごとに写真を交互配置（先頭の一文を見出しに）
+    for i, text in enumerate(rest[:3]):
+        head = re.split(r"(?<=。)", text)[0].rstrip("。").strip()
+        body = text[len(head) + 1:].strip() if len(text) > len(head) + 1 else ""
+        if len(head) > 40:                      # 長い一文は見出しにせず本文に回す
+            head, body = re.split(r"(?<=、)", head)[0].rstrip("、"), text
+        img = pool[used % len(pool)] if pool else ""
+        used += 1
+        blocks.append(block(_kick_for(text), head, body, img, (len(blocks) % 2) == 1))
+
+    # ③ 残りの写真はギャラリーとして並べる（説明が短い商品ほどここが効く）
+    strip = ""
+    left = [p for p in pool[used:] if p][:4]
+    if len(left) >= 2:
+        cols = "grid-cols-2 md:grid-cols-%d" % min(4, len(left))
+        strip = ('<div class="grid %s gap-3.5 md:gap-5 pt-2">' % cols
+                 + "".join('<div class="lp-shot"><img src="%s" alt="" loading="lazy"></div>' % esc(p)
+                           for p in left) + "</div>")
+
+    # ④ ブロックに使いきれなかった説明は箇条書きで補足
+    extra = rest[3:]
     list_html = ""
-    if bullets:
-        list_html = ('<ul class="grid md:grid-cols-2 gap-x-10 gap-y-3.5 mt-9">'
-                     + "".join('<li class="flex gap-2.5"><i class="ti ti-circle-check text-shad text-[18px] '
-                               'shrink-0 mt-[3px]" aria-hidden="true"></i>'
-                               '<span class="text-[14.5px] leading-[1.95] text-neutral-700">%s</span></li>' % esc(b)
-                               for b in bullets[:6]) + "</ul>")
-    lead = ('<h2 class="text-[clamp(21px,2.9vw,30px)] font-bold leading-[1.55] mt-2 max-w-[840px]">%s</h2>'
-            % esc(catch)) if catch else ""
+    if extra:
+        list_html = ('<ul class="grid md:grid-cols-2 gap-x-10 gap-y-3.5 pt-9">'
+                     + "".join('<li class="flex gap-2.5"><i class="ti ti-circle-check text-shad '
+                               'text-[18px] shrink-0 mt-[3px]" aria-hidden="true"></i>'
+                               '<span class="text-[14.5px] leading-[1.95] text-neutral-700">%s</span></li>'
+                               % esc(b) for b in extra[:4]) + "</ul>")
+
     return ('<section class="lp-story"><div class="max-w-site mx-auto px-7">'
-            '<p class="lp-block-kick">Highlights</p>' + lead + photo_html + list_html
-            + "</div></section>")
+            + "".join(blocks) + strip + list_html + "</div></section>")
 
 
 def load_template():
@@ -292,26 +411,8 @@ def main():
             % (" on" if i == 0 else "", esc(s), esc(s)) for i, s in enumerate(imgs)
         )
 
-        cells = []
-        if cap:
-            cells.append(feat_cell("box", "容量", cap + "L"))
-        hc = helmet_count(descsub)
-        if hc:
-            cells.append(feat_cell("motorbike", "ヘルメット", hc))
-        mat = material_short(v.get("material"))
-        if mat:
-            cells.append(feat_cell("shield", "素材", mat))
-        ml = max_load(v.get("spec"))
-        if ml:
-            cells.append(feat_cell("arrow-down-circle", "最大耐荷重", ml))
-        if "クリックシステム" in series and len(cells) < 4:
-            cells.append(feat_cell("click", "クリックシステム"))
-        if "ステンレス" in (v.get("material") or "") and len(cells) < 4:
-            cells.append(feat_cell("lock", "ステンレスロック"))
-        if v.get("weight") and len(cells) < 4:
-            cells.append(feat_cell("weight", "質量",
-                                   re.sub(r"^本体[：:]\s*", "", v["weight"]).split("\n")[0]))
-        feat_grid = ('<div class="feat-grid">' + "".join(cells[:4]) + "</div>") if cells else ""
+        cells = feature_cells(entry, v, cap, series)
+        feat_grid = ('<div class="feat-grid">' + "".join(cells) + "</div>") if cells else ""
 
         rows = []
         for th, key in (("容量", "capacity"), ("質量", "weight"), ("材質", "material"),
