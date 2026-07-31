@@ -50,6 +50,19 @@ EXCLUDE_DISCONTINUED = True   # CJ廃番 = 1 を除外
 EXCLUDE_SETS = True           # セット = 1 を除外
 EXCLUDE_INTERNAL_PREFIX = ("YY", "ZZ")  # 社内用品番の接頭辞
 
+# ★ サイト側だけで廃番扱いにする品番（マスターのCJ廃番がまだ立っていないもの）
+#    キー＝品番、値＝理由（メモとしてビルド時に表示されます）
+#    マスター側で CJ廃番=1 になったら、この行は消してかまいません。
+EXCLUDE_CJCODES = {
+    # X-FRAME スマートフォンホルダー：現行世代が確定するまで一旦非表示（2026-07-31）
+    # メーカー品番が X0SG00 / X0SG71 / X0SG76 の3世代あり、どれが現行か未確定。
+    "27362327": "スマホホルダー ミラークランプ式 X0SG00M（世代確認中）",
+    "27362334": "スマホホルダー ハンドルバークランプ式 X0SG00H（世代確認中）",
+    "27666128": "スマホホルダー ミラークランプ式 X0SG71M（世代確認中）",
+    "27666111": "スマホホルダー ハンドルバークランプ式 X0SG71H（世代確認中）",
+    "27798737": "スマホホルダー ハンドルバークランプ式 X0SG76H（世代確認中）",
+}
+
 # ---------------------------------------------------------------- 分類ルール
 # フィッティングキットと判定する「メインシリーズ」
 FITTING_SERIES = (
@@ -89,7 +102,7 @@ SITE_CODES = [
     "SH59X", "SH45", "SH40CG", "SH40", "SH39", "SH36", "SH35", "SH29", "SH26",
     "TR15CL", "TR08", "SL58", "SR38", "SC25", "IB20",
     "E09CL", "E09CM", "E09C", "E03CL", "E03C", "E02C", "E04",
-    "XFRAME",
+    # "XFRAME",  ← 一旦非表示中（EXCLUDE_CJCODES 参照）。戻すときはこの行を有効化
 ]
 # 長いコードから先に判定（SH58X が SH5 に誤マッチしないように）
 SITE_CODES_SORTED = sorted(SITE_CODES, key=len, reverse=True)
@@ -197,7 +210,8 @@ def dedupe_variant_labels(variants):
         for lab, same in seen.items():
             if len(same) > 1:
                 for v in same:
-                    v["color"] = lab + "（" + v["cjCode"] + "）"
+                    tag = v.get("makerCode") or v["cjCode"]
+                    v["color"] = lab + "（" + tag + "）"
 
 
 # アクセサリー名の末尾にある「対応ボックスの型番リスト」を落とすための判定
@@ -231,6 +245,8 @@ def is_excluded(row):
         return "セット商品"
     if cell(row, "品番").upper().startswith(EXCLUDE_INTERNAL_PREFIX):
         return "社内用品番(YY/ZZ)"
+    if cell(row, "品番") in EXCLUDE_CJCODES:
+        return "サイト側で廃番扱い"
     return None
 
 

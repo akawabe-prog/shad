@@ -1,16 +1,17 @@
 {
- "generatedAt": "2026-07-30T16:21:19+09:00",
+ "generatedAt": "2026-07-31T09:21:25+09:00",
  "source": "data-source/ItemList_SHAD.csv",
  "totalRows": 1824,
- "kept": 901,
+ "kept": 896,
  "excluded": {
+  "サイト側で廃番扱い": 5,
   "セット商品": 185,
   "廃盤(CJ廃番)": 736,
   "社内用品番(YY/ZZ)": 2
  },
  "counts": {
-  "products": 46,
-  "productVariants": 78,
+  "products": 45,
+  "productVariants": 73,
   "fitting": 674,
   "accessories": 114,
   "others": 35,

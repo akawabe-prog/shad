@@ -161,8 +161,6 @@ RewriteCond %{THE_REQUEST} \s/+product-tr08\.html(?:[\s?]|$) [NC]
 RewriteRule ^product-tr08\.html/?$ /product-tr08 [R=301,L,NC]
 RewriteCond %{THE_REQUEST} \s/+product-tr15cl\.html(?:[\s?]|$) [NC]
 RewriteRule ^product-tr15cl\.html/?$ /product-tr15cl [R=301,L,NC]
-RewriteCond %{THE_REQUEST} \s/+product-xframe\.html(?:[\s?]|$) [NC]
-RewriteRule ^product-xframe\.html/?$ /product-xframe [R=301,L,NC]
 
 RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.html [L,QSA]
 
