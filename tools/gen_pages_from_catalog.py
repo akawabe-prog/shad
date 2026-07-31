@@ -57,6 +57,8 @@ DISPLAY_CODE = {"XFRAME": "X-FRAME", "SH40CG": "SH40 CARGO"}
 CAP_OVERRIDES = {
     "SH45": "45",       # 商品説明サブ「実用性重視の超絶大容量45Lモデル」
     "SH59X": "46-58",   # 商品サイズ「46L/52L/58L(本体外寸)」の3段階
+    "SH35": "35",       # 型番＝容量の命名規則（SH23=23L / SH36=36L と一致）。SH36より奥行30mm浅い
+    "SH38X": "38",      # 拡張時・片側。説明「収縮時は40%収縮しSH23(23L)と同等」＝23÷0.6≒38L
 }
 
 JP_OVERRIDES = {
@@ -108,11 +110,13 @@ def jp_subtitle(code, name):
 
 
 def capacity_of(entry, variant):
+    """容量の取得順：手当て → 容量欄 → 仕様欄（「36L(片側)」等）→ 商品名。"""
     code = entry.get("code") or ""
     if code in CAP_OVERRIDES:
         return CAP_OVERRIDES[code]
-    for src in (variant.get("capacity"), variant.get("name"), entry.get("name")):
-        m = re.search(r"(\d+(?:[-–]\d+)?)\s*L", str(src or ""))
+    for src in (variant.get("capacity"), variant.get("spec"),
+                variant.get("name"), entry.get("name")):
+        m = re.search(r"(\d+(?:[-–]\d+)?)\s*L(?![a-zA-Z])", str(src or ""))
         if m:
             return m.group(1)
     return ""
