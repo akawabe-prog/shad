@@ -21,7 +21,7 @@ tailwind.config = {
   } },
 };
 </script>
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <style>
 .mv-hero{position:relative;background:#000;color:#fff;aspect-ratio:21/9;min-height:48vh;display:flex;align-items:flex-end;overflow:hidden;cursor:pointer;}
 .mv-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.7s;}
@@ -42,13 +42,13 @@ tailwind.config = {
 <!-- ===== NAV ===== -->
 <nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
   <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
-    <a href="/" class="shrink-0"><img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
+    <a href="/" class="shrink-0"><img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
     <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
-      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/products">Products</a></li>
       <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
-      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
-      <li><a class="hover:text-white transition" href="about">Brand</a></li>
-      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+      <li><a class="hover:text-white transition" href="/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
       <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
@@ -58,12 +58,12 @@ tailwind.config = {
   </div>
 </nav>
 <div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
-    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
     <a href="/#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
-    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
-    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
-    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
-    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+    <a href="/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
 </div>
 
 
@@ -76,8 +76,8 @@ tailwind.config = {
   </div>
 
   <!-- ⓪ ヒーロー（ワンカラム動画）-->
-  <button type="button" class="mv-hero block w-full" data-video="media/hero_brand.mp4" data-poster="img/hero_poster.webp">
-    <img src="img/hero_poster.webp" alt="">
+  <button type="button" class="mv-hero block w-full" data-video="/media/hero_brand.mp4" data-poster="/img/hero_poster.webp">
+    <img src="/img/hero_poster.webp" alt="">
     <span class="mv-hero-shade"></span>
     <span class="play-circle w-[78px] h-[78px] text-[30px]"><i class="ti ti-player-play ml-1.5"></i></span>
     <span class="absolute left-0 right-0 bottom-0 z-[2]"><span class="block max-w-site mx-auto px-7 pb-9 md:pb-12">
@@ -90,12 +90,12 @@ tailwind.config = {
   <!-- ① 横型ムービー（2カラム）-->
   <div class="max-w-site mx-auto px-7 mt-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <button type="button" class="mv-card sfilm group relative aspect-video rounded-[12px] overflow-hidden" data-video="media/banner_expandable.mp4" data-poster="img/story_sh38x.webp">
-        <img src="img/story_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]"><span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span><span class="play-circle w-14 h-14 text-[20px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card sfilm group relative aspect-video rounded-[12px] overflow-hidden" data-video="/media/banner_expandable.mp4" data-poster="/img/story_sh38x.webp">
+        <img src="/img/story_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]"><span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span><span class="play-circle w-14 h-14 text-[20px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-5 right-5 bottom-4 z-[2]"><span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Technology</span><span class="block font-disp font-semibold text-[20px] tracking-[.06em] uppercase mt-1.5">SH38X Expandable</span><span class="block text-white/55 text-[11px]">容量が変わる仕組み — 01:32</span></span>
       </button>
-      <button type="button" class="mv-card sfilm group relative aspect-video rounded-[12px] overflow-hidden" data-video="media/products/sh38x/hero.mp4" data-poster="img/prod_sh38x.webp">
-        <img src="img/prod_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]"><span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span><span class="play-circle w-14 h-14 text-[20px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card sfilm group relative aspect-video rounded-[12px] overflow-hidden" data-video="/media/products/sh38x/hero.mp4" data-poster="/img/prod_sh38x.webp">
+        <img src="/img/prod_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]"><span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span><span class="play-circle w-14 h-14 text-[20px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-5 right-5 bottom-4 z-[2]"><span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Product</span><span class="block font-disp font-semibold text-[20px] tracking-[.06em] uppercase mt-1.5">SH38X Detail</span><span class="block text-white/55 text-[11px]">ディテール — 00:40</span></span>
       </button>
     </div>
@@ -104,40 +104,40 @@ tailwind.config = {
   <!-- ② 縦型ムービー（横スクロール）-->
   <div class="max-w-site mx-auto px-7 mt-8">
     <div class="mv-hscroll flex gap-4 overflow-x-auto pb-4 -mx-7 px-7 snap-x snap-mandatory">
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/reel_tr41.mp4">
-        <video src="media/reel_tr41.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/reel_tr41.mp4">
+        <video src="/media/reel_tr41.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TERRA TR41</span><span class="block text-white/55 text-[10.5px]">On the Road</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/reel_r1300gs.mp4">
-        <video src="media/reel_r1300gs.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/reel_r1300gs.mp4">
+        <video src="/media/reel_r1300gs.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">R1300GS</span><span class="block text-white/55 text-[10.5px]">Adventure</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/reel_cb650r.mp4">
-        <video src="media/reel_cb650r.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/reel_cb650r.mp4">
+        <video src="/media/reel_cb650r.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">CB650R</span><span class="block text-white/55 text-[10.5px]">Street</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/reel_click.mp4">
-        <video src="media/reel_click.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/reel_click.mp4">
+        <video src="/media/reel_click.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">Click System</span><span class="block text-white/55 text-[10.5px]">ワンタッチ着脱</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/reel_tr30.mp4">
-        <video src="media/reel_tr30.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/reel_tr30.mp4">
+        <video src="/media/reel_tr30.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TR30</span><span class="block text-white/55 text-[10.5px]">防水サイドバッグ</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/hero_brand_v.mp4">
-        <video src="media/hero_brand_v.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/hero_brand_v.mp4">
+        <video src="/media/hero_brand_v.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">Brand</span><span class="block text-white/55 text-[10.5px]">Engineered for Riding</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/products/sh38x/reel1.mp4">
-        <video src="media/products/sh38x/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/products/sh38x/reel1.mp4">
+        <video src="/media/products/sh38x/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">SH38X</span><span class="block text-white/55 text-[10.5px]">Expandable Reel</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/products/tr41/reel1.mp4">
-        <video src="media/products/tr41/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/products/tr41/reel1.mp4">
+        <video src="/media/products/tr41/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TR41</span><span class="block text-white/55 text-[10.5px]">TERRA Reel</span></span>
       </button>
-      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="media/products/tr30/reel1.mp4">
-        <video src="media/products/tr30/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/media/products/tr30/reel1.mp4">
+        <video src="/media/products/tr30/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
         <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TR30</span><span class="block text-white/55 text-[10.5px]">Waterproof Reel</span></span>
       </button>
     </div>
@@ -147,24 +147,24 @@ tailwind.config = {
 <!-- ===== FOOTER（共通・省略時は実装で挿入）===== -->
 <footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
   <div class="max-w-site mx-auto px-7">
-    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
     <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/products" class="hover:text-white transition">TERRA</a></li><li><a href="/products" class="hover:text-white transition">トップケース</a></li><li><a href="/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/products" class="hover:text-white transition">バッグ</a></li><li><a href="/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/about" class="hover:text-white transition">About</a></li><li><a href="/about" class="hover:text-white transition">OEM</a></li><li><a href="/awards" class="hover:text-white transition">Awards</a></li><li><a href="/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/movies" class="hover:text-white transition">Movies</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
       </div>
     </div>
     <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
@@ -173,7 +173,7 @@ tailwind.config = {
         <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
         <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
       </span>
-      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/company" class="hover:text-white transition">会社情報</a><a href="/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/terms" class="hover:text-white transition">利用規約</a></span>
       <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
     </div>
   </div>
@@ -181,7 +181,7 @@ tailwind.config = {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/nav.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/nav.js"></script>
 </body>
 </html>

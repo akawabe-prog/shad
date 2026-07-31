@@ -26,7 +26,7 @@ tailwind.config = {
   },
 };
 </script>
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <style>
 .faq-chip{font-size:13.5px;font-weight:500;border:1px solid rgba(0,0,0,.18);border-radius:999px;padding:8px 16px;color:#333;transition:.15s;white-space:nowrap;}
 .faq-chip:hover{border-color:#E31E24;color:#E31E24;}
@@ -48,14 +48,14 @@ tailwind.config = {
 <nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
   <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
     <a href="/" class="shrink-0">
-      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+      <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
     </a>
     <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
-      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/products">Products</a></li>
       <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
-      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
-      <li><a class="hover:text-white transition" href="about">Brand</a></li>
-      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+      <li><a class="hover:text-white transition" href="/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
       <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
@@ -68,12 +68,12 @@ tailwind.config = {
   </div>
 </nav>
 <div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
-    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
     <a href="/#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
-    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
-    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
-    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
-    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+    <a href="/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
 </div>
 
 
@@ -113,7 +113,7 @@ tailwind.config = {
     </details>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>ケースの開け方・操作方法が分かりません。</summary>
-      <div class="faq-a">サイズ・モデルにより操作方法が異なります。各製品ページに操作動画・ユーザーガイドを掲載していますのでご確認ください。取り付け手順は<a href="install-guide">取付ガイド</a>もご覧いただけます。</div>
+      <div class="faq-a">サイズ・モデルにより操作方法が異なります。各製品ページに操作動画・ユーザーガイドを掲載していますのでご確認ください。取り付け手順は<a href="/install-guide">取付ガイド</a>もご覧いただけます。</div>
     </details>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>取扱説明書が見当たりません。</summary>
@@ -126,7 +126,7 @@ tailwind.config = {
     <h2 id="product" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-box text-shad"></i>製品について</h2>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>SHAD はどこの国のブランドですか？</summary>
-      <div class="faq-a">1973年にスペイン・バルセロナで誕生したブランドです。国内外の有名車両メーカーの純正（OEM）も受注生産しており、いまでは世界60ヶ国以上で愛用されています。詳しくは<a href="about">ブランドストーリー</a>をご覧ください。</div>
+      <div class="faq-a">1973年にスペイン・バルセロナで誕生したブランドです。国内外の有名車両メーカーの純正（OEM）も受注生産しており、いまでは世界60ヶ国以上で愛用されています。詳しくは<a href="/about">ブランドストーリー</a>をご覧ください。</div>
     </details>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>雨の日に使用しても大丈夫ですか？</summary>
@@ -151,7 +151,7 @@ tailwind.config = {
     <h2 id="buy" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-shopping-bag text-shad"></i>購入・お届け</h2>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>どこで購入できますか？</summary>
-      <div class="faq-a">オンラインは、日本総代理店カスタムジャパンの公式EC（moto.customjapan.net）でご購入いただけます。実物をご覧になりたい場合は<a href="store-locator?tab=display">お近くの店舗</a>、購入から取り付けまで一度に済ませたい場合は <a href="store-locator?tab=base">SHAD BASE</a> をご利用ください。</div>
+      <div class="faq-a">オンラインは、日本総代理店カスタムジャパンの公式EC（moto.customjapan.net）でご購入いただけます。実物をご覧になりたい場合は<a href="/store-locator?tab=display">お近くの店舗</a>、購入から取り付けまで一度に済ませたい場合は <a href="/store-locator?tab=base">SHAD BASE</a> をご利用ください。</div>
     </details>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>価格を知りたいです。</summary>
@@ -197,7 +197,7 @@ tailwind.config = {
     <h2 id="warranty" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-shield-check text-shad"></i>保証・修理</h2>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>保証はありますか？</summary>
-      <div class="faq-a">商品により内容の異なる保証サービスがあります。詳細は故障・不具合の内容とあわせてお問い合わせください。なお、ご購入時に同梱されている<b>色紙が製品の識別番号</b>となりますので、お問い合わせの際にご準備ください。詳しくは<a href="warranty">保証について</a>をご覧ください。</div>
+      <div class="faq-a">商品により内容の異なる保証サービスがあります。詳細は故障・不具合の内容とあわせてお問い合わせください。なお、ご購入時に同梱されている<b>色紙が製品の識別番号</b>となりますので、お問い合わせの際にご準備ください。詳しくは<a href="/warranty">保証について</a>をご覧ください。</div>
     </details>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>壊れたら修理できますか？</summary>
@@ -214,7 +214,7 @@ tailwind.config = {
     <h2 id="base" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2"><i class="ti ti-map-pin text-shad"></i>店舗・SHAD BASE</h2>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>実物を見たいのですが、どこで見られますか？</summary>
-      <div class="faq-a">SHAD BASE（体験拠点）やお近くの取扱店で展示しています。<a href="store-locator">店舗検索</a>から、地図・エリア・現在地で展示店・SHAD BASE を探せます。展示の有無は店舗により異なります。</div>
+      <div class="faq-a">SHAD BASE（体験拠点）やお近くの取扱店で展示しています。<a href="/store-locator">店舗検索</a>から、地図・エリア・現在地で展示店・SHAD BASE を探せます。展示の有無は店舗により異なります。</div>
     </details>
     <details class="faq-item">
       <summary class="faq-q"><span class="qmark">Q</span>SHAD BASE とは何ですか？</summary>
@@ -227,7 +227,7 @@ tailwind.config = {
     <h2 class="text-[20px] font-bold">解決しませんでしたか？</h2>
     <p class="text-[14px] text-neutral-600 mt-2">お近くの取扱店・SHAD BASE、またはカスタムジャパンのお問い合わせ窓口へお気軽にご相談ください。</p>
     <div class="flex flex-wrap gap-3 justify-center mt-6">
-      <a href="store-locator" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-map-pin"></i>店舗を探す</a>
+      <a href="/store-locator" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-map-pin"></i>店舗を探す</a>
       <a href="/#finder" class="btn border border-black/25 text-ink hover:bg-white"><i class="ti ti-motorbike"></i>適合を確認する</a>
     </div>
   </div>
@@ -236,24 +236,24 @@ tailwind.config = {
 <!-- ===== FOOTER ===== -->
 <footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
   <div class="max-w-site mx-auto px-7">
-    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
     <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/products" class="hover:text-white transition">TERRA</a></li><li><a href="/products" class="hover:text-white transition">トップケース</a></li><li><a href="/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/products" class="hover:text-white transition">バッグ</a></li><li><a href="/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/about" class="hover:text-white transition">About</a></li><li><a href="/about" class="hover:text-white transition">OEM</a></li><li><a href="/awards" class="hover:text-white transition">Awards</a></li><li><a href="/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/movies" class="hover:text-white transition">Movies</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
       </div>
     </div>
     <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
@@ -262,12 +262,12 @@ tailwind.config = {
         <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
         <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
       </span>
-      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/company" class="hover:text-white transition">会社情報</a><a href="/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/terms" class="hover:text-white transition">利用規約</a></span>
       <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
     </div>
   </div>
 </footer>
 
-<script src="js/nav.js"></script>
+<script src="/js/nav.js"></script>
 </body>
 </html>

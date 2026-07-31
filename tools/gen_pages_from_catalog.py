@@ -33,7 +33,8 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 CATALOG = os.path.join(SITE, "data", "catalog", "products.json")
-TEMPLATE = os.path.join(SITE, "product-tr55.html")
+TEMPLATE = os.path.join(SITE, "product", "tr55.html")
+PRODUCT_DIR = os.path.join(SITE, "product")
 IMG_HOST = "https://img.customjapan.net"
 FORCE = "--force" in sys.argv
 
@@ -387,9 +388,10 @@ def main():
     for code, e in products.items():
         by_series.setdefault(e.get("series") or "", []).append(code)
 
+    os.makedirs(PRODUCT_DIR, exist_ok=True)
     made, skipped = [], []
     for code, entry in products.items():
-        path = os.path.join(SITE, "product-%s.html" % code.lower())
+        path = os.path.join(PRODUCT_DIR, "%s.html" % code.lower())
         if os.path.exists(path):
             existing = open(path, encoding="utf-8").read()
             generated = "generated-by: tools/gen_pages_from_catalog.py" in existing
@@ -438,10 +440,10 @@ def main():
         same_cards = ""
         for c in [x for x in by_series.get(series, []) if x != code][:3]:
             e2 = products[c]
-            local = "img/products/%s.webp" % c.lower()
-            src = local if os.path.exists(os.path.join(SITE, local)) else (e2["variants"][0].get("thumb") or "")
+            local = "/img/products/%s.webp" % c.lower()
+            src = local if os.path.exists(os.path.join(SITE, local.lstrip("/"))) else (e2["variants"][0].get("thumb") or "")
             same_cards += (
-                '<a href="product-%s" class="pcard group bg-white rounded-[14px] overflow-hidden border border-black/10 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,.10)]">'
+                '<a href="/product/%s" class="pcard group bg-white rounded-[14px] overflow-hidden border border-black/10 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,.10)]">'
                 '<span class="block aspect-square overflow-hidden bg-white"><img src="%s" alt="%s" loading="lazy" class="w-full h-full object-cover transition duration-300 group-hover:scale-[1.04]"></span>'
                 '<span class="block px-5 py-4"><span class="font-disp font-semibold text-[20px] tracking-[.05em] uppercase">%s</span>'
                 '<span class="block text-[12.5px] text-neutral-500 mt-0.5">%s</span></span></a>'
@@ -479,7 +481,7 @@ def main():
 
     print("生成: %d ページ" % len(made))
     for c in made:
-        print("   product-%s.html" % c.lower())
+        print("   product/%s.html" % c.lower())
     print("既存のためスキップ: %d ページ" % len(skipped))
 
 

@@ -26,7 +26,7 @@ tailwind.config = {
   },
 };
 </script>
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <style>
 /* --- self-service deflection cards --- */
 .dfl{display:block;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:18px 18px 16px;transition:.18s;background:#fff;}
@@ -66,14 +66,14 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
 <nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
   <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
     <a href="/" class="shrink-0">
-      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+      <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
     </a>
     <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
-      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/products">Products</a></li>
       <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
-      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
-      <li><a class="hover:text-white transition" href="about">Brand</a></li>
-      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+      <li><a class="hover:text-white transition" href="/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
       <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
@@ -86,12 +86,12 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
   </div>
 </nav>
 <div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
-    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
     <a href="/#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
-    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
-    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
-    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
-    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+    <a href="/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
 </div>
 
 
@@ -129,19 +129,19 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
       <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">メーカー・車種・年式から、対応製品と専用キットを検索できます。</span>
       <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">あなたのバイクから探す<i class="ti ti-arrow-right"></i></span>
     </a>
-    <a href="faq#buy" class="dfl group">
+    <a href="/faq#buy" class="dfl group">
       <span class="ic"><i class="ti ti-shopping-bag"></i></span>
       <span class="block font-bold text-[15px] mt-3.5">購入・お届け・送料</span>
       <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">価格・支払方法・送料・納期・キャンセルについてのご質問。</span>
       <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">FAQを見る<i class="ti ti-arrow-right"></i></span>
     </a>
-    <a href="faq#return" class="dfl group">
+    <a href="/faq#return" class="dfl group">
       <span class="ic"><i class="ti ti-arrow-back-up"></i></span>
       <span class="block font-bold text-[15px] mt-3.5">返品・交換・不具合</span>
       <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">届いた商品の返品・交換や、破損・不具合があった場合の手順。</span>
       <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">FAQを見る<i class="ti ti-arrow-right"></i></span>
     </a>
-    <a href="store-locator" class="dfl group">
+    <a href="/store-locator" class="dfl group">
       <span class="ic"><i class="ti ti-map-pin"></i></span>
       <span class="block font-bold text-[15px] mt-3.5">実物を見たい・相談したい</span>
       <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">展示店・SHAD BASE で、実物の確認や取り付け相談ができます。</span>
@@ -151,7 +151,7 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
 
   <div class="mt-6 flex items-center gap-2 text-[13.5px] text-neutral-600">
     <i class="ti ti-help-circle text-shad text-[18px]"></i>
-    <span>そのほかのご質問は <a href="faq" class="text-shad font-bold underline underline-offset-2 hover:text-[#c4151b]">よくあるご質問（FAQ）一覧</a> をご覧ください。</span>
+    <span>そのほかのご質問は <a href="/faq" class="text-shad font-bold underline underline-offset-2 hover:text-[#c4151b]">よくあるご質問（FAQ）一覧</a> をご覧ください。</span>
   </div>
 </section>
 
@@ -250,7 +250,7 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
         <div class="field" data-field>
           <label class="chk">
             <input type="checkbox" id="agree" name="agree" required aria-describedby="agree-err">
-            <span><a href="privacy" class="text-shad underline underline-offset-2">プライバシーポリシー</a>に同意のうえ送信します。ご入力いただいた個人情報は、お問い合わせ対応の目的にのみ利用します。</span>
+            <span><a href="/privacy" class="text-shad underline underline-offset-2">プライバシーポリシー</a>に同意のうえ送信します。ご入力いただいた個人情報は、お問い合わせ対応の目的にのみ利用します。</span>
           </label>
           <p class="errmsg !ml-[31px]" id="agree-err"><i class="ti ti-alert-circle"></i>送信にはご同意が必要です。</p>
         </div>
@@ -284,10 +284,10 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
         <div class="aside-card">
           <h3 class="font-bold text-[15px] flex items-center gap-2"><i class="ti ti-message-2 text-shad text-[20px]"></i>その他の窓口</h3>
           <div class="mt-3 space-y-3 text-[13px]">
-            <a href="store-locator" class="flex items-start gap-2.5 text-neutral-700 hover:text-shad transition">
+            <a href="/store-locator" class="flex items-start gap-2.5 text-neutral-700 hover:text-shad transition">
               <i class="ti ti-map-pin text-[18px] mt-0.5"></i><span><b class="block">取扱店・SHAD BASE で相談</b><span class="text-neutral-500">実物確認・取り付け相談はこちら</span></span>
             </a>
-            <a href="faq" class="flex items-start gap-2.5 text-neutral-700 hover:text-shad transition">
+            <a href="/faq" class="flex items-start gap-2.5 text-neutral-700 hover:text-shad transition">
               <i class="ti ti-help-circle text-[18px] mt-0.5"></i><span><b class="block">よくあるご質問（FAQ）</b><span class="text-neutral-500">多くのご質問はこちらで解決します</span></span>
             </a>
           </div>
@@ -307,24 +307,24 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
 <!-- ===== FOOTER ===== -->
 <footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
   <div class="max-w-site mx-auto px-7">
-    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
     <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/products" class="hover:text-white transition">TERRA</a></li><li><a href="/products" class="hover:text-white transition">トップケース</a></li><li><a href="/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/products" class="hover:text-white transition">バッグ</a></li><li><a href="/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/about" class="hover:text-white transition">About</a></li><li><a href="/about" class="hover:text-white transition">OEM</a></li><li><a href="/awards" class="hover:text-white transition">Awards</a></li><li><a href="/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/movies" class="hover:text-white transition">Movies</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
       </div>
     </div>
     <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
@@ -333,7 +333,7 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
         <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
         <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
       </span>
-      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/company" class="hover:text-white transition">会社情報</a><a href="/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/terms" class="hover:text-white transition">利用規約</a></span>
       <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
     </div>
   </div>
@@ -346,10 +346,10 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
 
   /* --- 種別に応じた文脈ヘルプ（FAQ誘導で問い合わせ削減）--- */
   var CTX = {
-    product : '製品の仕様・使い方の多くは <a href="faq#product">製品についてのFAQ</a> で解決できます。',
-    fit     : 'まず <a href="/#finder">車種適合検索</a> で対応製品をご確認ください。取り付け手順は <a href="install-guide">取付ガイド</a> と <a href="faq#fit">適合・取り付けFAQ</a> をご覧ください。',
-    order   : '価格・支払方法・送料・納期・キャンセルは <a href="faq#buy">購入・お届けFAQ</a> に記載があります。ご注文後の変更はカスタムジャパンECのマイページからも行えます。',
-    warranty: '保証・不具合・補修部品については <a href="faq#warranty">保証・修理FAQ</a> と <a href="warranty">保証について</a> をご確認ください。お問い合わせ時は同梱の<b>色紙（識別番号）</b>をご準備ください。',
+    product : '製品の仕様・使い方の多くは <a href="/faq#product">製品についてのFAQ</a> で解決できます。',
+    fit     : 'まず <a href="/#finder">車種適合検索</a> で対応製品をご確認ください。取り付け手順は <a href="/install-guide">取付ガイド</a> と <a href="/faq#fit">適合・取り付けFAQ</a> をご覧ください。',
+    order   : '価格・支払方法・送料・納期・キャンセルは <a href="/faq#buy">購入・お届けFAQ</a> に記載があります。ご注文後の変更はカスタムジャパンECのマイページからも行えます。',
+    warranty: '保証・不具合・補修部品については <a href="/faq#warranty">保証・修理FAQ</a> と <a href="/warranty">保証について</a> をご確認ください。お問い合わせ時は同梱の<b>色紙（識別番号）</b>をご準備ください。',
     dealer  : '取扱店・SHAD BASE のお申し込みは、会社名・店舗名・ご担当者名を本文にご記入ください。担当者より折り返しご案内します。',
     press   : '取材・OEM・その他のご相談は、内容を本文に具体的にご記入ください。'
   };
@@ -414,6 +414,6 @@ select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
   });
 })();
 </script>
-<script src="js/nav.js"></script>
+<script src="/js/nav.js"></script>
 </body>
 </html>

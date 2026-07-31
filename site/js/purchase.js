@@ -29,13 +29,13 @@
     var el = document.querySelector("[data-product-fitment-checker]");
     var code = (el && el.dataset.productCode) || "";
     if (!code) {
-      var m = (location.pathname || "").match(/product-([a-z0-9]+)/i);
-      if (m) code = m[1];
+      var m = (location.pathname || "").match(/\/product\/([a-z0-9]+)|product-([a-z0-9]+)/i);
+      if (m) code = m[1] || m[2];
     }
     return code.toUpperCase();
   }
   function loadJSON(rel) {
-    return fetch(new URL(rel, location.href).href)
+    return fetch(new URL(rel, location.origin).href)
       .then(function (r) { return r.ok ? r.json() : null; })
       .catch(function () { return null; });
   }
@@ -170,10 +170,10 @@
     if (!code) return;
 
     Promise.all([
-      loadJSON("data/catalog/products.json"),
-      loadJSON("data/catalog/accessory_index.json"),
-      loadJSON("data/catalog/accessories.json"),
-      loadJSON("data/catalog/others.json"),
+      loadJSON("/data/catalog/products.json"),
+      loadJSON("/data/catalog/accessory_index.json"),
+      loadJSON("/data/catalog/accessories.json"),
+      loadJSON("/data/catalog/others.json"),
     ]).then(function (res) {
       var products = res[0] || {};
       var index = res[1] || {};

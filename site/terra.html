@@ -17,7 +17,7 @@ tailwind.config = { theme: { extend: {
   maxWidth: { site: '1180px' },
 } } };
 </script>
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <style>
 .lp-hero{position:relative;background:#000;color:#fff;min-height:66vh;display:flex;align-items:flex-end;overflow:hidden;}
 .lp-hero>img,.lp-hero>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82;}
@@ -31,13 +31,13 @@ tailwind.config = { theme: { extend: {
 <!-- ===== NAV ===== -->
 <nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
   <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
-    <a href="/" class="shrink-0"><img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
+    <a href="/" class="shrink-0"><img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
     <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
-      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/products">Products</a></li>
       <li><a class="hover:text-white transition" href="/#finder">For Your Motorcycle</a></li>
-      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
-      <li><a class="hover:text-white transition" href="about">Brand</a></li>
-      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+      <li><a class="hover:text-white transition" href="/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
       <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
@@ -47,17 +47,17 @@ tailwind.config = { theme: { extend: {
   </div>
 </nav>
 <div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
-    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
     <a href="/#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
-    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
-    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
-    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
-    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+    <a href="/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
 </div>
 
 
 <section class="lp-hero">
-  <img src="img/banner_terra.webp" alt="TERRA">
+  <img src="/img/banner_terra.webp" alt="TERRA">
   <span class="shade"></span>
   <div class="relative w-full px-6 md:px-12 pb-12 md:pb-16 [text-shadow:0_2px_20px_rgba(0,0,0,.5)]">
     <p class="font-disp font-semibold text-[13px] tracking-[.3em] uppercase text-shad flex items-center gap-3 mb-3"><span class="inline-block w-[30px] h-[2px] bg-shad"></span>TERRA Series</p>
@@ -79,9 +79,9 @@ tailwind.config = { theme: { extend: {
     <div class="flex items-end justify-between gap-4 flex-wrap mb-7">
       <div><p class="font-disp font-semibold text-[12px] tracking-[.28em] uppercase text-shad">Line-up</p>
       <h2 class="text-[28px] font-bold leading-tight mt-1">TERRA ラインナップ</h2></div>
-      <a href="products?cat=TERRA" class="font-disp text-[14px] tracking-[.14em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition">View All <i class="ti ti-arrow-right"></i></a>
+      <a href="/products?cat=TERRA" class="font-disp text-[14px] tracking-[.14em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition">View All <i class="ti ti-arrow-right"></i></a>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"><a href="product-tr41" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr41.webp" alt="TR41" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR41</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　41L</span></span></a><a href="product-tr46" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr46.webp" alt="TR46" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR46</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　46L</span></span></a><a href="product-tr48" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr48.webp" alt="TR48" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR48</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　48L</span></span></a><a href="product-tr55" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr55.webp" alt="TR55" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR55</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　55L</span></span></a><a href="product-tr37" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr37.webp" alt="TR37" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR37</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　37L</span></span></a><a href="product-tr47" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr47.webp" alt="TR47" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR47</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">サイドケース　47L</span></span></a><a href="product-tr36" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr36.webp" alt="TR36" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR36</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">サイドケース　36L</span></span></a><a href="product-tr27" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="img/products/tr27.webp" alt="TR27" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR27</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">サイドケース　27L</span></span></a></div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"><a href="/product/tr41" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr41.webp" alt="TR41" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR41</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　41L</span></span></a><a href="/product/tr46" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr46.webp" alt="TR46" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR46</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　46L</span></span></a><a href="/product/tr48" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr48.webp" alt="TR48" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR48</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　48L</span></span></a><a href="/product/tr55" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr55.webp" alt="TR55" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR55</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　55L</span></span></a><a href="/product/tr37" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr37.webp" alt="TR37" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR37</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">トップケース　37L</span></span></a><a href="/product/tr47" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr47.webp" alt="TR47" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR47</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">サイドケース　47L</span></span></a><a href="/product/tr36" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr36.webp" alt="TR36" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR36</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">サイドケース　36L</span></span></a><a href="/product/tr27" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/tr27.webp" alt="TR27" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">TR27</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">サイドケース　27L</span></span></a></div>
   </div>
 </section>
 
@@ -96,24 +96,24 @@ tailwind.config = { theme: { extend: {
 <!-- ===== FOOTER ===== -->
 <footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
   <div class="max-w-site mx-auto px-7">
-    <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
     <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/products" class="hover:text-white transition">TERRA</a></li><li><a href="/products" class="hover:text-white transition">トップケース</a></li><li><a href="/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/products" class="hover:text-white transition">バッグ</a></li><li><a href="/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/about" class="hover:text-white transition">About</a></li><li><a href="/about" class="hover:text-white transition">OEM</a></li><li><a href="/awards" class="hover:text-white transition">Awards</a></li><li><a href="/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/movies" class="hover:text-white transition">Movies</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
       </div>
     </div>
     <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
@@ -123,15 +123,15 @@ tailwind.config = { theme: { extend: {
         <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
       </span>
       <span class="flex flex-wrap gap-x-4 gap-y-1">
-        <a href="company" class="hover:text-white transition">会社情報</a>
-        <a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a>
-        <a href="privacy" class="hover:text-white transition">プライバシーポリシー</a>
-        <a href="terms" class="hover:text-white transition">利用規約</a>
+        <a href="/company" class="hover:text-white transition">会社情報</a>
+        <a href="/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a>
+        <a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a>
+        <a href="/terms" class="hover:text-white transition">利用規約</a>
       </span>
       <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
     </div>
   </div>
 </footer>
-<script src="js/nav.js"></script>
+<script src="/js/nav.js"></script>
 </body>
 </html>

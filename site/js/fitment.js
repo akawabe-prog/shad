@@ -4,10 +4,8 @@
    Data source: site/data/fitment/fitment_index.json
    ========================================================= */
 (function () {
-  var scriptUrl = document.currentScript && document.currentScript.src;
-  var dataUrl = scriptUrl
-    ? new URL("../data/fitment/fitment_index.json", scriptUrl).href
-    : "data/fitment/fitment_index.json";
+  /* パスはルート相対で固定（クリーンURLの階層 /product/xxx から読んでも解決できる）*/
+  var dataUrl = "/data/fitment/fitment_index.json";
   var dataScriptUrl = dataUrl.replace(/fitment_index\.json$/, "fitment_index.js");
   var optionsUrl = dataUrl.replace(/fitment_index\.json$/, "vehicle_options.json");
   var indexPromise = null;
@@ -229,9 +227,12 @@
     return bits.join(" / ");
   }
 
-  // クリーンURL化: product-xxx.html -> product-xxx（クエリ/ハッシュは保持）
+  /* クリーンURL化：product-xxx.html → /product/xxx（クエリ/ハッシュは保持）
+     データ側に旧形式が残っていても、表示時にこの関数で新しい階層に直す。 */
   function cleanUrl(url) {
-    return String(url || "").replace(/\.html(?=$|[?#])/i, "");
+    var u = String(url || "").replace(/\.html(?=$|[?#])/i, "");
+    u = u.replace(/^(?:\.\/)?product-([a-z0-9]+)/i, "/product/$1");
+    return u;
   }
 
   function withFitmentParam(url, vehicleId) {
@@ -343,7 +344,7 @@
     if (!fitmentId) return;
     document.querySelectorAll('a[href]').forEach(function (link) {
       var raw = link.getAttribute("href") || "";
-      if (!/^product-[a-z0-9-]+(?:\.html)?(?:[?#]|$)/i.test(raw)) return;
+      if (!/^\/product\/[a-z0-9-]+(?:[?#]|$)/i.test(raw)) return;
       var hashParts = raw.split("#");
       var hash = hashParts.length > 1 ? "#" + hashParts.slice(1).join("#") : "";
       var queryParts = hashParts[0].split("?");

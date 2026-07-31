@@ -7,7 +7,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 33000,
     "priceTaxIn": 21219,
     "status": "◯在庫あり",
-    "image": "img/products/e48.webp"
+    "image": "/img/products/e48.webp"
   },
   "LOCK": {
     "url": "https://moto.customjapan.net/i/27294062",
@@ -15,7 +15,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 8800,
     "priceTaxIn": 5203,
     "status": "★在庫限り",
-    "image": "img/products/lock.webp"
+    "image": "/img/products/lock.webp"
   },
   "SEAT": {
     "url": "https://moto.customjapan.net/i/17379793",
@@ -23,7 +23,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 64900,
     "priceTaxIn": 42812,
     "status": "取寄",
-    "image": "img/products/seat.webp"
+    "image": "/img/products/seat.webp"
   },
   "SH23": {
     "url": "https://moto.customjapan.net/i/13210847",
@@ -31,7 +31,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 30800,
     "priceTaxIn": 20097,
     "status": "△残りわずか",
-    "image": "img/products/sh23.webp"
+    "image": "/img/products/sh23.webp"
   },
   "SH33": {
     "url": "https://moto.customjapan.net/i/10652824",
@@ -39,7 +39,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 13200,
     "priceTaxIn": 8195,
     "status": "△残りわずか",
-    "image": "img/products/sh33.webp"
+    "image": "/img/products/sh33.webp"
   },
   "SH34": {
     "url": "https://moto.customjapan.net/i/17838542",
@@ -47,7 +47,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 14300,
     "priceTaxIn": 9350,
     "status": "△残りわずか",
-    "image": "img/products/sh34.webp"
+    "image": "/img/products/sh34.webp"
   },
   "SH38X": {
     "url": "https://moto.customjapan.net/i/27952924",
@@ -55,7 +55,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 121000,
     "priceTaxIn": 78815,
     "status": "◯在庫あり",
-    "image": "img/products/sh38x.webp"
+    "image": "/img/products/sh38x.webp"
   },
   "SH44": {
     "url": "https://moto.customjapan.net/i/27587515",
@@ -63,7 +63,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 20900,
     "priceTaxIn": 13629,
     "status": "△残りわずか",
-    "image": "img/products/sh44.webp"
+    "image": "/img/products/sh44.webp"
   },
   "SH47": {
     "url": "https://moto.customjapan.net/i/26591735",
@@ -71,7 +71,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 41800,
     "priceTaxIn": 26631,
     "status": "◯在庫あり",
-    "image": "img/products/sh47.webp"
+    "image": "/img/products/sh47.webp"
   },
   "SH48": {
     "url": "https://moto.customjapan.net/i/17164078",
@@ -79,7 +79,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 51700,
     "priceTaxIn": 33495,
     "status": "△残りわずか",
-    "image": "img/products/sh48.webp"
+    "image": "/img/products/sh48.webp"
   },
   "SH51": {
     "url": "https://moto.customjapan.net/i/29468997",
@@ -87,7 +87,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 45100,
     "priceTaxIn": 28831,
     "status": "入荷待",
-    "image": "img/products/sh51.webp"
+    "image": "/img/products/sh51.webp"
   },
   "SH58X": {
     "url": "https://moto.customjapan.net/i/17319140",
@@ -95,7 +95,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 67100,
     "priceTaxIn": 43450,
     "status": "△残りわずか",
-    "image": "img/products/sh58x.webp"
+    "image": "/img/products/sh58x.webp"
   },
   "TR10": {
     "url": "https://moto.customjapan.net/i/28032793",
@@ -103,7 +103,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 28600,
     "priceTaxIn": 18689,
     "status": "△残りわずか",
-    "image": "img/products/tr10.webp"
+    "image": "/img/products/tr10.webp"
   },
   "TR27": {
     "url": "https://moto.customjapan.net/i/29469017",
@@ -111,7 +111,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 37400,
     "priceTaxIn": 23859,
     "status": "入荷待",
-    "image": "img/products/tr27.webp"
+    "image": "/img/products/tr27.webp"
   },
   "TR30": {
     "url": "https://moto.customjapan.net/i/28087540",
@@ -119,7 +119,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 86900,
     "priceTaxIn": 56166,
     "status": "入荷待",
-    "image": "img/products/tr30.webp"
+    "image": "/img/products/tr30.webp"
   },
   "TR36": {
     "url": "https://moto.customjapan.net/i/18319293",
@@ -127,7 +127,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 79200,
     "priceTaxIn": 51238,
     "status": "◯在庫あり",
-    "image": "img/products/tr36.webp"
+    "image": "/img/products/tr36.webp"
   },
   "TR37": {
     "url": "https://moto.customjapan.net/i/18319286",
@@ -135,7 +135,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 72600,
     "priceTaxIn": 47399,
     "status": "◯在庫あり",
-    "image": "img/products/tr37.webp"
+    "image": "/img/products/tr37.webp"
   },
   "TR41": {
     "url": "https://moto.customjapan.net/i/29044382",
@@ -143,7 +143,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 24200,
     "priceTaxIn": 15554,
     "status": "◯在庫あり",
-    "image": "img/products/tr41.webp"
+    "image": "/img/products/tr41.webp"
   },
   "TR46": {
     "url": "https://moto.customjapan.net/i/29351718",
@@ -151,7 +151,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 31900,
     "priceTaxIn": 20603,
     "status": "◯在庫あり",
-    "image": "img/products/tr46.webp"
+    "image": "/img/products/tr46.webp"
   },
   "TR47": {
     "url": "https://moto.customjapan.net/i/18319316",
@@ -159,7 +159,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 82500,
     "priceTaxIn": 53449,
     "status": "◯在庫あり",
-    "image": "img/products/tr47.webp"
+    "image": "/img/products/tr47.webp"
   },
   "TR48": {
     "url": "https://moto.customjapan.net/i/18319279",
@@ -167,7 +167,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 79200,
     "priceTaxIn": 51282,
     "status": "◯在庫あり",
-    "image": "img/products/tr48.webp"
+    "image": "/img/products/tr48.webp"
   },
   "TR50": {
     "url": "https://moto.customjapan.net/i/27819630",
@@ -175,7 +175,7 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 45100,
     "priceTaxIn": 28875,
     "status": "◯在庫あり",
-    "image": "img/products/tr50.webp"
+    "image": "/img/products/tr50.webp"
   },
   "TR55": {
     "url": "https://moto.customjapan.net/i/27705902",
@@ -183,6 +183,6 @@ window.SHAD_EC_DATA = {
     "msrpTaxIn": 88000,
     "priceTaxIn": 57178,
     "status": "△残りわずか",
-    "image": "img/products/tr55.webp"
+    "image": "/img/products/tr55.webp"
   }
 };

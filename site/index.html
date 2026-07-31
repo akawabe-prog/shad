@@ -27,7 +27,7 @@ tailwind.config = {
   },
 };
 </script>
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 </head>
 <body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
 
@@ -35,14 +35,14 @@ tailwind.config = {
 <nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
   <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
     <a href="/" class="shrink-0">
-      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+      <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
     </a>
     <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
-      <li><a class="hover:text-white transition" href="products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/products">Products</a></li>
       <li><a class="text-white" href="#finder">For Your Motorcycle</a></li>
-      <li><a class="hover:text-white transition" href="engineered-for-riding">Technology</a></li>
-      <li><a class="hover:text-white transition" href="about">Brand</a></li>
-      <li><a class="hover:text-white transition" href="store-locator">Store</a></li>
+      <li><a class="hover:text-white transition" href="/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/store-locator">Store</a></li>
     </ul>
     <div class="flex items-center gap-6 ml-auto md:ml-0">
       <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
@@ -55,12 +55,12 @@ tailwind.config = {
   </div>
 </nav>
 <div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
-    <a href="products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
     <a href="#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
-    <a href="engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
-    <a href="about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
-    <a href="store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
-    <a href="contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+    <a href="/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
 </div>
 
 
@@ -68,15 +68,15 @@ tailwind.config = {
 <header class="hero relative bg-black text-white aspect-[9/16] md:aspect-video w-full flex items-end overflow-hidden">
   <!-- SP：TR46 / TR41 の縦型ムービーをフェードで切替（3:4）-->
   <div id="heroSp" class="hero-sp md:hidden" aria-hidden="true">
-    <video class="hero-sp-v is-on" data-src="media/hero_sp_tr46.mp4" poster="img/hero_sp_tr46.webp"
+    <video class="hero-sp-v is-on" data-src="/media/hero_sp_tr46.mp4" poster="/img/hero_sp_tr46.webp"
            muted loop playsinline preload="none"></video>
-    <video class="hero-sp-v" data-src="media/hero_sp_tr41.mp4" poster="img/hero_sp_tr41.webp"
+    <video class="hero-sp-v" data-src="/media/hero_sp_tr41.mp4" poster="/img/hero_sp_tr41.webp"
            muted loop playsinline preload="none"></video>
   </div>
   <!-- PC：ブランドフィルム（16:9）-->
   <video class="hero-video hidden md:block absolute inset-0 w-full h-full object-cover opacity-90"
-         data-src-desktop="media/hero_brand.mp4" data-poster-desktop="img/hero_poster.webp"
-         data-src-mobile="media/hero_brand.mp4" data-poster-mobile="img/hero_poster.webp"
+         data-src-desktop="/media/hero_brand.mp4" data-poster-desktop="/img/hero_poster.webp"
+         data-src-mobile="/media/hero_brand.mp4" data-poster-mobile="/img/hero_poster.webp"
          autoplay muted loop playsinline aria-hidden="true"></video>
   <div class="absolute inset-0 hidden md:block bg-gradient-to-t from-black/55 via-black/15 to-transparent" aria-hidden="true"></div>
   <!-- SP：映像が明るいカットでもコピーが読めるよう黒マスクを強めに -->
@@ -91,7 +91,7 @@ tailwind.config = {
     <h1 class="hero-title font-disp font-semibold uppercase tracking-[.06em] leading-[0.98] text-[clamp(44px,8vw,110px)]">Engineered<br>for Riding</h1>
     <p class="hero-sub text-[16px] text-white/80 max-w-[560px] mt-5">バルセロナで50年。世界のバイクメーカーが純正に選ぶ技術を、あなたの一台に。</p>
     <div class="hero-ctas flex flex-wrap gap-3.5 mt-8">
-      <a href="products" class="btn bg-shad text-white hover:bg-[#c4151b]">ボックスを探す</a>
+      <a href="/products" class="btn bg-shad text-white hover:bg-[#c4151b]">ボックスを探す</a>
       <a href="#why" class="btn border border-white/45 text-white hover:border-white">SHADを知る</a>
     </div>
   </div>
@@ -105,12 +105,12 @@ tailwind.config = {
         <p class="font-disp font-semibold text-[12px] tracking-[.28em] uppercase text-shad mb-1.5">New Arrivals</p>
         <h2 class="text-[clamp(22px,3vw,30px)] font-bold leading-tight">新商品</h2>
       </div>
-      <a href="products" class="font-disp text-[14px] tracking-[.16em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>
+      <a href="/products" class="font-disp text-[14px] tracking-[.16em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-      <a href="product-tr46" class="nabanner nabanner--a group" data-reveal>
+      <a href="/product/tr46" class="nabanner nabanner--a group" data-reveal>
         <span class="nabanner-ghost" aria-hidden="true">TR46</span>
-        <span class="nabanner-media"><img src="img/products/tr46.webp" alt="TR46" loading="lazy"></span>
+        <span class="nabanner-media"><img src="/img/products/tr46.webp" alt="TR46" loading="lazy"></span>
         <span class="nabanner-badge">New</span>
         <span class="nabanner-body">
           <span class="nabanner-name">TR46</span>
@@ -118,9 +118,9 @@ tailwind.config = {
         </span>
         <span class="nabanner-arrow" aria-hidden="true"><i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="product-tr27" class="nabanner nabanner--b group" data-reveal>
+      <a href="/product/tr27" class="nabanner nabanner--b group" data-reveal>
         <span class="nabanner-ghost" aria-hidden="true">TR27</span>
-        <span class="nabanner-media"><img src="img/products/tr27.webp" alt="TR27" loading="lazy"></span>
+        <span class="nabanner-media"><img src="/img/products/tr27.webp" alt="TR27" loading="lazy"></span>
         <span class="nabanner-badge">New</span>
         <span class="nabanner-body">
           <span class="nabanner-name">TR27</span>
@@ -128,9 +128,9 @@ tailwind.config = {
         </span>
         <span class="nabanner-arrow" aria-hidden="true"><i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="product-sh51" class="nabanner nabanner--c group" data-reveal>
+      <a href="/product/sh51" class="nabanner nabanner--c group" data-reveal>
         <span class="nabanner-ghost" aria-hidden="true">SH51</span>
-        <span class="nabanner-media"><img src="img/products/sh51.webp" alt="SH51" loading="lazy"></span>
+        <span class="nabanner-media"><img src="/img/products/sh51.webp" alt="SH51" loading="lazy"></span>
         <span class="nabanner-badge">New</span>
         <span class="nabanner-body">
           <span class="nabanner-name">SH51</span>
@@ -181,16 +181,16 @@ tailwind.config = {
     </div>
     <!-- 特集ページ（専用ページへ遷移＝赤い枠線で区別）-->
     <div class="grid sm:grid-cols-2 gap-4 md:gap-5" data-reveal>
-      <a href="terra" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
-        <img src="img/banner_terra.webp" alt="TERRA シリーズ" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
+      <a href="/terra" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
+        <img src="/img/banner_terra.webp" alt="TERRA シリーズ" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
         <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.94)_0%,rgba(0,0,0,.82)_30%,rgba(0,0,0,.48)_54%,rgba(0,0,0,.14)_76%,rgba(0,0,0,0)_92%)]"></span>
         <span class="absolute left-5 right-5 bottom-4 text-white">
           <span class="block font-disp font-semibold text-[28px] tracking-[.05em] uppercase leading-none">TERRA</span>
           <span class="inline-flex items-center gap-1.5 text-white/85 text-[13px] mt-1.5 group-hover:gap-2.5 transition-all">旅の道具の、最高峰。シリーズを見る<i class="ti ti-arrow-right"></i></span>
         </span>
       </a>
-      <a href="expandable" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
-        <img src="img/story_sh38x.webp" alt="EXPANDABLE 可変容量" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
+      <a href="/expandable" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
+        <img src="/img/story_sh38x.webp" alt="EXPANDABLE 可変容量" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
         <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.94)_0%,rgba(0,0,0,.82)_30%,rgba(0,0,0,.48)_54%,rgba(0,0,0,.14)_76%,rgba(0,0,0,0)_92%)]"></span>
         <span class="absolute left-5 right-5 bottom-4 text-white">
           <span class="block font-disp font-semibold text-[28px] tracking-[.05em] uppercase leading-none">Expandable</span>
@@ -202,31 +202,31 @@ tailwind.config = {
     <!-- カテゴリで絞り込み（製品一覧へ）-->
     <p class="filter-cap font-disp text-[11px] tracking-[.24em] uppercase text-neutral-400 mt-9 mb-3">Categories</p>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-      <a href="products?cat=TOP" class="group" data-reveal>
+      <a href="/products?cat=TOP" class="group" data-reveal>
         <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
-          <img src="img/products/sh48.webp" alt="トップケース" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+          <img src="/img/products/sh48.webp" alt="トップケース" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
         </span>
         <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">トップケース</span>
       </a>
-      <a href="products?cat=SIDE" class="group" data-reveal>
+      <a href="/products?cat=SIDE" class="group" data-reveal>
         <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
-          <img src="img/products/sh38x.webp" alt="サイドケース" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+          <img src="/img/products/sh38x.webp" alt="サイドケース" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
         </span>
         <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">サイドケース</span>
       </a>
-      <a href="products?cat=SIDEBAG" class="group" data-reveal>
+      <a href="/products?cat=SIDEBAG" class="group" data-reveal>
         <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
-          <img src="img/products/tr30.webp" alt="サイドバッグ" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+          <img src="/img/products/tr30.webp" alt="サイドバッグ" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
         </span>
         <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">サイドバッグ</span>
       </a>
-      <a href="products?cat=TANK" class="group" data-reveal>
+      <a href="/products?cat=TANK" class="group" data-reveal>
         <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
-          <img src="img/products/tr10.webp" alt="タンクバッグ" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+          <img src="/img/products/tr10.webp" alt="タンクバッグ" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
         </span>
         <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">タンクバッグ</span>
       </a>
-      <a href="products?cat=FITTING" class="group" data-reveal>
+      <a href="/products?cat=FITTING" class="group" data-reveal>
         <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
           <i class="ti ti-tool text-[44px] text-neutral-400 group-hover:text-shad transition"></i>
         </span>
@@ -234,7 +234,7 @@ tailwind.config = {
       </a>
     </div>
     <div class="text-center mt-9" data-reveal>
-      <a href="products" class="btn border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white">すべての製品を見る</a>
+      <a href="/products" class="btn border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white">すべての製品を見る</a>
     </div>
   </div>
 </section>
@@ -247,11 +247,11 @@ tailwind.config = {
         <p class="font-disp font-semibold text-[12px] tracking-[.3em] uppercase text-shad flex items-center gap-3 mb-2"><span class="inline-block w-[28px] h-[2px] bg-shad"></span>Technology</p>
         <h2 class="font-disp font-semibold uppercase tracking-[.06em] leading-[1.02] text-[clamp(32px,5.4vw,62px)]">SHAD Technology</h2>
       </div>
-      <a href="engineered-for-riding" class="font-disp text-[14px] tracking-[.16em] uppercase text-white/55 inline-flex items-center gap-2 hover:text-white transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>
+      <a href="/engineered-for-riding" class="font-disp text-[14px] tracking-[.16em] uppercase text-white/55 inline-flex items-center gap-2 hover:text-white transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-      <a href="expandable" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
-        <img src="img/story_sh38x.webp" alt="Expandable 可変容量" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
+      <a href="/expandable" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
+        <img src="/img/story_sh38x.webp" alt="Expandable 可変容量" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
         <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.96)_0%,rgba(0,0,0,.88)_28%,rgba(0,0,0,.58)_50%,rgba(0,0,0,.2)_72%,rgba(0,0,0,0)_90%)]"></span>
         <span class="absolute left-5 right-5 bottom-5 [text-shadow:0_1px_10px_rgba(0,0,0,.6)]">
           <span class="inline-block bg-shad font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Patented</span>
@@ -259,8 +259,8 @@ tailwind.config = {
           <span class="block text-white/80 text-[12.5px] mt-1 leading-relaxed">走行時はスリム、停車時は大容量。容量が変わるケース。</span>
         </span>
       </a>
-      <a href="engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
-        <img src="img/thumb_tr41ride.webp" alt="3P / 4P System" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
+      <a href="/engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
+        <img src="/img/thumb_tr41ride.webp" alt="3P / 4P System" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
         <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.96)_0%,rgba(0,0,0,.88)_28%,rgba(0,0,0,.58)_50%,rgba(0,0,0,.2)_72%,rgba(0,0,0,0)_90%)]"></span>
         <span class="absolute left-5 right-5 bottom-5 [text-shadow:0_1px_10px_rgba(0,0,0,.6)]">
           <span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Mount</span>
@@ -268,8 +268,8 @@ tailwind.config = {
           <span class="block text-white/80 text-[12.5px] mt-1 leading-relaxed">車体に溶け込むマウント。使わないときは、すっきり。</span>
         </span>
       </a>
-      <a href="engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
-        <img src="img/prod_click.webp" alt="Click System" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
+      <a href="/engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/3]" data-reveal>
+        <img src="/img/prod_click.webp" alt="Click System" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
         <span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.96)_0%,rgba(0,0,0,.88)_28%,rgba(0,0,0,.58)_50%,rgba(0,0,0,.2)_72%,rgba(0,0,0,0)_90%)]"></span>
         <span class="absolute left-5 right-5 bottom-5 [text-shadow:0_1px_10px_rgba(0,0,0,.6)]">
           <span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Quick</span>
@@ -298,12 +298,12 @@ tailwind.config = {
         <h2 class="text-[clamp(23px,3.2vw,34px)] font-bold leading-[1.4]">鍵がなくても<br>蓋の開け閉めが可能</h2>
         <p class="text-[14.5px] text-neutral-600 mt-5 leading-[1.95]">押し込むだけで確実にラッチ。施錠は鍵で、開閉は手で——を分けて設計しているから、荷物の出し入れで鍵を抜き差しする必要がありません。<br>「使うたびのわずかな手間」を消すことも、SHAD の設計思想です。</p>
         <div class="flex flex-wrap gap-3 mt-7">
-          <a href="engineered-for-riding" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-tools"></i>技術を見る</a>
-          <a href="product-tr41" class="btn border border-black/25 text-ink hover:bg-mist">TR41 を見る</a>
+          <a href="/engineered-for-riding" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-tools"></i>技術を見る</a>
+          <a href="/product/tr41" class="btn border border-black/25 text-ink hover:bg-mist">TR41 を見る</a>
         </div>
       </div>
       <div class="relative rounded-[16px] overflow-hidden border border-black/10 bg-white" data-reveal>
-        <video class="block w-full h-auto" src="media/feature_keyless_close.mp4" poster="img/feature_keyless_close.webp"
+        <video class="block w-full h-auto" src="/media/feature_keyless_close.mp4" poster="/img/feature_keyless_close.webp"
                autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       </div>
     </div>
@@ -328,7 +328,7 @@ tailwind.config = {
 
     <!-- 4本柱（ビジュアル）-->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mt-14">
-<a href="about" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="img/thumb_production.webp" alt="世界のメーカーへ純正供給" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">OEM</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">世界のメーカーへ純正供給</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">車体開発の段階から関わり、主要モーターサイクルメーカーの純正アクセサリーに採用。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">ブランドを知る<i class="ti ti-arrow-right"></i></span></span></a><a href="engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="img/prod_sh38x.webp" alt="常識を変える特許技術" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Patented</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">常識を変える特許技術</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">容量が変わる Expandable、車体に溶け込む 3P/4P、ワンタッチの Click System。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">技術を見る<i class="ti ti-arrow-right"></i></span></span></a><a href="quality-lab" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="img/thumb_quality.webp" alt="壊し尽くした、あとの設計" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Quality Lab</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">壊し尽くした、あとの設計</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">実走で数年分の負荷をラボで先に経験させる。残った設計だけが市場に出る。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">試験を見る<i class="ti ti-arrow-right"></i></span></span></a><a href="awards" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="img/story_showroom.webp" alt="機能の美しさは、世界が認めた" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Awarded</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">機能の美しさは、世界が認めた</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">Red Dot をはじめ、German Design Award、iF Design Award など国際的に評価。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">受賞歴を見る<i class="ti ti-arrow-right"></i></span></span></a>
+<a href="/about" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="/img/thumb_production.webp" alt="世界のメーカーへ純正供給" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">OEM</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">世界のメーカーへ純正供給</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">車体開発の段階から関わり、主要モーターサイクルメーカーの純正アクセサリーに採用。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">ブランドを知る<i class="ti ti-arrow-right"></i></span></span></a><a href="/engineered-for-riding" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="/img/prod_sh38x.webp" alt="常識を変える特許技術" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Patented</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">常識を変える特許技術</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">容量が変わる Expandable、車体に溶け込む 3P/4P、ワンタッチの Click System。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">技術を見る<i class="ti ti-arrow-right"></i></span></span></a><a href="/quality-lab" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="/img/thumb_quality.webp" alt="壊し尽くした、あとの設計" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Quality Lab</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">壊し尽くした、あとの設計</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">実走で数年分の負荷をラボで先に経験させる。残った設計だけが市場に出る。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">試験を見る<i class="ti ti-arrow-right"></i></span></span></a><a href="/awards" class="group relative block rounded-[14px] overflow-hidden aspect-[4/5]" data-reveal><img src="/img/story_showroom.webp" alt="機能の美しさは、世界が認めた" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.06] group-hover:opacity-100"><span class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.97)_0%,rgba(0,0,0,.9)_30%,rgba(0,0,0,.62)_52%,rgba(0,0,0,.22)_74%,rgba(0,0,0,0)_92%)]"></span><span class="absolute inset-x-0 bottom-0 p-5 md:p-6"><span class="inline-block bg-shad text-white font-disp font-semibold text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Awarded</span><span class="block font-bold text-[19px] mt-2.5 leading-snug">機能の美しさは、世界が認めた</span><span class="block text-[13px] text-white/72 mt-2 leading-relaxed">Red Dot をはじめ、German Design Award、iF Design Award など国際的に評価。</span><span class="inline-flex items-center gap-1.5 text-[12.5px] text-white/85 mt-3.5 group-hover:gap-2.5 group-hover:text-shad transition-all">受賞歴を見る<i class="ti ti-arrow-right"></i></span></span></a>
     </div>
 
     <!-- OEM 採用ブランド -->
@@ -351,19 +351,19 @@ tailwind.config = {
       <h2 class="text-[clamp(22px,3vw,30px)] font-bold leading-tight">買ってからも、安心して使えるように。</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-      <a href="warranty" class="group bg-white border border-black/10 rounded-[14px] p-6 transition hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.08)]" data-reveal>
+      <a href="/warranty" class="group bg-white border border-black/10 rounded-[14px] p-6 transition hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.08)]" data-reveal>
         <span class="w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-shield-check"></i></span>
         <span class="block font-bold text-[16px] mt-4">1年保証</span>
         <span class="block text-[13.5px] text-neutral-600 mt-2 leading-relaxed">保証期間は1年。不具合の際は製品ロット番号と納品書をご用意ください。</span>
         <span class="inline-flex items-center gap-1.5 mt-4 text-[13px] text-neutral-500 group-hover:text-shad group-hover:gap-2.5 transition-all">保証について<i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="store-locator" class="group bg-white border border-black/10 rounded-[14px] p-6 transition hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.08)]" data-reveal>
+      <a href="/store-locator" class="group bg-white border border-black/10 rounded-[14px] p-6 transition hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.08)]" data-reveal>
         <span class="w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-map-pin"></i></span>
         <span class="block font-bold text-[16px] mt-4">取扱店・SHAD BASE</span>
         <span class="block text-[13.5px] text-neutral-600 mt-2 leading-relaxed">実物の確認や取り付けのご相談は、お近くの取扱店・SHAD BASE へ。</span>
         <span class="inline-flex items-center gap-1.5 mt-4 text-[13px] text-neutral-500 group-hover:text-shad group-hover:gap-2.5 transition-all">店舗を探す<i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="faq" class="group bg-white border border-black/10 rounded-[14px] p-6 transition hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.08)]" data-reveal>
+      <a href="/faq" class="group bg-white border border-black/10 rounded-[14px] p-6 transition hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(0,0,0,.08)]" data-reveal>
         <span class="w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-help-circle"></i></span>
         <span class="block font-bold text-[16px] mt-4">FAQ・取付ガイド</span>
         <span class="block text-[13.5px] text-neutral-600 mt-2 leading-relaxed">適合・取り付け・お届けなど、よくあるご質問と取付ガイドをご用意。</span>
@@ -380,13 +380,13 @@ tailwind.config = {
       <p class="font-disp font-semibold text-[13px] tracking-[.32em] uppercase text-shad mb-2">Story</p>
       <h2 class="font-bold text-[clamp(26px,3.6vw,42px)] leading-tight">映像で知る、SHAD。</h2>
     </div>
-    <a href="movies" class="font-disp text-[14px] tracking-[.16em] uppercase text-white/55 hidden sm:inline-flex items-center gap-2 hover:text-white transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>
+    <a href="/movies" class="font-disp text-[14px] tracking-[.16em] uppercase text-white/55 hidden sm:inline-flex items-center gap-2 hover:text-white transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>
   </div>
 
   <!-- Feature film（フルブリード）-->
   <div class="w-full px-6 md:px-12">
-    <button type="button" class="film group relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl" data-video="media/hero_brand.mp4" data-poster="img/hero_poster.webp" data-reveal>
-      <img src="img/hero_poster.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-[1.03]">
+    <button type="button" class="film group relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl" data-video="/media/hero_brand.mp4" data-poster="/img/hero_poster.webp" data-reveal>
+      <img src="/img/hero_poster.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-[1.03]">
       <span class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-black/35"></span>
       <span class="play-circle w-[78px] h-[78px] text-[30px]"><i class="ti ti-player-play ml-1.5"></i></span>
       <span class="absolute left-0 right-0 bottom-0 z-[2] px-7 md:px-10 pb-8 md:pb-10">
@@ -399,8 +399,8 @@ tailwind.config = {
 
   <!-- secondary 3-up -->
   <div class="w-full px-6 md:px-12 grid md:grid-cols-3 gap-4 mt-4">
-    <button type="button" class="sfilm group relative aspect-video rounded-[14px] overflow-hidden" data-video="media/banner_expandable.mp4" data-poster="img/story_sh38x.webp" data-reveal>
-      <img src="img/story_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]">
+    <button type="button" class="sfilm group relative aspect-video rounded-[14px] overflow-hidden" data-video="/media/banner_expandable.mp4" data-poster="/img/story_sh38x.webp" data-reveal>
+      <img src="/img/story_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]">
       <span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span>
       <span class="play-circle w-12 h-12 text-[19px]"><i class="ti ti-player-play ml-0.5"></i></span>
       <span class="absolute left-5 right-5 bottom-4 z-[2]">
@@ -409,8 +409,8 @@ tailwind.config = {
         <span class="block text-white/60 text-[11.5px]">容量が変わる仕組み — 01:32</span>
       </span>
     </button>
-    <button type="button" class="sfilm group relative aspect-video rounded-[14px] overflow-hidden" data-video="media/reel_r1300gs.mp4" data-poster="img/thumb_tr41ride.webp" data-reveal>
-      <img src="img/thumb_tr41ride.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]">
+    <button type="button" class="sfilm group relative aspect-video rounded-[14px] overflow-hidden" data-video="/media/reel_r1300gs.mp4" data-poster="/img/thumb_tr41ride.webp" data-reveal>
+      <img src="/img/thumb_tr41ride.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]">
       <span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span>
       <span class="play-circle w-12 h-12 text-[19px]"><i class="ti ti-player-play ml-0.5"></i></span>
       <span class="absolute left-5 right-5 bottom-4 z-[2]">
@@ -419,8 +419,8 @@ tailwind.config = {
         <span class="block text-white/60 text-[11.5px]">アドベンチャーと積載 — 00:52</span>
       </span>
     </button>
-    <button type="button" class="sfilm group relative aspect-video rounded-[14px] overflow-hidden" data-video="media/reel_click.mp4" data-poster="img/prod_click.webp" data-reveal>
-      <img src="img/prod_click.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]">
+    <button type="button" class="sfilm group relative aspect-video rounded-[14px] overflow-hidden" data-video="/media/reel_click.mp4" data-poster="/img/prod_click.webp" data-reveal>
+      <img src="/img/prod_click.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]">
       <span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span>
       <span class="play-circle w-12 h-12 text-[19px]"><i class="ti ti-player-play ml-0.5"></i></span>
       <span class="absolute left-5 right-5 bottom-4 z-[2]">
@@ -443,14 +443,14 @@ tailwind.config = {
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7">
       <a href="#" class="ncard" data-reveal>
-        <span class="block aspect-[4/3] overflow-hidden"><img src="img/news_1.webp" alt="" class="w-full h-full object-cover transition duration-300 hover:scale-105"></span>
+        <span class="block aspect-[4/3] overflow-hidden"><img src="/img/news_1.webp" alt="" class="w-full h-full object-cover transition duration-300 hover:scale-105"></span>
         <span class="block px-5 py-4">
           <span class="block font-disp text-[13.5px] tracking-[.14em] text-neutral-500">2026.06.10</span>
           <span class="block text-[15.5px] font-medium mt-1.5 leading-relaxed">TERRA TR41 受注を再開しました</span>
         </span>
       </a>
       <a href="#" class="ncard" data-reveal>
-        <span class="block aspect-[4/3] overflow-hidden"><img src="img/news_2.webp" alt="" class="w-full h-full object-cover transition duration-300 hover:scale-105"></span>
+        <span class="block aspect-[4/3] overflow-hidden"><img src="/img/news_2.webp" alt="" class="w-full h-full object-cover transition duration-300 hover:scale-105"></span>
         <span class="block px-5 py-4">
           <span class="block font-disp text-[13.5px] tracking-[.14em] text-neutral-500">2026.06.02</span>
           <span class="block text-[15.5px] font-medium mt-1.5 leading-relaxed">マレーシアバイクショー2026 出展レポート</span>
@@ -478,7 +478,7 @@ tailwind.config = {
 <footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
   <div class="max-w-site mx-auto px-7">
     <div class="flex flex-wrap items-center justify-between gap-6">
-      <img src="img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+      <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
       <!-- SNS（ロゴ隣・目立たせ）-->
       <div class="flex items-center gap-3">
         <span class="hidden sm:inline text-white/45 text-[12px] font-disp tracking-[.2em] uppercase mr-1">Follow</span>
@@ -496,19 +496,19 @@ tailwind.config = {
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="products" class="hover:text-white transition">TERRA</a></li><li><a href="products" class="hover:text-white transition">トップケース</a></li><li><a href="products" class="hover:text-white transition">サイドケース</a></li><li><a href="products" class="hover:text-white transition">バッグ</a></li><li><a href="products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/products" class="hover:text-white transition">TERRA</a></li><li><a href="/products" class="hover:text-white transition">トップケース</a></li><li><a href="/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/products" class="hover:text-white transition">バッグ</a></li><li><a href="/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="about" class="hover:text-white transition">About</a></li><li><a href="about" class="hover:text-white transition">OEM</a></li><li><a href="awards" class="hover:text-white transition">Awards</a></li><li><a href="sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="movies" class="hover:text-white transition">Movies</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/about" class="hover:text-white transition">About</a></li><li><a href="/about" class="hover:text-white transition">OEM</a></li><li><a href="/awards" class="hover:text-white transition">Awards</a></li><li><a href="/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/movies" class="hover:text-white transition">Movies</a></li></ul>
       </div>
       <div>
         <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
-        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="warranty" class="hover:text-white transition">保証について</a></li><li><a href="contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
       </div>
     </div>
     <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
@@ -517,7 +517,7 @@ tailwind.config = {
         <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
         <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
       </span>
-      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="company" class="hover:text-white transition">会社情報</a><a href="tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/company" class="hover:text-white transition">会社情報</a><a href="/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/terms" class="hover:text-white transition">利用規約</a></span>
       <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
     </div>
   </div>
@@ -525,8 +525,8 @@ tailwind.config = {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/fitment.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/fitment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 /* TOP店舗マップ：SHAD BASE をピン表示（store-locator と同じ地図ベースの見せ方） */
@@ -539,12 +539,12 @@ tailwind.config = {
     (d.base || []).forEach(function (s) {
       if (!s.ll) return;
       var m = L.circleMarker(s.ll, { radius: 8, color: "#fff", weight: 2, fillColor: "#E31E24", fillOpacity: 1 }).addTo(map);
-      m.bindPopup('<b>SHAD BASE ' + s.code + '</b><br>' + s.name + '<br>' + s.pref + '<br><a href="store-locator?tab=base">詳しく見る</a>');
+      m.bindPopup('<b>SHAD BASE ' + s.code + '</b><br>' + s.name + '<br>' + s.pref + '<br><a href="/store-locator?tab=base">詳しく見る</a>');
     });
     (d.display || []).forEach(function (s) {
       if (!s.ll) return;
       var m = L.circleMarker(s.ll, { radius: 6, color: "#fff", weight: 2, fillColor: "#0E0E0E", fillOpacity: 1 }).addTo(map);
-      m.bindPopup('<b>展示店</b><br>' + s.name + '<br>' + (s.pref || '') + '<br><a href="store-locator?tab=display">詳しく見る</a>');
+      m.bindPopup('<b>展示店</b><br>' + s.name + '<br>' + (s.pref || '') + '<br><a href="/store-locator?tab=display">詳しく見る</a>');
     });
     setTimeout(function () { map.invalidateSize(); }, 250);
   }).catch(function () {});
@@ -553,7 +553,7 @@ tailwind.config = {
 <script>
 /* Shad on the Road：全リールからランダムに抽出して表示（読み込みごとに入れ替わる）*/
 (function(){
-  var POOL=["media/reel_cb650r.mp4", "media/reel_click.mp4", "media/reel_r1300gs.mp4", "media/reel_tr30.mp4", "media/reel_tr41.mp4", "media/hero_brand_v.mp4", "media/products/sh38x/reel1.mp4", "media/products/sh38x/reel2.mp4", "media/products/sh38x/reel3.mp4", "media/products/sw80/reel1.mp4", "media/products/tr10/reel1.mp4", "media/products/tr10/reel2.mp4", "media/products/tr10/reel3.mp4", "media/products/tr27/reel1.mp4", "media/products/tr30/reel1.mp4", "media/products/tr30/reel2.mp4", "media/products/tr30/reel3.mp4", "media/products/tr40/reel1.mp4", "media/products/tr40/reel2.mp4", "media/products/tr40/reel3.mp4", "media/products/tr41/reel1.mp4", "media/products/tr41/reel2.mp4", "media/products/tr46/reel1.mp4", "media/products/tr46/reel2.mp4", "media/products/tr50/reel1.mp4", "media/products/tr50/reel2.mp4", "media/products/tr50/reel3.mp4"];
+  var POOL=["/media/reel_cb650r.mp4", "/media/reel_click.mp4", "/media/reel_r1300gs.mp4", "/media/reel_tr30.mp4", "/media/reel_tr41.mp4", "/media/hero_brand_v.mp4", "/media/products/sh38x/reel1.mp4", "/media/products/sh38x/reel2.mp4", "/media/products/sh38x/reel3.mp4", "/media/products/sw80/reel1.mp4", "/media/products/tr10/reel1.mp4", "/media/products/tr10/reel2.mp4", "/media/products/tr10/reel3.mp4", "/media/products/tr27/reel1.mp4", "/media/products/tr30/reel1.mp4", "/media/products/tr30/reel2.mp4", "/media/products/tr30/reel3.mp4", "/media/products/tr40/reel1.mp4", "/media/products/tr40/reel2.mp4", "/media/products/tr40/reel3.mp4", "/media/products/tr41/reel1.mp4", "/media/products/tr41/reel2.mp4", "/media/products/tr46/reel1.mp4", "/media/products/tr46/reel2.mp4", "/media/products/tr50/reel1.mp4", "/media/products/tr50/reel2.mp4", "/media/products/tr50/reel3.mp4"];
   var SHOW=9;
   var row=document.getElementById("reelRow");
   if(!row) return;
@@ -563,7 +563,7 @@ tailwind.config = {
   var html=picks.map(function(src){
     return '<div class="rtile" data-reveal><video src="'+src+'" muted loop playsinline preload="metadata"></video></div>';
   }).join("");
-  html+='<a href="movies" class="rtile more flex items-center justify-center bg-[#141414]" data-reveal>'
+  html+='<a href="/movies" class="rtile more flex items-center justify-center bg-[#141414]" data-reveal>'
     +'<span class="text-white/70 text-[13px] flex flex-col items-center gap-2"><i class="ti ti-arrow-right text-[22px]"></i>もっと見る</span></a>';
   row.innerHTML=html;
   /* 画面内に入ったら再生（main.js §3 と同じ挙動を自前で担保）*/
@@ -633,6 +633,6 @@ tailwind.config = {
   });
 })();
 </script>
-<script src="js/nav.js"></script>
+<script src="/js/nav.js"></script>
 </body>
 </html>
