@@ -18,13 +18,6 @@ tailwind.config = { theme: { extend: {
 } } };
 </script>
 <link rel="stylesheet" href="/css/custom.css">
-<style>
-.lp-hero{position:relative;background:#000;color:#fff;min-height:66vh;display:flex;align-items:flex-end;overflow:hidden;}
-.lp-hero>img,.lp-hero>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82;}
-.lp-hero .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.88),rgba(0,0,0,.12) 60%,rgba(0,0,0,.4));}
-.lpcard{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden;transition:.2s;display:block;}
-.lpcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.1);}
-</style>
 </head>
 <body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
 
@@ -56,51 +49,145 @@ tailwind.config = { theme: { extend: {
 </div>
 
 
-<section class="lp-hero">
-  <video src="/media/banner_expandable.mp4" poster="/img/story_sh38x.webp" autoplay muted loop playsinline aria-hidden="true"></video>
-  <span class="shade"></span>
-  <div class="relative w-full px-6 md:px-12 pb-12 md:pb-16 [text-shadow:0_2px_20px_rgba(0,0,0,.5)]">
-    <p class="font-disp font-semibold text-[13px] tracking-[.3em] uppercase text-shad flex items-center gap-3 mb-3"><span class="inline-block w-[30px] h-[2px] bg-shad"></span>Patented Technology</p>
-    <h1 class="font-disp font-semibold uppercase tracking-[.05em] leading-[0.98] text-[clamp(40px,7vw,92px)]">Expandable</h1>
-    <p class="text-white/85 text-[16px] md:text-[18px] max-w-[620px] mt-4">容量が、変わる。走るときはスリム、停まれば大容量。世界で SHAD だけの可変容量ケース。</p>
+<!-- ===== ① HERO（全幅・映像） ===== -->
+<section class="fb-hero">
+  <video src="/media/expandable/hero.mp4" poster="/img/expandable/hero_poster.webp"
+         autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <span class="fb-hero-mask"></span>
+  <div class="fb-hero-in">
+    <p class="lp-kick">Patented Technology</p>
+    <h1 class="lp-display mt-3">Expandable</h1>
+    <p class="lp-h2">容量が、変わる。</p>
+    <p class="lp-lead max-w-[640px]">走るときはスリム、停まれば大容量。
+      内部容積をライダーの意思で変えられる、世界でSHADだけの可変容量ケース。</p>
+    <div class="flex flex-wrap gap-3 mt-8">
+      <a href="/product/sh58x" class="btn bg-shad text-white hover:bg-[#c4151b]">SH58X を見る</a>
+      <a href="/product/sh38x" class="btn border border-white/45 text-white hover:border-white">SH38X を見る</a>
+    </div>
   </div>
+  <i class="ti ti-chevron-down fb-scroll" aria-hidden="true"></i>
 </section>
 
-<section class="bg-white py-[72px]">
-  <div class="max-w-site mx-auto px-7">
-    <p class="font-disp font-semibold text-[12px] tracking-[.28em] uppercase text-shad">Concept</p>
-    <h2 class="text-[clamp(24px,3.4vw,36px)] font-bold leading-tight mt-2 max-w-[820px]">ひとつのケースで、二つの容量を。</h2>
-    <div class="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-10"><div class="flex gap-4"><span class="shrink-0 w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-arrows-maximize"></i></span><div><p class="font-bold text-[15px]">レバーひとつで容量が変わる</p><p class="text-[13.5px] text-neutral-600 mt-1 leading-relaxed">走行時はスリムに、停車時は大容量に。SHAD 独自の可変容量機構が、街乗りとロングツーリングの両方に応えます。</p></div></div><div class="flex gap-4"><span class="shrink-0 w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-helmet"></i></span><div><p class="font-bold text-[15px]">ヘルメットも収納</p><p class="text-[13.5px] text-neutral-600 mt-1 leading-relaxed">拡張時はフルフェイス／モジュラーヘルメットの収納にも対応。積載計画に余裕が生まれます。</p></div></div><div class="flex gap-4"><span class="shrink-0 w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-key"></i></span><div><p class="font-bold text-[15px]">スマートロック</p><p class="text-[13.5px] text-neutral-600 mt-1 leading-relaxed">鍵の操作と開閉をスマートに。日常の使い勝手を損なわず、防犯性も確保します。</p></div></div><div class="flex gap-4"><span class="shrink-0 w-11 h-11 rounded-[10px] bg-mist text-shad flex items-center justify-center text-[22px]"><i class="ti ti-tool"></i></span><div><p class="font-bold text-[15px]">3P / 4P マウント（SH38X）</p><p class="text-[13.5px] text-neutral-600 mt-1 leading-relaxed">サイドケース SH38X は3P/4Pシステムに対応。車種専用フィッティングで確実に装着できます。</p></div></div></div>
-  </div>
-</section>
-
-<section class="bg-mist py-[72px]">
-  <div class="max-w-site mx-auto px-7">
-    <div class="grid md:grid-cols-3 gap-4">
-      <img src="/img/products/sh38x_story1.webp" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover rounded-[14px]">
-      <img src="/img/products/sh38x_story2.webp" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover rounded-[14px]">
-      <img src="/img/products/sh38x_story3.webp" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover rounded-[14px]">
+<!-- ===== ② 課題設定（全幅・黒） ===== -->
+<section class="bg-ink text-white">
+  <div class="w-full px-6 md:px-12 py-[clamp(52px,7vw,96px)]">
+    <p class="lp-kick">The Idea</p>
+    <h2 class="lp-h2 max-w-[820px]">これまでは、荷物に合わせて<br>ボックスごと替えるしかなかった。</h2>
+    <p class="lp-lead max-w-[760px]">SHADが目指したのは、内部容積をユーザーの意思で拡張できる、まったく新しいケース。
+      1台のケースが、日常の相棒から冒険の装備へと姿を変えます。</p>
+    <div class="lp-figures mt-[clamp(32px,5vw,60px)]">
+      <div><p class="lp-fig-num">3<span class="text-[.42em]">段階</span></p>
+        <p class="lp-fig-lb">数秒で切り替えられる容量調整。工具は不要</p></div>
+      <div><p class="lp-fig-num">2<span class="text-[.42em]">個</span></p>
+        <p class="lp-fig-lb">最大でエンデューロヘルメット2個。この条件を満たす市販ケースは他にない</p></div>
+      <div><p class="lp-fig-num">10<span class="text-[.42em]">kg</span></p>
+        <p class="lp-fig-lb">耐荷重。クラス最軽量で、車体の扱いやすさを損なわない</p></div>
     </div>
   </div>
 </section>
 
-<section class="bg-white py-[64px]">
-  <div class="max-w-site mx-auto px-7">
-    <p class="font-disp font-semibold text-[12px] tracking-[.28em] uppercase text-shad">Line-up</p>
-    <h2 class="text-[28px] font-bold leading-tight mt-1 mb-7">EXPANDABLE ラインナップ</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"><a href="/product/sh58x" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/sh58x.webp" alt="SH58X" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">SH58X</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">可変容量トップケース　46–58L</span></span></a><a href="/product/sh38x" class="lpcard group"><span class="block aspect-square bg-white flex items-center justify-center p-4 overflow-hidden"><img src="/img/products/sh38x.webp" alt="SH38X" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]"></span><span class="block px-5 py-4 border-t border-black/8"><span class="block font-disp font-semibold text-[22px] tracking-[.05em] uppercase leading-none">SH38X</span><span class="block text-[12.5px] text-neutral-500 mt-1.5">可変容量サイドケース　EXP</span></span></a></div>
+<!-- ===== ③ 3段階モード（全幅の帯を縦に積む） ===== -->
+<section class="bg-ink2 text-white">
+  <div class="w-full px-6 md:px-12 pt-[clamp(48px,6vw,84px)] pb-6">
+    <p class="lp-kick">Three Modes</p>
+    <h2 class="lp-h2">L / XL / XXL</h2>
+    <p class="lp-lead max-w-[720px]">容量と空力のバランスを、走る目的に合わせて選べます。<br>
+      （数値は SH58X / SH59X トップケースの場合）</p>
+  </div>
+
+  <div class="mode-row">
+    <figure><video src="/media/expandable/expand_loop.mp4" poster="/img/expandable/expand_loop_poster.webp"
+      muted loop playsinline preload="none" aria-hidden="true"></video></figure>
+    <div class="mode-body">
+      <p class="mode-size">L<span class="mode-cap">46L</span></p>
+      <h3 class="lp-h2 !text-[clamp(21px,2.6vw,30px)]">夜明けから、日暮れまで</h3>
+      <p class="lp-lead">最もコンパクトなモード。日常に必要なものはすべて収まり、
+        空力と車体の挙動がもっとも良好な状態になります。</p>
+      <p class="lp-note">空力評価：10 / 10</p>
+    </div>
+  </div>
+
+  <div class="mode-row is-rev">
+    <figure><img src="/img/expandable/helmet.webp" alt="ヘルメットを収納する" loading="lazy"></figure>
+    <div class="mode-body">
+      <p class="mode-size">XL<span class="mode-cap">52L</span></p>
+      <h3 class="lp-h2 !text-[clamp(21px,2.6vw,30px)]">週末の遠出へ</h3>
+      <p class="lp-lead">2段目。フルフェイス2個を収納できる容量。
+        積載量と走行性能の、もっとも現実的な折り合い点です。</p>
+      <p class="lp-note">空力評価：8 / 10</p>
+    </div>
+  </div>
+
+  <div class="mode-row">
+    <figure><img src="/img/expandable/night.webp" alt="夜間走行するSH38X装着車" loading="lazy"></figure>
+    <div class="mode-body">
+      <p class="mode-size">XXL<span class="mode-cap">58L</span></p>
+      <h3 class="lp-h2 !text-[clamp(21px,2.6vw,30px)]">次の冒険を、迎え撃つ</h3>
+      <p class="lp-lead">完全に拡張した状態。忘れられない旅に必要なものを、
+        すべて積み込むための最大容積です。</p>
+      <p class="lp-note">空力評価：6 / 10</p>
+    </div>
   </div>
 </section>
 
-<section class="bg-ink text-white py-[68px]">
-  <div class="max-w-site mx-auto px-7 text-center">
-    <h2 class="text-[clamp(20px,2.8vw,28px)] font-bold leading-relaxed">あなたのバイクに合う EXPANDABLE を見つける。</h2>
-    <p class="text-white/65 text-[14.5px] mt-3">車種を選ぶだけで、適合するフィッティングキットとボックスをご案内します。</p>
-    <a href="/#finder" class="btn bg-shad text-white hover:bg-[#c4151b] mt-7"><i class="ti ti-search"></i>車種から探す</a>
+<!-- ===== ④ 技術（全幅ビジュアル・右寄せ） ===== -->
+<section class="fb-band is-right is-tall">
+  <img src="/img/expandable/technology.webp" alt="拡張機構の構造" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Engineered for Riding</p>
+    <h2 class="lp-h2">ロックは、蓋と一緒に動かさない。</h2>
+    <p class="lp-lead">市販の可変容量モデルは、ロック機構がケースごと伸縮するため摩耗が進みます。
+      SHADはロック機構を蓋と連動させず、構造体の固定点に配置。
+      結果として、より効率的で長持ちする製品になりました。</p>
+    <p class="lp-lead">高剛性を保ちながら軽量化するため、SH36サイドケースで開発した構造フレームを採用。
+      調整機構自体を単純化したことも軽さに効いています。</p>
+    <p class="lp-note">この一連の革新により、SH58X / SH59X は特許を取得しています。</p>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== ⑤ 実車での操作（全幅ビジュアル・左） ===== -->
+<section class="fb-band">
+  <img src="/img/expandable/open_hand.webp" alt="片手で操作する可変機構" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">In Seconds</p>
+    <h2 class="lp-h2">立ったまま、数秒で。</h2>
+    <p class="lp-lead">レバー操作だけで容量が変わります。荷物を降ろす必要も、工具もありません。
+      給油の合間に、次の目的地に合わせて容量を決められます。</p>
+  </div>
+</section>
+
+<!-- ===== ⑥ ラインアップ（編集的な一覧） ===== -->
+<section class="bg-ink text-white">
+  <div class="w-full px-6 md:px-12 pt-[clamp(48px,6vw,84px)] pb-2">
+    <p class="lp-kick">Lineup</p>
+    <h2 class="lp-h2">可変容量の3モデル</h2>
+  </div>
+  <div class="lp-lineup mt-8">
+    <a class="lp-line" href="/product/sh58x"><span class="lp-line-code">SH58X</span><span class="lp-line-cap">46-58L</span>
+      <span class="lp-line-txt">トップケース。カーボン仕様。3段階の容量可変とスマートロック。</span><i class="ti ti-arrow-right lp-line-go"></i></a>
+    <a class="lp-line" href="/product/sh59x"><span class="lp-line-code">SH59X</span><span class="lp-line-cap">46-58L</span>
+      <span class="lp-line-txt">トップケース。アルミパネル仕様。レッド・ドット・デザイン賞受賞モデル。</span><i class="ti ti-arrow-right lp-line-go"></i></a>
+    <a class="lp-line" href="/product/sh38x"><span class="lp-line-code">SH38X</span><span class="lp-line-cap">23-32L</span>
+      <span class="lp-line-txt">サイドケース（片側）。左右合計46-64L。収縮時はSH23と同等のスリムさ。</span><i class="ti ti-arrow-right lp-line-go"></i></a>
+  </div>
+</section>
+
+<!-- ===== ⑦ CTA（全幅） ===== -->
+<section class="fb-band is-center" style="min-height:min(58vh,520px)">
+  <img src="/img/expandable/gs_full.webp" alt="SH38Xを装着したアドベンチャーバイク" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <h2 class="lp-h2">あなたの車体に、付くかどうか。</h2>
+    <p class="lp-lead">メーカー・車種・年式を選ぶだけで、必要なフィッティングキットまで表示されます。</p>
+    <div class="flex flex-wrap gap-3 mt-8 justify-center">
+      <a href="/#finder" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-search"></i>車種から探す</a>
+      <a href="/engineered-for-riding" class="btn border border-white/45 text-white hover:border-white">技術を見る</a>
+    </div>
+  </div>
+</section>
+
 <footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
   <div class="max-w-site mx-auto px-7">
     <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
@@ -139,6 +226,20 @@ tailwind.config = { theme: { extend: {
     </div>
   </div>
 </footer>
-<script src="/js/nav.js"></script>
+<script>
+/* 画面に入った動画だけ再生（省データ）*/
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('section video'));
+  if(!vids.length) return;
+  if(!('IntersectionObserver' in window)){ vids.forEach(function(v){v.play().catch(function(){});}); return; }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var v=e.target;
+    if(e.isIntersecting){ if(v.preload==='none'){v.preload='auto';v.load();} v.play().catch(function(){}); }
+    else v.pause();
+  });},{threshold:.25});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
+<script src="/js/nav.js" data-lp-autoplay></script>
 </body>
 </html>

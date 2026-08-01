@@ -392,3 +392,79 @@ html{scroll-behavior:smooth;}
 .warranty>summary:hover{color:#E31E24;}
 .warranty-body{padding:0 18px 16px;font-size:13px;line-height:1.95;color:#555;
   border-top:1px solid rgba(0,0,0,.08);padding-top:13px;margin:0 0 0 0;}
+
+/* =========================================================
+   シリーズLP（TERRA / EXPANDABLE）— フルブリード中心の構成
+   カードの連続を避け、全幅のビジュアル＋短い文章で構成する
+   ========================================================= */
+.fb-hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;background:#000;color:#fff;}
+.fb-hero>video,.fb-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.86;}
+.fb-hero-mask{position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.5) 100%);}
+.fb-hero-in{position:relative;width:100%;padding:0 clamp(24px,5vw,72px) clamp(44px,6vw,88px);
+  text-shadow:0 2px 22px rgba(0,0,0,.55);}
+.fb-scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);color:rgba(255,255,255,.65);
+  font-size:22px;animation:fbbob 1.9s ease-in-out infinite;}
+@keyframes fbbob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+.fb-band{position:relative;display:flex;align-items:flex-end;overflow:hidden;background:#0B0B0B;color:#fff;
+  min-height:min(86vh,720px);}
+.fb-band>img,.fb-band>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.fb-band-mask{position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.45) 48%,rgba(0,0,0,.12) 100%);}
+.fb-band-in{position:relative;width:100%;max-width:680px;padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px);}
+.fb-band.is-right{justify-content:flex-end;}
+.fb-band.is-right .fb-band-in{margin-left:auto;}
+.fb-band.is-center{align-items:center;justify-content:center;text-align:center;}
+.fb-band.is-center .fb-band-in{max-width:820px;}
+.fb-band.is-tall{min-height:min(96vh,900px);}
+
+.lp-kick{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.3em;
+  text-transform:uppercase;color:#E31E24;display:flex;align-items:center;gap:11px;}
+.lp-kick::before{content:"";width:26px;height:2px;background:#E31E24;}
+.fb-band.is-center .lp-kick{justify-content:center;}
+.lp-display{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.05em;line-height:.98;font-size:clamp(46px,9vw,124px);}
+.lp-h2{font-size:clamp(24px,3.4vw,40px);font-weight:700;line-height:1.42;margin-top:12px;}
+.lp-lead{font-size:clamp(15px,1.5vw,18px);line-height:2;color:rgba(255,255,255,.82);margin-top:16px;}
+.lp-note{font-size:13px;line-height:1.9;color:rgba(255,255,255,.6);margin-top:14px;}
+
+/* 数字を主役にする帯（スペック・受賞など） */
+.lp-figures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,56px);}
+.lp-fig-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;color:#E31E24;
+  font-size:clamp(38px,6vw,74px);line-height:1;}
+.lp-fig-lb{font-size:13.5px;color:rgba(255,255,255,.7);margin-top:8px;line-height:1.7;}
+@media(max-width:700px){.lp-figures{grid-template-columns:1fr;gap:26px;}}
+
+/* 3段階モード（EXPANDABLE）：全幅の帯を縦に積む */
+.mode-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;
+  border-top:1px solid rgba(255,255,255,.12);}
+.mode-row>figure{margin:0;aspect-ratio:16/11;overflow:hidden;background:#111;}
+.mode-row>figure img,.mode-row>figure video{width:100%;height:100%;object-fit:cover;display:block;}
+.mode-row.is-rev>figure{order:2;}
+.mode-body{padding:clamp(32px,5vw,72px) clamp(24px,5vw,72px);}
+.mode-size{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(30px,4vw,50px);
+  letter-spacing:.06em;line-height:1;}
+.mode-cap{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(24px,3vw,36px);color:#E31E24;
+  margin-left:14px;}
+@media(max-width:820px){
+  .mode-row{grid-template-columns:1fr;}
+  .mode-row.is-rev>figure{order:0;}
+}
+
+/* ラインアップ（カードにしない編集的な行リスト） */
+.lp-lineup{border-top:1px solid rgba(255,255,255,.14);}
+.lp-line{display:grid;grid-template-columns:minmax(0,150px) minmax(0,110px) minmax(0,1fr) auto;
+  align-items:center;gap:clamp(12px,3vw,32px);padding:22px clamp(24px,5vw,72px);
+  border-bottom:1px solid rgba(255,255,255,.14);transition:.2s;}
+.lp-line:hover{background:rgba(255,255,255,.06);}
+.lp-line-code{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(24px,3vw,34px);
+  letter-spacing:.05em;text-transform:uppercase;}
+.lp-line-cap{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(18px,2vw,24px);color:#E31E24;}
+.lp-line-txt{font-size:14px;color:rgba(255,255,255,.72);line-height:1.7;}
+.lp-line-go{color:rgba(255,255,255,.55);font-size:20px;}
+.lp-line:hover .lp-line-go{color:#E31E24;}
+@media(max-width:760px){
+  .lp-line{grid-template-columns:auto auto 1fr;row-gap:4px;padding:18px 24px;}
+  .lp-line-txt{grid-column:1/-1;}
+}
