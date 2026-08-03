@@ -355,10 +355,23 @@
     });
   }
 
+  /* メーカーの表示順：国内4メーカー＋BMWを先頭に固定し、以降は五十音・アルファベット順 */
+  var MAKER_PRIORITY = ["ホンダ", "カワサキ", "ヤマハ", "スズキ", "BMW"];
+
+  function byMaker(a, b) {
+    var ia = MAKER_PRIORITY.indexOf(a), ib = MAKER_PRIORITY.indexOf(b);
+    if (ia >= 0 || ib >= 0) {
+      if (ia < 0) return 1;
+      if (ib < 0) return -1;
+      return ia - ib;
+    }
+    return byJa(a, b);
+  }
+
   function initCascade(root, index, vehicles, onSubmit) {
     var els = getEls(root);
     if (!els.maker || !els.model || !els.year) return;
-    var makers = unique(vehicles.map(function (vehicle) { return vehicle.maker; })).sort(byJa);
+    var makers = unique(vehicles.map(function (vehicle) { return vehicle.maker; })).sort(byMaker);
     clearOptions(els.maker, "選択してください");
     clearOptions(els.model, "—");
     clearOptions(els.year, "—");
