@@ -456,11 +456,35 @@ def main():
                         '<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mt-6">'
                         + same_cards + "</div></div></section>")
 
+        # OGP / Twitterカード（実装ガイド2.5：画像はルート相対）
+        og_img = "/img/products/%s.webp" % code.lower()
+        if not os.path.exists(os.path.join(SITE, og_img.lstrip("/"))):
+            og_img = "/img/og_default.jpg"
+        og = ("\n<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->\n"
+              '<meta property="og:type" content="article">\n'
+              '<meta property="og:site_name" content="SHAD JAPAN">\n'
+              '<meta property="og:title" content="%s｜%s — SHAD JAPAN">\n'
+              '<meta property="og:description" content="%s">\n'
+              '<meta property="og:url" content="https://shad.customjapan.net/product/%s">\n'
+              '<meta property="og:image" content="%s">\n'
+              '<meta property="og:locale" content="ja_JP">\n'
+              '<meta name="twitter:card" content="summary_large_image">\n'
+              '<meta name="twitter:title" content="%s｜%s — SHAD JAPAN">\n'
+              '<meta name="twitter:description" content="%s">\n'
+              '<meta name="twitter:image" content="%s">\n'
+              % (esc(label), esc(jp), esc(catch or jp), code.lower(), esc(og_img),
+                 esc(label), esc(jp), esc(catch or jp), esc(og_img)))
+
         page_head = (head
                      .replace("<title>TR55｜TERRA トップケース — SHAD JAPAN</title>",
                               "<title>%s｜%s — SHAD JAPAN</title>" % (esc(label), esc(jp)))
                      .replace('<meta name="description" content="シリーズ最大55L。長旅のための容量。">',
                               '<meta name="description" content="%s">' % esc(catch or jp)))
+
+        # テンプレート（TR55）のOGPを、このページ用に差し替える
+        page_head = re.sub(r"\n<!-- OGP / Twitter.*?(?=<link rel=\"preconnect\")", "", page_head, flags=re.S)
+        page_head = page_head.replace('<link rel="preconnect" href="https://fonts.googleapis.com">',
+                                      og + '<link rel="preconnect" href="https://fonts.googleapis.com">', 1)
 
         html = page_head + "\n<!-- generated-by: tools/gen_pages_from_catalog.py -->\n</head>\n" + nav + PAGE.format(
             main_img=esc(imgs[0] if imgs else ""), thumbs=thumbs, code=esc(label), jp=esc(jp), kick=esc(kick),
