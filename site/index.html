@@ -191,63 +191,7 @@ tailwind.config = {
       <h2 class="text-[30px] font-bold tracking-[.02em]">カテゴリから探す</h2>
       <p class="text-neutral-500 text-[14.5px] mt-2.5 max-w-[640px]">用途とサイズから、SHADのボックスをお選びいただけます。</p>
     </div>
-    <!-- カテゴリで絞り込み（フルブリードの縦長タイル）-->
-    <p class="filter-cap font-disp text-[11px] tracking-[.24em] uppercase text-neutral-400 mb-4">Categories</p>
-  </div>
-
-  <div class="full-bleed">
-    <div class="catgrid">
-      <a href="/products?cat=TOP" class="cattile group" data-reveal>
-        <img src="/img/cat/top.webp" alt="トップケース" loading="lazy">
-        <span class="cattile-mask"></span>
-        <span class="cattile-in">
-          <span class="cattile-en">Top Case</span>
-          <span class="cattile-ja">トップケース</span>
-          <span class="cattile-go">19モデル<i class="ti ti-arrow-right"></i></span>
-        </span>
-      </a>
-      <a href="/products?cat=SIDE" class="cattile group" data-reveal>
-        <img src="/img/cat/side.webp" alt="サイドケース" loading="lazy">
-        <span class="cattile-mask"></span>
-        <span class="cattile-in">
-          <span class="cattile-en">Side Case</span>
-          <span class="cattile-ja">サイドケース</span>
-          <span class="cattile-go">7モデル<i class="ti ti-arrow-right"></i></span>
-        </span>
-      </a>
-      <a href="/products?cat=SIDEBAG" class="cattile group" data-reveal>
-        <img src="/img/cat/sidebag.webp" alt="サイドバッグ" loading="lazy">
-        <span class="cattile-mask"></span>
-        <span class="cattile-in">
-          <span class="cattile-en">Side Bag</span>
-          <span class="cattile-ja">サイドバッグ</span>
-          <span class="cattile-go">4モデル<i class="ti ti-arrow-right"></i></span>
-        </span>
-      </a>
-      <a href="/products?cat=TANK" class="cattile group" data-reveal>
-        <img src="/img/cat/tank.webp" alt="タンクバッグ" loading="lazy">
-        <span class="cattile-mask"></span>
-        <span class="cattile-in">
-          <span class="cattile-en">Tank Bag</span>
-          <span class="cattile-ja">タンクバッグ</span>
-          <span class="cattile-go">9モデル<i class="ti ti-arrow-right"></i></span>
-        </span>
-      </a>
-      <a href="/#finder" class="cattile group" data-reveal>
-        <img src="/img/cat/fitting.webp" alt="フィッティングキット" loading="lazy">
-        <span class="cattile-mask"></span>
-        <span class="cattile-in">
-          <span class="cattile-en">Fitting Kit</span>
-          <span class="cattile-ja">フィッティングキット</span>
-          <span class="cattile-go">車種から探す<i class="ti ti-arrow-right"></i></span>
-        </span>
-      </a>
-    </div>
-  </div>
-
-  <div class="max-w-site mx-auto px-7 mt-14 md:mt-16">
-    <p class="filter-cap font-disp text-[11px] tracking-[.24em] uppercase text-neutral-400 mb-4">Feature</p>
-<!-- 特集ページ（専用ページへ遷移＝赤い枠線で区別）-->
+    <!-- 特集ページ（専用ページへ遷移＝赤い枠線で区別）-->
     <div class="grid sm:grid-cols-2 gap-4 md:gap-5" data-reveal>
       <a href="/terra" class="group relative block rounded-[16px] overflow-hidden aspect-[16/9] ring-2 ring-shad">
         <img src="/img/banner_terra.webp" alt="TERRA シリーズ" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.05]">
@@ -265,6 +209,44 @@ tailwind.config = {
           <span class="inline-flex items-center gap-1.5 text-white/85 text-[13px] mt-1.5 group-hover:gap-2.5 transition-all">容量が、変わる。仕組みを見る<i class="ti ti-arrow-right"></i></span>
         </span>
       </a>
+    </div>
+
+    <!-- カテゴリで絞り込み（製品一覧へ）-->
+    <p class="filter-cap font-disp text-[11px] tracking-[.24em] uppercase text-neutral-400 mt-9 mb-3">Categories</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+      <a href="/products?cat=TOP" class="group" data-reveal>
+        <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
+          <img src="/img/products/sh48.webp" alt="トップケース" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+        </span>
+        <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">トップケース</span>
+      </a>
+      <a href="/products?cat=SIDE" class="group" data-reveal>
+        <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
+          <img src="/img/products/sh38x.webp" alt="サイドケース" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+        </span>
+        <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">サイドケース</span>
+      </a>
+      <a href="/products?cat=SIDEBAG" class="group" data-reveal>
+        <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
+          <img src="/img/products/tr30.webp" alt="サイドバッグ" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+        </span>
+        <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">サイドバッグ</span>
+      </a>
+      <a href="/products?cat=TANK" class="group" data-reveal>
+        <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
+          <img src="/img/products/tr10.webp" alt="タンクバッグ" loading="lazy" class="w-full h-full object-contain transition duration-300 group-hover:scale-[1.05]">
+        </span>
+        <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">タンクバッグ</span>
+      </a>
+      <a href="/products?cat=FITTING" class="group" data-reveal>
+        <span class="block aspect-square rounded-[16px] bg-white border border-black/10 overflow-hidden flex items-center justify-center p-4 transition group-hover:-translate-y-1 group-hover:shadow-[0_14px_34px_rgba(0,0,0,.09)]">
+          <i class="ti ti-tool text-[44px] text-neutral-400 group-hover:text-shad transition"></i>
+        </span>
+        <span class="block text-center font-bold text-[14.5px] mt-3 group-hover:text-shad transition">フィッティングキット</span>
+      </a>
+    </div>
+    <div class="text-center mt-9" data-reveal>
+      <a href="/products" class="btn border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white">すべての製品を見る</a>
     </div>
   </div>
 </section>
