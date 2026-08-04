@@ -12,6 +12,7 @@ RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
 # 旧URL（フラット構成）→ 新URL（階層構成）
+RewriteRule ^for-your-motorcycle/?$ /fitment [R=301,L,NC]
 RewriteRule ^product-([A-Za-z0-9]+)\.html/?$ /product/$1 [R=301,L,NC]
 RewriteRule ^product-([A-Za-z0-9]+)/?$ /product/$1 [R=301,L,NC]
 

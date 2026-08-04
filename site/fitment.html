@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>車種から探す｜SHAD JAPAN 適合検索</title>
+<meta name="description" content="お使いのバイクに適合するSHADのトップケース・サイドケース・バッグと、必要な車種専用フィッティングキットを検索できます。">
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="車種から探す｜SHAD JAPAN 適合検索">
+<meta property="og:description" content="お使いのバイクに適合するSHADの商品と、必要な車種専用フィッティングキットを検索できます。">
+<meta property="og:url" content="https://shad.customjapan.net/fitment">
+<meta property="og:image" content="/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="車種から探す｜SHAD JAPAN 適合検索">
+<meta name="twitter:description" content="お使いのバイクに適合するSHADの商品と、必要な車種専用フィッティングキットを検索できます。">
+<meta name="twitter:image" content="/img/og_default.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#161616',mist:'#F4F3F1'},fontFamily:{disp:['"Barlow Condensed"','"Noto Sans JP"','sans-serif'],sans:['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif']},maxWidth:{site:'1180px'}}}};
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+.chip{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;padding:8px 16px;border-radius:9999px;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.82);cursor:pointer;transition:.18s;white-space:nowrap;background:transparent;}
+.chip:hover{border-color:#fff;color:#fff;}
+.chip.on{background:#E31E24;color:#fff;border-color:#E31E24;}
+.filter-lb{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.cap-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:44px;line-height:1;letter-spacing:.02em;color:#E31E24;}
+.cap-num small{font-size:22px;letter-spacing:.04em;}
+/* 一覧カード：型番と容量を同じ行に置き、商品名は次の行で全幅を使う
+   （商品名が2行になっても容量がズレないようにするため） */
+.pcard-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.pcard-head .cap-num{font-size:34px;white-space:nowrap;}
+.pcard-head .cap-num small{font-size:18px;}
+/* 「23-32L」のような可変容量は桁が多いので一段小さく */
+.pcard-head .cap-num.cap-long{font-size:25px;letter-spacing:.01em;}
+.pcard-head .cap-num.cap-long small{font-size:15px;}
+.pcard-jp{min-height:2.5em;}
+
+.cat-tile{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:.18s;}
+.cat-img{width:84px;height:64px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid transparent;transition:.18s;}
+.cat-img img{width:100%;height:100%;object-fit:cover;}
+.cat-lb{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);transition:.18s;}
+.cat-tile:hover .cat-lb{color:#fff;}
+.cat-tile:hover .cat-img{transform:translateY(-2px);}
+.cat-tile.on .cat-img{border-color:#E31E24;}
+.cat-tile[data-f="ALL"] .cat-img{background:#191919;}
+.cat-tile.on .cat-lb{color:#fff;}
+.feat-card{flex:0 0 320px;display:flex;gap:14px;align-items:center;background:#1D1D1D;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;transition:.2s;}
+.feat-card:hover{border-color:rgba(227,30,36,.6);transform:translateY(-2px);}
+.feat-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:2.5px 8px;border-radius:4px;}
+.pbanner{grid-column:1/-1;position:relative;border-radius:14px;overflow:hidden;display:block;min-height:280px;}
+.pbanner video,.pbanner img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pbanner .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.05) 100%);}
+.pbanner .inner{position:relative;z-index:2;padding:34px 36px;max-width:540px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:280px;color:#fff;}
+.pbanner .kick{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#E31E24;display:flex;align-items:center;gap:10px;}
+.pbanner .kick:before{content:"";width:26px;height:2px;background:#E31E24;}
+.pbanner .ttl{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:34px;letter-spacing:.08em;text-transform:uppercase;line-height:1.15;margin-top:10px;}
+.pbanner .cp{font-size:14px;color:rgba(255,255,255,.85);margin-top:8px;}
+.pbanner .cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:#E31E24;color:#fff;border-radius:5px;padding:11px 22px;font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;transition:.2s;}
+.pbanner:hover .cta{background:#c4151b;}
+.feat-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;}
+.feat{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#5F5E5A;background:#F4F3F1;border-radius:6px;padding:3px 8px;line-height:1.4;}
+.feat .fi{color:#0E0E0E;font-size:13px;display:inline-flex;align-items:center;}
+.feat .fi .oimg{width:16px;height:16px;object-fit:contain;display:block;}
+.feat b{font-family:"Barlow Condensed",sans-serif;font-weight:600;color:#E31E24;letter-spacing:.02em;font-size:12.5px;}
+.new-badge{position:absolute;right:12px;top:12px;z-index:2;background:#E31E24;color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+/* 機能訴求バナー（左：テキスト / 右：ループ動画） */
+.kfbanner{display:grid;grid-template-columns:1fr;border-radius:14px;overflow:hidden;background:#0E0E0E;color:#fff;transition:.25s;}
+.kfbanner:hover{box-shadow:0 20px 46px rgba(0,0,0,.18);}
+.kfbanner-txt{display:flex;flex-direction:column;justify-content:center;padding:28px 30px;}
+.kfbanner-vid{position:relative;display:block;background:#fff;aspect-ratio:16/9;overflow:hidden;}
+.kfbanner-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s;}
+.kfbanner:hover .kfbanner-vid video{transform:scale(1.03);}
+@media(min-width:768px){
+  .kfbanner{grid-template-columns:1fr 1.35fr;align-items:stretch;}
+  .kfbanner-vid{aspect-ratio:auto;height:100%;min-height:250px;}
+  .kfbanner-txt{padding:34px 36px;}
+}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/" class="shrink-0">
+      <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden md:flex gap-8 ml-auto font-disp uppercase tracking-[.14em] text-[15.5px] font-medium text-white/80">
+      <li><a class="hover:text-white transition" href="/products">Products</a></li>
+      <li><a class="text-white" href="#finder">For Your Motorcycle</a></li>
+      <li><a class="hover:text-white transition" href="/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto md:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="md:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="md:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="#finder" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+<div class="bg-ink2 text-white">
+  <div class="max-w-site mx-auto px-7 pt-[54px] pb-[46px]">
+    <p class="font-disp font-semibold text-[12px] tracking-[.3em] uppercase text-shad flex items-center gap-3 mb-3">
+      <span class="inline-block w-[28px] h-[2px] bg-shad"></span>For Your Motorcycle</p>
+    <h1 class="font-disp font-semibold uppercase tracking-[.05em] leading-[1.02] text-[clamp(30px,5vw,54px)]">Fitment Search</h1>
+    <p class="text-white/70 text-[14.5px] mt-4 max-w-[680px] leading-[1.95]">
+      お使いのバイクに適合するSHADの商品と、取付に必要な車種専用フィッティングキットをご案内します。</p>
+  </div>
+</div>
+
+<main class="bg-mist py-[52px]" id="fitment" data-fitment-finder data-fitment-mode="page">
+  <div class="max-w-site mx-auto px-7">
+    <div data-fitment-mount></div>
+  </div>
+</main>
+
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <div class="flex flex-wrap items-center justify-between gap-6">
+      <img src="/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+      <!-- SNS（ロゴ隣・目立たせ）-->
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-white/45 text-[12px] font-disp tracking-[.2em] uppercase mr-1">Follow</span>
+        <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </div>
+    </div>
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <!-- ご購入導線（カスタムジャパンEC）-->
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
+      <a href="https://moto.customjapan.net/" target="_blank" rel="noopener" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-shopping-bag"></i>ご購入の方はこちら</a>
+      <span class="text-[12px] text-white/45 leading-relaxed">※ご購入は日本総代理店の株式会社カスタムジャパンにて承ります。</span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/products" class="hover:text-white transition">TERRA</a></li><li><a href="/products" class="hover:text-white transition">トップケース</a></li><li><a href="/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/products" class="hover:text-white transition">バッグ</a></li><li><a href="/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/about" class="hover:text-white transition">About</a></li><li><a href="/about" class="hover:text-white transition">OEM</a></li><li><a href="/awards" class="hover:text-white transition">Awards</a></li><li><a href="/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/movies" class="hover:text-white transition">Movies</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/company" class="hover:text-white transition">会社情報</a><a href="/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/fitment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="/js/nav.js"></script>
+</body>
+</html>

@@ -14,8 +14,16 @@
   var root = document.querySelector("[data-fitment-finder]");
   if (!root) return;
   var host = root.querySelector("[data-fitment-mount]") || root;
+  var MODE = root.dataset.fitmentMode || "entry";   // entry（TOP）/ page（結果ページ）
+  var RESULT_PAGE = "/fitment";
 
-  /* 検索UIを注入（提供ページと同じ構造・ID）*/
+  /* 車種の識別子：メーカー＋車種名（URLに載せて結果ページへ渡す）*/
+  function bikeKey(b) { return b.maker + "|" + b.model; }
+  function queryParam(name) {
+    return new URLSearchParams(location.search || "").get(name) || "";
+  }
+
+  /* 検索UIを注入（提供実装と同じ構造・ID。エントリーモードでは結果部分を隠す）*/
   host.innerHTML = `<div class="selector-panel">
   <div class="panel-label">車種から探す</div>
   <div class="selector-row">
@@ -153,6 +161,7 @@ const productSub = document.getElementById('productSub');
 const productArea = document.getElementById('productArea');
 
 let selectedBike = null;
+let pendingBike = null;   // エントリーモードで「適合を見る」を押すまで保持する車種
 let terraOnly = false;
 let capacityFilter = 'all'; // 'all' | 'le40' | 'gt40'
 
@@ -364,15 +373,30 @@ function selectBikeFromSearch(idx) {
 // ---- 車種の選択 ----
 
 function selectBike(bike) {
+  /* エントリーモード（TOPの「車種から探す」）では、この時点では遷移せず
+     「適合を見る」ボタンを押したときに結果ページへ移動する。 */
+  if (MODE === "entry") {
+    if (window.__fsSetPending) window.__fsSetPending(bike);
+    return;
+  }
   selectedBike = bike;
   selectedModel.textContent = bike.model + '（' + bike.maker + '）';
   selectedBar.classList.add('show');
+  if (window.history && history.replaceState) {
+    history.replaceState(null, "", RESULT_PAGE + "?bike=" + encodeURIComponent(bikeKey(bike)));
+  }
   renderProducts();
+  var head = document.getElementById('productTitle');
+  if (head) head.scrollIntoView({ block: 'start' });
 }
 
 function clearBike() {
   selectedBike = null;
+  if (MODE === "entry" && window.__fsSetPending) window.__fsSetPending(null);
   selectedBar.classList.remove('show');
+  if (MODE === "page" && window.history && history.replaceState) {
+    history.replaceState(null, "", RESULT_PAGE);
+  }
   modelSelect.value = '';
   searchInput.value = '';
   hideSuggest();
@@ -477,12 +501,12 @@ function renderAllProducts() {
   productArea.innerHTML = '';
 
   const topSec = el('div', 'product-section');
-  topSec.appendChild(sectionTitle('トップケース', top.length, 'fitting_topcases.html'));
+  topSec.appendChild(sectionTitle('トップケース', top.length));
   topSec.appendChild(productGrid(top));
   productArea.appendChild(topSec);
 
   const sideSec = el('div', 'product-section');
-  sideSec.appendChild(sectionTitle('サイドケース', side.length, 'fitting_sidekits.html'));
+  sideSec.appendChild(sectionTitle('サイドケース', side.length));
   sideSec.appendChild(productGrid(side));
   productArea.appendChild(sideSec);
 
@@ -636,8 +660,53 @@ function renderProducts() {
   }
 }
 
-// 初期表示: 全商品一覧
-renderProducts();
+// ---- 初期表示 ----
+if (MODE === "entry") {
+  // TOPでは検索フォームのみ（結果は /fitment で表示）
+  root.querySelectorAll('.filter-bar, #productTitle, #productSub, #productArea')
+      .forEach(function (n) { n.remove(); });
+  var go = document.createElement('button');
+  go.type = 'button';
+  go.className = 'btn bg-shad text-white hover:bg-[#c4151b] mt-5 w-full sm:w-auto justify-center';
+  go.innerHTML = '<i class="ti ti-search"></i>適合を見る';
+  go.disabled = true;
+  go.addEventListener('click', function () {
+    var b = pendingBike;
+    if (b) location.href = RESULT_PAGE + "?bike=" + encodeURIComponent(bikeKey(b));
+  });
+  host.querySelector('.selector-panel').appendChild(go);
+  window.__fsSetPending = function (bike) {
+    pendingBike = bike;
+    go.disabled = !bike;
+    if (bike) {
+      selectedModel.textContent = bike.model + '（' + bike.maker + '）';
+      selectedBar.classList.add('show');
+    } else {
+      selectedBar.classList.remove('show');
+    }
+  };
+} else {
+  // 結果ページ：URLの ?bike= を復元して表示
+  var want = queryParam('bike');
+  var target = want ? BIKES.filter(function (b) { return bikeKey(b) === want; })[0] : null;
+  if (target) {
+    selectedBike = target;
+    selectedModel.textContent = target.model + '（' + target.maker + '）';
+    selectedBar.classList.add('show');
+    // プルダウンも選択状態に合わせる
+    makerSelect.value = target.maker;
+    makerSelect.dispatchEvent(new Event('change'));
+    var gk = target.group || target.model;
+    if ([].slice.call(seriesSelect.options).some(function (o) { return o.value === gk; })) {
+      seriesSelect.value = gk;
+      seriesSelect.dispatchEvent(new Event('change'));
+      if ([].slice.call(modelSelect.options).some(function (o) { return o.value === target.model; })) {
+        modelSelect.value = target.model;
+      }
+    }
+  }
+  renderProducts();
+}
 }
 
 })();

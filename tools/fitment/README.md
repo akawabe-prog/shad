@@ -43,12 +43,19 @@ python3 tools/fitment/postprocess.py  # 商品との突合だけ再実行
 
 ## サイト側の実装
 
-`site/js/fitment.js` の1本で両方向を描画します。
+`site/js/fitment.js` の1本で全てを描画します。`data-fitment-mode` で挙動が変わります。
 
-| 対象 | 器 | 内容 |
+| 対象 | 器 | 挙動 |
 |---|---|---|
-| 車種 → 商品 | `[data-fitment-finder]`（TOPの「車種から探す」） | メーカー→シリーズ→車種の3段プルダウン＋キーワード検索、TERRA／容量の絞り込み、結果はトップケース／サイドケースのセクション別 |
-| 商品 → 車種 | `[data-product-fitment-checker]`（商品ページ「この商品が装着できる車種」） | メーカー絞り込み＋車種名検索、シリーズ単位で束ねた一覧。各行から必要なキットへ |
+| 入口（TOP） | `[data-fitment-finder][data-fitment-mode="entry"]` | 3段プルダウン＋キーワード検索のみ。車種を選ぶと「適合を見る」が有効になり、押すと `/fitment?bike=メーカー\|車種` へ遷移 |
+| 結果ページ | `/fitment`（`data-fitment-mode="page"`） | 同じ検索UI＋TERRA／容量の絞り込み＋結果（トップケース／サイドケース／サイドバッグ／タンクバッグ）。URLの `?bike=` を復元し、選び直すと `history.replaceState` でURLも更新＝結果を共有できる |
+| 商品ページ | `[data-product-fitment-checker]` | 「この商品が装着できる車種」。メーカー絞り込み＋車種名検索、シリーズ単位で束ねた一覧。各行から必要なキットへ |
+
+サイト内の「For Your Motorcycle」「車種から探す」の導線はすべて `/fitment` に統一しています
+（旧 `/#finder` からのリダイレクトも `.htaccess` に追加）。
+
+デザインは当サイトのトーン（Barlow Condensed × Noto Sans JP／SHADレッド／mist）に
+合わせて `css/custom.css` で再定義しています（提供実装のクラス名はそのまま使用）。
 
 ## 引き継ぎ事項
 
