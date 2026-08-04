@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAD 車種別 適合商品検索</title>
+<style>
+  :root {
+    --accent: #d81f26;
+    --dark: #111;
+    --panel: #17181a;
+    --border: #e2e2e2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  /* ブランドヘッダー（右端に赤の斜めストライプ） */
+  .brand-bar {
+    background: linear-gradient(115deg, var(--dark) 88%, var(--accent) 88.3%, var(--accent) 92%, var(--dark) 92.3%, var(--dark) 94%, var(--accent) 94.3%);
+    color: #fff;
+    padding: 20px 28px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand-logo { font-weight: 900; font-size: 1.6rem; letter-spacing: 4px; font-style: italic; }
+  .brand-logo .dot { color: var(--accent); }
+  .brand-title { font-size: 0.9rem; color: #bbb; letter-spacing: 2px; font-weight: bold; }
+
+  /* 車種選択パネル（ダーク） */
+  .selector-panel {
+    background: var(--panel);
+    padding: 22px 24px;
+    margin-bottom: 32px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .panel-label {
+    font-size: 0.78rem;
+    font-weight: bold;
+    color: #999;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .selector-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .selector-row select {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 1px solid #3a3b3e;
+    background: #222326;
+    color: #eee;
+    cursor: pointer;
+  }
+  .selector-row select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .selector-row select:disabled { background: #1c1d1f; color: #555; cursor: default; }
+  .panel-or {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 18px 0 12px;
+    font-size: 0.72rem;
+    color: #666;
+    letter-spacing: 2px;
+  }
+  .panel-or::before, .panel-or::after { content: ''; flex: 1; border-top: 1px solid #333; }
+
+  /* キーワード検索（サジェスト式） */
+  .search-wrap { position: relative; }
+  #searchInput {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 1px solid #3a3b3e;
+    background: #222326;
+    color: #eee;
+  }
+  #searchInput::placeholder { color: #777; }
+  #searchInput:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  #suggestList {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    left: 0; right: 0;
+    top: 100%;
+    max-height: 320px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #222326;
+    border: 1px solid #3a3b3e;
+    border-top: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  }
+  #suggestList.show { display: block; }
+  #suggestList li { padding: 11px 14px; font-size: 0.92rem; color: #eee; cursor: pointer; border-bottom: 1px solid #2c2d30; border-left: 3px solid transparent; }
+  #suggestList li:hover { background: #2c2d30; border-left-color: var(--accent); }
+  #suggestList li .maker-badge { font-size: 0.75rem; color: #888; margin-left: 6px; }
+  #suggestList li .kind-badge { font-size: 0.7rem; color: #ccc; background: #3a3b3e; padding: 1px 6px; margin-left: 6px; }
+  #suggestList li.no-hit { color: #888; cursor: default; }
+  #suggestList li.no-hit:hover { background: #222326; border-left-color: transparent; }
+
+  /* 選択中の車種バー */
+  #selectedBar {
+    display: none;
+    align-items: center;
+    gap: 14px;
+    background: #222326;
+    border-left: 4px solid var(--accent);
+    padding: 13px 16px;
+    margin-top: 18px;
+  }
+  #selectedBar.show { display: flex; }
+  #selectedBar .selected-label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 9px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  #selectedBar .selected-model { font-weight: bold; font-size: 1.05rem; color: #fff; flex: 1; }
+  #clearBikeBtn {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+    border: 1px solid #555;
+    background: transparent;
+    color: #ccc;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  #clearBikeBtn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* TERRAシリーズ・容量絞り込み */
+  .filter-bar { margin: 0 0 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+  .filter-bar label {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: bold;
+    color: var(--dark); cursor: pointer; user-select: none;
+  }
+  .filter-bar input[type="checkbox"], .filter-bar input[type="radio"] {
+    width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer;
+  }
+  .filter-group { display: inline-flex; flex-wrap: wrap; gap: 8px 18px; padding-left: 24px; border-left: 1px solid var(--border); }
+
+  /* 商品一覧 */
+  #productTitle {
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+  }
+  #productTitle::before {
+    content: '';
+    width: 14px;
+    height: 26px;
+    background: var(--accent);
+    transform: skewX(-15deg);
+    flex-shrink: 0;
+  }
+  #productSub { font-size: 0.85rem; color: #888; margin: 0 0 20px; padding-left: 26px; }
+  .product-section { margin-bottom: 36px; }
+  .product-section-title { display: flex; align-items: center; gap: 12px; margin: 28px 0 14px; }
+  .product-section-title .ttl {
+    background: var(--dark);
+    color: #fff;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 7px 22px 7px 16px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  }
+  .product-section-title .count { font-size: 0.8rem; color: #888; font-weight: bold; }
+  .kit-list-link {
+    margin-left: auto; font-size: 0.78rem; color: #888; text-decoration: none;
+    border: 1px solid var(--border); padding: 4px 10px; white-space: nowrap;
+  }
+  .kit-list-link:hover { border-color: var(--accent); color: var(--accent); }
+  .no-fit { font-size: 0.9rem; color: #888; margin: 8px 0; }
+
+  /* フィッティングキット情報ボックス */
+  .kit-block {
+    background: #f6f6f7;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--dark);
+    padding: 18px;
+    margin: 0 0 20px;
+  }
+  .kit-line { font-size: 0.9rem; color: #333; margin: 0 0 10px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .kit-line:last-child { margin-bottom: 0; }
+  .kit-name { font-size: 0.95rem; font-weight: bold; color: var(--dark); }
+  .kit-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 9px 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+    transition: background 0.15s;
+  }
+  .kit-btn:hover { background: var(--dark); }
+  .kit-caption { font-size: 0.85rem; font-weight: bold; color: #333; margin: 16px 0 0; }
+
+  /* 商品カードグリッド（PC5列） */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+    margin: 14px 0 4px;
+  }
+  .product-card {
+    border: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.12s, transform 0.12s, border-color 0.12s;
+  }
+  .product-card:hover {
+    border-color: var(--dark);
+    box-shadow: 5px 5px 0 var(--dark);
+    transform: translate(-2px, -2px);
+  }
+  .card-link { text-decoration: none; color: inherit; display: block; }
+  .card-thumb {
+    aspect-ratio: 1;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 8px;
+  }
+  .card-thumb img { width: 100%; height: 100%; object-fit: contain; }
+  .card-thumb.noimg img { display: none; }
+  .card-thumb.noimg::after { content: 'NO IMAGE'; color: #ccc; font-size: 0.75rem; }
+  .card-name { font-size: 0.82rem; font-weight: bold; padding: 10px 12px 4px; color: var(--dark); line-height: 1.5; }
+  .card-link:hover .card-name { color: var(--accent); }
+  .card-goto { font-size: 0.72rem; font-weight: bold; color: #aaa; padding: 0 12px 10px; letter-spacing: 1px; }
+  .card-link:hover .card-goto { color: var(--accent); }
+  .card-note { font-size: 0.72rem; padding: 7px 12px 10px; color: #777; line-height: 1.6; margin-top: auto; border-top: 1px solid #f0f0f0; }
+  .card-note.ok { color: #2e7d32; font-weight: bold; }
+  .card-note a { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .card-name { font-size: 0.78rem; padding: 8px 10px 4px; }
+    .card-goto { padding: 0 10px 8px; }
+    .card-note { padding: 6px 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <span class="brand-logo">SHAD<span class="dot">.</span></span>
+  <span class="brand-title">車種別 適合商品検索</span>
+</div>
+
+<div class="selector-panel">
+  <div class="panel-label">車種から探す</div>
+  <div class="selector-row">
+    <select id="makerSelect">
+      <option value="">1. メーカー</option>
+    </select>
+    <select id="seriesSelect" disabled>
+      <option value="">2. シリーズ</option>
+    </select>
+    <select id="modelSelect" disabled>
+      <option value="">3. 車種・年式</option>
+    </select>
+  </div>
+
+  <div class="panel-or">または</div>
+
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="キーワードで探す（例：PCX Vストローム、）" autocomplete="off">
+    <ul id="suggestList"></ul>
+  </div>
+
+  <div id="selectedBar">
+    <span class="selected-label">選択中</span>
+    <span class="selected-model" id="selectedModel"></span>
+    <button id="clearBikeBtn">選択解除</button>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <label><input type="checkbox" id="terraFilter"> TERRAシリーズのみ表示</label>
+  <span class="filter-group" id="capacityFilterGroup">
+    <label><input type="radio" name="capacityFilter" value="all" checked> 容量すべて</label>
+    <label><input type="radio" name="capacityFilter" value="le40"> 40Lまで</label>
+    <label><input type="radio" name="capacityFilter" value="gt40"> 40Lを超える</label>
+  </span>
+</div>
+
+<h2 id="productTitle">商品一覧</h2>
+<p id="productSub"></p>
+<div id="productArea"></div>
+
+<script>
+fetch('reverse_data.json')
+  .then(r => r.json())
+  .then(DATA => init(DATA))
+  .catch(() => {
+    document.getElementById('productTitle').textContent = 'データの読み込みに失敗しました';
+  });
+
+function init(DATA) {
+
+const PLATES = DATA.plates;
+const SIDECASES = DATA.sidecases;
+const TANKBAGS = DATA.tankbags || [];
+const SIDEBAGS = DATA.sidebags || {};
+const BIKES = DATA.bikes;
+
+// 英語⇔カタカナ対応表（両方向で機能）
+const ALIASES = {
+  // ホンダ
+  'forza': 'フォルツァ',
+  'africa twin': 'アフリカツイン',
+  'africatwin': 'アフリカツイン',
+  'gold wing': 'ゴールドウイング',
+  'goldwing': 'ゴールドウイング',
+  'hornet': 'ホーネット',
+  'integra': 'インテグラ',
+  'transalp': 'トランザルプ',
+  'grom': 'グロム',
+  'nighthawk': 'ナイトホーク',
+  'crossrunner': 'クロスランナー',
+  'lead': 'リード',
+  // ヤマハ
+  'tracer': 'トレーサー',
+  'tenere': 'テネレ',
+  'tricity': 'トリシティ',
+  'niken': 'ナイケン',
+  'majesty': 'マジェスティ',
+  'cygnus': 'シグナス',
+  'grand majesty': 'グランドマジェスティ',
+  'fazer': 'フェザー',
+  'feather': 'フェザー',
+  // スズキ
+  'vstrom': 'Vストローム',
+  'v-strom': 'Vストローム',
+  'v-': 'Vストローム',
+  'bandit': 'バンディット',
+  'burgman': 'バーグマン',
+  'skywave': 'スカイウェイブ',
+  'address': 'アドレス',
+  'gixxer': 'ジクサー',
+  'gixser': 'ジクサー',
+  'gladius': 'グラディウス',
+  // カワサキ
+  'ninja': 'ニンジャ',
+  'concours': 'コンコース',
+  'rebel': 'レブル',
+  'eliminator': 'エリミネーター',
+  'vulcan': 'バルカン',
+  // その他汎用
+  'pan america': 'パンアメリカ',
+  'panamerica': 'パンアメリカ',
+  'harley': 'ハーレー',
+  'adventure': 'アドベンチャー',
+  'diverson': 'ディバージョン',
+  'diversion': 'ディバージョン',
+};
+
+function expandQuery(q) {
+  const lower = q.toLowerCase();
+  const targets = [lower];
+  for (const [en, ja] of Object.entries(ALIASES)) {
+    if (lower.includes(en)) targets.push(ja.toLowerCase());
+    if (lower.includes(ja.toLowerCase())) targets.push(en);
+  }
+  return targets;
+}
+
+const MAIN_MAKERS = ['ホンダ', 'ヤマハ', 'スズキ', 'カワサキ'];
+const allMakers = [...new Set(BIKES.map(d => d.maker))];
+const otherMakers = allMakers
+  .filter(m => !MAIN_MAKERS.includes(m))
+  .sort((a, b) => a.localeCompare(b, 'ja'));
+
+const makerSelect = document.getElementById('makerSelect');
+const seriesSelect = document.getElementById('seriesSelect');
+const modelSelect = document.getElementById('modelSelect');
+const searchInput = document.getElementById('searchInput');
+const suggestList = document.getElementById('suggestList');
+const selectedBar = document.getElementById('selectedBar');
+const selectedModel = document.getElementById('selectedModel');
+const productTitle = document.getElementById('productTitle');
+const productSub = document.getElementById('productSub');
+const productArea = document.getElementById('productArea');
+
+let selectedBike = null;
+let terraOnly = false;
+let capacityFilter = 'all'; // 'all' | 'le40' | 'gt40'
+
+document.getElementById('terraFilter').addEventListener('change', e => {
+  terraOnly = e.target.checked;
+  renderProducts();
+});
+
+document.querySelectorAll('input[name="capacityFilter"]').forEach(r => {
+  r.addEventListener('change', e => {
+    capacityFilter = e.target.value;
+    renderProducts();
+  });
+});
+
+// TERRAシリーズ（TR〜）のみ・容量（L）での絞り込みをまとめて適用する
+function applyFilters(items) {
+  let result = terraOnly ? items.filter(i => i.name.includes('TERRA')) : items;
+  if (capacityFilter !== 'all') {
+    // capacity 不明（null）の商品は容量絞り込み時は対象外にする
+    result = result.filter(i => i.capacity != null &&
+      (capacityFilter === 'le40' ? i.capacity <= 40 : i.capacity > 40));
+  }
+  return result;
+}
+
+function filtersActive() {
+  return terraOnly || capacityFilter !== 'all';
+}
+
+const groupKey = b => b.group || b.model;
+
+// ---- 3段プルダウン（メーカー → シリーズ → 車種） ----
+
+// メーカー: 国内4社 → 海外メーカー（optgroup）
+MAIN_MAKERS.forEach(m => {
+  const opt = document.createElement('option');
+  opt.value = m;
+  opt.textContent = m;
+  makerSelect.appendChild(opt);
+});
+const ogOther = document.createElement('optgroup');
+ogOther.label = '海外メーカー';
+otherMakers.forEach(m => {
+  const opt = document.createElement('option');
+  opt.value = m;
+  opt.textContent = m;
+  ogOther.appendChild(opt);
+});
+makerSelect.appendChild(ogOther);
+
+function kindSuffix(bike) {
+  const kinds = [];
+  if (bike.top.length > 0) kinds.push('トップ');
+  if (bike.side.length > 0) kinds.push('サイド');
+  return kinds.length ? '（' + kinds.join('・') + '）' : '';
+}
+
+function resetSelect(sel, placeholder) {
+  sel.innerHTML = '<option value="">' + placeholder + '</option>';
+  sel.disabled = true;
+}
+
+function bikesOf(maker) {
+  return BIKES
+    .map((b, i) => ({ ...b, idx: i }))
+    .filter(b => b.maker === maker);
+}
+
+// シリーズプルダウンを再構築。1件しかない場合は自動選択して次へ進む
+function populateSeries(maker) {
+  resetSelect(modelSelect, '3. 車種・年式');
+  seriesSelect.innerHTML = '<option value="">2. シリーズ</option>';
+  const groups = new Map();
+  bikesOf(maker).forEach(b => {
+    const key = groupKey(b);
+    groups.set(key, (groups.get(key) || 0) + 1);
+  });
+  [...groups.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
+    .forEach(([g, n]) => {
+      const opt = document.createElement('option');
+      opt.value = g;
+      opt.textContent = n > 1 ? `${g}（${n}車種）` : g;
+      seriesSelect.appendChild(opt);
+    });
+  seriesSelect.disabled = false;
+  if (groups.size === 1) {
+    seriesSelect.selectedIndex = 1;
+    populateModels(maker, seriesSelect.value);
+  }
+}
+
+// 車種プルダウンを再構築。1件しかない場合は自動選択
+function populateModels(maker, group) {
+  modelSelect.innerHTML = '<option value="">3. 車種・年式</option>';
+  const items = bikesOf(maker)
+    .filter(b => groupKey(b) === group)
+    .sort((a, b) => a.model.localeCompare(b.model, 'ja'));
+  items.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b.idx;
+    opt.textContent = b.model + ' ' + kindSuffix(b);
+    modelSelect.appendChild(opt);
+  });
+  modelSelect.disabled = false;
+  if (items.length === 1) {
+    modelSelect.selectedIndex = 1;
+    selectBike(BIKES[items[0].idx]);
+  }
+}
+
+makerSelect.addEventListener('change', () => {
+  searchInput.value = '';
+  hideSuggest();
+  if (makerSelect.value === '') {
+    resetSelect(seriesSelect, '2. シリーズ');
+    resetSelect(modelSelect, '3. 車種・年式');
+    return;
+  }
+  populateSeries(makerSelect.value);
+});
+
+seriesSelect.addEventListener('change', () => {
+  if (seriesSelect.value === '') {
+    resetSelect(modelSelect, '3. 車種・年式');
+    return;
+  }
+  populateModels(makerSelect.value, seriesSelect.value);
+});
+
+modelSelect.addEventListener('change', () => {
+  if (modelSelect.value === '') return;
+  selectBike(BIKES[Number(modelSelect.value)]);
+});
+
+// ---- キーワード検索（サジェスト式） ----
+
+function hideSuggest() {
+  suggestList.classList.remove('show');
+  suggestList.innerHTML = '';
+}
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim();
+  if (q === '') { hideSuggest(); return; }
+  const targets = expandQuery(q);
+  const items = BIKES
+    .map((b, i) => ({ ...b, idx: i }))
+    .filter(d => {
+      const m = d.model.toLowerCase();
+      const mk = d.maker.toLowerCase();
+      return targets.some(t => m.includes(t) || mk.includes(t));
+    })
+    .sort((a, b) => a.model.localeCompare(b.model, 'ja'));
+
+  suggestList.innerHTML = '';
+  if (items.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'no-hit';
+    li.textContent = '該当する車種が見つかりませんでした';
+    suggestList.appendChild(li);
+  } else {
+    items.forEach(d => {
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(d.model));
+      const badge = document.createElement('span');
+      badge.className = 'maker-badge';
+      badge.textContent = d.maker;
+      li.appendChild(badge);
+      if (d.top.length > 0) li.appendChild(makeKindBadge('トップ'));
+      if (d.side.length > 0) li.appendChild(makeKindBadge('サイド'));
+      // mousedown: input の blur より先に発火させて確実に拾う
+      li.addEventListener('mousedown', e => {
+        e.preventDefault();
+        selectBikeFromSearch(d.idx);
+      });
+      suggestList.appendChild(li);
+    });
+  }
+  suggestList.classList.add('show');
+});
+
+function makeKindBadge(text) {
+  const b = document.createElement('span');
+  b.className = 'kind-badge';
+  b.textContent = text;
+  return b;
+}
+
+searchInput.addEventListener('blur', () => setTimeout(hideSuggest, 150));
+searchInput.addEventListener('focus', () => {
+  if (searchInput.value.trim() !== '') searchInput.dispatchEvent(new Event('input'));
+});
+
+function selectBikeFromSearch(idx) {
+  const bike = BIKES[idx];
+  searchInput.value = bike.model;
+  hideSuggest();
+  // プルダウン側も選択状態に同期
+  makerSelect.value = bike.maker;
+  populateSeries(bike.maker);
+  seriesSelect.value = groupKey(bike);
+  populateModels(bike.maker, groupKey(bike));
+  modelSelect.value = String(idx);
+  selectBike(bike);
+}
+
+// ---- 車種の選択 ----
+
+function selectBike(bike) {
+  selectedBike = bike;
+  selectedModel.textContent = bike.model + '（' + bike.maker + '）';
+  selectedBar.classList.add('show');
+  renderProducts();
+}
+
+function clearBike() {
+  selectedBike = null;
+  selectedBar.classList.remove('show');
+  modelSelect.value = '';
+  searchInput.value = '';
+  hideSuggest();
+  renderProducts();
+}
+
+document.getElementById('clearBikeBtn').addEventListener('click', clearBike);
+
+// ---- 商品一覧 ----
+
+function el(tag, className, text) {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function productLink(name, url) {
+  if (!url) return document.createTextNode(name);
+  const a = document.createElement('a');
+  a.href = url;
+  a.target = '_blank';
+  a.textContent = name;
+  return a;
+}
+
+function sectionTitle(text, count, kitListHref) {
+  const t = el('div', 'product-section-title');
+  t.appendChild(el('span', 'ttl', text));
+  if (count !== undefined) t.appendChild(el('span', 'count', '全' + count + '点'));
+  if (kitListHref) {
+    const a = document.createElement('a');
+    a.href = kitListHref;
+    a.target = '_blank';
+    a.className = 'kit-list-link';
+    a.textContent = 'フィッティングキット一覧 ›';
+    t.appendChild(a);
+  }
+  return t;
+}
+
+// サムネイル付き商品カード。noteEl はカード下部の注記（省略可）
+function productCard(item, noteEl) {
+  const card = el('div', 'product-card');
+  const link = document.createElement('a');
+  link.href = item.url;
+  link.target = '_blank';
+  link.className = 'card-link';
+
+  const thumb = el('div', 'card-thumb');
+  const img = document.createElement('img');
+  img.src = item.img;
+  img.loading = 'lazy';
+  img.alt = item.name;
+  img.addEventListener('error', () => thumb.classList.add('noimg'));
+  thumb.appendChild(img);
+  link.appendChild(thumb);
+  link.appendChild(el('div', 'card-name', item.name));
+  link.appendChild(el('div', 'card-goto', '詳細を見る ›'));
+  card.appendChild(link);
+  if (noteEl) card.appendChild(noteEl);
+  return card;
+}
+
+function productGrid(items, noteBuilder) {
+  const grid = el('div', 'product-grid');
+  items.forEach(item => grid.appendChild(productCard(item, noteBuilder ? noteBuilder(item) : null)));
+  return grid;
+}
+
+// 全トップケースSKU（複数プレートに重複して現れるため名前で一意化）
+function allTopcases() {
+  const map = new Map();
+  Object.values(PLATES).forEach(p => {
+    p.topcases.forEach(tc => {
+      if (!map.has(tc.name)) map.set(tc.name, tc);
+    });
+  });
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+}
+
+// 全サイドケースSKU（ハードケース）
+function allSidecases() {
+  return Object.values(SIDECASES).flat()
+    .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+}
+
+// 全サイドバッグSKU（ソフトバッグ）
+function allSidebags() {
+  return Object.values(SIDEBAGS).flat()
+    .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+}
+
+function renderAllProducts() {
+  const top = applyFilters(allTopcases());
+  const side = applyFilters(allSidecases());
+  productTitle.textContent = '商品一覧';
+  productSub.textContent = '車種を選択すると、適合する商品だけに絞り込まれます';
+  productArea.innerHTML = '';
+
+  const topSec = el('div', 'product-section');
+  topSec.appendChild(sectionTitle('トップケース', top.length, 'fitting_topcases.html'));
+  topSec.appendChild(productGrid(top));
+  productArea.appendChild(topSec);
+
+  const sideSec = el('div', 'product-section');
+  sideSec.appendChild(sectionTitle('サイドケース', side.length, 'fitting_sidekits.html'));
+  sideSec.appendChild(productGrid(side));
+  productArea.appendChild(sideSec);
+
+  const sidebags = applyFilters(allSidebags());
+  const sideBagSec = el('div', 'product-section');
+  sideBagSec.appendChild(sectionTitle('サイドバッグ', sidebags.length, 'fitting_sidebagholders.html'));
+  sideBagSec.appendChild(productGrid(sidebags));
+  productArea.appendChild(sideBagSec);
+
+  // タンクバッグは車種フィッティングに未対応のため全商品一覧にのみ表示
+
+  const tankbags = applyFilters(TANKBAGS);
+  const tankSec = el('div', 'product-section');
+  tankSec.appendChild(sectionTitle('タンクバッグ', tankbags.length, 'fitting_clicksystem.html'));
+  tankSec.appendChild(productGrid(tankbags));
+  productArea.appendChild(tankSec);
+}
+
+function buildTopSection(bike) {
+  const sec = el('div', 'product-section');
+  sec.appendChild(sectionTitle('トップケース', undefined, 'fitting_topcases.html'));
+
+  if (bike.top.length === 0) {
+    sec.appendChild(el('div', 'no-fit', 'この車種に適合するトップケース用フィッティングキットはありません'));
+    return sec;
+  }
+
+  // 1つのキットが複数ベースプレートに対応するため、キットURL単位でまとめる
+  const byUrl = new Map();
+  bike.top.forEach(t => {
+    if (!byUrl.has(t.url)) byUrl.set(t.url, { plates: [], name: t.name });
+    byUrl.get(t.url).plates.push(t.plate);
+  });
+
+  let blockCount = 0;
+  byUrl.forEach((kit, url) => {
+    const plateCodes = kit.plates;
+    const block = el('div', 'kit-block');
+
+    block.appendChild(el('div', 'kit-line', '取付には車種専用フィッティングキットが必要です：'));
+    const kitLine = el('div', 'kit-line');
+    kitLine.appendChild(el('span', 'kit-name', kit.name));
+    const btn = document.createElement('a');
+    btn.href = url;
+    btn.target = '_blank';
+    btn.className = 'kit-btn';
+    btn.textContent = '商品を見る ›';
+    kitLine.appendChild(btn);
+    block.appendChild(kitLine);
+
+    // 対応プレートのトップケースを統合（同一SKUは複数プレートに現れるため名前でまとめる）
+    const skuMap = new Map();
+    plateCodes.forEach(pc => {
+      const plate = PLATES[pc];
+      if (!plate) return;
+      plate.topcases.forEach(tc => {
+        if (!skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
+        skuMap.get(tc.name).plates.push(pc);
+      });
+    });
+
+    // プレートコード不明のキット（plate=null のみ）は対応ケース一覧を出せないため商品ページへ誘導
+    const allSkus = [...skuMap.values()].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+    if (allSkus.length === 0) {
+      block.appendChild(el('div', 'no-fit', '※装着可能トップケースはキットの商品ページでご確認ください'));
+      sec.appendChild(block);
+      blockCount++;
+      return;
+    }
+    // 絞り込み条件（TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
+    const skus = applyFilters(allSkus);
+    if (skus.length === 0) return;
+    block.appendChild(el('div', 'kit-caption', '装着可能トップケース'));
+    block.appendChild(productGrid(skus, tc => {
+      if (tc.included) return el('div', 'card-note ok', 'ベースプレート付属');
+      // ベースプレート別売：別途購入が必要なプレートへのリンクを併記
+      const note = el('div', 'card-note', '要ベースプレート（別売）：');
+      tc.plates.forEach((pc, i) => {
+        if (i > 0) note.appendChild(document.createTextNode(' / '));
+        const plate = PLATES[pc];
+        note.appendChild(productLink(plate.name, plate.url));
+      });
+      return note;
+    }));
+    sec.appendChild(block);
+    blockCount++;
+  });
+  if (blockCount === 0) {
+    sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うトップケースはありません'));
+  }
+  return sec;
+}
+
+function buildSideSection(bike) {
+  const sec = el('div', 'product-section');
+  sec.appendChild(sectionTitle('サイドケース', undefined, 'fitting_sidekits.html'));
+
+  if (bike.side.length === 0) {
+    sec.appendChild(el('div', 'no-fit', 'この車種に適合するサイドケース用フィッティングキットはありません'));
+    return sec;
+  }
+
+  const SYSTEM_LABELS = { '3P': '3Pシステムフィッティングキット', '4P': '4Pシステムフィッティングキット',
+                          'サイドバッグホルダー': 'サイドバッグホルダーキット',
+                          'サイドバッグホルダーSR': 'SRバッグフィッティングキット' };
+  let blockCount = 0;
+  bike.side.forEach(s => {
+    // cases はハードケース(SIDECASES)とソフトバッグ(SIDEBAGS)のコードが混在する
+    const allSkus = s.cases.flatMap(code => SIDECASES[code] || SIDEBAGS[code] || []);
+    // 絞り込み条件（TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
+    const skus = applyFilters(allSkus);
+    if (filtersActive() && skus.length === 0) return;
+
+    const block = el('div', 'kit-block');
+    const kitTypeLabel = SYSTEM_LABELS[s.system] || (s.system + 'システムフィッティングキット');
+    block.appendChild(el('div', 'kit-line', '取付には ' + kitTypeLabel + 'が必要です：'));
+    const kitLine = el('div', 'kit-line');
+    kitLine.appendChild(el('span', 'kit-name', s.name));
+    const btn = document.createElement('a');
+    btn.href = s.url;
+    btn.target = '_blank';
+    btn.className = 'kit-btn';
+    btn.textContent = '商品を見る ›';
+    kitLine.appendChild(btn);
+    block.appendChild(kitLine);
+
+    block.appendChild(el('div', 'kit-caption', '装着可能サイドケース'));
+    block.appendChild(productGrid(skus));
+    sec.appendChild(block);
+    blockCount++;
+  });
+  if (blockCount === 0) {
+    sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うサイドケースはありません'));
+  }
+  return sec;
+}
+
+function renderFilteredProducts(bike) {
+  productTitle.textContent = bike.model + ' に適合する商品';
+  productSub.textContent = '';
+  productArea.innerHTML = '';
+  productArea.appendChild(buildTopSection(bike));
+  productArea.appendChild(buildSideSection(bike));
+}
+
+function renderProducts() {
+  if (selectedBike) {
+    renderFilteredProducts(selectedBike);
+  } else {
+    renderAllProducts();
+  }
+}
+
+// 初期表示: 全商品一覧
+renderProducts();
+}
+</script>
+</body>
+</html>

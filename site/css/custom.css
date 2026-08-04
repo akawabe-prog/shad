@@ -490,3 +490,278 @@ html{scroll-behavior:smooth;}
   color:#fff;transition:gap .2s;}
 .nabnr:hover .nabnr-go{gap:12px;color:#fff;}
 
+
+/* =========================================================
+   適合検索（車種→適合商品）— shad_site から移植
+   提供実装のクラス名をそのまま使用。ページ全体のスタイル
+   （body/brand-bar等）は当サイトのものを使うため除外済み。
+   ========================================================= */
+
+  :root {
+    --accent: #d81f26;
+    --dark: #111;
+    --panel: #17181a;
+    --border: #e2e2e2;
+  }
+/* ブランドヘッダー（右端に赤の斜めストライプ） */
+  .brand-bar {
+    background: linear-gradient(115deg, var(--dark) 88%, var(--accent) 88.3%, var(--accent) 92%, var(--dark) 92.3%, var(--dark) 94%, var(--accent) 94.3%);
+    color: #fff;
+    padding: 20px 28px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+/* 車種選択パネル（ダーク） */
+  .selector-panel {
+    background: var(--panel);
+    padding: 22px 24px;
+    margin-bottom: 32px;
+    border-bottom: 3px solid var(--accent);
+  }
+.panel-label {
+    font-size: 0.78rem;
+    font-weight: bold;
+    color: #999;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+.selector-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.selector-row select {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 1px solid #3a3b3e;
+    background: #222326;
+    color: #eee;
+    cursor: pointer;
+  }
+.selector-row select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.selector-row select:disabled { background: #1c1d1f; color: #555; cursor: default; }
+.panel-or {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 18px 0 12px;
+    font-size: 0.72rem;
+    color: #666;
+    letter-spacing: 2px;
+  }
+.panel-or::before, .panel-or::after { content: ''; flex: 1; border-top: 1px solid #333; }
+/* キーワード検索（サジェスト式） */
+  .search-wrap { position: relative; }
+#searchInput {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 1px solid #3a3b3e;
+    background: #222326;
+    color: #eee;
+  }
+#searchInput::placeholder { color: #777; }
+#searchInput:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+#suggestList {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    left: 0; right: 0;
+    top: 100%;
+    max-height: 320px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #222326;
+    border: 1px solid #3a3b3e;
+    border-top: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  }
+#suggestList.show { display: block; }
+#suggestList li { padding: 11px 14px; font-size: 0.92rem; color: #eee; cursor: pointer; border-bottom: 1px solid #2c2d30; border-left: 3px solid transparent; }
+#suggestList li:hover { background: #2c2d30; border-left-color: var(--accent); }
+#suggestList li .maker-badge { font-size: 0.75rem; color: #888; margin-left: 6px; }
+#suggestList li .kind-badge { font-size: 0.7rem; color: #ccc; background: #3a3b3e; padding: 1px 6px; margin-left: 6px; }
+#suggestList li.no-hit { color: #888; cursor: default; }
+#suggestList li.no-hit:hover { background: #222326; border-left-color: transparent; }
+/* 選択中の車種バー */
+  #selectedBar {
+    display: none;
+    align-items: center;
+    gap: 14px;
+    background: #222326;
+    border-left: 4px solid var(--accent);
+    padding: 13px 16px;
+    margin-top: 18px;
+  }
+#selectedBar.show { display: flex; }
+#selectedBar .selected-label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 9px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+#selectedBar .selected-model { font-weight: bold; font-size: 1.05rem; color: #fff; flex: 1; }
+#clearBikeBtn {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+    border: 1px solid #555;
+    background: transparent;
+    color: #ccc;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+#clearBikeBtn:hover { border-color: var(--accent); color: var(--accent); }
+/* TERRAシリーズ・容量絞り込み */
+  .filter-bar { margin: 0 0 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+.filter-bar label {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: bold;
+    color: var(--dark); cursor: pointer; user-select: none;
+  }
+.filter-bar input[type="checkbox"], .filter-bar input[type="radio"] {
+    width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer;
+  }
+.filter-group { display: inline-flex; flex-wrap: wrap; gap: 8px 18px; padding-left: 24px; border-left: 1px solid var(--border); }
+/* 商品一覧 */
+  #productTitle {
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+  }
+#productTitle::before {
+    content: '';
+    width: 14px;
+    height: 26px;
+    background: var(--accent);
+    transform: skewX(-15deg);
+    flex-shrink: 0;
+  }
+#productSub { font-size: 0.85rem; color: #888; margin: 0 0 20px; padding-left: 26px; }
+.product-section { margin-bottom: 36px; }
+.product-section-title { display: flex; align-items: center; gap: 12px; margin: 28px 0 14px; }
+.product-section-title .ttl {
+    background: var(--dark);
+    color: #fff;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 7px 22px 7px 16px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  }
+.product-section-title .count { font-size: 0.8rem; color: #888; font-weight: bold; }
+.kit-list-link {
+    margin-left: auto; font-size: 0.78rem; color: #888; text-decoration: none;
+    border: 1px solid var(--border); padding: 4px 10px; white-space: nowrap;
+  }
+.kit-list-link:hover { border-color: var(--accent); color: var(--accent); }
+.no-fit { font-size: 0.9rem; color: #888; margin: 8px 0; }
+/* フィッティングキット情報ボックス */
+  .kit-block {
+    background: #f6f6f7;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--dark);
+    padding: 18px;
+    margin: 0 0 20px;
+  }
+.kit-line { font-size: 0.9rem; color: #333; margin: 0 0 10px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.kit-line:last-child { margin-bottom: 0; }
+.kit-name { font-size: 0.95rem; font-weight: bold; color: var(--dark); }
+.kit-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 9px 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+    transition: background 0.15s;
+  }
+.kit-btn:hover { background: var(--dark); }
+.kit-caption { font-size: 0.85rem; font-weight: bold; color: #333; margin: 16px 0 0; }
+/* 商品カードグリッド（PC5列） */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+    margin: 14px 0 4px;
+  }
+.product-card {
+    border: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.12s, transform 0.12s, border-color 0.12s;
+  }
+.product-card:hover {
+    border-color: var(--dark);
+    box-shadow: 5px 5px 0 var(--dark);
+    transform: translate(-2px, -2px);
+  }
+.card-link { text-decoration: none; color: inherit; display: block; }
+.card-thumb {
+    aspect-ratio: 1;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 8px;
+  }
+.card-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.card-thumb.noimg img { display: none; }
+.card-thumb.noimg::after { content: 'NO IMAGE'; color: #ccc; font-size: 0.75rem; }
+.card-name { font-size: 0.82rem; font-weight: bold; padding: 10px 12px 4px; color: var(--dark); line-height: 1.5; }
+.card-link:hover .card-name { color: var(--accent); }
+.card-goto { font-size: 0.72rem; font-weight: bold; color: #aaa; padding: 0 12px 10px; letter-spacing: 1px; }
+.card-link:hover .card-goto { color: var(--accent); }
+.card-note { font-size: 0.72rem; padding: 7px 12px 10px; color: #777; line-height: 1.6; margin-top: auto; border-top: 1px solid #f0f0f0; }
+.card-note.ok { color: #2e7d32; font-weight: bold; }
+.card-note a { color: var(--accent); }
+@media (max-width: 600px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.card-name { font-size: 0.78rem; padding: 8px 10px 4px; }
+.card-goto { padding: 0 10px 8px; }
+.card-note { padding: 6px 10px 8px; }
+}
+/* ── 商品ページ：適合車種一覧（順引き） ── */
+.pf-bar{display:flex;flex-direction:column;gap:14px;margin-top:20px;}
+.pf-makers{display:flex;flex-wrap:wrap;gap:8px;}
+.pf-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(0,0,0,.14);
+  background:#fff;border-radius:9999px;padding:7px 14px;font-size:13px;cursor:pointer;transition:.18s;}
+.pf-chip span{font-family:"Barlow Condensed",sans-serif;font-size:12px;color:#999;}
+.pf-chip:hover{border-color:#E31E24;color:#E31E24;}
+.pf-chip.on{background:#E31E24;border-color:#E31E24;color:#fff;}
+.pf-chip.on span{color:rgba(255,255,255,.75);}
+.pf-search{position:relative;}
+.pf-search i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#aaa;font-size:17px;}
+.pf-search input{width:100%;height:46px;border:1px solid rgba(0,0,0,.14);border-radius:7px;
+  padding:0 14px 0 38px;font-size:14px;background:#fff;}
+.pf-search input:focus{outline:none;border-color:#E31E24;}
+.pf-count{font-size:13px;color:#666;margin-top:16px;}
+.pf-list{margin-top:10px;max-height:520px;overflow-y:auto;border-top:1px solid rgba(0,0,0,.08);}
+.pf-group{border-bottom:1px solid rgba(0,0,0,.08);padding:14px 0;}
+.pf-group-ttl{font-size:12px;letter-spacing:.06em;color:#999;margin-bottom:6px;}
+.pf-row{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:7px;transition:.15s;}
+.pf-row:hover{background:#F4F3F1;}
+.pf-model{font-size:14px;color:#222;}
+.pf-sys{font-family:"Barlow Condensed",sans-serif;font-size:11.5px;letter-spacing:.14em;
+  background:#0E0E0E;color:#fff;border-radius:4px;padding:2px 7px;}
+.pf-go{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:#888;white-space:nowrap;}
+.pf-row:hover .pf-go{color:#E31E24;}
+@media(max-width:560px){
+  .pf-go span{display:none;}
+  .pf-list{max-height:none;}
+}

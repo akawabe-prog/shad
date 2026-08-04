@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAD D1B40PAR 適合車種検索</title>
+<style>
+  body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+  h1 { font-size: 1.2rem; margin-bottom: 24px; }
+  label { display: block; font-weight: bold; margin-bottom: 6px; }
+  select { width: 100%; padding: 10px; font-size: 1rem; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; }
+  #searchInput { width: 100%; padding: 10px; font-size: 1rem; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+  #searchCount { font-size: 0.85rem; color: #666; margin-bottom: 8px; }
+  #modelList { margin-top: 4px; padding: 0; list-style: none; }
+  #modelList > li > a { display: block; padding: 10px 12px; color: #0066cc; text-decoration: none; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+  #modelList > li > a:hover { background: #f0f6ff; }
+  #modelList li .maker-badge { font-size: 0.75rem; color: #888; margin-left: 6px; }
+  /* Level 1: シリーズグループ */
+  li.series-group { border-bottom: 1px solid #eee; }
+  .series-header { display: block; padding: 11px 12px; font-size: 0.95rem; font-weight: 600; color: #333; cursor: pointer; user-select: none; }
+  .series-header::after { content: ' ›'; font-weight: normal; color: #bbb; }
+  .series-header:hover { background: #f5f5f5; }
+  .series-items { display: none; padding: 0; list-style: none; }
+  .series-group.open .series-items { display: block; }
+  .series-items > li > a { display: block; padding: 8px 12px 8px 20px; color: #0066cc; font-size: 0.92rem; text-decoration: none; border-top: 1px solid #f0f0f0; }
+  .series-items > li > a:hover { background: #f0f6ff; }
+  .placeholder { color: #888; }
+  .section-divider { border: none; border-top: 2px solid #ddd; margin: 24px 0; }
+
+  /* メーカーボタン */
+  #makerButtons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 4px; }
+  #otherButtons { display: none; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; margin-bottom: 20px; }
+  #otherButtons.open { display: grid; }
+  .maker-btn, #toggleOtherBtn {
+    padding: 8px 4px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .maker-btn:hover, #toggleOtherBtn:hover { background: #f0f6ff; border-color: #0066cc; color: #0066cc; }
+  .maker-btn.active { background: #0066cc; border-color: #0066cc; color: #fff; }
+  #toggleOtherBtn { border-style: dashed; color: #555; background: #fafafa; }
+</style>
+</head>
+<body>
+<h1>SHAD D1B40PAR 適合車種検索</h1>
+
+<label>メーカーから探す</label>
+<div id="makerButtons"></div>
+<div id="otherButtons"></div>
+
+<hr class="section-divider">
+
+<label for="searchInput">キーワードで探す</label>
+<input type="text" id="searchInput" placeholder="例：PCX Vストローム、" autocomplete="off">
+<div id="searchCount"></div>
+
+<label id="listLabel">車種一覧</label>
+<p class="placeholder" id="modelPlaceholder">メーカーを選択するか、キーワードを入力してください</p>
+<ul id="modelList"></ul>
+
+<script>
+Promise.all([
+  fetch('data.json').then(r => r.json()),
+  fetch('model_groups.json').then(r => r.json()).catch(() => ({})),
+]).then(([DATA, GROUPS]) => init(DATA, GROUPS))
+  .catch(() => {
+    document.getElementById('modelPlaceholder').textContent = 'データの読み込みに失敗しました';
+  });
+
+
+
+function init(DATA, GROUPS) {
+
+// 英語⇔カタカナ対応表（両方向で機能）
+const ALIASES = {
+  // ホンダ
+  'forza': 'フォルツァ',
+  'africa twin': 'アフリカツイン',
+  'africatwin': 'アフリカツイン',
+  'gold wing': 'ゴールドウイング',
+  'goldwing': 'ゴールドウイング',
+  'hornet': 'ホーネット',
+  'integra': 'インテグラ',
+  'transalp': 'トランザルプ',
+  'grom': 'グロム',
+  'nighthawk': 'ナイトホーク',
+  'crossrunner': 'クロスランナー',
+  // ヤマハ
+  'tracer': 'トレーサー',
+  'tenere': 'テネレ',
+  'tricity': 'トリシティ',
+  'niken': 'ナイケン',
+  'majesty': 'マジェスティ',
+  'cygnus': 'シグナス',
+  'grand majesty': 'グランドマジェスティ',
+  'fazer': 'フェザー',
+  'feather': 'フェザー',
+  // スズキ
+  'vstrom': 'Vストローム',
+  'v-strom': 'Vストローム',
+  'v-': 'Vストローム',
+  'bandit': 'バンディット',
+  'burgman': 'バーグマン',
+  'skywave': 'スカイウェイブ',
+  'address': 'アドレス',
+  'gixxer': 'ジクサー',
+  'gixser': 'ジクサー',
+  'gladius': 'グラディウス',
+  // カワサキ
+  'ninja': 'ニンジャ',
+  'concours': 'コンコース',
+  'rebel': 'レブル',
+  'eliminator': 'エリミネーター',
+  'vulcan': 'バルカン',
+  // その他汎用
+  'pan america': 'パンアメリカ',
+  'panamerica': 'パンアメリカ',
+  'harley': 'ハーレー',
+  'adventure': 'アドベンチャー',
+  'diverson': 'ディバージョン',
+  'diversion': 'ディバージョン',
+};
+
+function expandQuery(q) {
+  const lower = q.toLowerCase();
+  const targets = [lower];
+  for (const [en, ja] of Object.entries(ALIASES)) {
+    if (lower.includes(en)) targets.push(ja.toLowerCase());
+    if (lower.includes(ja.toLowerCase())) targets.push(en);
+  }
+  return targets;
+}
+
+const MAIN_MAKERS = ['ホンダ', 'ヤマハ', 'スズキ', 'カワサキ'];
+const allMakers = [...new Set(DATA.map(d => d.maker))];
+const otherMakers = allMakers
+  .filter(m => !MAIN_MAKERS.includes(m))
+  .sort((a, b) => a.localeCompare(b, 'ja'));
+
+const makerButtonsEl = document.getElementById('makerButtons');
+const otherButtonsEl = document.getElementById('otherButtons');
+const searchInput = document.getElementById('searchInput');
+const searchCount = document.getElementById('searchCount');
+const modelList = document.getElementById('modelList');
+const placeholder = document.getElementById('modelPlaceholder');
+
+// メインメーカーボタン生成
+MAIN_MAKERS.forEach(m => {
+  const btn = document.createElement('button');
+  btn.className = 'maker-btn';
+  btn.textContent = m;
+  btn.dataset.maker = m;
+  btn.addEventListener('click', () => selectMaker(m, btn));
+  makerButtonsEl.appendChild(btn);
+});
+
+// 「海外」ボタン: クリックで全海外メーカーを表示 + 個別ボタンを展開
+const toggleBtn = document.createElement('button');
+toggleBtn.id = 'toggleOtherBtn';
+toggleBtn.textContent = '海外 ▾';
+toggleBtn.addEventListener('click', () => {
+  clearActive();
+  toggleBtn.classList.add('active');
+  otherButtonsEl.classList.add('open');
+  toggleBtn.textContent = '海外 ▴';
+  const items = DATA.filter(d => !MAIN_MAKERS.includes(d.maker)).sort((a, b) => a.model.localeCompare(b.model, 'ja'));
+  renderList(items, true, false);
+});
+makerButtonsEl.appendChild(toggleBtn);
+
+// その他メーカーボタン生成
+otherMakers.forEach(m => {
+  const btn = document.createElement('button');
+  btn.className = 'maker-btn';
+  btn.textContent = m;
+  btn.dataset.maker = m;
+  btn.addEventListener('click', () => selectMaker(m, btn));
+  otherButtonsEl.appendChild(btn);
+});
+
+function clearActive() {
+  document.querySelectorAll('.maker-btn').forEach(b => b.classList.remove('active'));
+  toggleBtn.classList.remove('active');
+  otherButtonsEl.classList.remove('open');
+  toggleBtn.textContent = '海外 ▾';
+  searchInput.value = '';
+  searchCount.textContent = '';
+}
+
+function selectMaker(maker, activeBtn) {
+  clearActive();
+  if (activeBtn) activeBtn.classList.add('active');
+  const items = DATA.filter(d => d.maker === maker).sort((a, b) => a.model.localeCompare(b.model, 'ja'));
+  renderList(items, false, MAIN_MAKERS.includes(maker));
+}
+
+const PREFIX_NORMALIZE = (GROUPS && GROUPS.prefix_normalize) || {};
+
+function getPrefixGroup(model) {
+  const base = model.replace(/[\(（][^)）]*[\)）]/g, '').replace(/\s+/g, ' ').trim();
+  const first = base.split('/')[0].trim();
+  const m = first.match(/^([A-Za-z][A-Za-z-]*)/);
+  const prefix = m ? m[1].toUpperCase() : first.toUpperCase();
+  return PREFIX_NORMALIZE[prefix] || prefix;
+}
+
+function buildGroups(items) {
+  const map = new Map();
+  items.forEach(d => {
+    // Python 側の get_group() が生成した group フィールドを優先。未設定時は JS 自動抽出
+    const key = d.group || getPrefixGroup(d.model);
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push(d);
+  });
+  return new Map([...map.entries()].sort((a, b) => a[0].localeCompare(b[0], 'ja')));
+}
+
+function makeLink(d, label, showMaker) {
+  const a = document.createElement('a');
+  a.href = d.url;
+  a.target = '_blank';
+  a.textContent = label;
+  if (showMaker) {
+    const badge = document.createElement('span');
+    badge.className = 'maker-badge';
+    badge.textContent = d.maker;
+    a.appendChild(badge);
+  }
+  return a;
+}
+
+function renderList(items, showMaker, grouped = true) {
+  modelList.innerHTML = '';
+  if (items.length === 0) {
+    placeholder.style.display = '';
+    placeholder.textContent = '該当する車種が見つかりませんでした';
+    searchCount.textContent = '';
+    return;
+  }
+  placeholder.style.display = 'none';
+
+  if (!grouped) {
+    items.forEach(d => {
+      const li = document.createElement('li');
+      li.appendChild(makeLink(d, d.model, showMaker));
+      modelList.appendChild(li);
+    });
+    return;
+  }
+
+  buildGroups(items).forEach((groupItems, prefix) => {
+    const li = document.createElement('li');
+    li.className = 'series-group';
+    const header = document.createElement('span');
+    header.className = 'series-header';
+    header.textContent = prefix;
+    header.addEventListener('click', () => li.classList.toggle('open'));
+    li.appendChild(header);
+    const ul = document.createElement('ul');
+    ul.className = 'series-items';
+    groupItems.forEach(d => {
+      const item = document.createElement('li');
+      item.appendChild(makeLink(d, d.model, showMaker));
+      ul.appendChild(item);
+    });
+    li.appendChild(ul);
+    modelList.appendChild(li);
+  });
+}
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim();
+  if (q === '') {
+    document.querySelectorAll('.maker-btn').forEach(b => b.classList.remove('active'));
+    searchCount.textContent = '';
+    modelList.innerHTML = '';
+    placeholder.style.display = '';
+    placeholder.textContent = 'メーカーを選択するか、キーワードを入力してください';
+    return;
+  }
+  document.querySelectorAll('.maker-btn').forEach(b => b.classList.remove('active'));
+  const targets = expandQuery(q);
+  const items = DATA.filter(d => {
+    const m = d.model.toLowerCase();
+    const mk = d.maker.toLowerCase();
+    return targets.some(t => m.includes(t) || mk.includes(t));
+  }).sort((a, b) => a.model.localeCompare(b.model, 'ja'));
+  searchCount.textContent = `${items.length} 件`;
+  renderList(items, true);
+});
+}
+</script>
+</body>
+</html>

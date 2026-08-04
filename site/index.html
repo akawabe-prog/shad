@@ -158,29 +158,8 @@ tailwind.config = {
 <section id="finder" class="bg-mist py-[74px]" data-fitment-finder>
   <div class="max-w-site mx-auto px-7" data-reveal>
     <h2 class="text-[30px] font-bold tracking-[.02em]">車種から探す</h2>
-    <p class="text-neutral-500 text-[14.5px] mt-2.5 max-w-[640px]">車種に適合するフィッティングキットとボックスをご案内します。</p>
-
-    <div class="mt-6 bg-ink rounded-[14px] p-6 text-white flex flex-wrap gap-3.5 items-end">
-      <div class="flex-1 min-w-[170px]">
-        <label class="finder-label" for="mk"><span class="finder-step">1</span>メーカー</label>
-        <select id="mk" class="finder-select" data-fitment-maker><option value="">選択してください</option></select>
-      </div>
-      <div class="flex-1 min-w-[170px]">
-        <label class="finder-label" for="md"><span class="finder-step">2</span>車種</label>
-        <select id="md" class="finder-select" data-fitment-model disabled><option>—</option></select>
-      </div>
-      <div class="flex-1 min-w-[170px]">
-        <label class="finder-label" for="yr"><span class="finder-step">3</span>年式</label>
-        <select id="yr" class="finder-select" data-fitment-year disabled><option>—</option></select>
-      </div>
-      <button id="go" class="h-12 bg-shad rounded-[7px] px-8 font-disp font-semibold text-[16px] tracking-[.12em] uppercase inline-flex items-center gap-2 disabled:opacity-40 disabled:cursor-default transition hover:bg-[#c4151b]" data-fitment-submit disabled>
-        <i class="ti ti-search"></i>適合を見る
-      </button>
-    </div>
-    <p class="mt-3.5 text-[13px] text-neutral-500 flex items-center gap-2">
-      <i class="ti ti-bookmark text-shad"></i>マイバイクに登録 — 次回から1タップで表示
-    </p>
-    <div class="fit-result" data-fitment-result></div>
+    <p class="text-neutral-500 text-[14.5px] mt-2.5 max-w-[640px]">メーカー・シリーズ・車種を選ぶか、キーワードで検索してください。適合するフィッティングキットと装着できる商品をご案内します。</p>
+    <div class="mt-7" data-fitment-mount></div>
   </div>
 </section>
 

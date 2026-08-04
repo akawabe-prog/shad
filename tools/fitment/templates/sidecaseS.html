@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAD サイドケース 適合フィッティングキット検索</title>
+<style>
+  body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+  h1 { font-size: 1.2rem; margin-bottom: 24px; }
+  label { display: block; font-weight: bold; margin-bottom: 6px; }
+
+  #searchInput { width: 100%; padding: 10px; font-size: 1rem; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+  #searchCount { font-size: 0.85rem; color: #666; margin-bottom: 8px; }
+
+  #modelList { margin-top: 4px; padding: 0; list-style: none; }
+  #modelList > li > a {
+    display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap;
+    padding: 10px 12px;
+    color: #0066cc; text-decoration: none;
+    border-bottom: 1px solid #eee; font-size: 0.9rem;
+  }
+  #modelList > li > a:hover { background: #f0f6ff; }
+  /* Level 1: シリーズグループ */
+  li.series-group { border-bottom: 1px solid #eee; }
+  .series-header { display: block; padding: 11px 12px; font-size: 0.9rem; font-weight: 600; color: #333; cursor: pointer; user-select: none; }
+  .series-header::after { content: ' ›'; font-weight: normal; color: #bbb; }
+  .series-header:hover { background: #f5f5f5; }
+  .series-items { display: none; padding: 0; list-style: none; }
+  .series-group.open .series-items { display: block; }
+  .series-items > li > a { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; padding: 8px 12px 8px 20px; color: #0066cc; font-size: 0.9rem; text-decoration: none; border-top: 1px solid #f0f0f0; }
+  .series-items > li > a:hover { background: #f0f6ff; }
+
+  .placeholder { color: #888; }
+  .section-divider { border: none; border-top: 2px solid #ddd; margin: 20px 0; }
+
+  /* 3P / 4P バッジ */
+  .system-badge {
+    display: inline-block; padding: 1px 7px;
+    border-radius: 3px; font-size: 0.72rem; font-weight: bold; flex-shrink: 0;
+  }
+  .badge-3p { background: #1a56db; color: #fff; }
+  .badge-4p { background: #057a55; color: #fff; }
+
+  /* 車種名 */
+  .model-name { flex: 1; min-width: 160px; line-height: 1.4; }
+
+  /* メーカーバッジ（キーワード検索・ケース単体検索時） */
+  .maker-badge { font-size: 0.75rem; color: #888; flex-shrink: 0; }
+
+  /* 対応ケースチップ */
+  .case-chips { display: flex; gap: 3px; flex-wrap: wrap; }
+  .case-chip {
+    display: inline-block; padding: 1px 5px;
+    border: 1px solid #ccc; border-radius: 3px;
+    font-size: 0.7rem; color: #666; background: #f5f5f5;
+  }
+  .case-chip.hl { border-color: #0066cc; color: #0066cc; background: #e8f0ff; }
+
+  /* ケースフィルターボタン */
+  #caseButtons { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+  .case-btn {
+    padding: 7px 14px; font-size: 0.9rem;
+    border: 1px solid #ccc; border-radius: 4px;
+    background: #fff; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .case-btn:hover { background: #f0f6ff; border-color: #0066cc; color: #0066cc; }
+  .case-btn.active { background: #0066cc; border-color: #0066cc; color: #fff; }
+
+  /* メーカーボタン */
+  #makerButtons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 4px; }
+  #otherButtons { display: none; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; margin-bottom: 20px; }
+  #otherButtons.open { display: grid; }
+  .maker-btn, #toggleOtherBtn {
+    padding: 8px 4px; font-size: 0.95rem;
+    border: 1px solid #ccc; border-radius: 4px;
+    background: #fff; cursor: pointer; text-align: center;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .maker-btn:hover, #toggleOtherBtn:hover { background: #f0f6ff; border-color: #0066cc; color: #0066cc; }
+  .maker-btn.active { background: #0066cc; border-color: #0066cc; color: #fff; }
+  #toggleOtherBtn { border-style: dashed; color: #555; background: #fafafa; }
+</style>
+</head>
+<body>
+<h1>SHAD サイドケース 適合フィッティングキット検索</h1>
+
+<label>ケースサイズで絞り込む</label>
+<div id="caseButtons"></div>
+
+<hr class="section-divider">
+
+<label>メーカーから探す</label>
+<div id="makerButtons"></div>
+<div id="otherButtons"></div>
+
+<hr class="section-divider">
+
+<label for="searchInput">キーワードで探す</label>
+<input type="text" id="searchInput" placeholder="例：MT-09 Vストローム GS" autocomplete="off">
+<div id="searchCount"></div>
+
+<label>フィッティングキット一覧</label>
+<p class="placeholder" id="modelPlaceholder">ケースサイズまたはメーカーを選択するか、キーワードを入力してください</p>
+<ul id="modelList"></ul>
+
+<script>
+Promise.all([
+  fetch('sidecase_data.json').then(r => r.json()),
+  fetch('model_groups.json').then(r => r.json()).catch(() => ({})),
+]).then(([DATA, GROUPS]) => init(DATA, GROUPS))
+  .catch(() => {
+    document.getElementById('modelPlaceholder').textContent = 'データの読み込みに失敗しました';
+  });
+
+function init(DATA, GROUPS) {
+
+const ALIASES = {
+  // ホンダ
+  'forza': 'フォルツァ',
+  'africa twin': 'アフリカツイン',
+  'africatwin': 'アフリカツイン',
+  'hornet': 'ホーネット',
+  'integra': 'インテグラ',
+  'transalp': 'トランザルプ',
+  'crossrunner': 'クロスランナー',
+  'rebel': 'レブル',
+  // ヤマハ
+  'tracer': 'トレーサー',
+  'tenere': 'テネレ',
+  'niken': 'ナイケン',
+  // スズキ
+  'vstrom': 'Vストローム',
+  'v-strom': 'Vストローム',
+  'bandit': 'バンディット',
+  'katana': 'カタナ',
+  'gixxer': 'ジクサー',
+  // カワサキ
+  'ninja': 'ニンジャ',
+  'versys': 'ベルシス',
+  'vulcan': 'バルカン',
+  'eliminator': 'エリミネーター',
+  // 海外
+  'multistrada': 'ムルティストラーダ',
+  'diavel': 'ディアベル',
+  'tiger': 'タイガー',
+  'himalayan': 'ヒマラヤ',
+  'pan america': 'パンアメリカ',
+  'panamerica': 'パンアメリカ',
+  'harley': 'ハーレー',
+  'adventure': 'アドベンチャー',
+};
+
+function expandQuery(q) {
+  const lower = q.toLowerCase();
+  const targets = [lower];
+  for (const [en, ja] of Object.entries(ALIASES)) {
+    if (lower.includes(en)) targets.push(ja.toLowerCase());
+    if (lower.includes(ja.toLowerCase())) targets.push(en);
+  }
+  return targets;
+}
+
+const MAIN_MAKERS = ['ホンダ', 'ヤマハ', 'スズキ', 'カワサキ'];
+const CASE_OPTIONS = ['SH23', 'SH35', 'SH36', 'SH38X'];
+
+const allMakers = [...new Set(DATA.map(d => d.maker))];
+const otherMakers = allMakers
+  .filter(m => !MAIN_MAKERS.includes(m))
+  .sort((a, b) => a.localeCompare(b, 'ja'));
+
+const caseButtonsEl  = document.getElementById('caseButtons');
+const makerButtonsEl = document.getElementById('makerButtons');
+const otherButtonsEl = document.getElementById('otherButtons');
+const searchInput    = document.getElementById('searchInput');
+const searchCount    = document.getElementById('searchCount');
+const modelList      = document.getElementById('modelList');
+const placeholder    = document.getElementById('modelPlaceholder');
+
+let selectedCase  = null;
+let selectedMaker = null;
+
+const sortFn = (a, b) => a.name.localeCompare(b.name, 'ja');
+
+// ---- ケースフィルターボタン ----
+const allCaseBtn = document.createElement('button');
+allCaseBtn.className = 'case-btn active';
+allCaseBtn.textContent = '全て';
+allCaseBtn.addEventListener('click', () => setCase(null, allCaseBtn));
+caseButtonsEl.appendChild(allCaseBtn);
+
+CASE_OPTIONS.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'case-btn';
+  btn.textContent = c;
+  btn.addEventListener('click', () => setCase(c, btn));
+  caseButtonsEl.appendChild(btn);
+});
+
+function setCase(c, activeBtn) {
+  document.querySelectorAll('.case-btn').forEach(b => b.classList.remove('active'));
+  activeBtn.classList.add('active');
+  selectedCase = c;
+  refresh();
+}
+
+// ---- メーカーボタン ----
+MAIN_MAKERS.forEach(m => {
+  const btn = document.createElement('button');
+  btn.className = 'maker-btn';
+  btn.textContent = m;
+  btn.addEventListener('click', () => setMaker(m, btn));
+  makerButtonsEl.appendChild(btn);
+});
+
+const toggleBtn = document.createElement('button');
+toggleBtn.id = 'toggleOtherBtn';
+toggleBtn.textContent = '海外 ▾';
+toggleBtn.addEventListener('click', () => {
+  document.querySelectorAll('.maker-btn').forEach(b => b.classList.remove('active'));
+  toggleBtn.classList.add('active');
+  otherButtonsEl.classList.add('open');
+  toggleBtn.textContent = '海外 ▴';
+  selectedMaker = '__overseas__';
+  searchInput.value = '';
+  refresh();
+});
+makerButtonsEl.appendChild(toggleBtn);
+
+otherMakers.forEach(m => {
+  const btn = document.createElement('button');
+  btn.className = 'maker-btn';
+  btn.textContent = m;
+  btn.addEventListener('click', () => setMaker(m, btn));
+  otherButtonsEl.appendChild(btn);
+});
+
+function setMaker(maker, activeBtn) {
+  document.querySelectorAll('.maker-btn').forEach(b => b.classList.remove('active'));
+  // 国内メーカー選択時は海外パネルを閉じる
+  if (MAIN_MAKERS.includes(maker)) {
+    toggleBtn.classList.remove('active');
+    otherButtonsEl.classList.remove('open');
+    toggleBtn.textContent = '海外 ▾';
+  }
+  activeBtn.classList.add('active');
+  selectedMaker = maker;
+  searchInput.value = '';
+  refresh();
+}
+
+// ---- キーワード検索 ----
+searchInput.addEventListener('input', () => {
+  if (searchInput.value.trim() !== '') {
+    document.querySelectorAll('.maker-btn').forEach(b => b.classList.remove('active'));
+    toggleBtn.classList.remove('active');
+    otherButtonsEl.classList.remove('open');
+    toggleBtn.textContent = '海外 ▾';
+    selectedMaker = null;
+  }
+  refresh();
+});
+
+// ---- 表示更新（共通） ----
+function refresh() {
+  const q = searchInput.value.trim();
+
+  if (q !== '') {
+    const targets = expandQuery(q);
+    let items = DATA.filter(d => {
+      const txt = (d.name + ' ' + d.maker + ' ' + (d.models || '')).toLowerCase();
+      if (!targets.some(t => txt.includes(t))) return false;
+      if (selectedCase && !d.cases.includes(selectedCase)) return false;
+      return true;
+    });
+    items.sort(sortFn);
+    searchCount.textContent = `${items.length} 件`;
+    renderList(items, true);
+
+  } else if (selectedMaker !== null || selectedCase !== null) {
+    let items = DATA.filter(d => {
+      if (selectedMaker === '__overseas__' && MAIN_MAKERS.includes(d.maker)) return false;
+      if (selectedMaker && selectedMaker !== '__overseas__' && d.maker !== selectedMaker) return false;
+      if (selectedCase && !d.cases.includes(selectedCase)) return false;
+      return true;
+    });
+    items.sort(sortFn);
+    searchCount.textContent = `${items.length} 件`;
+    const isOverseas = selectedMaker === '__overseas__';
+    const grouped = !isOverseas && (selectedMaker === null || MAIN_MAKERS.includes(selectedMaker));
+    renderList(items, selectedMaker === null || isOverseas, grouped);
+
+  } else {
+    resetView();
+  }
+}
+
+function resetView() {
+  modelList.innerHTML = '';
+  searchCount.textContent = '';
+  placeholder.style.display = '';
+  placeholder.textContent = 'ケースサイズまたはメーカーを選択するか、キーワードを入力してください';
+}
+
+const PREFIX_NORMALIZE = (GROUPS && GROUPS.prefix_normalize) || {};
+
+function getPrefixGroup(name) {
+  const base = name.replace(/[\(（][^)）]*[\)）]/g, '').replace(/\s+/g, ' ').trim();
+  const first = base.split('/')[0].trim();
+  const m = first.match(/^([A-Za-z][A-Za-z-]*)/);
+  const prefix = m ? m[1].toUpperCase() : first.toUpperCase();
+  return PREFIX_NORMALIZE[prefix] || prefix;
+}
+
+function buildGroups(items) {
+  const map = new Map();
+  items.forEach(d => {
+    // Python 側の get_group() が生成した group フィールドを優先。未設定時は JS 自動抽出
+    const key = d.group || getPrefixGroup(d.name);
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push(d);
+  });
+  return new Map([...map.entries()].sort((a, b) => a[0].localeCompare(b[0], 'ja')));
+}
+
+function makeEntry(d, nameText, showMaker) {
+  const a = document.createElement('a');
+  a.href = d.url;
+  a.target = '_blank';
+
+  const badge = document.createElement('span');
+  badge.className = `system-badge badge-${d.system.toLowerCase()}`;
+  badge.textContent = d.system;
+  a.appendChild(badge);
+
+  const nameEl = document.createElement('span');
+  nameEl.className = 'model-name';
+  nameEl.textContent = nameText;
+  a.appendChild(nameEl);
+
+  if (showMaker) {
+    const makerEl = document.createElement('span');
+    makerEl.className = 'maker-badge';
+    makerEl.textContent = d.maker;
+    a.appendChild(makerEl);
+  }
+
+  const chipsEl = document.createElement('span');
+  chipsEl.className = 'case-chips';
+  CASE_OPTIONS.forEach(c => {
+    if (d.cases.includes(c)) {
+      const chip = document.createElement('span');
+      chip.className = 'case-chip' + (selectedCase === c ? ' hl' : '');
+      chip.textContent = c;
+      chipsEl.appendChild(chip);
+    }
+  });
+  if (chipsEl.children.length > 0) a.appendChild(chipsEl);
+
+  return a;
+}
+
+function renderList(items, showMaker, grouped = true) {
+  modelList.innerHTML = '';
+  if (items.length === 0) {
+    placeholder.style.display = '';
+    placeholder.textContent = '該当するフィッティングキットが見つかりませんでした';
+    searchCount.textContent = '';
+    return;
+  }
+  placeholder.style.display = 'none';
+
+  if (!grouped) {
+    items.forEach(d => {
+      const li = document.createElement('li');
+      li.appendChild(makeEntry(d, d.name, showMaker));
+      modelList.appendChild(li);
+    });
+    return;
+  }
+
+  buildGroups(items).forEach((groupItems, prefix) => {
+    const li = document.createElement('li');
+    li.className = 'series-group';
+    const header = document.createElement('span');
+    header.className = 'series-header';
+    header.textContent = prefix;
+    header.addEventListener('click', () => li.classList.toggle('open'));
+    li.appendChild(header);
+    const ul = document.createElement('ul');
+    ul.className = 'series-items';
+    groupItems.forEach(d => {
+      const item = document.createElement('li');
+      item.appendChild(makeEntry(d, d.name, showMaker));
+      ul.appendChild(item);
+    });
+    li.appendChild(ul);
+    modelList.appendChild(li);
+  });
+}
+
+}
+</script>
+</body>
+</html>
