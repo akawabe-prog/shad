@@ -440,8 +440,16 @@ def main():
         same_cards = ""
         for c in [x for x in by_series.get(series, []) if x != code][:3]:
             e2 = products[c]
+            # 一覧・同シリーズは大きさを統一したカード画像を使う
+            # （生成： python3 tools/build_card_images.py）
+            card = "/img/products/cards/%s.webp" % c.lower()
             local = "/img/products/%s.webp" % c.lower()
-            src = local if os.path.exists(os.path.join(SITE, local.lstrip("/"))) else (e2["variants"][0].get("thumb") or "")
+            if os.path.exists(os.path.join(SITE, card.lstrip("/"))):
+                src = card
+            elif os.path.exists(os.path.join(SITE, local.lstrip("/"))):
+                src = local
+            else:
+                src = e2["variants"][0].get("thumb") or ""
             same_cards += (
                 '<a href="/product/%s" class="pcard group bg-white rounded-[14px] overflow-hidden border border-black/10 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,.10)]">'
                 '<span class="block aspect-square overflow-hidden bg-white"><img src="%s" alt="%s" loading="lazy" class="w-full h-full object-cover transition duration-300 group-hover:scale-[1.04]"></span>'
