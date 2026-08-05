@@ -534,11 +534,19 @@ function capEl(cap) {
   return e;
 }
 
+/* 車種を選んだ状態から商品ページへ渡すURL。
+   商品ページ側は ?bike= があれば「この商品が装着できる車種」を出さず、
+   選んだ車種の判定だけを見せる（他車種の一覧は不要なので）。 */
+function productHref(item) {
+  if (!isInternal(item.url) || !selectedBike) return item.url;
+  return item.url + '?bike=' + encodeURIComponent(bikeKey(selectedBike));
+}
+
 function productCard(item, noteEl) {
   const info = CARDS[item.code] || null;
   const card = el('div', 'product-card');
   const link = document.createElement('a');
-  link.href = item.url;
+  link.href = productHref(item);
   if (!isInternal(item.url)) link.target = '_blank';
   link.className = 'card-link';
 
@@ -882,6 +890,45 @@ if (MODE === "entry") {
   var code = (root.dataset.productCode || "").toUpperCase();
   if (!code) return;
 
+  /* 適合検索から来た場合（?bike=メーカー|車種）は、他車種の一覧は不要なので
+     このセクションを出さず、選んだ車種の判定だけを上部に表示する。
+     判定できなかったときだけ通常のセレクターに戻す。 */
+  var FROM_BIKE = (new URLSearchParams(location.search || "")).get("bike") || "";
+  if (FROM_BIKE) root.style.display = "none";
+
+  function showSelectedBike(rows, kitLabel) {
+    var parts = FROM_BIKE.split("|");
+    var maker = parts[0], model = parts.slice(1).join("|");
+    var hit = null;
+    rows.forEach(function (r) {
+      if (!hit && r.maker === maker && r.model === model) hit = r;
+    });
+    if (!hit) { root.style.display = ""; return; }   // 判定できなければ通常表示に戻す
+
+    var label = hit.system ? hit.system + "フィッティングキット"
+                           : (kitLabel || "車種専用フィッティングキット");
+    var box = document.createElement("div");
+    box.className = "fit-from";
+    box.innerHTML = ''
+      + '<p class="fit-from-ok"><i class="ti ti-circle-check"></i>'
+      +   '<span><b>' + esc(model) + '</b> に装着できます</span></p>'
+      + '<p class="fit-from-kit">取付には車種専用の' + esc(label) + 'が必要です</p>'
+      + '<div class="fit-from-btns">'
+      +   '<a class="fit-from-kitbtn" href="' + esc(hit.url) + '" target="_blank" rel="noopener">'
+      +     'キットを見る<i class="ti ti-arrow-right"></i></a>'
+      +   '<a class="fit-from-back" href="/fitment?bike=' + encodeURIComponent(FROM_BIKE) + '">'
+      +     '<i class="ti ti-arrow-left"></i>適合検索の結果に戻る</a>'
+      + '</div>';
+
+    // 「適合確認はこちら」ボタン（とその下の説明文）の位置に置き換える
+    var jump = document.querySelector("[data-fit-jump]");
+    var note = jump ? jump.nextElementSibling : null;
+    if (note && note.tagName === "P") note.remove();
+    if (jump && jump.parentNode) jump.parentNode.replaceChild(box, jump);
+    else if (root.parentNode) root.parentNode.insertBefore(box, root);
+    root.remove();
+  }
+
   var MAIN = ["ホンダ", "ヤマハ", "スズキ", "カワサキ", "BMW"];
   var ALIASES = {
     forza: "フォルツァ", "africa twin": "アフリカツイン", transalp: "トランザルプ",
@@ -918,7 +965,7 @@ if (MODE === "entry") {
   Promise.all([get("/data/fitment/product_index.json"),
                get("/data/fitment/reverse_data.json")]).then(function (res) {
     var idx = res[0] || {}, data = res[1];
-    if (!data) { render([], null); return; }
+    if (!data) { root.style.display = ""; render([], null); return; }
     var plate = (idx.topcasePlate || {})[code];
     var rows = [], kitLabel = null;
 
@@ -931,7 +978,9 @@ if (MODE === "entry") {
     } else if ((idx.tankbagCodes || []).indexOf(code) >= 0) {
       /* タンクバッグはクリックシステムのキットで装着する。
          1つのキットが複数メーカー・複数車種にまたがる表記のため、
-         車種単位のマッチングは行わずキット一覧を案内する（提供実装と同じ扱い）。 */
+         車種単位のマッチングは行わずキット一覧を案内する（提供実装と同じ扱い）。
+         車種別の一覧ではないので、適合検索から来た場合もそのまま表示する。 */
+      if (FROM_BIKE) root.style.display = "";
       renderClickSystem(data.clicksystem_kits || []);
       return;
     } else {
@@ -951,7 +1000,8 @@ if (MODE === "entry") {
       var k = r.model + "|" + r.url;
       if (!seen[k]) { seen[k] = 1; uniq.push(r); }
     });
-    render(uniq, kitLabel);
+    if (FROM_BIKE) { showSelectedBike(uniq, kitLabel); }
+    if (root.isConnected) render(uniq, kitLabel);
   });
 
   /* タンクバッグ：クリックシステムのキット一覧（車種は各キットのページで確認）*/
