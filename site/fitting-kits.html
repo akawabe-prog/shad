@@ -123,20 +123,26 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
     <a href="/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
 </div>
 
-<!-- ===== HERO ===== -->
-<div class="bg-ink2 text-white">
-  <div class="max-w-site mx-auto px-7 pt-[54px] pb-[46px]">
-    <p class="font-disp font-semibold text-[12px] tracking-[.3em] uppercase text-shad flex items-center gap-3 mb-3">
-      <span class="inline-block w-[28px] h-[2px] bg-shad"></span>For Your Motorcycle</p>
-    <h1 class="font-disp font-semibold uppercase tracking-[.05em] leading-[1.02] text-[clamp(30px,5vw,54px)]">Fitting Kits</h1>
-    <p class="text-[17px] font-bold mt-5">バイクとケースの間には、専用の設計がある。</p>
-    <p class="text-white/70 text-[15px] mt-3 max-w-[760px] leading-[2.05]">
-      フィッティングとは、バイクとケース・バッグをつなぐ取付部品のこと。SHADはケースやバッグと同時に取付キットまで自社で開発しています。だから車体のデザインを崩さず、すべての部品を確実に固定できます。</p>
+<!-- ===== HERO（フルブリード） ===== -->
+<section class="fb-hero">
+  <img src="/img/terra/ride2.webp" alt="SHADのトップケースを装着して走るバイク" fetchpriority="high">
+  <span class="fb-hero-mask"></span>
+  <div class="fb-hero-in">
+    <p class="lp-kick">For Your Motorcycle</p>
+    <h1 class="lp-display mt-3">Fitting Kits</h1>
+    <p class="lp-h2">バイクとケースの間に、<br class="hidden md:block">専用の設計がある。</p>
+    <p class="lp-lead max-w-[620px]">ケースやバッグと同時に、取付キットまで自社で開発。<br class="hidden md:block">
+      だから車体のデザインを崩さず、確実に固定できる。</p>
+    <div class="flex flex-wrap gap-3 mt-8">
+      <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-search"></i>車種から探す</a>
+      <a href="#contents" class="btn border border-white/45 text-white hover:border-white"><i class="ti ti-layout-grid"></i>キットの種類</a>
+    </div>
   </div>
-</div>
+  <i class="ti ti-chevron-down fb-scroll" aria-hidden="true"></i>
+</section>
 
-<!-- ===== ページ内ナビ（カテゴリー型タイル：下部の各セクションへ） ===== -->
-<section class="fk-ix">
+<!-- ===== ページ内ナビ（カテゴリー型タイル） ===== -->
+<section class="fk-ix" id="contents">
   <div class="max-w-site mx-auto px-7">
     <div class="fk-ix-head">
       <p class="fk-ix-lb">Contents</p>
@@ -168,87 +174,55 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
   </div>
 </nav>
 
-<!-- ===== キットの役割 ===== -->
-<section class="bg-white py-[84px]">
-  <div class="max-w-site mx-auto px-7">
-    <h2 class="sec-ttl" data-reveal>Why Fitting Matters</h2>
-    <div class="grid md:grid-cols-3 gap-7 mt-9">
+<!-- ===== 装着の流れ（フルブリード：3つの部品） ===== -->
+<section class="fb-band is-center scroll-mt-[132px]" id="how">
+  <img src="/img/expandable/night.webp" alt="ケースを装着して夜間を走るバイク" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">How It Mounts</p>
+    <h2 class="lp-h2">装着は、3つの部品で完成する。</h2>
+    <div class="lp-figures mt-10">
       <div data-reveal>
-        <span class="tech-ic"><i class="ti ti-motorbike text-[30px] text-shad"></i></span>
-        <h3 class="text-[17px] font-bold mt-5">車種ごとの専用設計</h3>
-        <p class="text-[14.5px] text-neutral-600 leading-[2.05] mt-3">キットは車種の形状と取付点に合わせて個別に設計されます。ボルトオンで確実に固定でき、着脱も簡単です。</p>
-      </div>
-      <div data-reveal>
-        <span class="tech-ic"><i class="ti ti-vector-triangle text-[30px] text-shad"></i></span>
-        <h3 class="text-[17px] font-bold mt-5">車体に溶け込む一体感</h3>
-        <p class="text-[14.5px] text-neutral-600 leading-[2.05] mt-3">ケースだけでなく取付部までデザインするから、装着してもシルエットが崩れません。積載は足しても、見た目は足さない。</p>
+        <p class="lp-fig-num">01</p>
+        <p class="lp-fig-lb"><b class="text-white">車種専用キット</b><br>車体に固定する土台</p>
       </div>
       <div data-reveal>
-        <span class="tech-ic"><i class="ti ti-shield-check text-[30px] text-shad"></i></span>
-        <h3 class="text-[17px] font-bold mt-5">安全な固定</h3>
-        <p class="text-[14.5px] text-neutral-600 leading-[2.05] mt-3">ケース・バッグと取付キットを一体で開発・検証。走行中の荷重と振動を前提に、すべての部品の固定を保証します。</p>
+        <p class="lp-fig-num">02</p>
+        <p class="lp-fig-lb"><b class="text-white">ベースプレート</b><br>ワンタッチ脱着の受け皿</p>
+      </div>
+      <div data-reveal>
+        <p class="lp-fig-num">03</p>
+        <p class="lp-fig-lb"><b class="text-white">ケース／バッグ</b><br>載せてキーでロック</p>
       </div>
     </div>
-    <div class="flex flex-wrap gap-2 mt-8 text-[12.5px] text-neutral-500" data-reveal>
-      <span class="border border-black/15 rounded-full px-3 py-1">主要メーカーに対応する500点以上のキットを展開</span>
-      <span class="border border-black/15 rounded-full px-3 py-1">取付ける商品の種類ごとにキットが異なります</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 装着の3ステップ ===== -->
-<section class="bg-mist py-[84px] scroll-mt-[132px]" id="how">
-  <div class="max-w-site mx-auto px-7">
-    <h2 class="sec-ttl" data-reveal>How It Mounts</h2>
-    <p class="text-[17px] font-bold mt-6" data-reveal>バイクとケースの間に入るのは、2つの部品。</p>
-    <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3 max-w-[780px]" data-reveal>
-      トップケースを装着するには、車体に固定する「車種専用キット」と、ケースを受ける「ベースプレート」が必要です。この2つが決まれば、あとはケースを載せてロックするだけ。</p>
-    <div class="fk-steps mt-9">
-      <div class="fk-step" data-reveal>
-        <span class="fk-step-no">01</span>
-        <h3>車種専用フィッティングキット</h3>
-        <p>車体に固定する土台。車種・年式ごとに品番が異なります。トップケースは「トップマスター」、サイドケースは「3P／4Pシステム」。</p>
-      </div>
-      <div class="fk-arrow"><i class="ti ti-chevron-right"></i></div>
-      <div class="fk-step" data-reveal>
-        <span class="fk-step-no">02</span>
-        <h3>ベースプレート</h3>
-        <p>キットの上に載せ、ケースをワンタッチで脱着できるようにする受け皿。プラスチック製ケースには付属し、TERRAシリーズは別売です。</p>
-      </div>
-      <div class="fk-arrow"><i class="ti ti-chevron-right"></i></div>
-      <div class="fk-step" data-reveal>
-        <span class="fk-step-no">03</span>
-        <h3>ケース／バッグ</h3>
-        <p>プレートに載せてロック。キーひとつで開閉・ロック・車体からの脱着までを一元管理できます。</p>
-      </div>
-    </div>
+    <p class="lp-note">プラスチック製ケースはベースプレート付属。TERRAシリーズは別売です。</p>
   </div>
 </section>
 
 <!-- ===== トップマスター ===== -->
-<section class="bg-mist py-[84px] scroll-mt-[132px]" id="topmaster">
-  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
-    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white order-1 md:order-2" data-reveal>
-      <img src="/img/fitting/topcase_banner.webp" alt="トップマスターキットとベースプレートで装着したトップケース" class="w-full h-full object-cover">
+<section class="fb-band is-right scroll-mt-[132px]" id="topmaster">
+  <img src="/img/terra/urban.webp" alt="トップマスターキットでトップケースを装着したバイク" loading="lazy">
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Top Case</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">Top Master</h2>
+    <p class="lp-h2">トップケースの土台は、車種ごとに違う。</p>
+    <p class="lp-lead">車体の特性に合わせて個別に設計。だから仕上がりが美しく、着脱も簡単。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">車種・年式ごとに専用品番</span>
+      <span class="border border-white/25 rounded-full px-3 py-1">ベースプレートと組み合わせて装着</span>
     </div>
-    <div class="order-2 md:order-1" data-reveal>
-      <div class="flex items-center gap-4">
-        <span class="tech-ic"><i class="ti ti-box text-[30px] text-shad"></i></span>
-        <div><span class="tech-tag">Top Case</span>
-          <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-1.5">Top Master</h2></div>
-      </div>
-      <p class="text-[17px] font-bold mt-6">車種ごとに設計された、トップケースの土台。</p>
-      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">トップマスターは、トップケースを車体に取り付けるためのキットです。車種ごとの特性を踏まえて個別に設計されているため、仕上がりの美しさ・扱いやすさ・安全性が高く、着脱も簡単に行えます。</p>
-      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-4">トップケースを装着するには、このキットに加えて<b class="text-ink">ベースプレート</b>が必要です。プラスチック製ケースにはベースプレートと取付金具が付属しています（TERRAシリーズは別売）。</p>
-      <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-6"><i class="ti ti-search"></i>車種から必要なキットを調べる</a>
-    </div>
+    <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-7"><i class="ti ti-search"></i>自分の車種のキットを探す</a>
   </div>
+</section>
 
-  <div class="max-w-site mx-auto px-7 mt-[64px]">
-    <h3 class="sec-ttl sec-ttl-quiet" data-reveal>Base Plates</h3>
-    <p class="text-[15px] text-neutral-600 leading-[2.05] mt-5 max-w-[820px]" data-reveal>
-      ベースプレートはケースの底面を受け、ワンタッチでの脱着を可能にする部品です。サイズは3種類。大型ケースとTERRAシリーズ用には、軽量で剛性の高いアルミ製プレートも用意しています。</p>
-    <div class="fk-plates mt-7">
+<!-- ベースプレート：製品写真で見せる -->
+<section class="bg-white py-[76px]">
+  <div class="max-w-site mx-auto px-7">
+    <h2 class="sec-ttl sec-ttl-quiet" data-reveal>Base Plates</h2>
+    <p class="text-[15px] text-neutral-600 leading-[2.05] mt-5 max-w-[720px]" data-reveal>
+      ケースを受け、ワンタッチ脱着を可能にする部品。サイズは3種類。大型ケースとTERRAにはアルミ製も選べます。</p>
+    <div class="fk-plates mt-8">
       <div class="fk-plate" data-reveal>
         <img src="/img/fitting/plate_s.webp" alt="ベースプレートS" loading="lazy">
         <span class="fk-plate-name">ベースプレート S</span>
@@ -290,184 +264,147 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
         <span class="fk-plate-price">27,500円（税込）</span>
       </div>
     </div>
-    <p class="fk-note mt-6" data-reveal><i class="ti ti-info-circle"></i>TERRAシリーズのトップケースにはベースプレートが付属しません。上記のいずれかを別途ご用意ください。</p>
+    <p class="fk-note mt-6" data-reveal><i class="ti ti-info-circle"></i>TERRAシリーズのトップケースはベースプレートが別売です。</p>
   </div>
 </section>
 
 <!-- ===== 3P / 4P ===== -->
-<section class="bg-white py-[84px] scroll-mt-[132px]" id="side">
-  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
-    <div data-reveal>
-      <div class="flex items-center gap-3">
-        <span class="tech-ic"><img src="/img/feat/3P.webp" alt="3P System"></span>
-        <span class="tech-ic"><img src="/img/feat/4P.webp" alt="4P System"></span>
-        <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none">3P / 4P System</h2>
-      </div>
-      <p class="text-[17px] font-bold mt-6">サイドケースを、車体の一部に。</p>
-      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">サイドケースは、車体の左右にキットを組んで装着します。SHADには性格の異なる2つのシステムがあり、車種によって対応するシステムが決まります。ケースを外せばステーだけが残り、シルエットを崩しません。</p>
-      <div class="flex flex-wrap gap-2 mt-5 text-[12.5px] text-neutral-500">
-        <span class="border border-black/15 rounded-full px-3 py-1">20mm スチールフレーム（市場最大径）</span>
-        <span class="border border-black/15 rounded-full px-3 py-1">粉体塗装のメタリック仕上げ</span>
-      </div>
-    </div>
-    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-mist" data-reveal>
-      <img src="/img/fitting/side_mounted.webp" alt="3Pシステムでサイドケースを装着した状態" class="w-full h-full object-cover">
+<section class="fb-band scroll-mt-[132px]" id="side">
+  <img src="/img/expandable/gs_full.webp" alt="3Pシステムでサイドケースを装着したバイク" loading="lazy">
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Side Case</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">3P / 4P System</h2>
+    <p class="lp-h2">サイドケースを、車体の一部に。</p>
+    <p class="lp-lead">市場最大径の20mmスチール。ケースを外せばステーだけが残り、シルエットを崩しません。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">20mm スチールフレーム</span>
+      <span class="border border-white/25 rounded-full px-3 py-1">粉体塗装メタリック仕上げ</span>
+      <span class="border border-white/25 rounded-full px-3 py-1">4Pはクロスバーで補強</span>
     </div>
   </div>
+</section>
 
-  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-7 mt-[52px]">
-    <div class="fk-sys" data-reveal>
+<!-- 3P と 4P の違い -->
+<section class="bg-ink2 text-white py-[64px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-6">
+    <div class="fk-sys fk-sys-dark" data-reveal>
       <img src="/img/fitting/logo_3p.webp" alt="3P SYSTEM" class="fk-sys-logo" loading="lazy">
       <h3>3Pシステム</h3>
-      <p class="text-[14.5px] text-neutral-600 leading-[2.05]">SHADの重要な発明のひとつ。車体側に寄せた一体設計で、サイドキットとしての存在感を最小限に抑えます。</p>
-      <ul class="fk-list">
-        <li>一体設計：サイドキットが車体によりよく溶け込む</li>
-        <li>軽量：重心の変化が小さく、安全性に寄与する</li>
-        <li>組み付けが簡単</li>
-      </ul>
-      <dl class="fk-spec">
+      <p class="text-[14.5px] text-white/70 leading-[2]">車体側に寄せた一体設計。軽さで重心変化を抑え、組み付けも簡単。</p>
+      <dl class="fk-spec fk-spec-dark">
         <dt>対応ケース</dt><dd>SH23 / SH35 / SH36 / SH38X / TR27 / TR30 / TR40</dd>
       </dl>
     </div>
-    <div class="fk-sys" data-reveal>
+    <div class="fk-sys fk-sys-dark" data-reveal>
       <img src="/img/fitting/logo_4p.webp" alt="4P SYSTEM" class="fk-sys-logo" loading="lazy">
       <h3>4Pシステム</h3>
-      <p class="text-[14.5px] text-neutral-600 leading-[2.05]">TERRAのケースとサイドバッグを装着するため、バルセロナで100%設計・開発されたシステム。2つのケースの間をクロスバーで補強し、ハードな使い方に応えます。</p>
-      <ul class="fk-list">
-        <li>市場最厚の20mm径スチール構造による高い剛性と耐久性</li>
-        <li>クロスバーの補強で、過酷なツーリングにも対応</li>
-        <li>SH23 / SH35 / SH36 / SH38X のサイドケースにも対応</li>
-      </ul>
-      <dl class="fk-spec">
+      <p class="text-[14.5px] text-white/70 leading-[2]">TERRAのケース・バッグ用にバルセロナで開発。クロスバーで過酷な使用にも応える。</p>
+      <dl class="fk-spec fk-spec-dark">
         <dt>対応ケース</dt><dd>TR47 / TR36 / TR30 / TR40 / SH23 / SH35 / SH36 / SH38X</dd>
       </dl>
     </div>
   </div>
   <div class="max-w-site mx-auto px-7">
-    <p class="fk-note fk-note-alert mt-6" data-reveal><i class="ti ti-alert-triangle"></i>4Pシステムに SH23・TR27 のサイドケースを装着する場合は、アダプター <b>D1TR27FIR</b> が必要です。</p>
-    <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-7" data-reveal><i class="ti ti-search"></i>車種に対応するサイドキットを調べる</a>
+    <p class="fk-note fk-note-dark mt-6" data-reveal><i class="ti ti-alert-triangle"></i>4Pに SH23・TR27 を装着する場合はアダプター <b>D1TR27FIR</b> が必要です。</p>
+    <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-7" data-reveal><i class="ti ti-search"></i>車種に対応するサイドキットを探す</a>
   </div>
 </section>
 
-<!-- ===== サイドバッグ ===== -->
-<section class="bg-mist py-[84px] scroll-mt-[132px]" id="sidebag">
-  <div class="max-w-site mx-auto px-7">
-    <div class="flex items-center gap-4" data-reveal>
-      <span class="tech-ic"><img src="/img/feat/SSBHE.webp" alt="Side Bag Holder"></span>
-      <div><span class="tech-tag">Side Bag</span>
-        <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-1.5">Side Bag Holder</h2></div>
-    </div>
-    <p class="text-[17px] font-bold mt-6" data-reveal>ソフトバッグの位置を、走行中も保つ。</p>
-    <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3 max-w-[820px]" data-reveal>
-      サイドバッグは、タイヤやマフラーに接触しないよう専用のホルダーで位置を保って装着します。車種専用タイプ、汎用タイプ、カフェレーサー向けのSRタイプがあります。</p>
-    <div class="grid md:grid-cols-3 gap-6 mt-9">
-      <div data-reveal>
-        <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white flex items-center justify-center">
-          <img src="/img/fitting/sbh_mt09.webp" alt="車種専用サイドバッグホルダー" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <h3 class="text-[16.5px] font-bold mt-5">車種専用ホルダー</h3>
-        <p class="text-[14px] text-neutral-600 leading-[2] mt-2">車種ごとに設計されたホルダー。バッグの位置と角度が決まり、走行中のズレを防ぎます。</p>
-      </div>
-      <div data-reveal>
-        <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white flex items-center justify-center">
-          <img src="/img/fitting/sbh_universal.webp" alt="汎用サイドバッグホルダー" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <h3 class="text-[16.5px] font-bold mt-5">汎用ホルダー</h3>
-        <p class="text-[14px] text-neutral-600 leading-[2] mt-2">専用キットが無い車種向け。車体に合わせて取り付けるタイプです。</p>
-      </div>
-      <div data-reveal>
-        <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white flex items-center justify-center">
-          <img src="/img/fitting/sbh_sr.webp" alt="SRバッグフィッティングキット" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <h3 class="text-[16.5px] font-bold mt-5">SRキット</h3>
-        <p class="text-[14px] text-neutral-600 leading-[2] mt-2">クラシック／カフェレーサー系の車体に、SRコレクションのバッグを合わせるキットです。</p>
-      </div>
-    </div>
-    <div class="flex flex-wrap gap-2 mt-8 text-[12.5px] text-neutral-500" data-reveal>
-      <span class="border border-black/15 rounded-full px-3 py-1">対応バッグ：TR30 / TR40 / E48 / SL58 / SR38</span>
-      <span class="border border-black/15 rounded-full px-3 py-1">車種により対応ホルダーが異なります</span>
+<!-- ===== サイドバッグ（動画） ===== -->
+<section class="fb-band is-right scroll-mt-[132px]" id="sidebag">
+  <video src="/media/reel_tr30.mp4" poster="/img/products/cards/tr30.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Side Bag</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">Side Bag Holder</h2>
+    <p class="lp-h2">ソフトバッグの位置を、走行中も保つ。</p>
+    <p class="lp-lead">タイヤやマフラーへの接触を防ぐホルダー。車種専用・汎用・SRの3タイプ。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">対応：TR30 / TR40 / E48 / SL58 / SR38</span>
     </div>
   </div>
 </section>
 
-<!-- ===== タンクバッグ ===== -->
-<section class="bg-white py-[84px] scroll-mt-[132px]" id="tankbag">
+<section class="bg-mist py-[64px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-3 gap-6">
+    <div data-reveal>
+      <div class="lp-shot"><img src="/img/fitting/sbh_mt09.webp" alt="車種専用サイドバッグホルダー" loading="lazy"></div>
+      <h3 class="text-[16.5px] font-bold mt-4">車種専用ホルダー</h3>
+      <p class="text-[13.5px] text-neutral-600 leading-[1.95] mt-1.5">バッグの位置と角度が決まり、走行中のズレを防ぐ。</p>
+    </div>
+    <div data-reveal>
+      <div class="lp-shot"><img src="/img/fitting/sbh_universal.webp" alt="汎用サイドバッグホルダー" loading="lazy"></div>
+      <h3 class="text-[16.5px] font-bold mt-4">汎用ホルダー</h3>
+      <p class="text-[13.5px] text-neutral-600 leading-[1.95] mt-1.5">専用キットが無い車種向け。</p>
+    </div>
+    <div data-reveal>
+      <div class="lp-shot"><img src="/img/fitting/sbh_sr.webp" alt="SRバッグフィッティングキット" loading="lazy"></div>
+      <h3 class="text-[16.5px] font-bold mt-4">SRキット</h3>
+      <p class="text-[13.5px] text-neutral-600 leading-[1.95] mt-1.5">クラシック／カフェレーサーにSRコレクションを。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== クリックシステム（動画） ===== -->
+<section class="fb-band scroll-mt-[132px]" id="tankbag">
+  <video src="/media/reel_click.mp4" poster="/img/fitting/type_tankbag.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Tank Bag</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">Click System</h2>
+    <p class="lp-h2">1秒で着けて、1秒で外す。</p>
+    <p class="lp-lead">給油口まわりのリングで装着。バッグがタンクに触れないから、塗装も傷めません。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">対応：TR15CL / TR10 / E09C / E09CL / E09CM / E03C / E03CL / E02C</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== バックレスト ＆ ロック ===== -->
+<section class="bg-white py-[76px] scroll-mt-[132px]" id="backrest">
   <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
-    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-mist order-1 md:order-2" data-reveal>
-      <img src="/img/fitting/type_tankbag.webp" alt="クリックシステムのリングとタンクバッグ" class="w-full h-full object-cover">
+    <div class="grid grid-cols-2 gap-5" data-reveal>
+      <div class="lp-shot"><img src="/img/fitting/backrest_kit.webp" alt="バックレストキットの装着例" loading="lazy"></div>
+      <div class="lp-shot"><img src="/img/fitting/backrest_forza.webp" alt="スクーター用バックレストの装着例" loading="lazy"></div>
     </div>
-    <div class="order-2 md:order-1" data-reveal>
-      <div class="flex items-center gap-4">
-        <span class="tech-ic"><img src="/img/feat/CS.webp" alt="Click System"></span>
-        <div><span class="tech-tag">Tank Bag</span>
-          <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-1.5">Click System</h2></div>
-      </div>
-      <p class="text-[17px] font-bold mt-6">1秒で着けて、1秒で外す。</p>
-      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">タンクバッグは、給油口まわりに取り付けるリング状のキットで装着します。ワンタッチで脱着でき、バッグがタンクに触れないため塗装を傷めません。車種専用リングと汎用タイプがあります。</p>
+    <div data-reveal>
+      <p class="fk-kick">Backrest</p>
+      <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-2">Backrest Kit</h2>
+      <p class="text-[17px] font-bold mt-5">タンデムの快適性を、背もたれで。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">スクーター用のほか、クラシック系の車体に合わせるタイプも。キットとあわせてバックレスト本体が必要です。</p>
       <div class="flex flex-wrap gap-2 mt-5 text-[12.5px] text-neutral-500">
-        <span class="border border-black/15 rounded-full px-3 py-1">対応：TR15CL / TR10 / E09C / E09CL / E09CM / E03C / E03CL / E02C</span>
+        <span class="border border-black/15 rounded-full px-3 py-1">本体：D0RP00 / D0RP00N / D0RP05 / D0RP08</span>
       </div>
-      <a href="/fitment" class="btn border border-black/15 bg-white hover:border-shad hover:text-shad mt-6"><i class="ti ti-search"></i>対応するリングを調べる</a>
     </div>
-  </div>
-  <div class="full-bleed mt-[64px]">
-    <img src="/img/fitting/click_banner.webp" alt="CLICK SYSTEM" class="w-full h-[clamp(180px,26vw,300px)] object-cover" loading="lazy">
   </div>
 </section>
 
-<!-- ===== バックレスト ===== -->
-<section class="bg-mist py-[84px] scroll-mt-[132px]" id="backrest">
+<section class="bg-mist py-[68px] scroll-mt-[132px]" id="locks">
   <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
     <div data-reveal>
-      <div class="flex items-center gap-4">
-        <span class="tech-ic"><i class="ti ti-armchair text-[30px] text-shad"></i></span>
-        <div><span class="tech-tag">Backrest</span>
-          <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-1.5">Backrest Kit</h2></div>
-      </div>
-      <p class="text-[17px] font-bold mt-6">タンデムの快適性を、背もたれで。</p>
-      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">タンデム時の快適性を高めるバックレスト用のキットです。スクーター用のほか、クラシック・カスタム系の車体に合わせるタイプもあります。キットだけでは装着できないため、あわせて<b class="text-ink">バックレスト本体</b>をご用意ください。</p>
-      <dl class="fk-spec mt-6">
-        <dt>バックレスト本体</dt>
-        <dd>ブラック（D0RP00）／ブラック ロゴなし（D0RP00N）／シルバー（D0RP05）／ホワイト（D0RP08）</dd>
-      </dl>
-    </div>
-    <div class="grid grid-cols-2 gap-5" data-reveal>
-      <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white"><img src="/img/fitting/backrest_kit.webp" alt="バックレストキットの装着例" class="w-full h-full object-cover" loading="lazy"></div>
-      <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white"><img src="/img/fitting/backrest_forza.webp" alt="スクーター用バックレストの装着例" class="w-full h-full object-cover" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SHAD LOCKS ===== -->
-<section class="bg-white py-[76px] scroll-mt-[132px]" id="locks">
-  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
-    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-mist order-1 md:order-2" data-reveal>
-      <img src="/img/fitting/type_lock.webp" alt="SHADロックの装着イメージ" class="w-full h-full object-cover" loading="lazy">
-    </div>
-    <div class="order-2 md:order-1" data-reveal>
-      <div class="flex items-center gap-4">
-        <span class="tech-ic"><i class="ti ti-shield-lock text-[30px] text-shad"></i></span>
-        <div><span class="tech-tag">Handle Lock</span>
-          <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-1.5">Shad Locks</h2></div>
-      </div>
-      <p class="text-[17px] font-bold mt-6">屈まない、汚れない。数秒の防犯。</p>
-      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">SHADロックも、車種ごとの取付キットで装着します。日常の駐輪で、工具なしに数秒で施錠できます。</p>
+      <p class="fk-kick">Handle Lock</p>
+      <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-2">Shad Locks</h2>
+      <p class="text-[17px] font-bold mt-5">屈まない、汚れない。数秒の防犯。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">SHADロックも車種ごとの取付キットで装着します。工具なしで施錠。</p>
       <a href="/product/lock" class="btn border border-black/15 bg-white hover:border-shad hover:text-shad mt-6">SHADロックを見る<i class="ti ti-arrow-right"></i></a>
     </div>
+    <div class="lp-shot" data-reveal><img src="/img/fitting/type_lock.webp" alt="SHADロックの装着イメージ" loading="lazy"></div>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="bg-ink2 text-white py-[88px]">
-  <div class="max-w-site mx-auto px-7">
-    <h2 class="font-disp font-semibold uppercase tracking-[.05em] text-[clamp(24px,3.4vw,36px)] leading-[1.1]" data-reveal>Find Your Kit</h2>
-    <p class="text-[17px] font-bold mt-5" data-reveal>お使いのバイクに必要なキットを調べる。</p>
-    <p class="text-white/70 text-[15px] mt-3 leading-[2.05] max-w-[760px]" data-reveal>
-      メーカー・シリーズ・車種を選ぶと、装着できるケース・バッグと、必要なフィッティングキットの品番を確認できます。</p>
-    <div class="flex flex-wrap gap-3 mt-7" data-reveal>
+<!-- ===== CTA（フルブリード） ===== -->
+<section class="fb-band is-center">
+  <img src="/img/terra/corner.webp" alt="サイドケースを装着して走るバイク" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Find Your Kit</p>
+    <h2 class="lp-h2">あなたのバイクに必要なキットを、いま調べる。</h2>
+    <p class="lp-lead">メーカー・シリーズ・車種を選ぶだけ。装着できるケースと必要なキットの品番がわかります。</p>
+    <div class="flex flex-wrap gap-3 mt-8 justify-center">
       <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-search"></i>適合検索</a>
-      <a href="/install-guide" class="btn border border-white/25 text-white hover:border-white"><i class="ti ti-tool"></i>取付ガイド</a>
-      <a href="/faq" class="btn border border-white/25 text-white hover:border-white"><i class="ti ti-help-circle"></i>FAQ・取扱説明書</a>
+      <a href="/install-guide" class="btn border border-white/45 text-white hover:border-white"><i class="ti ti-tool"></i>取付ガイド</a>
+      <a href="/faq" class="btn border border-white/45 text-white hover:border-white"><i class="ti ti-help-circle"></i>FAQ</a>
     </div>
   </div>
 </section>
