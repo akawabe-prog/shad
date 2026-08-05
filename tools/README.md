@@ -85,7 +85,11 @@ python3 tools/build_news.py
     {"type": "p",     "text": "段落。改行は \\n"},
     {"type": "ul",    "items": ["箇条書き1", "箇条書き2"]},
     {"type": "img",   "src": "/img/news/xxx.webp", "caption": "写真の説明"},
-    {"type": "quote", "text": "引用・コメント"}
+    {"type": "quote", "text": "引用・コメント"},
+    {"type": "link",  "items": [
+       {"href": "/product/tr27", "text": "商品ページ", "primary": true},
+       {"href": "https://prtimes.jp/...", "text": "プレスリリース"}
+    ]}
   ],
   "products": ["TR41"]                  ← 記事下の「関連商品」（型番／任意）
 }
@@ -94,7 +98,10 @@ python3 tools/build_news.py
 - **本文が用意できていない記事**は `body: []` ＋ `draft: true` にしておけば、
   リンク切れを作らずに公開できます（詳細ページに「準備中」の案内が出ます）。
   本文を入れたら `draft` を `false` に変えてください
+- `link` ブロックは記事下部の導線ボタン。`primary: true` が赤ボタン、
+  `/` 始まり以外（外部URL）は自動で別タブ＋外部リンクアイコンになります
 - 画像は `site/img/news/` に置き、WEBP に最適化してから参照してください
+  （ヒーローは16:9、本文中は4:3が収まりよく、幅1200〜1600pxで十分です）
 - 記事を消すときは JSON から該当ブロックを削除してビルド（古いHTMLも消えます）
 
 ---

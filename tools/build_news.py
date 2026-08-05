@@ -149,6 +149,20 @@ def body_html(blocks):
                        % (esc(b.get("src")), esc(b.get("caption") or ""), cap))
         elif kind == "quote":
             out.append('<blockquote>%s</blockquote>' % esc(b.get("text")))
+        elif kind == "link":
+            # 商品ページ・外部リリースなどへの導線（外部リンクは別タブ）
+            btns = []
+            for l in b.get("items", []):
+                url = l.get("href", "")
+                ext = not url.startswith("/")
+                btns.append('<a href="%s"%s class="news-btn%s">%s%s</a>'
+                            % (esc(url),
+                               ' target="_blank" rel="noopener"' if ext else "",
+                               " news-btn-primary" if l.get("primary") else "",
+                               esc(l.get("text")),
+                               '<i class="ti ti-external-link"></i>' if ext
+                               else '<i class="ti ti-arrow-right"></i>'))
+            out.append('<div class="news-btns">%s</div>' % "".join(btns))
     return "\n".join(out)
 
 
