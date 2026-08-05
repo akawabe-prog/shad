@@ -28,13 +28,13 @@
   <div class="panel-label">車種から探す</div>
   <div class="selector-row">
     <select id="makerSelect">
-      <option value="">1. メーカー</option>
+      <option value="">メーカーを選択</option>
     </select>
     <select id="seriesSelect" disabled>
-      <option value="">2. シリーズ</option>
+      <option value="">シリーズを選択</option>
     </select>
     <select id="modelSelect" disabled>
-      <option value="">3. 車種・年式</option>
+      <option value="">車種・年式を選択</option>
     </select>
   </div>
 
@@ -233,8 +233,8 @@ function bikesOf(maker) {
 
 // シリーズプルダウンを再構築。1件しかない場合は自動選択して次へ進む
 function populateSeries(maker) {
-  resetSelect(modelSelect, '3. 車種・年式');
-  seriesSelect.innerHTML = '<option value="">2. シリーズ</option>';
+  resetSelect(modelSelect, '車種・年式を選択');
+  seriesSelect.innerHTML = '<option value="">シリーズを選択</option>';
   const groups = new Map();
   bikesOf(maker).forEach(b => {
     const key = groupKey(b);
@@ -245,7 +245,7 @@ function populateSeries(maker) {
     .forEach(([g, n]) => {
       const opt = document.createElement('option');
       opt.value = g;
-      opt.textContent = n > 1 ? `${g}（${n}車種）` : g;
+      opt.textContent = g;
       seriesSelect.appendChild(opt);
     });
   seriesSelect.disabled = false;
@@ -257,7 +257,7 @@ function populateSeries(maker) {
 
 // 車種プルダウンを再構築。1件しかない場合は自動選択
 function populateModels(maker, group) {
-  modelSelect.innerHTML = '<option value="">3. 車種・年式</option>';
+  modelSelect.innerHTML = '<option value="">車種・年式を選択</option>';
   const items = bikesOf(maker)
     .filter(b => groupKey(b) === group)
     .sort((a, b) => a.model.localeCompare(b.model, 'ja'));
@@ -278,8 +278,8 @@ makerSelect.addEventListener('change', () => {
   searchInput.value = '';
   hideSuggest();
   if (makerSelect.value === '') {
-    resetSelect(seriesSelect, '2. シリーズ');
-    resetSelect(modelSelect, '3. 車種・年式');
+    resetSelect(seriesSelect, 'シリーズを選択');
+    resetSelect(modelSelect, '車種・年式を選択');
     return;
   }
   populateSeries(makerSelect.value);
@@ -287,7 +287,7 @@ makerSelect.addEventListener('change', () => {
 
 seriesSelect.addEventListener('change', () => {
   if (seriesSelect.value === '') {
-    resetSelect(modelSelect, '3. 車種・年式');
+    resetSelect(modelSelect, '車種・年式を選択');
     return;
   }
   populateModels(makerSelect.value, seriesSelect.value);
@@ -847,22 +847,21 @@ if (MODE === "entry") {
 
     host.innerHTML = ''
       + '<div class="pf-selects">'
-      +   '<div><label class="finder-label"><span class="finder-step">1</span>メーカー</label>'
+      +   '<div><label class="finder-label">メーカー</label>'
       +     '<select class="finder-select" data-pf-maker><option value="">選択してください</option>'
       +       makers.map(function (m) {
-              return '<option value="' + esc(m) + '">' + esc(m)
-                   + '（' + Object.keys(tree[m]).length + '）</option>';
+              return '<option value="' + esc(m) + '">' + esc(m) + '</option>';
             }).join("")
       +     '</select></div>'
-      +   '<div><label class="finder-label"><span class="finder-step">2</span>シリーズ</label>'
+      +   '<div><label class="finder-label">シリーズ</label>'
       +     '<select class="finder-select" data-pf-series disabled><option value="">—</option></select></div>'
-      +   '<div><label class="finder-label"><span class="finder-step">3</span>車種・年式</label>'
+      +   '<div><label class="finder-label">車種・年式</label>'
       +     '<select class="finder-select" data-pf-model disabled><option value="">—</option></select></div>'
       + '</div>'
       + '<div class="pf-verdict" data-pf-verdict></div>'
       + '<details class="pf-all"><summary>'
       +   '<i class="ti ti-list" aria-hidden="true"></i>'
-      +   '<span>適合車種の一覧を見る（' + items.length + '車種）</span>'
+      +   '<span>適合車種の一覧を見る</span>'
       +   '<i class="ti ti-chevron-down pf-all-mark" aria-hidden="true"></i></summary>'
       +   '<div class="pf-all-body">'
       +     '<div class="pf-search"><i class="ti ti-search" aria-hidden="true"></i>'
@@ -891,7 +890,7 @@ if (MODE === "entry") {
       if (!mk) { fill(seSel, [], "—"); fill(mdSel, [], "—"); return; }
       var groups = Object.keys(tree[mk]).sort(function (a, b) { return a.localeCompare(b, "ja"); });
       fill(seSel, groups.map(function (g) {
-        return { value: g, label: g + "（" + tree[mk][g].length + "車種）" };
+        return { value: g, label: g };
       }), "選択してください");
       fill(mdSel, [], "—");
     });
@@ -935,8 +934,7 @@ if (MODE === "entry") {
         var t = norm(i.model) + " " + norm(i.maker) + " " + norm(i.group);
         return qs.some(function (x) { return x && t.indexOf(x) >= 0; });
       });
-      countEl.textContent = rows.length + " 車種"
-        + (kitLabel ? "／取付には車種専用の" + kitLabel + "が必要です" : "");
+      countEl.textContent = kitLabel ? "取付には車種専用の" + kitLabel + "が必要です" : "";
       var groups = {};
       rows.forEach(function (r) {
         var k = (r.maker || "") + " / " + (r.group || r.model);
