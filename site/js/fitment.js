@@ -820,6 +820,8 @@ if (MODE === "entry") {
         }).join("") + '</div>';
   }
 
+  /* 商品ページの適合UI：メーカー → シリーズ → 車種 のプルダウンで選び、
+     判定と必要なキットを表示する。全件の一覧は折りたたみで確認できる。 */
   function render(items, kitLabel) {
     var host = root.querySelector("[data-fitment-result]") || root;
     if (!items.length) {
@@ -828,45 +830,113 @@ if (MODE === "entry") {
         + '<span>お手数ですが、お問い合わせフォームよりご確認ください。</span></div>';
       return;
     }
-    var makers = [];
-    items.forEach(function (i) { if (makers.indexOf(i.maker) < 0) makers.push(i.maker); });
-    makers.sort(function (a, b) {
+
+    /* メーカー（国内4社＋BMWを先頭）→ シリーズ → 車種 の木を作る */
+    var tree = {};
+    items.forEach(function (i) {
+      var mk = i.maker || "その他";
+      var gp = i.group || i.model;
+      (tree[mk] = tree[mk] || {});
+      (tree[mk][gp] = tree[mk][gp] || []).push(i);
+    });
+    var makers = Object.keys(tree).sort(function (a, b) {
       var ia = MAIN.indexOf(a), ib = MAIN.indexOf(b);
       if (ia >= 0 || ib >= 0) return (ia < 0 ? 1 : ib < 0 ? -1 : ia - ib);
       return a.localeCompare(b, "ja");
     });
 
     host.innerHTML = ''
-      + '<div class="pf-bar">'
-      +   '<div class="pf-makers" data-pf-makers>'
-      +     '<button type="button" class="pf-chip on" data-maker="">すべて<span>' + items.length + '</span></button>'
-      +     makers.map(function (m) {
-            var n = items.filter(function (i) { return i.maker === m; }).length;
-            return '<button type="button" class="pf-chip" data-maker="' + esc(m) + '">'
-                 + esc(m) + '<span>' + n + '</span></button>';
-          }).join("")
-      +   '</div>'
-      +   '<div class="pf-search"><i class="ti ti-search" aria-hidden="true"></i>'
-      +     '<input type="text" data-pf-input placeholder="車種名で絞り込む（例：PCX、Vストローム、Africa Twin）"></div>'
+      + '<div class="pf-selects">'
+      +   '<div><label class="finder-label"><span class="finder-step">1</span>メーカー</label>'
+      +     '<select class="finder-select" data-pf-maker><option value="">選択してください</option>'
+      +       makers.map(function (m) {
+              return '<option value="' + esc(m) + '">' + esc(m)
+                   + '（' + Object.keys(tree[m]).length + '）</option>';
+            }).join("")
+      +     '</select></div>'
+      +   '<div><label class="finder-label"><span class="finder-step">2</span>シリーズ</label>'
+      +     '<select class="finder-select" data-pf-series disabled><option value="">—</option></select></div>'
+      +   '<div><label class="finder-label"><span class="finder-step">3</span>車種・年式</label>'
+      +     '<select class="finder-select" data-pf-model disabled><option value="">—</option></select></div>'
       + '</div>'
-      + '<p class="pf-count" data-pf-count></p>'
-      + '<div class="pf-list" data-pf-list></div>';
+      + '<div class="pf-verdict" data-pf-verdict></div>'
+      + '<details class="pf-all"><summary>'
+      +   '<i class="ti ti-list" aria-hidden="true"></i>'
+      +   '<span>適合車種の一覧を見る（' + items.length + '車種）</span>'
+      +   '<i class="ti ti-chevron-down pf-all-mark" aria-hidden="true"></i></summary>'
+      +   '<div class="pf-all-body">'
+      +     '<div class="pf-search"><i class="ti ti-search" aria-hidden="true"></i>'
+      +       '<input type="text" data-pf-input placeholder="車種名で絞り込む（例：PCX、Vストローム、Africa Twin）"></div>'
+      +     '<p class="pf-count" data-pf-count></p>'
+      +     '<div class="pf-list" data-pf-list></div>'
+      +   '</div>'
+      + '</details>';
 
-    var state = { maker: "", q: "" };
+    var mkSel = host.querySelector("[data-pf-maker]");
+    var seSel = host.querySelector("[data-pf-series]");
+    var mdSel = host.querySelector("[data-pf-model]");
+    var verdict = host.querySelector("[data-pf-verdict]");
+
+    function fill(sel, opts, placeholder) {
+      sel.innerHTML = '<option value="">' + placeholder + '</option>'
+        + opts.map(function (o) {
+            return '<option value="' + esc(o.value) + '">' + esc(o.label) + '</option>';
+          }).join("");
+      sel.disabled = !opts.length;
+    }
+
+    mkSel.addEventListener("change", function () {
+      var mk = mkSel.value;
+      verdict.innerHTML = "";
+      if (!mk) { fill(seSel, [], "—"); fill(mdSel, [], "—"); return; }
+      var groups = Object.keys(tree[mk]).sort(function (a, b) { return a.localeCompare(b, "ja"); });
+      fill(seSel, groups.map(function (g) {
+        return { value: g, label: g + "（" + tree[mk][g].length + "車種）" };
+      }), "選択してください");
+      fill(mdSel, [], "—");
+    });
+
+    seSel.addEventListener("change", function () {
+      verdict.innerHTML = "";
+      var list = (tree[mkSel.value] || {})[seSel.value] || [];
+      fill(mdSel, list.map(function (i) { return { value: i.model, label: i.model }; }),
+           "選択してください");
+      if (list.length === 1) { mdSel.value = list[0].model; showVerdict(); }
+    });
+
+    mdSel.addEventListener("change", showVerdict);
+
+    function showVerdict() {
+      var list = (tree[mkSel.value] || {})[seSel.value] || [];
+      var hit = list.filter(function (i) { return i.model === mdSel.value; })[0];
+      if (!hit) { verdict.innerHTML = ""; return; }
+      verdict.innerHTML = ''
+        + '<div class="fit-ok"><i class="ti ti-circle-check"></i>'
+        +   '<div><p>装着できます</p>'
+        +   '<span>' + esc(hit.maker) + ' ' + esc(hit.model) + '</span></div></div>'
+        + '<div class="pf-kit">'
+        +   '<p class="pf-kit-cap">取付に必要な車種専用フィッティングキット'
+        +     (hit.system ? '（' + esc(hit.system) + '）' : '') + '</p>'
+        +   '<a class="pf-kit-btn" href="' + esc(hit.url) + '" target="_blank" rel="noopener">'
+        +     'キットを見る<i class="ti ti-arrow-up-right"></i></a>'
+        + '</div>';
+    }
+
+    /* 折りたたみ内の全件一覧（キーワード絞り込み付き）*/
     var listEl = host.querySelector("[data-pf-list]");
     var countEl = host.querySelector("[data-pf-count]");
+    var input = host.querySelector("[data-pf-input]");
 
     function draw() {
-      var qs = state.q ? expand(state.q) : null;
+      var q = input.value.trim();
+      var qs = q ? expand(q) : null;
       var rows = items.filter(function (i) {
-        if (state.maker && i.maker !== state.maker) return false;
         if (!qs) return true;
         var t = norm(i.model) + " " + norm(i.maker) + " " + norm(i.group);
         return qs.some(function (x) { return x && t.indexOf(x) >= 0; });
       });
-      countEl.textContent = rows.length + " 車種が該当"
-        + (kitLabel ? "（取付には車種専用の" + kitLabel + "が必要です）" : "");
-      // シリーズ（group）で束ねて表示
+      countEl.textContent = rows.length + " 車種"
+        + (kitLabel ? "／取付には車種専用の" + kitLabel + "が必要です" : "");
       var groups = {};
       rows.forEach(function (r) {
         var k = (r.maker || "") + " / " + (r.group || r.model);
@@ -880,22 +950,12 @@ if (MODE === "entry") {
                 + '<span class="pf-model">' + esc(r.model) + '</span>'
                 + (r.system ? '<span class="pf-sys">' + esc(r.system) + '</span>' : '')
                 + '<span class="pf-go">キットを見る<i class="ti ti-arrow-right"></i></span></a>';
-            }).join("")
-          + '</div>';
-      }).join("") : '<div class="fit-empty"><i class="ti ti-search-off"></i><p>該当する車種がありません</p>'
-                    + '<span>キーワードやメーカーの条件を変えてお試しください。</span></div>';
+            }).join("") + '</div>';
+      }).join("") : '<div class="fit-empty"><i class="ti ti-search-off"></i>'
+                    + '<p>該当する車種がありません</p>'
+                    + '<span>キーワードを変えてお試しください。</span></div>';
     }
-
-    host.querySelector("[data-pf-makers]").addEventListener("click", function (e) {
-      var b = e.target.closest(".pf-chip");
-      if (!b) return;
-      host.querySelectorAll(".pf-chip").forEach(function (x) { x.classList.remove("on"); });
-      b.classList.add("on");
-      state.maker = b.dataset.maker || "";
-      draw();
-    });
-    var input = host.querySelector("[data-pf-input]");
-    input.addEventListener("input", function () { state.q = input.value.trim(); draw(); });
+    input.addEventListener("input", draw);
     draw();
   }
 })();
