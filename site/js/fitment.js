@@ -67,10 +67,16 @@
 
   /* ---- 以下、移植したロジック ---- */
 
-fetch('/data/fitment/reverse_data.json')
-  .then(r => r.json())
-  .then(DATA => init(DATA))
-  .catch(() => {
+/* 適合データと、一覧カードの表示情報（型番・容量・コピー・特徴）を読む。
+   カード情報が取れなくても適合検索そのものは動くよう、失敗は空で通す。 */
+var CARDS = {};
+Promise.all([
+  fetch('/data/fitment/reverse_data.json').then(r => r.json()),
+  fetch('/data/catalog/cards.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+])
+  .then(([DATA, cards]) => { CARDS = cards || {}; init(DATA); })
+  .catch(err => {
+    console.error('適合検索の初期化に失敗:', err);
     document.getElementById('productTitle').textContent = 'データの読み込みに失敗しました';
   });
 
@@ -441,8 +447,50 @@ function sectionTitle(text, count, kitListHref) {
   return t;
 }
 
-// サムネイル付き商品カード。noteEl はカード下部の注記（省略可）
+/* 商品カード。商品一覧（/products）と同じ情報量で見せる：
+   シリーズ／型番／容量／カテゴリ名・色数／キャッチコピー／特徴アイコン。
+   表示情報は site/data/catalog/cards.json（products.html の PRODUCTS が原本）
+   から型番で引く。カード情報が無い型番は名前だけの簡易表示にフォールバック。
+   noteEl はカード下部の注記（標準付属・必要キットなど／省略可） */
+const SERIES_JP = {
+  'TERRA': 'Terra', 'EXPANDABLE': 'Expandable', 'TOP CASE': 'Top Case',
+  'SIDE CASE': 'Side Case', 'ADVENTURE': 'Adventure', 'BAG': 'Bag',
+  'LOCK': 'Lock', 'SEAT': 'Seat', 'ACCESSORY': 'Accessory'
+};
+const HELMET_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="display:inline-block;vertical-align:-2px;"><path d="M3.5 14a8.5 8.5 0 0 1 17 0"/><path d="M3.5 14h17v1.5a1.5 1.5 0 0 1-1.5 1.5h-3.2l-.9 2.4a1 1 0 0 1-.94.6H10a1 1 0 0 1-.94-.6L8.2 17H5a1.5 1.5 0 0 1-1.5-1.5z"/></svg>';
+
+function featIcon(f) {
+  if (f.oimg) return '<img src="' + f.oimg + '" alt="" class="oimg" loading="lazy">';
+  if (f.ic === 'helmet') return HELMET_SVG;
+  return '<i class="ti ti-' + f.ic + '"></i>';
+}
+
+function featRow(card) {
+  if (!card.features || !card.features.length) return null;
+  const row = el('div', 'feat-row');
+  card.features.slice(0, 3).forEach(function (f) {
+    const s = el('span', 'feat');
+    const fi = el('span', 'fi');
+    fi.innerHTML = featIcon(f);                 // アイコンのみHTML（データはテキストで入れる）
+    s.appendChild(fi);
+    s.appendChild(document.createTextNode(f.label));
+    if (f.val) s.appendChild(el('b', null, f.val));
+    row.appendChild(s);
+  });
+  return row;
+}
+
+/* 容量は「37L」→ 37+L、「23-32L」のような可変容量は一段小さく */
+function capEl(cap) {
+  const m = String(cap).match(/^([\d-]+)(L)$/);
+  if (!m) return el('span', 'cap-num cap-long', cap);
+  const e = el('span', 'cap-num' + (m[1].length >= 4 ? ' cap-long' : ''), m[1]);
+  e.appendChild(el('small', null, m[2]));
+  return e;
+}
+
 function productCard(item, noteEl) {
+  const info = CARDS[item.code] || null;
   const card = el('div', 'product-card');
   const link = document.createElement('a');
   link.href = item.url;
@@ -450,6 +498,14 @@ function productCard(item, noteEl) {
   link.className = 'card-link';
 
   const thumb = el('div', 'card-thumb');
+  if (info && info.series) thumb.appendChild(el('span', 'badge', SERIES_JP[info.series] || info.series));
+  if (info && info.status) {
+    const b = el('span', 'new-badge', info.status);
+    b.style.background = '#6b6b6b';
+    thumb.appendChild(b);
+  } else if (info && info.new) {
+    thumb.appendChild(el('span', 'new-badge', 'New'));
+  }
   const img = document.createElement('img');
   img.src = item.img;
   img.loading = 'lazy';
@@ -457,16 +513,68 @@ function productCard(item, noteEl) {
   img.addEventListener('error', () => thumb.classList.add('noimg'));
   thumb.appendChild(img);
   link.appendChild(thumb);
-  link.appendChild(el('div', 'card-name', item.name));
-  link.appendChild(el('div', 'card-goto', '詳細を見る ›'));
+
+  const body = el('div', 'card-body');
+  if (info) {
+    const head = el('div', 'card-head');
+    head.appendChild(el('h3', 'card-code', info.label || info.code));
+    if (info.cap) head.appendChild(capEl(info.cap));
+    body.appendChild(head);
+
+    const jp = el('p', 'card-jp', info.jp || '');
+    if (info.colors > 1) {
+      jp.appendChild(el('span', 'card-colors', '　' + info.colors + '色'));
+    }
+    body.appendChild(jp);
+
+    if (info.copy) body.appendChild(el('p', 'card-copy', info.copy));
+    const feats = featRow(info);
+    if (feats) body.appendChild(feats);
+  } else {
+    body.appendChild(el('div', 'card-name', item.name));
+  }
+  body.appendChild(el('div', 'card-goto', '詳しく見る ›'));
+  link.appendChild(body);
+
   card.appendChild(link);
   if (noteEl) card.appendChild(noteEl);
   return card;
 }
 
+/* 並び順は商品一覧と同じ「容量の大きいものから小さいものへ」。
+   可変容量（23-32L）は上限で比べ、容量が無いものは末尾に回す。 */
+function capValue(item) {
+  const info = CARDS[item.code];
+  const src = (info && info.cap) || item.capacity;
+  if (src === undefined || src === null || src === '') return -1;
+  const nums = String(src).match(/\d+/g);
+  return nums ? Math.max.apply(null, nums.map(Number)) : -1;
+}
+
+function byCapacityDesc(a, b) {
+  const d = capValue(b) - capValue(a);
+  if (d) return d;
+  const ka = a.code || a.name, kb = b.code || b.name;   // 同容量は型番順（商品一覧と同じ）
+  return ka < kb ? -1 : (ka > kb ? 1 : 0);
+}
+
+/* 適合データはカラー違いのSKU単位。カードは商品一覧と同じくモデル単位で
+   見せる（カラーはカード内の「2色」表記と商品ページで案内）ので、
+   同じ型番が並ばないようまとめる。ベースプレート付属の情報は残す。 */
+function byModel(items) {
+  const map = new Map();
+  items.forEach(item => {
+    const key = item.code || item.name;
+    const prev = map.get(key);
+    if (!prev || (!prev.included && item.included)) map.set(key, item);
+  });
+  return [...map.values()];
+}
+
 function productGrid(items, noteBuilder) {
   const grid = el('div', 'product-grid');
-  items.forEach(item => grid.appendChild(productCard(item, noteBuilder ? noteBuilder(item) : null)));
+  byModel(items).sort(byCapacityDesc)
+    .forEach(item => grid.appendChild(productCard(item, noteBuilder ? noteBuilder(item) : null)));
   return grid;
 }
 
@@ -494,8 +602,8 @@ function allSidebags() {
 }
 
 function renderAllProducts() {
-  const top = applyFilters(allTopcases());
-  const side = applyFilters(allSidecases());
+  const top = byModel(applyFilters(allTopcases()));
+  const side = byModel(applyFilters(allSidecases()));
   productTitle.textContent = '商品一覧';
   productSub.textContent = '車種を選択すると、適合する商品だけに絞り込まれます';
   productArea.innerHTML = '';

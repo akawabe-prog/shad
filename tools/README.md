@@ -39,6 +39,19 @@ rsync -a --delete --exclude='.DS_Store' site/ dist/shad/
 > **HTML は書き換わりません。** JSON だけが更新されるので、デザインやページ構成には影響しません。
 > 何度実行しても同じ結果になります（冪等）。
 
+### 4. 一覧カードの表示情報を共有JSONに反映
+
+商品一覧（`site/products.html` の `var PRODUCTS`）が持つ型番・容量・カテゴリ名・
+キャッチコピー・特徴アイコンは、適合検索の結果ページ（`/fitment`）のカードでも
+同じ内容を表示しています。**キャッチコピーや特徴を直したら**、次を実行して
+共有JSONを更新してください。
+
+```bash
+python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
+```
+
+原本は `products.html` の1か所だけなので、両ページで表示がずれることはありません。
+
 ---
 
 ## 除外ルール
