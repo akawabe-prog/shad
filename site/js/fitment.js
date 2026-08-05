@@ -52,6 +52,14 @@
   </div>
 </div>
 
+<div class="cat-filter" id="categoryFilter">
+  <button type="button" class="cat-chip on" data-cat="all">すべて</button>
+  <button type="button" class="cat-chip" data-cat="top">トップケース</button>
+  <button type="button" class="cat-chip" data-cat="side">サイドケース</button>
+  <button type="button" class="cat-chip" data-cat="sidebag">サイドバッグ</button>
+  <button type="button" class="cat-chip" data-cat="tank">タンクバッグ</button>
+</div>
+
 <div class="filter-bar">
   <label><input type="checkbox" id="terraFilter"> TERRAシリーズのみ表示</label>
   <span class="filter-group" id="capacityFilterGroup">
@@ -170,6 +178,33 @@ let selectedBike = null;
 let pendingBike = null;   // エントリーモードで「適合を見る」を押すまで保持する車種
 let terraOnly = false;
 let capacityFilter = 'all'; // 'all' | 'le40' | 'gt40'
+let categoryFilter = 'all'; // 'all' | 'top' | 'side' | 'sidebag' | 'tank'
+
+/* 商品カテゴリは適合データの持ち方から決まる（型番 → カテゴリ）。
+   トップケース＝ベースプレート配下、サイドケース／サイドバッグ＝ハード/ソフトの別、
+   タンクバッグ＝クリックシステム。カード表示ではなくデータ構造が根拠。 */
+const CATEGORY_OF = {};
+function mapCategories() {
+  Object.values(PLATES).forEach(p => (p.topcases || []).forEach(t => {
+    if (t.code) CATEGORY_OF[t.code] = 'top';
+  }));
+  Object.values(SIDECASES).flat().forEach(i => { if (i.code) CATEGORY_OF[i.code] = 'side'; });
+  Object.values(SIDEBAGS).flat().forEach(i => { if (i.code) CATEGORY_OF[i.code] = 'sidebag'; });
+  TANKBAGS.forEach(i => { if (i.code) CATEGORY_OF[i.code] = 'tank'; });
+}
+mapCategories();
+
+const CATEGORY_LABEL = { top: 'トップケース', side: 'サイドケース',
+                         sidebag: 'サイドバッグ', tank: 'タンクバッグ' };
+
+document.querySelectorAll('#categoryFilter .cat-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    categoryFilter = chip.dataset.cat;
+    document.querySelectorAll('#categoryFilter .cat-chip')
+      .forEach(c => c.classList.toggle('on', c === chip));
+    renderProducts();
+  });
+});
 
 document.getElementById('terraFilter').addEventListener('change', e => {
   terraOnly = e.target.checked;
@@ -183,9 +218,14 @@ document.querySelectorAll('input[name="capacityFilter"]').forEach(r => {
   });
 });
 
-// TERRAシリーズ（TR〜）のみ・容量（L）での絞り込みをまとめて適用する
+// カテゴリ・TERRAシリーズ（TR〜）・容量（L）での絞り込みをまとめて適用する
 function applyFilters(items) {
-  let result = terraOnly ? items.filter(i => i.name.includes('TERRA')) : items;
+  let result = items;
+  if (categoryFilter !== 'all') {
+    // カテゴリ不明（マスター未登録など）は絞り込み時は対象外にする
+    result = result.filter(i => CATEGORY_OF[i.code] === categoryFilter);
+  }
+  if (terraOnly) result = result.filter(i => i.name.includes('TERRA'));
   if (capacityFilter !== 'all') {
     // capacity 不明（null）の商品は容量絞り込み時は対象外にする
     result = result.filter(i => i.capacity != null &&
@@ -195,7 +235,12 @@ function applyFilters(items) {
 }
 
 function filtersActive() {
-  return terraOnly || capacityFilter !== 'all';
+  return terraOnly || capacityFilter !== 'all' || categoryFilter !== 'all';
+}
+
+// このカテゴリのセクションを描画するか（「すべて」なら全部）
+function showCategory(cat) {
+  return categoryFilter === 'all' || categoryFilter === cat;
 }
 
 const groupKey = b => b.group || b.model;
@@ -602,35 +647,21 @@ function allSidebags() {
 }
 
 function renderAllProducts() {
-  const top = byModel(applyFilters(allTopcases()));
-  const side = byModel(applyFilters(allSidecases()));
   productTitle.textContent = '商品一覧';
   productSub.textContent = '車種を選択すると、適合する商品だけに絞り込まれます';
   productArea.innerHTML = '';
 
-  const topSec = el('div', 'product-section');
-  topSec.appendChild(sectionTitle('トップケース', top.length));
-  topSec.appendChild(productGrid(top));
-  productArea.appendChild(topSec);
-
-  const sideSec = el('div', 'product-section');
-  sideSec.appendChild(sectionTitle('サイドケース', side.length));
-  sideSec.appendChild(productGrid(side));
-  productArea.appendChild(sideSec);
-
-  const sidebags = applyFilters(allSidebags());
-  const sideBagSec = el('div', 'product-section');
-  sideBagSec.appendChild(sectionTitle('サイドバッグ'));
-  sideBagSec.appendChild(productGrid(sidebags));
-  productArea.appendChild(sideBagSec);
-
-  // タンクバッグは車種フィッティングに未対応のため全商品一覧にのみ表示
-
-  const tankbags = applyFilters(TANKBAGS);
-  const tankSec = el('div', 'product-section');
-  tankSec.appendChild(sectionTitle('タンクバッグ'));
-  tankSec.appendChild(productGrid(tankbags));
-  productArea.appendChild(tankSec);
+  // カテゴリで絞り込んでいるときは、そのセクションだけを出す
+  [['top', allTopcases()], ['side', allSidecases()],
+   ['sidebag', allSidebags()], ['tank', TANKBAGS]].forEach(([cat, source]) => {
+    if (!showCategory(cat)) return;
+    const items = byModel(applyFilters(source));
+    const sec = el('div', 'product-section');
+    sec.appendChild(sectionTitle(CATEGORY_LABEL[cat], items.length));
+    if (items.length) sec.appendChild(productGrid(items));
+    else sec.appendChild(el('div', 'no-fit', '絞り込み条件に合う商品はありません'));
+    productArea.appendChild(sec);
+  });
 }
 
 function buildTopSection(bike) {
@@ -684,7 +715,7 @@ function buildTopSection(bike) {
       blockCount++;
       return;
     }
-    // 絞り込み条件（TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
+    // 絞り込み条件（カテゴリ/TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
     const skus = applyFilters(allSkus);
     if (skus.length === 0) return;
     block.appendChild(el('div', 'kit-caption', '装着可能トップケース'));
@@ -709,11 +740,14 @@ function buildTopSection(bike) {
 }
 
 function buildSideSection(bike) {
+  /* ハードケースとソフトバッグは同じサイドキットに紐づくため1セクションで扱う。
+     カテゴリで絞り込んでいるときは見出しもその名前にする。 */
+  const label = categoryFilter === 'sidebag' ? 'サイドバッグ' : 'サイドケース';
   const sec = el('div', 'product-section');
-  sec.appendChild(sectionTitle('サイドケース'));
+  sec.appendChild(sectionTitle(label));
 
   if (bike.side.length === 0) {
-    sec.appendChild(el('div', 'no-fit', 'この車種に適合するサイドケース用フィッティングキットはありません'));
+    sec.appendChild(el('div', 'no-fit', 'この車種に適合する' + label + '用フィッティングキットはありません'));
     return sec;
   }
 
@@ -724,7 +758,7 @@ function buildSideSection(bike) {
   bike.side.forEach(s => {
     // cases はハードケース(SIDECASES)とソフトバッグ(SIDEBAGS)のコードが混在する
     const allSkus = s.cases.flatMap(code => SIDECASES[code] || SIDEBAGS[code] || []);
-    // 絞り込み条件（TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
+    // 絞り込み条件（カテゴリ/TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
     const skus = applyFilters(allSkus);
     if (filtersActive() && skus.length === 0) return;
 
@@ -741,14 +775,26 @@ function buildSideSection(bike) {
     kitLine.appendChild(btn);
     block.appendChild(kitLine);
 
-    block.appendChild(el('div', 'kit-caption', '装着可能サイドケース'));
+    block.appendChild(el('div', 'kit-caption', '装着可能' + label));
     block.appendChild(productGrid(skus));
     sec.appendChild(block);
     blockCount++;
   });
   if (blockCount === 0) {
-    sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うサイドケースはありません'));
+    sec.appendChild(el('div', 'no-fit', '絞り込み条件に合う' + label + 'はありません'));
   }
+  return sec;
+}
+
+/* タンクバッグは車種専用キットが不要（クリックシステム）なので、
+   車種を選んだ状態でカテゴリに「タンクバッグ」を選んだときだけ案内付きで出す。 */
+function buildTankSection() {
+  const items = byModel(applyFilters(TANKBAGS));
+  const sec = el('div', 'product-section');
+  sec.appendChild(sectionTitle('タンクバッグ', items.length));
+  sec.appendChild(el('div', 'kit-line', 'タンクバッグは車種専用フィッティングキットが不要です（クリックシステム対応リングで装着します）'));
+  if (items.length) sec.appendChild(productGrid(items));
+  else sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うタンクバッグはありません'));
   return sec;
 }
 
@@ -756,8 +802,9 @@ function renderFilteredProducts(bike) {
   productTitle.textContent = bike.model + ' に適合する商品';
   productSub.textContent = '';
   productArea.innerHTML = '';
-  productArea.appendChild(buildTopSection(bike));
-  productArea.appendChild(buildSideSection(bike));
+  if (showCategory('top')) productArea.appendChild(buildTopSection(bike));
+  if (showCategory('side') || showCategory('sidebag')) productArea.appendChild(buildSideSection(bike));
+  if (categoryFilter === 'tank') productArea.appendChild(buildTankSection());
 }
 
 function renderProducts() {
@@ -771,7 +818,7 @@ function renderProducts() {
 // ---- 初期表示 ----
 if (MODE === "entry") {
   // TOPでは検索フォームのみ（結果は /fitment で表示）
-  root.querySelectorAll('.filter-bar, #productTitle, #productSub, #productArea')
+  root.querySelectorAll('.cat-filter, .filter-bar, #productTitle, #productSub, #productArea')
       .forEach(function (n) { n.remove(); });
   var go = document.createElement('button');
   go.type = 'button';

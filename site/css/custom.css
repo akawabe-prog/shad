@@ -535,8 +535,15 @@ html{scroll-behavior:smooth;}
   color:rgba(255,255,255,.8);border-radius:6px;padding:6px 14px;font-size:12.5px;cursor:pointer;transition:.18s;}
 #clearBikeBtn:hover{border-color:#fff;color:#fff;}
 
-/* 絞り込み */
-.filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
+/* 絞り込み：カテゴリ（チップ）＋シリーズ・容量 */
+.cat-filter{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.cat-chip{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:14px;
+  letter-spacing:.06em;padding:8px 18px;border-radius:9999px;border:1px solid rgba(0,0,0,.16);
+  color:#555;background:#fff;cursor:pointer;transition:.18s;white-space:nowrap;}
+.cat-chip:hover{border-color:#0E0E0E;color:#0E0E0E;}
+.cat-chip.on{background:#E31E24;border-color:#E31E24;color:#fff;}
+
+.filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px;margin-top:18px;
   font-size:13px;color:#444;}
 .filter-bar label{display:inline-flex;align-items:center;gap:7px;cursor:pointer;}
 .filter-bar input{accent-color:#E31E24;}
@@ -620,6 +627,11 @@ html{scroll-behavior:smooth;}
   .filter-group{padding-left:0;border-left:0;width:100%;}
 }
 @media(max-width:560px){
+  /* スマホは折り返さず横スクロール（絞り込みが縦に伸びて商品が押し下がらないように） */
+  .cat-filter{gap:7px;margin-top:20px;flex-wrap:nowrap;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  .cat-filter::-webkit-scrollbar{display:none;}
+  .cat-chip{font-size:13px;padding:7px 14px;letter-spacing:.02em;flex:0 0 auto;}
   .product-grid{grid-template-columns:1fr;gap:14px;}
   .kit-block{padding:16px;}
   .card-body{padding:14px 16px 18px;}
