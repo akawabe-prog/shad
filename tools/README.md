@@ -54,6 +54,51 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## NEWS の更新
+
+記事は `site/data/news/news.json` の1ファイルにまとめています。**JSONを編集して
+ビルドするだけ**で、一覧・詳細・TOPページの最新4件がまとめて更新されます。
+
+```bash
+python3 tools/build_news.py
+```
+
+| 生成されるもの | URL |
+|---|---|
+| `site/news/index.html` | `/news`（カテゴリで絞り込み） |
+| `site/news/<slug>.html` | `/news/<slug>`（詳細） |
+| `site/index.html` の NEWS 枠 | 最新4件のカード（`<!-- NEWS:START -->`〜`<!-- NEWS:END -->` を差し替え） |
+
+### 記事の書き方（news.json）
+
+```json
+{
+  "slug": "tr41-order-resume",          ← URLになる英数字（重複させない）
+  "date": "2026-06-10",                 ← 表示は 2026.06.10。並び順もこれが基準
+  "category": "News",                   ← categories に無い値は絞り込みに出ません
+  "title": "TERRA TR41 受注を再開しました",
+  "lead": "一覧とOGPに出る1〜2文",
+  "image": "/img/news_1.webp",          ← 空ならグレーのプレースホルダー
+  "draft": true,                        ← true = 「本文は準備中です」の案内を表示
+  "body": [
+    {"type": "h",     "text": "見出し"},
+    {"type": "p",     "text": "段落。改行は \\n"},
+    {"type": "ul",    "items": ["箇条書き1", "箇条書き2"]},
+    {"type": "img",   "src": "/img/news/xxx.webp", "caption": "写真の説明"},
+    {"type": "quote", "text": "引用・コメント"}
+  ],
+  "products": ["TR41"]                  ← 記事下の「関連商品」（型番／任意）
+}
+```
+
+- **本文が用意できていない記事**は `body: []` ＋ `draft: true` にしておけば、
+  リンク切れを作らずに公開できます（詳細ページに「準備中」の案内が出ます）。
+  本文を入れたら `draft` を `false` に変えてください
+- 画像は `site/img/news/` に置き、WEBP に最適化してから参照してください
+- 記事を消すときは JSON から該当ブロックを削除してビルド（古いHTMLも消えます）
+
+---
+
 ## 除外ルール
 
 以下は自動的に除外されます（`tools/build_catalog.py` 冒頭で変更可能）。

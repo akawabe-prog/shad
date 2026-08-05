@@ -1,0 +1,49 @@
+{
+ "categories": ["News", "Racing", "Event"],
+ "articles": [
+  {
+   "slug": "tr41-order-resume",
+   "date": "2026-06-10",
+   "category": "News",
+   "title": "TERRA TR41 受注を再開しました",
+   "lead": "TERRA TR41 の受注を再開しました。",
+   "image": "/img/news_1.webp",
+   "draft": true,
+   "body": [],
+   "products": ["TR41"]
+  },
+  {
+   "slug": "malaysia-bike-show-2026",
+   "date": "2026-06-02",
+   "category": "Event",
+   "title": "マレーシアバイクショー2026 出展レポート",
+   "lead": "マレーシアバイクショー2026 に出展しました。",
+   "image": "/img/news_2.webp",
+   "draft": true,
+   "body": [],
+   "products": []
+  },
+  {
+   "slug": "worldsbk-aragon",
+   "date": "2026-06-01",
+   "category": "Racing",
+   "title": "WorldSBK アラゴン戦 — 現地リポート",
+   "lead": "WorldSBK アラゴン戦の現地リポートです。",
+   "image": "",
+   "draft": true,
+   "body": [],
+   "products": []
+  },
+  {
+   "slug": "shad-base-sendai",
+   "date": "2026-05-24",
+   "category": "Event",
+   "title": "SHAD BASE 仙台 体験イベント開催",
+   "lead": "SHAD BASE 仙台にて体験イベントを開催します。",
+   "image": "",
+   "draft": true,
+   "body": [],
+   "products": []
+  }
+ ]
+}

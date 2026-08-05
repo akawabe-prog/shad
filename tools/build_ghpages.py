@@ -38,15 +38,16 @@ PREFIX = "/shad"                      # GitHub Pages のリポジトリ名部分
 TEXT_EXT = (".html", ".css", ".js", ".json")
 
 # 置換対象：サイト内のルート相対パスだけ（// や http は対象外）
-TARGET_DIRS = ("css", "js", "img", "media", "data", "docs", "product")
+TARGET_DIRS = ("css", "js", "img", "media", "data", "docs", "product", "news")
 PAGE_SLUGS = None                     # 実行時に site 直下の .html から作る
 
 
 def page_slugs():
-    return sorted(
-        os.path.splitext(f)[0] for f in os.listdir(SITE)
-        if f.endswith(".html")
-    )
+    """site直下の .html と、index.html を持つディレクトリ（/news など）"""
+    slugs = [os.path.splitext(f)[0] for f in os.listdir(SITE) if f.endswith(".html")]
+    slugs += [d for d in os.listdir(SITE)
+              if os.path.isfile(os.path.join(SITE, d, "index.html"))]
+    return sorted(set(slugs))
 
 
 def rewrite(text):

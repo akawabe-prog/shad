@@ -16,6 +16,9 @@ RewriteRule ^for-your-motorcycle/?$ /fitment [R=301,L,NC]
 RewriteRule ^product-([A-Za-z0-9]+)\.html/?$ /product/$1 [R=301,L,NC]
 RewriteRule ^product-([A-Za-z0-9]+)/?$ /product/$1 [R=301,L,NC]
 
+# /news はディレクトリなので index.html を明示（DirectoryIndex 未設定サーバー対策）
+RewriteRule ^news/?$ /news/index.html [L]
+
 # .html つきのアクセスは拡張子なしへ 301
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
