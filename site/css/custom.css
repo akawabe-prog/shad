@@ -300,9 +300,51 @@
 }
 
 /* ---- フィッティングキット解説ページ ---- */
-/* 下部の各セクションへ飛ぶページ内ナビ（ヘッダー直下に貼りつく） */
+/* HEROの直下：カテゴリーのように選ぶページ内ナビ（下部の各セクションへ） */
+.fk-ix{background:#0E0E0E;color:#fff;padding:34px 0 40px;
+  border-top:1px solid rgba(255,255,255,.08);}
+.fk-ix-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
+.fk-ix-lb{font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.26em;text-transform:uppercase;color:#E31E24;}
+.fk-ix-cap{font-size:13.5px;color:rgba(255,255,255,.6);}
+.fk-ix-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.fk-ix-card{position:relative;display:flex;align-items:center;gap:14px;
+  background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:12px;
+  padding:12px 14px;transition:.2s;}
+.fk-ix-card:hover{background:#1C1C1C;border-color:rgba(227,30,36,.6);transform:translateY(-2px);}
+.fk-ix-th{flex:none;width:72px;height:54px;display:flex;align-items:center;justify-content:center;
+  background:#fff;border-radius:8px;overflow:hidden;}
+.fk-ix-th img{width:100%;height:100%;object-fit:contain;padding:3px;transition:transform .3s ease;}
+.fk-ix-card:hover .fk-ix-th img{transform:scale(1.06);}
+.fk-ix-th-icon{background:rgba(227,30,36,.12);color:#E31E24;font-size:26px;}
+.fk-ix-body{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.fk-ix-jp{font-size:14px;font-weight:500;line-height:1.4;}
+.fk-ix-en{font-family:"Barlow Condensed",sans-serif;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.42);}
+.fk-ix-ar{margin-left:auto;color:rgba(255,255,255,.3);font-size:17px;transition:.2s;}
+.fk-ix-card:hover .fk-ix-ar{color:#E31E24;transform:translateY(2px);}
+
+@media(max-width:1080px){
+  .fk-ix-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(max-width:720px){
+  /* スマホは横並びだと文字が詰まるので、サムネイルを上・文字を下に積む */
+  .fk-ix{padding:26px 0 30px;}
+  .fk-ix-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .fk-ix-card{flex-direction:column;align-items:stretch;gap:10px;padding:10px;}
+  .fk-ix-th{width:100%;height:auto;aspect-ratio:16/10;}
+  .fk-ix-th-icon{aspect-ratio:16/10;font-size:24px;}
+  .fk-ix-body{padding:0 2px 2px;}
+  .fk-ix-jp{font-size:13.5px;}
+  .fk-ix-en{font-size:10.5px;letter-spacing:.12em;}
+  .fk-ix-ar{display:none;}
+}
+
+/* 追従ナビ：タイルを過ぎてから現れる（上部ではタイルが案内役） */
 .fk-nav{position:sticky;top:72px;z-index:30;background:rgba(14,14,14,.96);
-  backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.1);}
+  backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.1);
+  opacity:0;pointer-events:none;transition:opacity .2s ease;}
+.fk-nav.is-pinned{opacity:1;pointer-events:auto;}
 .fk-nav-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;gap:26px;
   overflow-x:auto;scrollbar-width:none;}
 .fk-nav-in::-webkit-scrollbar{display:none;}
