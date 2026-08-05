@@ -300,6 +300,24 @@
 }
 
 /* ---- フィッティングキット解説ページ ---- */
+/* 下部の各セクションへ飛ぶページ内ナビ（ヘッダー直下に貼りつく） */
+.fk-nav{position:sticky;top:72px;z-index:30;background:rgba(14,14,14,.96);
+  backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.1);}
+.fk-nav-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;gap:26px;
+  overflow-x:auto;scrollbar-width:none;}
+.fk-nav-in::-webkit-scrollbar{display:none;}
+.fk-nav-a{position:relative;flex:0 0 auto;padding:15px 0 14px;
+  font-size:13.5px;font-weight:500;color:rgba(255,255,255,.62);white-space:nowrap;transition:.18s;}
+.fk-nav-a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:#E31E24;transform:scaleX(0);transition:transform .2s ease;}
+.fk-nav-a:hover{color:#fff;}
+.fk-nav-a.is-current{color:#fff;}
+.fk-nav-a.is-current::after{transform:scaleX(1);}
+@media(max-width:560px){
+  .fk-nav-in{gap:18px;padding:0 20px;}
+  .fk-nav-a{font-size:13px;padding:13px 0 12px;}
+}
+
 .fk-kick{font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;letter-spacing:.26em;
   text-transform:uppercase;color:#E31E24;}
 .fk-h2{font-size:clamp(23px,2.8vw,31px);font-weight:700;line-height:1.35;margin-top:8px;}
