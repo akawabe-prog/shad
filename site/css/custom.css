@@ -226,6 +226,89 @@
 }
 .tab.on{background:#0E0E0E;color:#fff;border-color:#0E0E0E;}
 
+/* ---- フィッティングキット解説ページ ---- */
+.fk-kick{font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:#E31E24;}
+.fk-h2{font-size:clamp(23px,2.8vw,31px);font-weight:700;line-height:1.35;margin-top:8px;}
+.fk-h3{font-size:20px;font-weight:700;line-height:1.5;padding-left:13px;border-left:5px solid #E31E24;}
+.fk-body{font-size:14.5px;line-height:2;color:#3A3A38;}
+
+.fk-card{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:26px 24px;}
+.fk-card h3{font-size:16.5px;font-weight:700;margin-top:14px;}
+.fk-card p{font-size:13.5px;line-height:1.95;color:#5F5E5A;margin-top:9px;}
+.fk-ic{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;
+  border-radius:11px;background:#F4F3F1;color:#E31E24;font-size:23px;}
+.fk-card-img img{width:100%;border-radius:10px;background:#F4F3F1;display:block;}
+.fk-card-img h3{margin-top:16px;}
+
+/* 装着の3ステップ */
+.fk-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0 14px;align-items:stretch;}
+.fk-step{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:24px 22px;}
+.fk-step-no{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:26px;color:#E31E24;
+  letter-spacing:.04em;line-height:1;}
+.fk-step h3{font-size:16px;font-weight:700;margin-top:10px;line-height:1.5;}
+.fk-step p{font-size:13.5px;line-height:1.95;color:#5F5E5A;margin-top:9px;}
+.fk-arrow{display:flex;align-items:center;color:#C9C6C0;font-size:24px;}
+
+/* キットの種類タイル */
+.fk-types{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+.fk-type{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(0,0,0,.1);
+  border-radius:12px;overflow:hidden;transition:.2s;}
+.fk-type:hover{border-color:rgba(227,30,36,.55);transform:translateY(-3px);
+  box-shadow:0 16px 34px rgba(0,0,0,.08);}
+.fk-type img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#F7F6F4;padding:8px;}
+.fk-type-lb{display:flex;flex-direction:column;gap:3px;padding:13px 15px 15px;font-size:14px;
+  font-weight:500;color:#0E0E0E;}
+.fk-type-lb small{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-size:11.5px;
+  letter-spacing:.14em;color:#9A978F;}
+
+/* ベースプレート */
+.fk-plates{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:16px;}
+.fk-plate{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(0,0,0,.1);
+  border-radius:14px;padding:16px 18px 20px;}
+.fk-plate img{width:100%;aspect-ratio:4/3;object-fit:contain;}
+.fk-plate-name{font-size:14.5px;font-weight:700;margin-top:8px;line-height:1.5;}
+.fk-plate-code{font-family:"Barlow Condensed",sans-serif;font-size:13px;letter-spacing:.12em;
+  color:#9A978F;margin-top:3px;}
+.fk-plate-tag{align-self:flex-start;margin-top:10px;font-size:11px;letter-spacing:.04em;
+  padding:3px 9px;border-radius:4px;background:#EDEBE7;color:#5F5E5A;}
+.fk-plate-tag.fk-in{background:#0E0E0E;color:#fff;}
+.fk-plate-fit{font-size:12px;line-height:1.8;color:#5F5E5A;margin-top:10px;}
+.fk-plate-price{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-size:13.5px;
+  font-weight:600;color:#0E0E0E;margin-top:auto;padding-top:10px;}
+
+/* 3P / 4P */
+.fk-sys{background:#F7F6F4;border-radius:14px;padding:28px 26px;}
+.fk-sys-logo{height:42px;width:auto;object-fit:contain;}
+.fk-sys h3{font-size:20px;font-weight:700;margin:12px 0 10px;}
+.fk-list{margin-top:14px;}
+.fk-list li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.95;color:#3A3A38;}
+.fk-list li::before{content:"";position:absolute;left:1px;top:.9em;width:7px;height:1.5px;background:#E31E24;}
+.fk-spec{margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,.1);}
+.fk-spec dt{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-size:11.5px;
+  letter-spacing:.16em;color:#9A978F;margin-top:11px;}
+.fk-spec dd{font-size:13.5px;line-height:1.9;color:#3A3A38;margin-top:3px;}
+
+.fk-note{display:flex;align-items:flex-start;gap:9px;background:#fff;border:1px solid rgba(0,0,0,.1);
+  border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.9;color:#5F5E5A;}
+.fk-note i{color:#E31E24;font-size:17px;flex:none;margin-top:1px;}
+.fk-note-alert{background:#FFF6F6;border-color:rgba(227,30,36,.28);color:#3A3A38;}
+
+@media(max-width:900px){
+  .fk-steps{grid-template-columns:1fr;gap:12px;}
+  .fk-arrow{display:none;}
+}
+@media(max-width:560px){
+  .fk-sys{padding:22px 20px;}
+  /* スマホでも2列で並ぶ幅に（1列だと縦に長くなりすぎる） */
+  .fk-plates{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .fk-plate{padding:13px 14px 16px;}
+  .fk-plate-name{font-size:13.5px;}
+  .fk-plate-fit{font-size:11.5px;}
+  .fk-types{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .fk-type-lb{font-size:13px;padding:11px 12px 13px;}
+}
+
 /* ---- news ---- */
 .tag{
   font-family:"Barlow Condensed",sans-serif;

@@ -184,3 +184,18 @@ python3 tools/gen_pages_from_catalog.py # 追加ページに反映（既存ペ�
 
 取得結果は `site/data/catalog/api_sizes.json` に保存され、`build_catalog.py` が
 容量として取り込みます（見出し＝1個ぶん／左右セットは片側、スペック表＝内訳つき）。
+
+---
+
+## フィッティングキット解説ページ（/fitting-kits）
+
+本国サイト（shad.es/en/fitting-kits）の内容を日本語化し、当サイトのデザインで
+再構成した静的ページです（`site/fitting-kits.html`）。
+
+- 画像は本国サイトの公式素材を WEBP 化して `site/img/fitting/` に取り込み（27点・約305KB）
+- 数値・品番・対応ケースは、本国の記載と社内マスター（`ItemList_SHAD.csv`）を突合した内容のみ
+  掲載しています。ベースプレートの日本語名・定価はマスター（アクセサリー）から取得
+- ベースプレートの対応ケースは `site/data/fitment/reverse_data.json` のプレート構成と一致
+  （D1B29PAR / D1B40PAR / D1B591PA / D1BTRPA / D1BTRPA2）
+- 商品ラインアップやプレート価格が変わったときは、このページの該当箇所を直接修正してください
+  （自動生成ではありません）
