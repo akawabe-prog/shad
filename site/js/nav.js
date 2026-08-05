@@ -1,6 +1,7 @@
 /* =========================================================
    SHAD JAPAN — nav.js
-   スマートフォン用ナビゲーション（ハンバーガーメニュー）の開閉。
+   ① スマートフォン用ナビゲーション（ハンバーガーメニュー）の開閉
+   ② PCヘッダー「PRODUCTS」のホバーメニュー（カテゴリのサムネイル表示）
    全ページ共通で読み込む。
    ========================================================= */
 (function () {
@@ -48,6 +49,105 @@
 
   // PC幅に広がったら閉じてスクロールロックを解除
   window.addEventListener("resize", function () {
-    if (window.innerWidth >= 768 && isOpen()) close();
+    if (window.innerWidth >= 1024 && isOpen()) close();
   });
+})();
+
+/* =========================================================
+   PCヘッダー：PRODUCTS のホバーメニュー
+   シリーズ（TERRA / EXPANDABLE）とカテゴリをサムネイルで見せる。
+   マークアップは全ページ共通なのでここで生成する（HTMLは変更不要）。
+   ========================================================= */
+(function () {
+  var nav = document.getElementById("nav");
+  if (!nav) return;
+
+  // PC用メニューの中から「Products」のリンクを探す
+  var link = null;
+  nav.querySelectorAll("ul a").forEach(function (a) {
+    if (a.textContent.trim().toLowerCase() === "products") link = a;
+  });
+  if (!link) return;
+  var item = link.closest("li") || link;
+
+  var SERIES = [
+    { href: "/terra", img: "/img/banner_terra.webp", en: "Terra",
+      jp: "旅の道具の、最高峰。" },
+    { href: "/expandable", img: "/img/story_sh38x.webp", en: "Expandable",
+      jp: "容量が、変わる。" }
+  ];
+  var CATEGORIES = [
+    { href: "/products?cat=TOP", img: "/img/products/sh48.webp", label: "トップケース" },
+    { href: "/products?cat=SIDE", img: "/img/products/sh38x.webp", label: "サイドケース" },
+    { href: "/products?cat=SIDEBAG", img: "/img/products/tr30.webp", label: "サイドバッグ" },
+    { href: "/products?cat=TANK", img: "/img/products/tr10.webp", label: "タンクバッグ" },
+    { href: "/products?cat=FITTING", img: "/img/fitting/plate_l.webp", label: "フィッティングキット" }
+  ];
+
+  var panel = document.createElement("div");
+  panel.className = "mega";
+  panel.id = "megaProducts";
+  panel.setAttribute("aria-hidden", "true");
+  panel.innerHTML =
+    '<div class="mega-in">'
+    + '<div class="mega-col">'
+    +   '<p class="mega-lb">Series</p>'
+    +   '<div class="mega-series">'
+    +     SERIES.map(function (s) {
+            return '<a href="' + s.href + '" class="mega-feat">'
+              + '<img src="' + s.img + '" alt="" loading="lazy">'
+              + '<span class="mega-feat-in"><span class="mega-feat-en">' + s.en + '</span>'
+              + '<span class="mega-feat-jp">' + s.jp + '</span></span></a>';
+          }).join("")
+    +   '</div>'
+    + '</div>'
+    + '<div class="mega-col mega-col-wide">'
+    +   '<p class="mega-lb">Categories</p>'
+    +   '<div class="mega-cats">'
+    +     CATEGORIES.map(function (c) {
+            return '<a href="' + c.href + '" class="mega-cat">'
+              + '<span class="mega-cat-th"><img src="' + c.img + '" alt="" loading="lazy"></span>'
+              + '<span class="mega-cat-lb">' + c.label + '</span></a>';
+          }).join("")
+    +   '</div>'
+    +   '<div class="mega-links">'
+    +     '<a href="/products">すべての製品を見る<i class="ti ti-arrow-right"></i></a>'
+    +     '<a href="/fitment">車種から探す<i class="ti ti-arrow-right"></i></a>'
+    +     '<a href="/fitting-kits">フィッティングキットとは<i class="ti ti-arrow-right"></i></a>'
+    +   '</div>'
+    + '</div>'
+    + '</div>';
+  nav.appendChild(panel);
+
+  link.setAttribute("aria-haspopup", "true");
+  link.setAttribute("aria-expanded", "false");
+  link.setAttribute("aria-controls", "megaProducts");
+
+  var timer = null;
+  function isDesktop() { return window.innerWidth >= 1024; }
+  function show() {
+    if (!isDesktop()) return;
+    clearTimeout(timer);
+    panel.classList.add("is-open");
+    panel.setAttribute("aria-hidden", "false");
+    link.setAttribute("aria-expanded", "true");
+  }
+  function hide() {
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+    link.setAttribute("aria-expanded", "false");
+  }
+  // マウスが少し外れただけで閉じないよう、わずかに遅らせる
+  function hideSoon() { clearTimeout(timer); timer = setTimeout(hide, 160); }
+
+  item.addEventListener("mouseenter", show);
+  item.addEventListener("mouseleave", hideSoon);
+  panel.addEventListener("mouseenter", show);
+  panel.addEventListener("mouseleave", hideSoon);
+  link.addEventListener("focus", show);
+  panel.addEventListener("focusout", function (e) {
+    if (!panel.contains(e.relatedTarget)) hideSoon();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
+  window.addEventListener("resize", function () { if (!isDesktop()) hide(); });
 })();
