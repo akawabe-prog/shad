@@ -1,0 +1,187 @@
+/* =========================================================
+   カスタムジャパン版（shad.customjapan.net）テーマ
+   ブランドサイト（www.shad-japan.com）とは別サイトであることが
+   ひと目で分かるように、カスタムジャパンの通販サイトの作法に寄せる。
+
+     ・配色      CJブルー #004EA2 ／ 価格・CTAはオレンジ #E76208
+     ・角丸      基本なし（EC的な四角い箱）
+     ・書体      ディスプレイ書体を使わずシステムのゴシック
+     ・密度      余白を詰めて情報量を上げる
+     ・部品      上部ユーティリティバー／パンくず／価格優先の見せ方
+
+   このファイルは dist/cj/ のページだけが読み込む（build_cj_site.py が付与）。
+   <html class="cj-mode"> が付いているページにのみ効く。
+   ========================================================= */
+
+:root {
+  --cj-blue: #004EA2;
+  --cj-blue-dark: #003C7E;
+  --cj-blue-pale: #EAF2FB;
+  --cj-cyan: #01ACE5;
+  --cj-orange: #E76208;
+  --cj-orange-dark: #C85206;
+  --cj-line: #D8DFE8;
+  --cj-ink: #101010;
+  --cj-sub: #555C66;
+}
+
+/* ---- 書体：ディスプレイ書体をやめ、EC的な素の日本語ゴシックに ---- */
+.cj-mode,
+.cj-mode .font-disp,
+.cj-mode .font-sans {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+               "BIZ UDPGothic", "Yu Gothic", sans-serif;
+}
+/* 英字見出しの字間・大文字化を弱め、日本語の可読性を優先 */
+.cj-mode h1, .cj-mode h2, .cj-mode h3,
+.cj-mode .sec-ttl, .cj-mode .lp-display, .cj-mode .lp-kick,
+.cj-mode .fk-ix-en, .cj-mode .badge, .cj-mode .tag {
+  letter-spacing: .02em !important;
+}
+.cj-mode .lp-display { text-transform: none; }
+.cj-mode .sec-ttl { font-size: 22px; letter-spacing: .04em !important; }
+.cj-mode .sec-ttl::before { background: var(--cj-blue); }
+
+/* ---- 角丸をやめる（ECの四角い箱） ---- */
+.cj-mode [class*="rounded"],
+.cj-mode .pcard, .cj-mode .product-card, .cj-mode .ncard, .cj-mode .fk-plate,
+.cj-mode .fk-ix-card, .cj-mode .fk-type, .cj-mode .cj-buy, .cj-mode .btn,
+.cj-mode .lp-shot, .cj-mode .rp-card, .cj-mode .kit-block, .cj-mode .selector-panel {
+  border-radius: 2px !important;
+}
+.cj-mode .cat-chip, .cj-mode .chip, .cj-mode .fk-nav-a { border-radius: 2px !important; }
+
+/* ---- ヘッダー：CJブルー ---- */
+.cj-mode #nav { background: var(--cj-blue) !important; }
+.cj-mode #navMobile { background: var(--cj-blue-dark) !important; }
+.cj-mode #nav a.text-white,
+.cj-mode #nav ul a:hover { color: #fff !important; }
+.cj-mode .mega { background: #fff !important; border-top: 3px solid var(--cj-orange); }
+.cj-mode .mega-lb { color: var(--cj-blue); }
+.cj-mode .mega-cat-lb { color: var(--cj-ink); }
+.cj-mode .mega-cat-th { background: #F5F7FA; border: 1px solid var(--cj-line); }
+.cj-mode .mega-links { border-top-color: var(--cj-line); }
+.cj-mode .mega-links a { color: var(--cj-blue); }
+.cj-mode .mega-links a:hover { color: var(--cj-orange); }
+.cj-mode .mega-feat { border-color: var(--cj-blue); }
+
+/* ---- 上部ユーティリティバー（EC定番の帯） ---- */
+.cj-util { background: #fff; border-bottom: 1px solid var(--cj-line); }
+.cj-util-in { max-width: 1180px; margin: 0 auto; padding: 7px 24px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  font-size: 12.5px; color: var(--cj-sub); }
+.cj-util-brand { font-weight: 700; color: var(--cj-ink); }
+.cj-util-brand b { color: var(--cj-blue); }
+.cj-util-links { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.cj-util-links a { color: var(--cj-blue); }
+.cj-util-links a:hover { color: var(--cj-orange); text-decoration: underline; }
+.cj-util-cart { display: inline-flex; align-items: center; gap: 6px;
+  background: var(--cj-orange); color: #fff !important; padding: 6px 14px; font-weight: 700; }
+.cj-util-cart:hover { background: var(--cj-orange-dark); text-decoration: none !important; }
+
+/* ---- パンくず ---- */
+.cj-crumb { background: var(--cj-blue-pale); border-bottom: 1px solid var(--cj-line); }
+.cj-crumb-in { max-width: 1180px; margin: 0 auto; padding: 9px 24px;
+  font-size: 12px; color: var(--cj-sub); display: flex; gap: 8px; flex-wrap: wrap; }
+.cj-crumb-in a { color: var(--cj-blue); }
+.cj-crumb-in a:hover { text-decoration: underline; }
+.cj-crumb-in span.sep { color: #A9B2BF; }
+
+/* ---- ボタン：CTAはオレンジ、副ボタンは青枠 ---- */
+.cj-mode .btn { letter-spacing: .04em; }
+.cj-mode .bg-shad { background: var(--cj-orange) !important; }
+.cj-mode .bg-shad:hover, .cj-mode .hover\:bg-\[\#c4151b\]:hover { background: var(--cj-orange-dark) !important; }
+.cj-mode .text-shad { color: var(--cj-blue) !important; }
+.cj-mode .hover\:text-shad:hover { color: var(--cj-orange) !important; }
+.cj-mode .hover\:border-shad:hover { border-color: var(--cj-blue) !important; }
+.cj-mode .ring-shad { --tw-ring-color: var(--cj-blue) !important; }
+
+/* ---- 価格まわり：EC的に強く ---- */
+.cj-mode .cj-buy { border: 2px solid var(--cj-orange); background: #FFF9F4; padding: 16px 18px; }
+.cj-mode .cj-price-num { color: var(--cj-orange); font-size: 34px; letter-spacing: 0; }
+.cj-mode .cj-off { background: var(--cj-orange); }
+.cj-mode .cj-buy-btn { background: var(--cj-orange); font-size: 17px; letter-spacing: .04em; }
+.cj-mode .cj-buy-btn:hover { background: var(--cj-orange-dark); }
+.cj-mode .cj-card-price b { color: var(--cj-orange); font-size: 18px; letter-spacing: 0; }
+.cj-mode .cap-num, .cj-mode .fk-plate-price { color: var(--cj-blue); }
+
+/* ---- 一覧カード：枠線を細く・情報密度を上げる ---- */
+.cj-mode .pcard, .cj-mode .product-card { border-color: var(--cj-line); }
+.cj-mode .pcard:hover, .cj-mode .product-card:hover {
+  border-color: var(--cj-blue); box-shadow: 0 6px 16px rgba(0,78,162,.14); transform: none; }
+.cj-mode .badge { background: var(--cj-blue); }
+.cj-mode .new-badge { background: var(--cj-orange); }
+.cj-mode .feat b { color: var(--cj-blue); }
+.cj-mode .feat { background: #F1F5FA; color: #3D4650; }
+
+/* ---- 余白を詰めてEC的な密度に ---- */
+.cj-mode section[class*="py-["] { padding-top: 46px !important; padding-bottom: 46px !important; }
+.cj-mode .fb-hero { min-height: 46vh; }
+.cj-mode .fb-band { min-height: 0; }
+.cj-mode .fb-band-in { padding: 40px 24px !important; }
+.cj-mode .fb-scroll { display: none; }
+.cj-mode .lp-h2 { font-size: clamp(20px, 2.4vw, 28px); }
+.cj-mode .lp-display { font-size: clamp(26px, 3.4vw, 40px); }
+
+/* ---- リンクの色をCJに寄せる ---- */
+.cj-mode a.text-shad, .cj-mode .fk-kick, .cj-mode .lp-kick { color: var(--cj-blue) !important; }
+.cj-mode .lp-kick::before, .cj-mode .fk-ix-lb { background: var(--cj-blue); }
+.cj-mode .fk-ix-lb { background: none; color: var(--cj-blue); }
+.cj-mode .news-cat, .cj-mode .ncard-cat { background: var(--cj-blue); }
+
+/* ---- フッター：紺 ---- */
+.cj-mode footer { background: #12233A !important; }
+.cj-mode footer .bg-shad { background: var(--cj-orange) !important; }
+
+@media (max-width: 767px) {
+  .cj-util-in { padding: 6px 16px; gap: 8px; font-size: 11.5px; }
+  .cj-util-links { gap: 10px; }
+  .cj-crumb-in { padding: 7px 16px; font-size: 11px; }
+  .cj-mode section[class*="py-["] { padding-top: 34px !important; padding-bottom: 34px !important; }
+}
+
+/* ---- SHADレッドのアクセントをCJの配色に置き換える ----
+   （ブランドサイトの赤はSHADの色。CJ版では青＝案内／オレンジ＝購買 に整理する） */
+.cj-mode #productTitle::before,
+.cj-mode .g-dot.on,
+.cj-mode .hero-sp-dot.on,
+.cj-mode .cat-chip.on,
+.cj-mode .fk-step-no,
+.cj-mode .news-cat, .cj-mode .ncard-cat,
+.cj-mode .nabnr-new,
+.cj-mode .fk-nav-a::after { background: var(--cj-blue) !important; }
+
+.cj-mode .lp-kick, .cj-mode .lp-fig-num, .cj-mode .fk-h3,
+.cj-mode .fit-ok i, .cj-mode .fit-from-ok i, .cj-mode .fit-empty i,
+.cj-mode .fk-note i, .cj-mode .mode-cap,
+.cj-mode .fit-fitting-product-body small,
+.cj-mode .fit-fitting-product-foot i,
+.cj-mode .kit-list-link:hover, .cj-mode .fit-detail-link:hover,
+.cj-mode .card-note a:hover, .cj-mode .fit-card h3 a:hover { color: var(--cj-blue) !important; }
+
+.cj-mode .lp-kick::before, .cj-mode .fk-list li::before,
+.cj-mode .news-body li::before { background: var(--cj-blue) !important; }
+
+/* 購買・注目に関わるものはオレンジ */
+.cj-mode .kit-btn, .cj-mode .fit-from-kitbtn, .cj-mode .news-btn-primary,
+.cj-mode .new-badge { background: var(--cj-orange) !important; border-color: var(--cj-orange) !important; }
+.cj-mode .kit-btn:hover, .cj-mode .fit-from-kitbtn:hover,
+.cj-mode .news-btn-primary:hover { background: var(--cj-orange-dark) !important; }
+
+/* ギャラリー・写真枠の角も落とす */
+.cj-mode .g-main, .cj-mode .g-thumb, .cj-mode .g-main img { border-radius: 2px !important; }
+.cj-mode .g-thumb.on { border-color: var(--cj-blue) !important; }
+
+/* ---- スマホ：ユーティリティバーを1行に収める ---- */
+@media (max-width: 560px) {
+  .cj-util-in { flex-wrap: nowrap; }
+  .cj-util-brand { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cj-util-links a:not(.cj-util-cart) { display: none; }
+  .cj-util-cart { padding: 5px 11px; font-size: 11.5px; }
+}
+
+/* アイコンのサイズを固定（本文の行間で縦に伸びるのを防ぐ） */
+.cj-util-in { line-height: 1.5; }
+.cj-util-cart { line-height: 1; }
+.cj-util-cart svg, .cj-crumb-in svg { width: 15px; height: 15px; flex: none; }
+.cj-util-cart, .cj-util-links a { white-space: nowrap; }

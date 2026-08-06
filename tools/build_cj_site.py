@@ -14,6 +14,9 @@
     3. ヘッダー       カートアイコン（EC）を追加
     4. 文言           「ご購入は日本総代理店…」→ カスタムジャパンで購入できる案内
     5. フッター       ショッピングガイド（送料・支払い・返品）への導線を追加
+    6. デザイン       cj-theme.css を適用（CJブルー／オレンジ・角丸なし・
+                     システムフォント・密度アップ）＋上部ユーティリティバー
+                     ＋商品ページのパンくず
 
 ■ 使い方
     python3 tools/fetch_api_prices.py     # 価格・在庫を最新化（先に実行）
@@ -54,9 +57,52 @@ CART_BTN = (
 )
 
 
-def rewrite_html(s):
+UTIL_BAR = (
+    '<div class="cj-util">'
+    '<div class="cj-util-in">'
+    '<span class="cj-util-brand">SHAD 日本総代理店 <b>株式会社カスタムジャパン</b> 公式通販</span>'
+    '<span class="cj-util-links">'
+    '<a href="' + EC_TOP + '/h/guide" target="_blank" rel="noopener">送料・お支払い</a>'
+    '<a href="' + EC_TOP + '/h/guide" target="_blank" rel="noopener">ご利用ガイド</a>'
+    '<a href="/contact">お問い合わせ</a>'
+    '<a class="cj-util-cart" href="' + EC_TOP + '/cart" target="_blank" rel="noopener">'
+    '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"'
+    ' fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"'
+    ' stroke-linejoin="round" aria-hidden="true"><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>'
+    '<path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>'
+    '<path d="M17 17h-11v-14h-2"/><path d="M6 5l14 1l-1 7h-13"/></svg>カート</a>'
+    '</span></div></div>'
+)
+
+# 商品ページのパンくず（EC定番）
+def crumb(code):
+    return ('<nav class="cj-crumb" aria-label="パンくず"><div class="cj-crumb-in">'
+            '<a href="/">ホーム</a><span class="sep">›</span>'
+            '<a href="/products">SHAD 製品一覧</a><span class="sep">›</span>'
+            '<span>' + code + '</span>'
+            '</div></nav>')
+
+
+def rewrite_html(s, rel_path=""):
     # ① 正規URL
     s = s.replace(BRAND_URL, SHOP_URL)
+
+    # ⑥ デザイン：CJテーマを当てる（<html class="cj-mode"> ＋ CSS ＋ 上部バー）
+    s = s.replace('<html lang="ja">', '<html lang="ja" class="cj-mode">', 1)
+    if "/css/cj-theme.css" not in s:
+        s = s.replace('<link rel="stylesheet" href="/css/custom.css">',
+                      '<link rel="stylesheet" href="/css/custom.css">\n'
+                      '<link rel="stylesheet" href="/css/cj-theme.css">', 1)
+    m = re.search(r'<body[^>]*>', s)
+    if m and "cj-util" not in s:
+        s = s.replace(m.group(0), m.group(0) + "\n" + UTIL_BAR, 1)
+
+    # 商品ページはパンくずをナビ直下に
+    if rel_path.startswith("product/") and "cj-crumb" not in s:
+        code = os.path.splitext(os.path.basename(rel_path))[0].upper()
+        anchor = '<div class="max-w-site mx-auto px-7 pt-6">'
+        if anchor in s:
+            s = s.replace(anchor, crumb(code) + "\n" + anchor, 1)
 
     # ② 販売表示スクリプト（purchase.js のあとに読む）
     if "/js/cj_shop.js" not in s:
@@ -109,7 +155,8 @@ def main():
                 continue
             path = os.path.join(dirpath, name)
             src = open(path, encoding="utf-8").read()
-            new = rewrite_html(src)
+            rel = os.path.relpath(path, OUT).replace(os.sep, "/")
+            new = rewrite_html(src, rel)
             if new != src:
                 open(path, "w", encoding="utf-8").write(new)
                 changed += 1
