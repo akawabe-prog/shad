@@ -50,21 +50,22 @@ def page_slugs():
     return sorted(set(slugs))
 
 
-def rewrite(text):
+def rewrite(text, prefix=None):
+    prefix = prefix or PREFIX
     # ① ディレクトリ配下（/css/... /img/... /product/xxx）
     text = re.sub(
         r'(["\'(])/(' + "|".join(TARGET_DIRS) + r')/',
-        lambda m: m.group(1) + PREFIX + "/" + m.group(2) + "/",
+        lambda m: m.group(1) + prefix + "/" + m.group(2) + "/",
         text,
     )
     # ② ルート直下のページ（/about /products /#finder /）
     for slug in PAGE_SLUGS:
         text = re.sub(r'(["\'])/' + re.escape(slug) + r'(?=["\'?#])',
-                      lambda m: m.group(1) + PREFIX + "/" + slug, text)
-    text = re.sub(r'(["\'])/(?=["\'])', lambda m: m.group(1) + PREFIX + "/", text)
-    text = re.sub(r'(["\'])/#', lambda m: m.group(1) + PREFIX + "/#", text)
+                      lambda m: m.group(1) + prefix + "/" + slug, text)
+    text = re.sub(r'(["\'])/(?=["\'])', lambda m: m.group(1) + prefix + "/", text)
+    text = re.sub(r'(["\'])/#', lambda m: m.group(1) + prefix + "/#", text)
     # ③ 二重付与を戻す
-    text = text.replace(PREFIX + PREFIX, PREFIX)
+    text = text.replace(prefix + prefix, prefix)
     return text
 
 
@@ -76,24 +77,42 @@ def main():
         shutil.rmtree(OUT)
     shutil.copytree(SITE, OUT)
 
-    # クリーンURL用に index.html を複製（Pagesは拡張子なしを解決しないため）
+    changed = prepare(OUT, PREFIX)
+
+    # カスタムジャパン版（dist/cj）があれば /cj/ 配下にも同梱して確認できるようにする
+    cj_src = os.path.join(ROOT, "dist", "cj")
+    cj_note = ""
+    if os.path.isdir(cj_src):
+        cj_out = os.path.join(OUT, "cj")
+        shutil.copytree(cj_src, cj_out)
+        changed += prepare(cj_out, PREFIX + "/cj")
+        cj_note = "（カスタムジャパン版も /cj/ に同梱）"
+
+    open(os.path.join(OUT, ".nojekyll"), "w").close()
+    print("dist/ghpages を作成：パス書き換え %d ファイル %s" % (changed, cj_note))
+
+    if "--push" in sys.argv:
+        push(OUT)
+
+
+def prepare(root, prefix):
+    """パスの書き換え＋拡張子なしURL用の index.html を用意する"""
     changed = 0
-    for dirpath, _dirs, files in os.walk(OUT):
+    for dirpath, _dirs, files in os.walk(root):
         for name in files:
             path = os.path.join(dirpath, name)
             if not name.endswith(TEXT_EXT):
                 continue
             with open(path, encoding="utf-8", errors="ignore") as fh:
                 src = fh.read()
-            new = rewrite(src)
+            new = rewrite(src, prefix)
             if new != src:
                 with open(path, "w", encoding="utf-8") as fh:
                     fh.write(new)
                 changed += 1
 
     # 拡張子なしURLでも開けるように <slug>/index.html を用意
-    made = 0
-    for dirpath, _dirs, files in list(os.walk(OUT)):
+    for dirpath, _dirs, files in list(os.walk(root)):
         for name in files:
             if not name.endswith(".html") or name == "index.html":
                 continue
@@ -101,13 +120,11 @@ def main():
             d = os.path.join(dirpath, slug)
             os.makedirs(d, exist_ok=True)
             shutil.copy2(os.path.join(dirpath, name), os.path.join(d, "index.html"))
-            made += 1
+    return changed
 
-    open(os.path.join(OUT, ".nojekyll"), "w").close()
-    print("dist/ghpages を作成：パス書き換え %d ファイル / クリーンURL用 %d ページ"
-          % (changed, made))
 
-    if "--push" in sys.argv:
+def push(OUT):
+    if True:
         subprocess.run(["git", "init", "-q", "-b", "gh-pages"], cwd=OUT, check=True)
         subprocess.run(["git", "add", "-A"], cwd=OUT, check=True)
         subprocess.run(["git", "-c", "user.name=shad-preview",
@@ -119,7 +136,9 @@ def main():
         subprocess.run(["git", "remote", "add", "origin", url], cwd=OUT, check=True)
         subprocess.run(["git", "push", "-q", "-f", "origin", "gh-pages"],
                        cwd=OUT, check=True)
-        print("gh-pages に push しました → https://akawabe-prog.github.io/shad/")
+        print("gh-pages に push しました")
+        print("  ブランドサイト     → https://akawabe-prog.github.io/shad/")
+        print("  カスタムジャパン版 → https://akawabe-prog.github.io/shad/cj/")
 
 
 if __name__ == "__main__":
