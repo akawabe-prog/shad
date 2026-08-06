@@ -473,7 +473,7 @@ def main():
               '<meta property="og:site_name" content="SHAD JAPAN">\n'
               '<meta property="og:title" content="%s｜%s — SHAD JAPAN">\n'
               '<meta property="og:description" content="%s">\n'
-              '<meta property="og:url" content="https://shad.customjapan.net/product/%s">\n'
+              '<meta property="og:url" content="https://www.shad-japan.com/product/%s">\n'
               '<meta property="og:image" content="%s">\n'
               '<meta property="og:locale" content="ja_JP">\n'
               '<meta name="twitter:card" content="summary_large_image">\n'

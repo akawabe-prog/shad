@@ -59,7 +59,7 @@ CARDS = os.path.join(SITE, "data", "catalog", "cards.json")
 TEMPLATE = os.path.join(SITE, "fitment.html")     # nav / footer の雛形（同じ器）
 OUT_DIR = os.path.join(SITE, "news")
 INDEX = os.path.join(SITE, "index.html")
-SITE_URL = "https://shad.customjapan.net"
+SITE_URL = "https://www.shad-japan.com"
 
 TOP_START = "<!-- NEWS:START 生成 tools/build_news.py -->"
 TOP_END = "<!-- NEWS:END -->"

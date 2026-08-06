@@ -96,7 +96,7 @@ $body = implode("\n", [
 ]);
 
 $headers = [
-    'From: noreply@shad.customjapan.net',
+    'From: noreply@shad-japan.com',   // ※送信ドメインのSPF/DKIM設定が必要
     'Reply-To: ' . $email,
     'Content-Type: text/plain; charset=UTF-8',
 ];
