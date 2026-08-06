@@ -222,3 +222,19 @@ python3 tools/gen_pages_from_catalog.py # 追加ページに反映（既存ペ�
   `SERIES` / `CATEGORIES` 配列を書き換えるだけで全ページに反映されます
 - スタイルは `site/css/custom.css` の `.mega*`。1023px以下では非表示（スマホは
   ハンバーガーメニューを使用）
+
+---
+
+## カスタムジャパン版サイト（shad.customjapan.net）
+
+ブランドサイト `site/` を原本に、toC向けの販売サイトを `dist/cj/` に生成します。
+
+```bash
+python3 tools/fetch_api_prices.py   # ECのAPIから販売価格・在庫を取得
+python3 tools/build_cj_site.py      # dist/cj/ を生成
+```
+
+- 価格・在庫データ：`site/data/ec/api_prices.json`（品番ごとに定価・販売価格・在庫）
+- 表示ロジック：`site/js/cj_shop.js`（ブランドサイトでは読み込まれません）
+- 変換内容と違いの一覧：リポジトリ直下の `DEPLOY_CJ.md`
+- **site/ は変更されません**。ブランドサイトは常に定価表示・購入導線なしのままです
