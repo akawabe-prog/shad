@@ -54,6 +54,20 @@
   }
 
   /* ---------- ① 商品詳細ページ ---------- */
+  /* purchase.js が品番・バリアントを描き終えるのを待つ（読み込み順に依存しない） */
+  function whenReady(fn) {
+    if (document.querySelector("[data-sku]")) { fn(); return; }
+    if (!document.querySelector("[data-variant-slot]")) return;   // 商品ページ以外
+    var done = false;
+    var obs = new MutationObserver(function () {
+      if (!done && document.querySelector("[data-sku]")) {
+        done = true; obs.disconnect(); fn();
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+    setTimeout(function () { if (!done) { done = true; obs.disconnect(); } }, 8000);
+  }
+
   function productPage() {
     var slot = document.querySelector("[data-variant-slot]");
     var skuEl = document.querySelector("[data-sku]");
@@ -147,7 +161,7 @@
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
       PRICES = (d && d.byCjCode) || {};
-      productPage();
+      whenReady(productPage);
       decorateCards();
       // 一覧は絞り込みで再描画されるため、追加分にも価格を付ける
       var grid = document.getElementById("grid") || document.getElementById("productArea");

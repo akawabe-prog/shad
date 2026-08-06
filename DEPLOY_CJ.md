@@ -3,6 +3,17 @@
 ブランドサイト（www.shad-japan.com）とは**別のサイト**として配信します。
 原本は同じ `site/` で、販売表示だけを足したものが `dist/cj/` です。
 
+## 確認用URL
+
+| 対象 | URL |
+|---|---|
+| カスタムジャパン版 | https://akawabe-prog.github.io/shad/cj/ |
+| ブランドサイト | https://akawabe-prog.github.io/shad/ |
+
+`python3 tools/build_ghpages.py --push` を実行すると、両方が上記に反映されます
+（`dist/cj/` があれば `/cj/` 配下に同梱されます）。
+ローカルは `cj-shop`（http://localhost:8743）と `shad-mockups`（http://localhost:8742）。
+
 ## 1. 価格・在庫を最新化
 
 ```bash
