@@ -185,3 +185,23 @@
 .cj-util-cart { line-height: 1; }
 .cj-util-cart svg, .cj-crumb-in svg { width: 15px; height: 15px; flex: none; }
 .cj-util-cart, .cj-util-links a { white-space: nowrap; }
+.cj-mode .fk-ix-th-icon { background: rgba(0,78,162,.10); color: var(--cj-blue); }
+.cj-mode .fk-ix-card:hover { border-color: var(--cj-blue) !important; }
+.cj-mode .fk-ix-card:hover .fk-ix-ar { color: var(--cj-orange); }
+.cj-mode .cj-stock-ok { color: #1a7f37; }
+
+/* 残りの赤アクセント（検索候補・保証・適合UI・NEWSなど）もCJ配色へ */
+.cj-mode #suggestList li:hover, .cj-mode #suggestList li.active { background: var(--cj-blue-pale) !important; color: var(--cj-blue) !important; }
+.cj-mode .filter-bar input { accent-color: var(--cj-blue); }
+.cj-mode .search-wrap input:focus, .cj-mode .pf-search input:focus { border-color: var(--cj-blue) !important; }
+.cj-mode .group:hover .play-circle { background: rgba(0,78,162,.9) !important; border-color: var(--cj-blue) !important; }
+.cj-mode .lp-line-cap, .cj-mode .rp-cap,
+.cj-mode .warranty > summary > i:first-child, .cj-mode .pf-all > summary > i:first-child,
+.cj-mode .news-draft i { color: var(--cj-blue) !important; }
+.cj-mode .warranty > summary:hover, .cj-mode .pf-all > summary:hover,
+.cj-mode .pn-link:hover .pn-ttl, .cj-mode .lp-line:hover .lp-line-go,
+.cj-mode .pf-row:hover .pf-go, .cj-mode .fit-fitting-link:hover,
+.cj-mode .nabanner:hover .nabanner-arrow { color: var(--cj-orange) !important; }
+.cj-mode .pf-kit-btn { background: var(--cj-orange) !important; }
+.cj-mode .news-body h2 { border-left-color: var(--cj-blue) !important; }
+.cj-mode .nabnr-new { background: var(--cj-orange) !important; }
