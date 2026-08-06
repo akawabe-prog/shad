@@ -469,7 +469,7 @@ def build_product(p, db, head, top, foot):
     %(chips)s
     <div class="buybar">
       <a class="btn btn-red" data-buy href="%(ec)s" target="_blank" rel="noopener">公式通販で購入 ↗</a>
-      <a class="btn btn-outline" href="/fitting?code=%(codeLower)s">適合を確認</a>
+      <a class="btn btn-outline" href="#fitment">適合を確認</a>
     </div>
     <p class="note">この製品は <b>日本総代理店 Custom Japan</b> の正規品です。ご購入・在庫確認・車種適合のご相談は公式通販にて承ります。</p>
   </div>
@@ -482,6 +482,7 @@ def build_product(p, db, head, top, foot):
 </section>
 </div>
 
+%(fitSection)s
 <section class="band rel"><div class="wrap">
   <div class="band-head"><div class="t"><span class="eyebrow">Related</span><h2 class="h-section">関連製品</h2></div><a class="more" href="/%(cat)s">一覧へ →</a></div>
   <div class="grid">
@@ -500,12 +501,56 @@ def build_product(p, db, head, top, foot):
                     % "".join("<p>%s</p>" % esc(t) for t in p["descSub"].split("\n") if t.strip())
                     ) if p["descSub"] else "",
         "related": related_html(p, db),
+        "fitSection": FIT_SECTION % {"code": p["code"]},
         "sbPrice": yen(p["minSale"]),
         "fetched": FETCHED,
     }
 
     js = PRODUCT_JS % {"variants": json.dumps(p["variants"], ensure_ascii=False)}
-    return h + top + body + foot.replace("</body>", js + "</body>")
+    return h + top + body + foot.replace("</body>", js + FIT_JS + "</body>")
+
+
+# ---------------------------------------------------------------- 適合検索
+
+FIT_HEAD = ('<link rel="stylesheet" href="/assets/css/fitment-cj.css">\n'
+            '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">\n')
+FIT_JS = '<script src="/assets/js/fitment.js"></script>\n'
+
+# /fitting のデモUI（3つのダミーselect）を本物のファインダーに差し替える
+FINDER_MOUNT = """<div class="in" data-fitment-finder data-fitment-mode="page">
+    <span class="eyebrow">Fitting Finder</span>
+    <h2>車種から適合を探す</h2>
+    <p>メーカー・シリーズ・車種を選ぶか、キーワードで検索してください。装着できるケース・バッグと、
+       取付に必要な車種専用フィッティングキットの品番が表示されます。</p>
+    <div data-fitment-mount></div>
+  </div>"""
+
+
+def build_fitting(tpl):
+    s = tpl
+    # デモの select 群を本物のマウント先に置き換え
+    i = s.index('<section class="finder">')
+    j = s.index("</section>", i)
+    s = s[:i] + '<section class="finder">' + FINDER_MOUNT + "\n" + s[j:]
+    # 3P System の図解プレースホルダーを実写に
+    s = s.replace('<div class="ph" data-label="3P System（要 図解画像）"></div>',
+                  '<img src="/assets/img/fitting/side_mounted.webp" alt="3Pシステムでサイドケースを装着した状態">', 1)
+    s = s.replace("</head>", FIT_HEAD + '<link rel="stylesheet" href="/assets/css/shad-integrations.css">\n</head>', 1)
+    s = s.replace("</body>", FIT_JS + "</body>", 1)
+    return s
+
+
+# 商品詳細に入れる「この商品が装着できる車種」
+FIT_SECTION = """
+<section class="fit-checker" id="fitment" data-product-fitment-checker data-product-code="%(code)s">
+  <div class="wrap">
+    <span class="eyebrow">Fitting</span>
+    <h2>この商品が装着できる車種</h2>
+    <p class="lead">メーカー・シリーズ・車種を順に選ぶと、装着できるかどうかと、取付に必要な車種専用フィッティングキットが表示されます。</p>
+    <div class="fit-result" data-fitment-result></div>
+  </div>
+</section>
+"""
 
 
 # ---------------------------------------------------------------- トップページ
@@ -644,6 +689,14 @@ def main():
     write("accessories.html", acc)
     counts["other"] = n_acc
 
+    # 適合検索（/fitting）
+    write("fitting.html", build_fitting(read("fitting.html")))
+
+    # 適合データの商品画像パスを新デザインの /assets 配下に読み替える
+    fpath = os.path.join(OUT, "data", "fitment", "reverse_data.json")
+    fdata = open(fpath, encoding="utf-8").read().replace('"/img/', '"/assets/img/')
+    open(fpath, "w", encoding="utf-8").write(fdata)
+
     write("helmets.html", build_empty_category("ヘルメット", read("helmets.html")))
     write("phone.html", build_empty_category("スマホホルダー", read("phone.html")))
 
@@ -670,6 +723,7 @@ def main():
     print("カテゴリー        : トップケース %d / サイド %d / バッグ %d"
           % (counts["top-cases"], counts["side-cases"], counts["bags"]))
     print("商品詳細ページ    : %d件（/product/<型番>）" % len(made))
+    print("適合検索          : /fitting（車種→商品）＋ 商品詳細に装着可能車種")
     print("取扱準備中の案内  : helmets / phone（マスターに該当SKUなし）")
     print("アクセサリー      : %d件（/accessories）" % counts.get("other", 0))
 
