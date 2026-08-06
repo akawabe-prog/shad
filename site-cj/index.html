@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAD | 日本総代理店 Custom Japan — バイク用トップケース・パニア・ヘルメット</title>
+<meta name="description" content="SHAD（シャッド）日本総代理店 Custom Japan 公式情報サイト。スペイン発、ライダーの積載を進化させるトップケース・サイドケース・ヘルメット・バッグ・スマホホルダー。正規品を安心の日本語サポートで。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://shad.customjapan.net/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SHAD 日本総代理店 | Custom Japan">
+<meta property="og:title" content="SHAD | 日本総代理店 Custom Japan">
+<meta property="og:description" content="スペイン発、ライダーの積載を進化させる。SHAD 正規品を日本総代理店 Custom Japan がお届け。">
+<meta property="og:url" content="https://shad.customjapan.net/">
+<meta property="og:image" content="/assets/images/og-cover.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SHAD | 日本総代理店 Custom Japan">
+<meta name="twitter:description" content="スペイン発、ライダーの積載を進化させる。SHAD 正規品を日本総代理店 Custom Japan がお届け。">
+<meta name="twitter:image" content="/assets/images/og-cover.webp">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/shad-tokens.css">
+<style>
+  /* ── HERO ── */
+  .hero{position:relative;background:var(--paper);border-bottom:1px solid var(--line);overflow:hidden}
+  .hero .in{width:var(--container);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:clamp(48px,6vw,84px) 0}
+  .hero .copy .eyebrow{margin-bottom:16px;display:block}
+  .hero h1{font-family:var(--font-en);font-weight:900;font-size:clamp(3.4rem,9vw,7rem);line-height:.9;letter-spacing:.01em;color:var(--ink)}
+  .hero h1 .r{color:var(--red)}
+  .hero .tagja{font-family:var(--font-ja);font-weight:900;font-size:clamp(1.15rem,2vw,1.6rem);margin:18px 0 12px}
+  .hero .lead{color:var(--ink-2);font-size:15px;max-width:44ch;margin:0 0 28px}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero .visual{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden}
+  .hero .visual .ph{position:absolute;inset:0}
+  .hero .visual .tagbadge{position:absolute;left:16px;top:16px;z-index:2;background:var(--ink);color:#fff;font-family:var(--font-en);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:999px}
+  @media(max-width:860px){.hero .in{grid-template-columns:1fr;gap:26px}.hero .visual{aspect-ratio:16/10}}
+
+  /* ── トラストバー ── */
+  .trustbar{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .trustbar .in{width:var(--container);margin:0 auto;display:flex;flex-wrap:wrap;gap:26px;justify-content:center;padding:16px 0;font-size:12.5px;color:var(--ink-2);font-weight:700}
+  .trustbar .in span{display:flex;align-items:center;gap:8px}
+  .trustbar .in span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red)}
+
+  /* ── カテゴリー ── */
+  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.cats{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.cats{grid-template-columns:1fr}}
+  .cat{position:relative;display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;transition:transform var(--dur),box-shadow var(--dur)}
+  .cat:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+  .cat .ci{aspect-ratio:4/3}
+  .cat .cb{padding:18px 20px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .cat .cb .en{font-family:var(--font-en);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+  .cat .cb h3{font-size:1.12rem;font-weight:900;margin-top:3px}
+  .cat .cb .ar{font-family:var(--font-en);font-weight:900;color:var(--ink-3);transition:transform var(--dur),color var(--dur)}
+  .cat:hover .cb .ar{transform:translateX(4px);color:var(--red)}
+
+  /* ── 総代理店ポジション ── */
+  .distro{background:var(--ink);color:#fff}
+  .distro .in{width:min(1100px,calc(100vw - 40px));margin:0 auto;text-align:center;padding:clamp(52px,7vw,90px) 0}
+  .distro .badge{display:inline-block;font-family:var(--font-en);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 16px;margin-bottom:22px}
+  .distro h2{font-family:var(--font-ja);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.5rem);line-height:1.4;max-width:22ch;margin:0 auto}
+  .distro h2 .r{color:#ff5a4d}
+  .distro p{color:#B9BABB;margin:18px auto 0;max-width:56ch;font-size:14.5px}
+  .distro .pts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;margin-top:34px;text-align:left}
+  @media(max-width:760px){.distro .pts{grid-template-columns:1fr 1fr}}
+  .distro .pt{background:var(--ink);padding:20px 22px}
+  .distro .pt .n{font-family:var(--font-en);font-weight:800;font-size:12px;color:#ff5a4d;letter-spacing:.06em}
+  .distro .pt h4{font-size:1rem;margin:8px 0 6px;font-weight:900}
+  .distro .pt small{color:#9A9B9D;font-size:12.5px;font-weight:400;line-height:1.6;display:block}
+
+  /* ── 人気商品 ── */
+  .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:900px){.prods{grid-template-columns:1fr 1fr}}
+  .pcard{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:box-shadow var(--dur)}
+  .pcard:hover{box-shadow:0 14px 30px rgba(0,0,0,.08)}
+  .pcard .pi{aspect-ratio:1/1}
+  .pcard .pb{padding:14px 15px 16px;display:flex;flex-direction:column;flex:1}
+  .pcard .ptype{font-family:var(--font-en);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .pcard .pn{font-size:13.5px;font-weight:800;line-height:1.4;margin:5px 0 8px;min-height:38px}
+  .pcard .price{font-family:var(--font-en);font-weight:900;font-size:1.05rem;margin-top:auto}
+  .pcard .price small{font-family:var(--font-ja);font-size:10.5px;color:var(--ink-2);font-weight:500}
+
+  /* ── CTA ── */
+  .cta-band{position:relative;background:var(--paper-2);border-top:1px solid var(--line);text-align:center}
+  .cta-band .in{width:min(880px,calc(100vw - 40px));margin:0 auto;padding:clamp(56px,7vw,92px) 0}
+  .cta-band h2{font-family:var(--font-en);font-weight:900;text-transform:uppercase;font-size:clamp(1.8rem,4vw,3rem);margin:10px 0 14px}
+  .cta-band p{color:var(--ink-2);margin:0 auto 26px;max-width:48ch;font-size:14.5px}
+  .cta-band .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="promo">SHAD 日本総代理店 <b>Custom Japan</b> ｜ 正規品・メーカー保証 ｜ 安心の日本語サポート</div>
+
+<header><nav class="nav">
+  <a class="brand" href="/"><span class="logo">SH<b>A</b>D</span><span class="endorse"><b>日本総代理店</b>Custom Japan</span></a>
+  <div class="navlinks">
+    <a href="/top-cases">Top Cases</a>
+    <a href="/side-cases">Side Cases</a>
+    <a href="/helmets">Helmets</a>
+    <a href="/bags">Bags</a>
+    <a href="/phone">Phone</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="navtools">
+    <a href="https://www.customjapan.net/" class="cj-link" aria-label="Custom Japan 公式通販サイト（別タブで開く）" target="_blank" rel="noopener"><img src="/assets/images/cj-mascot.svg" alt="Custom Japan"><span class="cj-txt">ONLINE STORE<b>公式通販サイト ↗</b></span></a>
+    <button class="burger" aria-label="メニュー" onclick="document.getElementById('drawer').classList.add('on')"><span></span><span></span><span></span></button>
+  </div>
+</nav></header>
+
+<div class="drawer" id="drawer">
+  <button class="dclose" aria-label="閉じる" onclick="document.getElementById('drawer').classList.remove('on')">×</button>
+  <a href="/top-cases">Top Cases</a><a href="/side-cases">Side Cases</a><a href="/helmets">Helmets</a><a href="/bags">Bags</a><a href="/phone">Phone</a><a href="/about">About</a>
+</div>
+
+<!-- HERO -->
+<section class="hero"><div class="in">
+  <div class="copy">
+    <span class="eyebrow">日本総代理店 — Custom Japan</span>
+    <h1>SH<span class="r">A</span>D</h1>
+    <p class="tagja">スペイン発、ライダーの積載を進化させる。</p>
+    <p class="lead">トップケースからパニア、ヘルメット、バッグ、スマホホルダーまで。SHAD の正規品を、日本総代理店 Custom Japan が確かな品質と日本語サポートでお届けします。</p>
+    <div class="cta">
+      <a class="btn btn-red" href="/top-cases">製品ラインアップを見る</a>
+      <a class="btn btn-outline" href="/about">総代理店について</a>
+    </div>
+  </div>
+  <div class="visual">
+    <span class="tagbadge">SHAD Lineup</span>
+    <div class="ph" data-label="Hero Visual（要 SHAD 画像）"></div>
+  </div>
+</div></section>
+
+<div class="trustbar"><div class="in">
+  <span>正規品・メーカー保証</span><span>日本総代理店 直供給</span><span>日本語サポート</span><span>安定した在庫</span>
+</div></div>
+
+<!-- カテゴリー -->
+<section class="band"><div class="wrap">
+  <div class="band-head">
+    <div class="t"><span class="eyebrow">Product Categories</span><h2 class="h-section">カテゴリーから探す</h2><p>用途や車両に合わせて。SHAD のフルラインアップから選べます。</p></div>
+    <a class="more" href="/top-cases">All Products →</a>
+  </div>
+  <div class="cats">
+    <a class="cat" href="/top-cases"><div class="ci ph" data-label="Top Cases"></div><div class="cb"><div><div class="en">Top Cases</div><h3>トップケース</h3></div><span class="ar">→</span></div></a>
+    <a class="cat" href="/side-cases"><div class="ci ph" data-label="Side Cases"></div><div class="cb"><div><div class="en">Side / Panniers</div><h3>サイド・パニアケース</h3></div><span class="ar">→</span></div></a>
+    <a class="cat" href="/helmets"><div class="ci ph" data-label="Helmets"></div><div class="cb"><div><div class="en">Helmets</div><h3>ヘルメット</h3></div><span class="ar">→</span></div></a>
+    <a class="cat" href="/bags"><div class="ci ph" data-label="Bags"></div><div class="cb"><div><div class="en">Bags</div><h3>タンク・シートバッグ</h3></div><span class="ar">→</span></div></a>
+    <a class="cat" href="/phone"><div class="ci ph" data-label="Phone Holders"></div><div class="cb"><div><div class="en">Phone Holders</div><h3>スマホホルダー</h3></div><span class="ar">→</span></div></a>
+    <a class="cat" href="/fitting"><div class="ci ph" data-label="Fitting Kits"></div><div class="cb"><div><div class="en">Fitting / 3P System</div><h3>取付キット・バックレスト</h3></div><span class="ar">→</span></div></a>
+  </div>
+</div></section>
+
+<!-- 総代理店ポジション -->
+<section class="band distro"><div class="in">
+  <span class="badge">Exclusive Distributor</span>
+  <h2>日本で SHAD 正規品をお届けするのは、<span class="r">日本総代理店 Custom Japan</span>。</h2>
+  <p>並行輸入や非正規ルートではなく、メーカー正規の供給・保証・サポートを受けられるのは Custom Japan 経由。安心して SHAD をお選びいただけます。</p>
+  <div class="pts">
+    <div class="pt"><div class="n">01 — Genuine</div><h4>正規品・保証</h4><small>すべて正規流通品。メーカー保証と品質を担保します。</small></div>
+    <div class="pt"><div class="n">02 — Supply</div><h4>安定供給・在庫</h4><small>総代理店の直供給で、新製品も欠品も安心。</small></div>
+    <div class="pt"><div class="n">03 — Support</div><h4>日本語サポート</h4><small>適合情報・取付・保証対応まで日本語で。</small></div>
+    <div class="pt"><div class="n">04 — Fitting</div><h4>豊富な適合</h4><small>車種別フィッティングと3P Systemで幅広く対応。</small></div>
+  </div>
+</div></section>
+
+<!-- 人気商品 -->
+<section class="band alt"><div class="wrap">
+  <div class="band-head"><div class="t"><span class="eyebrow">Popular</span><h2 class="h-section">人気の製品</h2></div><a class="more" href="/top-cases">もっと見る →</a></div>
+  <div class="prods">
+    <a class="pcard" href="/top-cases"><div class="pi ph" data-label="SH59X"></div><div class="pb"><div class="ptype">Top Case</div><div class="pn">SH59X トップケース</div><div class="price">¥—<small> 税込</small></div></div></a>
+    <a class="pcard" href="/top-cases"><div class="pi ph" data-label="SH48"></div><div class="pb"><div class="ptype">Top Case</div><div class="pn">SH48 トップケース</div><div class="price">¥—<small> 税込</small></div></div></a>
+    <a class="pcard" href="/side-cases"><div class="pi ph" data-label="TERRA TR47"></div><div class="pb"><div class="ptype">Side Case</div><div class="pn">TERRA TR47 パニア</div><div class="price">¥—<small> 税込</small></div></div></a>
+    <a class="pcard" href="/phone"><div class="pi ph" data-label="X-Frame"></div><div class="pb"><div class="ptype">Phone Holder</div><div class="pn">X-Frame スマホホルダー</div><div class="price">¥—<small> 税込</small></div></div></a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta-band"><div class="in">
+  <span class="eyebrow">Custom Japan</span>
+  <h2>Find Your SHAD</h2>
+  <p>車種・用途に合った SHAD をお探しの方へ。日本総代理店 Custom Japan がご案内します。</p>
+  <div class="cta"><a class="btn btn-red" href="https://www.customjapan.net/" target="_blank" rel="noopener">公式通販で見る ↗</a><a class="btn btn-outline" href="/about">総代理店について</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div class="brandcol"><span class="logo">SH<b>A</b>D</span><p>日本総代理店 Custom Japan<br>スペイン発、ライダーの積載を進化させる。</p></div>
+    <div><h4>Products</h4><a href="/top-cases">トップケース</a><a href="/side-cases">サイド・パニア</a><a href="/helmets">ヘルメット</a><a href="/bags">バッグ</a><a href="/phone">スマホホルダー</a></div>
+    <div><h4>Guide</h4><a href="/fitting">適合・取付</a><a href="/faq">FAQ</a><a href="/warranty">保証</a><a href="/shipping">配送</a></div>
+    <div><h4>Custom Japan</h4><a href="/about">総代理店について</a><a href="https://www.customjapan.net/" target="_blank" rel="noopener">公式通販サイト ↗</a><a href="/contact">お問い合わせ</a></div>
+  </div>
+  <div class="fnote">日本総代理店 Custom Japan ｜ SHAD は SHAD（Nad S.L.）の商標です。本サイトは Custom Japan が運営する SHAD の日本総代理店サイトです。 © Custom Japan</div>
+</div></footer>
+</body>
+</html>
