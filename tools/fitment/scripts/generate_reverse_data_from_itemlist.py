@@ -104,10 +104,15 @@ def attach_topcases(items, plates, cj_to_plate, code_plates):
       2. 記載なし → メーカータイプのプレート逆引きで全対応プレート (included=False)
     """
     for row in items:
-        if row["カテゴリ名"] != "トップケース・リアボックス" or not is_catalog_visible(row):
+        if not is_catalog_visible(row):
             continue
         code = row["メーカータイプ"].strip()
         if not code:
+            continue
+        # 通常はカテゴリ名で判定する。ただし TR50（カテゴリ＝シートバッグ）のように
+        # 商品側のカテゴリが違っても、ベースプレート側のメーカータイプが対応を
+        # 宣言している製品はプレート配下に載せる（プレートの記載を正とする）。
+        if row["カテゴリ名"] != "トップケース・リアボックス" and code not in code_plates:
             continue
         sku = {"name": row["商品名"], "url": product_url(row["品番"]),
                "img": product_img(row["品番"]), "capacity": capacity_for(row)}
@@ -201,6 +206,37 @@ def read_clicksystem_kits(items):
     return sorted(kits, key=lambda k: k["name"])
 
 
+
+MOUNT_KIT_RE = re.compile(r"^(.+?)取付[（(](.+?)[）)]")
+
+
+def remap_mount_kit(model_name, known_models):
+    """「シーシーバー取付(レブル250/500/1100/エリミネーター/バルカンS)」のような
+    “取付方法”の名前は車種ではないので、括弧内に挙がっている実在の車種に振り替える。
+
+    括弧内を「/」で分解し、数字だけのトークンには先頭トークンの車名部分を補う
+    （例: レブル250/500/1100 → レブル250 / レブル500 / レブル1100）。
+    返り値: 振り替え先の車種名リスト（見つからなければ空リスト）
+    """
+    m = MOUNT_KIT_RE.match(model_name)
+    if not m:
+        return None
+    tokens = [t.strip() for t in m.group(2).split("/") if t.strip()]
+    if not tokens:
+        return []
+    stem = re.match(r"^[^\d]*", tokens[0]).group(0)
+    keywords = []
+    for t in tokens:
+        keywords.append(t)
+        if stem and re.match(r"^[\d]", t):
+            keywords.append(stem + t)
+    hits = []
+    for km in known_models:
+        if any(k and k in km for k in keywords if len(k) >= 3):
+            hits.append(km)
+    return sorted(set(hits))
+
+
 def bike_key(maker, model):
     return f"{maker}|{model}"
 
@@ -211,6 +247,7 @@ SIDEBAG_HOLDER_SERIES = "サイドバッグホルダーキット"
 def collect_bikes(items, plates, side_codes, sidebags):
     """トップ/サイド用フィッティングキットを車種単位でマージ"""
     bikes = {}
+    mount_kits = []   # 「◯◯取付(車種…)」の形のキット（あとで実車種へ振り替える）
 
     def get_bike(maker, model, group):
         key = bike_key(maker, model)
@@ -235,6 +272,11 @@ def collect_bikes(items, plates, side_codes, sidebags):
         kit_plates = [bp.strip() for bp in row["メーカータイプ"].split("_") if bp.strip() in plates]
         for model_name, group in expand_models(cj_code, name, row["代表適合車種"],
                                                row["対応メーカー"], row["商品名"]):
+            if MOUNT_KIT_RE.match(model_name):
+                # 車種ではなく取付方法（シーシーバー取付 等）。あとで実車種に振り替える
+                mount_kits.append({"maker": maker, "model": model_name, "group": group,
+                                   "plates": kit_plates, "url": url, "name": row["商品名"]})
+                continue
             bike = get_bike(maker, model_name, group)
             if kit_plates:
                 for bp in kit_plates:
@@ -320,9 +362,42 @@ def collect_bikes(items, plates, side_codes, sidebags):
                 "cases": cases,
             })
 
+    # 「◯◯取付(車種…)」のキットを、実在する車種へ振り替える
+    #   例: シーシーバー取付(レブル250/500/1100/エリミネーター/バルカンS)
+    #       → レブル250/500(17-26) / レブル1100/CMX1100(21-26) /
+    #         エリミネーター/SE(24-26) / バルカンS(15-25) の各車種に
+    #         「シーシーバー装着車用のトップマスターキット」として追加する
+    known = [b["model"] for b in bikes.values()]
+    unmatched = []
+    for mk in mount_kits:
+        targets = remap_mount_kit(mk["model"], known) or []
+        if not targets:
+            unmatched.append(mk["model"])
+            continue
+        for model_name in targets:
+            for b in bikes.values():
+                if b["model"] != model_name:
+                    continue
+                if mk["plates"]:
+                    for bp in mk["plates"]:
+                        b["top"].append({"plate": bp, "url": mk["url"], "name": mk["name"]})
+                else:
+                    b["top"].append({"plate": None, "url": mk["url"], "name": mk["name"]})
+    if unmatched:
+        print("  ※ 実車種に振り替えできなかった取付キット: %s" % " / ".join(sorted(set(unmatched))))
+
     result = sorted(bikes.values(), key=lambda b: (b["maker"], b["model"]))
     for b in result:
         b["side"].sort(key=lambda s: s["system"])
+        # 同じキット・同じプレートの重複を除く
+        seen, uniq = set(), []
+        for t in b["top"]:
+            k = (t.get("plate"), t.get("url"))
+            if k in seen:
+                continue
+            seen.add(k)
+            uniq.append(t)
+        b["top"] = uniq
     return result
 
 

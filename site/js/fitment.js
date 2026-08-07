@@ -718,7 +718,9 @@ function buildTopSection(bike) {
     // プレートコード不明のキット（plate=null のみ）は対応ケース一覧を出せないため商品ページへ誘導
     const allSkus = [...skuMap.values()].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
     if (allSkus.length === 0) {
-      block.appendChild(el('div', 'no-fit', '※装着可能トップケースはキットの商品ページでご確認ください'));
+      block.appendChild(el('p', 'kit-note',
+        '装着できるトップケースは、キットに付属するベースプレートに準じます。'
+        + '詳細はキットの商品ページでご確認ください。'));
       sec.appendChild(block);
       blockCount++;
       return;
