@@ -2,12 +2,15 @@
 # -*- coding: utf-8 -*-
 """
 =============================================================================
-SHAD（カスタムジャパン版）— 販売価格・在庫をECのAPIから取得
+SHAD — 販売価格・在庫をECのAPIから取得（社内確認用）
 =============================================================================
-カスタムジャパン版サイト（shad.customjapan.net）は、定価ではなく
-**実際の販売価格と在庫**を出します。値はECのAPIから取得します。
+ECのAPIから販売価格・在庫を取得して一覧化するツールです。
 
-    出力: site/data/ec/api_prices.json
+**ブランドサイト（www.shad-japan.com）は定価表示のみ**の方針なので、
+出力先は公開フォルダ（site/）の外にしています。社内で価格・在庫を確認したいとき、
+または将来販売価格を扱うサイトを作るときに使います。
+
+    出力: data-source/api_prices.json（公開フォルダの外）
       { "byCjCode": { "27705902": {
             "code": "TR55",              モデルコード（本体商品のみ）
             "name": "TR55 TERRA トップケース 55L",
@@ -44,7 +47,8 @@ SITE = os.path.join(ROOT, "site")
 CATALOG = os.path.join(SITE, "data", "catalog", "products.json")
 ACCESSORIES = os.path.join(SITE, "data", "catalog", "accessories.json")
 FITTING = os.path.join(SITE, "data", "catalog", "fitting.json")
-OUT_PATH = os.path.join(SITE, "data", "ec", "api_prices.json")
+# ブランドサイトは定価表示のみなので、公開フォルダ（site/）には出さない
+OUT_PATH = os.path.join(ROOT, "data-source", "api_prices.json")
 
 INIT_URL = "https://api-i.customjapan.net/api/v1/init"
 ITEMS_URL = "https://api-e.customjapan.net/api/v1/items"
@@ -158,7 +162,7 @@ def main():
 
     got = [out[str(i)] for i in ids if str(i) in out]
     priced = [v for v in got if v.get("saleTaxIn")]
-    print("\n出力: site/data/ec/api_prices.json（%d品番）" % len(out))
+    print("\n出力: data-source/api_prices.json（%d品番）" % len(out))
     print("うち販売価格あり: %d / %d" % (len(priced), len(got)))
     print("\n%-8s %-10s %-30s %10s %10s  %s"
           % ("CODE", "品番", "商品名", "定価", "販売価格", "在庫"))

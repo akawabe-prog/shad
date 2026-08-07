@@ -79,17 +79,8 @@ def main():
 
     changed = prepare(OUT, PREFIX)
 
-    # カスタムジャパン版（dist/cj）があれば /cj/ 配下にも同梱して確認できるようにする
-    cj_src = os.path.join(ROOT, "dist", "cj")
-    cj_note = ""
-    if os.path.isdir(cj_src):
-        cj_out = os.path.join(OUT, "cj")
-        shutil.copytree(cj_src, cj_out)
-        changed += prepare(cj_out, PREFIX + "/cj")
-        cj_note = "（カスタムジャパン版も /cj/ に同梱）"
-
     open(os.path.join(OUT, ".nojekyll"), "w").close()
-    print("dist/ghpages を作成：パス書き換え %d ファイル %s" % (changed, cj_note))
+    print("dist/ghpages を作成：パス書き換え %d ファイル" % changed)
 
     if "--push" in sys.argv:
         push(OUT)
@@ -136,9 +127,7 @@ def push(OUT):
         subprocess.run(["git", "remote", "add", "origin", url], cwd=OUT, check=True)
         subprocess.run(["git", "push", "-q", "-f", "origin", "gh-pages"],
                        cwd=OUT, check=True)
-        print("gh-pages に push しました")
-        print("  ブランドサイト     → https://akawabe-prog.github.io/shad/")
-        print("  カスタムジャパン版 → https://akawabe-prog.github.io/shad/cj/")
+        print("gh-pages に push しました → https://akawabe-prog.github.io/shad/")
 
 
 if __name__ == "__main__":
