@@ -437,7 +437,7 @@ function selectBike(bike) {
     return;
   }
   selectedBike = bike;
-  selectedModel.textContent = bike.model + '（' + bike.maker + '）';
+  selectedModel.textContent = bike.model;
   selectedBar.classList.add('show');
   if (window.history && history.replaceState) {
     history.replaceState(null, "", RESULT_PAGE + "?bike=" + encodeURIComponent(bikeKey(bike)));
@@ -876,7 +876,7 @@ if (MODE === "entry") {
     pendingBike = bike;
     go.disabled = !bike;
     if (bike) {
-      selectedModel.textContent = bike.model + '（' + bike.maker + '）';
+      selectedModel.textContent = bike.model;
       selectedBar.classList.add('show');
     } else {
       selectedBar.classList.remove('show');
@@ -888,7 +888,7 @@ if (MODE === "entry") {
   var target = want ? BIKES.filter(function (b) { return bikeKey(b) === want; })[0] : null;
   if (target) {
     selectedBike = target;
-    selectedModel.textContent = target.model + '（' + target.maker + '）';
+    selectedModel.textContent = target.model;
     selectedBar.classList.add('show');
     // プルダウンも選択状態に合わせる
     makerSelect.value = target.maker;
@@ -1151,7 +1151,7 @@ if (MODE === "entry") {
       verdict.innerHTML = ''
         + '<div class="fit-ok"><i class="ti ti-circle-check"></i>'
         +   '<div><p>装着できます</p>'
-        +   '<span>' + esc(hit.maker) + ' ' + esc(hit.model) + '</span></div></div>'
+        +   '<span>' + esc(hit.model) + '</span></div></div>'
         + '<div class="pf-kit">'
         +   '<p class="pf-kit-cap">取付に必要な車種専用フィッティングキット'
         +     (hit.system ? '（' + esc(hit.system) + '）' : '') + '</p>'
