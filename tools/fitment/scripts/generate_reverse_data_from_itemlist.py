@@ -207,6 +207,40 @@ def read_clicksystem_kits(items):
 
 
 
+
+SPEC_MODELS_RE = re.compile(r"対応モデル[：:]\s*([^\n]+)")
+SPEC_PLATE_RE = re.compile(r"対応ベースプレート[：:]\s*([^\n]+)")
+
+
+def kit_spec_models(row):
+    """キットの仕様欄から「対応モデル」を読む。
+
+    マスターの仕様欄はキットごとに対応トップケースを明記している。
+      例）NADTN（シーシーバー取付 ※プレート付）
+          対応ベースプレート：不要(フィッティングキットに直接取付)
+          対応モデル：SH26/SH29/SH33/SH34
+    プレート経由の逆引きより確実なので、記載があればこれを正とする。
+
+    返り値: (対応モデルコードのリスト, ベースプレート不要か)
+    """
+    spec = (row.get("仕様") or "").replace("\\n", "\n")
+    m = SPEC_MODELS_RE.search(spec)
+    models = []
+    if m:
+        text = m.group(1)
+        if "全て" in text or "すべて" in text:
+            # 例）「SHAD全てのトップケース＆TERRAシリーズに対応」→ 全モデル対応
+            models = ["*"]
+        else:
+            for token in re.split(r"[/／、,]", text):
+                token = token.strip()
+                if re.fullmatch(r"[A-Za-z0-9]+", token):
+                    models.append(token.upper())
+    p = SPEC_PLATE_RE.search(spec)
+    no_plate = bool(p and "不要" in p.group(1))
+    return models, no_plate
+
+
 MOUNT_KIT_RE = re.compile(r"^(.+?)取付[（(](.+?)[）)]")
 
 
@@ -270,19 +304,26 @@ def collect_bikes(items, plates, side_codes, sidebags):
         url = product_url(cj_code)
         # キットが対応するベースプレートコード（なしの場合もある: シーシーバー取付プレート付 等）
         kit_plates = [bp.strip() for bp in row["メーカータイプ"].split("_") if bp.strip() in plates]
+        spec_models, no_plate = kit_spec_models(row)
         for model_name, group in expand_models(cj_code, name, row["代表適合車種"],
                                                row["対応メーカー"], row["商品名"]):
             if MOUNT_KIT_RE.match(model_name):
                 # 車種ではなく取付方法（シーシーバー取付 等）。あとで実車種に振り替える
                 mount_kits.append({"maker": maker, "model": model_name, "group": group,
-                                   "plates": kit_plates, "url": url, "name": row["商品名"]})
+                                   "plates": kit_plates, "url": url, "name": row["商品名"],
+                                   "models": spec_models, "noPlate": no_plate})
                 continue
             bike = get_bike(maker, model_name, group)
+            entry = {"url": url, "name": row["商品名"]}
+            if spec_models:
+                entry["models"] = spec_models      # 仕様欄の対応モデル（これを正とする）
+            if no_plate:
+                entry["noPlate"] = True            # ベースプレート不要（キットに直接取付）
             if kit_plates:
                 for bp in kit_plates:
-                    bike["top"].append({"plate": bp, "url": url, "name": row["商品名"]})
+                    bike["top"].append({**entry, "plate": bp})
             else:
-                bike["top"].append({"plate": None, "url": url, "name": row["商品名"]})
+                bike["top"].append({**entry, "plate": None})
 
     # サイドケース用フィッティングキット（3P/4P）
     for row in items:
@@ -378,11 +419,16 @@ def collect_bikes(items, plates, side_codes, sidebags):
             for b in bikes.values():
                 if b["model"] != model_name:
                     continue
+                entry = {"url": mk["url"], "name": mk["name"]}
+                if mk.get("models"):
+                    entry["models"] = mk["models"]
+                if mk.get("noPlate"):
+                    entry["noPlate"] = True
                 if mk["plates"]:
                     for bp in mk["plates"]:
-                        b["top"].append({"plate": bp, "url": mk["url"], "name": mk["name"]})
+                        b["top"].append({**entry, "plate": bp})
                 else:
-                    b["top"].append({"plate": None, "url": mk["url"], "name": mk["name"]})
+                    b["top"].append({**entry, "plate": None})
     if unmatched:
         print("  ※ 実車種に振り替えできなかった取付キット: %s" % " / ".join(sorted(set(unmatched))))
 

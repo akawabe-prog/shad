@@ -183,6 +183,12 @@ let categoryFilter = 'all'; // 'all' | 'top' | 'side' | 'sidebag' | 'tank'
 /* 商品カテゴリは適合データの持ち方から決まる（型番 → カテゴリ）。
    トップケース＝ベースプレート配下、サイドケース／サイドバッグ＝ハード/ソフトの別、
    タンクバッグ＝クリックシステム。カード表示ではなくデータ構造が根拠。 */
+/* 型番 → トップケースSKU の索引（キットの「対応モデル」から一覧を作るため）*/
+const TOPCASE_BY_CODE = {};
+Object.values(PLATES).forEach(p => (p.topcases || []).forEach(tc => {
+  if (tc.code && !TOPCASE_BY_CODE[tc.code]) TOPCASE_BY_CODE[tc.code] = tc;
+}));
+
 const CATEGORY_OF = {};
 function mapCategories() {
   Object.values(PLATES).forEach(p => (p.topcases || []).forEach(t => {
@@ -684,8 +690,13 @@ function buildTopSection(bike) {
   // 1つのキットが複数ベースプレートに対応するため、キットURL単位でまとめる
   const byUrl = new Map();
   bike.top.forEach(t => {
-    if (!byUrl.has(t.url)) byUrl.set(t.url, { plates: [], name: t.name });
-    byUrl.get(t.url).plates.push(t.plate);
+    if (!byUrl.has(t.url)) {
+      byUrl.set(t.url, { plates: [], name: t.name, models: t.models, noPlate: t.noPlate });
+    }
+    const k = byUrl.get(t.url);
+    k.plates.push(t.plate);
+    if (t.models && !k.models) k.models = t.models;
+    if (t.noPlate) k.noPlate = true;
   });
 
   let blockCount = 0;
@@ -704,23 +715,40 @@ function buildTopSection(bike) {
     kitLine.appendChild(btn);
     block.appendChild(kitLine);
 
-    // 対応プレートのトップケースを統合（同一SKUは複数プレートに現れるため名前でまとめる）
+    /* 装着できるトップケースの決め方
+       ① キットの仕様欄に「対応モデル」があればそれを正とする（マスター記載）
+          例: シーシーバー取付 ※プレート付 → SH26/SH29/SH33/SH34（プレート不要）
+       ② 記載が無ければ、対応ベースプレート配下のトップケースを集める */
     const skuMap = new Map();
-    plateCodes.forEach(pc => {
-      const plate = PLATES[pc];
-      if (!plate) return;
-      plate.topcases.forEach(tc => {
+    if (kit.models && kit.models.indexOf('*') >= 0) {
+      // 「SHAD全てのトップケース＆TERRAシリーズに対応」と明記されたキット
+      Object.values(TOPCASE_BY_CODE).forEach(tc => {
         if (!skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
-        skuMap.get(tc.name).plates.push(pc);
       });
-    });
+    } else if (kit.models && kit.models.length) {
+      kit.models.forEach(code => {
+        const tc = TOPCASE_BY_CODE[code];
+        if (tc && !skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
+      });
+    } else {
+      plateCodes.forEach(pc => {
+        const plate = PLATES[pc];
+        if (!plate) return;
+        plate.topcases.forEach(tc => {
+          if (!skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
+          skuMap.get(tc.name).plates.push(pc);
+        });
+      });
+    }
 
     // プレートコード不明のキット（plate=null のみ）は対応ケース一覧を出せないため商品ページへ誘導
     const allSkus = [...skuMap.values()].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
     if (allSkus.length === 0) {
-      block.appendChild(el('p', 'kit-note',
-        '装着できるトップケースは、キットに付属するベースプレートに準じます。'
-        + '詳細はキットの商品ページでご確認ください。'));
+      block.appendChild(el('p', 'kit-note', kit.noPlate
+        ? 'このキットはベースプレート不要です（トップケースをキットに直接取り付けます）。'
+          + '対応モデルはキットの商品ページでご確認ください。'
+        : '装着できるトップケースは、キットに付属するベースプレートに準じます。'
+          + '詳細はキットの商品ページでご確認ください。'));
       sec.appendChild(block);
       blockCount++;
       return;
@@ -728,6 +756,10 @@ function buildTopSection(bike) {
     // 絞り込み条件（カテゴリ/TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
     const skus = applyFilters(allSkus);
     if (skus.length === 0) return;
+    if (kit.noPlate) {
+      block.appendChild(el('p', 'kit-note',
+        'このキットはベースプレート不要です（トップケースをキットに直接取り付けます）。'));
+    }
     block.appendChild(el('div', 'kit-caption', '装着可能トップケース'));
     block.appendChild(productGrid(skus, tc => {
       if (tc.included) return el('div', 'card-note ok', 'ベースプレート付属');
