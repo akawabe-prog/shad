@@ -720,11 +720,24 @@ function buildTopSection(bike) {
           例: シーシーバー取付 ※プレート付 → SH26/SH29/SH33/SH34（プレート不要）
        ② 記載が無ければ、対応ベースプレート配下のトップケースを集める */
     const skuMap = new Map();
+    const usablePlates = plateCodes.filter(pc => PLATES[pc]);
     if (kit.models && kit.models.indexOf('*') >= 0) {
-      // 「SHAD全てのトップケース＆TERRAシリーズに対応」と明記されたキット
-      Object.values(TOPCASE_BY_CODE).forEach(tc => {
-        if (!skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
-      });
+      /* 「全てのSHAD＆TERRAトップケース/バッグに対応」と書かれたキット。
+         対応ベースプレートが分かる場合は、そのプレートに載るケースだけを出す
+         （プレートが物理的な制約。仕様欄の「全て」は総称表現で、54件はプレート指定と
+          食い違うため、狭いほうに合わせる）。プレート不要のキットは全モデルを出す。 */
+      if (usablePlates.length) {
+        usablePlates.forEach(pc => {
+          PLATES[pc].topcases.forEach(tc => {
+            if (!skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
+            skuMap.get(tc.name).plates.push(pc);
+          });
+        });
+      } else {
+        Object.values(TOPCASE_BY_CODE).forEach(tc => {
+          if (!skuMap.has(tc.name)) skuMap.set(tc.name, { ...tc, plates: [] });
+        });
+      }
     } else if (kit.models && kit.models.length) {
       kit.models.forEach(code => {
         const tc = TOPCASE_BY_CODE[code];

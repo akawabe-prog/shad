@@ -60,8 +60,13 @@ def read_product_baseplate_mapping(items):
     return mapping
 
 
+TOPCASE_LIKE_CATEGORIES = {"トップケース・リアボックス", "シートバッグ"}
+
+
 def read_topcase_baseplates(items):
-    """カテゴリ='トップケース・リアボックス' の単品行 → {製品コード: ベースプレートコード(SHAD)}
+    """カテゴリ='トップケース・リアボックス'/'シートバッグ' の単品行 → {製品コード: ベースプレートコード(SHAD)}
+
+    シートバッグ（TR50等）もベースプレート経由で装着するため対象に含める。
 
     ベースプレートコードの解決優先順位:
     1. セット内容・付属品の「品番: XXXX」から抽出 → ベースプレート単品行で 品番→SHADコード 変換
@@ -71,7 +76,7 @@ def read_topcase_baseplates(items):
     product_to_bp = read_product_baseplate_mapping(items)
     result = {}
     for row in items:
-        if row["カテゴリ名"] != "トップケース・リアボックス" or not is_catalog_visible(row):
+        if row["カテゴリ名"] not in TOPCASE_LIKE_CATEGORIES or not is_catalog_visible(row):
             continue
         code = row["メーカータイプ"].strip()
         if not code or code in result:

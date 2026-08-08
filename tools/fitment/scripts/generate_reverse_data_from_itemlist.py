@@ -62,6 +62,10 @@ TEMPLATES_DIR = os.path.join(ROOT, "templates")
 
 TOPCASE_KIT_PREFIX = "トップマスターフィッティングキット "
 
+# ベースプレート経由で装着するトップケース系カテゴリ
+# （TR50 のようにカテゴリが「シートバッグ」の製品も含む。generate_pages.py と同じ範囲）
+TOPCASE_LIKE_CATEGORIES = {"トップケース・リアボックス", "シートバッグ"}
+
 
 def read_plates(items):
     """メインシリーズ='ベースプレート' の単品SKUからプレートカタログを構築
@@ -109,10 +113,9 @@ def attach_topcases(items, plates, cj_to_plate, code_plates):
         code = row["メーカータイプ"].strip()
         if not code:
             continue
-        # 通常はカテゴリ名で判定する。ただし TR50（カテゴリ＝シートバッグ）のように
-        # 商品側のカテゴリが違っても、ベースプレート側のメーカータイプが対応を
-        # 宣言している製品はプレート配下に載せる（プレートの記載を正とする）。
-        if row["カテゴリ名"] != "トップケース・リアボックス" and code not in code_plates:
+        # トップケース系カテゴリ（シートバッグ含む）に加え、商品側のカテゴリが違っても
+        # ベースプレート側のメーカータイプが対応を宣言している製品はプレート配下に載せる。
+        if row["カテゴリ名"] not in TOPCASE_LIKE_CATEGORIES and code not in code_plates:
             continue
         sku = {"name": row["商品名"], "url": product_url(row["品番"]),
                "img": product_img(row["品番"]), "capacity": capacity_for(row)}
@@ -229,10 +232,12 @@ def kit_spec_models(row):
     if m:
         text = m.group(1)
         if "全て" in text or "すべて" in text:
-            # 例）「SHAD全てのトップケース＆TERRAシリーズに対応」→ 全モデル対応
+            # 例）「全てのSHAD＆TERRAトップケース/バッグに対応」→ 全モデル対応
             models = ["*"]
         else:
-            for token in re.split(r"[/／、,]", text):
+            # 区切りは「/」「・」「、」「,」。分類の注記（例：（サイドケース））は括弧ごと外す
+            text = re.sub(r"[（(][^）)]*[）)]", " ", text)
+            for token in re.split(r"[/／・、,\s]+", text):
                 token = token.strip()
                 if re.fullmatch(r"[A-Za-z0-9]+", token):
                     models.append(token.upper())
