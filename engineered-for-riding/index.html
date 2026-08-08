@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineered for Riding｜SHAD JAPAN — 走りのための技術</title>
+<meta name="description" content="可変容量 Expandable、3P/4P システム、Click System、MaxLoad、防水・施錠技術——。走りを自由にするSHADのコア技術を、仕組みと利点から解説します。">
+
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="Engineered for Riding｜SHAD JAPAN — 走りのための技術">
+<meta property="og:description" content="可変容量 Expandable、3P/4P システム、Click System、MaxLoad、防水・施錠技術——。走りを自由にするSHADのコア技術を、仕組みと利点から解説します。">
+<meta property="og:url" content="https://www.shad-japan.com/engineered-for-riding">
+<meta property="og:image" content="/shad/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Engineered for Riding｜SHAD JAPAN — 走りのための技術">
+<meta name="twitter:description" content="可変容量 Expandable、3P/4P システム、Click System、MaxLoad、防水・施錠技術——。走りを自由にするSHADのコア技術を、仕組みと利点から解説します。">
+<meta name="twitter:image" content="/shad/img/og_default.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+      fontFamily: {
+        disp: ['"Barlow Condensed"', '"Noto Sans JP"', 'sans-serif'],
+        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+      },
+      maxWidth: { site: '1180px' },
+    },
+  },
+};
+</script>
+<link rel="stylesheet" href="/shad/css/custom.css">
+<style>
+.ef-hero{position:relative;background:#000;color:#fff;min-height:60vh;display:flex;align-items:flex-end;overflow:hidden;}
+.ef-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.97;}
+.ef-hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.56),rgba(0,0,0,.14) 55%,rgba(0,0,0,0));}
+/* 技術アイコンチップ（ink色PNGを明色チップに載せる＝どの背景でも視認可） */
+.tech-ic{width:60px;height:60px;border-radius:14px;background:#F4F3F1;display:flex;align-items:center;justify-content:center;flex:none;}
+.tech-ic img{width:36px;height:36px;object-fit:contain;}
+.tech-ic.dark{background:rgba(255,255,255,.1);}
+.tech-ic.dark img{filter:invert(1) brightness(2);}
+.tech-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:rgba(227,30,36,.1);color:#E31E24;padding:3px 10px;border-radius:5px;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/shad/" class="shrink-0">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden lg:flex gap-6 xl:gap-8 ml-auto font-disp uppercase tracking-[.12em] xl:tracking-[.14em] text-[14px] xl:text-[15.5px] font-medium text-white/80 whitespace-nowrap">
+      <li><a class="hover:text-white transition" href="/shad/products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/shad/fitment">For Your Motorcycle</a></li><li><a class="hover:text-white transition" href="/shad/fitting-kits">Fitting Kits</a></li>
+      <li><a class="text-white" href="/shad/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/shad/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/shad/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto lg:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="lg:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="lg:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/shad/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/shad/fitment" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/shad/fitting-kits" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Fitting Kits</a>
+    <a href="/shad/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/shad/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/shad/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/shad/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+
+<!-- ===== ① HERO ===== -->
+<header class="ef-hero">
+  <video class="hero-video" data-src-desktop="/shad/media/banner_expandable.mp4" data-poster-desktop="/shad/img/prod_sh38x.webp" data-src-mobile="/shad/media/banner_expandable.mp4" data-poster-mobile="/shad/img/prod_sh38x.webp" poster="/shad/img/prod_sh38x.webp" autoplay muted loop playsinline aria-hidden="true"></video>
+  <div class="ef-hero-shade"></div>
+  <div class="relative w-full max-w-site mx-auto px-7 pb-12 md:pb-[72px] [text-shadow:0_1px_18px_rgba(0,0,0,.5)]">
+    <p class="hero-kick font-disp font-semibold text-[16px] tracking-[.34em] uppercase text-shad flex items-center gap-3.5">
+      <span class="inline-block w-[34px] h-[2px] bg-shad"></span>Engineered for Riding
+    </p>
+    <h1 class="hero-title font-bold leading-[1.2] tracking-[.02em] text-[clamp(36px,5.8vw,68px)] mt-4 mb-3.5">技術は、走りの<br class="md:hidden">ためにある。</h1>
+    <p class="hero-sub text-[16px] text-white/80 max-w-[600px]">容量、マウント、着脱、耐久、防水——。すべての機構は「より遠くへ、より自由に」走るために設計されています。</p>
+  </div>
+</header>
+
+<!-- ===== ② PHILOSOPHY ===== -->
+<section class="bg-ink2 text-white py-[100px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.32em] uppercase text-shad mb-6" data-reveal>Design Philosophy</p>
+    <h2 class="text-[clamp(26px,3.6vw,44px)] font-bold leading-[1.5] max-w-[940px]" data-reveal>機能を突き詰めると、<br class="hidden md:block">かたちは美しくなる。</h2>
+    <p class="text-[16px] md:text-[17px] text-white/75 leading-[2.1] max-w-[760px] mt-8" data-reveal>SHADの技術は、見た目のためのギミックではありません。走行中の安定、片手での開閉、雨でも守る密閉、限界を超える耐久——。ライダーが直面する一つひとつの課題に、機構で答える。その積み重ねが、SHADの造形になっています。</p>
+  </div>
+</section>
+
+<!-- ===== ③ SIGNATURE TECH ===== -->
+<!-- Expandable -->
+<section class="bg-white py-[84px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-black" data-reveal>
+      <video src="/shad/media/banner_expandable.mp4" poster="/shad/img/prod_sh38x.webp" autoplay muted loop playsinline class="w-full h-full object-cover"></video>
+    </div>
+    <div data-reveal>
+      <div class="flex items-center gap-4">
+        <span class="tech-ic"><img src="/shad/img/feat/EX.webp" alt="Expandable"></span>
+        <div><span class="tech-tag">Patented</span><h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-1.5">Expandable</h2></div>
+      </div>
+      <p class="text-[17px] font-bold mt-6">走るときはスリム。停まれば、大容量。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">ケースの容量そのものが伸縮する、世界でSHADだけの可変構造。走行中は空気抵抗を抑えるスリムな姿勢、停車後はワンアクションで拡張し、フルフェイスヘルメットも飲み込む大容量へ。1台で「軽快さ」と「積載力」を両立します。</p>
+      <div class="flex flex-wrap gap-2 mt-5 text-[12.5px] text-neutral-500">
+        <span class="border border-black/15 rounded-full px-3 py-1">対応：SH38X / SH58X</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3P / 4P System -->
+<section class="bg-mist py-[84px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div class="order-2 md:order-1" data-reveal>
+      <div class="flex items-center gap-3">
+        <span class="tech-ic"><img src="/shad/img/feat/3P.webp" alt="3P System"></span>
+        <span class="tech-ic"><img src="/shad/img/feat/4P.webp" alt="4P System"></span>
+        <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none">3P / 4P System</h2>
+      </div>
+      <p class="text-[17px] font-bold mt-6">サイドケースを、車体の一部に。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">サイドケースを美しく、確実に固定する専用マウント。ケースを外せばステーだけが残り、車体のシルエットを崩しません。3P／4Pの2方式で、ツアラーからアドベンチャーまで幅広い車種に最適化。車種専用フィッティングキットと組み合わせて装着します。</p>
+      <div class="flex flex-wrap gap-2 mt-5 text-[12.5px] text-neutral-500">
+        <span class="border border-black/15 rounded-full px-3 py-1">対応：SH36 / SH38X / SH58X / TERRA サイドケース ほか</span>
+      </div>
+    </div>
+    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white order-1 md:order-2" data-reveal>
+      <img src="/shad/img/thumb_tr41ride.webp" alt="3P/4P システム装着イメージ" class="w-full h-full object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- Click System -->
+<section class="bg-white py-[84px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-mist" data-reveal>
+      <img src="/shad/img/prod_click.webp" alt="Click System ワンタッチ着脱" class="w-full h-full object-cover">
+    </div>
+    <div data-reveal>
+      <div class="flex items-center gap-4">
+        <span class="tech-ic"><img src="/shad/img/feat/CS.webp" alt="Click System"></span>
+        <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none">Click System</h2>
+      </div>
+      <p class="text-[17px] font-bold mt-6">ワンタッチで、日常と旅を行き来する。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">工具なしで、ケースやバッグをワンタッチ着脱。通勤では身軽に、週末はフル積載に。鍵で施錠したまま確実にロックされるので、走行中の脱落も防ぎます。「使うときだけ載せる」を、ストレスなく。</p>
+      <div class="flex flex-wrap gap-2 mt-5 text-[12.5px] text-neutral-500">
+        <span class="border border-black/15 rounded-full px-3 py-1">対応：TERRA / Click 対応モデル</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ④ MORE TECH（カード）===== -->
+<section class="bg-mist py-[84px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3" data-reveal>Built to Last</p>
+    <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.4]" data-reveal>細部に宿る、走りの安心。</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-11">
+      <div class="bg-white rounded-2xl border border-black/10 p-6" data-reveal>
+        <span class="tech-ic"><img src="/shad/img/feat/MaxLoad5.webp" alt="MaxLoad"></span>
+        <h3 class="font-disp font-semibold text-[20px] tracking-[.08em] uppercase mt-4">MaxLoad</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">最大積載量を明示。荷物の重さに応じて安心して選べる耐荷重設計。</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-black/10 p-6" data-reveal>
+        <span class="tech-ic"><i class="ti ti-key text-[30px] text-ink"></i></span>
+        <h3 class="font-disp font-semibold text-[20px] tracking-[.08em] uppercase mt-4">One-Key</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">予備シリンダーでトップ／サイドの鍵を1本に統一。インキーの心配も軽減。</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-black/10 p-6" data-reveal>
+        <span class="tech-ic"><i class="ti ti-droplet text-[30px] text-ink"></i></span>
+        <h3 class="font-disp font-semibold text-[20px] tracking-[.08em] uppercase mt-4">Waterproof</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">TERRA防水バッグは高い防水性能。突然の雨でも、荷物をしっかり守る。</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-black/10 p-6" data-reveal>
+        <span class="tech-ic"><i class="ti ti-helmet text-[30px] text-ink"></i></span>
+        <h3 class="font-disp font-semibold text-[20px] tracking-[.08em] uppercase mt-4">Helmet Fit</h3>
+        <p class="text-[14px] text-neutral-600 leading-[1.95] mt-2">主要モデルはフルフェイスヘルメットの収納に対応。容量を「使える容量」に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑤ QUALITY LAB ===== -->
+<section class="bg-black text-white py-[96px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div data-reveal>
+      <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3">Quality Lab</p>
+      <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.45]">壊し尽くした、<br class="hidden md:block">あとの設計。</h2>
+      <p class="text-[15.5px] text-white/75 leading-[2.1] mt-6">技術は、試験で裏づけられて初めて意味を持ちます。バルセロナの自社ラボで、振動・荷重・防水・耐候・開閉耐久のあらゆる限界試験を反復。市場に出るのは、想定を超えて壊し尽くしたあとに残った設計だけです。</p>
+      <a href="/shad/quality-lab" class="btn border border-white/45 text-white hover:border-white mt-8"><i class="ti ti-arrow-right"></i>Quality Lab を詳しく見る</a>
+    </div>
+    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-black/40" data-reveal>
+      <img src="/shad/img/thumb_quality.webp" alt="SHAD Quality Lab" class="w-full h-full object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑥ ICON SYSTEM ===== -->
+<section class="bg-white py-[84px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3" data-reveal>Feature Icons</p>
+    <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.4]" data-reveal>機能を、ひと目で。</h2>
+    <p class="text-[15px] text-neutral-600 leading-[2] max-w-[680px] mt-4" data-reveal>各製品ページでは、搭載技術をアイコンで表示。スペックを読まずとも、その一台が何をできるのかが直感的に伝わります。</p>
+    <div class="grid grid-cols-3 sm:grid-cols-5 gap-4 mt-10" data-reveal>
+      <div class="flex flex-col items-center gap-2 bg-mist rounded-xl py-5"><span class="tech-ic bg-white"><img src="/shad/img/feat/EX.webp" alt=""></span><span class="text-[12px] text-neutral-600">可変容量</span></div>
+      <div class="flex flex-col items-center gap-2 bg-mist rounded-xl py-5"><span class="tech-ic bg-white"><img src="/shad/img/feat/3P.webp" alt=""></span><span class="text-[12px] text-neutral-600">3P System</span></div>
+      <div class="flex flex-col items-center gap-2 bg-mist rounded-xl py-5"><span class="tech-ic bg-white"><img src="/shad/img/feat/4P.webp" alt=""></span><span class="text-[12px] text-neutral-600">4P System</span></div>
+      <div class="flex flex-col items-center gap-2 bg-mist rounded-xl py-5"><span class="tech-ic bg-white"><img src="/shad/img/feat/CS.webp" alt=""></span><span class="text-[12px] text-neutral-600">Click System</span></div>
+      <div class="flex flex-col items-center gap-2 bg-mist rounded-xl py-5"><span class="tech-ic bg-white"><img src="/shad/img/feat/MaxLoad5.webp" alt=""></span><span class="text-[12px] text-neutral-600">MaxLoad</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑦ CTA ===== -->
+<section class="bg-ink2 text-white py-[88px]">
+  <div class="max-w-site mx-auto px-7 text-center">
+    <h2 class="text-[clamp(26px,3.6vw,42px)] font-bold leading-[1.4]" data-reveal>その技術を、あなたの一台に。</h2>
+    <div class="flex flex-wrap gap-3.5 justify-center mt-8" data-reveal>
+      <a href="/shad/fitment" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-motorbike"></i>適合モデルを探す</a>
+      <a href="/shad/products" class="btn border border-white/45 text-white hover:border-white">製品を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/products" class="hover:text-white transition">TERRA</a></li><li><a href="/shad/products" class="hover:text-white transition">トップケース</a></li><li><a href="/shad/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/shad/products" class="hover:text-white transition">バッグ</a></li><li><a href="/shad/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/shad/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/about" class="hover:text-white transition">About</a></li><li><a href="/shad/about" class="hover:text-white transition">OEM</a></li><li><a href="/shad/awards" class="hover:text-white transition">Awards</a></li><li><a href="/shad/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/shad/movies" class="hover:text-white transition">Movies</a></li><li><a href="/shad/news" class="hover:text-white transition">News</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/shad/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/shad/fitting-kits" class="hover:text-white transition">フィッティングキットとは</a></li><li><a href="/shad/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/shad/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/shad/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/shad/company" class="hover:text-white transition">会社情報</a><a href="/shad/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/shad/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/shad/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/shad/js/main.js"></script>
+<script src="/shad/js/nav.js"></script>
+</body>
+</html>

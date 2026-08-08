@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Movies｜SHAD JAPAN — 映像で知る、SHAD。</title>
+<meta name="description" content="SHAD のブランドフィルム、技術解説、ライディング、レース、イベント映像をまとめてご覧いただけます。">
+
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="Movies｜SHAD JAPAN — 映像で知る、SHAD。">
+<meta property="og:description" content="SHAD のブランドフィルム、技術解説、ライディング、レース、イベント映像をまとめてご覧いただけます。">
+<meta property="og:url" content="https://www.shad-japan.com/movies">
+<meta property="og:image" content="/shad/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Movies｜SHAD JAPAN — 映像で知る、SHAD。">
+<meta name="twitter:description" content="SHAD のブランドフィルム、技術解説、ライディング、レース、イベント映像をまとめてご覧いただけます。">
+<meta name="twitter:image" content="/shad/img/og_default.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+    fontFamily: { disp: ['"Barlow Condensed"','"Noto Sans JP"','sans-serif'], sans: ['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif'] },
+    maxWidth: { site: '1180px' },
+  } },
+};
+</script>
+<link rel="stylesheet" href="/shad/css/custom.css">
+<style>
+.mv-hero{position:relative;background:#000;color:#fff;aspect-ratio:21/9;min-height:48vh;display:flex;align-items:flex-end;overflow:hidden;cursor:pointer;}
+.mv-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.7s;}
+.mv-hero:hover img{transform:scale(1.03);}
+.mv-hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,.15) 55%,rgba(0,0,0,.35));}
+.mv-chip{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.1em;padding:8px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.7);cursor:pointer;white-space:nowrap;transition:.15s;}
+.mv-chip:hover{border-color:#fff;color:#fff;}
+.mv-chip.on{background:#E31E24;border-color:#E31E24;color:#fff;}
+.mv-card{cursor:pointer;background:none;border:0;padding:0;text-align:left;color:inherit;display:block;}
+.mv-hscroll{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent;scroll-padding-left:28px;}
+.mv-hscroll::-webkit-scrollbar{height:6px;}
+.mv-hscroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:99px;}
+.mv-hscroll::-webkit-scrollbar-track{background:transparent;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/shad/" class="shrink-0"><img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto"></a>
+    <ul class="hidden lg:flex gap-6 xl:gap-8 ml-auto font-disp uppercase tracking-[.12em] xl:tracking-[.14em] text-[14px] xl:text-[15.5px] font-medium text-white/80 whitespace-nowrap">
+      <li><a class="hover:text-white transition" href="/shad/products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/shad/fitment">For Your Motorcycle</a></li><li><a class="hover:text-white transition" href="/shad/fitting-kits">Fitting Kits</a></li>
+      <li><a class="hover:text-white transition" href="/shad/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/shad/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/shad/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto lg:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="lg:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="lg:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/shad/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/shad/fitment" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/shad/fitting-kits" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Fitting Kits</a>
+    <a href="/shad/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/shad/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/shad/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/shad/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+
+<section class="bg-black text-white pt-[64px] pb-16 overflow-hidden">
+  <!-- title -->
+  <div class="max-w-site mx-auto px-7 mb-6">
+    <p class="font-disp font-semibold text-[13px] tracking-[.32em] uppercase text-shad mb-2">Movies</p>
+    <h1 class="font-bold text-[clamp(28px,4vw,48px)] leading-tight">映像で知る、SHAD。</h1>
+    <p class="text-white/60 text-[14px] mt-3 max-w-[600px]">ブランドフィルムから技術解説、ライディング、レース、イベントまで。気になる映像をクリックでフルスクリーン再生。</p>
+  </div>
+
+  <!-- ⓪ ヒーロー（ワンカラム動画）-->
+  <button type="button" class="mv-hero block w-full" data-video="/shad/media/hero_brand.mp4" data-poster="/shad/img/hero_poster.webp">
+    <img src="/shad/img/hero_poster.webp" alt="">
+    <span class="mv-hero-shade"></span>
+    <span class="play-circle w-[78px] h-[78px] text-[30px]"><i class="ti ti-player-play ml-1.5"></i></span>
+    <span class="absolute left-0 right-0 bottom-0 z-[2]"><span class="block max-w-site mx-auto px-7 pb-9 md:pb-12">
+      <span class="inline-block bg-shad font-disp font-semibold text-[12px] tracking-[.2em] uppercase px-2.5 py-1 rounded">Featured · Brand Film</span>
+      <span class="block font-disp font-semibold text-[clamp(28px,4.6vw,56px)] tracking-[.05em] uppercase leading-[1] mt-3 [text-shadow:0_2px_24px_rgba(0,0,0,.5)]">Engineered for Riding</span>
+      <span class="block text-white/70 text-[13px] mt-2">SHADの設計思想 — 02:48</span>
+    </span></span>
+  </button>
+
+  <!-- ① 横型ムービー（2カラム）-->
+  <div class="max-w-site mx-auto px-7 mt-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <button type="button" class="mv-card sfilm group relative aspect-video rounded-[12px] overflow-hidden" data-video="/shad/media/banner_expandable.mp4" data-poster="/shad/img/story_sh38x.webp">
+        <img src="/shad/img/story_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]"><span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span><span class="play-circle w-14 h-14 text-[20px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-5 right-5 bottom-4 z-[2]"><span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Technology</span><span class="block font-disp font-semibold text-[20px] tracking-[.06em] uppercase mt-1.5">SH38X Expandable</span><span class="block text-white/55 text-[11px]">容量が変わる仕組み — 01:32</span></span>
+      </button>
+      <button type="button" class="mv-card sfilm group relative aspect-video rounded-[12px] overflow-hidden" data-video="/shad/media/products/sh38x/hero.mp4" data-poster="/shad/img/prod_sh38x.webp">
+        <img src="/shad/img/prod_sh38x.webp" alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-[1.04]"><span class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span><span class="play-circle w-14 h-14 text-[20px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-5 right-5 bottom-4 z-[2]"><span class="inline-block bg-white/15 font-disp text-[10.5px] tracking-[.2em] uppercase px-2 py-0.5 rounded">Product</span><span class="block font-disp font-semibold text-[20px] tracking-[.06em] uppercase mt-1.5">SH38X Detail</span><span class="block text-white/55 text-[11px]">ディテール — 00:40</span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ② 縦型ムービー（横スクロール）-->
+  <div class="max-w-site mx-auto px-7 mt-8">
+    <div class="mv-hscroll flex gap-4 overflow-x-auto pb-4 -mx-7 px-7 snap-x snap-mandatory">
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/reel_tr41.mp4">
+        <video src="/shad/media/reel_tr41.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TERRA TR41</span><span class="block text-white/55 text-[10.5px]">On the Road</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/reel_r1300gs.mp4">
+        <video src="/shad/media/reel_r1300gs.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">R1300GS</span><span class="block text-white/55 text-[10.5px]">Adventure</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/reel_cb650r.mp4">
+        <video src="/shad/media/reel_cb650r.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">CB650R</span><span class="block text-white/55 text-[10.5px]">Street</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/reel_click.mp4">
+        <video src="/shad/media/reel_click.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">Click System</span><span class="block text-white/55 text-[10.5px]">ワンタッチ着脱</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/reel_tr30.mp4">
+        <video src="/shad/media/reel_tr30.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TR30</span><span class="block text-white/55 text-[10.5px]">防水サイドバッグ</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/hero_brand_v.mp4">
+        <video src="/shad/media/hero_brand_v.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">Brand</span><span class="block text-white/55 text-[10.5px]">Engineered for Riding</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/products/sh38x/reel1.mp4">
+        <video src="/shad/media/products/sh38x/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">SH38X</span><span class="block text-white/55 text-[10.5px]">Expandable Reel</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/products/tr41/reel1.mp4">
+        <video src="/shad/media/products/tr41/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TR41</span><span class="block text-white/55 text-[10.5px]">TERRA Reel</span></span>
+      </button>
+      <button type="button" class="mv-card group relative w-[180px] sm:w-[210px] shrink-0 snap-start aspect-[9/16] rounded-[12px] overflow-hidden bg-[#111]" data-video="/shad/media/products/tr30/reel1.mp4">
+        <video src="/shad/media/products/tr30/reel1.mp4#t=0.1" preload="metadata" muted playsinline class="absolute inset-0 w-full h-full object-cover"></video><span class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></span><span class="play-circle w-12 h-12 text-[17px]"><i class="ti ti-player-play ml-0.5"></i></span>
+        <span class="absolute left-3 right-3 bottom-3 z-[2]"><span class="block font-disp font-semibold text-[14px] tracking-[.05em] uppercase">TR30</span><span class="block text-white/55 text-[10.5px]">Waterproof Reel</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER（共通・省略時は実装で挿入）===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/products" class="hover:text-white transition">TERRA</a></li><li><a href="/shad/products" class="hover:text-white transition">トップケース</a></li><li><a href="/shad/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/shad/products" class="hover:text-white transition">バッグ</a></li><li><a href="/shad/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/shad/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/about" class="hover:text-white transition">About</a></li><li><a href="/shad/about" class="hover:text-white transition">OEM</a></li><li><a href="/shad/awards" class="hover:text-white transition">Awards</a></li><li><a href="/shad/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/shad/movies" class="hover:text-white transition">Movies</a></li><li><a href="/shad/news" class="hover:text-white transition">News</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/shad/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/shad/fitting-kits" class="hover:text-white transition">フィッティングキットとは</a></li><li><a href="/shad/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/shad/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/shad/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/shad/company" class="hover:text-white transition">会社情報</a><a href="/shad/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/shad/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/shad/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/shad/js/main.js"></script>
+<script src="/shad/js/nav.js"></script>
+</body>
+</html>

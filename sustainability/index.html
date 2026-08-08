@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sustainability｜SHAD JAPAN — Doing Green</title>
+<meta name="description" content="「もっと遠くへ」は、サステナブルであること。ISO 14001/9001認証、効率的な工場、サーキュラーエコノミー、長く使える設計、SHAD Forest——。SHAD（NAD）の環境への取り組みをご紹介します。">
+
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="Sustainability｜SHAD JAPAN — Doing Green">
+<meta property="og:description" content="「もっと遠くへ」は、サステナブルであること。ISO 14001/9001認証、効率的な工場、サーキュラーエコノミー、長く使える設計、SHAD Forest——。SHAD（NAD）の環境への取り組みをご紹介します。">
+<meta property="og:url" content="https://www.shad-japan.com/sustainability">
+<meta property="og:image" content="/shad/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sustainability｜SHAD JAPAN — Doing Green">
+<meta name="twitter:description" content="「もっと遠くへ」は、サステナブルであること。ISO 14001/9001認証、効率的な工場、サーキュラーエコノミー、長く使える設計、SHAD Forest——。SHAD（NAD）の環境への取り組みをご紹介します。">
+<meta name="twitter:image" content="/shad/img/og_default.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+      fontFamily: {
+        disp: ['"Barlow Condensed"', '"Noto Sans JP"', 'sans-serif'],
+        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+      },
+      maxWidth: { site: '1180px' },
+    },
+  },
+};
+</script>
+<link rel="stylesheet" href="/shad/css/custom.css">
+<style>
+.su-hero{position:relative;background:#000;color:#fff;min-height:56vh;display:flex;align-items:flex-end;overflow:hidden;}
+.su-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;}
+.su-hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,.4) 55%,rgba(0,0,0,.2));}
+.pillar-ic{width:56px;height:56px;border-radius:14px;background:rgba(227,30,36,.1);color:#E31E24;display:flex;align-items:center;justify-content:center;font-size:28px;flex:none;}
+.stat-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:clamp(40px,6vw,68px);line-height:1;color:#E31E24;letter-spacing:.01em;}
+.iso-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:9px 18px;font-weight:600;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/shad/" class="shrink-0">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden lg:flex gap-6 xl:gap-8 ml-auto font-disp uppercase tracking-[.12em] xl:tracking-[.14em] text-[14px] xl:text-[15.5px] font-medium text-white/80 whitespace-nowrap">
+      <li><a class="hover:text-white transition" href="/shad/products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/shad/fitment">For Your Motorcycle</a></li><li><a class="hover:text-white transition" href="/shad/fitting-kits">Fitting Kits</a></li>
+      <li><a class="hover:text-white transition" href="/shad/engineered-for-riding">Technology</a></li>
+      <li><a class="text-white" href="/shad/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/shad/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto lg:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="lg:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="lg:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/shad/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/shad/fitment" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/shad/fitting-kits" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Fitting Kits</a>
+    <a href="/shad/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/shad/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/shad/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/shad/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+
+<!-- ===== ① HERO ===== -->
+<header class="su-hero">
+  <img src="/shad/img/thumb_production.webp" alt="" aria-hidden="true">
+  <div class="su-hero-shade"></div>
+  <div class="relative w-full max-w-site mx-auto px-7 pb-12 md:pb-[72px] [text-shadow:0_1px_18px_rgba(0,0,0,.5)]">
+    <p class="hero-kick font-disp font-semibold text-[16px] tracking-[.34em] uppercase text-shad flex items-center gap-3.5">
+      <span class="inline-block w-[34px] h-[2px] bg-shad"></span>Doing Green
+    </p>
+    <h1 class="hero-title font-bold leading-[1.2] tracking-[.02em] text-[clamp(34px,5.4vw,64px)] mt-4 mb-3.5">「もっと遠くへ」は、<br>サステナブルであること。</h1>
+    <p class="hero-sub text-[16px] text-white/80 max-w-[640px]">SHAD（NAD）は、社会的・環境的に責任ある企業として、資源とエネルギーを最適化しながら、より持続可能なものづくりを進めています。</p>
+  </div>
+</header>
+
+<!-- ===== ② COMMITMENT + ISO ===== -->
+<section class="bg-ink2 text-white py-[100px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.32em] uppercase text-shad mb-6" data-reveal>Our Commitment</p>
+    <h2 class="text-[clamp(26px,3.6vw,44px)] font-bold leading-[1.5] max-w-[940px]" data-reveal>環境負荷を減らし、<br class="hidden md:block">責任あるモデルへ。</h2>
+    <p class="text-[16px] md:text-[17px] text-white/75 leading-[2.1] max-w-[760px] mt-8" data-reveal>SHAD-NAD は、環境への取り組みを<b class="text-white">環境マネジメントシステム（ISO 14001 認証）</b>として実装。あわせて<b class="text-white">品質マネジメント（ISO 9001 認証）</b>も取得し、製品・サービスの品質と継続的な改善を担保しています。</p>
+    <div class="flex flex-wrap gap-3 mt-8" data-reveal>
+      <span class="iso-badge"><i class="ti ti-leaf text-shad text-[20px]"></i>ISO 14001（環境）</span>
+      <span class="iso-badge"><i class="ti ti-rosette-discount-check text-shad text-[20px]"></i>ISO 9001（品質）</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ③ EFFICIENT FACTORIES（数値）===== -->
+<section class="bg-black text-white py-[92px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3" data-reveal>Efficient Factories</p>
+    <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.4]" data-reveal>製品1個あたりの<br class="hidden md:block">環境負荷を、着実に削減。</h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+      <div data-reveal><p class="stat-num">−48%</p><p class="text-[14.5px] text-white/70 mt-3">電力消費</p></div>
+      <div data-reveal><p class="stat-num">−29.4%</p><p class="text-[14.5px] text-white/70 mt-3">ガス消費</p></div>
+      <div data-reveal><p class="stat-num">−50%</p><p class="text-[14.5px] text-white/70 mt-3">水使用量</p></div>
+      <div data-reveal><p class="stat-num">−29%</p><p class="text-[14.5px] text-white/70 mt-3">紙の使用</p></div>
+    </div>
+    <p class="text-[12px] text-white/40 mt-8" data-reveal>※ 製品1個あたり、2022年〜2024年の比較（2024年は1〜8月のデータ）。SHAD-NAD グローバル実績。</p>
+  </div>
+</section>
+
+<!-- ===== ④ ACTIONS ===== -->
+<section class="bg-white py-[88px]">
+  <div class="max-w-site mx-auto px-7">
+    <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3" data-reveal>Main Actions</p>
+    <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.4]" data-reveal>持続可能なものづくりへ、<br class="hidden md:block">具体的な行動を。</h2>
+    <div class="grid sm:grid-cols-2 gap-5 mt-11">
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="pillar-ic"><i class="ti ti-recycle"></i></span>
+        <h3 class="text-[18px] font-bold mt-4">サーキュラーエコノミー</h3>
+        <p class="text-[14.5px] text-neutral-600 leading-[2] mt-2">2025年には、容器603個・木製パレット730枚・220トン超の素材（鉄、段ボール、金属くず、フォーム、プラスチック、アルミ）を再利用し、埋立処分を回避しました。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="pillar-ic"><i class="ti ti-infinity"></i></span>
+        <h3 class="text-[18px] font-bold mt-4">サーキュラー素材</h3>
+        <p class="text-[14.5px] text-neutral-600 leading-[2] mt-2">REVIVE ラインに自転車の再生インナーチューブ、DAILY ファミリーに RPET（再生プラスチック）を採用。麻・パイナップル・柿由来など、新たな素材も模索しています。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="pillar-ic"><i class="ti ti-clock-hour-4"></i></span>
+        <h3 class="text-[18px] font-bold mt-4">長く使える設計</h3>
+        <p class="text-[14.5px] text-neutral-600 leading-[2] mt-2">高品質で時代に左右されないタイムレスなデザインにより、製品の使用寿命を長く保ちます。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7" data-reveal>
+        <span class="pillar-ic"><i class="ti ti-tools"></i></span>
+        <h3 class="text-[18px] font-bold mt-4">修理とメンテナンス</h3>
+        <p class="text-[14.5px] text-neutral-600 leading-[2] mt-2">補修部品とウェブ上のチュートリアルを提供し、ケースをより長く使い続けられるようにしています。</p>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-7 sm:col-span-2" data-reveal>
+        <span class="pillar-ic"><i class="ti ti-recycle-off"></i></span>
+        <h3 class="text-[18px] font-bold mt-4">製品ライフサイクル</h3>
+        <p class="text-[14.5px] text-neutral-600 leading-[2] mt-2">プラスチック製品は金属部品と組み合わせて設計し、使用後の適切な処理を見据えています。素材の分別を容易にし、回収を優先するサーキュラーエコノミーの原則に沿った設計です。包装材については Ecoembes の会員として、市場に出した包装の管理とリサイクルに責任を持って取り組んでいます。使用後は、お住まいの地域のリサイクル拠点での分別廃棄を推奨します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑤ SHAD FOREST ===== -->
+<section class="bg-mist py-[88px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div class="order-2 md:order-1" data-reveal>
+      <p class="font-disp font-semibold text-[14px] tracking-[.3em] uppercase text-shad mb-3">The SHAD Forest</p>
+      <h2 class="text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.45]">森を育て、<br class="hidden md:block">CO₂を埋め合わせる。</h2>
+      <p class="text-[15.5px] text-neutral-600 leading-[2.1] mt-6">SHAD は「SHAD Forest」を通じて植林に貢献し、自社の CO₂ 排出をオフセットしています。Tree-nation 上の SHAD コミュニティでは、あなたの木を贈ったり、シェアしたりすることもできます。</p>
+      <div class="inline-flex items-center gap-3 mt-7 border border-black/20 rounded-full px-5 py-2.5">
+        <i class="ti ti-trees text-shad text-[22px]"></i>
+        <span class="font-disp font-semibold tracking-[.08em] text-[15px]">SHAD FOREST × Tree-nation</span>
+      </div>
+    </div>
+    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-white order-1 md:order-2 flex items-center justify-center" data-reveal>
+      <i class="ti ti-trees text-[120px] text-shad/20"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑥ NOTE ===== -->
+<section class="bg-white py-[36px]">
+  <div class="max-w-[860px] mx-auto px-7">
+    <p class="text-[12px] text-neutral-400 leading-[1.9]">※ 掲載の取り組み・数値は SHAD（NAD S.L.／スペイン本社）の活動に基づきます。REVIVE・DAILY 等の素材施策は対象製品ラインでの取り組みです。最新の情報は本社の開示にあわせて更新します。</p>
+  </div>
+</section>
+
+<!-- ===== ⑦ CTA ===== -->
+<section class="bg-ink2 text-white py-[88px]">
+  <div class="max-w-site mx-auto px-7 text-center">
+    <h2 class="text-[clamp(26px,3.6vw,42px)] font-bold leading-[1.4]" data-reveal>良いものを、長く。</h2>
+    <div class="flex flex-wrap gap-3.5 justify-center mt-8" data-reveal>
+      <a href="/shad/products" class="btn bg-shad text-white hover:bg-[#c4151b]">製品を見る</a>
+      <a href="/shad/about" class="btn border border-white/45 text-white hover:border-white">ブランドを知る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/products" class="hover:text-white transition">TERRA</a></li><li><a href="/shad/products" class="hover:text-white transition">トップケース</a></li><li><a href="/shad/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/shad/products" class="hover:text-white transition">バッグ</a></li><li><a href="/shad/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/shad/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/about" class="hover:text-white transition">About</a></li><li><a href="/shad/about" class="hover:text-white transition">OEM</a></li><li><a href="/shad/awards" class="hover:text-white transition">Awards</a></li><li><a href="/shad/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/shad/movies" class="hover:text-white transition">Movies</a></li><li><a href="/shad/news" class="hover:text-white transition">News</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/shad/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/shad/fitting-kits" class="hover:text-white transition">フィッティングキットとは</a></li><li><a href="/shad/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/shad/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/shad/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/shad/company" class="hover:text-white transition">会社情報</a><a href="/shad/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/shad/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/shad/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/shad/js/main.js"></script>
+<script src="/shad/js/nav.js"></script>
+</body>
+</html>

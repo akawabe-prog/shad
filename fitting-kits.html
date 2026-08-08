@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>フィッティングキットとは｜SHAD JAPAN — バイクとケースをつなぐ取付キット</title>
+<meta name="description" content="SHADのフィッティングキットの仕組みを解説します。トップマスター、3P／4Pシステム、サイドバッグホルダー、クリックシステム、バックレストキットの違いと、ベースプレートの選び方。">
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="フィッティングキットとは｜SHAD JAPAN — バイクとケースをつなぐ取付キット">
+<meta property="og:description" content="SHADのフィッティングキットの仕組みを解説します。トップマスター、3P／4Pシステム、サイドバッグホルダー、クリックシステム、バックレストキットの違いと、ベースプレートの選び方。">
+<meta property="og:url" content="https://www.shad-japan.com/fitting-kits">
+<meta property="og:image" content="/shad/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="フィッティングキットとは｜SHAD JAPAN — バイクとケースをつなぐ取付キット">
+<meta name="twitter:description" content="SHADのフィッティングキットの仕組みを解説します。トップマスター、3P／4Pシステム、サイドバッグホルダー、クリックシステム、バックレストキットの違いと、ベースプレートの選び方。">
+<meta name="twitter:image" content="/shad/img/og_default.jpg">
+<link rel="canonical" href="https://www.shad-japan.com/fitting-kits">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#161616',mist:'#F4F3F1'},fontFamily:{disp:['"Barlow Condensed"','"Noto Sans JP"','sans-serif'],sans:['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif']},maxWidth:{site:'1180px'}}}};
+</script>
+<link rel="stylesheet" href="/shad/css/custom.css">
+<style>
+.chip{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;padding:8px 16px;border-radius:9999px;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.82);cursor:pointer;transition:.18s;white-space:nowrap;background:transparent;}
+.chip:hover{border-color:#fff;color:#fff;}
+.chip.on{background:#E31E24;color:#fff;border-color:#E31E24;}
+.filter-lb{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.cap-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:44px;line-height:1;letter-spacing:.02em;color:#E31E24;}
+.cap-num small{font-size:22px;letter-spacing:.04em;}
+/* 一覧カード：型番と容量を同じ行に置き、商品名は次の行で全幅を使う
+   （商品名が2行になっても容量がズレないようにするため） */
+.pcard-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.pcard-head .cap-num{font-size:34px;white-space:nowrap;}
+.pcard-head .cap-num small{font-size:18px;}
+/* 「23-32L」のような可変容量は桁が多いので一段小さく */
+.pcard-head .cap-num.cap-long{font-size:25px;letter-spacing:.01em;}
+.pcard-head .cap-num.cap-long small{font-size:15px;}
+.pcard-jp{min-height:2.5em;}
+
+.cat-tile{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:.18s;}
+.cat-img{width:84px;height:64px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid transparent;transition:.18s;}
+.cat-img img{width:100%;height:100%;object-fit:cover;}
+.cat-lb{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);transition:.18s;}
+.cat-tile:hover .cat-lb{color:#fff;}
+.cat-tile:hover .cat-img{transform:translateY(-2px);}
+.cat-tile.on .cat-img{border-color:#E31E24;}
+.cat-tile[data-f="ALL"] .cat-img{background:#191919;}
+.cat-tile.on .cat-lb{color:#fff;}
+.feat-card{flex:0 0 320px;display:flex;gap:14px;align-items:center;background:#1D1D1D;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;transition:.2s;}
+.feat-card:hover{border-color:rgba(227,30,36,.6);transform:translateY(-2px);}
+.feat-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:2.5px 8px;border-radius:4px;}
+.pbanner{grid-column:1/-1;position:relative;border-radius:14px;overflow:hidden;display:block;min-height:280px;}
+.pbanner video,.pbanner img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pbanner .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.05) 100%);}
+.pbanner .inner{position:relative;z-index:2;padding:34px 36px;max-width:540px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:280px;color:#fff;}
+.pbanner .kick{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#E31E24;display:flex;align-items:center;gap:10px;}
+.pbanner .kick:before{content:"";width:26px;height:2px;background:#E31E24;}
+.pbanner .ttl{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:34px;letter-spacing:.08em;text-transform:uppercase;line-height:1.15;margin-top:10px;}
+.pbanner .cp{font-size:14px;color:rgba(255,255,255,.85);margin-top:8px;}
+.pbanner .cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:#E31E24;color:#fff;border-radius:5px;padding:11px 22px;font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;transition:.2s;}
+.pbanner:hover .cta{background:#c4151b;}
+.feat-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;}
+.feat{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#5F5E5A;background:#F4F3F1;border-radius:6px;padding:3px 8px;line-height:1.4;}
+.feat .fi{color:#0E0E0E;font-size:13px;display:inline-flex;align-items:center;}
+.feat .fi .oimg{width:16px;height:16px;object-fit:contain;display:block;}
+.feat b{font-family:"Barlow Condensed",sans-serif;font-weight:600;color:#E31E24;letter-spacing:.02em;font-size:12.5px;}
+.new-badge{position:absolute;right:12px;top:12px;z-index:2;background:#E31E24;color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+/* 機能訴求バナー（左：テキスト / 右：ループ動画） */
+.kfbanner{display:grid;grid-template-columns:1fr;border-radius:14px;overflow:hidden;background:#0E0E0E;color:#fff;transition:.25s;}
+.kfbanner:hover{box-shadow:0 20px 46px rgba(0,0,0,.18);}
+.kfbanner-txt{display:flex;flex-direction:column;justify-content:center;padding:28px 30px;}
+.kfbanner-vid{position:relative;display:block;background:#fff;aspect-ratio:16/9;overflow:hidden;}
+.kfbanner-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s;}
+.kfbanner:hover .kfbanner-vid video{transform:scale(1.03);}
+@media(min-width:768px){
+  .kfbanner{grid-template-columns:1fr 1.35fr;align-items:stretch;}
+  .kfbanner-vid{aspect-ratio:auto;height:100%;min-height:250px;}
+  .kfbanner-txt{padding:34px 36px;}
+}
+</style>
+<style>
+.tech-ic{width:60px;height:60px;border-radius:14px;background:#F4F3F1;display:flex;align-items:center;justify-content:center;flex:none;}
+.tech-ic img{width:36px;height:36px;object-fit:contain;}
+.tech-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:rgba(227,30,36,.1);color:#E31E24;padding:3px 10px;border-radius:5px;}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/shad/" class="shrink-0">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden lg:flex gap-6 xl:gap-8 ml-auto font-disp uppercase tracking-[.12em] xl:tracking-[.14em] text-[14px] xl:text-[15.5px] font-medium text-white/80 whitespace-nowrap">
+      <li><a class="hover:text-white transition" href="/shad/products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/shad/fitment">For Your Motorcycle</a></li><li><a class="text-white" href="/shad/fitting-kits">Fitting Kits</a></li>
+      <li><a class="hover:text-white transition" href="/shad/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/shad/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/shad/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto lg:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="lg:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="lg:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/shad/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/shad/fitment" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/shad/fitting-kits" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Fitting Kits</a>
+    <a href="/shad/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/shad/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/shad/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/shad/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+<!-- ===== HERO（フルブリード） ===== -->
+<section class="fb-hero">
+  <img src="/shad/img/terra/ride2.webp" alt="SHADのトップケースを装着して走るバイク" fetchpriority="high">
+  <span class="fb-hero-mask"></span>
+  <div class="fb-hero-in">
+    <p class="lp-kick">For Your Motorcycle</p>
+    <h1 class="lp-display mt-3">Fitting Kits</h1>
+    <p class="lp-h2">バイクとケースの間に、<br class="hidden md:block">専用の設計がある。</p>
+    <p class="lp-lead max-w-[620px]">ケースやバッグと同時に、取付キットまで自社で開発。<br class="hidden md:block">
+      だから車体のデザインを崩さず、確実に固定できる。</p>
+    <div class="flex flex-wrap gap-3 mt-8">
+      <a href="/shad/fitment" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-search"></i>車種から探す</a>
+      <a href="#contents" class="btn border border-white/45 text-white hover:border-white"><i class="ti ti-layout-grid"></i>キットの種類</a>
+    </div>
+  </div>
+  <i class="ti ti-chevron-down fb-scroll" aria-hidden="true"></i>
+</section>
+
+<!-- ===== ページ内ナビ（カテゴリー型タイル） ===== -->
+<section class="fk-ix" id="contents">
+  <div class="max-w-site mx-auto px-7">
+    <div class="fk-ix-head">
+      <p class="fk-ix-lb">Contents</p>
+      <p class="fk-ix-cap">知りたいキットから、そのまま読み進められます。</p>
+    </div>
+    <div class="fk-ix-grid">
+      <a href="#how" class="fk-ix-card" data-reveal><span class="fk-ix-th fk-ix-th-icon"><i class="ti ti-stack-2"></i></span><span class="fk-ix-body"><span class="fk-ix-jp">装着の流れ</span><span class="fk-ix-en">How It Mounts</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#topmaster" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_top.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">トップマスター</span><span class="fk-ix-en">Top Case</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#side" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_3p.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">3Pシステム</span><span class="fk-ix-en">Side Case</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#side" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_4p.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">4Pシステム</span><span class="fk-ix-en">Side Case</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#sidebag" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_sidebag.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">サイドバッグ</span><span class="fk-ix-en">Side Bag</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#tankbag" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_tankbag.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">クリックシステム</span><span class="fk-ix-en">Tank Bag</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#backrest" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_backrest.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">バックレスト</span><span class="fk-ix-en">Backrest</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+      <a href="#locks" class="fk-ix-card" data-reveal><span class="fk-ix-th"><img src="/shad/img/fitting/type_lock.webp" alt="" loading="lazy"></span><span class="fk-ix-body"><span class="fk-ix-jp">SHADロック</span><span class="fk-ix-en">Handle Lock</span></span><i class="ti ti-arrow-down fk-ix-ar"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 追従ナビ（タイルを過ぎたら現れる） ===== -->
+<nav class="fk-nav" aria-label="ページ内ナビゲーション">
+  <div class="fk-nav-in">
+    <a href="#how" class="fk-nav-a">装着の流れ</a>
+    <a href="#topmaster" class="fk-nav-a">トップマスター</a>
+    <a href="#side" class="fk-nav-a">3P / 4Pシステム</a>
+    <a href="#sidebag" class="fk-nav-a">サイドバッグ</a>
+    <a href="#tankbag" class="fk-nav-a">タンクバッグ</a>
+    <a href="#backrest" class="fk-nav-a">バックレスト</a>
+    <a href="#locks" class="fk-nav-a">SHADロック</a>
+  </div>
+</nav>
+
+<!-- ===== 装着の流れ（フルブリード：3つの部品） ===== -->
+<section class="fb-band is-center scroll-mt-[132px]" id="how">
+  <img src="/shad/img/expandable/night.webp" alt="ケースを装着して夜間を走るバイク" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">How It Mounts</p>
+    <h2 class="lp-h2">装着は、3つの部品で完成する。</h2>
+    <div class="lp-figures mt-10">
+      <div data-reveal>
+        <p class="lp-fig-num">01</p>
+        <p class="lp-fig-lb"><b class="text-white">車種専用キット</b><br>車体に固定する土台</p>
+      </div>
+      <div data-reveal>
+        <p class="lp-fig-num">02</p>
+        <p class="lp-fig-lb"><b class="text-white">ベースプレート</b><br>ワンタッチ脱着の受け皿</p>
+      </div>
+      <div data-reveal>
+        <p class="lp-fig-num">03</p>
+        <p class="lp-fig-lb"><b class="text-white">ケース／バッグ</b><br>載せてキーでロック</p>
+      </div>
+    </div>
+    <p class="lp-note">プラスチック製ケースはベースプレート付属。TERRAシリーズは別売です。</p>
+  </div>
+</section>
+
+<!-- ===== トップマスター ===== -->
+<section class="fb-band is-right scroll-mt-[132px]" id="topmaster">
+  <img src="/shad/img/terra/urban.webp" alt="トップマスターキットでトップケースを装着したバイク" loading="lazy">
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Top Case</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">Top Master</h2>
+    <p class="lp-h2">トップケースの土台は、車種ごとに違う。</p>
+    <p class="lp-lead">車体の特性に合わせて個別に設計。だから仕上がりが美しく、着脱も簡単。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">車種・年式ごとに専用品番</span>
+      <span class="border border-white/25 rounded-full px-3 py-1">ベースプレートと組み合わせて装着</span>
+    </div>
+    <a href="/shad/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-7"><i class="ti ti-search"></i>自分の車種のキットを探す</a>
+  </div>
+</section>
+
+<!-- ベースプレート：製品写真で見せる -->
+<section class="bg-white py-[76px]">
+  <div class="max-w-site mx-auto px-7">
+    <h2 class="sec-ttl sec-ttl-quiet" data-reveal>Base Plates</h2>
+    <p class="text-[15px] text-neutral-600 leading-[2.05] mt-5 max-w-[720px]" data-reveal>
+      ケースを受け、ワンタッチ脱着を可能にする部品。サイズは3種類。大型ケースとTERRAにはアルミ製も選べます。</p>
+    <div class="fk-plates mt-8">
+      <div class="fk-plate" data-reveal>
+        <img src="/shad/img/fitting/plate_s.webp" alt="ベースプレートS" loading="lazy">
+        <span class="fk-plate-name">ベースプレート S</span>
+        <span class="fk-plate-code">D1B29PAR</span>
+        <span class="fk-plate-tag fk-in">ケースに付属</span>
+        <span class="fk-plate-fit">SH26 / SH29 / SH33 / SH34</span>
+        <span class="fk-plate-price">単品 2,200円（税込）</span>
+      </div>
+      <div class="fk-plate" data-reveal>
+        <img src="/shad/img/fitting/plate_m.webp" alt="ベースプレートM" loading="lazy">
+        <span class="fk-plate-name">ベースプレート M</span>
+        <span class="fk-plate-code">D1B40PAR</span>
+        <span class="fk-plate-tag fk-in">ケースに付属</span>
+        <span class="fk-plate-fit">SH39 / SH40 / SH40 CARGO / SH44 / SH45 / SH47 / TR41 / TR46</span>
+        <span class="fk-plate-price">単品 4,400円（税込）</span>
+      </div>
+      <div class="fk-plate" data-reveal>
+        <img src="/shad/img/fitting/plate_l.webp" alt="ベースプレートL" loading="lazy">
+        <span class="fk-plate-name">ベースプレート L</span>
+        <span class="fk-plate-code">D1B591PA</span>
+        <span class="fk-plate-tag fk-in">SH系ケースに付属</span>
+        <span class="fk-plate-fit">SH48 / SH51 / SH58X / SH59X ／ TR37 / TR48 / TR55</span>
+        <span class="fk-plate-price">単品 8,800円（税込）</span>
+      </div>
+      <div class="fk-plate" data-reveal>
+        <img src="/shad/img/fitting/plate_alu_black.webp" alt="アルミ製ベースプレートL ブラック" loading="lazy">
+        <span class="fk-plate-name">アルミ製ベースプレート L ブラック</span>
+        <span class="fk-plate-code">D1BTRPA2</span>
+        <span class="fk-plate-tag">別売</span>
+        <span class="fk-plate-fit">SH48 / SH51 / SH58X / SH59X ／ TERRA（TR37 / TR48 / TR55）</span>
+        <span class="fk-plate-price">25,300円（税込）</span>
+      </div>
+      <div class="fk-plate" data-reveal>
+        <img src="/shad/img/fitting/plate_alu.webp" alt="アルミ製ベースプレートL シルバー" loading="lazy">
+        <span class="fk-plate-name">アルミ製ベースプレート L シルバー</span>
+        <span class="fk-plate-code">D1BTRPA</span>
+        <span class="fk-plate-tag">別売</span>
+        <span class="fk-plate-fit">SH48 / SH51 / SH58X / SH59X ／ TERRA（TR37 / TR48 / TR55）</span>
+        <span class="fk-plate-price">27,500円（税込）</span>
+      </div>
+    </div>
+    <p class="fk-note mt-6" data-reveal><i class="ti ti-info-circle"></i>TERRAシリーズのトップケースはベースプレートが別売です。</p>
+  </div>
+</section>
+
+<!-- ===== 3P / 4P ===== -->
+<section class="fb-band scroll-mt-[132px]" id="side">
+  <img src="/shad/img/expandable/gs_full.webp" alt="3Pシステムでサイドケースを装着したバイク" loading="lazy">
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Side Case</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">3P / 4P System</h2>
+    <p class="lp-h2">サイドケースを、車体の一部に。</p>
+    <p class="lp-lead">市場最大径の20mmスチール。ケースを外せばステーだけが残り、シルエットを崩しません。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">20mm スチールフレーム</span>
+      <span class="border border-white/25 rounded-full px-3 py-1">粉体塗装メタリック仕上げ</span>
+      <span class="border border-white/25 rounded-full px-3 py-1">4Pはクロスバーで補強</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3P と 4P の違い -->
+<section class="bg-ink2 text-white py-[64px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-6">
+    <div class="fk-sys fk-sys-dark" data-reveal>
+      <img src="/shad/img/fitting/logo_3p.webp" alt="3P SYSTEM" class="fk-sys-logo" loading="lazy">
+      <h3>3Pシステム</h3>
+      <p class="text-[14.5px] text-white/70 leading-[2]">車体側に寄せた一体設計。軽さで重心変化を抑え、組み付けも簡単。</p>
+      <dl class="fk-spec fk-spec-dark">
+        <dt>対応ケース</dt><dd>SH23 / SH35 / SH36 / SH38X / TR27 / TR30 / TR40</dd>
+      </dl>
+    </div>
+    <div class="fk-sys fk-sys-dark" data-reveal>
+      <img src="/shad/img/fitting/logo_4p.webp" alt="4P SYSTEM" class="fk-sys-logo" loading="lazy">
+      <h3>4Pシステム</h3>
+      <p class="text-[14.5px] text-white/70 leading-[2]">TERRAのケース・バッグ用にバルセロナで開発。クロスバーで過酷な使用にも応える。</p>
+      <dl class="fk-spec fk-spec-dark">
+        <dt>対応ケース</dt><dd>TR47 / TR36 / TR30 / TR40 / SH23 / SH35 / SH36 / SH38X</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="max-w-site mx-auto px-7">
+    <p class="fk-note fk-note-dark mt-6" data-reveal><i class="ti ti-alert-triangle"></i>4Pに SH23・TR27 を装着する場合はアダプター <b>D1TR27FIR</b> が必要です。</p>
+    <a href="/shad/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-7" data-reveal><i class="ti ti-search"></i>車種に対応するサイドキットを探す</a>
+  </div>
+</section>
+
+<!-- ===== サイドバッグ（動画） ===== -->
+<section class="fb-band is-right scroll-mt-[132px]" id="sidebag">
+  <video src="/shad/media/reel_tr30.mp4" poster="/shad/img/products/cards/tr30.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Side Bag</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">Side Bag Holder</h2>
+    <p class="lp-h2">ソフトバッグの位置を、走行中も保つ。</p>
+    <p class="lp-lead">タイヤやマフラーへの接触を防ぐホルダー。車種専用・汎用・SRの3タイプ。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">対応：TR30 / TR40 / E48 / SL58 / SR38</span>
+    </div>
+  </div>
+</section>
+
+<section class="bg-mist py-[64px]">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-3 gap-6">
+    <div data-reveal>
+      <div class="lp-shot"><img src="/shad/img/fitting/sbh_mt09.webp" alt="車種専用サイドバッグホルダー" loading="lazy"></div>
+      <h3 class="text-[16.5px] font-bold mt-4">車種専用ホルダー</h3>
+      <p class="text-[13.5px] text-neutral-600 leading-[1.95] mt-1.5">バッグの位置と角度が決まり、走行中のズレを防ぐ。</p>
+    </div>
+    <div data-reveal>
+      <div class="lp-shot"><img src="/shad/img/fitting/sbh_universal.webp" alt="汎用サイドバッグホルダー" loading="lazy"></div>
+      <h3 class="text-[16.5px] font-bold mt-4">汎用ホルダー</h3>
+      <p class="text-[13.5px] text-neutral-600 leading-[1.95] mt-1.5">専用キットが無い車種向け。</p>
+    </div>
+    <div data-reveal>
+      <div class="lp-shot"><img src="/shad/img/fitting/sbh_sr.webp" alt="SRバッグフィッティングキット" loading="lazy"></div>
+      <h3 class="text-[16.5px] font-bold mt-4">SRキット</h3>
+      <p class="text-[13.5px] text-neutral-600 leading-[1.95] mt-1.5">クラシック／カフェレーサーにSRコレクションを。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== クリックシステム（動画） ===== -->
+<section class="fb-band scroll-mt-[132px]" id="tankbag">
+  <video src="/shad/media/reel_click.mp4" poster="/shad/img/fitting/type_tankbag.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <span class="fb-band-mask is-side"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Tank Bag</p>
+    <h2 class="lp-display text-[clamp(30px,4.4vw,52px)] mt-3">Click System</h2>
+    <p class="lp-h2">1秒で着けて、1秒で外す。</p>
+    <p class="lp-lead">給油口まわりのリングで装着。バッグがタンクに触れないから、塗装も傷めません。</p>
+    <div class="flex flex-wrap gap-2 mt-7 text-[12.5px] text-white/75">
+      <span class="border border-white/25 rounded-full px-3 py-1">対応：TR15CL / TR10 / E09C / E09CL / E09CM / E03C / E03CL / E02C</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== バックレスト ＆ ロック ===== -->
+<section class="bg-white py-[76px] scroll-mt-[132px]" id="backrest">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-2 gap-5" data-reveal>
+      <div class="lp-shot"><img src="/shad/img/fitting/backrest_kit.webp" alt="バックレストキットの装着例" loading="lazy"></div>
+      <div class="lp-shot"><img src="/shad/img/fitting/backrest_forza.webp" alt="スクーター用バックレストの装着例" loading="lazy"></div>
+    </div>
+    <div data-reveal>
+      <p class="fk-kick">Backrest</p>
+      <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-2">Backrest Kit</h2>
+      <p class="text-[17px] font-bold mt-5">タンデムの快適性を、背もたれで。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">スクーター用のほか、クラシック系の車体に合わせるタイプも。キットとあわせてバックレスト本体が必要です。</p>
+      <div class="flex flex-wrap gap-2 mt-5 text-[12.5px] text-neutral-500">
+        <span class="border border-black/15 rounded-full px-3 py-1">本体：D0RP00 / D0RP00N / D0RP05 / D0RP08</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-mist py-[68px] scroll-mt-[132px]" id="locks">
+  <div class="max-w-site mx-auto px-7 grid md:grid-cols-2 gap-12 items-center">
+    <div data-reveal>
+      <p class="fk-kick">Handle Lock</p>
+      <h2 class="font-disp font-semibold text-[30px] tracking-[.06em] uppercase leading-none mt-2">Shad Locks</h2>
+      <p class="text-[17px] font-bold mt-5">屈まない、汚れない。数秒の防犯。</p>
+      <p class="text-[15px] text-neutral-600 leading-[2.05] mt-3">SHADロックも車種ごとの取付キットで装着します。工具なしで施錠。</p>
+      <a href="/shad/product/lock" class="btn border border-black/15 bg-white hover:border-shad hover:text-shad mt-6">SHADロックを見る<i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="lp-shot" data-reveal><img src="/shad/img/fitting/type_lock.webp" alt="SHADロックの装着イメージ" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ===== CTA（フルブリード） ===== -->
+<section class="fb-band is-center">
+  <img src="/shad/img/terra/corner.webp" alt="サイドケースを装着して走るバイク" loading="lazy">
+  <span class="fb-band-mask"></span>
+  <div class="fb-band-in">
+    <p class="lp-kick">Find Your Kit</p>
+    <h2 class="lp-h2">あなたのバイクに必要なキットを、いま調べる。</h2>
+    <p class="lp-lead">メーカー・シリーズ・車種を選ぶだけ。装着できるケースと必要なキットの品番がわかります。</p>
+    <div class="flex flex-wrap gap-3 mt-8 justify-center">
+      <a href="/shad/fitment" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-search"></i>適合検索</a>
+      <a href="/shad/install-guide" class="btn border border-white/45 text-white hover:border-white"><i class="ti ti-tool"></i>取付ガイド</a>
+      <a href="/shad/faq" class="btn border border-white/45 text-white hover:border-white"><i class="ti ti-help-circle"></i>FAQ</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <div class="flex flex-wrap items-center justify-between gap-6">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+      <!-- SNS（ロゴ隣・目立たせ）-->
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-white/45 text-[12px] font-disp tracking-[.2em] uppercase mr-1">Follow</span>
+        <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </div>
+    </div>
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <!-- ご購入導線（カスタムジャパンEC）-->
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
+      <a href="https://moto.customjapan.net/" target="_blank" rel="noopener" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-shopping-bag"></i>ご購入の方はこちら</a>
+      <span class="text-[12px] text-white/45 leading-relaxed">※ご購入は日本総代理店の株式会社カスタムジャパンにて承ります。</span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/products" class="hover:text-white transition">TERRA</a></li><li><a href="/shad/products" class="hover:text-white transition">トップケース</a></li><li><a href="/shad/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/shad/products" class="hover:text-white transition">バッグ</a></li><li><a href="/shad/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/shad/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/about" class="hover:text-white transition">About</a></li><li><a href="/shad/about" class="hover:text-white transition">OEM</a></li><li><a href="/shad/awards" class="hover:text-white transition">Awards</a></li><li><a href="/shad/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/shad/movies" class="hover:text-white transition">Movies</a></li><li><a href="/shad/news" class="hover:text-white transition">News</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/shad/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/shad/fitting-kits" class="hover:text-white transition">フィッティングキットとは</a></li><li><a href="/shad/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/shad/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/shad/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/shad/company" class="hover:text-white transition">会社情報</a><a href="/shad/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/shad/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/shad/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/shad/js/main.js"></script>
+<script>
+/* ページ内ナビ：いま見ているセクションのリンクに下線を出す */
+(function () {
+  var links = [].slice.call(document.querySelectorAll(".fk-nav-a"));
+  if (!links.length) return;
+  var secs = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute("href"));
+    if (sec) secs.push({ a: a, sec: sec });
+  });
+  if (!secs.length) return;
+
+  var bar = document.querySelector(".fk-nav");
+  var tiles = document.querySelector(".fk-ix");
+
+  function sync() {
+    // タイル（上部の案内）を過ぎてから追従ナビを出す
+    if (bar && tiles) {
+      var passed = tiles.getBoundingClientRect().bottom < 72;
+      bar.classList.toggle("is-pinned", passed);
+    }
+
+    // ナビの下端をすこし超えて入ってきたセクションを「現在地」とする
+    var line = 150, cur = null;
+    secs.forEach(function (o) {
+      var r = o.sec.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) cur = o.a;
+    });
+    links.forEach(function (a) { a.classList.toggle("is-current", a === cur); });
+  }
+  window.__fkNavSync = sync;                 // 動作確認用
+
+  var last = 0, waiting = false;
+  window.addEventListener("scroll", function () {
+    var now = Date.now();
+    if (now - last > 120) { last = now; sync(); }
+    else if (!waiting) { waiting = true; setTimeout(function () { waiting = false; sync(); }, 120); }
+  }, { passive: true });
+  window.addEventListener("resize", sync);
+  sync();
+})();
+</script>
+<script src="/shad/js/nav.js"></script>
+</body>
+</html>

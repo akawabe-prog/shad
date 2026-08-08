@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜SHAD JAPAN</title>
+<meta name="description" content="SHAD JAPAN へのお問い合わせ。まずはよくあるご質問で解決できるかご確認ください。解決しない場合は、用件に応じたフォームからお気軽にご連絡ください。">
+
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="お問い合わせ｜SHAD JAPAN">
+<meta property="og:description" content="SHAD JAPAN へのお問い合わせ。まずはよくあるご質問で解決できるかご確認ください。解決しない場合は、用件に応じたフォームからお気軽にご連絡ください。">
+<meta property="og:url" content="https://www.shad-japan.com/contact">
+<meta property="og:image" content="/shad/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="お問い合わせ｜SHAD JAPAN">
+<meta name="twitter:description" content="SHAD JAPAN へのお問い合わせ。まずはよくあるご質問で解決できるかご確認ください。解決しない場合は、用件に応じたフォームからお気軽にご連絡ください。">
+<meta name="twitter:image" content="/shad/img/og_default.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { shad: '#E31E24', ink: '#0E0E0E', ink2: '#161616', mist: '#F4F3F1' },
+      fontFamily: {
+        disp: ['"Barlow Condensed"', '"Noto Sans JP"', 'sans-serif'],
+        sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+      },
+      maxWidth: { site: '1180px' },
+    },
+  },
+};
+</script>
+<link rel="stylesheet" href="/shad/css/custom.css">
+<style>
+/* --- self-service deflection cards --- */
+.dfl{display:block;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:18px 18px 16px;transition:.18s;background:#fff;}
+.dfl:hover{border-color:#E31E24;box-shadow:0 8px 30px rgba(0,0,0,.07);transform:translateY(-2px);}
+.dfl .ic{width:42px;height:42px;border-radius:10px;background:#FBE9EA;color:#E31E24;display:flex;align-items:center;justify-content:center;font-size:22px;}
+/* --- form --- */
+.lbl{display:block;font-size:13.5px;font-weight:700;color:#222;margin-bottom:7px;}
+.lbl .req{color:#E31E24;font-size:11px;font-weight:700;margin-left:6px;vertical-align:1px;}
+.lbl .opt{color:#999;font-size:11px;font-weight:500;margin-left:6px;}
+.hint{font-size:12px;color:#888;margin-top:5px;line-height:1.6;}
+.fld{width:100%;border:1px solid rgba(0,0,0,.2);border-radius:10px;padding:13px 15px;font-size:15px;color:#111;background:#fff;transition:.15s;}
+.fld::placeholder{color:#bbb;}
+.fld:hover{border-color:rgba(0,0,0,.35);}
+.fld:focus{outline:none;border-color:#E31E24;box-shadow:0 0 0 3px rgba(227,30,36,.15);}
+textarea.fld{min-height:150px;resize:vertical;line-height:1.8;}
+select.fld{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6l6 -6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:42px;cursor:pointer;}
+.field.invalid .fld{border-color:#E31E24;background:#FFF7F7;}
+.errmsg{display:none;color:#E31E24;font-size:12.5px;font-weight:500;margin-top:6px;align-items:center;gap:5px;}
+.field.invalid .errmsg{display:flex;}
+.chk{display:flex;gap:11px;align-items:flex-start;cursor:pointer;font-size:13.5px;color:#444;line-height:1.7;}
+.chk input{appearance:none;width:20px;height:20px;border:1.5px solid rgba(0,0,0,.3);border-radius:5px;flex:none;margin-top:1px;cursor:pointer;transition:.15s;position:relative;}
+.chk input:checked{background:#E31E24;border-color:#E31E24;}
+.chk input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+.chk input:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(227,30,36,.2);}
+.field.invalid .chk input{border-color:#E31E24;}
+/* contextual FAQ hint inside form */
+.ctxbox{display:none;background:#FBE9EA;border:1px solid rgba(227,30,36,.25);border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13px;line-height:1.8;}
+.ctxbox.on{display:block;}
+.ctxbox a{color:#E31E24;font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+.aside-card{border:1px solid rgba(0,0,0,.1);border-radius:16px;padding:24px;}
+@media (min-width:1024px){.sticky-side{position:sticky;top:96px;}}
+</style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/shad/" class="shrink-0">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden lg:flex gap-6 xl:gap-8 ml-auto font-disp uppercase tracking-[.12em] xl:tracking-[.14em] text-[14px] xl:text-[15.5px] font-medium text-white/80 whitespace-nowrap">
+      <li><a class="hover:text-white transition" href="/shad/products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/shad/fitment">For Your Motorcycle</a></li><li><a class="hover:text-white transition" href="/shad/fitting-kits">Fitting Kits</a></li>
+      <li><a class="hover:text-white transition" href="/shad/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/shad/about">Brand</a></li>
+      <li><a class="hover:text-white transition" href="/shad/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto lg:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="lg:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="lg:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/shad/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/shad/fitment" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/shad/fitting-kits" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Fitting Kits</a>
+    <a href="/shad/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/shad/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Brand</a>
+    <a href="/shad/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/shad/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+
+<!-- ===== HEADER ===== -->
+<header class="bg-ink text-white">
+  <div class="max-w-site mx-auto px-7 pt-14 pb-12">
+    <p class="font-disp font-semibold text-[14px] tracking-[.32em] uppercase text-shad mb-3 flex items-center gap-3"><span class="inline-block w-[30px] h-[2px] bg-shad"></span>Support</p>
+    <h1 class="text-[clamp(34px,5vw,56px)] font-bold leading-[1.15]">お問い合わせ</h1>
+    <p class="text-white/70 text-[15px] mt-4 max-w-[680px]">ご質問の多くは、よくあるご質問（FAQ）で解決できます。まずは下記のセルフサービスをご確認ください。解決しない場合は、用件に合ったフォームからお気軽にご連絡ください。</p>
+  </div>
+</header>
+
+<!-- ===== ① セルフサービス（問い合わせ削減）===== -->
+<section class="max-w-site mx-auto px-7 pt-[60px]">
+  <div class="flex items-end justify-between gap-4 flex-wrap mb-6">
+    <div>
+      <p class="font-disp font-semibold text-[12px] tracking-[.28em] uppercase text-shad mb-1.5">Before you ask</p>
+      <h2 class="text-[24px] font-bold leading-tight">まずは、こちらで解決できないかご確認ください</h2>
+      <p class="text-[13.5px] text-neutral-500 mt-2">お問い合わせいただく前にご確認いただくと、その場ですぐに解決できることがあります。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 検索風（FAQへ誘導）-->
+  <form action="faq" method="get" class="relative max-w-[560px] mb-8" role="search" aria-label="よくあるご質問を検索">
+    <i class="ti ti-search absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 text-[19px]"></i>
+    <input type="search" name="q" placeholder="キーワードでFAQを探す（例：取り付け、防水、返品）" class="fld !pl-12 !py-3.5" aria-label="FAQ検索キーワード">
+    <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-shad text-white font-disp font-semibold tracking-[.1em] uppercase text-[13px] px-4 py-2 rounded-md hover:bg-[#c4151b] transition">検索</button>
+  </form>
+
+  <!-- セルフサービス・カード -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <a href="/shad/fitment" class="dfl group">
+      <span class="ic"><i class="ti ti-motorbike"></i></span>
+      <span class="block font-bold text-[15px] mt-3.5">適合を確認したい</span>
+      <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">メーカー・車種・年式から、対応製品と専用キットを検索できます。</span>
+      <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">あなたのバイクから探す<i class="ti ti-arrow-right"></i></span>
+    </a>
+    <a href="/shad/faq#buy" class="dfl group">
+      <span class="ic"><i class="ti ti-shopping-bag"></i></span>
+      <span class="block font-bold text-[15px] mt-3.5">購入・お届け・送料</span>
+      <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">価格・支払方法・送料・納期・キャンセルについてのご質問。</span>
+      <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">FAQを見る<i class="ti ti-arrow-right"></i></span>
+    </a>
+    <a href="/shad/faq#return" class="dfl group">
+      <span class="ic"><i class="ti ti-arrow-back-up"></i></span>
+      <span class="block font-bold text-[15px] mt-3.5">返品・交換・不具合</span>
+      <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">届いた商品の返品・交換や、破損・不具合があった場合の手順。</span>
+      <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">FAQを見る<i class="ti ti-arrow-right"></i></span>
+    </a>
+    <a href="/shad/store-locator" class="dfl group">
+      <span class="ic"><i class="ti ti-map-pin"></i></span>
+      <span class="block font-bold text-[15px] mt-3.5">実物を見たい・相談したい</span>
+      <span class="block text-[13px] text-neutral-500 mt-1.5 leading-relaxed">展示店・SHAD BASE で、実物の確認や取り付け相談ができます。</span>
+      <span class="inline-flex items-center gap-1 text-shad text-[12.5px] font-bold mt-3 group-hover:gap-2 transition-all">店舗を探す<i class="ti ti-arrow-right"></i></span>
+    </a>
+  </div>
+
+  <div class="mt-6 flex items-center gap-2 text-[13.5px] text-neutral-600">
+    <i class="ti ti-help-circle text-shad text-[18px]"></i>
+    <span>そのほかのご質問は <a href="/shad/faq" class="text-shad font-bold underline underline-offset-2 hover:text-[#c4151b]">よくあるご質問（FAQ）一覧</a> をご覧ください。</span>
+  </div>
+</section>
+
+<!-- ===== ② お問い合わせフォーム ===== -->
+<section class="max-w-site mx-auto px-7 pt-[64px] pb-[80px]">
+  <div class="border-t border-black/10 pt-[56px] grid lg:grid-cols-[1fr_360px] gap-12">
+
+    <!-- フォーム -->
+    <div>
+      <p class="font-disp font-semibold text-[12px] tracking-[.28em] uppercase text-shad mb-1.5">Contact form</p>
+      <h2 class="text-[24px] font-bold leading-tight">フォームでお問い合わせ</h2>
+      <p class="text-[13.5px] text-neutral-500 mt-2 mb-1"><span class="text-shad font-bold">*</span> は必須項目です。いただいた内容は、日本総代理店 株式会社カスタムジャパンが対応いたします。</p>
+
+      <!-- 送信完了パネル（送信後に表示）-->
+      <div id="okPanel" class="hidden bg-mist rounded-2xl p-8 mt-6 text-center" role="status" aria-live="polite">
+        <div class="w-14 h-14 rounded-full bg-shad text-white flex items-center justify-center mx-auto text-[28px]"><i class="ti ti-check"></i></div>
+        <h3 class="text-[20px] font-bold mt-4">お問い合わせを受け付けました</h3>
+        <p class="text-[14px] text-neutral-600 mt-2 leading-relaxed">ご入力のメールアドレス宛に受付確認メールをお送りします。<br>通常 <b>2〜3 営業日以内</b> に担当者よりご返信いたします（土日祝・年末年始を除く）。</p>
+        <a href="/shad/" class="btn border border-black/25 text-ink hover:bg-white mt-6"><i class="ti ti-home"></i>トップへ戻る</a>
+      </div>
+
+      <form id="cform" class="mt-7 space-y-6" action="contact.php" method="post" novalidate>
+        <!-- スパム対策（人間には非表示。入力があれば送信を無視）-->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+          <label>ウェブサイト<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <!-- 用件 -->
+        <div class="field" data-field>
+          <label class="lbl" for="topic">お問い合わせ種別<span class="req">必須</span></label>
+          <select id="topic" name="topic" class="fld" required aria-describedby="topic-err">
+            <option value="">選択してください</option>
+            <option value="product">製品について（仕様・使い方）</option>
+            <option value="fit">適合・取り付けについて</option>
+            <option value="order">購入・お届け・返品について</option>
+            <option value="warranty">保証・不具合・補修部品について</option>
+            <option value="dealer">取扱店・SHAD BASE になりたい</option>
+            <option value="press">取材・OEM・その他</option>
+          </select>
+          <p class="errmsg" id="topic-err"><i class="ti ti-alert-circle"></i>お問い合わせ種別を選択してください。</p>
+          <!-- 種別に応じた文脈ヘルプ（FAQへ誘導して問い合わせを削減）-->
+          <div class="ctxbox" id="ctxbox" aria-live="polite"></div>
+        </div>
+
+        <!-- 名前 -->
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="field" data-field>
+            <label class="lbl" for="name">お名前<span class="req">必須</span></label>
+            <input type="text" id="name" name="name" class="fld" required autocomplete="name" placeholder="山田 太郎" aria-describedby="name-err">
+            <p class="errmsg" id="name-err"><i class="ti ti-alert-circle"></i>お名前をご入力ください。</p>
+          </div>
+          <div class="field" data-field>
+            <label class="lbl" for="company">会社名・店舗名<span class="opt">任意</span></label>
+            <input type="text" id="company" name="company" class="fld" autocomplete="organization" placeholder="法人・店舗の方のみ">
+          </div>
+        </div>
+
+        <!-- 連絡先 -->
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="field" data-field>
+            <label class="lbl" for="email">メールアドレス<span class="req">必須</span></label>
+            <input type="email" id="email" name="email" class="fld" required autocomplete="email" inputmode="email" placeholder="example@email.com" aria-describedby="email-err">
+            <p class="errmsg" id="email-err"><i class="ti ti-alert-circle"></i>メールアドレスを正しい形式でご入力ください。</p>
+          </div>
+          <div class="field" data-field>
+            <label class="lbl" for="tel">電話番号<span class="opt">任意</span></label>
+            <input type="tel" id="tel" name="tel" class="fld" autocomplete="tel" inputmode="tel" placeholder="090-1234-5678">
+            <p class="hint">お急ぎの場合や、お電話での折り返しをご希望の場合にご入力ください。</p>
+          </div>
+        </div>
+
+        <!-- 適合/製品 補助フィールド -->
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="field" data-field>
+            <label class="lbl" for="bike">車種（メーカー・車種・年式）<span class="opt">任意</span></label>
+            <input type="text" id="bike" name="bike" class="fld" placeholder="例：HONDA CB650R 2023年">
+            <p class="hint" id="bikeHint">適合・取り付けのご相談は、ご記入いただくと回答がスムーズです。</p>
+          </div>
+          <div class="field" data-field>
+            <label class="lbl" for="product">製品名・品番<span class="opt">任意</span></label>
+            <input type="text" id="product" name="product" class="fld" placeholder="例：SH38X / D0B38100">
+            <p class="hint">わかる範囲で。製品ページや箱に記載の品番が分かると確実です。</p>
+          </div>
+        </div>
+
+        <!-- 本文 -->
+        <div class="field" data-field>
+          <label class="lbl" for="message">お問い合わせ内容<span class="req">必須</span></label>
+          <textarea id="message" name="message" class="fld" required minlength="10" maxlength="2000" placeholder="お困りの内容や、ご質問をできるだけ具体的にご記入ください。" aria-describedby="message-err"></textarea>
+          <div class="flex justify-between items-start">
+            <p class="errmsg" id="message-err"><i class="ti ti-alert-circle"></i>10文字以上でご入力ください。</p>
+            <span class="text-[12px] text-neutral-400 mt-1.5 ml-auto"><span id="count">0</span> / 2000</span>
+          </div>
+        </div>
+
+        <!-- 同意 -->
+        <div class="field" data-field>
+          <label class="chk">
+            <input type="checkbox" id="agree" name="agree" required aria-describedby="agree-err">
+            <span><a href="/shad/privacy" class="text-shad underline underline-offset-2">プライバシーポリシー</a>に同意のうえ送信します。ご入力いただいた個人情報は、お問い合わせ対応の目的にのみ利用します。</span>
+          </label>
+          <p class="errmsg !ml-[31px]" id="agree-err"><i class="ti ti-alert-circle"></i>送信にはご同意が必要です。</p>
+        </div>
+
+        <!-- 送信 -->
+        <div class="pt-1">
+          <button type="submit" class="btn bg-shad text-white hover:bg-[#c4151b] w-full sm:w-auto justify-center"><i class="ti ti-send"></i>この内容で送信する</button>
+          <p class="hint mt-3">送信前に、入力内容（特にメールアドレス）をご確認ください。</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- サイドバー（補助情報）-->
+    <aside class="lg:pl-2">
+      <div class="sticky-side space-y-5">
+        <div class="aside-card bg-mist border-0">
+          <h3 class="font-bold text-[15px] flex items-center gap-2"><i class="ti ti-clock-hour-4 text-shad text-[20px]"></i>ご返信について</h3>
+          <p class="text-[13px] text-neutral-600 mt-2.5 leading-relaxed">通常 <b>2〜3 営業日以内</b> にご返信します。土日祝・年末年始、お問い合わせが集中する時期はお時間をいただく場合があります。</p>
+        </div>
+
+        <div class="aside-card">
+          <h3 class="font-bold text-[15px] flex items-center gap-2"><i class="ti ti-pencil-check text-shad text-[20px]"></i>事前にご準備いただくと早いもの</h3>
+          <ul class="text-[13px] text-neutral-600 mt-3 space-y-2 leading-relaxed">
+            <li class="flex gap-2"><i class="ti ti-point-filled text-shad text-[10px] mt-1.5"></i>お乗りの車種・年式</li>
+            <li class="flex gap-2"><i class="ti ti-point-filled text-shad text-[10px] mt-1.5"></i>製品名・品番（箱や製品ページに記載）</li>
+            <li class="flex gap-2"><i class="ti ti-point-filled text-shad text-[10px] mt-1.5"></i>保証に関するご相談は同梱の<b>色紙（識別番号）</b></li>
+            <li class="flex gap-2"><i class="ti ti-point-filled text-shad text-[10px] mt-1.5"></i>不具合は状況がわかる写真</li>
+          </ul>
+        </div>
+
+        <div class="aside-card">
+          <h3 class="font-bold text-[15px] flex items-center gap-2"><i class="ti ti-message-2 text-shad text-[20px]"></i>その他の窓口</h3>
+          <div class="mt-3 space-y-3 text-[13px]">
+            <a href="/shad/store-locator" class="flex items-start gap-2.5 text-neutral-700 hover:text-shad transition">
+              <i class="ti ti-map-pin text-[18px] mt-0.5"></i><span><b class="block">取扱店・SHAD BASE で相談</b><span class="text-neutral-500">実物確認・取り付け相談はこちら</span></span>
+            </a>
+            <a href="/shad/faq" class="flex items-start gap-2.5 text-neutral-700 hover:text-shad transition">
+              <i class="ti ti-help-circle text-[18px] mt-0.5"></i><span><b class="block">よくあるご質問（FAQ）</b><span class="text-neutral-500">多くのご質問はこちらで解決します</span></span>
+            </a>
+          </div>
+          <!-- ▼ 電話窓口を設置する場合は、実際の番号・受付時間に差し替えてください
+          <div class="mt-4 pt-4 border-t border-black/10 text-[13px]">
+            <b class="block">お電話でのお問い合わせ</b>
+            <a href="tel:0000000000" class="text-shad font-bold text-[18px]">00-0000-0000</a>
+            <span class="block text-neutral-500">受付：平日 10:00–17:00</span>
+          </div>
+          -->
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/products" class="hover:text-white transition">TERRA</a></li><li><a href="/shad/products" class="hover:text-white transition">トップケース</a></li><li><a href="/shad/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/shad/products" class="hover:text-white transition">バッグ</a></li><li><a href="/shad/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/shad/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Brand</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/about" class="hover:text-white transition">About</a></li><li><a href="/shad/about" class="hover:text-white transition">OEM</a></li><li><a href="/shad/awards" class="hover:text-white transition">Awards</a></li><li><a href="/shad/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/shad/movies" class="hover:text-white transition">Movies</a></li><li><a href="/shad/news" class="hover:text-white transition">News</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/shad/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/shad/fitting-kits" class="hover:text-white transition">フィッティングキットとは</a></li><li><a href="/shad/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/shad/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/shad/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="#" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="#" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/shad/company" class="hover:text-white transition">会社情報</a><a href="/shad/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/shad/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/shad/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('cform');
+  if(!form) return;
+
+  /* --- 種別に応じた文脈ヘルプ（FAQ誘導で問い合わせ削減）--- */
+  var CTX = {
+    product : '製品の仕様・使い方の多くは <a href="/shad/faq#product">製品についてのFAQ</a> で解決できます。',
+    fit     : 'まず <a href="/shad/fitment">車種適合検索</a> で対応製品をご確認ください。取り付け手順は <a href="/shad/install-guide">取付ガイド</a> と <a href="/shad/faq#fit">適合・取り付けFAQ</a> をご覧ください。',
+    order   : '価格・支払方法・送料・納期・キャンセルは <a href="/shad/faq#buy">購入・お届けFAQ</a> に記載があります。ご注文後の変更はカスタムジャパンECのマイページからも行えます。',
+    warranty: '保証・不具合・補修部品については <a href="/shad/faq#warranty">保証・修理FAQ</a> と <a href="/shad/warranty">保証について</a> をご確認ください。お問い合わせ時は同梱の<b>色紙（識別番号）</b>をご準備ください。',
+    dealer  : '取扱店・SHAD BASE のお申し込みは、会社名・店舗名・ご担当者名を本文にご記入ください。担当者より折り返しご案内します。',
+    press   : '取材・OEM・その他のご相談は、内容を本文に具体的にご記入ください。'
+  };
+  var topic = document.getElementById('topic');
+  var ctxbox = document.getElementById('ctxbox');
+  var bike = document.getElementById('bike');
+  var bikeHint = document.getElementById('bikeHint');
+  topic.addEventListener('change', function(){
+    var v = topic.value;
+    if(CTX[v]){ ctxbox.innerHTML = '<i class="ti ti-bulb" style="color:#E31E24"></i> ' + CTX[v]; ctxbox.classList.add('on'); }
+    else { ctxbox.classList.remove('on'); }
+    /* 適合相談のときは車種欄を強調 */
+    if(v==='fit'){ bike.setAttribute('required','required'); bikeHint.innerHTML='<b style="color:#E31E24">適合のご相談には車種のご記入をお願いします。</b>'; }
+    else { bike.removeAttribute('required'); bikeHint.textContent='適合・取り付けのご相談は、ご記入いただくと回答がスムーズです。'; clearError(bike.closest('[data-field]')); }
+  });
+
+  /* --- 文字数カウンター --- */
+  var msg = document.getElementById('message'), count = document.getElementById('count');
+  msg.addEventListener('input', function(){ count.textContent = msg.value.length; });
+
+  /* --- バリデーション --- */
+  function fieldOf(el){ return el.closest('[data-field]'); }
+  function setError(f){ if(f) f.classList.add('invalid'); }
+  function clearError(f){ if(f) f.classList.remove('invalid'); }
+  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function validate(el){
+    var f = fieldOf(el), ok = true;
+    if(el.hasAttribute('required')){
+      if(el.type==='checkbox'){ ok = el.checked; }
+      else { ok = el.value.trim() !== ''; }
+    }
+    if(ok && el.type==='email' && el.value.trim()!=='') ok = isEmail(el.value.trim());
+    if(ok && el===msg && msg.value.trim()!=='') ok = msg.value.trim().length >= 10;
+    ok ? clearError(f) : setError(f);
+    return ok;
+  }
+
+  /* 入力中・blur で個別検証 */
+  form.querySelectorAll('.fld, .chk input').forEach(function(el){
+    el.addEventListener('blur', function(){ validate(el); });
+    el.addEventListener('input', function(){ if(fieldOf(el).classList.contains('invalid')) validate(el); });
+    if(el.type==='checkbox') el.addEventListener('change', function(){ validate(el); });
+  });
+
+  /* 送信 */
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var fields = [topic, document.getElementById('name'), document.getElementById('email'), msg, document.getElementById('agree')];
+    if(topic.value==='fit') fields.push(bike);
+    var firstBad = null;
+    fields.forEach(function(el){ if(!validate(el) && !firstBad) firstBad = el; });
+    if(firstBad){
+      firstBad.focus();
+      firstBad.closest('[data-field]').scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    /* 入力OK → サーバー（contact.php）へ送信。完了時 thanks.html にリダイレクトされる */
+    var btn = form.querySelector('button[type="submit"]');
+    if(btn){ btn.disabled = true; btn.style.opacity = '.6'; btn.innerHTML = '<i class="ti ti-loader-2"></i>送信しています…'; }
+    form.submit();
+  });
+})();
+</script>
+<script src="/shad/js/nav.js"></script>
+</body>
+</html>
