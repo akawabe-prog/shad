@@ -767,19 +767,42 @@ function buildTopSection(bike) {
     return sec;
   }
 
+  /* キット名の整理
+     ① 車種列挙（…シーシーバー取付(レブル250/500/1100/…)）はセクション見出しと重複するので省く
+     ② 「※プレート別／※プレート付」は同じ取付方法の“買い方の違い”なので、
+        キット名は1行にまとめ、買い方だけを枝分かれで見せる（同じ名前が2行並ばないように） */
+  const kitBaseName = n => n.replace(/取付\s*[（(][^）)]*[）)]/, '取付')
+                            .replace(/\s*※\s*プレート[^\s]*/, '').trim();
+  const PLATE_VARIANT = { '別': 'ベースプレート別売', '付': 'ベースプレート付属' };
+  const kitVariant = n => {
+    const m = n.match(/※\s*プレート(別|付)/);
+    return m ? PLATE_VARIANT[m[1]] : '';
+  };
+
+  const groups = new Map();
+  kits.forEach(kit => {
+    const key = kitBaseName(kit.name);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(kit);
+  });
+
   const block = el('div', 'kit-block');
-  block.appendChild(el('div', 'kit-line', kits.length > 1
+  block.appendChild(el('div', 'kit-line', groups.size > 1
     ? '取付には車種専用フィッティングキット（いずれか）が必要です：'
     : '取付には車種専用フィッティングキットが必要です：'));
-  kits.forEach(kit => {
+  groups.forEach((variants, baseName) => {
     const kitLine = el('div', 'kit-line');
-    kitLine.appendChild(el('span', 'kit-name', kit.name));
-    const btn = document.createElement('a');
-    btn.href = kit.url;
-    btn.target = '_blank';
-    btn.className = 'kit-btn';
-    btn.textContent = '商品を見る ›';
-    kitLine.appendChild(btn);
+    kitLine.appendChild(el('span', 'kit-name', baseName));
+    variants.forEach(kit => {
+      const label = variants.length > 1 ? kitVariant(kit.name) : '';
+      if (label) kitLine.appendChild(el('span', 'kit-variant', label));
+      const btn = document.createElement('a');
+      btn.href = kit.url;
+      btn.target = '_blank';
+      btn.className = 'kit-btn';
+      btn.textContent = '商品を見る ›';
+      kitLine.appendChild(btn);
+    });
     block.appendChild(kitLine);
   });
 
