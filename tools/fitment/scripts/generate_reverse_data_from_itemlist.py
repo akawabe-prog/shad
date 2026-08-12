@@ -266,9 +266,13 @@ def remap_mount_kit(model_name, known_models):
     stem = re.match(r"^[^\d]*", tokens[0]).group(0)
     keywords = []
     for t in tokens:
-        keywords.append(t)
-        if stem and re.match(r"^[\d]", t):
-            keywords.append(stem + t)
+        if re.match(r"^[\d]", t):
+            # 排気量だけのトークン（500・1100 など）はそのままでは他車種に誤ヒットする
+            # （例: NX500・Z1100）。必ず車名を補ってから照合する。
+            if stem:
+                keywords.append(stem + t)
+        else:
+            keywords.append(t)
     hits = []
     for km in known_models:
         if any(k and k in km for k in keywords if len(k) >= 3):

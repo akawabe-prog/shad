@@ -1,7 +1,8 @@
 /* =========================================================
    SHAD JAPAN — ec_links.js  ※自動生成 (tools/enrich_ec_products.js)
    「この商品を購入する」ボタンの飛び先 URL マップ。空 = 準備中（無効表示）。
-   詳細データ（MSRP/在庫/タイトル/画像）は ec_products.js / ec_products.json。
+   ※価格はここに置かない（ブランドサイトは定価のみ表示）。販売価格を含む詳細データは
+   data-source/ec_internal/ 配下＝公開フォルダの外にあり、サイトは読み込みません。
    ========================================================= */
 window.SHAD_EC = {
   "SH23": "https://moto.customjapan.net/i/13210847",

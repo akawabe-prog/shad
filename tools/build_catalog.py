@@ -53,6 +53,12 @@ EXCLUDE_DISCONTINUED = True   # CJ廃番 = 1 を除外
 EXCLUDE_SETS = True           # セット = 1 を除外
 EXCLUDE_INTERNAL_PREFIX = ("YY", "ZZ")  # 社内用品番の接頭辞
 
+# 商品ステータスコードで販売終了を除外する（CJ廃番フラグが未設定の取りこぼし対策）。
+#   DC1=取扱終了 / DC2=廃番 / DC4=（訳あり品の終了）… ECのAPIも notForSale=True を返す
+# 在庫状況は表示に影響させない：SE=◯在庫あり / SF=△残りわずか / SO=入荷待 /
+#   BO=取寄 / SL=★在庫限り はすべて表示する
+EXCLUDE_STATUS_CODES = {"DC1", "DC2", "DC4"}
+
 # ★ サイト側だけで廃番扱いにする品番（マスターのCJ廃番がまだ立っていないもの）
 #    キー＝品番、値＝理由（メモとしてビルド時に表示されます）
 #    マスター側で CJ廃番=1 になったら、この行は消してかまいません。
@@ -276,6 +282,8 @@ def is_excluded(row):
     """除外ルールに該当するか。（理由の文字列 or None）"""
     if EXCLUDE_DISCONTINUED and cell(row, "CJ廃番") == "1":
         return "廃盤(CJ廃番)"
+    if cell(row, "商品ステータスコード") in EXCLUDE_STATUS_CODES:
+        return "販売終了(ステータス %s)" % cell(row, "商品ステータスコード")
     if EXCLUDE_SETS and cell(row, "セット") == "1":
         return "セット商品"
     if cell(row, "品番").upper().startswith(EXCLUDE_INTERNAL_PREFIX):
@@ -473,6 +481,7 @@ def main():
         ])),
         ("exclusionRules", [
             "CJ廃番 = 1（廃盤）",
+            "商品ステータス = DC1 取扱終了 / DC2 廃番 / DC4（販売終了）",
             "セット = 1（セット商品）",
             "品番が YY / ZZ 始まり（社内用）",
         ]),

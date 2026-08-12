@@ -54,17 +54,30 @@ def load_items():
         return list(csv.DictReader(f))
 
 
+# 販売終了の商品ステータス（ECのAPIが notForSale=True で返すコード）。
+#   DC1=取扱終了 / DC2=廃番 / DC4=（訳あり品の終了）
+# 販売継続中のコードは表示する：SE=◯在庫あり / SF=△残りわずか / SO=入荷待 /
+#   BO=取寄 / SL=★在庫限り。在庫の有無は表示に影響させない方針。
+DISCONTINUED_STATUS = {"DC1", "DC2", "DC4"}
+
+
+def is_sales_ended(row):
+    """販売終了（取扱終了・廃番）か。CJ廃番フラグが未設定でもステータスで拾う。"""
+    return (row.get("商品ステータスコード") or "").strip() in DISCONTINUED_STATUS
+
+
 def is_catalog_visible(row):
     """一覧・Webに表示される、セット品/アウトレット品/廃番品以外の単品SKU"""
     return (row["一覧非表示"] == "0" and row["Web非表示"] == "0"
             and row["セット"] == "0" and row["アウトレット"] == "0"
-            and row["CJ廃番"] == "0")
+            and row["CJ廃番"] == "0" and not is_sales_ended(row))
 
 
 def is_kit_visible(row):
     """一覧・Webに表示され、アウトレット（訳あり）/廃番ではないキット単品行"""
     return (row["一覧非表示"] == "0" and row["Web非表示"] == "0"
-            and row["アウトレット"] == "0" and row["CJ廃番"] == "0")
+            and row["アウトレット"] == "0" and row["CJ廃番"] == "0"
+            and not is_sales_ended(row))
 
 
 # トップケース・サイドケースはSHAD品番の数字部分がそのまま容量(L)と一致する命名規則

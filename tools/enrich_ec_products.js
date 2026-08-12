@@ -7,10 +7,11 @@
      2) POST https://api-e.customjapan.net/api/v1/items {ids:[...]}
    取得値：price.list.taxIn=メーカー希望小売価格(MSRP) / price.regular.pc.taxIn=公開通常価格
    出力：
-     - site/data/ec/ec_products.json       本体（code/cjCode/url/title/msrp/price/status/image）
-     - site/data/ec/fitting_prices.json     フィッティング {cjCode:{msrpTaxIn,priceTaxIn}}
-     - site/js/ec_links.js                  window.SHAD_EC（URLマップ）
-     - site/js/ec_products.js               window.SHAD_EC_DATA（リッチマップ）
+     - site/js/ec_links.js                  window.SHAD_EC（URLマップ／価格を含まない）
+   ★販売価格を含む出力は公開フォルダ（site/）の外に置く。ブランドサイトは定価のみ表示。
+     - data-source/ec_internal/ec_products.json    本体（code/cjCode/url/title/msrp/price/status/image）
+     - data-source/ec_internal/fitting_prices.json フィッティング {cjCode:{msrpTaxIn,priceTaxIn}}
+     - data-source/ec_internal/ec_products.js      window.SHAD_EC_DATA（社内確認用。サイトは読み込まない）
    ========================================================= */
 const fs = require("fs");
 const os = require("os");
@@ -18,12 +19,13 @@ const path = require("path");
 const { execFile } = require("child_process");
 
 const root = path.resolve(__dirname, "..");
-const dataDir = path.join(root, "site", "data", "ec");
+// 販売価格を含む出力先は公開フォルダの外（data-source/ は .gitignore 対象）
+const dataDir = path.join(root, "data-source", "ec_internal");
 const fitmentIndexFile = path.join(root, "site", "data", "fitment", "fitment_index.json");
 const jsonOut = path.join(dataDir, "ec_products.json");
 const fittingPricesOut = path.join(dataDir, "fitting_prices.json");
 const linksOut = path.join(root, "site", "js", "ec_links.js");
-const dataJsOut = path.join(root, "site", "js", "ec_products.js");
+const dataJsOut = path.join(dataDir, "ec_products.js");
 const apiUrl = "https://api-e.customjapan.net/api/v1/items";
 const itemBaseUrl = "https://moto.customjapan.net/i/";
 const cookieFile = path.join(os.tmpdir(), `shad-ec-api-${process.pid}.cookies`);

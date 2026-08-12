@@ -699,27 +699,13 @@ function buildTopSection(bike) {
     if (t.noPlate) k.noPlate = true;
   });
 
-  let blockCount = 0;
-  byUrl.forEach((kit, url) => {
-    const plateCodes = kit.plates;
-    const block = el('div', 'kit-block');
-
-    block.appendChild(el('div', 'kit-line', '取付には車種専用フィッティングキットが必要です：'));
-    const kitLine = el('div', 'kit-line');
-    kitLine.appendChild(el('span', 'kit-name', kit.name));
-    const btn = document.createElement('a');
-    btn.href = url;
-    btn.target = '_blank';
-    btn.className = 'kit-btn';
-    btn.textContent = '商品を見る ›';
-    kitLine.appendChild(btn);
-    block.appendChild(kitLine);
-
-    /* 装着できるトップケースの決め方
-       ① キットの仕様欄に「対応モデル」があればそれを正とする（マスター記載）
-          例: シーシーバー取付 ※プレート付 → SH26/SH29/SH33/SH34（プレート不要）
-       ② 記載が無ければ、対応ベースプレート配下のトップケースを集める */
+  /* 装着できるトップケースの決め方
+     ① キットの仕様欄に「対応モデル」があればそれを正とする（マスター記載）
+        例: シーシーバー取付 ※プレート付 → SH26/SH29/SH33/SH34（プレート不要）
+     ② 記載が無ければ、対応ベースプレート配下のトップケースを集める */
+  function resolveKitSkus(kit) {
     const skuMap = new Map();
+    const plateCodes = kit.plates;
     const usablePlates = plateCodes.filter(pc => PLATES[pc]);
     if (kit.models && kit.models.indexOf('*') >= 0) {
       /* 「全てのSHAD＆TERRAトップケース/バッグに対応」と書かれたキット。
@@ -753,44 +739,79 @@ function buildTopSection(bike) {
         });
       });
     }
-
-    // プレートコード不明のキット（plate=null のみ）は対応ケース一覧を出せないため商品ページへ誘導
-    const allSkus = [...skuMap.values()].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
-    if (allSkus.length === 0) {
-      block.appendChild(el('p', 'kit-note', kit.noPlate
-        ? 'このキットはベースプレート不要です（トップケースをキットに直接取り付けます）。'
-          + '対応モデルはキットの商品ページでご確認ください。'
-        : '装着できるトップケースは、キットに付属するベースプレートに準じます。'
-          + '詳細はキットの商品ページでご確認ください。'));
-      sec.appendChild(block);
-      blockCount++;
-      return;
-    }
-    // 絞り込み条件（カテゴリ/TERRA/容量）で該当がなくなった場合はこのキット自体を表示しない
-    const skus = applyFilters(allSkus);
-    if (skus.length === 0) return;
-    if (kit.noPlate) {
-      block.appendChild(el('p', 'kit-note',
-        'このキットはベースプレート不要です（トップケースをキットに直接取り付けます）。'));
-    }
-    block.appendChild(el('div', 'kit-caption', '装着可能トップケース'));
-    block.appendChild(productGrid(skus, tc => {
-      if (tc.included) return el('div', 'card-note ok', 'ベースプレート付属');
-      // ベースプレート別売：別途購入が必要なプレートへのリンクを併記
-      const note = el('div', 'card-note', '要ベースプレート（別売）：');
-      tc.plates.forEach((pc, i) => {
-        if (i > 0) note.appendChild(document.createTextNode(' / '));
-        const plate = PLATES[pc];
-        note.appendChild(productLink(plate.name, plate.url));
-      });
-      return note;
-    }));
-    sec.appendChild(block);
-    blockCount++;
-  });
-  if (blockCount === 0) {
-    sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うトップケースはありません'));
+    return skuMap;
   }
+
+  const kits = [];
+  byUrl.forEach((kit, url) => kits.push({ ...kit, url, skuMap: resolveKitSkus(kit) }));
+
+  /* 商品一覧はキットごとに分けず、1つにまとめて出す。
+     シーシーバー取付（※プレート別／※プレート付）のように同じ車種に複数の買い方が
+     あるキットは、以前はキットごとにブロックを作っていたため同じトップケースが
+     二重に並び、その間にキットの案内が割り込んで読みにくくなっていた。
+     必要なキットはセクション先頭にまとめ、装着可能トップケースは重複を除いて1回だけ出す。 */
+  const merged = new Map();
+  kits.forEach(kit => {
+    kit.skuMap.forEach((tc, name) => {
+      if (!merged.has(name)) merged.set(name, { ...tc, plates: [], noPlate: false });
+      const m = merged.get(name);
+      (tc.plates || []).forEach(pc => { if (m.plates.indexOf(pc) < 0) m.plates.push(pc); });
+      if (kit.noPlate) m.noPlate = true;   // プレート不要のキットでも装着できるモデル
+    });
+  });
+
+  const allSkus = [...merged.values()].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+  const skus = applyFilters(allSkus);
+  if (allSkus.length && skus.length === 0) {
+    sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うトップケースはありません'));
+    return sec;
+  }
+
+  const block = el('div', 'kit-block');
+  block.appendChild(el('div', 'kit-line', kits.length > 1
+    ? '取付には車種専用フィッティングキット（いずれか）が必要です：'
+    : '取付には車種専用フィッティングキットが必要です：'));
+  kits.forEach(kit => {
+    const kitLine = el('div', 'kit-line');
+    kitLine.appendChild(el('span', 'kit-name', kit.name));
+    const btn = document.createElement('a');
+    btn.href = kit.url;
+    btn.target = '_blank';
+    btn.className = 'kit-btn';
+    btn.textContent = '商品を見る ›';
+    kitLine.appendChild(btn);
+    block.appendChild(kitLine);
+  });
+
+  // プレートコード不明のキット（plate=null のみ）は対応ケース一覧を出せないため商品ページへ誘導
+  if (allSkus.length === 0) {
+    block.appendChild(el('p', 'kit-note', kits.some(k => k.noPlate)
+      ? 'このキットはベースプレート不要です（トップケースをキットに直接取り付けます）。'
+        + '対応モデルはキットの商品ページでご確認ください。'
+      : '装着できるトップケースは、キットに付属するベースプレートに準じます。'
+        + '詳細はキットの商品ページでご確認ください。'));
+    sec.appendChild(block);
+    return sec;
+  }
+
+  block.appendChild(el('div', 'kit-caption', '装着可能トップケース'));
+  block.appendChild(productGrid(skus, tc => {
+    if (tc.included) return el('div', 'card-note ok', 'ベースプレート付属');
+    // プレート不要のキットで装着できるモデルは、そのキットを選べばプレート購入が不要
+    if (tc.noPlate && !tc.plates.length) {
+      return el('div', 'card-note ok', 'ベースプレート不要（キットに直接取付）');
+    }
+    // ベースプレート別売：別途購入が必要なプレートへのリンクを併記
+    const note = el('div', 'card-note',
+      tc.noPlate ? '※プレート付キットなら不要／※プレート別の場合：' : '要ベースプレート（別売）：');
+    tc.plates.forEach((pc, i) => {
+      if (i > 0) note.appendChild(document.createTextNode(' / '));
+      const plate = PLATES[pc];
+      note.appendChild(productLink(plate.name, plate.url));
+    });
+    return note;
+  }));
+  sec.appendChild(block);
   return sec;
 }
 

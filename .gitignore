@@ -26,3 +26,7 @@ data-source/
 
 # 社内ドキュメント（Drive/GCS/Slackの内部情報を含むため公開リポジトリには載せない）
 docs/
+
+# Python の中間生成物
+__pycache__/
+*.pyc
