@@ -871,6 +871,24 @@ html{scroll-behavior:smooth;}
   border-radius:6px;padding:8px 16px;font-family:"Barlow Condensed","Noto Sans JP",sans-serif;
   font-weight:600;font-size:13px;letter-spacing:.08em;transition:.18s;}
 .kit-btn:hover{background:#c4151b;}
+
+/* FAQ（/faq と商品ページのFAQセクションで共用。原本はCJのAPI → tools/build_faq.py） */
+.faq-item{border-bottom:1px solid rgba(0,0,0,.1);}
+.faq-q{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:14px;
+  padding:20px 0;font-weight:700;font-size:16px;line-height:1.6;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-q .qmark{color:#E31E24;font-family:"Barlow Condensed",sans-serif;font-weight:600;
+  font-size:20px;line-height:1.4;flex:none;}
+.faq-q .chev{margin-left:auto;color:#E31E24;transition:transform .2s;flex:none;}
+.faq-item[open] .faq-q .chev{transform:rotate(180deg);}
+.faq-a{padding:0 0 22px 34px;color:#555;font-size:14.5px;line-height:2.05;}
+.faq-a a{color:#E31E24;text-decoration:underline;text-underline-offset:3px;}
+.faq-a b{color:#333;}
+/* 商品ページのFAQは「この商品について／カテゴリ／SHAD全般」でグループ分けする */
+.faq-group{font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-size:12px;
+  letter-spacing:.2em;color:#999;margin:26px 0 2px;}
+.faq-group:first-of-type{margin-top:18px;}
+
 /* 同じ取付方法で「プレート別売／プレート付属」の2通りがあるキットの買い方ラベル */
 .kit-variant{font-size:12px;color:#6B6B66;padding-left:6px;border-left:2px solid rgba(0,0,0,.14);}
 .kit-variant:first-of-type{border-left:none;padding-left:0;}

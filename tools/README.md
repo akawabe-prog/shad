@@ -54,6 +54,58 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## FAQ の更新（商品ページ）
+
+FAQの原本は**CJのAPI**です。取得してJSONに落とし、商品ページへ書き出す2段構成です。
+
+```bash
+python3 tools/fetch_faq.py     # API → site/data/faq/faq.json
+python3 tools/build_faq.py     # JSON → 商品ページ48枚のFAQセクション
+```
+
+| 段階 | 内容 |
+|---|---|
+| `fetch_faq.py` | `GET https://api-f.customjapan.net/api/v1/faq?slug=shad`。他のCJ APIと同じく先に `init` でセッションを取る。`<span style>` を外し、EC・旧サイトへのリンクを自サイトのパスへ読み替える |
+| `build_faq.py` | 各商品ページの `<!-- FAQ:START -->`〜`<!-- FAQ:END -->` を差し替え（冪等）。`details/summary` のアコーディオン＋構造化データ（FAQPage） |
+
+### リアルタイム取得（site/js/faq.js）
+
+2026/08/14 に CJ側で `https://www.shad-japan.com` が許可オリジンに追加され、
+**セッション無し**で取得できるようになりました（Cookie不要／プリフライトも通過）。
+`site/js/faq.js` が本番ドメインでだけAPIを叩き、取得できた内容に差し替えます。
+
+| オリジン | APIの応答 | faq.js の挙動 |
+|---|---|---|
+| `https://www.shad-japan.com` | 200（Cookie不要） | APIの最新内容に差し替え |
+| `https://shad-japan.com`（www無し） | **403** | 静的FAQのまま |
+| localhost / GitHub Pages | 403 | リクエストを送らない（静的FAQのまま） |
+
+許可は www 付きの1オリジンだけなので、`location.hostname` で判定しています。
+**www無しでもサイトが見える場合は、www へリダイレクトするか、CJ側で apex も
+許可してもらう必要があります。**
+
+静的HTML（`build_faq.py` の出力）は常に残します。検索エンジン向けの構造化データ
+（FAQPage）と、JS無効時・API障害時の表示を守るためです。取得に失敗しても
+静的FAQがそのまま表示され、コンソールにエラーは出ません。
+
+確認用に `window.SHAD_FAQ_LIVE = true / false` で強制切り替えできます。
+
+### どのFAQがどの商品ページに出るか
+
+| グループ | 条件 | 例 |
+|---|---|---|
+| この商品について | FAQの `relItems` / `slug`（`shad-<型番>`）がその型番を指す | SH40・SH40CG に「SH40とSH40CARGOの違い」 |
+| `<カテゴリ>`について | FAQの分類（`classS`）が商品の種類名に含まれる | 「トップケース」→ トップケース系17モデル |
+| SHADについて | 分類が「全般」 | 全48ページ共通（保証・鍵・修理・防水 など） |
+
+現在のAPIの中身は **全般10件＋トップケース7件＋商品別1件**。サイド・バッグ系の分類が
+増えれば、`fetch_faq.py` → `build_faq.py` を回すだけでそのカテゴリのページに出ます。
+
+`/faq`（サイト全体のFAQページ）は手書きのままです。API側と内容が二重管理になるので、
+統一するならこのページもAPI生成に寄せられます。
+
+---
+
 ## NEWS の更新
 
 記事は `site/data/news/news.json` の1ファイルにまとめています。**JSONを編集して
