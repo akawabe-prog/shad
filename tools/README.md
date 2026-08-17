@@ -54,6 +54,34 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## シンプル版トップページ
+
+`site/index.html` を原本に、セクションを絞った簡易版トップを作ります。
+デザインもマークアップも本体と同じものを使い回すので、本体を直したら
+作り直すだけで揃います（NEWSを更新したときは `build_news.py` が自動で回します）。
+
+```bash
+python3 tools/build_top_simple.py     # → site/top-simple.html（/top-simple）
+```
+
+| | 本体トップ | シンプル版 |
+|---|---|---|
+| HERO / 新商品 / 車種から探す | ○ | ○ |
+| カテゴリから探す | 5枚（フィッティング含む） | **4枚を大きく配置** |
+| NEWS | ページ下部 | **カテゴリから探すの直後** |
+| Shad on the Road（リール） | ○ | ○ |
+| SHADカタログ（PDF） | — | **追加** |
+| SHAD Technology／鍵がなくても〜／なぜ純正に選ぶのか／買ってからも〜／映像で知る | ○ | **削除** |
+
+カタログのPDFは `site/docs/catalog/`、表紙画像は `site/img/catalog/` です。
+表紙はPDFの1ページ目（裏表紙＋表紙の見開き）から右半分＝表紙だけを切り出しています。
+年度を足すときは `build_top_simple.py` の `CATALOGS` に追記してください
+（ファイルサイズはビルド時に自動で表示します）。
+
+本体トップと内容が重なるため `noindex` を入れています。正式公開するときは外してください。
+
+---
+
 ## FAQ の更新（商品ページ）
 
 FAQの原本は**CJのAPI**です。取得してJSONに落とし、商品ページへ書き出す2段構成です。

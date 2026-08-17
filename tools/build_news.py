@@ -379,6 +379,16 @@ def main():
         build_list(articles, shell))
 
     top = update_top(articles)
+
+    # シンプル版トップは index.html から作り直す構成なので、NEWSを更新したら追随させる
+    simple = os.path.join(ROOT, "site", "top-simple.html")
+    simple_built = False
+    if os.path.exists(simple):
+        import subprocess
+        r = subprocess.run(["python3", os.path.join(ROOT, "tools", "build_top_simple.py")],
+                           capture_output=True, text=True)
+        simple_built = r.returncode == 0
+
     drafts = [a["slug"] for a in articles if a.get("draft")]
     print("=" * 62)
     print("NEWS を生成しました")
@@ -388,6 +398,8 @@ def main():
     for a in articles:
         print("    /news/%-24s %s  %s" % (a["slug"], jp_date(a["date"]), a["title"]))
     print("TOPページの NEWS: %s" % ("最新4件に更新" if top else "更新できませんでした"))
+    if os.path.exists(os.path.join(ROOT, "site", "top-simple.html")):
+        print("シンプル版トップ  : %s" % ("作り直しました" if simple_built else "⚠ 作り直せませんでした"))
     if drafts:
         print("\n⚠ 本文が準備中（draft:true）の記事: %s" % " / ".join(drafts))
         print("  news.json の body を書いて draft を false にすると本文が出ます")
