@@ -73,10 +73,13 @@ python3 tools/build_top_simple.py     # → site/top-simple.html（/top-simple�
 | SHADカタログ（PDF） | — | **追加** |
 | SHAD Technology／鍵がなくても〜／なぜ純正に選ぶのか／買ってからも〜／映像で知る | ○ | **削除** |
 
-カタログのPDFは `site/docs/catalog/`、表紙画像は `site/img/catalog/` です。
-表紙はPDFの1ページ目（裏表紙＋表紙の見開き）から右半分＝表紙だけを切り出しています。
-年度を足すときは `build_top_simple.py` の `CATALOGS` に追記してください
-（ファイルサイズはビルド時に自動で表示します）。
+カタログ枠は**本国サイト（www.shad-japan.com）下部のデザインを踏襲**しています。
+45°ストライプの帯（`.ptn-stripe45`）の中に、左＝カタログの見開き画像、
+右＝赤いPDFボタンを縦に並べる構成です。
+
+PDFは `site/docs/catalog/`、画像は `site/img/catalog/`（PDF1ページ目＝見開きをwebp化）。
+年度を足すときは `build_top_simple.py` の `CATALOGS` の先頭に追記してください
+（画像は先頭＝最新年度のものを使い、ファイルサイズはビルド時に自動表示します）。
 
 本体トップと内容が重なるため `noindex` を入れています。正式公開するときは外してください。
 

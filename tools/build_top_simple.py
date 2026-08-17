@@ -84,28 +84,25 @@ def simplify_products(block):
     return block
 
 
+# 本国サイト（www.shad-japan.com）下部のカタログ枠を踏襲：
+#   45°ストライプの帯の中に、左＝カタログの見開き画像／右＝赤いPDFボタンを縦に並べる
 CATALOG = """<!-- ===== ⑪ CATALOG（PDF） ===== -->
-<section id="catalog" class="bg-mist py-[76px]">
+<section id="catalog" class="bg-white py-[84px] md:py-[104px]">
   <div class="max-w-site mx-auto px-7">
-    <div class="mb-7" data-reveal>
-      <h2 class="text-[30px] font-bold tracking-[.02em]">SHADカタログ</h2>
-      <p class="text-neutral-500 text-[14.5px] mt-2.5 max-w-[640px]">製品ラインアップと仕様をまとめたカタログです。PDFでご覧いただけます。</p>
+    <div class="ptn-stripe45 py-4" data-reveal>
+      <div class="max-w-[820px] mx-auto grid sm:grid-cols-2 gap-6 md:gap-8 items-center px-4">
+        <a href="/docs/catalog/%(latest_file)s" target="_blank" rel="noopener" class="group block">
+          <img src="/img/catalog/catalog_%(latest_year)s_spread.webp" alt="SHADカタログ%(latest_year)s" loading="lazy" width="%(latest_w)s" height="%(latest_h)s" class="block w-full h-auto shadow-[0_10px_30px_rgba(0,0,0,.12)] transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_18px_40px_rgba(0,0,0,.18)]">
+        </a>
+        <div class="flex flex-col gap-3.5">
+%(btns)s        </div>
+      </div>
     </div>
-    <div class="grid sm:grid-cols-2 gap-5 md:gap-7 max-w-[760px] items-start">
-%s    </div>
   </div>
 </section>
 """
 
-CATALOG_CARD = """      <a href="/docs/catalog/%(file)s" target="_blank" rel="noopener" class="group block" data-reveal>
-        <span class="block rounded-[16px] overflow-hidden bg-black border border-black/10 transition group-hover:-translate-y-1 group-hover:shadow-[0_18px_40px_rgba(0,0,0,.14)]">
-          <img src="/img/catalog/catalog_%(year)s.webp" alt="SHADカタログ%(year)s 表紙" loading="lazy" width="%(w)s" height="%(h)s" class="block w-full h-auto transition duration-300 group-hover:scale-[1.03]">
-        </span>
-        <span class="flex items-center justify-between gap-3 mt-3.5">
-          <span class="font-bold text-[16px] group-hover:text-shad transition">SHADカタログ%(year)s</span>
-          <span class="inline-flex items-center gap-1.5 text-[13px] text-neutral-500 group-hover:text-shad group-hover:gap-2.5 transition-all whitespace-nowrap">PDF %(size)s<i class="ti ti-download"></i></span>
-        </span>
-      </a>
+CATALOG_BTN = """          <a href="/docs/catalog/%(file)s" target="_blank" rel="noopener" class="catalog-btn">SHADカタログ%(year)s PDF版<span class="sz">%(size)s</span></a>
 """
 
 CATALOGS = [
@@ -131,14 +128,15 @@ def webp_size(path):
 
 
 def catalog_section():
-    cards = ""
+    btns = ""
     for c in CATALOGS:
-        pdf = os.path.join(SITE, "docs", "catalog", c["file"])
-        mb = os.path.getsize(pdf) / 1024 / 1024
-        w, h = webp_size(os.path.join(SITE, "img", "catalog",
-                                      "catalog_%s.webp" % c["year"]))
-        cards += CATALOG_CARD % dict(c, size="%.1fMB" % mb, w=w, h=h)
-    return CATALOG % cards
+        mb = os.path.getsize(os.path.join(SITE, "docs", "catalog", c["file"])) / 1024 / 1024
+        btns += CATALOG_BTN % dict(c, size="PDF %.1fMB" % mb)
+    latest = CATALOGS[0]                       # 画像は最新年度の見開きを使う
+    w, h = webp_size(os.path.join(SITE, "img", "catalog",
+                                  "catalog_%s_spread.webp" % latest["year"]))
+    return CATALOG % dict(latest_year=latest["year"], latest_file=latest["file"],
+                          latest_w=w, latest_h=h, btns=btns)
 
 
 def fix_head(head):

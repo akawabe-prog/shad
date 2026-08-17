@@ -872,6 +872,21 @@ html{scroll-behavior:smooth;}
   font-weight:600;font-size:13px;letter-spacing:.08em;transition:.18s;}
 .kit-btn:hover{background:#c4151b;}
 
+/* カタログ（シンプル版トップ）。本国サイト下部の45°ストライプの帯を踏襲 */
+.ptn-stripe45{
+  background-image:repeating-linear-gradient(45deg,
+    rgba(190,200,206,.3), rgba(190,200,206,.3) 5px,
+    rgba(0,0,0,0) 5px, rgba(0,0,0,0) 10px);
+}
+.catalog-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:#E31E24;color:#fff;border-radius:2px;padding:14px 24px;
+  font-size:16px;font-weight:500;line-height:1.4;transition:.18s;
+}
+.catalog-btn:hover{background:#c4151b;}
+.catalog-btn .sz{font-family:"Barlow Condensed",sans-serif;font-size:13px;
+  letter-spacing:.08em;color:rgba(255,255,255,.75);white-space:nowrap;}
+
 /* FAQ（/faq と商品ページのFAQセクションで共用。原本はCJのAPI → tools/build_faq.py） */
 .faq-item{border-bottom:1px solid rgba(0,0,0,.1);}
 .faq-q{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:14px;
