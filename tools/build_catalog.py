@@ -106,7 +106,7 @@ NON_BODY_KEYWORDS = (
 SITE_CODES = [
     "TR55", "TR50", "TR48", "TR47", "TR46", "TR41", "TR40", "TR37", "TR36", "TR30", "TR27", "TR10",
     "SH58X", "SH51", "SH48", "SH47", "SH44", "SH38X", "SH34", "SH33", "SH23",
-    "SW80", "SL18", "E48", "LOCK", "SEAT",
+    "E48", "LOCK", "SEAT",   # SL18 / SW80 は非公開（2026-08-17）
     # 2026-07 追加（マスターにあるがページが無かった商品）
     "SH59X", "SH45", "SH40CG", "SH40", "SH39", "SH36", "SH35", "SH29", "SH26",
     "TR15CL", "TR08", "SL58", "SR38", "SC25", "IB20",

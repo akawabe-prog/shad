@@ -27,7 +27,5 @@ window.SHAD_EC = {
   "E48": "https://moto.customjapan.net/i/28020653",
   "LOCK": "https://moto.customjapan.net/i/27294062",
   "SEAT": "https://moto.customjapan.net/i/17379793",
-  "SL18": "", // 準備中：EC本体SKU未確定
-  "SW80": "", // 準備中：EC本体SKU未確定
   "TR40": "", // 準備中：EC本体SKU未確定
 };

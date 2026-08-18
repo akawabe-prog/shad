@@ -11,6 +11,9 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^shad-japan\.com$ [NC]
 RewriteRule ^ https://www.shad-japan.com%{REQUEST_URI} [R=301,L]
 
+# 非公開にした商品ページ（2026-08-17）。404にせず一覧へ逃がす
+RewriteRule ^product/(sl18|sw80)/?$ /products [R=301,L,NC]
+
 # 旧URL（フラット構成）→ 新URL（階層構成）
 RewriteRule ^for-your-motorcycle/?$ /fitment [R=301,L,NC]
 RewriteRule ^product-([A-Za-z0-9]+)\.html/?$ /product/$1 [R=301,L,NC]
