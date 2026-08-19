@@ -138,6 +138,101 @@ def replace_block(page, block):
     return page[:at] + "\n" + block + page[at:], "追加"
 
 
+
+# ============================================================ /faq（サイト全体）
+# 以前は手書きでしたが、原本をCJのAPIに一本化しました（2026-08-18）。
+# ページの見た目（カテゴリ見出し・チップ・アコーディオン）はそのままに、
+# 設問だけをAPIから流し込みます。
+
+# ページ内カテゴリ（アンカー / 見出し / アイコン）。APIの分類・タグをここへ振り分ける
+PAGE_CATS = [
+    ("fit",      "適合・取り付け",     "ti-motorbike"),
+    ("product",  "製品について",       "ti-box"),
+    ("buy",      "購入・お届け",       "ti-shopping-bag"),
+    ("warranty", "保証・修理",         "ti-shield-check"),
+    ("base",     "店舗・SHAD BASE",   "ti-map-pin"),
+]
+
+# APIのタグ → ページ内カテゴリ（前方一致で判定。タグは「規格・仕様_SH40」のように接尾辞が付く）
+TAG_TO_CAT = [
+    ("取付", "fit"),
+    ("雨・防水", "product"),
+    ("操作・仕様", "product"),
+    ("規格・仕様", "product"),
+    ("注文・返品", "buy"),
+    ("保証・アフターサービス", "warranty"),
+    ("修理・補修", "warranty"),
+    ("カギ", "warranty"),
+]
+
+# タグが空のものだけ、FAQのIDで行き先を決める（CJ側でタグが付いたら消してかまいません）
+ID_TO_CAT = {
+    "93":  "product",   # どこの国のブランドですか？
+    "94":  "base",      # 製品を見たいのですがどこで見れますか？
+    "103": "product",   # たくさんありすぎて、どのケース選んで良いのかわからない。
+}
+
+
+def page_category(item):
+    for tag in item.get("tags", []):
+        for prefix, cat in TAG_TO_CAT:
+            if tag.startswith(prefix):
+                return cat
+    if item["id"] in ID_TO_CAT:
+        return ID_TO_CAT[item["id"]]
+    return "product"        # 未分類はひとまず「製品について」へ
+
+
+def render_faq_page(items):
+    by_cat = {}
+    for x in items:
+        by_cat.setdefault(page_category(x), []).append(x)
+
+    chips, secs, qa = [], [], []
+    for anchor, label, icon in PAGE_CATS:
+        rows = by_cat.get(anchor) or []
+        if not rows:
+            continue        # 設問が無いカテゴリはチップごと出さない
+        chips.append('      <a href="#%s" class="faq-chip !border-white/25 !text-white/85'
+                     ' hover:!border-shad hover:!text-shad">%s</a>' % (anchor, esc(label)))
+        secs.append('  <section class="mb-14">')
+        secs.append('    <h2 id="%s" class="cat-h text-[22px] font-bold flex items-center gap-3 mb-2">'
+                    '<i class="ti %s text-shad"></i>%s</h2>' % (anchor, icon, esc(label)))
+        for i, x in enumerate(rows):
+            op = " open" if (anchor == PAGE_CATS[0][0] and i == 0) else ""
+            secs.append('    <details class="faq-item"%s>' % op)
+            secs.append('      <summary class="faq-q"><span class="qmark">Q</span>%s'
+                        '<i class="ti ti-chevron-down chev"></i></summary>' % esc(x["question"]))
+            secs.append('      <div class="faq-a">%s</div>' % x["answer"])
+            secs.append('    </details>')
+            qa.append({"@type": "Question", "name": strip_tags(x["question"]),
+                       "acceptedAnswer": {"@type": "Answer", "text": strip_tags(x["answer"])}})
+        secs.append('  </section>')
+
+    ld = ('  <script type="application/ld+json">%s</script>'
+          % json.dumps({"@context": "https://schema.org", "@type": "FAQPage",
+                        "mainEntity": qa}, ensure_ascii=False))
+    return "\n".join(chips), "\n".join(secs + [ld])
+
+
+def build_faq_page(items):
+    path = os.path.join(SITE, "faq.html")
+    page = open(path, encoding="utf-8").read()
+    chips, body = render_faq_page(items)
+    out = page
+    for mark, block in (("CHIPS", chips), ("BODY", body)):
+        start = "<!-- FAQ:%s:START 生成 tools/build_faq.py -->" % mark
+        end = "<!-- FAQ:%s:END -->" % mark
+        if start not in out or end not in out:
+            return None
+        head, rest = out.split(start, 1)
+        _, tail = rest.split(end, 1)
+        out = head + start + "\n" + block + "\n" + end + tail
+    if out != page:
+        open(path, "w", encoding="utf-8").write(out)
+    return len(items)
+
+
 def main():
     data = json.load(open(FAQ_JSON, encoding="utf-8"))
     items = data["items"]
@@ -170,6 +265,11 @@ def main():
         print("  %-9s %s %2d件  %s" % (code, how, n, " / ".join(titles)))
     if skipped:
         print("対象FAQなしでスキップ: %s" % ", ".join(skipped))
+
+    if not only:
+        n = build_faq_page(items)
+        print("サイト全体のFAQページ(/faq): %s"
+              % ("%d件を書き出し" % n if n else "⚠ マーカーが見つかりません"))
 
 
 if __name__ == "__main__":
