@@ -1,0 +1,818 @@
+[
+ {
+  "code": "TR41",
+  "series": "TERRA",
+  "jp": "TERRA トップケース",
+  "cap": "41L",
+  "copy": "硬化アルミ合金×統合ダブルロック。日常からアドベンチャーまで。",
+  "colors": 2,
+  "img": "img/products/tr41.webp",
+  "new": false,
+  "flag": true,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "41L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "ポリプロピレン",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR46",
+  "series": "TERRA",
+  "jp": "TERRA トップケース",
+  "cap": "46L",
+  "copy": "TR41より15%大容量。ソフトトレイルの相棒。",
+  "colors": 2,
+  "img": "img/products/tr46.webp",
+  "new": true,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "46L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "ポリプロピレン",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR48",
+  "series": "TERRA",
+  "jp": "TERRA トップケース",
+  "cap": "48L",
+  "copy": "フルフェイス2個。TERRAの基準器。",
+  "colors": 2,
+  "img": "img/products/tr48.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "48L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "アルミ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR55",
+  "series": "TERRA",
+  "jp": "TERRA トップケース",
+  "cap": "55L",
+  "copy": "シリーズ最大55L。長旅のための容量。",
+  "colors": 2,
+  "img": "img/products/tr55.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "55L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "アルミ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR37",
+  "series": "TERRA",
+  "jp": "TERRA トップケース",
+  "cap": "37L",
+  "copy": "軽快な37L。街もトレイルも。",
+  "colors": 2,
+  "img": "img/products/tr37.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "37L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×1",
+    "oimg": "img/feat/1CI.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "アルミ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR47",
+  "series": "TERRA",
+  "jp": "TERRA サイドケース",
+  "cap": "47L",
+  "copy": "左右47L。重心を低く、積載を最大に。",
+  "colors": 2,
+  "img": "img/products/tr47.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "47L",
+    "oimg": ""
+   },
+   {
+    "ic": "tool",
+    "label": "3P/4Pマウント",
+    "val": null,
+    "oimg": "img/feat/3P.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "アルミ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR36",
+  "series": "TERRA",
+  "jp": "TERRA サイドケース",
+  "cap": "36L",
+  "copy": "スリムな36L。すり抜けを諦めない。",
+  "colors": 2,
+  "img": "img/products/tr36.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "36L",
+    "oimg": ""
+   },
+   {
+    "ic": "tool",
+    "label": "3P/4Pマウント",
+    "val": null,
+    "oimg": "img/feat/3P.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "アルミ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR27",
+  "series": "TERRA",
+  "jp": "TERRA サイドケース",
+  "cap": "27L",
+  "copy": "都市とオフロードのハイブリッド。",
+  "colors": 2,
+  "img": "img/products/tr27.webp",
+  "new": true,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "27L",
+    "oimg": ""
+   },
+   {
+    "ic": "tool",
+    "label": "3P/4Pマウント",
+    "val": null,
+    "oimg": "img/feat/3P.webp"
+   },
+   {
+    "ic": "lock",
+    "label": "統合ダブルロック",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH58X",
+  "series": "EXPANDABLE",
+  "jp": "可変容量トップケース",
+  "cap": "46-58L",
+  "copy": "46L→58L。レバーひとつで3段階に伸縮。",
+  "colors": 1,
+  "img": "img/products/sh58x.webp",
+  "new": false,
+  "flag": true,
+  "features": [
+   {
+    "ic": "arrows-maximize",
+    "label": "可変容量",
+    "val": "46–58L",
+    "oimg": "img/feat/EX.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "shield",
+    "label": "カーボン/アルミ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH38X",
+  "series": "EXPANDABLE",
+  "jp": "可変容量サイドケース",
+  "cap": "EXP",
+  "copy": "走るときはスリム。停まれば、大容量。世界でSHADだけ。",
+  "colors": 2,
+  "img": "img/products/sh38x.webp",
+  "new": false,
+  "flag": true,
+  "features": [
+   {
+    "ic": "arrows-maximize",
+    "label": "可変容量",
+    "val": null,
+    "oimg": "img/feat/EX.webp"
+   },
+   {
+    "ic": "tool",
+    "label": "3P/4Pマウント",
+    "val": null,
+    "oimg": "img/feat/3P.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH48",
+  "series": "TOP CASE",
+  "jp": "トップケース",
+  "cap": "48L",
+  "copy": "フルフェイス2個収納のベストセラー。",
+  "colors": 3,
+  "img": "img/products/sh48.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "48L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "key",
+    "label": "キーレス開閉",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "weight",
+    "label": "耐荷重",
+    "val": "8kg",
+    "oimg": "img/feat/MaxLoad8.webp"
+   }
+  ]
+ },
+ {
+  "code": "SH51",
+  "series": "TOP CASE",
+  "jp": "トップケース",
+  "cap": "51L",
+  "copy": "モジュラーヘルメット2個。ミドルアドベンチャーの最適解。",
+  "colors": 2,
+  "img": "img/products/sh51.webp",
+  "new": true,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "51L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "weight",
+    "label": "耐荷重",
+    "val": "10kg",
+    "oimg": "img/feat/MaxLoad10.webp"
+   }
+  ]
+ },
+ {
+  "code": "SH47",
+  "series": "TOP CASE",
+  "jp": "トップケース",
+  "cap": "47L",
+  "copy": "エアロフォルムの47L。",
+  "colors": 2,
+  "img": "img/products/sh47.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "47L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×2",
+    "oimg": "img/feat/2CI.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH44",
+  "series": "TOP CASE",
+  "jp": "トップケース",
+  "cap": "44L",
+  "copy": "スマートロック搭載の44L。",
+  "colors": 1,
+  "img": "img/products/sh44.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "44L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×1",
+    "oimg": "img/feat/1CI.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH33",
+  "series": "TOP CASE",
+  "jp": "トップケース",
+  "cap": "33L",
+  "copy": "日常の定番33L。",
+  "colors": 1,
+  "img": "img/products/sh33.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "33L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×1",
+    "oimg": "img/feat/1CI.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH34",
+  "series": "TOP CASE",
+  "jp": "トップケース",
+  "cap": "34L",
+  "copy": "スリム車体に馴染む34L。",
+  "colors": 1,
+  "img": "img/products/sh34.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "34L",
+    "oimg": ""
+   },
+   {
+    "ic": "helmet",
+    "label": "ヘルメット",
+    "val": "×1",
+    "oimg": "img/feat/1CI.webp"
+   },
+   {
+    "ic": "key",
+    "label": "スマートロック",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SH23",
+  "series": "SIDE CASE",
+  "jp": "サイドケース",
+  "cap": "23L",
+  "copy": "車体に寄り添うスリムサイド。",
+  "colors": 1,
+  "img": "img/products/sh23.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "23L",
+    "oimg": ""
+   },
+   {
+    "ic": "tool",
+    "label": "3P/4Pマウント",
+    "val": null,
+    "oimg": "img/feat/3P.webp"
+   },
+   {
+    "ic": "shield",
+    "label": "スリム設計",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR50",
+  "series": "BAG",
+  "jp": "TERRA リアバッグ",
+  "cap": "50L",
+  "copy": "防水50L。ケースに代わる選択肢。",
+  "colors": 1,
+  "img": "img/products/tr50.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "50L",
+    "oimg": ""
+   },
+   {
+    "ic": "droplet",
+    "label": "防水",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "lock",
+    "label": "ロック機能",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "TR40",
+  "series": "BAG",
+  "jp": "アドベンチャーサイドバッグ",
+  "cap": "40L",
+  "copy": "タフさとロックを兼ね備えたソフト。",
+  "colors": 0,
+  "img": "img/products/tr40.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "40L",
+    "oimg": ""
+   },
+   {
+    "ic": "droplet",
+    "label": "防水",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "lock",
+    "label": "ロック機能",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "sbh",
+    "label": "サイドバッグホルダー",
+    "val": null,
+    "oimg": "img/feat/SSBHE.webp"
+   }
+  ]
+ },
+ {
+  "code": "TR30",
+  "series": "BAG",
+  "jp": "防水サイドバッグ",
+  "cap": "30L",
+  "copy": "420D×両面PVC。豪雨でも中身は守る。",
+  "colors": 1,
+  "img": "img/products/tr30.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "60L",
+    "oimg": ""
+   },
+   {
+    "ic": "droplet",
+    "label": "防水",
+    "val": "IPX6",
+    "oimg": ""
+   },
+   {
+    "ic": "weight",
+    "label": "耐荷重",
+    "val": "6kg",
+    "oimg": "img/feat/MaxLoad6.webp"
+   },
+   {
+    "ic": "sbh",
+    "label": "サイドバッグホルダー",
+    "val": null,
+    "oimg": "img/feat/SSBHE.webp"
+   }
+  ]
+ },
+ {
+  "code": "TR10",
+  "series": "BAG",
+  "jp": "クリックシステム タンクバッグ",
+  "cap": "10L",
+  "copy": "ワンタッチ着脱。タンクに触れない。",
+  "colors": 0,
+  "img": "img/products/tr10.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "10L",
+    "oimg": ""
+   },
+   {
+    "ic": "click",
+    "label": "クリックシステム",
+    "val": null,
+    "oimg": "img/feat/CS.webp"
+   },
+   {
+    "ic": "droplet",
+    "label": "防水",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "E48",
+  "series": "BAG",
+  "jp": "シートバッグ",
+  "cap": "48L",
+  "copy": "クリックシステム対応の大容量。",
+  "colors": 1,
+  "img": "img/products/e48.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "box",
+    "label": "容量",
+    "val": "48L",
+    "oimg": ""
+   },
+   {
+    "ic": "click",
+    "label": "クリックシステム",
+    "val": null,
+    "oimg": "img/feat/CS.webp"
+   },
+   {
+    "ic": "shield",
+    "label": "シートバッグ",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "LOCK",
+  "series": "LOCK",
+  "jp": "SHADロック ハンドルロック",
+  "cap": null,
+  "copy": "屈まない、汚れない。日常の防犯を数秒で。",
+  "colors": 0,
+  "img": "img/products/lock.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "key",
+    "label": "キーで施錠",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "click",
+    "label": "工具不要",
+    "val": null,
+    "oimg": "img/feat/CS.webp"
+   },
+   {
+    "ic": "shield-lock",
+    "label": "防犯",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ },
+ {
+  "code": "SEAT",
+  "series": "SEAT",
+  "jp": "コンフォートシート",
+  "cap": null,
+  "copy": "人間工学で疲労を設計から減らす。",
+  "colors": 3,
+  "img": "img/products/seat.webp",
+  "new": false,
+  "flag": false,
+  "features": [
+   {
+    "ic": "armchair",
+    "label": "人間工学",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield",
+    "label": "振動吸収",
+    "val": null,
+    "oimg": ""
+   },
+   {
+    "ic": "shield-check",
+    "label": "純正フィット",
+    "val": null,
+    "oimg": ""
+   }
+  ]
+ }
+]

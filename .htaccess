@@ -1,0 +1,42 @@
+# =========================================================
+# SHAD JAPAN — .htaccess（本番: https://www.shad-japan.com/）
+# ※ 本番（Drive → GCS ブランドサイト）ではこのファイルは使用されません。
+#    バッチが .html を外して配置するため、クリーンURLはサーバー側で実現されます。
+#    Apacheで配信する場合のみ有効な設定です。
+# =========================================================
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 非www → www（本番は https://www.shad-japan.com/ が正規URL）
+RewriteCond %{HTTP_HOST} ^shad-japan\.com$ [NC]
+RewriteRule ^ https://www.shad-japan.com%{REQUEST_URI} [R=301,L]
+
+# 非公開にした商品ページ（2026-08-17）。404にせず一覧へ逃がす
+RewriteRule ^product/(sl18|sw80)/?$ /products [R=301,L,NC]
+
+# 旧URL（フラット構成）→ 新URL（階層構成）
+RewriteRule ^for-your-motorcycle/?$ /fitment [R=301,L,NC]
+RewriteRule ^product-([A-Za-z0-9]+)\.html/?$ /product/$1 [R=301,L,NC]
+RewriteRule ^product-([A-Za-z0-9]+)/?$ /product/$1 [R=301,L,NC]
+
+# /news はディレクトリなので index.html を明示（DirectoryIndex 未設定サーバー対策）
+RewriteRule ^news/?$ /news/index.html [L]
+
+# .html つきのアクセスは拡張子なしへ 301
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 拡張子なしのリクエストを .html に内部マッピング
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L,QSA]
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType text/javascript "access plus 7 days"
+ExpiresByType image/webp "access plus 30 days"
+ExpiresByType video/mp4 "access plus 30 days"
+ExpiresByType application/json "access plus 1 hours"
+</IfModule>
