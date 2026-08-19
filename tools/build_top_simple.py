@@ -14,10 +14,9 @@ SHAD — シンプル版トップページを生成
     python3 tools/build_top_simple.py
 
 ■ 本体トップとの違い
-    削除  SHAD Technology / 鍵がなくても蓋の開け閉めが可能 /
-          なぜ、世界のメーカーはSHADを純正に選ぶのか。/
-          買ってからも、安心して使えるように。/ 映像で知る、SHAD。
+    削除  なぜ、世界のメーカーはSHADを純正に選ぶのか。（ブランドの核ブロック）
     変更  カテゴリから探す … フィッティングキットを外し、残り4つを大きく配置
+          HEROの「SHADを知る」… 本体は #why、シンプル版は /about へ
     追加  SHADカタログ（PDF）
     移動  NEWS を「カテゴリから探す」の直後に
 =============================================================================
@@ -139,6 +138,11 @@ def catalog_section():
                           latest_w=w, latest_h=h, btns=btns)
 
 
+def fix_hero(block):
+    """HEROの「SHADを知る」は本体トップの #why 用。シンプル版には無いので /about へ"""
+    return block.replace('href="#why"', 'href="/about"')
+
+
 def fix_head(head):
     """タイトルとURL周りだけ差し替える（本体トップと重複して検索に出ないように）"""
     head = head.replace(
@@ -164,6 +168,8 @@ def main():
         block = pick(sections, key)
         if key == "PRODUCTS":
             block = simplify_products(block)
+        if key == "HERO":
+            block = fix_hero(block)
         if key == "FOOTER":
             parts.append(catalog_section())   # カタログはフッターの直前
         parts.append(block)
