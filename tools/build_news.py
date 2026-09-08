@@ -269,10 +269,190 @@ def build_detail(a, i, articles, cards, shell):
             + head_tail + "</head>\n" + page)
 
 
+# ---------- CJのCMSの記事をサイト内で読めるようにする ----------
+# 本文はCJ側にも公開されているため、重複コンテンツにならないよう
+#   ① canonical を元記事に向ける（クロスドメイン canonical）
+#   ② og:url も元記事に合わせる
+#   ③ 記事の冒頭と末尾に出典と元記事へのリンクを出す
+# の3点を必ずセットで出力する。
+
+from html.parser import HTMLParser
+
+# 残すタグ（これ以外は中身だけ残して外す。DROP_TAGS は中身ごと捨てる）
+KEEP_TAGS = {"p", "h2", "h3", "h4", "ul", "ol", "li", "strong", "em", "b", "i",
+             "br", "blockquote", "figure", "figcaption", "img", "a", "iframe",
+             "table", "thead", "tbody", "tr", "th", "td", "small", "hr"}
+DROP_TAGS = {"script", "style", "button", "svg", "path", "noscript", "form", "input"}
+# 残す属性（class/style/id は当サイトのデザインに合わせるため全部落とす）
+KEEP_ATTRS = {"img": {"src", "alt", "width", "height"},
+              "a": {"href"},
+              "iframe": {"src", "width", "height", "title"}}
+VOID = {"br", "img", "hr"}
+
+
+class ArticleCleaner(HTMLParser):
+    """CJのWordPressのHTMLを、当サイトで安全に表示できる形に整える"""
+
+    def __init__(self, product_codes):
+        super().__init__(convert_charrefs=False)
+        self.out = []
+        self.codes = product_codes
+        self.skip = 0           # DROP_TAGS の入れ子の深さ
+        self.stack = []
+        self.links = {"ec": 0, "external": 0, "internal": 0}
+
+    # --- リンクの読み替え（ECの商品ページは自サイトの商品ページへ）---
+    def fix_href(self, href):
+        m = re.match(r"https?://moto\.customjapan\.net/i/([A-Za-z0-9]+)/?$", href or "")
+        if m:
+            key = m.group(1)
+            code = self.codes.get(key.upper()) or self.codes.get(key)
+            if code:
+                self.links["internal"] += 1
+                return "/product/" + code.lower(), False
+        if (href or "").startswith("http"):
+            if "customjapan.net" in href:
+                self.links["ec"] += 1
+            else:
+                self.links["external"] += 1
+            return href, True
+        return href, False
+
+    def handle_starttag(self, tag, attrs):
+        if self.skip:
+            return
+        if tag in DROP_TAGS:
+            self.skip = 1
+            self.stack.append(("__drop__", tag))
+            return
+        if tag not in KEEP_TAGS:
+            self.stack.append(("__unwrap__", tag))     # div/span などは中身だけ残す
+            return
+        d = dict(attrs)
+        if tag == "iframe":
+            src = d.get("src", "")
+            if "youtube.com/embed/" not in src and "youtube-nocookie.com/embed/" not in src:
+                self.skip = 1                          # YouTube以外の埋め込みは出さない
+                self.stack.append(("__drop__", tag))
+                return
+            self.out.append('<div class="news-embed"><iframe src="%s" loading="lazy" '
+                            'allowfullscreen title="%s"></iframe></div>'
+                            % (esc(src), esc(d.get("title") or "動画")))
+            self.stack.append(("__drop__", tag))       # 閉じタグは自前で出す
+            self.skip = 1
+            return
+        keep = KEEP_ATTRS.get(tag, set())
+        parts = []
+        ext = False
+        for k, v in d.items():
+            if k not in keep:
+                continue
+            if tag == "a" and k == "href":
+                v, ext = self.fix_href(v)
+            parts.append('%s="%s"' % (k, esc(v or "")))
+        if tag == "img":
+            parts.append('loading="lazy"')
+            parts.append('decoding="async"')
+        if tag == "a" and ext:
+            parts.append('target="_blank"')
+            parts.append('rel="noopener"')
+        self.out.append("<%s%s>" % (tag, (" " + " ".join(parts)) if parts else ""))
+        self.stack.append(("keep", tag))
+
+    def handle_endtag(self, tag):
+        while self.stack:
+            kind, name = self.stack.pop()
+            if name != tag:
+                continue
+            if kind == "__drop__":
+                self.skip = 0
+            elif kind == "keep" and tag not in VOID:
+                self.out.append("</%s>" % tag)
+            return
+
+    def handle_data(self, data):
+        if not self.skip:
+            self.out.append(data)
+
+    def handle_entityref(self, name):
+        if not self.skip:
+            self.out.append("&%s;" % name)
+
+    def handle_charref(self, name):
+        if not self.skip:
+            self.out.append("&#%s;" % name)
+
+    def result(self):
+        html_out = "".join(self.out)
+        html_out = re.sub(r"(?:\s*<p>\s*</p>)+", "", html_out)       # 空段落を掃除
+        html_out = re.sub(r"\n{3,}", "\n\n", html_out)
+        return html_out.strip()
+
+
+def clean_article(html_src, product_codes):
+    c = ArticleCleaner(product_codes)
+    c.feed(html_src or "")
+    c.close()
+    return c.result(), c.links
+
+
+def source_note(a, place):
+    """出典表示。冒頭は控えめに、末尾は元記事への導線をはっきり出す"""
+    if place == "top":
+        return ('<p class="news-source">この記事は、日本総代理店 株式会社カスタムジャパンの'
+                'メディアで公開された記事です。'
+                '<a href="%s" target="_blank" rel="noopener">元記事を読む'
+                '<i class="ti ti-external-link"></i></a></p>' % esc(a["url"]))
+    return ('<div class="news-origin">'
+            '<p class="news-origin-ttl">出典</p>'
+            '<p class="news-origin-txt">株式会社カスタムジャパン（%s 公開）</p>'
+            '<a href="%s" class="news-btn news-btn-primary" target="_blank" rel="noopener">'
+            '元記事を読む<i class="ti ti-external-link"></i></a></div>'
+            % (jp_date(a["date"]), esc(a["url"])))
+
+
+def build_cj_detail(a, i, articles, cards, shell):
+    head_open, head_tail, nav, foot = shell
+    title = "%s｜NEWS｜SHAD JAPAN" % a["title"]
+    figure = ""
+    if a.get("image"):
+        figure = ('<div class="news-hero-img"><img src="%s" alt="%s"></div>'
+                  % (esc(a["image"]), esc(a["title"])))
+    body = source_note(a, "top") + a["cleanBody"] + source_note(a, "bottom")
+    page = DETAIL.format(
+        nav=nav,
+        hero=hero("News", a["title"], a["date"], a.get("category")),
+        figure=figure,
+        lead=esc(a.get("lead") or ""),
+        body=body,
+        related=related_products(a.get("products") or [], cards),
+        pn=prev_next(articles, i),
+        foot=foot,
+    )
+    # ★重複コンテンツ対策：canonical と og:url を元記事に向ける
+    head = page_head(title, a.get("lead") or a["title"], a["url"], a.get("image"))
+    return head_open + head + head_tail + "</head>\n" + page
+
 # ---------- 一覧ページ ----------
 
 # 絞り込みチップの並び（news.json の categories に無いものはこの順で後ろに足す）
 CATEGORY_ORDER = ["News", "Feature", "Event", "Racing", "Media", "Guide"]
+
+
+def product_code_map():
+    """本文中のECリンク（/i/<品番>）を商品ページに向けるための対応表。
+    型番そのもの（/i/SH26 の形）と、品番（/i/29351725）の両方を引けるようにする。"""
+    m = {}
+    if os.path.exists(CARDS):
+        for code in json.load(open(CARDS, encoding="utf-8")):
+            m[code.upper()] = code
+    prod = os.path.join(SITE, "data", "catalog", "products.json")
+    if os.path.exists(prod):
+        for code, entry in json.load(open(prod, encoding="utf-8")).items():
+            for v in entry.get("variants", []):
+                if v.get("cjCode"):
+                    m[str(v["cjCode"])] = code
+    return m
 
 
 def load_api_articles():
@@ -280,9 +460,17 @@ def load_api_articles():
     if not os.path.exists(DATA_API):
         return []
     items = json.load(open(DATA_API, encoding="utf-8")).get("items", [])
-    return [{"slug": "cj-%s" % x["id"], "date": x["date"], "category": x["category"],
-             "title": x["title"], "lead": x.get("lead", ""), "image": x.get("image", ""),
-             "url": x["url"], "body": []} for x in items]
+    codes = product_code_map()
+    out, stats = [], {"ec": 0, "external": 0, "internal": 0}
+    for x in items:
+        body, links = clean_article(x.get("content"), codes)
+        for k in stats:
+            stats[k] += links[k]
+        out.append({"slug": "cj-%s" % x["id"], "date": x["date"], "category": x["category"],
+                    "title": x["title"], "lead": x.get("lead", ""), "image": x.get("image", ""),
+                    "url": x["url"], "cleanBody": body, "body": []})
+    load_api_articles.link_stats = stats
+    return out
 
 
 def card_html(a, reveal=True):
@@ -292,12 +480,10 @@ def card_html(a, reveal=True):
                  % esc(a["image"]))
     else:
         thumb = '<span class="block aspect-[4/3] bg-gradient-to-br from-[#E4E1DB] to-[#D5D2CA]"></span>'
-    # CJのCMSの記事は元記事へ（本文はCJ側にあり、こちらでは重複させない）
-    external = bool(a.get("url"))
-    href = a["url"] if external else "/news/" + a["slug"]
-    attrs = ' target="_blank" rel="noopener"' if external else ""
-    mark = ('<i class="ti ti-external-link text-[13px] text-neutral-400 ml-auto"></i>'
-            if external else "")
+    # 記事はすべてサイト内で読む（CJの記事も本文を取り込み、canonicalは元記事に向ける）
+    href = "/news/" + a["slug"]
+    attrs = ""
+    mark = ""
     return ('<a href="%s" class="ncard"%s%s data-cat="%s">%s'
             '<span class="block px-5 py-4">'
             '<span class="flex items-center gap-2.5">'
@@ -398,10 +584,10 @@ def main():
         shutil.rmtree(OUT_DIR)
     os.makedirs(OUT_DIR)
 
-    local = [a for a in articles if not a.get("url")]
-    for i, a in enumerate(local):
+    for i, a in enumerate(articles):
         path = os.path.join(OUT_DIR, a["slug"] + ".html")
-        open(path, "w", encoding="utf-8").write(build_detail(a, i, local, cards, shell))
+        make = build_cj_detail if a.get("url") else build_detail
+        open(path, "w", encoding="utf-8").write(make(a, i, articles, cards, shell))
 
     open(os.path.join(OUT_DIR, "index.html"), "w", encoding="utf-8").write(
         build_list(articles, shell))
@@ -422,15 +608,16 @@ def main():
     print("NEWS を生成しました")
     print("=" * 62)
     print("一覧            : /news")
-    print("自社記事（詳細ページあり）: %d 件" % len(local))
-    for a in local:
-        print("    /news/%-24s %s  %s" % (a["slug"], jp_date(a["date"]), a["title"][:40]))
+    own = [a for a in articles if not a.get("url")]
     ext = [a for a in articles if a.get("url")]
-    print("CJのCMSの記事（元記事へリンク）: %d 件" % len(ext))
-    for a in ext[:5]:
-        print("    %s  %-8s %s" % (jp_date(a["date"]), a["category"], a["title"][:44]))
-    if len(ext) > 5:
-        print("    …ほか%d件" % (len(ext) - 5))
+    print("自社発信の記事      : %d 件" % len(own))
+    for a in own:
+        print("    /news/%-24s %s  %s" % (a["slug"], jp_date(a["date"]), a["title"][:38]))
+    print("CJのCMSの記事      : %d 件（本文を取り込み、canonicalは元記事）" % len(ext))
+    st = getattr(load_api_articles, "link_stats", {})
+    if st:
+        print("    本文中のリンク: 自サイトの商品ページへ書き換え %d / CJ内 %d / その他外部 %d"
+              % (st.get("internal", 0), st.get("ec", 0), st.get("external", 0)))
     print("TOPページの NEWS: %s" % ("最新4件に更新" if top else "更新できませんでした"))
     if os.path.exists(os.path.join(ROOT, "site", "top-simple.html")):
         print("シンプル版トップ  : %s" % ("作り直しました" if simple_built else "⚠ 作り直せませんでした"))

@@ -30,6 +30,7 @@ SHAD関連記事の原本はCJのCMS（WordPress）です。ここで取得し�
 =============================================================================
 """
 
+import html as html_mod
 import json
 import os
 import re
@@ -87,10 +88,10 @@ def fetch_all():
 
 
 def strip_html(s):
+    """タグを外し、実体参照（&hellip; など）を文字に戻す。抜粋末尾の […] も落とす。"""
     s = re.sub(r"<[^>]+>", "", s or "")
-    s = (s.replace("&nbsp;", " ").replace("&amp;", "&").replace("&lt;", "<")
-          .replace("&gt;", ">").replace("&quot;", '"').replace("&#8217;", "'")
-          .replace("&#8211;", "–").replace("&#039;", "'"))
+    s = html_mod.unescape(s)
+    s = re.sub(r"\s*\[\s*…\s*\]\s*$", "…", s)
     return re.sub(r"\s+", " ", s).strip()
 
 

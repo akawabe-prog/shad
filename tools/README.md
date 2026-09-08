@@ -171,8 +171,8 @@ python3 tools/build_news.py       # 2系統をまとめて /news・TOPのNEWS枠
 | | 自社発信（news.json） | CJのCMS（API） |
 |---|---|---|
 | 記事の追加 | `news.json` を編集 | CJ側で公開されれば `fetch_news_api.py` で自動取得 |
-| クリック先 | サイト内の詳細ページ `/news/<slug>` | **元記事**（cms.customjapan.net。別タブ＋外部リンクアイコン） |
-| 本文 | サイトで組む | CJ側にあるものをそのまま読んでもらう |
+| ページ | `/news/<slug>` | `/news/cj-<記事ID>` |
+| 本文 | `body` ブロックから組む | CJの本文HTMLを整形して取り込み |
 
 **取得はSHAD記事だけです。** APIの `categories=480` がSHADカテゴリの指定で、
 返る40件はすべて `™️SHAD` タグ付き・他ブランドのタグは付いていません（実測確認済み）。
@@ -190,11 +190,31 @@ python3 tools/build_news.py       # 2系統をまとめて /news・TOPのNEWS枠
 
 絞り込みチップは、実際に記事があるカテゴリだけを出します。
 
-**元記事へのリンクにしている理由**：本文はCJのCMSで公開済みのため、同じ内容を
-当サイトにも置くと検索エンジンに重複コンテンツと見なされます。また記事中に
-EC（moto.customjapan.net）の購入導線が含まれており、定価表示のみのブランドサイトとは
-方針が合いません。本文を当サイトに載せる場合は、canonical を元記事に向ける対応が必要です
-（`news_api.json` には `content` も保存済みなので、方針が決まればすぐ切り替えられます）。
+### 重複コンテンツにしないための3点セット
+
+CJ記事の本文は当サイトでも読めますが、同じ本文がCJのCMSにもあります。
+検索エンジンに重複と判断されないよう、**必ず次の3つをセットで出力**しています
+（`build_cj_detail`）。
+
+| 対策 | 実装 |
+|---|---|
+| ① クロスドメイン canonical | `<link rel="canonical">` を**元記事のURL**に向ける。検索エンジンには元記事を正としてもらう |
+| ② og:url も元記事 | SNSでシェアされたときの正規URLも元記事に揃える |
+| ③ 出典の明示 | 本文の冒頭に一文、末尾に「出典：株式会社カスタムジャパン（公開日）＋元記事を読む」を出す |
+
+### 本文の整形（`clean_article`）
+
+CJ側はWordPressのHTMLなので、そのままでは当サイトのデザインと合いません。
+残すタグを絞り、`class` / `style` / `id` は全部落としてから当サイトのCSSを当てています。
+
+- 残すタグ：`p h2 h3 h4 ul ol li strong em br blockquote figure figcaption img a table 系 small hr`
+- 中身ごと捨てる：`script style button svg form`（WPのUI部品・コピーボタンなど）
+- `div` `span` などは**中身だけ残す**（入れ子のブロックを畳む）
+- `iframe` は **YouTubeの埋め込みだけ**許可し、16:9のレスポンシブ枠（`.news-embed`）に入れる
+- 本文中のECリンク `moto.customjapan.net/i/<品番>` は、**当サイトの商品ページ**へ書き換え
+  （品番→型番の対応は `products.json` から作成。現在5箇所）。書き換えられない外部リンクは
+  別タブ＋`rel="noopener"`
+- 画像はCMSのURLをそのまま参照（`loading="lazy"`）。当サイトには複製しません
 
 ### 自社発信の記事（news.json）
 
