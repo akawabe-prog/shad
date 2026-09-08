@@ -160,12 +160,46 @@ CJ側でタグが増えたら `TAG_TO_CAT` に1行足すだけで振り分けら
 
 ## NEWS の更新
 
-記事は `site/data/news/news.json` の1ファイルにまとめています。**JSONを編集して
-ビルドするだけ**で、一覧・詳細・TOPページの最新4件がまとめて更新されます。
+NEWSは **自社発信の記事（news.json）** と **カスタムジャパンのCMSにあるSHAD記事（API）** の
+2系統を、日付順にまとめて1つの一覧にしています。
 
 ```bash
-python3 tools/build_news.py
+python3 tools/fetch_news_api.py   # CJのCMS → site/data/news/news_api.json（SHAD記事40件）
+python3 tools/build_news.py       # 2系統をまとめて /news・TOPのNEWS枠を生成
 ```
+
+| | 自社発信（news.json） | CJのCMS（API） |
+|---|---|---|
+| 記事の追加 | `news.json` を編集 | CJ側で公開されれば `fetch_news_api.py` で自動取得 |
+| クリック先 | サイト内の詳細ページ `/news/<slug>` | **元記事**（cms.customjapan.net。別タブ＋外部リンクアイコン） |
+| 本文 | サイトで組む | CJ側にあるものをそのまま読んでもらう |
+
+**取得はSHAD記事だけです。** APIの `categories=480` がSHADカテゴリの指定で、
+返る40件はすべて `™️SHAD` タグ付き・他ブランドのタグは付いていません（実測確認済み）。
+
+記事の種別はCJ側のタグからカテゴリに振り分けます（`TAG_TO_CATEGORY`）。
+1記事に複数付く場合は上の行が優先です。
+
+| CJのタグ | サイトのカテゴリ | 件数 |
+|---|---|---|
+| `#出展` | Event | 4 |
+| `#ニュース` | News | 4 |
+| `#特集` | Feature | 8 |
+| `#メディア` | Media | 21 |
+| （種別タグなし＝取付・使用方法） | Guide | 3 |
+
+絞り込みチップは、実際に記事があるカテゴリだけを出します。
+
+**元記事へのリンクにしている理由**：本文はCJのCMSで公開済みのため、同じ内容を
+当サイトにも置くと検索エンジンに重複コンテンツと見なされます。また記事中に
+EC（moto.customjapan.net）の購入導線が含まれており、定価表示のみのブランドサイトとは
+方針が合いません。本文を当サイトに載せる場合は、canonical を元記事に向ける対応が必要です
+（`news_api.json` には `content` も保存済みなので、方針が決まればすぐ切り替えられます）。
+
+### 自社発信の記事（news.json）
+
+記事は `site/data/news/news.json` の1ファイルにまとめています。**JSONを編集して
+ビルドするだけ**で、一覧・詳細・TOPページの最新4件がまとめて更新されます。
 
 | 生成されるもの | URL |
 |---|---|

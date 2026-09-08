@@ -55,6 +55,8 @@ import shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 DATA = os.path.join(SITE, "data", "news", "news.json")
+# CJのCMSから取得したSHAD記事（tools/fetch_news_api.py が生成）
+DATA_API = os.path.join(SITE, "data", "news", "news_api.json")
 CARDS = os.path.join(SITE, "data", "catalog", "cards.json")
 TEMPLATE = os.path.join(SITE, "fitment.html")     # nav / footer の雛形（同じ器）
 OUT_DIR = os.path.join(SITE, "news")
@@ -269,6 +271,20 @@ def build_detail(a, i, articles, cards, shell):
 
 # ---------- 一覧ページ ----------
 
+# 絞り込みチップの並び（news.json の categories に無いものはこの順で後ろに足す）
+CATEGORY_ORDER = ["News", "Feature", "Event", "Racing", "Media", "Guide"]
+
+
+def load_api_articles():
+    """CJのCMSから取得したSHAD記事。無ければ空（自社記事だけで動く）"""
+    if not os.path.exists(DATA_API):
+        return []
+    items = json.load(open(DATA_API, encoding="utf-8")).get("items", [])
+    return [{"slug": "cj-%s" % x["id"], "date": x["date"], "category": x["category"],
+             "title": x["title"], "lead": x.get("lead", ""), "image": x.get("image", ""),
+             "url": x["url"], "body": []} for x in items]
+
+
 def card_html(a, reveal=True):
     if a.get("image"):
         thumb = ('<span class="block aspect-[4/3] overflow-hidden">'
@@ -276,15 +292,21 @@ def card_html(a, reveal=True):
                  % esc(a["image"]))
     else:
         thumb = '<span class="block aspect-[4/3] bg-gradient-to-br from-[#E4E1DB] to-[#D5D2CA]"></span>'
-    return ('<a href="/news/%s" class="ncard"%s data-cat="%s">%s'
+    # CJのCMSの記事は元記事へ（本文はCJ側にあり、こちらでは重複させない）
+    external = bool(a.get("url"))
+    href = a["url"] if external else "/news/" + a["slug"]
+    attrs = ' target="_blank" rel="noopener"' if external else ""
+    mark = ('<i class="ti ti-external-link text-[13px] text-neutral-400 ml-auto"></i>'
+            if external else "")
+    return ('<a href="%s" class="ncard"%s%s data-cat="%s">%s'
             '<span class="block px-5 py-4">'
             '<span class="flex items-center gap-2.5">'
             '<span class="ncard-cat">%s</span>'
-            '<span class="font-disp text-[13.5px] tracking-[.14em] text-neutral-500">%s</span></span>'
+            '<span class="font-disp text-[13.5px] tracking-[.14em] text-neutral-500">%s</span>%s</span>'
             '<span class="block text-[15.5px] font-medium mt-1.5 leading-relaxed">%s</span>'
             '</span></a>'
-            % (esc(a["slug"]), ' data-reveal' if reveal else '', esc(a.get("category")),
-               thumb, esc(a.get("category")), jp_date(a["date"]), esc(a["title"])))
+            % (esc(href), attrs, ' data-reveal' if reveal else '', esc(a.get("category")),
+               thumb, esc(a.get("category")), jp_date(a["date"]), mark, esc(a["title"])))
 
 
 LIST = """{nav}
@@ -328,7 +350,10 @@ LIST = """{nav}
 
 def build_list(articles, shell):
     head_open, head_tail, nav, foot = shell
-    cats = json.load(open(DATA, encoding="utf-8")).get("categories", [])
+    order = json.load(open(DATA, encoding="utf-8")).get("categories", [])
+    order = order + [c for c in CATEGORY_ORDER if c not in order]
+    have = {a.get("category") for a in articles}
+    cats = [c for c in order if c in have]
     chips = "".join('<button type="button" class="cat-chip" data-cat="%s">%s</button>'
                     % (esc(c), esc(c)) for c in cats)
     cards = "\n      ".join(card_html(a) for a in articles)
@@ -364,16 +389,19 @@ def update_top(articles):
 def main():
     data = json.load(open(DATA, encoding="utf-8"))
     cards = json.load(open(CARDS, encoding="utf-8")) if os.path.exists(CARDS) else {}
-    articles = sorted(data["articles"], key=lambda a: a["date"], reverse=True)
+    own = data["articles"]
+    api = load_api_articles()
+    articles = sorted(own + api, key=lambda a: a["date"], reverse=True)
     shell = load_shell()
 
     if os.path.exists(OUT_DIR):
         shutil.rmtree(OUT_DIR)
     os.makedirs(OUT_DIR)
 
-    for i, a in enumerate(articles):
+    local = [a for a in articles if not a.get("url")]
+    for i, a in enumerate(local):
         path = os.path.join(OUT_DIR, a["slug"] + ".html")
-        open(path, "w", encoding="utf-8").write(build_detail(a, i, articles, cards, shell))
+        open(path, "w", encoding="utf-8").write(build_detail(a, i, local, cards, shell))
 
     open(os.path.join(OUT_DIR, "index.html"), "w", encoding="utf-8").write(
         build_list(articles, shell))
@@ -394,9 +422,15 @@ def main():
     print("NEWS を生成しました")
     print("=" * 62)
     print("一覧            : /news")
-    print("詳細            : %d 記事" % len(articles))
-    for a in articles:
-        print("    /news/%-24s %s  %s" % (a["slug"], jp_date(a["date"]), a["title"]))
+    print("自社記事（詳細ページあり）: %d 件" % len(local))
+    for a in local:
+        print("    /news/%-24s %s  %s" % (a["slug"], jp_date(a["date"]), a["title"][:40]))
+    ext = [a for a in articles if a.get("url")]
+    print("CJのCMSの記事（元記事へリンク）: %d 件" % len(ext))
+    for a in ext[:5]:
+        print("    %s  %-8s %s" % (jp_date(a["date"]), a["category"], a["title"][:44]))
+    if len(ext) > 5:
+        print("    …ほか%d件" % (len(ext) - 5))
     print("TOPページの NEWS: %s" % ("最新4件に更新" if top else "更新できませんでした"))
     if os.path.exists(os.path.join(ROOT, "site", "top-simple.html")):
         print("シンプル版トップ  : %s" % ("作り直しました" if simple_built else "⚠ 作り直せませんでした"))
