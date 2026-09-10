@@ -131,7 +131,11 @@
   /* ---- ギャラリー画像の差し替え ---- */
   function applyGallery(variant) {
     var main = document.getElementById("gMain");
-    var imgs = (variant.images || []).map(imgUrl).filter(Boolean);
+    // ページ側で高画質の看板画像を用意している場合はそれを優先する
+    //   window.SHAD_GALLERY = { "<品番>": ["/img/…", …], … }   （例：TR46 のカラー別パックショット）
+    var override = window.SHAD_GALLERY && window.SHAD_GALLERY[String(variant.cjCode)];
+    var imgs = override && override.length ? override.slice()
+             : (variant.images || []).map(imgUrl).filter(Boolean);
     if (!main || !imgs.length) return;
     main.src = imgs[0];
     var row = document.querySelector(".g-thumb") && document.querySelector(".g-thumb").parentNode;

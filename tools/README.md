@@ -54,6 +54,41 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## 商品ページ MAXテンプレート（初出：TR46）
+
+素材が揃っている商品向けの「フル装備」レイアウトです。`site/product/tr46.html` が原本で、
+構成とクラス（`.pd-*`）をそのまま流用して他の商品へ展開します。
+
+```
+①看板（ギャラリー＋価格・カラー・適合ボタン）
+②アンカーナビ（看板を過ぎたら追従。現在地を下線で表示）
+③INDEX（01〜07の目次）
+④SPEC／保証・サポート／FAQ（アコーディオン。FAQは build_faq.py のマーカーをそのまま内包）
+⑤HERO映像（フルブリード。PCは横型、スマホは縦型を自動選択。「フル映像を見る」でモーダル再生）
+⑥イメージ画像（横長1枚＋2枚組）
+⑦商品の特徴（従来の lp-story 3本＋構造図4枚）
+⑧縦型映像（リール5本。画面に入ったら再生）
+⑨ギャラリー（12枚のタイル）
+⑩適合（既存の fitment セクション）
+⑪関連商品（Same Series＋他ページへの4つの導線）
+```
+
+| 展開時に触る場所 | 内容 |
+|---|---|
+| `window.SHAD_GALLERY` | 品番 → 看板画像の配列。カラー選択でこの画像に切り替わる（`purchase.js` が参照。無い商品は従来どおりECの画像） |
+| `#spec` `#faq` `#movie` `#feature` `#gallery` `#fitment` `#related` | アンカーナビとINDEXの飛び先。セクションの id は変えない |
+| `<h2 class="sr-only">Spec</h2>` と `Same Series` の見出し | `purchase.js` が対応アクセサリーの差し込み位置を探すのに使う。消さない |
+| `/js/main.js` | フル映像のモーダル（`[data-video]`）に必要。商品ページで読み込む |
+| 動画 | `site/media/products/<型番>/`：`hero.mp4`（1920px・約5MB）／`hero_sp.mp4`（810px縦）／`film.mp4`（1280px・音声あり）／`reel_*.mp4`（720px縦） |
+| 画像 | `site/img/products/<型番>/`：看板1600px、イメージ1920px、ギャラリー1400px、ポスター720〜1600px（webp） |
+
+CSSは `custom.css` の「商品ページ MAXテンプレート」ブロックに集約しています（従来ページのインラインCSSも同じ定義）。
+
+動画の変換（ffmpeg）：`-c:v libx264 -preset slow -crf 24〜26 -pix_fmt yuv420p -movflags +faststart`、
+横型は `scale=1920:-2`（フル映像は 1280）、縦型は `scale=720:-2`（ヒーローは 810）。音声はヒーロー・リールでは削除（`-an`）。
+
+---
+
 ## シンプル版トップページ
 
 `site/index.html` を原本に、セクションを絞った簡易版トップを作ります。
