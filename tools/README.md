@@ -71,6 +71,7 @@ python3 tools/build_product_max.py tools/product_max/tr41.json
   イメージ2枚組（省略可）、構造図（省略可）、リール（省略可）、ギャラリー12枚
 - **フルパニア構成（setup）**：トップ＋サイドの組み合わせ提案。`setup` を持つ商品だけに「フルパニア」セクションとナビ項目が入り、
   番号は自動で振り直されます。定価は `products.json` から実行時に表示（複数カラーは最安値に「〜」）。TR46 と TR27 が同じ設定を共有
+- **関連商品（related）**：品番リストを指定すると cards.json からカードを自動生成（自商品は除外）。`related_title` で表示見出しを変えられる（例：防水系4点を「Waterproof Series」）。内部の「Same Series」見出しは purchase.js の差し込み位置に使うため sr-only で残る
 - TR46 も `tools/product_max/tr46.json` から生成する形に移行済み（手書き版と同じ内容＋フルパニア構成）
 
 ```

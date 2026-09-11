@@ -197,5 +197,13 @@
       "src": "/img/products/tr30/gal_12.webp"
     }
   ],
-  "userguide": "/docs/tr30_userguide.pdf"
+  "userguide": "/docs/tr30_userguide.pdf",
+  "related": [
+    "TR30",
+    "TR50",
+    "TR08",
+    "TR10"
+  ],
+  "related_title": "Waterproof Series",
+  "related_lead": "雨でも中身を守る、SHADの防水バッグ。"
 }

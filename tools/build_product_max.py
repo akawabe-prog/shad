@@ -32,6 +32,8 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
                     { en, heading, lead, total:"100", total_label（省略時「合計容量」）, visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
                     items の code がある行は定価を products.json から表示。code が自商品の行はハイライト
+    related         関連商品の品番リスト（cards.json から自動でカード化。自商品は除外）。省略時は現ページの Same Series を流用
+    related_title / related_lead   関連商品の表示見出しと一言（例：Waterproof Series）。省略時は「Same Series」
     userguide       取扱説明書PDFのパス（省略時は /docs/<code小文字>_userguide.pdf があれば使う）
 
 ■ 注意
@@ -107,6 +109,20 @@ BASE_ITEMS = [  # (アンカー, ナビ表記, INDEX日本語, INDEX英語)
 def nav_items(cfg):
     items = [x for x in BASE_ITEMS if x[0] != "#setup" or cfg.get("setup")]
     return [("%02d" % (i + 1),) + x for i, x in enumerate(items)]
+
+
+def related_grid(codes, self_code):
+    """cards.json から関連商品カードのグリッドを作る（自商品は除外）"""
+    cards = json.load(open(os.path.join(SITE, "data", "catalog", "cards.json"), encoding="utf-8"))
+    items = [cards[c] for c in codes if c in cards and c != self_code]
+    cols = {1: "sm:grid-cols-1", 2: "sm:grid-cols-2", 3: "sm:grid-cols-3"}.get(len(items), "sm:grid-cols-4")
+    a = "".join(
+        '<a href="/product/%s" class="pcard group bg-white rounded-[14px] overflow-hidden border border-black/10 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,.10)]">\n'
+        '      <span class="block aspect-square overflow-hidden bg-white"><img src="%s" alt="%s" class="w-full h-full object-cover transition duration-300 group-hover:scale-[1.04]"></span>\n'
+        '      <span class="block px-5 py-4"><span class="font-disp font-semibold text-[20px] tracking-[.05em] uppercase">%s</span>'
+        '<span class="block text-[12.5px] text-neutral-500 mt-0.5">%s<span class="text-neutral-400"> / %s</span></span></span></a>'
+        % (c["code"].lower(), c["img"], c["code"], c["code"], c.get("jp", ""), c.get("cap", "")) for c in items)
+    return '<div class="grid grid-cols-2 %s gap-4 sm:gap-5 mt-6">%s</div>' % (cols, a)
 
 
 def render(cfg, P):
@@ -185,6 +201,14 @@ def render(cfg, P):
 </section>
 
 '''
+    if cfg.get("related"):
+        P["same_grid"] = related_grid(cfg["related"], code)
+    # 見出し：purchase.js が「Same Series」の h2 を差し込み位置に使うので、表示名を変える場合も h2 は残す（sr-only）
+    if cfg.get("related_title"):
+        related_head = ('<h2 class="sr-only">Same Series</h2><p class="sec-ttl sec-ttl-quiet">%s</p>'
+                        '<p class="text-[13px] text-neutral-500 mt-2">%s</p>' % (cfg["related_title"], cfg.get("related_lead", "")))
+    else:
+        related_head = '<h2 class="sec-ttl sec-ttl-quiet">Same Series</h2>'
     gallery = "".join('      <figure%s><img src="%s" alt="" loading="lazy"></figure>\n'
                       % ((' class="%s"' % g["cls"]) if g.get("cls") else "", g["src"]) for g in cfg["gallery"])
     feat = cfg.get("features", {})
@@ -296,7 +320,7 @@ window.SHAD_GALLERY = {ov};
 <!-- ===== ⑪ 関連商品（他商品への誘導） ===== -->
 <section id="related" class="scroll-mt-[132px] bg-mist py-12 mt-8">
   <div class="max-w-site mx-auto px-7">
-    <h2 class="sec-ttl sec-ttl-quiet">Same Series</h2>
+    {related_head}
     {P["same_grid"]}
     <div class="pd-cta" data-reveal>
       <a href="/terra"><span><b>TERRAシリーズをすべて見る</b><span>トップケース・サイドケース・バッグのラインアップ</span></span><i class="ti ti-arrow-right"></i></a>
