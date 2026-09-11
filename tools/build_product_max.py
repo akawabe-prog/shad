@@ -22,7 +22,7 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     gallery_override            { 品番: [画像…] } カラー選択時の看板画像（purchase.js が参照）
     hero            { video_pc, video_sp, poster_pc, poster_sp, kick, heading（<br>可）, sub, film, film_label }
                     film を省略すると「フル映像を見る」ボタンは出ません
-    visual_pair     [ {src, alt, caption}, {src, alt, caption} ]   省略可
+    visual_pair     [ {src, alt, caption} または {video, poster, alt, caption}（短いループ動画）, … ]   省略可
     features        { en, heading }  特徴セクションの見出し
     diagrams        [ {img, alt, b, span} … ]  構造図。空なら出さない
     reels           [ {src, poster, en, jp} … ]  縦型映像。空ならセクションごと出さない
@@ -128,8 +128,13 @@ def render(cfg, P):
             % (hero["film"], hero.get("poster_film", hero.get("poster_pc", "")), hero.get("film_label", "フル映像を見る"))) if hero.get("film") else ""
     visual = ""
     if cfg.get("visual_pair"):
-        figs = "".join('    <figure><img src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>\n'
-                       % (v["src"], esc(v.get("alt")), v.get("caption", "")) for v in cfg["visual_pair"])
+        def vfig(v):
+            if v.get("video"):
+                return ('    <figure><video src="%s" poster="%s" muted loop playsinline preload="metadata" data-inview aria-label="%s"></video>'
+                        '<figcaption>%s</figcaption></figure>\n' % (v["video"], v.get("poster", ""), esc(v.get("alt")), v.get("caption", "")))
+            return ('    <figure><img src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>\n'
+                    % (v["src"], esc(v.get("alt")), v.get("caption", "")))
+        figs = "".join(vfig(v) for v in cfg["visual_pair"])
         visual = ('<!-- ===== ⑥ イメージ画像 ===== -->\n<section class="pd-visual pt-1.5" data-reveal>\n'
                   '  <div class="pd-visual-pair">\n%s  </div>\n</section>\n\n' % figs)
     diagrams = ""
@@ -399,6 +404,9 @@ def main():
     a = s.find("<!-- =====================================================================\n     商品ページ MAXテンプレート")
     if a < 0:
         a = s.index('<div class="max-w-site mx-auto px-7 pt-6">')
+        h = s.find('<header class="lp-hero">')
+        if 0 <= h < a:                       # 従来レイアウトの冒頭ヒーロー映像は MAX の ⑤ に移すので外す
+            a = h
     b = s.index("<footer ")
     s = s[:a] + render(cfg, P) + s[b:]
     if "/js/main.js" not in s:

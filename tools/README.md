@@ -54,7 +54,7 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
-## 商品ページ MAXテンプレート（TR46・TR41・TR08・TR27・SH51）
+## 商品ページ MAXテンプレート（TR46・TR41・TR08・TR27・SH51・SH38X）
 
 素材が揃っている商品向けの「フル装備」レイアウトです。`site/product/tr46.html` が原本で、
 2例目以降は **`tools/build_product_max.py`** で組み替えます（TR41 が最初の適用例）。

@@ -1,0 +1,227 @@
+{
+  "code": "SH38X",
+  "name_jp": "可変容量サイドケース",
+  "main_img": "/img/products/sh38x/alu_01.webp",
+  "thumbs": [
+    "/img/products/sh38x/alu_01.webp",
+    "/img/products/sh38x/alu_02.webp",
+    "/img/products/sh38x/alu_03.webp",
+    "/img/products/sh38x/alu_04.webp",
+    "/img/products/sh38x/alu_05.webp"
+  ],
+  "gallery_override": {
+    "27952917": [
+      "/img/products/sh38x/alu_01.webp",
+      "/img/products/sh38x/alu_02.webp",
+      "/img/products/sh38x/alu_03.webp",
+      "/img/products/sh38x/alu_04.webp",
+      "/img/products/sh38x/alu_05.webp"
+    ],
+    "27952924": [
+      "/img/products/sh38x/cbn_01.webp",
+      "/img/products/sh38x/cbn_02.webp",
+      "/img/products/sh38x/cbn_03.webp",
+      "/img/products/sh38x/cbn_04.webp",
+      "/img/products/sh38x/cbn_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/sh38x/hero.mp4",
+    "video_sp": "/media/products/sh38x/hero_sp.mp4",
+    "poster_pc": "/img/products/sh38x/poster_hero.webp",
+    "poster_sp": "/img/products/sh38x/poster_hero_sp.webp",
+    "kick": "Technology",
+    "heading": "容量が変わる。<br>旅が変わる。",
+    "sub": "＋70mmの伸長で、容量は40%アップ。テンセグリティ構造が数秒で均一に伸縮する、世界で唯一の可変容量サイドケース。",
+    "film": "/media/products/sh38x/film.mp4",
+    "poster_film": "/img/products/sh38x/poster_film.webp",
+    "film_label": "1年の記録を見る（30秒）"
+  },
+  "visual_pair": [
+    {
+      "video": "/media/products/sh38x/loop_alu.mp4",
+      "poster": "/img/products/sh38x/poster_loop_alu.webp",
+      "alt": "SH38Xが伸縮するアニメーション",
+      "caption": "レバー操作で数秒。＋70mm、＋40%。"
+    },
+    {
+      "src": "/img/products/sh38x/img_transalp.webp",
+      "alt": "SH38Xを装着したホンダ トランザルプの走行",
+      "caption": "走るときはスリム。車幅を抑えて、軽快に。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "数秒で＋40%。世界初の可変容量サイドケース。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/sh38x/story_expand.webp",
+      "kick": "Expandable",
+      "h": "走るときはスリム。停まれば、大容量。",
+      "p": "レバー操作で数秒。走行時は車幅を抑えてスリムに、停車後はモジュラーヘルメットが収まる容量へ。建築の概念「テンセグリティ」に着想を得た張力補償システムで、均一にテレスコピック展開する。容量が変わるサイドケースは、世界でSHADだけ。"
+    },
+    {
+      "img": "/img/products/sh38x/story_mount.webp",
+      "kick": "3P / 4P System",
+      "h": "車体に、溶け込むマウント。",
+      "p": "必要なアンカーを1本のアームで支える特許構造。マスを車体中心に集め、走行中のハンドリングへの影響を最小化。可変機構はケースと取付部に完全内蔵され、ケースを外しても美しいシルエットのまま。"
+    },
+    {
+      "img": "/img/products/sh38x/story_lock.webp",
+      "kick": "Premium Smart Lock",
+      "h": "鍵いらずの、ワンタッチ。",
+      "p": "解錠状態にしておけば、ボタン操作だけで開閉。料金所での小銭、休憩時の出し入れ。ひとつの鍵で開ける・閉める・外すが完結し、格納式ハンドルで持ち運びも楽に。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/sh38x/info_expand.webp",
+      "alt": "＋70mm伸長、容量＋40%",
+      "b": "Expandable",
+      "span": "＋70mm伸長で容量＋40%。ダイナミック・テンセグリティ構造で、数秒で均一に伸縮。"
+    },
+    {
+      "img": "/img/products/sh38x/info_helmet.webp",
+      "alt": "モジュラーヘルメットを収納",
+      "b": "Modular Helmet",
+      "span": "拡張時はXLサイズのモジュラーヘルメット（ECE 22.06）が収まる。"
+    },
+    {
+      "img": "/img/products/sh38x/info_fitting.webp",
+      "alt": "3P/4Pシステム",
+      "b": "3P / 4P System",
+      "span": "車種別の3P System／4P Systemサイドキットで装着（4Pは別売アダプター併用）。"
+    },
+    {
+      "img": "/img/products/sh38x/info_net.webp",
+      "alt": "インナーネット",
+      "b": "Inner Net",
+      "span": "インナーネット2枚とインナートレイを標準装備。片側最大10kg。"
+    }
+  ],
+  "setup": {
+    "en": "Full Pannier Set-up",
+    "heading": "SH51 × SH38X。走るときはスリム、停まれば大容量。",
+    "lead": "可変容量のSH38X Expandableサイドケースに、モジュラーヘルメット2個が入るSH51トップケースを組み合わせたフルパニア構成。サイドは走行時23L、拡張すれば32L。3つ合わせて最大115L、コンパクト時でも97Lの積載になります。",
+    "total": "115",
+    "total_label": "最大合計容量",
+    "visuals": [
+      {
+        "src": "/img/products/sh38x/setup_alu.webp",
+        "caption": "アルミパネル：SH51 × SH38X",
+        "alt": "SH51とSH38Xアルミパネルを装着したBMW R1300GS"
+      },
+      {
+        "src": "/img/products/sh51/setup_carbon.webp",
+        "caption": "カーボン：SH51 × SH38X",
+        "alt": "SH51カーボンとSH38Xカーボンのフルパニア"
+      }
+    ],
+    "items": [
+      {
+        "code": "SH51",
+        "href": "/product/sh51",
+        "img": "/img/products/sh51/cbn_01.webp",
+        "role": "Top",
+        "name": "SH51 トップケース",
+        "sub": "51L／モジュラーヘルメット2個"
+      },
+      {
+        "code": "SH38X",
+        "href": "/product/sh38x",
+        "img": "/img/products/sh38x/alu_01.webp",
+        "role": "Side ×2",
+        "name": "SH38X 可変容量サイドケース 左右セット",
+        "sub": "23〜32L＋23〜32L／拡張式"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 3P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "SH38Xはカーボン／アルミパネル、SH51もカーボン／アルミパネルの2仕様。同じ仕上げで揃えると統一感のあるフルパニアになります。",
+      "SH38X右側ケースに付属のキーシリンダーをトップケースに装着すると、3つのケースを1本の鍵で開閉できます。",
+      "フィッティングキットは車種ごとに異なります。4Pシステムキットで装着する場合は取付アダプター（204632R）が別途必要です。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/sh38x/reel_main.mp4",
+      "poster": "/img/products/sh38x/poster_reel_main.webp",
+      "en": "SH38X 2025",
+      "jp": "可変容量で、旅はもっと自由に。"
+    },
+    {
+      "src": "/media/products/sh38x/reel_community.mp4",
+      "poster": "/img/products/sh38x/poster_reel_community.webp",
+      "en": "Community",
+      "jp": "SH38Xと走る、世界のライダー。"
+    },
+    {
+      "src": "/media/products/sh38x/reel_bmw.mp4",
+      "poster": "/img/products/sh38x/poster_reel_bmw.webp",
+      "en": "BMW R1300GS",
+      "jp": "GSに、可変容量。"
+    },
+    {
+      "src": "/media/products/sh38x/reel_transalp.mp4",
+      "poster": "/img/products/sh38x/poster_reel_transalp.webp",
+      "en": "Honda Transalp",
+      "jp": "トランザルプに、可変容量。"
+    },
+    {
+      "src": "/media/products/sh38x/reel_capacity.mp4",
+      "poster": "/img/products/sh38x/poster_reel_capacity.webp",
+      "en": "With SH51",
+      "jp": "SH51と組んで、ふたり分のヘルメット。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/sh38x/gal_01.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh38x/gal_02.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_03.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_08.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_04.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/sh38x/gal_09.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_05.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_10.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh38x/gal_06.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_07.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_11.webp"
+    },
+    {
+      "src": "/img/products/sh38x/gal_12.webp"
+    }
+  ],
+  "userguide": "/docs/sh38x_userguide.pdf"
+}
