@@ -516,7 +516,7 @@
 .pd-nav-a.is-current small{color:#E31E24;}
 @media(max-width:640px){
   .pd-nav-in{padding:0 8px;}
-  .pd-nav-a{padding:12px 2px;font-size:11.5px;letter-spacing:-.01em;gap:0;}
+  .pd-nav-a{padding:12px 1px;font-size:11px;letter-spacing:-.02em;gap:0;}  /* 8項目（フルパニア付き）でも375pxに収まる */
   .pd-nav-a small{display:none;}
 }
 /* 右側のフローティングIndex：アンカーナビが画面から消えたら出る */
@@ -633,6 +633,38 @@
 @media(max-width:1023px){.pd-gallery{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:180px;}}
 @media(max-width:640px){.pd-gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;}.pd-gallery .is-wide{grid-column:span 2;}}
 /* --- ⑪ 関連（他商品への誘導） --- */
+/* ---- 商品ページ MAXテンプレート：フルパニア構成（トップ＋サイドの組み合わせ提案） ---- */
+.pd-setup{background:#F5F4F0;padding:76px 0;}
+.pd-setup-total{display:flex;align-items:baseline;gap:4px;font-family:"Barlow Condensed",sans-serif;color:#E31E24;line-height:1;}
+.pd-setup-total b{font-size:56px;font-weight:600;}
+.pd-setup-total small{font-size:24px;font-weight:600;}
+.pd-setup-total span{font-family:inherit;font-size:12px;letter-spacing:.2em;color:#777;margin-left:8px;}
+.pd-setup-lead{max-width:760px;font-size:14.5px;line-height:2;color:#444;margin-top:-6px;}
+.pd-setup-visual{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:30px;}
+.pd-setup-visual figure{margin:0;position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:14px;background:#111;}
+.pd-setup-visual img{width:100%;height:100%;object-fit:cover;}
+.pd-setup-visual figcaption{position:absolute;left:14px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;letter-spacing:.06em;}
+.pd-setup-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px;}
+.pd-setup-item{display:flex;gap:16px;align-items:center;padding:18px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.1);transition:.2s;}
+.pd-setup-item:hover{border-color:#E31E24;transform:translateY(-2px);}
+.pd-setup-item.is-current{border-color:#0E0E0E;}
+.pd-setup-img{flex:none;width:84px;height:84px;border-radius:10px;background:#F0EEE9;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pd-setup-img img{width:100%;height:100%;object-fit:cover;}
+.pd-setup-img.is-icon i{font-size:30px;color:#E31E24;}
+.pd-setup-tx{min-width:0;}
+.pd-setup-role{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#E31E24;}
+.pd-setup-tx b{display:block;font-size:15px;line-height:1.4;margin-top:3px;}
+.pd-setup-tx>span:not(.pd-setup-role){display:block;font-size:12.5px;color:#777;margin-top:3px;line-height:1.6;}
+.pd-setup-tx em{display:block;font-style:normal;font-size:13px;font-weight:700;color:#0E0E0E;margin-top:6px;}
+.pd-setup-notes{margin-top:18px;font-size:12.5px;line-height:1.9;color:#666;padding-left:1.2em;}
+.pd-setup-notes li{list-style:disc;}
+@media (max-width:760px){
+  .pd-setup{padding:56px 0;}
+  .pd-setup-total b{font-size:44px;}
+  .pd-setup-visual{grid-template-columns:1fr;}
+  .pd-setup-items{grid-template-columns:1fr;}
+}
+
 .pd-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
 .pd-cta a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 24px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.1);transition:.2s;}
 .pd-cta a:hover{border-color:#E31E24;transform:translateY(-2px);}

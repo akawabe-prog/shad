@@ -54,7 +54,7 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
-## 商品ページ MAXテンプレート（初出：TR46、以降 TR41・TR08）
+## 商品ページ MAXテンプレート（TR46・TR41・TR08・TR27）
 
 素材が揃っている商品向けの「フル装備」レイアウトです。`site/product/tr46.html` が原本で、
 2例目以降は **`tools/build_product_max.py`** で組み替えます（TR41 が最初の適用例）。
@@ -69,6 +69,9 @@ python3 tools/build_product_max.py tools/product_max/tr41.json
 - 生成後に参照アセットの実在チェックとタグ数の整合チェックを行い、欠落があれば表示します
 - 素材の並び：看板＝`SHAD_GALLERY`（品番→画像配列）、ヒーロー＝`hero.mp4 / hero_sp.mp4`＋ポスター、フル映像＝`film.mp4`、
   イメージ2枚組（省略可）、構造図（省略可）、リール（省略可）、ギャラリー12枚
+- **フルパニア構成（setup）**：トップ＋サイドの組み合わせ提案。`setup` を持つ商品だけに「フルパニア」セクションとナビ項目が入り、
+  番号は自動で振り直されます。定価は `products.json` から実行時に表示（複数カラーは最安値に「〜」）。TR46 と TR27 が同じ設定を共有
+- TR46 も `tools/product_max/tr46.json` から生成する形に移行済み（手書き版と同じ内容＋フルパニア構成）
 
 ```
 ①看板（ギャラリー＋価格・カラー・適合ボタン）

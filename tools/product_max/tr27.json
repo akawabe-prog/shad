@@ -1,0 +1,213 @@
+{
+  "code": "TR27",
+  "name_jp": "TERRA サイドケース",
+  "main_img": "/img/products/tr27/blk_01.webp",
+  "thumbs": [
+    "/img/products/tr27/blk_01.webp",
+    "/img/products/tr27/blk_02.webp",
+    "/img/products/tr27/blk_03.webp",
+    "/img/products/tr27/blk_04.webp",
+    "/img/products/tr27/blk_05.webp"
+  ],
+  "gallery_override": {
+    "29469017": [
+      "/img/products/tr27/blk_01.webp",
+      "/img/products/tr27/blk_02.webp",
+      "/img/products/tr27/blk_03.webp",
+      "/img/products/tr27/blk_04.webp",
+      "/img/products/tr27/blk_05.webp"
+    ],
+    "29469024": [
+      "/img/products/tr27/alu_01.webp",
+      "/img/products/tr27/alu_02.webp",
+      "/img/products/tr27/alu_03.webp",
+      "/img/products/tr27/alu_04.webp",
+      "/img/products/tr27/alu_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/tr27/hero.mp4",
+    "video_sp": "/media/products/tr27/hero_sp.mp4",
+    "poster_pc": "/img/products/tr27/poster_hero.webp",
+    "poster_sp": "/img/products/tr27/poster_hero_sp.webp",
+    "kick": "Movie",
+    "heading": "旅の荷物は、<br>サイドに任せる。",
+    "sub": "左右27Lずつのハードケース。TR46トップケースと組み合わせれば合計100L。TERRAシリーズのローンチムービーで、フルパニアの走りを。",
+    "film": "/media/products/tr27/film.mp4",
+    "poster_film": "/img/products/tr27/poster_film.webp",
+    "film_label": "フル映像を見る（66秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/tr27/img_setup_alu.webp",
+      "alt": "TR46とTR27アルミパネルのフルパニア",
+      "caption": "トップとサイドを、同じ仕上げで。"
+    },
+    {
+      "src": "/img/products/tr27/img_road.webp",
+      "alt": "TR27を装着してワインディングを走る",
+      "caption": "アスファルトでも、フルパニアは軽快に。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "積載も、扱いやすさも、妥協しない。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/tr27/story_terrain.webp",
+      "kick": "All Terrain",
+      "h": "アスファルトも、オフロードも。",
+      "p": "リブ構造で補強した堅牢なサイドケース。トップリッド・ヒンジ・底面・ベースを強化し、片側最大7kgの荷物を載せてあらゆる路面を走破する。"
+    },
+    {
+      "img": "/img/products/tr27/story_match.webp",
+      "kick": "Perfect Match",
+      "h": "TR41・TR46・SH51と、完璧に。",
+      "p": "同シリーズのトップケースと組み合わせて、統一された旅仕様へ。右側ケースに付属のキーシリンダーで、トップケースとの鍵を1本にまとめられる。"
+    },
+    {
+      "img": "/img/products/tr27/story_hooks.webp",
+      "kick": "3P / 4P System",
+      "h": "積載も、拡張できる。",
+      "p": "上開きで中身に手が届きやすく、プッシュボタンとハンドル一体型ロックで片手で開け閉め。天面の4つのカーゴフックで、さらに荷物を追加できる。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/tr27/info_reinforced.webp",
+      "alt": "補強構造",
+      "b": "Resistant &amp; Reinforced",
+      "span": "トップリッド・ヒンジ・底面・ベースを補強。片側最大7kg。"
+    },
+    {
+      "img": "/img/products/tr27/info_fitting.webp",
+      "alt": "3P/4Pシステム サイドフィッティング",
+      "b": "Side Fitting",
+      "span": "車種別の3P System／4P Systemサイドキットで装着（4Pは別売アダプター併用）。"
+    },
+    {
+      "img": "/img/products/tr27/info_extraload.webp",
+      "alt": "カーゴフック",
+      "b": "Extra Load",
+      "span": "天面の4つの一体型カーゴフックで、荷物を追加できる。"
+    },
+    {
+      "img": "/img/products/tr27/info_characteristics.webp",
+      "alt": "特徴",
+      "b": "Characteristics",
+      "span": "上開き、プッシュボタン開閉、ラバーシールの耐水構造。アルミカバー仕様も。"
+    }
+  ],
+  "setup": {
+    "en": "Full Pannier Set-up",
+    "total": "100",
+    "visuals": [
+      {
+        "src": "/img/products/tr27/setup_black.webp",
+        "caption": "ブラック：TR46 × TR27",
+        "alt": "TR46トップケースとTR27サイドケースを装着したアドベンチャーバイク（ブラック）"
+      },
+      {
+        "src": "/img/products/tr27/setup_alu.webp",
+        "caption": "アルミパネル：TR46 × TR27",
+        "alt": "TR46トップケースとTR27サイドケースを装着したアドベンチャーバイク（アルミパネル）"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR46",
+        "href": "/product/tr46",
+        "img": "/img/products/tr46/blk_01.webp",
+        "role": "Top",
+        "name": "TR46 TERRA トップケース",
+        "sub": "46L／フルフェイス＋ジェットの2個収納"
+      },
+      {
+        "code": "TR27",
+        "href": "/product/tr27",
+        "img": "/img/products/tr27/blk_01.webp",
+        "role": "Side ×2",
+        "name": "TR27 TERRA サイドケース 左右セット",
+        "sub": "27L＋27L／片側最大7kg"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 3P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "TR27右側ケースに付属のキーシリンダーをトップケースに装着すると、3つのケースを1本の鍵で開閉できます。",
+      "TR46はブラック／アルミパネル、TR27もブラック／アルミパネルの2仕様。同じ仕上げで揃えると統一感のあるフルパニアになります。",
+      "フィッティングキットは車種ごとに異なります。4Pシステムキットで装着する場合はTR27用取付アダプター（D1TR27FIR）が別途必要です。"
+    ],
+    "heading": "TR46 × TR27。フルパニアで、旅仕様へ。",
+    "lead": "TR46トップケースとTR27サイドケースを組み合わせたフルパニア構成。ヘルメット2個が入るトップと、左右27Lのサイドで合計100L。長距離ツーリングやふたり旅の荷物が、車体から離れずにまとまります。"
+  },
+  "reels": [
+    {
+      "src": "/media/products/tr27/reel_launch.mp4",
+      "poster": "/img/products/tr27/poster_reel_launch.webp",
+      "en": "TR46 × TR27",
+      "jp": "TERRAフルパニア、ローンチ。"
+    },
+    {
+      "src": "/media/products/tr27/reel_pack.mp4",
+      "poster": "/img/products/tr27/poster_reel_pack.webp",
+      "en": "Pack &amp; go",
+      "jp": "荷物を積んで、出発。"
+    },
+    {
+      "src": "/media/products/tr27/reel_ride.mp4",
+      "poster": "/img/products/tr27/poster_reel_ride.webp",
+      "en": "On the road",
+      "jp": "ワインディングから、林道へ。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/tr27/gal_01.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr27/gal_02.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_03.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_04.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_05.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/tr27/gal_06.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_07.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_08.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr27/gal_09.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_10.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_11.webp"
+    },
+    {
+      "src": "/img/products/tr27/gal_12.webp"
+    }
+  ],
+  "userguide": "/docs/tr27_userguide.pdf"
+}

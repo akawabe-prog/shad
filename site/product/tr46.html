@@ -56,10 +56,9 @@
 
 
 <!-- =====================================================================
-     商品ページ MAXテンプレート（初出：TR46）
+     商品ページ MAXテンプレート（tools/build_product_max.py で生成）
      ①看板 → ②アンカーナビ → ③INDEX → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
      → ⑦特徴 → ⑧縦型映像 → ⑨ギャラリー → ⑩適合 → ⑪関連商品
-     他商品へ展開するときは、この並びとクラス（.pd-*）をそのまま使う。
      ===================================================================== -->
 <div class="max-w-site mx-auto px-7 pt-6">
   <a href="/products" class="inline-flex items-center gap-2 text-[13px] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>製品一覧</a>
@@ -85,13 +84,24 @@
     <a href="#fitment" data-fit-jump class="btn w-full justify-center mt-5 border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-search"></i>適合確認はこちら</a>
     <p class="text-[12px] text-neutral-400 mt-2 text-center">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p>
   </div>
-
 </main>
 <script>
-/* カラー選択で看板画像を切り替える（purchase.js が参照）。ブラック／アルミパネルで別のパックショットを使う */
+/* カラー選択で看板画像を切り替える（purchase.js が参照） */
 window.SHAD_GALLERY = {
-  "29351718": ["/img/products/tr46/blk_01.webp","/img/products/tr46/blk_02.webp","/img/products/tr46/img_water.webp","/img/products/tr46/gal_04.webp","/img/products/tr46/gal_09.webp"],
-  "29351725": ["/img/products/tr46/alu_01.webp","/img/products/tr46/alu_02.webp","/img/products/tr46/img_alu_close.webp","/img/products/tr46/gal_alu_12.webp","/img/products/tr46/gal_alu_13.webp"]
+  "29351718": [
+    "/img/products/tr46/blk_01.webp",
+    "/img/products/tr46/blk_02.webp",
+    "/img/products/tr46/img_water.webp",
+    "/img/products/tr46/gal_04.webp",
+    "/img/products/tr46/gal_09.webp"
+  ],
+  "29351725": [
+    "/img/products/tr46/alu_01.webp",
+    "/img/products/tr46/alu_02.webp",
+    "/img/products/tr46/img_alu_close.webp",
+    "/img/products/tr46/gal_alu_12.webp",
+    "/img/products/tr46/gal_alu_13.webp"
+  ]
 };
 </script>
 
@@ -102,21 +112,22 @@ window.SHAD_GALLERY = {
     <a href="#faq" class="pd-nav-a"><small>02</small>FAQ</a>
     <a href="#movie" class="pd-nav-a"><small>03</small>ムービー</a>
     <a href="#feature" class="pd-nav-a"><small>04</small>特徴</a>
-    <a href="#gallery" class="pd-nav-a"><small>05</small>ギャラリー</a>
-    <a href="#fitment" class="pd-nav-a"><small>06</small>適合車種</a>
-    <a href="#related" class="pd-nav-a"><small>07</small>関連商品</a>
+    <a href="#setup" class="pd-nav-a"><small>05</small>フルパニア</a>
+    <a href="#gallery" class="pd-nav-a"><small>06</small>ギャラリー</a>
+    <a href="#fitment" class="pd-nav-a"><small>07</small>適合車種</a>
+    <a href="#related" class="pd-nav-a"><small>08</small>関連商品</a>
   </div>
 </nav>
-<!-- 右側のフローティングIndex（アンカーナビが画面外に出たら表示） -->
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
   <a href="#spec" class="pd-side-a"><small>01</small><span>スペック</span></a>
   <a href="#faq" class="pd-side-a"><small>02</small><span>FAQ</span></a>
   <a href="#movie" class="pd-side-a"><small>03</small><span>ムービー</span></a>
   <a href="#feature" class="pd-side-a"><small>04</small><span>特徴</span></a>
-  <a href="#gallery" class="pd-side-a"><small>05</small><span>ギャラリー</span></a>
-  <a href="#fitment" class="pd-side-a"><small>06</small><span>適合車種</span></a>
-  <a href="#related" class="pd-side-a"><small>07</small><span>関連商品</span></a>
+  <a href="#setup" class="pd-side-a"><small>05</small><span>フルパニア</span></a>
+  <a href="#gallery" class="pd-side-a"><small>06</small><span>ギャラリー</span></a>
+  <a href="#fitment" class="pd-side-a"><small>07</small><span>適合車種</span></a>
+  <a href="#related" class="pd-side-a"><small>08</small><span>関連商品</span></a>
 </nav>
 
 <!-- ===== ③ INDEX ===== -->
@@ -128,9 +139,10 @@ window.SHAD_GALLERY = {
       <a href="#faq"><span class="pd-index-num">02</span><span><span class="pd-index-jp">よくあるご質問</span><span class="pd-index-en">FAQ</span></span></a>
       <a href="#movie"><span class="pd-index-num">03</span><span><span class="pd-index-jp">ムービー</span><span class="pd-index-en">Movie</span></span></a>
       <a href="#feature"><span class="pd-index-num">04</span><span><span class="pd-index-jp">商品の特徴</span><span class="pd-index-en">Features</span></span></a>
-      <a href="#gallery"><span class="pd-index-num">05</span><span><span class="pd-index-jp">ギャラリー</span><span class="pd-index-en">Gallery</span></span></a>
-      <a href="#fitment"><span class="pd-index-num">06</span><span><span class="pd-index-jp">装着できる車種</span><span class="pd-index-en">Fitment</span></span></a>
-      <a href="#related"><span class="pd-index-num">07</span><span><span class="pd-index-jp">関連商品</span><span class="pd-index-en">Related</span></span></a>
+      <a href="#setup"><span class="pd-index-num">05</span><span><span class="pd-index-jp">フルパニア構成</span><span class="pd-index-en">Full Pannier Set-up</span></span></a>
+      <a href="#gallery"><span class="pd-index-num">06</span><span><span class="pd-index-jp">ギャラリー</span><span class="pd-index-en">Gallery</span></span></a>
+      <a href="#fitment"><span class="pd-index-num">07</span><span><span class="pd-index-jp">装着できる車種</span><span class="pd-index-en">Fitment</span></span></a>
+      <a href="#related"><span class="pd-index-num">08</span><span><span class="pd-index-jp">関連商品</span><span class="pd-index-en">Related</span></span></a>
     </div>
   </div>
 </section>
@@ -304,6 +316,31 @@ window.SHAD_GALLERY = {
   </div>
 </section>
 
+<!-- ===== ⑦-2 フルパニア構成（トップ＋サイドの組み合わせ提案） ===== -->
+<section id="setup" class="scroll-mt-[132px] pd-setup">
+  <div class="max-w-site mx-auto px-7">
+    <div class="pd-sec-head" data-reveal>
+      <div><p class="pd-sec-en">Full Pannier Set-up</p><h2 class="pd-sec-h">TR46 × TR27。フルパニアで、旅仕様へ。</h2></div>
+      <p class="pd-setup-total"><b>100</b><small>L</small><span>合計容量</span></p>
+    </div>
+    <p class="pd-setup-lead" data-reveal>TR46トップケースに、左右27LのTR27サイドケースを組み合わせたフルパニア構成。合計100Lの積載で、長距離ツーリングやふたり旅の荷物が車体から離れずにまとまります。</p>
+    <div class="pd-setup-visual" data-reveal>
+      <figure><img src="/img/products/tr27/setup_black.webp" alt="TR46トップケースとTR27サイドケースを装着したアドベンチャーバイク（ブラック）" loading="lazy"><figcaption>ブラック：TR46 × TR27</figcaption></figure>
+      <figure><img src="/img/products/tr27/setup_alu.webp" alt="TR46トップケースとTR27サイドケースを装着したアドベンチャーバイク（アルミパネル）" loading="lazy"><figcaption>アルミパネル：TR46 × TR27</figcaption></figure>
+    </div>
+    <div class="pd-setup-items" data-reveal>
+      <a href="/product/tr46" class="pd-setup-item is-current"><span class="pd-setup-img"><img src="/img/products/tr46/blk_01.webp" alt="" loading="lazy"></span><span class="pd-setup-tx"><span class="pd-setup-role">Top</span><b>TR46 TERRA トップケース</b><span>46L／フルフェイス＋ジェットの2個収納</span><em data-price-of="TR46">—</em></span></a>
+      <a href="/product/tr27" class="pd-setup-item"><span class="pd-setup-img"><img src="/img/products/tr27/blk_01.webp" alt="" loading="lazy"></span><span class="pd-setup-tx"><span class="pd-setup-role">Side ×2</span><b>TR27 TERRA サイドケース 左右セット</b><span>27L＋27L／片側最大7kg</span><em data-price-of="TR27">—</em></span></a>
+      <a href="/fitment" class="pd-setup-item"><span class="pd-setup-img is-icon"><i class="ti ti-tool"></i></span><span class="pd-setup-tx"><span class="pd-setup-role">Fitting</span><b>車種別フィッティングキット</b><span>トップマスターキット ＋ 3P System サイドキット</span><em>車種から確認する →</em></span></a>
+    </div>
+    <ul class="pd-setup-notes">
+      <li>TR27右側ケースに付属のキーシリンダーをトップケースに装着すると、3つのケースを1本の鍵で開閉できます。</li>
+      <li>TR46はブラック／アルミパネル、TR27もブラック／アルミパネルの2仕様。同じ仕上げで揃えると統一感のあるフルパニアになります。</li>
+      <li>フィッティングキットは車種ごとに異なります。4Pシステムキットで装着する場合はTR27用取付アダプター（D1TR27FIR）が別途必要です。</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ===== ⑧ 縦型映像 ===== -->
 <section class="pd-reels">
   <div class="max-w-site mx-auto px-7">
@@ -395,7 +432,6 @@ window.SHAD_GALLERY = {
     var lastSec=secs.length ? secs[secs.length-1].sec : null;
     if(lastSec && lastSec.getBoundingClientRect().bottom<=line) cur=lastSec;
     links.forEach(function(a){ a.classList.toggle("is-current", !!cur && document.querySelector(a.getAttribute("href"))===cur); });
-    /* アンカーナビが画面の上に消えたら右側Indexを出す（フッター付近では消す） */
     if(navBar && side){
       var gone=navBar.getBoundingClientRect().bottom<0;
       var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;
@@ -406,6 +442,7 @@ window.SHAD_GALLERY = {
   window.addEventListener("scroll",function(){ var n=Date.now(); if(n-last>120){last=n;sync();} else if(!waiting){waiting=true;setTimeout(function(){waiting=false;sync();},120);} },{passive:true});
   window.addEventListener("resize",sync); sync();
   window.__pdNavSync=sync;
+
   /* アンカーで FAQ に飛んだとき、閉じたアコーディオンを開く */
   function openFor(hash){ if(!hash||hash.length<2) return; var t=document.querySelector(hash); if(!t) return;
     var d=t.closest("details"); if(d && !d.open) d.open=true; }
@@ -418,6 +455,14 @@ window.SHAD_GALLERY = {
     v.src=v.getAttribute(sp?"data-src-sp":"data-src-pc");
     if(sp && v.getAttribute("data-poster-sp")) v.poster=v.getAttribute("data-poster-sp");
     v.play().catch(function(){}); }
+
+  /* ⑦-2 フルパニア構成：定価は商品マスター（products.json）から。複数カラーは最安値に「〜」 */
+  var pe=[].slice.call(document.querySelectorAll("[data-price-of]"));
+  if(pe.length){ fetch("/data/catalog/products.json").then(function(r){return r.ok?r.json():null;}).then(function(d){ if(!d) return;
+    pe.forEach(function(el){ var e=d[el.getAttribute("data-price-of")]; if(!e||!e.variants) return;
+      var ps=e.variants.map(function(v){return Number(v.msrpTaxIn)||0;}).filter(Boolean); if(!ps.length) return;
+      var mn=Math.min.apply(null,ps), mx=Math.max.apply(null,ps);
+      el.textContent="¥"+mn.toLocaleString("ja-JP")+(mx>mn?"〜":"")+"（税込）"; }); }).catch(function(){}); }
 
   /* ⑧ 縦型映像：画面に入ったら再生、外れたら停止 */
   var vids=[].slice.call(document.querySelectorAll("video[data-inview]"));

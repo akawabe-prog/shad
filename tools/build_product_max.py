@@ -29,6 +29,9 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     gallery         [ {src, cls} … ]  cls は "is-tall is-wide" など（省略可）
     desc            商品説明（Description セクションが無い従来ページ向け。省略時は現メインキャッチを流用）
     stories         [ {img, kick, h, p, alt} … ]  特徴ストーリーを書き換える（省略時は現ページの lp-story を流用）
+    setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
+                    { en, heading, lead, total:"100", visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
+                    items の code がある行は定価を products.json から表示。code が自商品の行はハイライト
     userguide       取扱説明書PDFのパス（省略時は /docs/<code小文字>_userguide.pdf があれば使う）
 
 ■ 注意
@@ -89,13 +92,21 @@ def extract(s):
     return parts
 
 
-NAV_ITEMS = [("#spec", "01", "スペック"), ("#faq", "02", "FAQ"), ("#movie", "03", "ムービー"),
-             ("#feature", "04", "特徴"), ("#gallery", "05", "ギャラリー"),
-             ("#fitment", "06", "適合車種"), ("#related", "07", "関連商品")]
-INDEX_ITEMS = [("#spec", "01", "スペック・保証", "Specifications"), ("#faq", "02", "よくあるご質問", "FAQ"),
-               ("#movie", "03", "ムービー", "Movie"), ("#feature", "04", "商品の特徴", "Features"),
-               ("#gallery", "05", "ギャラリー", "Gallery"), ("#fitment", "06", "装着できる車種", "Fitment"),
-               ("#related", "07", "関連商品", "Related")]
+BASE_ITEMS = [  # (アンカー, ナビ表記, INDEX日本語, INDEX英語)
+    ("#spec", "スペック", "スペック・保証", "Specifications"),
+    ("#faq", "FAQ", "よくあるご質問", "FAQ"),
+    ("#movie", "ムービー", "ムービー", "Movie"),
+    ("#feature", "特徴", "商品の特徴", "Features"),
+    ("#setup", "フルパニア", "フルパニア構成", "Full Pannier Set-up"),   # setup 設定がある商品のみ
+    ("#gallery", "ギャラリー", "ギャラリー", "Gallery"),
+    ("#fitment", "適合車種", "装着できる車種", "Fitment"),
+    ("#related", "関連商品", "関連商品", "Related"),
+]
+
+
+def nav_items(cfg):
+    items = [x for x in BASE_ITEMS if x[0] != "#setup" or cfg.get("setup")]
+    return [("%02d" % (i + 1),) + x for i, x in enumerate(items)]
 
 
 def render(cfg, P):
@@ -105,11 +116,12 @@ def render(cfg, P):
     thumbs = "".join(
         '<button class="g-thumb%s" data-src="%s"><img src="%s" alt=""></button>'
         % (" on" if i == 0 else "", t, t) for i, t in enumerate(cfg["thumbs"]))
-    nav = "".join('    <a href="%s" class="pd-nav-a"><small>%s</small>%s</a>\n' % x for x in NAV_ITEMS)
-    side = "".join('  <a href="%s" class="pd-side-a"><small>%s</small><span>%s</span></a>\n' % x for x in NAV_ITEMS)
+    items = nav_items(cfg)
+    nav = "".join('    <a href="%s" class="pd-nav-a"><small>%s</small>%s</a>\n' % (h, n, lb) for n, h, lb, _, _ in items)
+    side = "".join('  <a href="%s" class="pd-side-a"><small>%s</small><span>%s</span></a>\n' % (h, n, lb) for n, h, lb, _, _ in items)
     index = "".join(
         '      <a href="%s"><span class="pd-index-num">%s</span><span><span class="pd-index-jp">%s</span>'
-        '<span class="pd-index-en">%s</span></span></a>\n' % x for x in INDEX_ITEMS)
+        '<span class="pd-index-en">%s</span></span></a>\n' % (h, n, jp, en) for n, h, _, jp, en in items)
     guide = cfg.get("userguide") or ("/docs/%s_userguide.pdf" % code.lower())
     guide_btn = ('<a href="%s" target="_blank" class="btn bg-ink text-white hover:bg-black !py-3 !px-6 !text-[14px]">'
                  '<i class="ti ti-file-type-pdf"></i>ユーザーガイド（PDF）</a>' % guide) \
@@ -137,6 +149,40 @@ def render(cfg, P):
                  '    <div class="pd-sec-head !mb-0" data-reveal>\n      <div><p class="pd-sec-en">Reels</p><h2 class="pd-sec-h is-disp">%s in motion</h2></div>\n'
                  '      <a href="/movies" class="font-disp text-[14px] tracking-[.16em] uppercase text-white/55 inline-flex items-center gap-2 hover:text-white transition shrink-0">View All <i class="ti ti-arrow-right"></i></a>\n'
                  '    </div>\n    <div class="pd-reel-row">\n%s    </div>\n  </div>\n</section>\n\n' % (code, items))
+    setup = ""
+    if cfg.get("setup"):
+        su = cfg["setup"]
+        vis = "".join('      <figure><img src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>\n'
+                      % (v["src"], esc(v.get("alt") or v.get("caption")), v.get("caption", "")) for v in su.get("visuals", []))
+        cards = ""
+        for it in su["items"]:
+            cur = " is-current" if it.get("code") == code else ""
+            img = '<span class="pd-setup-img"><img src="%s" alt="" loading="lazy"></span>' % it["img"] if it.get("img") \
+                else '<span class="pd-setup-img is-icon"><i class="ti %s"></i></span>' % it.get("icon", "ti-tool")
+            price = '<em data-price-of="%s">—</em>' % it["code"] if it.get("code") else ('<em>%s</em>' % it.get("cta", ""))
+            cards += ('      <a href="%s" class="pd-setup-item%s">%s<span class="pd-setup-tx"><span class="pd-setup-role">%s</span>'
+                      '<b>%s</b><span>%s</span>%s</span></a>\n'
+                      % (it["href"], cur, img, it["role"], it["name"], it.get("sub", ""), price))
+        notes = "".join("      <li>%s</li>\n" % n for n in su.get("notes", []))
+        total = ('<p class="pd-setup-total"><b>%s</b><small>L</small><span>合計容量</span></p>' % su["total"]) if su.get("total") else ""
+        setup = f'''<!-- ===== ⑦-2 フルパニア構成（トップ＋サイドの組み合わせ提案） ===== -->
+<section id="setup" class="scroll-mt-[132px] pd-setup">
+  <div class="max-w-site mx-auto px-7">
+    <div class="pd-sec-head" data-reveal>
+      <div><p class="pd-sec-en">{su.get("en", "Full Pannier Set-up")}</p><h2 class="pd-sec-h">{su["heading"]}</h2></div>
+      {total}
+    </div>
+    <p class="pd-setup-lead" data-reveal>{su.get("lead", "")}</p>
+    <div class="pd-setup-visual" data-reveal>
+{vis}    </div>
+    <div class="pd-setup-items" data-reveal>
+{cards}    </div>
+    <ul class="pd-setup-notes">
+{notes}    </ul>
+  </div>
+</section>
+
+'''
     gallery = "".join('      <figure%s><img src="%s" alt="" loading="lazy"></figure>\n'
                       % ((' class="%s"' % g["cls"]) if g.get("cls") else "", g["src"]) for g in cfg["gallery"])
     feat = cfg.get("features", {})
@@ -241,7 +287,7 @@ window.SHAD_GALLERY = {ov};
 {diagrams}  </div>
 </section>
 
-{reels}<!-- ===== ⑨ ギャラリー ===== -->
+{setup}{reels}<!-- ===== ⑨ ギャラリー ===== -->
 <section id="gallery" class="scroll-mt-[132px] pd-sec">
   <div class="max-w-site mx-auto px-7">
     <div class="pd-sec-head" data-reveal><div><p class="pd-sec-en">Gallery</p><h2 class="pd-sec-h is-disp">{code} on the road</h2></div></div>
@@ -308,6 +354,14 @@ window.SHAD_GALLERY = {ov};
     v.src=v.getAttribute(sp?"data-src-sp":"data-src-pc");
     if(sp && v.getAttribute("data-poster-sp")) v.poster=v.getAttribute("data-poster-sp");
     v.play().catch(function(){{}}); }}
+
+  /* ⑦-2 フルパニア構成：定価は商品マスター（products.json）から。複数カラーは最安値に「〜」 */
+  var pe=[].slice.call(document.querySelectorAll("[data-price-of]"));
+  if(pe.length){{ fetch("/data/catalog/products.json").then(function(r){{return r.ok?r.json():null;}}).then(function(d){{ if(!d) return;
+    pe.forEach(function(el){{ var e=d[el.getAttribute("data-price-of")]; if(!e||!e.variants) return;
+      var ps=e.variants.map(function(v){{return Number(v.msrpTaxIn)||0;}}).filter(Boolean); if(!ps.length) return;
+      var mn=Math.min.apply(null,ps), mx=Math.max.apply(null,ps);
+      el.textContent="¥"+mn.toLocaleString("ja-JP")+(mx>mn?"〜":"")+"（税込）"; }}); }}).catch(function(){{}}); }}
 
   /* ⑧ 縦型映像：画面に入ったら再生、外れたら停止 */
   var vids=[].slice.call(document.querySelectorAll("video[data-inview]"));

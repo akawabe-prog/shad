@@ -1,0 +1,204 @@
+{
+  "code": "TR46",
+  "name_jp": "TERRA トップケース",
+  "main_img": "/img/products/tr46/blk_01.webp",
+  "thumbs": [
+    "/img/products/tr46/blk_01.webp",
+    "/img/products/tr46/blk_02.webp",
+    "/img/products/tr46/img_water.webp",
+    "/img/products/tr46/gal_04.webp",
+    "/img/products/tr46/gal_09.webp"
+  ],
+  "gallery_override": {
+    "29351718": [
+      "/img/products/tr46/blk_01.webp",
+      "/img/products/tr46/blk_02.webp",
+      "/img/products/tr46/img_water.webp",
+      "/img/products/tr46/gal_04.webp",
+      "/img/products/tr46/gal_09.webp"
+    ],
+    "29351725": [
+      "/img/products/tr46/alu_01.webp",
+      "/img/products/tr46/alu_02.webp",
+      "/img/products/tr46/img_alu_close.webp",
+      "/img/products/tr46/gal_alu_12.webp",
+      "/img/products/tr46/gal_alu_13.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/tr46/hero.mp4",
+    "video_sp": "/media/products/tr46/hero_sp.mp4",
+    "poster_pc": "/img/products/tr46/poster_hero.webp",
+    "poster_sp": "/img/products/tr46/poster_hero_sp.webp",
+    "kick": "Movie",
+    "heading": "冒険へ連れ出す、<br>ハードケース。",
+    "sub": "TR41の思想を受け継ぎ、容量を46Lへ拡大。よりタフで、より実用的に進化したTERRAのトップケースを映像で。",
+    "film": "/media/products/tr46/film.mp4",
+    "poster_film": "/img/products/tr46/poster_film.webp",
+    "film_label": "フル映像を見る（57秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/tr46/img_helmet.webp",
+      "alt": "TR46にフルフェイスヘルメットを収納する様子",
+      "caption": "フルフェイス1個＋ジェット1個が収まる、46Lの実容量。"
+    },
+    {
+      "src": "/img/products/tr46/img_triumph.webp",
+      "alt": "未舗装路を走るアドベンチャーバイクに装着したTR46",
+      "caption": "舗装路も未舗装も。アドベンチャーツーリングの相棒。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "アドベンチャーのために、すべてを強く。"
+  },
+  "diagrams": [
+    {
+      "img": "/img/products/tr46/info_reinforced.webp",
+      "alt": "補強された構造図",
+      "b": "補強された構造",
+      "span": "トップリッド・ヒンジ・ボトム・ベースを強化。最大耐荷重6kg。"
+    },
+    {
+      "img": "/img/products/tr46/info_lock.webp",
+      "alt": "ステンレス製ロック",
+      "b": "AISI 304 ステンレス製ロック",
+      "span": "特許取得のロックシステム。片手で開閉・着脱。"
+    },
+    {
+      "img": "/img/products/tr46/info_hooks.webp",
+      "alt": "4つの荷掛けフック",
+      "b": "4つの一体型荷掛けフック",
+      "span": "ケースの上にさらに荷物を固定できる。"
+    },
+    {
+      "img": "/img/products/tr46/info_versions.webp",
+      "alt": "アルミカバー版とノーカバー版",
+      "b": "選べる2バージョン",
+      "span": "アルミパネル（アルミカバー）とブラック（ノーカバー）。"
+    }
+  ],
+  "setup": {
+    "en": "Full Pannier Set-up",
+    "total": "100",
+    "visuals": [
+      {
+        "src": "/img/products/tr27/setup_black.webp",
+        "caption": "ブラック：TR46 × TR27",
+        "alt": "TR46トップケースとTR27サイドケースを装着したアドベンチャーバイク（ブラック）"
+      },
+      {
+        "src": "/img/products/tr27/setup_alu.webp",
+        "caption": "アルミパネル：TR46 × TR27",
+        "alt": "TR46トップケースとTR27サイドケースを装着したアドベンチャーバイク（アルミパネル）"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR46",
+        "href": "/product/tr46",
+        "img": "/img/products/tr46/blk_01.webp",
+        "role": "Top",
+        "name": "TR46 TERRA トップケース",
+        "sub": "46L／フルフェイス＋ジェットの2個収納"
+      },
+      {
+        "code": "TR27",
+        "href": "/product/tr27",
+        "img": "/img/products/tr27/blk_01.webp",
+        "role": "Side ×2",
+        "name": "TR27 TERRA サイドケース 左右セット",
+        "sub": "27L＋27L／片側最大7kg"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 3P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "TR27右側ケースに付属のキーシリンダーをトップケースに装着すると、3つのケースを1本の鍵で開閉できます。",
+      "TR46はブラック／アルミパネル、TR27もブラック／アルミパネルの2仕様。同じ仕上げで揃えると統一感のあるフルパニアになります。",
+      "フィッティングキットは車種ごとに異なります。4Pシステムキットで装着する場合はTR27用取付アダプター（D1TR27FIR）が別途必要です。"
+    ],
+    "heading": "TR46 × TR27。フルパニアで、旅仕様へ。",
+    "lead": "TR46トップケースに、左右27LのTR27サイドケースを組み合わせたフルパニア構成。合計100Lの積載で、長距離ツーリングやふたり旅の荷物が車体から離れずにまとまります。"
+  },
+  "reels": [
+    {
+      "src": "/media/products/tr46/reel_action.mp4",
+      "poster": "/img/products/tr46/poster_reel_action.webp",
+      "en": "Action",
+      "jp": "トレイルを駆ける"
+    },
+    {
+      "src": "/media/products/tr46/reel_capacity.mp4",
+      "poster": "/img/products/tr46/poster_reel_capacity.webp",
+      "en": "Capacity",
+      "jp": "46Lの積載力"
+    },
+    {
+      "src": "/media/products/tr46/reel_helmet.mp4",
+      "poster": "/img/products/tr46/poster_reel_helmet.webp",
+      "en": "Helmet",
+      "jp": "オフロードヘルメットも収まる"
+    },
+    {
+      "src": "/media/products/tr46/reel_details.mp4",
+      "poster": "/img/products/tr46/poster_reel_details.webp",
+      "en": "Details",
+      "jp": "ロックとディテール"
+    },
+    {
+      "src": "/media/products/tr46/reel_colors.mp4",
+      "poster": "/img/products/tr46/poster_reel_colors.webp",
+      "en": "Customize",
+      "jp": "カラーパネルで自分仕様に"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/tr46/img_mud.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr46/gal_01.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_02.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_05.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_06.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_alu_11.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/tr46/gal_07.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_13.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_11.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_14.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_alu_10.webp"
+    },
+    {
+      "src": "/img/products/tr46/gal_15.webp"
+    }
+  ],
+  "userguide": "/docs/tr46_userguide.pdf"
+}
