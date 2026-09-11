@@ -1,0 +1,639 @@
+{
+ "source": "GET https://api-i.customjapan.net/api/v1/init → POST https://api-e.customjapan.net/api/v1/items",
+ "count": 73,
+ "byCjCode": {
+  "10652824": {
+   "code": "SH33",
+   "name": "SH33 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "33L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "10807156": {
+   "code": "SC25",
+   "name": "SC25 スクーターバッグ 25L ブラック",
+   "sizeMain": [
+    "25L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "13210847": {
+   "code": "SH23",
+   "name": "SH23 サイドケース 無塗装ブラック",
+   "sizeMain": [
+    "23L/23L"
+   ],
+   "sizeSub": "合計：46L",
+   "unit": "セット(左右)"
+  },
+  "13448660": {
+   "code": "E04",
+   "name": "E04 タンクバッグ 3L ブラック",
+   "sizeMain": [
+    "3L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17164078": {
+   "code": "SH48",
+   "name": "SH48 トップケース ダークグレー",
+   "sizeMain": [
+    "48L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17319140": {
+   "code": "SH58X",
+   "name": "SH58X トップケース カーボン",
+   "sizeMain": [
+    "46-58L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17369435": {
+   "code": "SR38",
+   "name": "SR38 カフェレーサー サイドバッグ 10L",
+   "sizeMain": [
+    "10L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17379793": {
+   "code": "SEAT",
+   "name": "コンフォートシート GRYステッチ CBR600F(11-12)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17379809": {
+   "code": "SEAT",
+   "name": "コンフォートシート BLステッチ CBR600F(11-12)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17379861": {
+   "code": "SEAT",
+   "name": "コンフォートシート WHステッチ インテグラ750 (14-17)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17379939": {
+   "code": "SEAT",
+   "name": "コンフォートシート BK-GRY RDステッチ ロゴなし NC700S(12-13)/NC750S(14-17)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17379960": {
+   "code": "SEAT",
+   "name": "コンフォートシート D-GRYステッチ Z750(07-13)/Z1000(07-09)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17380058": {
+   "code": "SEAT",
+   "name": "コンフォートシート BK/WH GRY/BLステッチ MP3",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17380072": {
+   "code": "SEAT",
+   "name": "コンフォートシート GRYステッチ FZ-6 FAZER(04-10)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17380102": {
+   "code": "SEAT",
+   "name": "コンフォートシート WHステッチ ロゴなし TMAX500(08-13)/TMAX530(14-16)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17380133": {
+   "code": "SH35",
+   "name": "SH35 サイドケース アルミパネル",
+   "sizeMain": [
+    "35L/35L"
+   ],
+   "sizeSub": "合計：70L",
+   "unit": "セット(左右)"
+  },
+  "17460880": {
+   "code": "SH48",
+   "name": "SH48 トップケース チタニウム",
+   "sizeMain": [
+    "48L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17460897": {
+   "code": "SH36",
+   "name": "SH36 サイドケース カーボン",
+   "sizeMain": [
+    "36L/36L"
+   ],
+   "sizeSub": "合計：72L",
+   "unit": "セット(左右)"
+  },
+  "17460903": {
+   "code": "SH59X",
+   "name": "SH59X トップケース アルミパネル",
+   "sizeMain": [
+    "46-58L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "17838542": {
+   "code": "SH34",
+   "name": "SH34 トップケース カーボン",
+   "sizeMain": [
+    "34L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "18319279": {
+   "code": "TR48",
+   "name": "TR48 TERRA トップケース 48L",
+   "sizeMain": [
+    "48L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "18319286": {
+   "code": "TR37",
+   "name": "TR37 TERRA トップケース 37L",
+   "sizeMain": [
+    "37L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "18319293": {
+   "code": "TR36",
+   "name": "TR36 TERRA サイドケース 右用 36L",
+   "sizeMain": [
+    "36L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "18319309": {
+   "code": "TR36",
+   "name": "TR36 TERRA サイドケース 左用 36L",
+   "sizeMain": [
+    "36L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "18319316": {
+   "code": "TR47",
+   "name": "TR47 TERRA サイドケース 右用 47L",
+   "sizeMain": [
+    "47L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "18319323": {
+   "code": "TR47",
+   "name": "TR47 TERRA サイドケース 左用 47L",
+   "sizeMain": [
+    "47L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26354293": {
+   "code": "IB20",
+   "name": "IB20 TERRA 防水ダッフルバッグ 20L",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26591728": {
+   "code": "SH47",
+   "name": "SH47 トップケース ホワイト カーボン",
+   "sizeMain": [
+    "47L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26591735": {
+   "code": "SH47",
+   "name": "SH47 トップケース レッド カーボン",
+   "sizeMain": [
+    "47L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26768762": {
+   "code": "TR37",
+   "name": "TR37 TERRA トップケース 37L ブラック",
+   "sizeMain": [
+    "37L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26768779": {
+   "code": "TR48",
+   "name": "TR48 TERRA トップケース 48L ブラック",
+   "sizeMain": [
+    "48L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26768786": {
+   "code": "TR36",
+   "name": "TR36 TERRA サイドケース 右用 36L ブラック",
+   "sizeMain": [
+    "36L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26768793": {
+   "code": "TR36",
+   "name": "TR36 TERRA サイドケース 左用 36L ブラック",
+   "sizeMain": [
+    "36L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26768809": {
+   "code": "TR47",
+   "name": "TR47 TERRA サイドケース 右用 47L ブラック",
+   "sizeMain": [
+    "47L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "26768816": {
+   "code": "TR47",
+   "name": "TR47 TERRA サイドケース 左用 47L ブラック",
+   "sizeMain": [
+    "47L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27120132": {
+   "code": "SL58",
+   "name": "SL58 サイドバッグ ブラック",
+   "sizeMain": [
+    "23-29L/23-29L"
+   ],
+   "sizeSub": "",
+   "unit": "セット(左右)"
+  },
+  "27294062": {
+   "code": "LOCK",
+   "name": "スクーターハンドルバーロック シリーズ2レギュラー 38cm",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "セット"
+  },
+  "27294086": {
+   "code": "LOCK",
+   "name": "スクーターハンドルバーロック シリーズ2レギュラー 44cm",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "セット"
+  },
+  "27587515": {
+   "code": "SH44",
+   "name": "SH44 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "44L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27641019": {
+   "code": "E48",
+   "name": "E48SR サイドバッグ 30L ブラック",
+   "sizeMain": [
+    "15L/15L"
+   ],
+   "sizeSub": "",
+   "unit": "セット(左右)"
+  },
+  "27705902": {
+   "code": "TR55",
+   "name": "TR55 TERRA トップケース 55L",
+   "sizeMain": [
+    "55L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27705919": {
+   "code": "TR55",
+   "name": "TR55 TERRA トップケース 55L ブラック",
+   "sizeMain": [
+    "55L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27798539": {
+   "code": "SR38",
+   "name": "SR38 カフェレーサー サイドバッグ ブラック 10L",
+   "sizeMain": [
+    "10L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27819609": {
+   "code": "TR55",
+   "name": "TR55 TERRA トップケース 55L ピュアブラック",
+   "sizeMain": [
+    "55L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27819630": {
+   "code": "TR50",
+   "name": "TR50 TERRA ツーリングバッグ 40L",
+   "sizeMain": [
+    "40L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27819692": {
+   "code": "E03C",
+   "name": "E03C クリックシステムタンクバッグ 3L スタンダード",
+   "sizeMain": [
+    "3L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27819715": {
+   "code": "E09C",
+   "name": "E09C クリックシステムタンクバッグ 5L スタンダード",
+   "sizeMain": [
+    "5L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27819753": {
+   "code": "TR15CL",
+   "name": "TR15CL TERRA クリックシステムタンクバッグ 13L キーロック",
+   "sizeMain": [
+    "13L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27952917": {
+   "code": "SH38X",
+   "name": "SH38X サイドケース アルミパネル",
+   "sizeMain": [
+    "23-32L/23-32L"
+   ],
+   "sizeSub": "合計：46-64L",
+   "unit": "セット(左右)"
+  },
+  "27952924": {
+   "code": "SH38X",
+   "name": "SH38X サイドケース カーボン",
+   "sizeMain": [
+    "23-32L/23-32L"
+   ],
+   "sizeSub": "合計：46-64L",
+   "unit": "セット(左右)"
+  },
+  "27956977": {
+   "code": "E03CL",
+   "name": "E03CL PRO クリックシステムタンクバッグ 3-4L ダブルロック/拡張機能",
+   "sizeMain": [
+    "3-4L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27956984": {
+   "code": "E09CL",
+   "name": "E09CL PRO クリックシステムタンクバッグ 5-8L ダブルロック/拡張機能",
+   "sizeMain": [
+    "5-8L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27957004": {
+   "code": "E09CM",
+   "name": "E09CM クリックシステムタンクバッグ 5L スタンダード/ミドルポジション",
+   "sizeMain": [
+    "5L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "27957011": {
+   "code": "E02C",
+   "name": "E02C クリックシステムタンクバッグ 3L スタンダード",
+   "sizeMain": [
+    "3L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "28020653": {
+   "code": "E48",
+   "name": "E48 サイドバッグ 46-58L ブラック",
+   "sizeMain": [
+    "23-29L/23-29L"
+   ],
+   "sizeSub": "",
+   "unit": "セット(左右)"
+  },
+  "28032793": {
+   "code": "TR10",
+   "name": "TR10CL TERRA クリックシステムタンクバッグ 10L キーロック/防水",
+   "sizeMain": [
+    "10L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "28087540": {
+   "code": "TR30",
+   "name": "TR30 TERRA 防水サイドバッグ 60L",
+   "sizeMain": [
+    "30L/30L"
+   ],
+   "sizeSub": "",
+   "unit": "セット(左右)"
+  },
+  "29044382": {
+   "code": "TR41",
+   "name": "TR41 TERRA トップケース 41L ブラック",
+   "sizeMain": [
+    "41L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "29044399": {
+   "code": "TR41",
+   "name": "TR41 TERRA トップケース 41L アルミパネル",
+   "sizeMain": [
+    "41L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "29351718": {
+   "code": "TR46",
+   "name": "TR46 TERRA トップケース 46L ブラック",
+   "sizeMain": [
+    "46L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "29351725": {
+   "code": "TR46",
+   "name": "TR46 TERRA トップケース 46L アルミパネル",
+   "sizeMain": [
+    "46L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "29468997": {
+   "code": "SH51",
+   "name": "SH51 トップケース ブラック カーボン",
+   "sizeMain": [
+    "51L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "29469000": {
+   "code": "SH51",
+   "name": "SH51 トップケース アルミパネル",
+   "sizeMain": [
+    "51L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "29469017": {
+   "code": "TR27",
+   "name": "TR27 TERRA サイドケース ブラック 左右セット",
+   "sizeMain": [
+    "27L/27L"
+   ],
+   "sizeSub": "",
+   "unit": "セット"
+  },
+  "29469024": {
+   "code": "TR27",
+   "name": "TR27 TERRA サイドケース アルミパネル 左右セット",
+   "sizeMain": [
+    "27L/27L"
+   ],
+   "sizeSub": "",
+   "unit": "セット"
+  },
+  "29469031": {
+   "code": "TR08",
+   "name": "TR08 TERRA クラッシュバーバッグ 8L",
+   "sizeMain": [
+    "8L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SH26": {
+   "code": "SH26",
+   "name": "SH26 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "26L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SH29": {
+   "code": "SH29",
+   "name": "SH29 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "29L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SH39BK": {
+   "code": "SH39",
+   "name": "SH39 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "39L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SH40": {
+   "code": "SH40",
+   "name": "SH40 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "40L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SH40CG": {
+   "code": "SH40CG",
+   "name": "SH40 CARGO トップケース 無塗装ブラック",
+   "sizeMain": [
+    "40L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SH45": {
+   "code": "SH45",
+   "name": "SH45 トップケース 無塗装ブラック",
+   "sizeMain": [
+    "45L"
+   ],
+   "sizeSub": "",
+   "unit": "個"
+  },
+  "SHY0M9300": {
+   "code": "SEAT",
+   "name": "コンフォートシート GRYステッチ MT-09(13-18)",
+   "sizeMain": [],
+   "sizeSub": "",
+   "unit": "個"
+  }
+ }
+}

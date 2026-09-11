@@ -1,0 +1,52 @@
+{
+ "topcasePlate": {
+  "TR37": "D1BTRPA",
+  "TR48": "D1BTRPA",
+  "TR50": "D1BTRPA",
+  "TR55": "D1BTRPA",
+  "SH48": "D1B591PA",
+  "SH51": "D1B591PA",
+  "SH58X": "D1B591PA",
+  "SH59X": "D1B591PA",
+  "SH26": "D1B29PAR",
+  "SH29": "D1B29PAR",
+  "SH33": "D1B29PAR",
+  "SH34": "D1B29PAR",
+  "SH39": "D1B40PAR",
+  "SH40CG": "D1B40PAR",
+  "SH40": "D1B40PAR",
+  "SH44": "D1B40PAR",
+  "SH45": "D1B40PAR",
+  "SH47": "D1B40PAR",
+  "TR41": "D1B40PAR",
+  "TR46": "D1B40PAR"
+ },
+ "sidecaseCodes": [
+  "SH23",
+  "SH35",
+  "SH36",
+  "SH38X",
+  "TR27",
+  "TR36",
+  "TR47"
+ ],
+ "sidebagCodes": [
+  "E48",
+  "SL58",
+  "SR38",
+  "TR08",
+  "TR30"
+ ],
+ "tankbagCodes": [
+  "E02C",
+  "E03C",
+  "E03CL",
+  "E04",
+  "E09C",
+  "E09CL",
+  "E09CM",
+  "TR10",
+  "TR15CL"
+ ],
+ "generatedFrom": "tools/fitment (ItemList_SHAD.csv)"
+}
