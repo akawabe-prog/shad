@@ -11,7 +11,7 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     python3 tools/build_product_max.py tools/product_max/tr41.json
 
 ■ 構成（TR46 で確定した並び）
-    ①看板 → ②アンカーナビ（1行）＋右側Index → ④SPEC/保証/FAQ（アコーディオン）
+    ①看板 → ④SPEC/保証/FAQ（アコーディオン） → ②アンカーナビ（1行）＋右側Index
     → ⑤HERO映像 → ⑥イメージ画像（2枚組） → ⑦特徴（ストーリー3本＋構造図） → ⑧縦型映像
     → ⑨ギャラリー → ⑩適合 → ⑪関連商品
 
@@ -188,7 +188,7 @@ def render(cfg, P):
 
     return f'''<!-- =====================================================================
      商品ページ MAXテンプレート（tools/build_product_max.py で生成）
-     ①看板 → ②アンカーナビ（右側Index） → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
+     ①看板 → ④SPEC/保証/FAQ → ②アンカーナビ（右側Index） → ⑤HERO映像 → ⑥イメージ画像
      → ⑦特徴 → ⑧縦型映像 → ⑨ギャラリー → ⑩適合 → ⑪関連商品
      ===================================================================== -->
 <div class="max-w-site mx-auto px-7 pt-6">
@@ -208,11 +208,6 @@ def render(cfg, P):
 window.SHAD_GALLERY = {ov};
 </script>
 
-<!-- ===== ② アンカーナビ（1行固定。スクロールで見えなくなると右側の pd-side に切り替わる） ===== -->
-<nav class="pd-nav" id="pdNav" aria-label="ページ内ナビゲーション">
-  <div class="pd-nav-in">
-{nav}  </div>
-</nav>
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
 {side}</nav>
@@ -251,8 +246,14 @@ window.SHAD_GALLERY = {ov};
   </details>
 </section>
 
+<!-- ===== ② アンカーナビ（FAQの直後・ムービーの直上。スクロールで見えなくなると右側の pd-side に切り替わる） ===== -->
+<nav class="pd-nav mt-14" id="pdNav" aria-label="ページ内ナビゲーション">
+  <div class="pd-nav-in">
+{nav}  </div>
+</nav>
+
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px] mt-14" data-reveal>
+<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
   <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="{hero.get("poster_pc","")}"
          data-src-pc="{hero["video_pc"]}" data-src-sp="{hero.get("video_sp") or hero["video_pc"]}" data-poster-sp="{sp_poster}"></video>
   <div class="pd-hero-shade"></div>

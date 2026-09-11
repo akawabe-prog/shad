@@ -59,7 +59,7 @@
 
 <!-- =====================================================================
      商品ページ MAXテンプレート（tools/build_product_max.py で生成）
-     ①看板 → ②アンカーナビ（右側Index） → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
+     ①看板 → ④SPEC/保証/FAQ → ②アンカーナビ（右側Index） → ⑤HERO映像 → ⑥イメージ画像
      → ⑦特徴 → ⑧縦型映像 → ⑨ギャラリー → ⑩適合 → ⑪関連商品
      ===================================================================== -->
 <div class="max-w-site mx-auto px-7 pt-6">
@@ -100,18 +100,6 @@ window.SHAD_GALLERY = {
 };
 </script>
 
-<!-- ===== ② アンカーナビ（1行固定。スクロールで見えなくなると右側の pd-side に切り替わる） ===== -->
-<nav class="pd-nav" id="pdNav" aria-label="ページ内ナビゲーション">
-  <div class="pd-nav-in">
-    <a href="#spec" class="pd-nav-a"><small>01</small>スペック</a>
-    <a href="#faq" class="pd-nav-a"><small>02</small>FAQ</a>
-    <a href="#movie" class="pd-nav-a"><small>03</small>ムービー</a>
-    <a href="#feature" class="pd-nav-a"><small>04</small>特徴</a>
-    <a href="#gallery" class="pd-nav-a"><small>05</small>ギャラリー</a>
-    <a href="#fitment" class="pd-nav-a"><small>06</small>適合車種</a>
-    <a href="#related" class="pd-nav-a"><small>07</small>関連商品</a>
-  </div>
-</nav>
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
   <a href="#spec" class="pd-side-a"><small>01</small><span>スペック</span></a>
@@ -210,8 +198,21 @@ window.SHAD_GALLERY = {
   </details>
 </section>
 
+<!-- ===== ② アンカーナビ（FAQの直後・ムービーの直上。スクロールで見えなくなると右側の pd-side に切り替わる） ===== -->
+<nav class="pd-nav mt-14" id="pdNav" aria-label="ページ内ナビゲーション">
+  <div class="pd-nav-in">
+    <a href="#spec" class="pd-nav-a"><small>01</small>スペック</a>
+    <a href="#faq" class="pd-nav-a"><small>02</small>FAQ</a>
+    <a href="#movie" class="pd-nav-a"><small>03</small>ムービー</a>
+    <a href="#feature" class="pd-nav-a"><small>04</small>特徴</a>
+    <a href="#gallery" class="pd-nav-a"><small>05</small>ギャラリー</a>
+    <a href="#fitment" class="pd-nav-a"><small>06</small>適合車種</a>
+    <a href="#related" class="pd-nav-a"><small>07</small>関連商品</a>
+  </div>
+</nav>
+
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px] mt-14" data-reveal>
+<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
   <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr08/poster_hero.webp"
          data-src-pc="/media/products/tr08/hero.mp4" data-src-sp="/media/products/tr08/hero_sp.mp4" data-poster-sp="/img/products/tr08/poster_hero_sp.webp"></video>
   <div class="pd-hero-shade"></div>
