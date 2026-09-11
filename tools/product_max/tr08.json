@@ -1,0 +1,139 @@
+{
+  "code": "TR08",
+  "name_jp": "TERRA クラッシュバーバッグ",
+  "catch": "防水IPX4×ダブルロック。クラッシュバーに、8Lのタフネス。",
+  "desc": "アドベンチャーライダーのために設計された、クラッシュバー専用の8L防水バッグ。0.15mmの両面PVCコーティングを施したポリエステルとハイパロンを採用し、IPX4の防水性能と1500時間のUV耐性で、雨も泥も日差しも受け止めます。バッグをクラッシュバーに固定するロックと、開口部のジッパーを施錠するロックの2重ロック構造で、荷物と本体の両方を守ります。コンプレッションストラップで荷物の量に合わせて締め込め、ストラップの端はばたつかない留め付き。リフレクターで夜間の被視認性も高めています。汎用取付で、多くのアドベンチャーモデルのクラッシュバーに装着できます。東京モーターサイクルショー 2026でも注目を集めました。",
+  "main_img": "/img/products/tr08/blk_01.webp",
+  "thumbs": [
+    "/img/products/tr08/blk_01.webp",
+    "/img/products/tr08/blk_02.webp",
+    "/img/products/tr08/blk_03.webp",
+    "/img/products/tr08/blk_04.webp",
+    "/img/products/tr08/blk_05.webp"
+  ],
+  "gallery_override": {
+    "29469031": [
+      "/img/products/tr08/blk_01.webp",
+      "/img/products/tr08/blk_02.webp",
+      "/img/products/tr08/blk_03.webp",
+      "/img/products/tr08/blk_04.webp",
+      "/img/products/tr08/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/tr08/hero.mp4",
+    "video_sp": "/media/products/tr08/hero_sp.mp4",
+    "poster_pc": "/img/products/tr08/poster_hero.webp",
+    "poster_sp": "/img/products/tr08/poster_hero_sp.webp",
+    "kick": "Movie",
+    "heading": "泥も、雨も、<br>気にせず走る。",
+    "sub": "IPX4の防水と、鍵で守るダブルロック。クラッシュバー専用の8Lバッグ、TR08をムービーで。",
+    "film": "/media/products/tr08/film.mp4",
+    "poster_film": "/img/products/tr08/poster_film.webp",
+    "film_label": "フル映像を見る（24秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/tr08/img_splash.webp",
+      "alt": "TR08を装着して水しぶきを上げて走るアドベンチャーバイク",
+      "caption": "水も泥も、そのまま突っ切る。"
+    },
+    {
+      "src": "/img/products/tr08/img_mounted.webp",
+      "alt": "クラッシュバーに装着したTR08",
+      "caption": "クラッシュバーに、ぴたりと収まる8L。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "濡れない、外れない、盗られない。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/tr08/story_waterproof.webp",
+      "kick": "Waterproof / IPX4",
+      "h": "雨も泥も、通さない。",
+      "p": "0.15mmの両面PVCコーティングを施したポリエステルと、ハイパロンを採用。IPX4の防水性能で天候を選ばず、1500時間のUV耐性で日差しによる劣化も防ぐ。"
+    },
+    {
+      "img": "/img/products/tr08/story_lock.webp",
+      "kick": "Double Locking System",
+      "h": "中身も本体も、鍵で守る。",
+      "p": "クラッシュバーへの固定部と、開口部のジッパー。2箇所を施錠できるダブルロック構造で、バイクを離れるときも安心。"
+    },
+    {
+      "img": "/img/products/tr08/story_straps.webp",
+      "kick": "Adjust &amp; Attach",
+      "h": "荷物に合わせて締める。<br>どのバイクにも、付く。",
+      "p": "コンプレッションストラップで荷物の量に合わせて締め込み、ストラップの端はばたつかない留め付き。汎用取付で多くのクラッシュバーに対応し、キャリーハンドルで持ち運びも楽に。最大積載2.6kg。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/tr08/info_waterproof.webp",
+      "alt": "防水IPX4",
+      "b": "Waterproof",
+      "span": "IPX4相当の防水性能。両面PVCコーティングのポリエステル素材。"
+    },
+    {
+      "img": "/img/products/tr08/info_lock.webp",
+      "alt": "ダブルロックシステム",
+      "b": "Double Locking",
+      "span": "バッグ内部へのアクセスと、車体への固定。2箇所を施錠。"
+    },
+    {
+      "img": "/img/products/tr08/info_volume.webp",
+      "alt": "コンプレッションストラップで容量調整",
+      "b": "Adjust Volume",
+      "span": "ストラップで荷物の量に合わせて締め込める。"
+    },
+    {
+      "img": "/img/products/tr08/info_visibility.webp",
+      "alt": "リフレクター",
+      "b": "High Visibility",
+      "span": "リフレクターで夜間の被視認性を高める。"
+    }
+  ],
+  "reels": [],
+  "gallery": [
+    {
+      "src": "/img/products/tr08/gal_01.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr08/gal_02.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_03.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_04.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_05.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/tr08/gal_06.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_07.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_08.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr08/gal_09.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_10.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_11.webp"
+    },
+    {
+      "src": "/img/products/tr08/gal_12.webp"
+    }
+  ]
+}

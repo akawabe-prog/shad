@@ -27,6 +27,8 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     diagrams        [ {img, alt, b, span} … ]  構造図。空なら出さない
     reels           [ {src, poster, en, jp} … ]  縦型映像。空ならセクションごと出さない
     gallery         [ {src, cls} … ]  cls は "is-tall is-wide" など（省略可）
+    desc            商品説明（Description セクションが無い従来ページ向け。省略時は現メインキャッチを流用）
+    stories         [ {img, kick, h, p, alt} … ]  特徴ストーリーを書き換える（省略時は現ページの lp-story を流用）
     userguide       取扱説明書PDFのパス（省略時は /docs/<code小文字>_userguide.pdf があれば使う）
 
 ■ 注意
@@ -75,8 +77,10 @@ def extract(s):
         rows = re.search(r'(<tr class="border-b border-black/10">.*?)</table>', s, re.S).group(1)
         rows = re.sub(r'<tr class="border-b border-black/10">', "<tr>", rows)
         parts["spec_rows"] = re.sub(r'<t([hd]) class="[^"]*">', r"<t\1>", rows)
-        parts["desc"] = re.search(r'<h2 class="sec-ttl sec-ttl-quiet">Description</h2>\s*<p[^>]*>(.*?)</p>', s, re.S).group(1)
-        m = re.search(r'<p class="text-\[12px\][^>]*>(.*?)</p>', s, re.S)
+        m = re.search(r'<h2 class="sec-ttl sec-ttl-quiet">Description</h2>\s*<p[^>]*>(.*?)</p>', s, re.S)
+        parts["desc"] = m.group(1) if m else ""          # 無いページは設定JSONの desc（省略時は現メインキャッチ）で補う
+        m = re.search(r'<p class="text-\[12px\][^>]*>(.*?)</p>', s, re.S) or \
+            re.search(r'<h2 class="sec-ttl sec-ttl-quiet">Notes</h2>\s*<p[^>]*>(.*?)</p>', s, re.S)
         parts["notes"] = m.group(1) if m else ""
         story = grab(s, r'<section class="lp-story">', r"</section>")
         parts["story_inner"] = re.search(r'<div class="max-w-site mx-auto px-7">(.*)</div></section>$', story, re.S).group(1)
@@ -332,6 +336,16 @@ def main():
         if m and m.group(1) != cfg["catch"]:
             s = s.replace(m.group(1), cfg["catch"])
             P["info_col"] = P["info_col"].replace(m.group(1), cfg["catch"])
+    if not P["desc"]:
+        m = re.search(r'<p class="text-\[17px\] font-bold mt-5 leading-relaxed">([^<]*)</p>', s)
+        P["desc"] = cfg.get("desc") or (m.group(1) if m else "")
+    if cfg.get("stories"):
+        P["story_inner"] = "".join(
+            '<div class="lp-block%s">\n      <div class="lp-block-img"><img src="%s" alt="%s" loading="lazy"></div>\n'
+            '      <div class="lp-block-tx"><span class="lp-block-kick">%s</span>\n        <h3 class="lp-block-h">%s</h3>\n'
+            '        <p class="lp-block-p">%s</p></div>\n    </div>'
+            % (" lp-rev" if i % 2 else "", st["img"], esc(st.get("alt") or re.sub(r"<[^>]+>", "", st["h"])), st["kick"], st["h"], st["p"])
+            for i, st in enumerate(cfg["stories"]))
     if "name_jp" not in cfg:
         m = re.search(r'<p class="text-\[15px\] text-neutral-500 mt-1.5">([^<]*)</p>', s)
         cfg["name_jp"] = m.group(1) if m else ""
