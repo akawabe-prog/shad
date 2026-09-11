@@ -1,0 +1,52 @@
+{
+  "code": "TR41",
+  "name_jp": "TERRA トップケース",
+  "main_img": "/img/products/tr41_0.webp",
+  "thumbs": ["/img/products/tr41_0.webp", "/img/products/tr41_1.webp", "/img/products/tr41_2.webp", "/img/products/tr41_3.webp", "/img/products/tr41/gal_04.webp"],
+  "gallery_override": {
+    "29044382": ["/img/products/tr41_0.webp", "/img/products/tr41_1.webp", "/img/products/tr41_2.webp", "/img/products/tr41_3.webp", "/img/products/tr41/gal_04.webp"],
+    "29044399": ["/img/products/tr41/alu_01.webp", "/img/products/tr41/alu_02.webp", "/img/products/tr41/alu_03.webp", "/img/products/tr41/alu_lock.webp", "/img/products/tr41/alu_onbike.webp"]
+  },
+  "hero": {
+    "video_pc": "/media/products/tr41/hero.mp4",
+    "video_sp": "/media/products/tr41/hero_sp.mp4",
+    "poster_pc": "/img/products/tr41/poster_hero.webp",
+    "poster_sp": "/img/products/tr41/poster_hero_sp.webp",
+    "kick": "Movie",
+    "heading": "毎日の道が、<br>アドベンチャーになる。",
+    "sub": "高強度PPのボディに、AISI 304ステンレスのロック。通勤からオフロードまで、41Lのタフなハードケースをムービーで。",
+    "film": "/media/products/tr41/film.mp4",
+    "poster_film": "/img/products/tr41/poster_film.webp",
+    "film_label": "フル映像を見る（51秒）"
+  },
+  "visual_pair": [
+    {"src": "/img/products/tr41/img_helmet.webp", "alt": "TR41にジェットヘルメットを収納する様子", "caption": "ジェットヘルメット2個が、そのまま入る。"},
+    {"src": "/img/products/tr41/img_corner.webp", "alt": "TR41を装着したアドベンチャーバイクの走行", "caption": "オンもオフも。走りを邪魔しない41L。"}
+  ],
+  "features": {"en": "Features", "heading": "頑丈さと扱いやすさを、ひとつのケースに。"},
+  "diagrams": [
+    {"img": "/img/products/tr41/info_characteristics.webp", "alt": "TR41の特徴", "b": "Characteristics", "span": "アルミカバー／ジェットヘルメット2個／耐水設計／オン＆オフロード対応"},
+    {"img": "/img/products/tr41/info_lock.webp", "alt": "AISI 304ステンレス製ロックシステム", "b": "Robust", "span": "AISI 304ステンレス製のロックシステム。ハンドル一体型で手袋のままでも確実に。"},
+    {"img": "/img/products/tr41/info_versions.webp", "alt": "アルミカバー版とカバーなし版", "b": "Versions", "span": "アルミパネル仕様とブラック仕様の2バージョン。"},
+    {"img": "/img/products/tr41/info_backrest.webp", "alt": "バックレスト（別売アクセサリー）", "b": "Accessories", "span": "別売のバックレストで、タンデムの快適性を高められる。"}
+  ],
+  "reels": [
+    {"src": "/media/products/tr41/reel_helmets.mp4", "poster": "/img/products/tr41/poster_reel_helmets.webp", "en": "Two helmets", "jp": "ジェットヘルメットが2個。"},
+    {"src": "/media/products/tr41/reel_details.mp4", "poster": "/img/products/tr41/poster_reel_details.webp", "en": "Details", "jp": "ロックと素材のディテール。"},
+    {"src": "/media/products/tr41/reel_versatility.mp4", "poster": "/img/products/tr41/poster_reel_versatility.webp", "en": "Versatility", "jp": "街からオフロードまで。"}
+  ],
+  "gallery": [
+    {"src": "/img/products/tr41/gal_01.webp", "cls": "is-tall is-wide"},
+    {"src": "/img/products/tr41/gal_02.webp"},
+    {"src": "/img/products/tr41/gal_03.webp"},
+    {"src": "/img/products/tr41/gal_04.webp"},
+    {"src": "/img/products/tr41/gal_05.webp", "cls": "is-wide"},
+    {"src": "/img/products/tr41/gal_06.webp"},
+    {"src": "/img/products/tr41/gal_07.webp"},
+    {"src": "/img/products/tr41/gal_08.webp", "cls": "is-tall is-wide"},
+    {"src": "/img/products/tr41/gal_09.webp"},
+    {"src": "/img/products/tr41/gal_10.webp"},
+    {"src": "/img/products/tr41/gal_11.webp"},
+    {"src": "/img/products/tr41/gal_12.webp"}
+  ]
+}

@@ -488,6 +488,8 @@
    他の商品ページへ展開するときは、この .pd-* と .lp-* をそのまま使う。
    ===================================================================== */
 /* --- 看板（従来の商品ページからCSSを共通化） --- */
+/* 看板の小バッジ（Flagship など。MAXテンプレート化でページ内<style>から集約） */
+.feat-tag{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:2.5px 8px;border-radius:4px;}
 .cap-num{font-family:"Barlow Condensed",sans-serif;font-weight:600;line-height:1;letter-spacing:.02em;color:#E31E24;}
 .g-main{aspect-ratio:1/1;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden;}
 .g-main img{width:100%;height:100%;object-fit:cover;}

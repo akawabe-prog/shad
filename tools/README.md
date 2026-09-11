@@ -54,10 +54,21 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
-## 商品ページ MAXテンプレート（初出：TR46）
+## 商品ページ MAXテンプレート（初出：TR46、2例目：TR41）
 
 素材が揃っている商品向けの「フル装備」レイアウトです。`site/product/tr46.html` が原本で、
-構成とクラス（`.pd-*`）をそのまま流用して他の商品へ展開します。
+2例目以降は **`tools/build_product_max.py`** で組み替えます（TR41 が最初の適用例）。
+
+```
+python3 tools/build_product_max.py tools/product_max/tr41.json
+```
+
+- 設定JSONは `tools/product_max/<型番>.json`（素材パス・ヒーロー文言・構造図キャプション・リール・ギャラリー）。書式は `tr41.json` を参照
+- 現ページから 価格欄・スペック表・説明・注意事項・ストーリー3本・保証文・FAQマーカー・適合・Same Series を取り出して再配置するので、
+  従来レイアウトのページにも、すでにMAX化したページにも同じコマンドで何度でも掛けられます
+- 生成後に参照アセットの実在チェックとタグ数の整合チェックを行い、欠落があれば表示します
+- 素材の並び：看板＝`SHAD_GALLERY`（品番→画像配列）、ヒーロー＝`hero.mp4 / hero_sp.mp4`＋ポスター、フル映像＝`film.mp4`、
+  イメージ2枚組（省略可）、構造図（省略可）、リール（省略可）、ギャラリー12枚
 
 ```
 ①看板（ギャラリー＋価格・カラー・適合ボタン）
