@@ -175,7 +175,7 @@ def render(cfg, P):
       {total}
     </div>
     <p class="pd-setup-lead" data-reveal>{su.get("lead", "")}</p>
-    <div class="pd-setup-visual" data-reveal>
+    <div class="pd-setup-visual{" is-single" if len(su.get("visuals", [])) == 1 else ""}" data-reveal>
 {vis}    </div>
     <div class="pd-setup-items" data-reveal>
 {cards}    </div>

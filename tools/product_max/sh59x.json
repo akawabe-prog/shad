@@ -1,0 +1,171 @@
+{
+  "code": "SH59X",
+  "name_jp": "トップケース",
+  "catch": "3段階に伸びる、アルミパネルの58L。",
+  "desc": "Red Dot デザイン賞受賞の可変容量トップケース、SH59X。46L・52L・58Lの3段階に容量を変えられる機構を搭載し、ツーリング先で荷物が増えても余裕を持って収納できます。58Lモードではモトクロスタイプのフルフェイスヘルメットを2個収納。アルミパネル装着の洗練されたデザインに、格納式ハンドルとプレスロックシステムを備え、ハンドルの出し入れを含む2段階のロック解除でセキュリティ面でも高い性能を発揮します。日常のライディングからロングツーリングまで、これひとつで。",
+  "main_img": "/img/products/sh59x/render_01.webp",
+  "thumbs": [
+    "/img/products/sh59x/render_01.webp",
+    "https://img.customjapan.net/items/17460903_1.jpg",
+    "/img/products/sh59x/topcase_gs.webp",
+    "https://img.customjapan.net/items/17460903_2.jpg",
+    "https://img.customjapan.net/items/17460903_3.jpg"
+  ],
+  "gallery_override": {
+    "17460903": [
+      "/img/products/sh59x/render_01.webp",
+      "https://img.customjapan.net/items/17460903_1.jpg",
+      "/img/products/sh59x/topcase_gs.webp",
+      "https://img.customjapan.net/items/17460903_2.jpg",
+      "https://img.customjapan.net/items/17460903_3.jpg"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/expandable/hero.mp4",
+    "poster_pc": "/img/products/sh59x/poster_hero.webp",
+    "kick": "Expandable",
+    "heading": "荷物に合わせて、<br>ケースが変わる。",
+    "sub": "46L、52L、58L。レバーひとつで3段階に伸縮する、世界唯一の可変容量トップケース。SHADのExpandableシリーズをムービーで。",
+    "film": "/media/products/expandable/film.mp4",
+    "poster_film": "/img/products/sh58x/poster_film.webp",
+    "film_label": "Expandableの映像を見る（25秒）"
+  },
+  "visual_pair": [
+    {
+      "video": "/media/products/expandable/sizes_loop.mp4",
+      "poster": "/img/products/sh58x/poster_sizes.webp",
+      "alt": "L・XL・XXLの3段階に伸縮するアニメーション",
+      "caption": "46L → 52L → 58L。レバーひとつで。"
+    },
+    {
+      "src": "/img/products/sh59x/img_render.webp",
+      "alt": "SH59X Expandable アルミパネル",
+      "caption": "アルミパネルの、SH59X。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "アルミパネルで、3段階に伸びる。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/sh59x/render_02.webp",
+      "kick": "Expandable",
+      "h": "46 → 52 → 58L、数秒で。",
+      "p": "これまでは荷物の量に合わせて大きさの異なるボックスに替える必要があった。SH59Xは3段階の容量可変機構を搭載し、ツーリング先で荷物が増えても余裕を持って収納できる。58Lモードではモトクロスタイプのフルフェイスヘルメット2個。"
+    },
+    {
+      "img": "/img/products/sh59x/topcase_gs.webp",
+      "kick": "Aluminium Panel",
+      "h": "アルミパネルの、洗練。",
+      "p": "アルミパネル装着の洗練されたデザイン。アドベンチャーモデルの車体に自然に馴染み、SH38Xアルミパネルと揃えれば統一感のあるフルパニアに。"
+    },
+    {
+      "img": "https://img.customjapan.net/items/17460903_4.jpg",
+      "kick": "Touring",
+      "h": "これひとつで、日常からロングツーリングまで。",
+      "p": "格納式ハンドルとプレスロックシステムを装備。ハンドルの出し入れを含む2段階のロック解除で、セキュリティ面でも高い性能を発揮する。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/sh58x/info_frame.webp",
+      "alt": "構造フレームとモトダイナミクス",
+      "b": "Structural Frame",
+      "span": "特許出願中の構造フレーム。空力ボディから大容量へ、数秒で。"
+    },
+    {
+      "img": "/img/products/sh58x/info_sizes.webp",
+      "alt": "L・XL・XXLの3サイズ",
+      "b": "3 Sizes",
+      "span": "L（46L）／XL（52L）／XXL（58L）の3段階。"
+    },
+    {
+      "img": "/img/products/sh59x/render_02.webp",
+      "alt": "SH59X Expandable",
+      "b": "Aluminium Panel",
+      "span": "アルミパネル装着の洗練されたデザイン。"
+    },
+    {
+      "img": "/img/products/sh58x/info_accessories.webp",
+      "alt": "アクセサリー",
+      "b": "Accessories",
+      "span": "バックレスト、Expandableインナーバッグ、カラーカバー。"
+    }
+  ],
+  "setup": {
+    "en": "Expandable Full Pannier",
+    "heading": "SH59X × SH38X。3つとも、伸びる。",
+    "lead": "3段階に容量が変わるSH59Xトップケースに、可変容量のSH38Xサイドケースを組み合わせた、すべてExpandableのフルパニア構成。走るときは全部コンパクトに、停まれば合計122Lまで。荷物の量に合わせて、その場で積載を変えられます。",
+    "total": "122",
+    "total_label": "最大合計容量",
+    "visuals": [
+      {
+        "src": "/img/products/sh59x/setup_alu.webp",
+        "caption": "アルミパネル：SH59X × SH38X",
+        "alt": "SH59XとSH38Xアルミパネルを装着したBMW R1300GS"
+      }
+    ],
+    "items": [
+      {
+        "code": "SH59X",
+        "href": "/product/sh59x",
+        "img": "/img/products/sh59x/render_01.webp",
+        "role": "Top",
+        "name": "SH59X トップケース アルミパネル",
+        "sub": "46〜58L／3段階"
+      },
+      {
+        "code": "SH38X",
+        "href": "/product/sh38x",
+        "img": "/img/products/sh38x/alu_01.webp",
+        "role": "Side ×2",
+        "name": "SH38X 可変容量サイドケース 左右セット",
+        "sub": "23〜32L＋23〜32L／拡張式"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 3P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "SH59XとSH38Xをアルミパネルで揃えた構成。カーボンで揃えるならSH58X × SH38Xカーボン。",
+      "コンパクト時は46L＋23L×2＝92L、すべて拡張すると58L＋32L×2＝122L。",
+      "フィッティングキットは車種ごとに異なります。4Pシステムキットで装着する場合はSH38X用取付アダプター（204632R）が別途必要です。"
+    ]
+  },
+  "reels": [],
+  "gallery": [
+    {
+      "src": "/img/products/sh59x/gal_gs.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh59x/render_01.webp"
+    },
+    {
+      "src": "/img/products/sh59x/topcase_gs.webp"
+    },
+    {
+      "src": "/img/products/sh59x/ms_59x_bike.webp"
+    },
+    {
+      "src": "/img/products/sh59x/render_02.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/sh58x/render_01.webp"
+    },
+    {
+      "src": "/img/products/sh58x/gal_38x.webp"
+    },
+    {
+      "src": "https://img.customjapan.net/items/17460903_5.jpg"
+    }
+  ],
+  "userguide": "/docs/sh58x_userguide.pdf"
+}
