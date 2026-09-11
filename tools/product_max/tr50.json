@@ -1,0 +1,201 @@
+{
+  "code": "TR50",
+  "name_jp": "TERRA ツーリングバッグ",
+  "main_img": "/img/products/tr50/blk_01.webp",
+  "thumbs": [
+    "/img/products/tr50/blk_01.webp",
+    "/img/products/tr50/blk_02.webp",
+    "/img/products/tr50/blk_03.webp",
+    "/img/products/tr50/blk_04.webp",
+    "/img/products/tr50/blk_05.webp"
+  ],
+  "gallery_override": {
+    "27819630": [
+      "/img/products/tr50/blk_01.webp",
+      "/img/products/tr50/blk_02.webp",
+      "/img/products/tr50/blk_03.webp",
+      "/img/products/tr50/blk_04.webp",
+      "/img/products/tr50/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/tr50/hero.mp4",
+    "video_sp": "/media/products/tr50/hero_sp.mp4",
+    "poster_pc": "/img/products/tr50/poster_hero.webp",
+    "poster_sp": "/img/products/tr50/poster_reel_2.webp",
+    "kick": "Adventure Bags",
+    "heading": "ケースじゃなくても、<br>鍵はかかる。",
+    "sub": "フルフェイス2個が入る40L。ベースプレートにワンタッチで固定・施錠できる、TERRAの防水ツーリングバッグ。",
+    "film": "/media/products/tr50/film.mp4",
+    "poster_film": "/img/products/tr50/poster_film.webp",
+    "film_label": "フル映像を見る（20秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/tr50/img_rear.webp",
+      "alt": "TR50を装着したアドベンチャーバイクの後ろ姿",
+      "caption": "ケースに代わる、40Lの選択肢。"
+    },
+    {
+      "src": "/img/products/tr50/img_trail.webp",
+      "alt": "TERRAバッグでトレイルを走る",
+      "caption": "軽くて、転んでも車体にやさしい。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "防水40L。ワンタッチで固定、鍵で守る。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/tr50/story_helmets.webp",
+      "kick": "Capacity",
+      "h": "フルフェイス2個・40L。",
+      "p": "最大10kgを積めるTERRAリアバッグ。"
+    },
+    {
+      "img": "/img/products/tr50/story_mount.webp",
+      "kick": "Quick",
+      "h": "数秒で、固定・着脱。",
+      "p": "ロック付きフィッティングで素早くセットできるのが特長。"
+    },
+    {
+      "img": "/img/products/tr50/story_lock.webp",
+      "kick": "Secure",
+      "h": "施錠して、安心。",
+      "p": "ロック機構で、車両から離れる時も安心。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/tr50/info_mount.webp",
+      "alt": "ベースプレートへの固定",
+      "b": "Quick Mounting",
+      "span": "ベースプレート（別売）にワンタッチで固定し、鍵で施錠。"
+    },
+    {
+      "img": "/img/products/tr50/info_straps.webp",
+      "alt": "コンプレッションストラップ",
+      "b": "Adjust Volume",
+      "span": "ストラップで荷物の量に合わせて締め込める。MOLLEグリッド2面。"
+    },
+    {
+      "img": "/img/products/tr50/info_raincover.webp",
+      "alt": "レインカバー",
+      "b": "Rain Cover",
+      "span": "レインカバーを標準で付属。"
+    },
+    {
+      "img": "/img/products/tr50/info_carry.webp",
+      "alt": "ショルダーストラップ",
+      "b": "Carry",
+      "span": "ショルダーストラップ付属。降りたらそのまま持ち運べる。"
+    }
+  ],
+  "setup": {
+    "en": "TERRA Adventure Bags",
+    "heading": "TR50 × TR30。ソフトバッグで、フルパニア。",
+    "lead": "フルフェイス2個が入る40LのTR50ツーリングバッグに、完全防水の30L×2、TR30サドルバッグを組み合わせたTERRAのソフトバッグ構成。合計100L。どれも鍵で車体に固定でき、ハードケースより軽く、転倒時も車体にやさしい。",
+    "total": "100",
+    "visuals": [
+      {
+        "src": "/img/products/terra/set_bags_r3.webp",
+        "caption": "TERRA アドベンチャーバッグ構成（イメージ）",
+        "alt": "TERRAソフトバッグを装着したアドベンチャーバイクの後ろ姿"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR50",
+        "href": "/product/tr50",
+        "img": "/img/products/tr50/blk_01.webp",
+        "role": "Rear",
+        "name": "TR50 TERRA ツーリングバッグ",
+        "sub": "40L／フルフェイス2個／防水"
+      },
+      {
+        "code": "TR30",
+        "href": "/product/tr30",
+        "img": "/img/products/tr30/blk_01.webp",
+        "role": "Side ×2",
+        "name": "TR30 TERRA 防水サドルバッグ",
+        "sub": "30L＋30L／左右セット／IPX6"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "ベースプレート ＋ 3P/4P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "TR50はベースプレート（別売）にワンタッチで固定・施錠。TR30は車種別の3P／4Pシステムサイドキットに装着します。",
+      "バッグ本体もフィッティングも鍵で施錠できるので、ソフトバッグでも駐車中の安心感はハードケースと同じ発想です。",
+      "フィッティングキットは車種ごとに異なります。適合検索でご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/tr50/reel_1.mp4",
+      "poster": "/img/products/tr50/poster_reel_1.webp",
+      "en": "Adventure Bags I",
+      "jp": "TERRAのソフトバッグで、旅へ。"
+    },
+    {
+      "src": "/media/products/tr50/reel_2.mp4",
+      "poster": "/img/products/tr50/poster_reel_2.webp",
+      "en": "Adventure Bags II",
+      "jp": "泥道も、川も。"
+    },
+    {
+      "src": "/media/products/tr50/reel_3.mp4",
+      "poster": "/img/products/tr50/poster_reel_3.webp",
+      "en": "Adventure Bags III",
+      "jp": "積んで、走って、外す。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/tr50/gal_01.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr50/gal_02.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_03.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_04.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_05.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/tr50/gal_06.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_07.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_08.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr50/gal_09.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_10.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_11.webp"
+    },
+    {
+      "src": "/img/products/tr50/gal_12.webp"
+    }
+  ],
+  "userguide": "/docs/tr50_userguide.pdf"
+}

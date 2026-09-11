@@ -1,0 +1,201 @@
+{
+  "code": "TR30",
+  "name_jp": "TERRA 防水サドルバッグ",
+  "main_img": "/img/products/tr30/blk_02.webp",
+  "thumbs": [
+    "/img/products/tr30/blk_02.webp",
+    "/img/products/tr30/blk_01.webp",
+    "/img/products/tr30/blk_03.webp",
+    "/img/products/tr30/blk_04.webp",
+    "/img/products/tr30/blk_05.webp"
+  ],
+  "gallery_override": {
+    "28087540": [
+      "/img/products/tr30/blk_02.webp",
+      "/img/products/tr30/blk_01.webp",
+      "/img/products/tr30/blk_03.webp",
+      "/img/products/tr30/blk_04.webp",
+      "/img/products/tr30/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/tr30/hero.mp4",
+    "video_sp": "/media/products/tr30/hero_sp.mp4",
+    "poster_pc": "/img/products/tr30/poster_hero.webp",
+    "poster_sp": "/img/products/tr30/poster_hero_sp.webp",
+    "kick": "Waterproof",
+    "heading": "雨の日も、<br>荷物は乾いたまま。",
+    "sub": "IPX6の完全防水と、鍵で守るダブルロック。3P／4Pシステムに数秒で着脱できる、TERRAの防水サドルバッグ。",
+    "film": "/media/products/tr30/film.mp4",
+    "poster_film": "/img/products/tr30/poster_film.webp",
+    "film_label": "フル映像を見る（25秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/tr30/img_ride.webp",
+      "alt": "TR30を装着したアドベンチャーバイク",
+      "caption": "スリムなまま、片側30L。"
+    },
+    {
+      "src": "/img/products/tr30/img_action.webp",
+      "alt": "TR30を装着してオフロードを走る",
+      "caption": "泥も水も、気にせず走る。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "完全防水と、鍵のかかるソフトバッグ。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/tr30/story_ipx6.webp",
+      "kick": "Waterproof",
+      "h": "完全防水、IPX6。",
+      "p": "バルセロナ設計、最大60Lのアドベンチャーサイドバッグ。"
+    },
+    {
+      "img": "/img/products/tr30/story_lock.webp",
+      "kick": "Double Lock",
+      "h": "特許ダブルロック。",
+      "p": "4P/3Pフィッティングへ固定し、バッグ自体も施錠する。"
+    },
+    {
+      "img": "/img/products/tr30/story_slim.webp",
+      "kick": "Slim",
+      "h": "スリムに、たっぷり。",
+      "p": "運動性能を妨げないスリム設計で容量を確保。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/tr30/info_lock.webp",
+      "alt": "ダブルロックシステム",
+      "b": "Double Locking",
+      "span": "バッグ内部へのアクセスと車体への固定、2箇所を施錠。ひとつの鍵で開ける・外す。"
+    },
+    {
+      "img": "/img/products/tr30/info_fitting.webp",
+      "alt": "3P/4Pシステム",
+      "b": "Side Fitting",
+      "span": "車種別の3P System／4P Systemサイドキットで装着（4P推奨）。"
+    },
+    {
+      "img": "/img/products/tr30/info_visibility.webp",
+      "alt": "リフレクター",
+      "b": "High Visibility",
+      "span": "リフレクターで夜間の被視認性を高める。"
+    },
+    {
+      "img": "/img/products/tr30/info_volume.webp",
+      "alt": "コンプレッションストラップ",
+      "b": "Adjust Volume",
+      "span": "6本のストラップで荷物の量に合わせて締め込める。"
+    }
+  ],
+  "setup": {
+    "en": "TERRA Adventure Bags",
+    "heading": "TR50 × TR30。ソフトバッグで、フルパニア。",
+    "lead": "フルフェイス2個が入る40LのTR50ツーリングバッグに、完全防水の30L×2、TR30サドルバッグを組み合わせたTERRAのソフトバッグ構成。合計100L。どれも鍵で車体に固定でき、ハードケースより軽く、転倒時も車体にやさしい。",
+    "total": "100",
+    "visuals": [
+      {
+        "src": "/img/products/terra/set_bags_r3.webp",
+        "caption": "TERRA アドベンチャーバッグ構成（イメージ）",
+        "alt": "TERRAソフトバッグを装着したアドベンチャーバイクの後ろ姿"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR50",
+        "href": "/product/tr50",
+        "img": "/img/products/tr50/blk_01.webp",
+        "role": "Rear",
+        "name": "TR50 TERRA ツーリングバッグ",
+        "sub": "40L／フルフェイス2個／防水"
+      },
+      {
+        "code": "TR30",
+        "href": "/product/tr30",
+        "img": "/img/products/tr30/blk_01.webp",
+        "role": "Side ×2",
+        "name": "TR30 TERRA 防水サドルバッグ",
+        "sub": "30L＋30L／左右セット／IPX6"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "ベースプレート ＋ 3P/4P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "TR50はベースプレート（別売）にワンタッチで固定・施錠。TR30は車種別の3P／4Pシステムサイドキットに装着します。",
+      "バッグ本体もフィッティングも鍵で施錠できるので、ソフトバッグでも駐車中の安心感はハードケースと同じ発想です。",
+      "フィッティングキットは車種ごとに異なります。適合検索でご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/tr30/reel_quicksecure.mp4",
+      "poster": "/img/products/tr30/poster_reel_quicksecure.webp",
+      "en": "Quick & Secure",
+      "jp": "数秒で固定、鍵で守る。"
+    },
+    {
+      "src": "/media/products/tr30/reel_waterproof.mp4",
+      "poster": "/img/products/tr30/poster_reel_waterproof.webp",
+      "en": "Waterproof",
+      "jp": "IPX6の完全防水。"
+    },
+    {
+      "src": "/media/products/tr30/hero_sp.mp4",
+      "poster": "/img/products/tr30/poster_hero_sp.webp",
+      "en": "TR30 × TR10",
+      "jp": "雨でも乾いたまま。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/tr30/gal_01.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr30/gal_02.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_03.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_04.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_05.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/tr30/gal_06.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_07.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_08.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr30/gal_09.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_10.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_11.webp"
+    },
+    {
+      "src": "/img/products/tr30/gal_12.webp"
+    }
+  ],
+  "userguide": "/docs/tr30_userguide.pdf"
+}
