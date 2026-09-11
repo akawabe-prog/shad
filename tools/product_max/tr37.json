@@ -1,0 +1,211 @@
+{
+  "code": "TR37",
+  "name_jp": "TERRA トップケース",
+  "main_img": "/img/products/tr37/alu_01.webp",
+  "thumbs": [
+    "/img/products/tr37/alu_01.webp",
+    "/img/products/tr37/alu_02.webp",
+    "/img/products/tr37/alu_03.webp",
+    "/img/products/tr37/alu_04.webp",
+    "/img/products/tr37/alu_05.webp"
+  ],
+  "gallery_override": {
+    "18319286": [
+      "/img/products/tr37/alu_01.webp",
+      "/img/products/tr37/alu_02.webp",
+      "/img/products/tr37/alu_03.webp",
+      "/img/products/tr37/alu_04.webp",
+      "/img/products/tr37/alu_05.webp"
+    ],
+    "26768762": [
+      "/img/products/tr37/blk_01.webp",
+      "/img/products/tr37/blk_02.webp",
+      "/img/products/tr37/blk_03.webp",
+      "/img/products/tr37/blk_04.webp",
+      "/img/products/tr37/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/terra/hero.mp4",
+    "poster_pc": "/img/products/terra/poster_hero.webp",
+    "kick": "TERRA",
+    "heading": "アルミで、旅を軽くする。",
+    "sub": "37Lの軽快なアルミトップケース。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステム。",
+    "film": "/media/products/terra/film.mp4",
+    "poster_film": "/img/products/terra/poster_film.webp",
+    "film_label": "TERRAの映像を見る（15秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/terra/img_gs_full.webp",
+      "alt": "TERRAトップケースを装着したBMW GS",
+      "caption": "街もトレイルも、軽快に。"
+    },
+    {
+      "src": "/img/products/terra/img_edit.webp",
+      "alt": "TERRAトップケースに荷物を積む",
+      "caption": "片手で開けて、片手で外す。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "軽快な37L。街もトレイルも。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/terra/story_gs_black.webp",
+      "kick": "Lightweight",
+      "h": "軽快な、TERRAトップ。",
+      "p": "1.2mm厚まで薄くできる硬質アルミ合金で、最小の重量と最大の強度を両立。空力を考えた一体感のあるデザインで、日常の足からトレイルまで軽快に走れる。"
+    },
+    {
+      "img": "/img/products/terra/set_benelli_tr37_tr36.webp",
+      "kick": "Full Pannier",
+      "h": "TERRAサイドと、揃える。",
+      "p": "TR36／TR47サイドケースと組み合わせて、統一されたTERRAのフルパニアへ。右側サイドケースに付属のキーシリンダーで、3つのケースを1本の鍵に。"
+    },
+    {
+      "img": "/img/products/terra/story_lock.webp",
+      "kick": "TERRA Lock System",
+      "h": "特許ロックで、確実に。",
+      "p": "鍵ひとつで開閉も着脱も行える。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/terra/det_black_hook.webp",
+      "alt": "カーゴフック",
+      "b": "Cargo Hooks",
+      "span": "AISI 304ステンレスのフックで、天面に荷物を追加できる。"
+    },
+    {
+      "img": "/img/products/terra/det_black_hinge.webp",
+      "alt": "ステンレスヒンジ",
+      "b": "Reinforced Hinges",
+      "span": "AISI 304ステンレス製の強化ヒンジ。"
+    },
+    {
+      "img": "/img/products/terra/det_black_mat.webp",
+      "alt": "インナーマット",
+      "b": "Inner Mat",
+      "span": "荷物の動きを抑えるインナーマットを標準装備。"
+    },
+    {
+      "img": "/img/products/terra/det_plate.webp",
+      "alt": "アルミマウンティングプレート",
+      "b": "Mounting Plate",
+      "span": "標準プレートまたはアルミプレート（別売）で装着。"
+    }
+  ],
+  "setup": {
+    "en": "TERRA Full Pannier",
+    "heading": "TR37 × TR36。軽快なフルパニア。",
+    "lead": "37LのTR37トップケースに、スリムな36LのTR36サイドケースを左右に組み合わせた、TERRAのコンパクトなフルパニア構成。合計109Lの積載でも車幅を抑え、街もトレイルも軽快に。",
+    "total": "109",
+    "visuals": [
+      {
+        "src": "/img/products/terra/set_benelli_tr37_tr36.webp",
+        "caption": "アルミパネル：TR37 × TR36",
+        "alt": "TR37とTR36を装着したベネリTRK 502X"
+      },
+      {
+        "src": "/img/products/terra/set_gs_black_tr37.webp",
+        "caption": "TERRA Black Edition：TR37",
+        "alt": "TERRA Black EditionのTR37を装着したBMW R1250GS"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR37",
+        "href": "/product/tr37",
+        "img": "/img/products/tr37/alu_01.webp",
+        "role": "Top",
+        "name": "TR37 TERRA トップケース",
+        "sub": "37L"
+      },
+      {
+        "code": "TR36",
+        "href": "/product/tr36",
+        "img": "/img/products/tr36/alu_01.webp",
+        "role": "Side ×2",
+        "name": "TR36 TERRA サイドケース",
+        "sub": "36L＋36L／左右別売"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 4P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "右側サイドケースには予備のキーシリンダーが付属。トップケースに装着すれば、3つのケースを1本の鍵で開閉できます。",
+      "アルミパネル／ブラック（TERRA Black Edition）の同じ仕上げで揃えると、統一感のあるフルパニアになります。",
+      "フィッティングキットは車種ごとに異なります（トップマスターキット＋4P Systemサイドキット）。適合検索でご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/terra/story_top_alu.mp4",
+      "poster": "/img/products/terra/poster_story_top_alu.webp",
+      "en": "TR48 / 37",
+      "jp": "アルミのTERRAトップ。"
+    },
+    {
+      "src": "/media/products/terra/story_top_black.mp4",
+      "poster": "/img/products/terra/poster_story_top_black.webp",
+      "en": "Black Edition",
+      "jp": "TR48/37 Black Edition。"
+    },
+    {
+      "src": "/media/products/terra/reel_locking.mp4",
+      "poster": "/img/products/terra/poster_reel_locking.webp",
+      "en": "Double Locking",
+      "jp": "TERRAのダブルロック。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/terra/ls_gs_full.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_gs1.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_edit.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at10.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at14.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_gs2.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at2.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_gs_trail.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_at6.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_black_action1.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at13.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at_terrain.webp"
+    }
+  ],
+  "userguide": "/docs/tr37_userguide.pdf"
+}

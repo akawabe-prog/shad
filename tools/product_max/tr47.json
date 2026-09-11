@@ -1,0 +1,233 @@
+{
+  "code": "TR47",
+  "name_jp": "TERRA サイドケース",
+  "main_img": "/img/products/tr47/alu_01.webp",
+  "thumbs": [
+    "/img/products/tr47/alu_01.webp",
+    "/img/products/tr47/alu_02.webp",
+    "/img/products/tr47/alu_03.webp",
+    "/img/products/tr47/alu_04.webp",
+    "/img/products/tr47/alu_05.webp"
+  ],
+  "gallery_override": {
+    "18319323": [
+      "/img/products/tr47/alu_01.webp",
+      "/img/products/tr47/alu_02.webp",
+      "/img/products/tr47/alu_03.webp",
+      "/img/products/tr47/alu_04.webp",
+      "/img/products/tr47/alu_05.webp"
+    ],
+    "18319316": [
+      "/img/products/tr47/alu_01.webp",
+      "/img/products/tr47/alu_02.webp",
+      "/img/products/tr47/alu_03.webp",
+      "/img/products/tr47/alu_04.webp",
+      "/img/products/tr47/alu_05.webp"
+    ],
+    "26768816": [
+      "/img/products/tr47/blk_01.webp",
+      "/img/products/tr47/blk_02.webp",
+      "/img/products/tr47/blk_03.webp",
+      "/img/products/tr47/blk_04.webp",
+      "/img/products/tr47/blk_05.webp"
+    ],
+    "26768809": [
+      "/img/products/tr47/blkr_01.webp",
+      "/img/products/tr47/blk_02.webp",
+      "/img/products/tr47/blk_03.webp",
+      "/img/products/tr47/blk_04.webp",
+      "/img/products/tr47/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/terra/hero.mp4",
+    "poster_pc": "/img/products/terra/poster_hero.webp",
+    "kick": "TERRA",
+    "heading": "アルミで、旅を軽くする。",
+    "sub": "片側47L。トレイルヘルメット1個、またはフルフェイスとジェットの2個が収まるTERRAのアルミサイドケース。",
+    "film": "/media/products/terra/film.mp4",
+    "poster_film": "/img/products/terra/poster_film.webp",
+    "film_label": "TERRAの映像を見る（15秒）",
+    "video_sp": "/media/products/terra/reel_capacity.mp4",
+    "poster_sp": "/img/products/terra/poster_reel_capacity.webp"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/terra/img_at14.webp",
+      "alt": "TERRAフルパニアのアフリカツイン",
+      "caption": "重心を低く、積載を最大に。"
+    },
+    {
+      "src": "/img/products/terra/img_at8.webp",
+      "alt": "TERRAサイドケースに荷物を積む",
+      "caption": "ヘルメットも、そのまま入る47L。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "左右47L。長旅の荷物を、低く積む。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/tr47/alu_02.webp",
+      "kick": "Adventure",
+      "h": "積める、TERRAサイド。",
+      "p": "左右47Lの大容量。重心を低く、積載を最大に。"
+    },
+    {
+      "img": "/img/products/terra/set_ls_at14.webp",
+      "kick": "Perfect Match",
+      "h": "TERRAトップと、揃える。",
+      "p": "同シリーズと組み合わせ、統一された旅仕様へ。"
+    },
+    {
+      "img": "/img/products/terra/story_lock.webp",
+      "kick": "TERRA Lock System",
+      "h": "特許ロックで、確実に。",
+      "p": "鍵ひとつで開閉も着脱も行える。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/terra/det_black_key.webp",
+      "alt": "プレミアムロックシリンダー",
+      "b": "Lock Cylinder",
+      "span": "防塵カバー付きのプレミアムキーシリンダー。右側ケースには3本目のシリンダーが付属。"
+    },
+    {
+      "img": "/img/products/terra/det_black_handle2.webp",
+      "alt": "格納式ハンドル",
+      "b": "Integrated Handle",
+      "span": "ロック機構と一体の格納式ハンドル。開ける・外す・運ぶを片手で。"
+    },
+    {
+      "img": "/img/products/terra/det_black_tray.webp",
+      "alt": "格納式トレイ",
+      "b": "Retractable Tray",
+      "span": "開口部の格納式トレイで、小物を置いたまま出し入れできる。"
+    },
+    {
+      "img": "/img/products/terra/det_black_net.webp",
+      "alt": "インナーメッシュ",
+      "b": "Inner Mesh",
+      "span": "右側ケースにインナーメッシュ1枚が付属。"
+    }
+  ],
+  "setup": {
+    "en": "TERRA Full Pannier",
+    "heading": "TR48 × TR47。TERRAの基準、フルパニア。",
+    "lead": "フルフェイス2個が入るTR48トップケースに、片側47LのTR47サイドケースを組み合わせた、TERRAの本命フルパニア。合計142Lの積載を、硬質アルミの軽さで。",
+    "total": "142",
+    "visuals": [
+      {
+        "src": "/img/products/terra/set_ls_at14.webp",
+        "caption": "アルミパネル：TR48 × TR47",
+        "alt": "TERRAアルミのフルパニアで走るアフリカツイン"
+      },
+      {
+        "src": "/img/products/terra/set_at_black.webp",
+        "caption": "TERRA Black Edition",
+        "alt": "TERRA Black Editionのフルパニア"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR48",
+        "href": "/product/tr48",
+        "img": "/img/products/tr48/alu_01.webp",
+        "role": "Top",
+        "name": "TR48 TERRA トップケース",
+        "sub": "48L／フルフェイス2個"
+      },
+      {
+        "code": "TR47",
+        "href": "/product/tr47",
+        "img": "/img/products/tr47/alu_01.webp",
+        "role": "Side ×2",
+        "name": "TR47 TERRA サイドケース",
+        "sub": "47L＋47L／左右別売"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 4P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "右側サイドケースには予備のキーシリンダーが付属。トップケースに装着すれば、3つのケースを1本の鍵で開閉できます。",
+      "アルミパネル／ブラック（TERRA Black Edition）の同じ仕上げで揃えると、統一感のあるフルパニアになります。",
+      "フィッティングキットは車種ごとに異なります（トップマスターキット＋4P Systemサイドキット）。適合検索でご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/terra/reel_capacity.mp4",
+      "poster": "/img/products/terra/poster_reel_capacity.webp",
+      "en": "Capacity",
+      "jp": "TR47に、トレイルヘルメット。"
+    },
+    {
+      "src": "/media/products/terra/reel_locking.mp4",
+      "poster": "/img/products/terra/poster_reel_locking.webp",
+      "en": "Double Locking",
+      "jp": "TERRAのダブルロック。"
+    },
+    {
+      "src": "/media/products/terra/story_side_alu.mp4",
+      "poster": "/img/products/terra/poster_story_side_alu.webp",
+      "en": "TR47 / 36",
+      "jp": "アルミのTERRAサイド。"
+    },
+    {
+      "src": "/media/products/terra/story_side_black.mp4",
+      "poster": "/img/products/terra/poster_story_side_black.webp",
+      "en": "Black Edition",
+      "jp": "TR47/36 Black Edition。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/terra/ls_at13.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_at14.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at4.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at16.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_gs_full.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_at2.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at11.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at_splash.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_gs_trail.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at15.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_black_action2.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_edit.webp"
+    }
+  ],
+  "userguide": "/docs/tr47_userguide.pdf"
+}

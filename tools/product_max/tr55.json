@@ -1,0 +1,220 @@
+{
+  "code": "TR55",
+  "name_jp": "TERRA トップケース",
+  "main_img": "/img/products/tr55/alu_01.webp",
+  "thumbs": [
+    "/img/products/tr55/alu_01.webp",
+    "/img/products/tr55/alu_02.webp",
+    "/img/products/tr55/alu_03.webp",
+    "/img/products/tr55/alu_04.webp",
+    "/img/products/tr55/alu_05.webp"
+  ],
+  "gallery_override": {
+    "27705902": [
+      "/img/products/tr55/alu_01.webp",
+      "/img/products/tr55/alu_02.webp",
+      "/img/products/tr55/alu_03.webp",
+      "/img/products/tr55/alu_04.webp",
+      "/img/products/tr55/alu_05.webp"
+    ],
+    "27705919": [
+      "/img/products/tr55/blk_01.webp",
+      "/img/products/tr55/blk_02.webp",
+      "/img/products/tr55/blk_03.webp",
+      "/img/products/tr55/blk_04.webp",
+      "/img/products/tr55/blk_05.webp"
+    ],
+    "27819609": [
+      "/img/products/tr55/pure_01.webp",
+      "/img/products/tr55/pure_02.webp",
+      "/img/products/tr55/pure_03.webp",
+      "/img/products/tr55/pure_04.webp",
+      "/img/products/tr55/pure_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/terra/hero.mp4",
+    "poster_pc": "/img/products/tr55/img_ride.webp",
+    "kick": "TERRA",
+    "heading": "アルミで、旅を軽くする。",
+    "sub": "モジュラーヘルメット2個が入る55L。同クラス最軽量5.4kgのアルミトップケースを、TERRAシリーズの映像とともに。",
+    "film": "/media/products/terra/film.mp4",
+    "poster_film": "/img/products/terra/poster_film.webp",
+    "film_label": "TERRAの映像を見る（15秒）",
+    "video_sp": "/media/products/terra/story_tr55_alu.mp4",
+    "poster_sp": "/img/products/terra/poster_story_tr55_alu.webp"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/tr55/img_ride.webp",
+      "alt": "TR55を装着してワインディングを走る",
+      "caption": "55Lを載せても、走りは軽い。"
+    },
+    {
+      "src": "/img/products/tr55/img_load.webp",
+      "alt": "TR55にヘルメットを収納する",
+      "caption": "モジュラーヘルメット2個が、そのまま。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "シリーズ最大55L。長旅のための容量。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/tr55/story_light.webp",
+      "kick": "Lightest",
+      "h": "アルミ市場最軽量、5.4kg。",
+      "p": "設計・製造を100%バルセロナで実施。軽さが装着時の負担と走行中の振動を抑える。"
+    },
+    {
+      "img": "/img/products/tr55/story_ride.webp",
+      "kick": "Minimal Design",
+      "h": "車体に、溶け込む。",
+      "p": "革新的デザインで車体への視覚的インパクトを最小化。デザイン性でABCアワードを受賞した。"
+    },
+    {
+      "img": "/img/products/tr55/story_helmets.webp",
+      "kick": "TERRA Lock System",
+      "h": "TERRAの全技術を、この一台に。",
+      "p": "TERRAを基準たらしめた特許TERRAロックシステムなど、シリーズの機能を凝縮している。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/tr55/det_lock.webp",
+      "alt": "TERRAロックシステム",
+      "b": "TERRA Lock",
+      "span": "防塵プロテクター付きロックシリンダー。ひとつの鍵で開閉・着脱。"
+    },
+    {
+      "img": "/img/products/tr55/det_handle.webp",
+      "alt": "一体型ハンドル",
+      "b": "Integrated Handle",
+      "span": "ロック機構に完全に組み込まれた、最も実用的なハンドル。"
+    },
+    {
+      "img": "/img/products/tr55/det_backrest.webp",
+      "alt": "バックレスト",
+      "b": "Backrest Ready",
+      "span": "トップフレームにバックレスト取付穴をあらかじめ用意。"
+    },
+    {
+      "img": "/img/products/tr55/det_innerbag.webp",
+      "alt": "インナーバッグ",
+      "b": "Inner Bag",
+      "span": "Expandableインナーバッグ（別売）で、荷物をまとめて持ち出せる。"
+    }
+  ],
+  "setup": {
+    "en": "TERRA Full Pannier",
+    "heading": "TR55 × TR47。TERRA最大のフルパニア。",
+    "lead": "シリーズ最大55LのTR55トップケースに、片側47LのTR47サイドケースを組み合わせた、TERRAで最も大きなフルパニア構成。合計149L。長期ツーリングやふたり旅の荷物を、アルミの軽さで運ぶ。",
+    "total": "149",
+    "visuals": [
+      {
+        "src": "/img/products/tr55/set_ride.webp",
+        "caption": "アルミパネル：TR55 × TERRAサイド",
+        "alt": "TR55とTERRAサイドケースのフルパニア"
+      },
+      {
+        "src": "/img/products/tr55/set_ride_black.webp",
+        "caption": "ブラック：TR55 × TERRAサイド",
+        "alt": "TR55ブラックとTERRAサイドケースのフルパニア"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR55",
+        "href": "/product/tr55",
+        "img": "/img/products/tr55/alu_01.webp",
+        "role": "Top",
+        "name": "TR55 TERRA トップケース",
+        "sub": "55L／モジュラーヘルメット2個"
+      },
+      {
+        "code": "TR47",
+        "href": "/product/tr47",
+        "img": "/img/products/tr47/alu_01.webp",
+        "role": "Side ×2",
+        "name": "TR47 TERRA サイドケース",
+        "sub": "47L＋47L／左右別売"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 4P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "右側サイドケースには予備のキーシリンダーが付属。トップケースに装着すれば、3つのケースを1本の鍵で開閉できます。",
+      "アルミパネル／ブラック（TERRA Black Edition）の同じ仕上げで揃えると、統一感のあるフルパニアになります。",
+      "フィッティングキットは車種ごとに異なります（トップマスターキット＋4P Systemサイドキット）。適合検索でご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/terra/story_tr55_alu.mp4",
+      "poster": "/img/products/terra/poster_story_tr55_alu.webp",
+      "en": "TR55",
+      "jp": "アルミパネルのTR55。"
+    },
+    {
+      "src": "/media/products/terra/story_tr55_black.mp4",
+      "poster": "/img/products/terra/poster_story_tr55_black.webp",
+      "en": "TR55 Black",
+      "jp": "ブラックのTR55。"
+    },
+    {
+      "src": "/media/products/terra/story_tr55_pure.mp4",
+      "poster": "/img/products/terra/poster_story_tr55_pure.webp",
+      "en": "TR55 Pure Black",
+      "jp": "ピュアブラックのTR55。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/tr55/gal_ride1.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr55/gal_load.webp"
+    },
+    {
+      "src": "/img/products/tr55/det_open.webp"
+    },
+    {
+      "src": "/img/products/tr55/gal_ride3.webp"
+    },
+    {
+      "src": "/img/products/tr55/gal_ride2.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/tr55/det_helmets.webp"
+    },
+    {
+      "src": "/img/products/tr55/gal_pure_ride.webp"
+    },
+    {
+      "src": "/img/products/tr55/gal_ride4.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/tr55/det_pure_lock.webp"
+    },
+    {
+      "src": "/img/products/tr55/alu_04.webp"
+    },
+    {
+      "src": "/img/products/tr55/blk_04.webp"
+    },
+    {
+      "src": "/img/products/tr55/pure_04.webp"
+    }
+  ],
+  "userguide": "/docs/tr55_userguide.pdf"
+}

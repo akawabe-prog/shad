@@ -1,0 +1,211 @@
+{
+  "code": "TR48",
+  "name_jp": "TERRA トップケース",
+  "main_img": "/img/products/tr48/alu_01.webp",
+  "thumbs": [
+    "/img/products/tr48/alu_01.webp",
+    "/img/products/tr48/alu_02.webp",
+    "/img/products/tr48/alu_03.webp",
+    "/img/products/tr48/alu_04.webp",
+    "/img/products/tr48/alu_05.webp"
+  ],
+  "gallery_override": {
+    "18319279": [
+      "/img/products/tr48/alu_01.webp",
+      "/img/products/tr48/alu_02.webp",
+      "/img/products/tr48/alu_03.webp",
+      "/img/products/tr48/alu_04.webp",
+      "/img/products/tr48/alu_05.webp"
+    ],
+    "26768779": [
+      "/img/products/tr48/blk_01.webp",
+      "/img/products/tr48/blk_02.webp",
+      "/img/products/tr48/blk_03.webp",
+      "/img/products/tr48/blk_04.webp",
+      "/img/products/tr48/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/terra/hero.mp4",
+    "poster_pc": "/img/products/terra/poster_hero.webp",
+    "kick": "TERRA",
+    "heading": "アルミで、旅を軽くする。",
+    "sub": "フルフェイス2個が入る48L。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステム。TERRAの基準となるトップケース。",
+    "film": "/media/products/terra/film.mp4",
+    "poster_film": "/img/products/terra/poster_film.webp",
+    "film_label": "TERRAの映像を見る（15秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/terra/img_edit.webp",
+      "alt": "TR48に荷物を積む",
+      "caption": "フルフェイス2個。旅の荷物が、ここに収まる。"
+    },
+    {
+      "src": "/img/products/terra/img_at16.webp",
+      "alt": "TERRAフルパニアでオフロードを走る",
+      "caption": "アルミの軽さで、走りは変わらない。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "フルフェイス2個。TERRAの基準器。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/terra/story_handle.webp",
+      "kick": "Made in Barcelona",
+      "h": "設計も製造も、100%バルセロナ。",
+      "p": "硬化アルミ合金を採用し、強く軽い素材で1.2mmの薄肉断面を実現。最小重量で最大の耐久性を両立した。"
+    },
+    {
+      "img": "/img/products/tr48/alu_03.webp",
+      "kick": "Versatile",
+      "h": "トレイル1個、またはフリップ＋ジェット2個。",
+      "p": "使い方に合わせて収納を選べる。日常もロングツーリングも、この一台で受け止める。"
+    },
+    {
+      "img": "/img/products/terra/story_lock.webp",
+      "kick": "TERRA Lock System",
+      "h": "特許ロックで、確実に。",
+      "p": "鍵ひとつで開閉も着脱も。手袋のままでも素早く扱えるTERRAロックシステムを搭載。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/terra/det_black_hook.webp",
+      "alt": "カーゴフック",
+      "b": "Cargo Hooks",
+      "span": "AISI 304ステンレスのフックで、天面に荷物を追加できる。"
+    },
+    {
+      "img": "/img/products/terra/det_black_hinge.webp",
+      "alt": "ステンレスヒンジ",
+      "b": "Reinforced Hinges",
+      "span": "AISI 304ステンレス製の強化ヒンジ。"
+    },
+    {
+      "img": "/img/products/terra/det_black_mat.webp",
+      "alt": "インナーマット",
+      "b": "Inner Mat",
+      "span": "荷物の動きを抑えるインナーマットを標準装備。"
+    },
+    {
+      "img": "/img/products/terra/det_plate.webp",
+      "alt": "アルミマウンティングプレート",
+      "b": "Mounting Plate",
+      "span": "標準プレートまたはアルミプレート（別売）で装着。"
+    }
+  ],
+  "setup": {
+    "en": "TERRA Full Pannier",
+    "heading": "TR48 × TR47。TERRAの基準、フルパニア。",
+    "lead": "フルフェイス2個が入るTR48トップケースに、片側47LのTR47サイドケースを組み合わせた、TERRAの本命フルパニア。合計142Lの積載を、硬質アルミの軽さで。",
+    "total": "142",
+    "visuals": [
+      {
+        "src": "/img/products/terra/set_ls_at14.webp",
+        "caption": "アルミパネル：TR48 × TR47",
+        "alt": "TERRAアルミのフルパニアで走るアフリカツイン"
+      },
+      {
+        "src": "/img/products/terra/set_at_black.webp",
+        "caption": "TERRA Black Edition",
+        "alt": "TERRA Black Editionのフルパニア"
+      }
+    ],
+    "items": [
+      {
+        "code": "TR48",
+        "href": "/product/tr48",
+        "img": "/img/products/tr48/alu_01.webp",
+        "role": "Top",
+        "name": "TR48 TERRA トップケース",
+        "sub": "48L／フルフェイス2個"
+      },
+      {
+        "code": "TR47",
+        "href": "/product/tr47",
+        "img": "/img/products/tr47/alu_01.webp",
+        "role": "Side ×2",
+        "name": "TR47 TERRA サイドケース",
+        "sub": "47L＋47L／左右別売"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 4P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "右側サイドケースには予備のキーシリンダーが付属。トップケースに装着すれば、3つのケースを1本の鍵で開閉できます。",
+      "アルミパネル／ブラック（TERRA Black Edition）の同じ仕上げで揃えると、統一感のあるフルパニアになります。",
+      "フィッティングキットは車種ごとに異なります（トップマスターキット＋4P Systemサイドキット）。適合検索でご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/terra/story_top_alu.mp4",
+      "poster": "/img/products/terra/poster_story_top_alu.webp",
+      "en": "TR48 / 37",
+      "jp": "アルミのTERRAトップ。"
+    },
+    {
+      "src": "/media/products/terra/story_top_black.mp4",
+      "poster": "/img/products/terra/poster_story_top_black.webp",
+      "en": "Black Edition",
+      "jp": "TR48/37 Black Edition。"
+    },
+    {
+      "src": "/media/products/terra/reel_locking.mp4",
+      "poster": "/img/products/terra/poster_reel_locking.webp",
+      "en": "Double Locking",
+      "jp": "TERRAのダブルロック。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/terra/ls_at14.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_gs_full.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at10.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at16.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at13.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_gs2.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at_splash.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at8.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/terra/ls_gs1.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at_terrain.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_black_action1.webp"
+    },
+    {
+      "src": "/img/products/terra/ls_at6.webp"
+    }
+  ],
+  "userguide": "/docs/tr48_userguide.pdf"
+}
