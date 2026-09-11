@@ -1,0 +1,158 @@
+{
+  "code": "SH47",
+  "name_jp": "トップケース",
+  "main_img": "/img/products/sh47/wht_01.webp",
+  "thumbs": [
+    "/img/products/sh47/wht_01.webp",
+    "/img/products/sh47/wht_02.webp",
+    "/img/products/sh47/wht_03.webp",
+    "/img/products/sh47/wht_04.webp",
+    "/img/products/sh47/wht_05.webp"
+  ],
+  "gallery_override": {
+    "26591728": [
+      "/img/products/sh47/wht_01.webp",
+      "/img/products/sh47/wht_02.webp",
+      "/img/products/sh47/wht_03.webp",
+      "/img/products/sh47/wht_04.webp",
+      "/img/products/sh47/wht_05.webp"
+    ],
+    "26591735": [
+      "/img/products/sh47/red_01.webp",
+      "/img/products/sh47/red_02.webp",
+      "/img/products/sh47/red_03.webp",
+      "/img/products/sh47/red_04.webp",
+      "/img/products/sh47/red_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/sh47/hero.mp4",
+    "video_sp": "/media/products/sh47/hero_sp.mp4",
+    "poster_pc": "/img/products/sh47/img_tmax.webp",
+    "poster_sp": "/img/products/sh47/poster_red.webp",
+    "kick": "Movie",
+    "heading": "エアロフォルムの、47L。",
+    "sub": "フルフェイス2個が入る47L。レッド／ホワイトのカーボン調カバーと、片手で扱えるダブルロック。SH47のムービー。",
+    "film": "/media/products/sh47/hero.mp4",
+    "poster_film": "/img/products/sh47/img_mt07.webp",
+    "film_label": "フル映像を見る（20秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/sh47/img_mt07.webp",
+      "alt": "SH47ホワイトを装着したMT-07",
+      "caption": "ネイキッドにも、スクーターにも。"
+    },
+    {
+      "src": "/img/products/sh47/img_tmax.webp",
+      "alt": "SH47レッドを装着したTMAX",
+      "caption": "空力を考えた、アグレッシブなフォルム。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "エアロフォルムの47L。街も、ロングライドも。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/sh47/story_aero.webp",
+      "kick": "Aerodynamic",
+      "h": "アグレッシブな、空力フォルム。",
+      "p": "バルセロナ生まれの、モダンで洗練されたルックス。"
+    },
+    {
+      "img": "/img/products/sh47/story_city.webp",
+      "kick": "Versatile",
+      "h": "街も、ロングライドも。",
+      "p": "スクーターから中・大型車まで、幅広く適合する万能サイズ。"
+    },
+    {
+      "img": "/img/products/sh47/story_open.webp",
+      "kick": "Smart Lock",
+      "h": "扱いやすい、開閉機構。",
+      "p": "日々の出し入れを快適にするロックシステムを備える。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/sh47/info_backrest_wht.webp",
+      "alt": "バックレスト付きSH47",
+      "b": "Backrest",
+      "span": "別売バックレスト（D0RI47）でタンデムも快適に。"
+    },
+    {
+      "img": "/img/products/sh47/info_backrest.webp",
+      "alt": "バックレスト",
+      "b": "Backrest D0RI47",
+      "span": "ケースに合わせたデザインのバックレスト。"
+    },
+    {
+      "img": "/img/products/sh47/info_innerbag.webp",
+      "alt": "インナーバッグ",
+      "b": "Inner Bag",
+      "span": "別売インナーバッグ（X0IB00）で荷物をまとめて持ち出せる。"
+    },
+    {
+      "img": "/img/products/sh47/info_light.webp",
+      "alt": "ブレーキライト",
+      "b": "Brake Light",
+      "span": "別売LEDブレーキライト（D0B40KL）で後方からの視認性を高める。"
+    }
+  ],
+  "reels": [
+    {
+      "src": "/media/products/sh47/reel_red.mp4",
+      "poster": "/img/products/sh47/poster_red.webp",
+      "en": "SH47 Red",
+      "jp": "レッド／カーボンのSH47。"
+    },
+    {
+      "src": "/media/products/sh47/reel_white.mp4",
+      "poster": "/img/products/sh47/poster_white.webp",
+      "en": "SH47 White",
+      "jp": "ホワイト／カーボンのSH47。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/sh47/gal_01.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh47/gal_02.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_03.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_04.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_05.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/sh47/gal_06.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_07.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_08.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh47/gal_09.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_10.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_11.webp"
+    },
+    {
+      "src": "/img/products/sh47/gal_12.webp"
+    }
+  ],
+  "userguide": "/docs/sh47_userguide.pdf"
+}

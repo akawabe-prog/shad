@@ -1,0 +1,132 @@
+{
+  "code": "SH44",
+  "name_jp": "トップケース",
+  "main_img": "/img/products/sh44/blk_01.webp",
+  "thumbs": [
+    "/img/products/sh44/blk_01.webp",
+    "/img/products/sh44/blk_02.webp",
+    "/img/products/sh44/blk_03.webp",
+    "/img/products/sh44/blk_04.webp",
+    "/img/products/sh44/blk_05.webp"
+  ],
+  "gallery_override": {
+    "27587515": [
+      "/img/products/sh44/blk_01.webp",
+      "/img/products/sh44/blk_02.webp",
+      "/img/products/sh44/blk_03.webp",
+      "/img/products/sh44/blk_04.webp",
+      "/img/products/sh44/blk_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/sh44/hero.mp4",
+    "video_sp": "/media/products/sh44/hero_sp.mp4",
+    "poster_pc": "/img/products/sh44/img_action1.webp",
+    "poster_sp": "/img/products/sh44/poster_story.webp",
+    "kick": "Movie",
+    "heading": "毎日に、ちょうどいい44L。",
+    "sub": "フルフェイス2個が入る44L。ダブルロックとひとつの鍵で、開ける・外すを片手で。SH44のムービー。",
+    "film": "/media/products/sh44/film.mp4",
+    "poster_film": "/img/products/sh44/img_action2.webp",
+    "film_label": "フル映像を見る（49秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/sh44/img_action1.webp",
+      "alt": "SH44を装着して街を走る",
+      "caption": "街の足に、フルフェイス2個分の余裕。"
+    },
+    {
+      "src": "/img/products/sh44/img_action2.webp",
+      "alt": "SH44を装着してワインディングを走る",
+      "caption": "空力ボディで、走りを邪魔しない。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "スマートロック搭載、フルフェイス2個の44L。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/sh44/story_capacity.webp",
+      "kick": "2 Helmets",
+      "h": "フルフェイス2個を、収納。",
+      "p": "バイクにもスクーターにも最適な容量。"
+    },
+    {
+      "img": "/img/products/sh44/story_hinge.webp",
+      "kick": "Smart Lock",
+      "h": "ワンタッチで、開閉。",
+      "p": "スマートロックシステム搭載で、毎日の操作が軽快。"
+    },
+    {
+      "img": "/img/products/sh44/story_ride.webp",
+      "kick": "Everyday",
+      "h": "毎日に、ちょうどいい。",
+      "p": "コンパクトながら実用的な44L。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/sh44/info_lid.webp",
+      "alt": "カーボン調リッド",
+      "b": "Carbon Style Lid",
+      "span": "カーボン調のリッドと視認性を高めるアクセントピース。"
+    },
+    {
+      "img": "/img/products/sh44/info_hinge.webp",
+      "alt": "ヒンジ",
+      "b": "Hinge",
+      "span": "ラバーシールで耐水性を確保した開閉部。"
+    },
+    {
+      "img": "/img/products/sh44/info_backrest.webp",
+      "alt": "バックレスト",
+      "b": "Backrest",
+      "span": "別売バックレスト（D0RI60）でタンデムも快適に。"
+    },
+    {
+      "img": "/img/products/sh44/info_innerbag.webp",
+      "alt": "インナーバッグ",
+      "b": "Inner Bag",
+      "span": "別売インナーバッグ（X0IB00）で荷物をまとめて持ち出せる。"
+    }
+  ],
+  "reels": [
+    {
+      "src": "/media/products/sh44/hero_sp.mp4",
+      "poster": "/img/products/sh44/poster_story.webp",
+      "en": "SH44",
+      "jp": "SH44のテクニカルストーリー。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/sh44/gal_02.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh44/gal_01.webp"
+    },
+    {
+      "src": "/img/products/sh44/gal_05.webp"
+    },
+    {
+      "src": "/img/products/sh44/gal_03.webp"
+    },
+    {
+      "src": "/img/products/sh44/gal_04.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/sh44/gal_06.webp"
+    },
+    {
+      "src": "/img/products/sh44/gal_07.webp"
+    },
+    {
+      "src": "/img/products/sh44/gal_08.webp"
+    }
+  ],
+  "userguide": "/docs/sh44_userguide.pdf"
+}
