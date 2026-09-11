@@ -30,7 +30,7 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     desc            商品説明（指定すると現ページの説明文を差し替える。Description の無い従来ページで省略時は現メインキャッチを流用）
     stories         [ {img, kick, h, p, alt} … ]  特徴ストーリーを書き換える（省略時は現ページの lp-story を流用）
     setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
-                    { en, heading, lead, total:"100", visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
+                    { en, heading, lead, total:"100", total_label（省略時「合計容量」）, visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
                     items の code がある行は定価を products.json から表示。code が自商品の行はハイライト
     userguide       取扱説明書PDFのパス（省略時は /docs/<code小文字>_userguide.pdf があれば使う）
 
@@ -161,7 +161,7 @@ def render(cfg, P):
                       '<b>%s</b><span>%s</span>%s</span></a>\n'
                       % (it["href"], cur, img, it["role"], it["name"], it.get("sub", ""), price))
         notes = "".join("      <li>%s</li>\n" % n for n in su.get("notes", []))
-        total = ('<p class="pd-setup-total"><b>%s</b><small>L</small><span>合計容量</span></p>' % su["total"]) if su.get("total") else ""
+        total = ('<p class="pd-setup-total"><b>%s</b><small>L</small><span>%s</span></p>' % (su["total"], su.get("total_label", "合計容量"))) if su.get("total") else ""
         setup = f'''<!-- ===== ⑦-2 フルパニア構成（トップ＋サイドの組み合わせ提案） ===== -->
 <section id="setup" class="scroll-mt-[132px] pd-setup">
   <div class="max-w-site mx-auto px-7">

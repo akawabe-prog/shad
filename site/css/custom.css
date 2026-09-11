@@ -658,6 +658,9 @@
 .pd-setup-tx em{display:block;font-style:normal;font-size:13px;font-weight:700;color:#0E0E0E;margin-top:6px;}
 .pd-setup-notes{margin-top:18px;font-size:12.5px;line-height:1.9;color:#666;padding-left:1.2em;}
 .pd-setup-notes li{list-style:disc;}
+@media (max-width:1023px){
+  .pd-setup-items{grid-template-columns:1fr 1fr;}
+}
 @media (max-width:760px){
   .pd-setup{padding:56px 0;}
   .pd-setup-total b{font-size:44px;}

@@ -1,0 +1,220 @@
+{
+  "code": "SH51",
+  "name_jp": "トップケース",
+  "main_img": "/img/products/sh51/cbn_01.webp",
+  "thumbs": [
+    "/img/products/sh51/cbn_01.webp",
+    "/img/products/sh51/cbn_02.webp",
+    "/img/products/sh51/cbn_03.webp",
+    "/img/products/sh51/cbn_04.webp",
+    "/img/products/sh51/cbn_05.webp"
+  ],
+  "gallery_override": {
+    "29468997": [
+      "/img/products/sh51/cbn_01.webp",
+      "/img/products/sh51/cbn_02.webp",
+      "/img/products/sh51/cbn_03.webp",
+      "/img/products/sh51/cbn_04.webp",
+      "/img/products/sh51/cbn_05.webp"
+    ],
+    "29469000": [
+      "/img/products/sh51/alu_01.webp",
+      "/img/products/sh51/alu_02.webp",
+      "/img/products/sh51/alu_03.webp",
+      "/img/products/sh51/alu_04.webp",
+      "/img/products/sh51/alu_05.webp"
+    ]
+  },
+  "hero": {
+    "video_pc": "/media/products/sh51/hero.mp4",
+    "video_sp": "/media/products/sh51/hero_sp.mp4",
+    "poster_pc": "/img/products/sh51/poster_hero.webp",
+    "poster_sp": "/img/products/sh51/poster_hero_sp.webp",
+    "kick": "Movie",
+    "heading": "ふたりの旅に、<br>ちょうどいい51L。",
+    "sub": "モジュラーヘルメット2個が入る51L。ひとつの鍵で開ける、閉める、外す。SH51のローンチムービー。",
+    "film": "/media/products/sh51/film.mp4",
+    "poster_film": "/img/products/sh51/poster_film.webp",
+    "film_label": "フル映像を見る（30秒）"
+  },
+  "visual_pair": [
+    {
+      "src": "/img/products/sh51/img_couple.webp",
+      "alt": "SH51とSH38Xを装着してタンデムツーリング",
+      "caption": "ふたり分のヘルメットが、ここに収まる。"
+    },
+    {
+      "src": "/img/products/sh51/img_multistrada.webp",
+      "alt": "SH51カーボンを装着したドゥカティ ムルティストラーダ",
+      "caption": "ミドルアドベンチャーに、似合うサイズ。"
+    }
+  ],
+  "features": {
+    "en": "Features",
+    "heading": "ふたり分のヘルメットと、10kgの荷物を。"
+  },
+  "stories": [
+    {
+      "img": "/img/products/sh51/story_touring.webp",
+      "kick": "Touring",
+      "h": "アドベンチャー・ツーリングへ。",
+      "p": "高耐久の強化ポリプロピレンと空力を考えたデザインが、高速巡航でも安定した走りを支える。ラバーシールで雨やホコリの侵入も防ぐ。"
+    },
+    {
+      "img": "/img/products/sh51/story_capacity.webp",
+      "kick": "Capacity",
+      "h": "フリップ2個＋最大10kg。",
+      "p": "モジュラーヘルメット（ECE 22.06）2個をそのまま収納。内装メッシュとインナーストラップを標準装備し、小物を整理しながら長距離の積載をしっかり受け止める。"
+    },
+    {
+      "img": "/img/products/sh51/story_set.webp",
+      "kick": "Perfect Set",
+      "h": "SH38Xと組めば、最強セット。",
+      "p": "可変容量のSH38X Expandableサイドケースと合わせれば、走るときはスリム、停まれば大容量。フルパニアからコンパクト構成への切り替えも容易。"
+    }
+  ],
+  "diagrams": [
+    {
+      "img": "/img/products/sh51/info_capacity.webp",
+      "alt": "モジュラーヘルメット2個の収納",
+      "b": "Capacity",
+      "span": "モジュラーヘルメット（ECE 22.06）2個を収納。最大積載10kg。"
+    },
+    {
+      "img": "/img/products/sh51/info_versions.webp",
+      "alt": "カーボン調カバーとアルミカバー",
+      "b": "Versions",
+      "span": "カーボン調カバーとアルミカバーの2仕様。"
+    },
+    {
+      "img": "/img/products/sh51/info_mesh.webp",
+      "alt": "内装メッシュ",
+      "b": "Inner Mesh",
+      "span": "内装メッシュとインナーストラップを標準装備。"
+    },
+    {
+      "img": "/img/products/sh51/info_characteristics.webp",
+      "alt": "特徴",
+      "b": "Characteristics",
+      "span": "プレミアムロックシリンダーと格納式キャリーハンドル。ひとつの鍵で開閉・着脱。"
+    }
+  ],
+  "setup": {
+    "en": "Full Pannier Set-up",
+    "heading": "SH51 × SH38X。走るときはスリム、停まれば大容量。",
+    "lead": "SH51トップケースに、可変容量のSH38X Expandableサイドケースを組み合わせたフルパニア構成。サイドは走行時23L、拡張すれば32L。3つ合わせて最大115L、コンパクト時でも97Lの積載になります。",
+    "total": "115",
+    "total_label": "最大合計容量",
+    "visuals": [
+      {
+        "src": "/img/products/sh51/setup_alu.webp",
+        "caption": "アルミパネル：SH51 × SH38X",
+        "alt": "SH51アルミパネルとSH38Xアルミパネルのフルパニア"
+      },
+      {
+        "src": "/img/products/sh51/setup_carbon.webp",
+        "caption": "カーボン：SH51 × SH38X",
+        "alt": "SH51カーボンとSH38Xカーボンのフルパニア"
+      }
+    ],
+    "items": [
+      {
+        "code": "SH51",
+        "href": "/product/sh51",
+        "img": "/img/products/sh51/cbn_01.webp",
+        "role": "Top",
+        "name": "SH51 トップケース",
+        "sub": "51L／モジュラーヘルメット2個"
+      },
+      {
+        "code": "SH38X",
+        "href": "/product/sh38x",
+        "img": "/img/products/sh38x_0.webp",
+        "role": "Side ×2",
+        "name": "SH38X 可変容量サイドケース 左右セット",
+        "sub": "23〜32L＋23〜32L／拡張式"
+      },
+      {
+        "icon": "ti-tool",
+        "href": "/fitment",
+        "role": "Fitting",
+        "name": "車種別フィッティングキット",
+        "sub": "トップマスターキット ＋ 3P System サイドキット",
+        "cta": "車種から確認する →"
+      }
+    ],
+    "notes": [
+      "SH51はカーボン／アルミパネル、SH38Xもカーボン／アルミパネルの2仕様。同じ仕上げで揃えると統一感のあるフルパニアになります。",
+      "SH38Xは走行時はスリムな23L、停車時に拡張して32Lへ。荷物の量に合わせて左右それぞれ切り替えられます。",
+      "フィッティングキットは車種ごとに異なります。適合検索で必要なキットをご確認ください。"
+    ]
+  },
+  "reels": [
+    {
+      "src": "/media/products/sh51/reel_capacity.mp4",
+      "poster": "/img/products/sh51/poster_reel_capacity.webp",
+      "en": "Capacity",
+      "jp": "モジュラーヘルメット2個が、そのまま。"
+    },
+    {
+      "src": "/media/products/sh51/reel_details.mp4",
+      "poster": "/img/products/sh51/poster_reel_details.webp",
+      "en": "Details",
+      "jp": "ロックとハンドルのディテール。"
+    },
+    {
+      "src": "/media/products/sh51/reel_inner_bag.mp4",
+      "poster": "/img/products/sh51/poster_reel_inner_bag.webp",
+      "en": "Inner bag",
+      "jp": "インナーバッグで、まとめて持ち出す。"
+    },
+    {
+      "src": "/media/products/sh51/reel_multistrada.mp4",
+      "poster": "/img/products/sh51/poster_reel_multistrada.webp",
+      "en": "On the road",
+      "jp": "ムルティストラーダと、ワインディングへ。"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/products/sh51/gal_03.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh51/gal_01.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_04.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_07.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_05.webp",
+      "cls": "is-wide"
+    },
+    {
+      "src": "/img/products/sh51/gal_02.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_08.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_06.webp",
+      "cls": "is-tall is-wide"
+    },
+    {
+      "src": "/img/products/sh51/gal_09.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_10.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_11.webp"
+    },
+    {
+      "src": "/img/products/sh51/gal_12.webp"
+    }
+  ],
+  "userguide": "/docs/sh51_userguide.pdf"
+}
