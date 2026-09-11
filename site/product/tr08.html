@@ -59,7 +59,7 @@
 
 <!-- =====================================================================
      商品ページ MAXテンプレート（tools/build_product_max.py で生成）
-     ①看板 → ②アンカーナビ → ③INDEX → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
+     ①看板 → ②アンカーナビ（右側Index） → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
      → ⑦特徴 → ⑧縦型映像 → ⑨ギャラリー → ⑩適合 → ⑪関連商品
      ===================================================================== -->
 <div class="max-w-site mx-auto px-7 pt-6">
@@ -122,22 +122,6 @@ window.SHAD_GALLERY = {
   <a href="#fitment" class="pd-side-a"><small>06</small><span>適合車種</span></a>
   <a href="#related" class="pd-side-a"><small>07</small><span>関連商品</span></a>
 </nav>
-
-<!-- ===== ③ INDEX ===== -->
-<section class="pd-index py-12">
-  <div class="max-w-site mx-auto px-7">
-    <p class="pd-index-lb">Index</p>
-    <div class="pd-index-list">
-      <a href="#spec"><span class="pd-index-num">01</span><span><span class="pd-index-jp">スペック・保証</span><span class="pd-index-en">Specifications</span></span></a>
-      <a href="#faq"><span class="pd-index-num">02</span><span><span class="pd-index-jp">よくあるご質問</span><span class="pd-index-en">FAQ</span></span></a>
-      <a href="#movie"><span class="pd-index-num">03</span><span><span class="pd-index-jp">ムービー</span><span class="pd-index-en">Movie</span></span></a>
-      <a href="#feature"><span class="pd-index-num">04</span><span><span class="pd-index-jp">商品の特徴</span><span class="pd-index-en">Features</span></span></a>
-      <a href="#gallery"><span class="pd-index-num">05</span><span><span class="pd-index-jp">ギャラリー</span><span class="pd-index-en">Gallery</span></span></a>
-      <a href="#fitment"><span class="pd-index-num">06</span><span><span class="pd-index-jp">装着できる車種</span><span class="pd-index-en">Fitment</span></span></a>
-      <a href="#related"><span class="pd-index-num">07</span><span><span class="pd-index-jp">関連商品</span><span class="pd-index-en">Related</span></span></a>
-    </div>
-  </div>
-</section>
 
 <!-- ===== ④ SPEC / 保証 / FAQ（アコーディオン） ===== -->
 <section id="spec" class="scroll-mt-[132px] max-w-site mx-auto px-7 pt-14 pb-4">
@@ -367,6 +351,14 @@ window.SHAD_GALLERY = {
     v.src=v.getAttribute(sp?"data-src-sp":"data-src-pc");
     if(sp && v.getAttribute("data-poster-sp")) v.poster=v.getAttribute("data-poster-sp");
     v.play().catch(function(){}); }
+
+  /* ⑦-2 フルパニア構成：定価は商品マスター（products.json）から。複数カラーは最安値に「〜」 */
+  var pe=[].slice.call(document.querySelectorAll("[data-price-of]"));
+  if(pe.length){ fetch("/data/catalog/products.json").then(function(r){return r.ok?r.json():null;}).then(function(d){ if(!d) return;
+    pe.forEach(function(el){ var e=d[el.getAttribute("data-price-of")]; if(!e||!e.variants) return;
+      var ps=e.variants.map(function(v){return Number(v.msrpTaxIn)||0;}).filter(Boolean); if(!ps.length) return;
+      var mn=Math.min.apply(null,ps), mx=Math.max.apply(null,ps);
+      el.textContent="¥"+mn.toLocaleString("ja-JP")+(mx>mn?"〜":"")+"（税込）"; }); }).catch(function(){}); }
 
   /* ⑧ 縦型映像：画面に入ったら再生、外れたら停止 */
   var vids=[].slice.call(document.querySelectorAll("video[data-inview]"));

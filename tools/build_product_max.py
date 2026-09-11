@@ -11,7 +11,7 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     python3 tools/build_product_max.py tools/product_max/tr41.json
 
 ■ 構成（TR46 で確定した並び）
-    ①看板 → ②アンカーナビ（1行）＋右側Index → ③INDEX → ④SPEC/保証/FAQ（アコーディオン）
+    ①看板 → ②アンカーナビ（1行）＋右側Index → ④SPEC/保証/FAQ（アコーディオン）
     → ⑤HERO映像 → ⑥イメージ画像（2枚組） → ⑦特徴（ストーリー3本＋構造図） → ⑧縦型映像
     → ⑨ギャラリー → ⑩適合 → ⑪関連商品
 
@@ -119,9 +119,6 @@ def render(cfg, P):
     items = nav_items(cfg)
     nav = "".join('    <a href="%s" class="pd-nav-a"><small>%s</small>%s</a>\n' % (h, n, lb) for n, h, lb, _, _ in items)
     side = "".join('  <a href="%s" class="pd-side-a"><small>%s</small><span>%s</span></a>\n' % (h, n, lb) for n, h, lb, _, _ in items)
-    index = "".join(
-        '      <a href="%s"><span class="pd-index-num">%s</span><span><span class="pd-index-jp">%s</span>'
-        '<span class="pd-index-en">%s</span></span></a>\n' % (h, n, jp, en) for n, h, _, jp, en in items)
     guide = cfg.get("userguide") or ("/docs/%s_userguide.pdf" % code.lower())
     guide_btn = ('<a href="%s" target="_blank" class="btn bg-ink text-white hover:bg-black !py-3 !px-6 !text-[14px]">'
                  '<i class="ti ti-file-type-pdf"></i>ユーザーガイド（PDF）</a>' % guide) \
@@ -191,7 +188,7 @@ def render(cfg, P):
 
     return f'''<!-- =====================================================================
      商品ページ MAXテンプレート（tools/build_product_max.py で生成）
-     ①看板 → ②アンカーナビ → ③INDEX → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
+     ①看板 → ②アンカーナビ（右側Index） → ④SPEC/保証/FAQ → ⑤HERO映像 → ⑥イメージ画像
      → ⑦特徴 → ⑧縦型映像 → ⑨ギャラリー → ⑩適合 → ⑪関連商品
      ===================================================================== -->
 <div class="max-w-site mx-auto px-7 pt-6">
@@ -219,15 +216,6 @@ window.SHAD_GALLERY = {ov};
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
 {side}</nav>
-
-<!-- ===== ③ INDEX ===== -->
-<section class="pd-index py-12">
-  <div class="max-w-site mx-auto px-7">
-    <p class="pd-index-lb">Index</p>
-    <div class="pd-index-list">
-{index}    </div>
-  </div>
-</section>
 
 <!-- ===== ④ SPEC / 保証 / FAQ（アコーディオン） ===== -->
 <section id="spec" class="scroll-mt-[132px] max-w-site mx-auto px-7 pt-14 pb-4">
