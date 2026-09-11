@@ -70,7 +70,7 @@ def extract(s):
         parts["desc"], parts["notes"] = body.group(1), body.group(2)
         parts["story_inner"] = re.search(r'<div class="lp-story">(.*?)</div>\s*(?:<div class="pd-diagrams|</div>\s*</section>)', s, re.S).group(1)
         parts["warranty"] = re.search(r'1年保証</p>\s*<p[^>]*>(.*?)</p>', s, re.S).group(1)
-        parts["info_col"] = re.search(r'<main id="pdTop"[^>]*>\s*<div>.*?</div>\s*(<div>.*?)</main>', s, re.S).group(1)
+        parts["info_col"] = re.search(r'<main id="pdTop"[^>]*>\s*<div>.*?</div>\s*(<div>.*?)</main>', s, re.S).group(1).rstrip()
     else:
         rows = re.search(r'(<tr class="border-b border-black/10">.*?)</table>', s, re.S).group(1)
         rows = re.sub(r'<tr class="border-b border-black/10">', "<tr>", rows)
@@ -271,8 +271,15 @@ window.SHAD_GALLERY = {ov};
   var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide");
   links.forEach(function(a){{ var t=document.querySelector(a.getAttribute("href")); if(t) secs.push({{a:a,sec:t}}); }});
   function sync(){{
+    /* 現在地＝「基準線より上に見出しがある、いちばん下のセクション」。
+       閉じたアコーディオン内（FAQなど）は高さを持っていても対象外。ナビ項目のない区間（イメージ画像など）は直前の項目を維持する */
     var line=160, cur=null;
-    secs.forEach(function(o){{ var r=o.sec.getBoundingClientRect(); if(r.top<=line && r.bottom>line) cur=o.sec; }});
+    secs.forEach(function(o){{
+      var d=o.sec.closest("details"); if(d && !d.open) return;
+      var r=o.sec.getBoundingClientRect(); if(r.top<=line) cur=o.sec;
+    }});
+    var lastSec=secs.length ? secs[secs.length-1].sec : null;
+    if(lastSec && lastSec.getBoundingClientRect().bottom<=line) cur=lastSec;
     links.forEach(function(a){{ a.classList.toggle("is-current", !!cur && document.querySelector(a.getAttribute("href"))===cur); }});
     if(navBar && side){{
       var gone=navBar.getBoundingClientRect().bottom<0;
@@ -330,7 +337,9 @@ def main():
         cfg["name_jp"] = m.group(1) if m else ""
 
     s = re.sub(r"\n<style>.*?</style>", "", s, count=1, flags=re.S)   # 看板系CSSは custom.css に集約済み
-    a = s.index('<div class="max-w-site mx-auto px-7 pt-6">')
+    a = s.find("<!-- =====================================================================\n     商品ページ MAXテンプレート")
+    if a < 0:
+        a = s.index('<div class="max-w-site mx-auto px-7 pt-6">')
     b = s.index("<footer ")
     s = s[:a] + render(cfg, P) + s[b:]
     if "/js/main.js" not in s:

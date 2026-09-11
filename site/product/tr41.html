@@ -84,7 +84,6 @@
     <a href="#fitment" data-fit-jump class="btn w-full justify-center mt-5 border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-search"></i>適合確認はこちら</a>
     <p class="text-[12px] text-neutral-400 mt-2 text-center">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p>
   </div>
-
 </main>
 <script>
 /* カラー選択で看板画像を切り替える（purchase.js が参照） */
@@ -393,8 +392,15 @@ window.SHAD_GALLERY = {
   var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide");
   links.forEach(function(a){ var t=document.querySelector(a.getAttribute("href")); if(t) secs.push({a:a,sec:t}); });
   function sync(){
+    /* 現在地＝「基準線より上に見出しがある、いちばん下のセクション」。
+       閉じたアコーディオン内（FAQなど）は高さを持っていても対象外。ナビ項目のない区間（イメージ画像など）は直前の項目を維持する */
     var line=160, cur=null;
-    secs.forEach(function(o){ var r=o.sec.getBoundingClientRect(); if(r.top<=line && r.bottom>line) cur=o.sec; });
+    secs.forEach(function(o){
+      var d=o.sec.closest("details"); if(d && !d.open) return;
+      var r=o.sec.getBoundingClientRect(); if(r.top<=line) cur=o.sec;
+    });
+    var lastSec=secs.length ? secs[secs.length-1].sec : null;
+    if(lastSec && lastSec.getBoundingClientRect().bottom<=line) cur=lastSec;
     links.forEach(function(a){ a.classList.toggle("is-current", !!cur && document.querySelector(a.getAttribute("href"))===cur); });
     if(navBar && side){
       var gone=navBar.getBoundingClientRect().bottom<0;
