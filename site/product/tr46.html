@@ -95,7 +95,7 @@ window.SHAD_GALLERY = {
 };
 </script>
 
-<!-- ===== ② アンカーナビ（看板を過ぎたら追従） ===== -->
+<!-- ===== ② アンカーナビ（1行固定。スクロールで見えなくなると右側の pd-side に切り替わる） ===== -->
 <nav class="pd-nav" id="pdNav" aria-label="ページ内ナビゲーション">
   <div class="pd-nav-in">
     <a href="#spec" class="pd-nav-a"><small>01</small>スペック</a>
@@ -106,6 +106,17 @@ window.SHAD_GALLERY = {
     <a href="#fitment" class="pd-nav-a"><small>06</small>適合車種</a>
     <a href="#related" class="pd-nav-a"><small>07</small>関連商品</a>
   </div>
+</nav>
+<!-- 右側のフローティングIndex（アンカーナビが画面外に出たら表示） -->
+<nav class="pd-side" id="pdSide" aria-label="ページ内Index">
+  <p class="pd-side-lb">Index</p>
+  <a href="#spec" class="pd-side-a"><small>01</small><span>スペック</span></a>
+  <a href="#faq" class="pd-side-a"><small>02</small><span>FAQ</span></a>
+  <a href="#movie" class="pd-side-a"><small>03</small><span>ムービー</span></a>
+  <a href="#feature" class="pd-side-a"><small>04</small><span>特徴</span></a>
+  <a href="#gallery" class="pd-side-a"><small>05</small><span>ギャラリー</span></a>
+  <a href="#fitment" class="pd-side-a"><small>06</small><span>適合車種</span></a>
+  <a href="#related" class="pd-side-a"><small>07</small><span>関連商品</span></a>
 </nav>
 
 <!-- ===== ③ INDEX ===== -->
@@ -369,19 +380,25 @@ window.SHAD_GALLERY = {
 <script>
 /* ---- MAXテンプレート共通の小さな挙動 ---- */
 (function(){
-  /* ② アンカーナビ：現在地のハイライト（追従は position:sticky に任せる） */
-  var links=[].slice.call(document.querySelectorAll(".pd-nav-a")), secs=[];
+  /* ② アンカーナビ／右側Index：現在地のハイライトと、Indexの表示切替 */
+  var links=[].slice.call(document.querySelectorAll(".pd-nav-a, .pd-side-a")), secs=[];
+  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide");
   links.forEach(function(a){ var t=document.querySelector(a.getAttribute("href")); if(t) secs.push({a:a,sec:t}); });
   function sync(){
     var line=160, cur=null;
-    secs.forEach(function(o){ var r=o.sec.getBoundingClientRect(); if(r.top<=line && r.bottom>line) cur=o.a; });
-    links.forEach(function(a){ a.classList.toggle("is-current", a===cur); });
+    secs.forEach(function(o){ var r=o.sec.getBoundingClientRect(); if(r.top<=line && r.bottom>line) cur=o.sec; });
+    links.forEach(function(a){ a.classList.toggle("is-current", !!cur && document.querySelector(a.getAttribute("href"))===cur); });
+    /* アンカーナビが画面の上に消えたら右側Indexを出す（フッター付近では消す） */
+    if(navBar && side){
+      var gone=navBar.getBoundingClientRect().bottom<0;
+      var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;
+      side.classList.toggle("is-on", gone && !nearFoot);
+    }
   }
   var last=0, waiting=false;
   window.addEventListener("scroll",function(){ var n=Date.now(); if(n-last>120){last=n;sync();} else if(!waiting){waiting=true;setTimeout(function(){waiting=false;sync();},120);} },{passive:true});
   window.addEventListener("resize",sync); sync();
   window.__pdNavSync=sync;
-
   /* アンカーで FAQ に飛んだとき、閉じたアコーディオンを開く */
   function openFor(hash){ if(!hash||hash.length<2) return; var t=document.querySelector(hash); if(!t) return;
     var d=t.closest("details"); if(d && !d.open) d.open=true; }
