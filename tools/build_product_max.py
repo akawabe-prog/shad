@@ -27,7 +27,7 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     diagrams        [ {img, alt, b, span} … ]  構造図。空なら出さない
     reels           [ {src, poster, en, jp} … ]  縦型映像。空ならセクションごと出さない
     gallery         [ {src, cls} … ]  cls は "is-tall is-wide" など（省略可）
-    desc            商品説明（Description セクションが無い従来ページ向け。省略時は現メインキャッチを流用）
+    desc            商品説明（指定すると現ページの説明文を差し替える。Description の無い従来ページで省略時は現メインキャッチを流用）
     stories         [ {img, kick, h, p, alt} … ]  特徴ストーリーを書き換える（省略時は現ページの lp-story を流用）
     setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
                     { en, heading, lead, total:"100", visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
@@ -379,9 +379,11 @@ def main():
         if m and m.group(1) != cfg["catch"]:
             s = s.replace(m.group(1), cfg["catch"])
             P["info_col"] = P["info_col"].replace(m.group(1), cfg["catch"])
-    if not P["desc"]:
+    if cfg.get("desc"):
+        P["desc"] = cfg["desc"]
+    elif not P["desc"]:
         m = re.search(r'<p class="text-\[17px\] font-bold mt-5 leading-relaxed">([^<]*)</p>', s)
-        P["desc"] = cfg.get("desc") or (m.group(1) if m else "")
+        P["desc"] = m.group(1) if m else ""
     if cfg.get("stories"):
         P["story_inner"] = "".join(
             '<div class="lp-block%s">\n      <div class="lp-block-img"><img src="%s" alt="%s" loading="lazy"></div>\n'
