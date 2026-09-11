@@ -32,8 +32,9 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
                     { en, heading, lead, total:"100", total_label（省略時「合計容量」）, visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
                     items の code がある行は定価を products.json から表示。code が自商品の行はハイライト
-    related         関連商品の品番リスト（cards.json から自動でカード化。自商品は除外）。省略時は現ページの Same Series を流用
-    related_title / related_lead   関連商品の表示見出しと一言（例：Waterproof Series）。省略時は「Same Series」
+    related         関連商品。品番リスト、または {"tag":"expandable","include":[…],"exclude":[…],"max":4}（cards.json の tags から自動）
+                    タグの原本は tools/product_tags.json（apply_product_tags.py で反映）。省略時は現ページの Same Series を流用
+    related_title / related_lead / related_link   表示見出し・一言・「View All」のリンク先（例：/products?feat=expandable）
     userguide       取扱説明書PDFのパス（省略時は /docs/<code小文字>_userguide.pdf があれば使う）
 
 ■ 注意
@@ -111,9 +112,25 @@ def nav_items(cfg):
     return [("%02d" % (i + 1),) + x for i, x in enumerate(items)]
 
 
+def related_codes(rel, self_code, cards):
+    """related 設定から品番リストを決める。
+       ・list                → そのまま
+       ・{"tag": "expandable", "include": [...], "exclude": [...], "max": 4}
+                             → cards.json の tags にそのタグを持つ商品（生産終了は除く）＋include − exclude
+    """
+    if isinstance(rel, list):
+        return rel
+    codes = [c for c, v in cards.items() if rel["tag"] in (v.get("tags") or []) and not v.get("status")]
+    for c in rel.get("include", []):
+        if c not in codes: codes.append(c)
+    codes = [c for c in codes if c not in rel.get("exclude", []) and c != self_code]
+    return codes[: rel.get("max", 4)]
+
+
 def related_grid(codes, self_code):
     """cards.json から関連商品カードのグリッドを作る（自商品は除外）"""
     cards = json.load(open(os.path.join(SITE, "data", "catalog", "cards.json"), encoding="utf-8"))
+    codes = related_codes(codes, self_code, cards)
     items = [cards[c] for c in codes if c in cards and c != self_code]
     cols = {1: "sm:grid-cols-1", 2: "sm:grid-cols-2", 3: "sm:grid-cols-3"}.get(len(items), "sm:grid-cols-4")
     a = "".join(
@@ -205,8 +222,10 @@ def render(cfg, P):
         P["same_grid"] = related_grid(cfg["related"], code)
     # 見出し：purchase.js が「Same Series」の h2 を差し込み位置に使うので、表示名を変える場合も h2 は残す（sr-only）
     if cfg.get("related_title"):
-        related_head = ('<h2 class="sr-only">Same Series</h2><p class="sec-ttl sec-ttl-quiet">%s</p>'
-                        '<p class="text-[13px] text-neutral-500 mt-2">%s</p>' % (cfg["related_title"], cfg.get("related_lead", "")))
+        link = ('<a href="%s" class="font-disp text-[13px] tracking-[.16em] uppercase text-neutral-500 hover:text-shad transition inline-flex items-center gap-1.5 shrink-0">View All <i class="ti ti-arrow-right"></i></a>'
+                % cfg["related_link"]) if cfg.get("related_link") else ""
+        related_head = ('<h2 class="sr-only">Same Series</h2><div class="flex items-end justify-between gap-4 flex-wrap"><p class="sec-ttl sec-ttl-quiet">%s</p>%s</div>'
+                        '<p class="text-[13px] text-neutral-500 mt-2">%s</p>' % (cfg["related_title"], link, cfg.get("related_lead", "")))
     else:
         related_head = '<h2 class="sec-ttl sec-ttl-quiet">Same Series</h2>'
     gallery = "".join('      <figure%s><img src="%s" alt="" loading="lazy"></figure>\n'

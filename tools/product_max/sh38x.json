@@ -223,5 +223,11 @@
       "src": "/img/products/sh38x/gal_12.webp"
     }
   ],
-  "userguide": "/docs/sh38x_userguide.pdf"
+  "userguide": "/docs/sh38x_userguide.pdf",
+  "related": {
+    "tag": "expandable"
+  },
+  "related_title": "Expandable Series",
+  "related_lead": "容量が変わる、SHADだけの可変容量ケース。",
+  "related_link": "/products?feat=expandable"
 }

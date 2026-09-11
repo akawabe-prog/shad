@@ -207,5 +207,12 @@
       "src": "/img/products/terra/ls_at_terrain.webp"
     }
   ],
-  "userguide": "/docs/tr37_userguide.pdf"
+  "userguide": "/docs/tr37_userguide.pdf",
+  "related": {
+    "tag": "alu",
+    "max": 4
+  },
+  "related_title": "TERRA Aluminium",
+  "related_lead": "硬質アルミ合金のTERRAシリーズ。トップとサイドを揃えてフルパニアに。",
+  "related_link": "/products?mat=alu"
 }

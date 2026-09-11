@@ -54,6 +54,18 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## 商品タグ（素材・機能）と一覧フィルタ・関連表示
+
+- 原本：`tools/product_tags.json`（groups＝Material／Feature、tags＝表示名、products＝品番ごとのタグ）
+- 反映：`python3 tools/apply_product_tags.py` → `products.html` の `PRODUCTS` に `tags` と `TAGS`（定義）を埋め込み、`cards.json` を再生成
+- 一覧（/products）：Material／Feature のチップは TAGS から自動生成。Category・Capacity と AND で絞り込み。選択状態は URL に反映
+  （`/products?mat=alu`、`/products?feat=expandable&cap=50-999` など）。商品ページの関連欄「View All」はこの URL に飛ぶ
+- 商品ページ（MAXテンプレート）：`related` に `{"tag":"expandable"}` のようにタグ指定すると、同じタグの商品（生産終了は除く）を自動で並べる
+  （`include`／`exclude`／`max` で調整）。現在の適用：TERRA Aluminium（alu）、Expandable Series（expandable）、Waterproof Series（waterproof）
+- 商品を追加したら product_tags.json に1行足して apply → 該当ページを build_product_max.py で再生成するだけで一覧・関連の両方に反映される
+
+---
+
 ## 商品ページ MAXテンプレート（TR46・TR41・TR08・TR27・TR30・TR50・TR36・TR37・TR47・TR48・TR55・SH44・SH47・SH51・SH38X・SH58X・SH59X）
 
 素材が揃っている商品向けの「フル装備」レイアウトです。`site/product/tr46.html` が原本で、

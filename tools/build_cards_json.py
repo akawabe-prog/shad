@@ -28,7 +28,7 @@ OUT = os.path.join(SITE, "data", "catalog", "cards.json")
 
 # 一覧カードの表示に使うキーだけを残す（重複データを増やさない）
 KEEP = ("code", "label", "series", "jp", "cap", "copy", "colors",
-        "img", "new", "status", "features")
+        "img", "new", "status", "features", "tags")
 
 
 def main():

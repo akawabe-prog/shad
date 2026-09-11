@@ -216,5 +216,12 @@
       "src": "/img/products/tr55/pure_04.webp"
     }
   ],
-  "userguide": "/docs/tr55_userguide.pdf"
+  "userguide": "/docs/tr55_userguide.pdf",
+  "related": {
+    "tag": "alu",
+    "max": 4
+  },
+  "related_title": "TERRA Aluminium",
+  "related_lead": "硬質アルミ合金のTERRAシリーズ。トップとサイドを揃えてフルパニアに。",
+  "related_link": "/products?mat=alu"
 }

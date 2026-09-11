@@ -207,5 +207,12 @@
       "src": "/img/products/terra/ls_at6.webp"
     }
   ],
-  "userguide": "/docs/tr48_userguide.pdf"
+  "userguide": "/docs/tr48_userguide.pdf",
+  "related": {
+    "tag": "alu",
+    "max": 4
+  },
+  "related_title": "TERRA Aluminium",
+  "related_lead": "硬質アルミ合金のTERRAシリーズ。トップとサイドを揃えてフルパニアに。",
+  "related_link": "/products?mat=alu"
 }

@@ -198,12 +198,14 @@
     }
   ],
   "userguide": "/docs/tr30_userguide.pdf",
-  "related": [
-    "TR30",
-    "TR50",
-    "TR08",
-    "TR10"
-  ],
+  "related": {
+    "tag": "waterproof",
+    "exclude": [
+      "IB20"
+    ],
+    "max": 4
+  },
   "related_title": "Waterproof Series",
-  "related_lead": "雨でも中身を守る、SHADの防水バッグ。"
+  "related_lead": "雨でも中身を守る、SHADの防水バッグ。",
+  "related_link": "/products?feat=waterproof"
 }
