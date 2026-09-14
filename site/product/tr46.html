@@ -322,6 +322,14 @@ window.SHAD_GALLERY = {
       <li>TR46はブラック／アルミパネル、TR27もブラック／アルミパネルの2仕様。同じ仕上げで揃えると統一感のあるフルパニアになります。</li>
       <li>フィッティングキットは車種ごとに異なります。4Pシステムキットで装着する場合はTR27用取付アダプター（D1TR27FIR）が別途必要です。</li>
     </ul>
+    <div class="pd-onekey" data-reveal>
+      <div class="pd-onekey-h"><p class="pd-sec-en">+α One Key</p><h3>3つのケースを、1本の鍵で。</h3><p class="pd-onekey-lead">SHADのキーシリンダーは差し替え式。トップとサイドのシリンダーを同じ鍵のものに揃えれば、3つのケースを1本の鍵で開ける・閉める・外すができます。作業は数分、工具はプラスドライバー程度です。</p></div>
+      <div class="pd-onekey-opts">
+    <div class="pd-onekey-opt"><span class="pd-onekey-lb">Option A</span><b>TR27付属のシリンダーを使う</b><p>TR27右側ケースに付属の予備キーシリンダー（レッドキー）を、TR46／TR41トップケースのシリンダーと差し替えるだけ。追加費用なしにワンキー化できます。</p></div>
+    <div class="pd-onekey-opt"><span class="pd-onekey-lb">Option B</span><b>キーシリンダー レッドキー 3個セットで揃える</b><p>3個をまとめて同じ鍵にしたい場合や予備用に。TR27／SH23／SH35／SH36共通のレッドキー仕様です。</p><a href="https://moto.customjapan.net/i/17460910" target="_blank" rel="noopener" class="pd-onekey-part"><img src="https://img.customjapan.net/items/17460910_1.jpg" alt="" loading="lazy"><span><b>キーシリンダー レッドキー 3個セット</b><em data-acc-price="17460910">—</em><small>品番：17460910</small></span><i class="ti ti-external-link"></i></a></div>
+      </div>
+      <div class="pd-onekey-foot"><p>交換手順は各ケースの取扱説明書、または本国のLock Guide（トップ→サイド→鍵の色を選ぶと手順動画に飛べます）をご覧ください。</p><a href="https://www.shad.es/assets/anexos/ANEXOS_WEB/LOCK_GUIDE_2026.pdf" target="_blank" rel="noopener" class="pd-onekey-guide"><i class="ti ti-file-type-pdf"></i>SHAD Lock Guide（本国PDF）</a></div>
+    </div>
   </div>
 </section>
 
@@ -447,6 +455,12 @@ window.SHAD_GALLERY = {
       var ps=e.variants.map(function(v){return Number(v.msrpTaxIn)||0;}).filter(Boolean); if(!ps.length) return;
       var mn=Math.min.apply(null,ps), mx=Math.max.apply(null,ps);
       el.textContent="¥"+mn.toLocaleString("ja-JP")+(mx>mn?"〜":"")+"（税込）"; }); }).catch(function(){}); }
+
+  /* ＋α ワンキー化：キーシリンダーの定価（accessories.json / others.json）*/
+  var ae=[].slice.call(document.querySelectorAll("[data-acc-price]"));
+  if(ae.length){ Promise.all(["/data/catalog/accessories.json","/data/catalog/others.json"].map(function(u){return fetch(u).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];});}))
+    .then(function(rs){ var all=rs[0].concat(rs[1]); ae.forEach(function(el){ var c=el.getAttribute("data-acc-price"); var a=all.filter(function(x){return String(x.cjCode)===c;})[0];
+      if(a&&a.msrpTaxIn) el.textContent="¥"+Number(a.msrpTaxIn).toLocaleString("ja-JP")+"（税込）"; }); }); }
 
   /* ⑧ 縦型映像：画面に入ったら再生、外れたら停止 */
   var vids=[].slice.call(document.querySelectorAll("video[data-inview]"));

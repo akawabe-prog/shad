@@ -32,6 +32,8 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
                     { en, heading, lead, total:"100", total_label（省略時「合計容量」）, visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
                     items の code がある行は定価を products.json から表示。code が自商品の行はハイライト
+                    onekey（省略可）：ワンキー化の案内 { en, heading, lead, optionA:{title,text[,part,name]}, optionB:{…}, note, guide（本国Lock GuideのURL）}
+                    part は CJ品番（キーシリンダー）。定価は accessories.json から実行時表示、リンクは購入ページ
     related         関連商品。品番リスト、または {"tag":"expandable","include":[…],"exclude":[…],"max":4}（cards.json の tags から自動）
                     タグの原本は tools/product_tags.json（apply_product_tags.py で反映）。省略時は現ページの Same Series を流用
     related_title / related_lead / related_link   表示見出し・一言・「View All」のリンク先（例：/products?feat=expandable）
@@ -70,8 +72,8 @@ def extract(s):
     parts = {}
     parts["faq"] = grab(s, r"<!-- FAQ:START", r"<!-- FAQ:END -->")
     parts["fitment"] = grab(s, r'<section id="fitment"', r"</section>")
-    m = re.search(r'(<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mt-6">.*?</a></div>)', s, re.S)
-    parts["same_grid"] = m.group(1)
+    m = re.search(r'(<div class="grid grid-cols-2 sm:grid-cols-\d gap-4 sm:gap-5 mt-6">.*?</a></div>)', s, re.S)
+    parts["same_grid"] = m.group(1) if m else ""   # related 指定があれば作り直すので空でもよい
     if is_max:
         parts["spec_rows"] = re.search(r'<table class="pd-spec">(.*?)</table>', s, re.S).group(1)
         body = re.search(r'<table class="pd-spec">.*?</table></div>\s*<div><p class="text-\[14.5px\] leading-\[2\]">(.*?)</p><p class="pd-note">(.*?)</p>', s, re.S)
@@ -199,6 +201,28 @@ def render(cfg, P):
                       '<b>%s</b><span>%s</span>%s</span></a>\n'
                       % (it["href"], cur, img, it["role"], it["name"], it.get("sub", ""), price))
         notes = "".join("      <li>%s</li>\n" % n for n in su.get("notes", []))
+        onekey = ""
+        if su.get("onekey"):
+            ok = su["onekey"]
+            def opt(label, o):
+                part = ""
+                if o.get("part"):
+                    part = ('<a href="https://moto.customjapan.net/i/%s" target="_blank" rel="noopener" class="pd-onekey-part">'
+                            '<img src="https://img.customjapan.net/items/%s_1.jpg" alt="" loading="lazy"><span><b>%s</b>'
+                            '<em data-acc-price="%s">—</em><small>品番：%s</small></span><i class="ti ti-external-link"></i></a>'
+                            % (o["part"], o["part"], o["name"], o["part"], o["part"]))
+                return ('    <div class="pd-onekey-opt"><span class="pd-onekey-lb">%s</span><b>%s</b><p>%s</p>%s</div>\n'
+                        % (label, o["title"], o["text"], part))
+            opts = "".join(opt(lb, ok[k]) for lb, k in (("Option A", "optionA"), ("Option B", "optionB")) if ok.get(k))
+            guide = ('<a href="%s" target="_blank" rel="noopener" class="pd-onekey-guide"><i class="ti ti-file-type-pdf"></i>%s</a>'
+                     % (ok["guide"], ok.get("guide_label", "SHAD Lock Guide（本国PDF）"))) if ok.get("guide") else ""
+            onekey = f'''    <div class="pd-onekey" data-reveal>
+      <div class="pd-onekey-h"><p class="pd-sec-en">{ok.get("en", "+α One Key")}</p><h3>{ok["heading"]}</h3><p class="pd-onekey-lead">{ok.get("lead", "")}</p></div>
+      <div class="pd-onekey-opts">
+{opts}      </div>
+      <div class="pd-onekey-foot"><p>{ok.get("note", "")}</p>{guide}</div>
+    </div>
+'''
         total = ('<p class="pd-setup-total"><b>%s</b><small>L</small><span>%s</span></p>' % (su["total"], su.get("total_label", "合計容量"))) if su.get("total") else ""
         setup = f'''<!-- ===== ⑦-2 フルパニア構成（トップ＋サイドの組み合わせ提案） ===== -->
 <section id="setup" class="scroll-mt-[132px] pd-setup">
@@ -214,7 +238,7 @@ def render(cfg, P):
 {cards}    </div>
     <ul class="pd-setup-notes">
 {notes}    </ul>
-  </div>
+{onekey}  </div>
 </section>
 
 '''
@@ -399,6 +423,12 @@ window.SHAD_GALLERY = {ov};
       var ps=e.variants.map(function(v){{return Number(v.msrpTaxIn)||0;}}).filter(Boolean); if(!ps.length) return;
       var mn=Math.min.apply(null,ps), mx=Math.max.apply(null,ps);
       el.textContent="¥"+mn.toLocaleString("ja-JP")+(mx>mn?"〜":"")+"（税込）"; }}); }}).catch(function(){{}}); }}
+
+  /* ＋α ワンキー化：キーシリンダーの定価（accessories.json / others.json）*/
+  var ae=[].slice.call(document.querySelectorAll("[data-acc-price]"));
+  if(ae.length){{ Promise.all(["/data/catalog/accessories.json","/data/catalog/others.json"].map(function(u){{return fetch(u).then(function(r){{return r.ok?r.json():[];}}).catch(function(){{return [];}});}}))
+    .then(function(rs){{ var all=rs[0].concat(rs[1]); ae.forEach(function(el){{ var c=el.getAttribute("data-acc-price"); var a=all.filter(function(x){{return String(x.cjCode)===c;}})[0];
+      if(a&&a.msrpTaxIn) el.textContent="¥"+Number(a.msrpTaxIn).toLocaleString("ja-JP")+"（税込）"; }}); }}); }}
 
   /* ⑧ 縦型映像：画面に入ったら再生、外れたら停止 */
   var vids=[].slice.call(document.querySelectorAll("video[data-inview]"));

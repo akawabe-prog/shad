@@ -671,6 +671,29 @@
   .pd-setup-items{grid-template-columns:1fr;}
 }
 
+.pd-onekey{margin-top:28px;padding:26px 28px;border-radius:16px;background:#0E0E0E;color:#fff;}
+.pd-onekey-h h3{font-size:clamp(20px,2.4vw,26px);font-weight:700;line-height:1.35;margin-top:4px;}
+.pd-onekey-lead{font-size:13.5px;line-height:1.9;color:rgba(255,255,255,.72);margin-top:10px;max-width:760px;}
+.pd-onekey-opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;}
+.pd-onekey-opt{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 20px;}
+.pd-onekey-lb{display:inline-block;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#E31E24;}
+.pd-onekey-opt>b{display:block;font-size:15.5px;margin-top:6px;}
+.pd-onekey-opt>p{font-size:13px;line-height:1.85;color:rgba(255,255,255,.7);margin-top:8px;}
+.pd-onekey-part{display:flex;align-items:center;gap:14px;margin-top:14px;padding:12px 14px;border-radius:10px;background:#fff;color:#0E0E0E;transition:.2s;}
+.pd-onekey-part:hover{transform:translateY(-2px);}
+.pd-onekey-part img{width:56px;height:56px;object-fit:contain;border-radius:8px;background:#F0EEE9;flex:none;}
+.pd-onekey-part span{min-width:0;flex:1;}
+.pd-onekey-part b{display:block;font-size:13.5px;line-height:1.4;}
+.pd-onekey-part em{display:block;font-style:normal;font-size:13px;font-weight:700;margin-top:3px;}
+.pd-onekey-part small{display:block;font-size:11px;color:#777;margin-top:2px;}
+.pd-onekey-part i{color:#999;flex:none;}
+.pd-onekey-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;}
+.pd-onekey-guide{display:inline-flex;align-items:center;gap:6px;color:#fff;font-size:12.5px;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 14px;transition:.2s;white-space:nowrap;}
+.pd-onekey-guide:hover{border-color:#E31E24;color:#E31E24;}
+@media (max-width:760px){
+  .pd-onekey{padding:22px 18px;}
+  .pd-onekey-opts{grid-template-columns:1fr;}
+}
 .pd-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
 .pd-cta a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 24px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.1);transition:.2s;}
 .pd-cta a:hover{border-color:#E31E24;transform:translateY(-2px);}

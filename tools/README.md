@@ -83,6 +83,10 @@ python3 tools/build_product_max.py tools/product_max/tr41.json
   イメージ2枚組（省略可）、構造図（省略可）、リール（省略可）、ギャラリー12枚
 - **フルパニア構成（setup）**：トップ＋サイドの組み合わせ提案。`setup` を持つ商品だけに「フルパニア」セクションとナビ項目が入り、
   番号は自動で振り直されます。定価は `products.json` から実行時に表示（複数カラーは最安値に「〜」）。TR46 と TR27 が同じ設定を共有
+- **＋α ワンキー化（setup.onekey）**：フルパニア構成の下に、キーシリンダー差し替えで3ケースを1本の鍵にする案内を出す。
+  Option A（サイド付属の予備シリンダーを使う）／Option B（CJ品番のキーシリンダーセットを購入。定価は accessories.json から実行時表示、購入ページへリンク）と、
+  本国 Lock Guide（PDF）へのリンク。組み合わせ別の部品：TERRAアルミ＝19708799（D1TRBOR）、TR46/TR41×TR27＝17460910（200062R・レッドキー）、
+  SH51/SH58X/SH59X×SH38X＝17460927（203134R・ブラックキー）、TR50×TR30＝29177073（204116R・ブラックキー）
 - **関連商品（related）**：品番リストを指定すると cards.json からカードを自動生成（自商品は除外）。`related_title` で表示見出しを変えられる（例：防水系4点を「Waterproof Series」）。内部の「Same Series」見出しは purchase.js の差し込み位置に使うため sr-only で残る
 - TR46 も `tools/product_max/tr46.json` から生成する形に移行済み（手書き版と同じ内容＋フルパニア構成）
 
