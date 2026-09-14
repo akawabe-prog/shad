@@ -54,6 +54,17 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## ワンキー化ガイド（/lock-guide）
+
+- ルール：`site/data/lock_guide.json`（本国 LOCK_GUIDE_2026.pdf を日本販売品に絞って整理。tops／sides のグループ、キー系統 family＝terra／red／black（ask＝赤黒混在で利用者が選ぶ）、
+  matrix＝系統の組み合わせごとの結果（ok／parts／mech／mech_contact／no）、parts＝CJ品番と本国品番の対応、各グループの本国手順動画ID）
+- 生成：`python3 tools/build_lock_guide.py` → `site/lock-guide.html`（ヘッダー／ナビ／フッターは fitting-kits.html から複製）
+- ページは JSON を実行時に読み、トップ→サイド→鍵の色 の3ステップで診断。部品の定価は accessories.json から実行時表示。`?top=TR46&side=TR27` で初期選択でき、
+  商品ページの「＋α ワンキー化」ブロックの「ワンキー化ガイドで手順を見る」がこのURLに飛ぶ
+- ルールや部品が変わったら JSON を直すだけ（ページの再生成は不要。文言や構成を変えるときだけ build_lock_guide.py を再実行）
+
+---
+
 ## 商品タグ（素材・機能）と一覧フィルタ・関連表示
 
 - 原本：`tools/product_tags.json`（groups＝Material／Feature、tags＝表示名、products＝品番ごとのタグ）

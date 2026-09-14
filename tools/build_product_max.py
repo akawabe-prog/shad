@@ -32,7 +32,8 @@ SHAD — 商品ページを「MAXテンプレート」に組み替える
     setup           フルパニア構成の提案（トップ＋サイド）。無い商品は省略
                     { en, heading, lead, total:"100", total_label（省略時「合計容量」）, visuals:[{src,caption}], items:[{code|icon, href, img, role, name, sub, cta}], notes:[…] }
                     items の code がある行は定価を products.json から表示。code が自商品の行はハイライト
-                    onekey（省略可）：ワンキー化の案内 { en, heading, lead, optionA:{title,text[,part,name]}, optionB:{…}, note, guide（本国Lock GuideのURL）}
+                    onekey（省略可）：ワンキー化の案内 { en, heading, lead, optionA:{title,text[,part,name]}, optionB:{…}, note,
+                              jp_link（/lock-guide?top=…&side=… サイト内ガイド）, guide（本国Lock GuideのURL）}
                     part は CJ品番（キーシリンダー）。定価は accessories.json から実行時表示、リンクは購入ページ
     related         関連商品。品番リスト、または {"tag":"expandable","include":[…],"exclude":[…],"max":4}（cards.json の tags から自動）
                     タグの原本は tools/product_tags.json（apply_product_tags.py で反映）。省略時は現ページの Same Series を流用
@@ -214,8 +215,14 @@ def render(cfg, P):
                 return ('    <div class="pd-onekey-opt"><span class="pd-onekey-lb">%s</span><b>%s</b><p>%s</p>%s</div>\n'
                         % (label, o["title"], o["text"], part))
             opts = "".join(opt(lb, ok[k]) for lb, k in (("Option A", "optionA"), ("Option B", "optionB")) if ok.get(k))
-            guide = ('<a href="%s" target="_blank" rel="noopener" class="pd-onekey-guide"><i class="ti ti-file-type-pdf"></i>%s</a>'
-                     % (ok["guide"], ok.get("guide_label", "SHAD Lock Guide（本国PDF）"))) if ok.get("guide") else ""
+            guide = ""
+            if ok.get("jp_link"):   # サイト内の日本語ガイド（/lock-guide?top=…&side=…）
+                guide += ('<a href="%s" class="pd-onekey-guide is-jp"><i class="ti ti-key"></i>%s</a>'
+                          % (ok["jp_link"], ok.get("jp_label", "ワンキー化ガイドで手順を見る")))
+            if ok.get("guide"):
+                guide += ('<a href="%s" target="_blank" rel="noopener" class="pd-onekey-guide"><i class="ti ti-file-type-pdf"></i>%s</a>'
+                          % (ok["guide"], ok.get("guide_label", "本国 Lock Guide（英語PDF）")))
+            guide = '<div class="pd-onekey-links">%s</div>' % guide if guide else ""
             onekey = f'''    <div class="pd-onekey" data-reveal>
       <div class="pd-onekey-h"><p class="pd-sec-en">{ok.get("en", "+α One Key")}</p><h3>{ok["heading"]}</h3><p class="pd-onekey-lead">{ok.get("lead", "")}</p></div>
       <div class="pd-onekey-opts">
