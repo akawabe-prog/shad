@@ -746,6 +746,15 @@
 .lg-steps b{display:block;font-size:14.5px;} .lg-steps span{display:block;font-size:12.5px;color:#666;line-height:1.8;margin-top:3px;}
 @media (max-width:640px){ .lg-tiles{grid-template-columns:repeat(3,1fr);} .lg-keyopts{grid-template-columns:1fr;} .lg-step{padding:18px 16px;} }
 
+/* ---- 看板直下のテクニカル動画（YouTube 埋め込み） ---- */
+.pd-yt{margin-top:16px;}
+.pd-yt-lb{display:flex;align-items:baseline;gap:10px;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#0E0E0E;}
+.pd-yt-lb i{color:#E31E24;font-size:16px;} .pd-yt-lb span{font-family:"Noto Sans JP",sans-serif;font-weight:400;font-size:11.5px;letter-spacing:0;text-transform:none;color:#888;}
+.pd-yt-grid{display:grid;gap:10px;margin-top:8px;} .pd-yt-grid.is-2{grid-template-columns:1fr 1fr;}
+.pd-yt-frame iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000;}
+.pd-yt-cap{font-size:11.5px;color:#777;margin-top:5px;line-height:1.5;}
+@media (max-width:640px){ .pd-yt-grid.is-2{grid-template-columns:1fr;} }
+
 .pd-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
 .pd-cta a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 24px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.1);transition:.2s;}
 .pd-cta a:hover{border-color:#E31E24;transform:translateY(-2px);}

@@ -492,6 +492,13 @@ def main():
     if "/js/main.js" not in s:
         s = s.replace('<script src="/js/nav.js"></script>', '<script src="/js/nav.js"></script>\n<script src="/js/main.js"></script>', 1)
     open(path, "w", encoding="utf-8").write(s)
+    try:   # 看板直下のテクニカル動画（tools/product_videos.json）を付け直す
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import apply_product_videos
+        apply_product_videos.apply_to_file(path, code)
+        s = open(path, encoding="utf-8").read()
+    except Exception as e:
+        print("  ⚠ 動画の埋め込みをスキップ:", e)
 
     # 参照アセットの実在チェック
     miss = sorted(u for u in set(re.findall(r'(?:src|href|poster|data-src-pc|data-src-sp|data-poster-sp|data-video|data-poster)="(/(?:img|media|docs)/[^"#]+)"', s))

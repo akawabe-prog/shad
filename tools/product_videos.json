@@ -1,0 +1,243 @@
+{
+ "_readme": "商品ごとの本国テクニカル動画（YouTube @SHADmotorcycles）。tools/apply_product_videos.py で商品ページの看板サムネイル直下に埋め込む。複数ある商品は2枠で並べる（カラー別・Black Edition など）。技術動画が無い商品（SH26/SH29/SH45/SH48/SH40CG/TR30/TR10/SC25/E04/SR38/SEAT）は未掲載。",
+ "videos": {
+  "TR41": [
+   {
+    "id": "WGC6ikcnF4k",
+    "title": "Technical video TR41"
+   }
+  ],
+  "TR46": [
+   {
+    "id": "Ydcg6EMUtAk",
+    "title": "Technical video TR46"
+   }
+  ],
+  "TR48": [
+   {
+    "id": "qk1Jk7-194o",
+    "title": "Technical Video TERRA TR48 & TR37 Top cases"
+   },
+   {
+    "id": "NhUHMEpw0Sw",
+    "title": "Technical Video TERRA TR37 & TR48 BLACK EDITION"
+   }
+  ],
+  "TR37": [
+   {
+    "id": "qk1Jk7-194o",
+    "title": "Technical Video TERRA TR48 & TR37 Top cases"
+   },
+   {
+    "id": "NhUHMEpw0Sw",
+    "title": "Technical Video TERRA TR37 & TR48 BLACK EDITION"
+   }
+  ],
+  "TR55": [
+   {
+    "id": "3fVskhRR9GQ",
+    "title": "Technical Video SHAD TERRA TR55 Top Case"
+   },
+   {
+    "id": "2-5M66qQkJA",
+    "title": "Technical Video TERRA TR55 Pure Black"
+   }
+  ],
+  "TR47": [
+   {
+    "id": "swNao6XOusQ",
+    "title": "Technical Video TERRA TR47 & TR36 Side cases"
+   },
+   {
+    "id": "atHuKvl82bw",
+    "title": "Technical Video TERRA TR47 & TR36 BLACK EDITION"
+   }
+  ],
+  "TR36": [
+   {
+    "id": "swNao6XOusQ",
+    "title": "Technical Video TERRA TR47 & TR36 Side cases"
+   },
+   {
+    "id": "atHuKvl82bw",
+    "title": "Technical Video TERRA TR47 & TR36 BLACK EDITION"
+   }
+  ],
+  "TR27": [
+   {
+    "id": "lfSIXiFSNyg",
+    "title": "TR27 Technical video"
+   }
+  ],
+  "IB20": [
+   {
+    "id": "8fXaLzlJjfs",
+    "title": "IB20 Waterproof Bag - Technical Video"
+   }
+  ],
+  "TR08": [
+   {
+    "id": "au5u4QfogtE",
+    "title": "TR08 Technical video"
+   }
+  ],
+  "SH58X": [
+   {
+    "id": "W9ZiGZY6Lvs",
+    "title": "Top case SH58X Expandable - Technical Video"
+   }
+  ],
+  "SH59X": [
+   {
+    "id": "X99o1CSlrJM",
+    "title": "Top case SH59X Expandable - Technical Video"
+   }
+  ],
+  "SH38X": [
+   {
+    "id": "_9sKcsRWpAs",
+    "title": "Technical video SH38X Expandable"
+   }
+  ],
+  "SH51": [
+   {
+    "id": "JveHb5CiJro",
+    "title": "Technical video SH51"
+   }
+  ],
+  "SH47": [
+   {
+    "id": "A0gU9z96PiA",
+    "title": "Top Case SH47 White - Technical Video"
+   },
+   {
+    "id": "3akkJCKzF74",
+    "title": "Top Case SH47 Red - Technical Video"
+   }
+  ],
+  "SH44": [
+   {
+    "id": "xz6NODy731c",
+    "title": "Technical Video SHAD SH44"
+   }
+  ],
+  "SH33": [
+   {
+    "id": "eT3hw8KFY-M",
+    "title": "Technical video SHAD SH33"
+   }
+  ],
+  "SH34": [
+   {
+    "id": "6hrz92K_0Yw",
+    "title": "Technical video SH34"
+   }
+  ],
+  "SH39": [
+   {
+    "id": "TooxLdPtCOM",
+    "title": "Technical video SHAD SH39"
+   }
+  ],
+  "SH40": [
+   {
+    "id": "Cc-E-HEznZ8",
+    "title": "Technical video - SH40 Alu Look Top Case"
+   }
+  ],
+  "SH23": [
+   {
+    "id": "LH1O2Db5vL0",
+    "title": "Technical video - SH23 Alu Look Side Cases"
+   }
+  ],
+  "SH35": [
+   {
+    "id": "V41T9PhLids",
+    "title": "Technical Video SHAD SH35"
+   }
+  ],
+  "SH36": [
+   {
+    "id": "hLvE_scnZOQ",
+    "title": "Technical Video SHAD SH36"
+   }
+  ],
+  "TR50": [
+   {
+    "id": "sphBRHj8ttA",
+    "title": "Technical Video SHAD TERRA Rear Bag TR50"
+   }
+  ],
+  "TR40": [
+   {
+    "id": "OcsZK5XHyzI",
+    "title": "Technical video TR40 2025"
+   }
+  ],
+  "E48": [
+   {
+    "id": "NNvr8Iy3Y08",
+    "title": "Technical video E48"
+   }
+  ],
+  "SL58": [
+   {
+    "id": "3a2DOK4Kglg",
+    "title": "Technical Video SHAD Saddle Bags SL58"
+   }
+  ],
+  "E03C": [
+   {
+    "id": "qoIlR_EDAME",
+    "title": "Technical video SHAD Click System E03C"
+   }
+  ],
+  "E09C": [
+   {
+    "id": "H96CdOCobGI",
+    "title": "Technical video SHAD Click System E09C"
+   }
+  ],
+  "TR15CL": [
+   {
+    "id": "2-GanwewyPA",
+    "title": "Technical video SHAD Click System TR15CL"
+   }
+  ],
+  "E03CL": [
+   {
+    "id": "XGRGrI35Rvc",
+    "title": "Technical video SHAD Click System E03CL"
+   }
+  ],
+  "E09CL": [
+   {
+    "id": "4FA764qEf10",
+    "title": "Technical video SHAD Click System E09CL"
+   }
+  ],
+  "E09CM": [
+   {
+    "id": "Xc3gPHfjKmg",
+    "title": "Technical video SHAD Click System E09CM"
+   }
+  ],
+  "E02C": [
+   {
+    "id": "oCwnAwNNz_k",
+    "title": "Technical video SHAD Click System E02C"
+   }
+  ],
+  "LOCK": [
+   {
+    "id": "cg212hDErIk",
+    "title": "Technical Video SHAD LOCKS Serie 3"
+   },
+   {
+    "id": "JAT0vKvSlqk",
+    "title": "Technical Video SHAD LOCKS Serie 2"
+   }
+  ]
+ }
+}

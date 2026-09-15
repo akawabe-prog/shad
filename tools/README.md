@@ -54,6 +54,15 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## テクニカル動画（YouTube 埋め込み）
+
+- 対応表：`tools/product_videos.json`（品番 → 本国 @SHADmotorcycles のテクニカル動画 id／title。複数ある商品はカラー別・Black Edition など）
+- 反映：`python3 tools/apply_product_videos.py`（全商品）／`… TR46 SH51`（指定のみ）。看板サムネイル行の直下に `<!-- YT:START/END -->` マーカーで差し替え
+- MAXページは build_product_max.py が生成後に自動で付け直すので消えない。埋め込みは youtube-nocookie.com、遅延読み込み、ダウンロードはしない
+- 動画が無い商品（SH26／SH29／SH45／SH48／SH40CG／TR30／TR10／SC25／E04／SR38／SEAT）は未掲載。本国が公開したら JSON に追記して再実行
+
+---
+
 ## ワンキー化ガイド（/lock-guide）
 
 - ルール：`site/data/lock_guide.json`（本国 LOCK_GUIDE_2026.pdf を日本販売品に絞って整理。tops／sides のグループ、キー系統 family＝terra／red／black（ask＝赤黒混在で利用者が選ぶ）、
