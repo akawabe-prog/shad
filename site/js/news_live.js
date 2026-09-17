@@ -12,7 +12,7 @@
           + "&_fields=id,date,title.rendered,excerpt.rendered,link,_embedded";
   var TAG_TO_CATEGORY = [["#出展", "Event"], ["#ニュース", "News"], ["#特集", "Feature"], ["#メディア", "Media"]];
   var ORDER = ["News", "Feature", "Event", "Racing", "Media", "Guide"];
-  var CACHE_KEY = "shad-news-live-v1", CACHE_MIN = 0;   // 0 = キャッシュしない（表示のたびに CMS から取得）
+  var CACHE_KEY = "shad-news-live-v1", CACHE_MIN = 5;   // 分。0 にすると表示のたびに CMS から取得
 
   var rail = document.querySelector(".news-rail");          // TOP
   var grid = document.getElementById("newsGrid");           // /news 一覧
