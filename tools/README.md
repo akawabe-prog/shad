@@ -61,6 +61,9 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 - 更新：`python3 tools/fetch_news_api.py && python3 tools/build_news.py`（TOPの最新4件・カテゴリチップ、/news 一覧、記事ページ、シンプル版トップまで更新）
 - `build_news.py` の `API_ONLY=True` により news.json の自社記事は表示しない。混ぜたい場合は False に戻す
 - TOPのチップは掲載記事にあるカテゴリから自動生成し `/news?cat=…` に飛ぶ（一覧側は URL の cat で初期選択）
+- **表示時の最新化（案B）**：`site/js/news_live.js` が TOP と /news を開いたときに同じAPIを読み、最新4件／全件とチップを差し替える
+  （10分キャッシュ）。サイト内に記事ページがある記事は `/news/cj-<id>` へ、まだ生成していない新着は `www.customjapan.net/a/moto/<id>` へ外部リンク。
+  記事本文をサイト内に持たせるには従来どおり fetch → build を実行する（本文取り込み・canonical付与）
 
 ---
 

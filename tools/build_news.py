@@ -12,6 +12,7 @@ SHAD JAPAN — NEWS（一覧・詳細ページ）の生成
 
 記事の追加・修正は **news.json だけ** を編集して、このスクリプトを実行します。
 ※ 現在は API_ONLY=True：CJのCMS（カテゴリ 90_SHAD＝site:SHAD）から取得した記事だけを掲載し、news.json の自社記事は表示しません。
+※ さらに site/js/news_live.js が表示時に同じAPIを読み、TOPの4件と /news 一覧を最新化します（新着でまだ記事ページが無いものは元記事へリンク）。
 HTMLを直接触る必要はありません。
 
 ■ 使い方
@@ -541,6 +542,7 @@ LIST = """{nav}
   if(q){{ chips.forEach(function(c){{ if(c.dataset.cat===q) c.click(); }}); }}
 }})();
 </script>
+<script src="/js/news_live.js"></script>
 {foot}"""
 
 
