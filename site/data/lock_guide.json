@@ -1,5 +1,5 @@
 {
-  "_readme": "ワンキー化ガイドのルール（/lock-guide と 商品ページの＋αブロックが参照）。本国 LOCK_GUIDE_2026.pdf を日本で販売中の商品に絞って整理。family＝キーシリンダーの系統（terra／red／black）、ask＝製造時期で赤／黒が混在するため利用者に選ばせる。",
+  "_readme": "ワンキー化ガイドのルール（/lock-guide と 商品ページの＋αブロックが参照）。本国 LOCK_GUIDE_2026.pdf を日本で販売中の商品に絞って整理（TR40 は 2026-09 マスターで廃番解除され復帰）。family＝キーシリンダーの系統（terra／red／black）、ask＝製造時期で赤／黒が混在するため利用者に選ばせる。",
   "families": {
     "terra": {
       "label": "TERRAキー",
@@ -168,6 +168,16 @@
       "label": "TR30 防水サドルバッグ",
       "codes": [
         "TR30"
+      ],
+      "family": "black",
+      "spare": false,
+      "video": "r7wDXP702eU"
+    },
+    {
+      "id": "tr40",
+      "label": "TR40 アドベンチャーサイドバッグ",
+      "codes": [
+        "TR40"
       ],
       "family": "black",
       "spare": false,
