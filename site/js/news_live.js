@@ -12,7 +12,7 @@
           + "&_fields=id,date,title.rendered,excerpt.rendered,link,_embedded";
   var TAG_TO_CATEGORY = [["#出展", "Event"], ["#ニュース", "News"], ["#特集", "Feature"], ["#メディア", "Media"]];
   var ORDER = ["News", "Feature", "Event", "Racing", "Media", "Guide"];
-  var CACHE_KEY = "shad-news-live-v1", CACHE_MIN = 10;
+  var CACHE_KEY = "shad-news-live-v1", CACHE_MIN = 0;   // 0 = キャッシュしない（表示のたびに CMS から取得）
 
   var rail = document.querySelector(".news-rail");          // TOP
   var grid = document.getElementById("newsGrid");           // /news 一覧
@@ -38,14 +38,14 @@
   }
   function fetchPage(n) { return fetch(API + "&page=" + n).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json().then(function (j) { return { json: j, pages: +(r.headers.get("X-WP-TotalPages") || 1) }; }); }); }
   function load(all) {
-    try { var c = JSON.parse(sessionStorage.getItem(CACHE_KEY) || "null"); if (c && c.all >= (all ? 1 : 0) && Date.now() - c.t < CACHE_MIN * 60000) return Promise.resolve(c.items); } catch (e) {}
+    if (CACHE_MIN > 0) { try { var c = JSON.parse(sessionStorage.getItem(CACHE_KEY) || "null"); if (c && c.all >= (all ? 1 : 0) && Date.now() - c.t < CACHE_MIN * 60000) return Promise.resolve(c.items); } catch (e) {} }
     return fetchPage(1).then(function (r) {
       var posts = r.json, rest = [];
       if (all) for (var p = 2; p <= r.pages; p++) rest.push(fetchPage(p).then(function (x) { return x.json; }));
       return Promise.all(rest).then(function (more) {
         more.forEach(function (m) { posts = posts.concat(m); });
         var items = posts.map(toItem).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), all: all ? 1 : 0, items: items })); } catch (e) {}
+        if (CACHE_MIN > 0) { try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), all: all ? 1 : 0, items: items })); } catch (e) {} }
         return items;
       });
     });
