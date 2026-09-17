@@ -11,6 +11,7 @@ SHAD JAPAN — NEWS（一覧・詳細ページ）の生成
     site/index.html の NEWS 枠     最新4件のカード（マーカー間を差し替え）
 
 記事の追加・修正は **news.json だけ** を編集して、このスクリプトを実行します。
+※ 現在は API_ONLY=True：CJのCMS（カテゴリ 90_SHAD＝site:SHAD）から取得した記事だけを掲載し、news.json の自社記事は表示しません。
 HTMLを直接触る必要はありません。
 
 ■ 使い方
@@ -63,8 +64,14 @@ OUT_DIR = os.path.join(SITE, "news")
 INDEX = os.path.join(SITE, "index.html")
 SITE_URL = "https://www.shad-japan.com"
 
+# 表示ソース：True＝CJのCMS（カテゴリ 90_SHAD ＝ site:SHAD）から取得した記事だけを掲載し、
+# news.json の自社記事は生成しない（2026-09-17 の指示）。自社記事も混ぜる場合は False に戻す。
+API_ONLY = True
+
 TOP_START = "<!-- NEWS:START 生成 tools/build_news.py -->"
 TOP_END = "<!-- NEWS:END -->"
+CHIPS_START = "<!-- NEWS:CHIPS:START 生成 tools/build_news.py -->"
+CHIPS_END = "<!-- NEWS:CHIPS:END -->"
 
 
 def esc(s):
@@ -529,6 +536,9 @@ LIST = """{nav}
       empty.classList.toggle('hidden', shown>0);
     }});
   }});
+  /* ?cat=Media のように URL で初期カテゴリを選べる（TOPのチップから） */
+  var q=new URLSearchParams(location.search).get('cat');
+  if(q){{ chips.forEach(function(c){{ if(c.dataset.cat===q) c.click(); }}); }}
 }})();
 </script>
 {foot}"""
@@ -554,10 +564,26 @@ def build_list(articles, shell):
 
 # ---------- TOPページの NEWS 枠 ----------
 
+def top_chips(articles):
+    """TOPのカテゴリチップ：掲載記事にあるカテゴリだけを CATEGORY_ORDER の順で最大3つ"""
+    have = {a.get("category") for a in articles}
+    cats = [c for c in CATEGORY_ORDER if c in have][:3]
+    return "".join('<a href="/news?cat=%s" class="tag hover:border-shad hover:text-shad transition">%s</a>\n        '
+                   % (esc(c), esc(c)) for c in cats).rstrip()
+
+
 def update_top(articles):
     s = open(INDEX, encoding="utf-8").read()
     cards = "\n      ".join(card_html(a) for a in articles[:4])
     block = "%s\n      %s\n      %s" % (TOP_START, cards, TOP_END)
+    chips_block = "%s\n        %s\n        %s" % (CHIPS_START, top_chips(articles), CHIPS_END)
+    if CHIPS_START in s and CHIPS_END in s:
+        s = re.sub(re.escape(CHIPS_START) + r".*?" + re.escape(CHIPS_END), chips_block, s, flags=re.S)
+    else:
+        # 初回のみ：手書きのチップ3つ（News / Racing / Event）をマーカー付きブロックに置き換える
+        m = re.search(r'(<a href="/news" class="tag[^"]*">News</a>\s*<a href="/news" class="tag[^"]*">Racing</a>\s*<a href="/news" class="tag[^"]*">Event</a>)', s)
+        if m:
+            s = s[:m.start(1)] + chips_block + s[m.end(1):]
     if TOP_START in s and TOP_END in s:
         s = re.sub(re.escape(TOP_START) + r".*?" + re.escape(TOP_END), block, s, flags=re.S)
     else:
@@ -575,7 +601,7 @@ def update_top(articles):
 def main():
     data = json.load(open(DATA, encoding="utf-8"))
     cards = json.load(open(CARDS, encoding="utf-8")) if os.path.exists(CARDS) else {}
-    own = data["articles"]
+    own = [] if API_ONLY else data["articles"]
     api = load_api_articles()
     articles = sorted(own + api, key=lambda a: a["date"], reverse=True)
     shell = load_shell()

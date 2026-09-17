@@ -54,6 +54,16 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ---
 
+## NEWS（APIのみ掲載）
+
+- 掲載ソースは CJ の CMS（`https://cms.customjapan.net/wp-json/custom/v1/posts?categories=480…`）＝ カテゴリ **90_SHAD（site:SHAD、SHAD公式サイト用）** の記事だけ。
+  ブランドタグ ™️SHAD（tags=78）は他サイト向け記事も含むため使わない
+- 更新：`python3 tools/fetch_news_api.py && python3 tools/build_news.py`（TOPの最新4件・カテゴリチップ、/news 一覧、記事ページ、シンプル版トップまで更新）
+- `build_news.py` の `API_ONLY=True` により news.json の自社記事は表示しない。混ぜたい場合は False に戻す
+- TOPのチップは掲載記事にあるカテゴリから自動生成し `/news?cat=…` に飛ぶ（一覧側は URL の cat で初期選択）
+
+---
+
 ## テクニカル動画（YouTube 埋め込み）
 
 - 対応表：`tools/product_videos.json`（品番 → 本国 @SHADmotorcycles のテクニカル動画 id／title。複数ある商品はカラー別・Black Edition など）
