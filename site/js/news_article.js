@@ -82,11 +82,6 @@
       var origin = "https://www.customjapan.net/a/moto/" + p.id;
       document.title = title + "｜NEWS｜SHAD JAPAN";
       var link = document.querySelector('link[rel="canonical"]'); if (link) link.setAttribute("href", origin);
-      var note = function (place) {
-        return place === "top"
-          ? '<p class="news-source">この記事は、日本総代理店 株式会社カスタムジャパンのメディアで公開された記事です。<a href="' + origin + '" target="_blank" rel="noopener">元記事を読む<i class="ti ti-external-link"></i></a></p>'
-          : '<div class="news-origin"><p class="news-origin-ttl">出典</p><p class="news-origin-txt">株式会社カスタムジャパン（' + jpDate(date) + ' 公開）</p><a href="' + origin + '" class="news-btn news-btn-primary" target="_blank" rel="noopener">元記事を読む<i class="ti ti-external-link"></i></a></div>';
-      };
       root.innerHTML =
         '<section class="bg-ink2 text-white pt-[54px] pb-[58px] md:pt-[70px] md:pb-[74px]"><div class="max-w-site mx-auto px-7">'
         + '<p class="flex items-center gap-3"><span class="w-9 h-px bg-shad"></span><span class="font-disp text-[12px] tracking-[.26em] uppercase text-shad">News</span></p>'
@@ -95,7 +90,7 @@
         + '</div></section>'
         + '<div class="max-w-site mx-auto px-7 pt-7"><a href="/news" class="inline-flex items-center gap-2 text-[13px] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>NEWS一覧</a></div>'
         + '<main class="pb-[70px]">' + (img ? '<div class="news-hero-img"><img src="' + esc(img) + '" alt="' + esc(title) + '"></div>' : "")
-        + '<article class="news-body"><p class="news-lead">' + esc(lead) + '</p>' + note("top") + clean((p.content || {}).rendered, codes) + note("bottom") + '</article></main>'
+        + '<article class="news-body"><p class="news-lead">' + esc(lead) + '</p>' + clean((p.content || {}).rendered, codes) + '</article></main>'
         + '<section class="max-w-site mx-auto px-7 pb-[80px]"><div class="mt-9 text-center"><a href="/news" class="btn border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-list"></i>NEWS一覧へ</a></div></section>';
       if (window.gsap) window.dispatchEvent(new Event("resize"));
     })

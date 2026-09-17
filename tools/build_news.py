@@ -426,7 +426,7 @@ def build_cj_detail(a, i, articles, cards, shell):
     if a.get("image"):
         figure = ('<div class="news-hero-img"><img src="%s" alt="%s"></div>'
                   % (esc(a["image"]), esc(a["title"])))
-    body = source_note(a, "top") + a["cleanBody"] + source_note(a, "bottom")
+    body = a["cleanBody"]          # 出典の注記（冒頭・末尾）は出さない（2026-09-17 指示）。canonical は元記事のまま
     page = DETAIL.format(
         nav=nav,
         hero=hero("News", a["title"], a["date"], a.get("category")),
