@@ -600,6 +600,27 @@ def update_top(articles):
     return True
 
 
+LIVE_PAGE = """{nav}
+<div id="liveArticle">
+  <section class="bg-ink2 text-white pt-[54px] pb-[58px] md:pt-[70px] md:pb-[74px]"><div class="max-w-site mx-auto px-7">
+    <p class="flex items-center gap-3"><span class="w-9 h-px bg-shad"></span><span class="font-disp text-[12px] tracking-[.26em] uppercase text-shad">News</span></p>
+    <h1 class="font-disp font-semibold text-[clamp(30px,5.4vw,54px)] leading-[1.06] tracking-[.03em] uppercase mt-3">Loading…</h1>
+  </div></section>
+  <div class="max-w-site mx-auto px-7 py-16 text-[14px] text-neutral-500">記事を読み込んでいます…</div>
+</div>
+<script src="/js/news_article.js"></script>
+{foot}"""
+
+
+def build_live_page(shell):
+    """/news/article?id=<CMS記事ID>：まだ静的ページを生成していない新着記事を、APIから取ってサイト内で表示する（noindex）"""
+    head_open, head_tail, nav, foot = shell
+    title = "NEWS｜SHAD JAPAN"
+    head = page_head(title, "SHAD JAPAN の最新ニュース", SITE_URL + "/news", "/img/news_1.webp")
+    head = head.replace('<link rel="canonical" href="%s/news">' % SITE_URL, '<link rel="canonical" href="%s/news">\n<meta name="robots" content="noindex,follow">' % SITE_URL)
+    return head_open + head + head_tail + "</head>\n" + LIVE_PAGE.format(nav=nav, foot=foot)
+
+
 def main():
     data = json.load(open(DATA, encoding="utf-8"))
     cards = json.load(open(CARDS, encoding="utf-8")) if os.path.exists(CARDS) else {}
@@ -619,6 +640,7 @@ def main():
 
     open(os.path.join(OUT_DIR, "index.html"), "w", encoding="utf-8").write(
         build_list(articles, shell))
+    open(os.path.join(OUT_DIR, "article.html"), "w", encoding="utf-8").write(build_live_page(shell))
 
     top = update_top(articles)
 

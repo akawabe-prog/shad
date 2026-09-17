@@ -4,7 +4,7 @@
      API : https://cms.customjapan.net/wp-json/custom/v1/posts?categories=480 …
            （カテゴリ 90_SHAD ＝ site:SHAD。tools/fetch_news_api.py と同じ条件）
    ・HTMLには build_news.py が書き出した記事カードが入っているので、API に失敗しても表示は崩れない
-   ・サイト内に記事ページがある記事（/news/cj-<id>）はそこへ、まだ無い新着記事は元記事（customjapan.net）へ
+   ・サイト内に記事ページがある記事（/news/cj-<id>）はそこへ、まだ無い新着記事は /news/article?id=<id>（APIから本文を表示）へ
    ・カテゴリの判定（タグ → News/Feature/Event/Media/Guide）は fetch_news_api.py と同じ
    ========================================================= */
 (function () {
@@ -57,13 +57,13 @@
 
   function card(a) {
     var isLocal = !!local[String(a.id)];
-    /* まだ取り込んでいない新着は、公開サイトの記事URL（www.customjapan.net/a/moto/<id>）へ */
-    var href = isLocal ? "/news/cj-" + a.id : "https://www.customjapan.net/a/moto/" + a.id;
-    var attrs = isLocal ? "" : ' target="_blank" rel="noopener"';
+    /* まだ静的ページを生成していない新着は、APIから本文を取るサイト内のライブ記事ページへ */
+    var href = isLocal ? "/news/cj-" + a.id : "/news/article?id=" + a.id;
+    var attrs = "";
     var thumb = a.image
       ? '<span class="block aspect-[4/3] overflow-hidden"><img src="' + esc(a.image) + '" alt="" loading="lazy" class="w-full h-full object-cover transition duration-300 hover:scale-105"></span>'
       : '<span class="block aspect-[4/3] bg-gradient-to-br from-[#E4E1DB] to-[#D5D2CA]"></span>';
-    var mark = isLocal ? "" : '<span class="ml-auto text-[11px] text-neutral-400 inline-flex items-center gap-1"><i class="ti ti-external-link"></i>元記事</span>';
+    var mark = "";
     return '<a href="' + esc(href) + '" class="ncard"' + attrs + ' data-cat="' + esc(a.category) + '">' + thumb
       + '<span class="block px-5 py-4"><span class="flex items-center gap-2.5"><span class="ncard-cat">' + esc(a.category) + '</span>'
       + '<span class="font-disp text-[13.5px] tracking-[.14em] text-neutral-500">' + jpDate(a.date) + '</span>' + mark + '</span>'

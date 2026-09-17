@@ -63,7 +63,10 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 - TOPのチップは掲載記事にあるカテゴリから自動生成し `/news?cat=…` に飛ぶ（一覧側は URL の cat で初期選択）
 - **表示時の最新化（案B）**：`site/js/news_live.js` が TOP と /news を開いたときに同じAPIを読み、最新4件／全件とチップを差し替える
   （10分キャッシュ）。サイト内に記事ページがある記事は `/news/cj-<id>` へ、まだ生成していない新着は `www.customjapan.net/a/moto/<id>` へ外部リンク。
-  記事本文をサイト内に持たせるには従来どおり fetch → build を実行する（本文取り込み・canonical付与）
+- **新着記事もサイト内で読める**：`/news/article?id=<CMS記事ID>`（`site/news/article.html`＋`site/js/news_article.js`）が wp/v2 で記事1本を取り、
+  build_news.py と同じ整形規則（残すタグ・属性の限定、script 等の除去、EC商品リンク→/product/<code>）で表示。カテゴリ 90_SHAD 以外は表示しない。
+  noindex（検索に出すのは静的ページ側）。.htaccess で静的ページの無い `/news/cj-<id>` もこのページへ内部転送
+- 検索エンジン向けに本文を静的化・canonical付与するには従来どおり fetch → build を実行する（実行しなくても表示は最新）
 
 ---
 

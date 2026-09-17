@@ -22,6 +22,10 @@ RewriteRule ^product-([A-Za-z0-9]+)/?$ /product/$1 [R=301,L,NC]
 # /news はディレクトリなので index.html を明示（DirectoryIndex 未設定サーバー対策）
 RewriteRule ^news/?$ /news/index.html [L]
 
+# まだ静的ページを生成していない新着記事（/news/cj-<id>）は、APIから本文を表示するライブ記事ページへ
+RewriteCond %{DOCUMENT_ROOT}/news/cj-$1.html !-f
+RewriteRule ^news/cj-(\d+)/?$ /news/article.html?id=$1 [L,QSA]
+
 # .html つきのアクセスは拡張子なしへ 301
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
