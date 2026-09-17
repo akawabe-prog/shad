@@ -15,7 +15,8 @@ SHAD関連記事の原本はCJのCMS（WordPress）です。ここで取得し�
 
 ■ 取得元
     GET https://cms.customjapan.net/wp-json/custom/v1/posts
-        ?categories=480      … SHADカテゴリ。**この指定でSHAD記事だけが返る**
+        ?categories=480      … カテゴリ「90_SHAD」（slug: site_shad、説明「SHAD公式サイト用」）。**この指定でSHAD公式サイト向け記事だけが返る**
+                               ※ ブランドタグ「™️SHAD」（tags=78）とは別。タグ側は他サイト向け記事も含むため使わない
         &publish_codes=n&per_page=24&_embed
     ページングあり（X-WP-TotalPages）。全ページを順に取得します。
 
