@@ -37,7 +37,7 @@
     "poster_pc": "/img/products/tr55/img_ride.webp",
     "kick": "TERRA",
     "heading": "アルミで、旅を軽くする。",
-    "sub": "モジュラーヘルメット2個が入る55L。同クラス最軽量5.4kgのアルミトップケースを、TERRAシリーズの映像とともに。",
+    "sub": "モジュラーヘルメット2個が入る55L。同クラス最軽量クラスの約5.5kgのアルミトップケースを、TERRAシリーズの映像とともに。",
     "film": "/media/products/terra/film.mp4",
     "poster_film": "/img/products/terra/poster_film.webp",
     "film_label": "TERRAの映像を見る（15秒）",
@@ -64,7 +64,7 @@
     {
       "img": "/img/products/tr55/story_light.webp",
       "kick": "Lightest",
-      "h": "アルミ市場最軽量、5.4kg。",
+      "h": "アルミ市場最軽量クラス、約5.5kg。",
       "p": "設計・製造を100%バルセロナで実施。軽さが装着時の負担と走行中の振動を抑える。"
     },
     {
@@ -241,5 +241,6 @@
   },
   "related_title": "TERRA Aluminium",
   "related_lead": "硬質アルミ合金のTERRAシリーズ。トップとサイドを揃えてフルパニアに。",
-  "related_link": "/products?mat=alu"
+  "related_link": "/products?mat=alu",
+  "desc": "フリップアップ2個を収納するTERRA TR55トップケース。約5.5kgとアルミケースとして市場最軽量クラスで、設計・製造は100%バルセロナ。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステムを備え、ミニマルな造形で車体に溶け込みます。ロックシリンダーには防塵プロテクター、トップフレームにはバックレスト取付穴をあらかじめ用意。TERRAの全技術を、シリーズ最大の55Lに。"
 }

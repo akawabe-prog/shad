@@ -151,3 +151,71 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
   window.addEventListener("resize", function () { if (!isDesktop()) hide(); });
 })();
+
+/* =========================================================
+   ヘッダーの虫眼鏡：検索オーバーレイ（品番・商品名のサジェスト）
+   /data/catalog/cards.json を1回だけ読み、入力に応じて候補を出す。
+   PC・スマホ共通。Enter で先頭候補へ、ESC／外側タップで閉じる。
+   ========================================================= */
+(function () {
+  var btns = [].slice.call(document.querySelectorAll('button[aria-label="検索"]'));
+  if (!btns.length) return;
+  var cards = null, box = null, input = null, list = null, active = -1, items = [];
+
+  function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function norm(t){ return String(t||'').toLowerCase().replace(/[\s\-＋+／/・]/g,''); }
+  function build(){
+    box = document.createElement('div'); box.className = 'srch'; box.setAttribute('role','dialog'); box.setAttribute('aria-label','商品検索');
+    box.innerHTML = '<button type="button" class="srch-close" aria-label="閉じる"><i class="ti ti-x"></i></button>'
+      + '<div class="srch-in"><label class="srch-box"><i class="ti ti-search"></i>'
+      + '<input type="search" placeholder="品番・商品名で検索（例：TR46、トップケース、防水）" autocomplete="off" enterkeyhint="search"></label>'
+      + '<p class="srch-hint">品番（TR46 / SH38X）、商品名、シリーズ名、特徴で絞り込めます</p>'
+      + '<div class="srch-list" role="listbox"></div>'
+      + '<div class="srch-quick"><a href="/products">すべての製品</a><a href="/products?cat=TOP">トップケース</a><a href="/products?cat=SIDE">サイドケース</a>'
+      + '<a href="/products?feat=expandable">Expandable</a><a href="/products?feat=waterproof">防水バッグ</a><a href="/fitment">車種から探す</a><a href="/lock-guide">ワンキー化ガイド</a></div></div>';
+    document.body.appendChild(box);
+    input = box.querySelector('input'); list = box.querySelector('.srch-list');
+    box.querySelector('.srch-close').addEventListener('click', close);
+    box.addEventListener('click', function(e){ if (e.target === box) close(); });
+    input.addEventListener('input', render);
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter') { e.preventDefault(); var a = list.querySelectorAll('.srch-item')[Math.max(active,0)]; if (a) location.href = a.getAttribute('href'); else if (input.value.trim()) location.href = '/products'; }
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+  }
+  function move(d){ var as = [].slice.call(list.querySelectorAll('.srch-item')); if(!as.length) return; active = (active + d + as.length) % as.length; as.forEach(function(a,i){ a.classList.toggle('is-active', i===active); }); }
+  function load(){
+    if (cards) return Promise.resolve(cards);
+    return fetch('/data/catalog/cards.json').then(function(r){ return r.ok ? r.json() : {}; }).then(function(d){
+      var TAGJP = { alu:'アルミ', pp:'PP 樹脂 ポリプロピレン', soft:'ソフト 生地 バッグ', expandable:'可変容量 エクスパンダブル', waterproof:'防水', smartlock:'スマートロック', terralock:'TERRAロック テラ', click:'クリックシステム タンクバッグ', fullpannier:'フルパニア' };
+      items = Object.keys(d).map(function(k){ var c = d[k]; var tj = (c.tags||[]).map(function(t){ return TAGJP[t]||t; }).join(' ');
+        return { code:k, jp:c.jp||'', series:c.series||'', cap:c.cap||'', copy:c.copy||'', img:c.img||'', tags:tj, status:c.status||'',
+        key: norm(k+' '+(c.jp||'')+' '+(c.series||'')+' '+(c.copy||'')+' '+(c.tags||[]).join(' ')+' '+tj) }; });
+      cards = items; return cards;
+    }).catch(function(){ cards = []; return cards; });
+  }
+  function render(){
+    var q = norm(input.value); active = -1;
+    if (!q) { list.innerHTML = ''; return; }
+    var hit = items.filter(function(it){ return it.key.indexOf(q) >= 0; });
+    hit.sort(function(a,b){ var ac = norm(a.code).indexOf(q)===0 ? 0 : 1, bc = norm(b.code).indexOf(q)===0 ? 0 : 1; return ac - bc || a.code.localeCompare(b.code); });
+    hit = hit.slice(0, 8);
+    list.innerHTML = hit.length ? hit.map(function(it){
+      return '<a class="srch-item" href="/product/' + it.code.toLowerCase() + '" role="option">'
+        + (it.img ? '<img src="' + esc(it.img) + '" alt="" loading="lazy">' : '')
+        + '<span><b>' + esc(it.code) + '</b><span>' + esc(it.jp) + (it.cap ? ' / ' + esc(it.cap) : '') + (it.status ? '（' + esc(it.status) + '）' : '') + '</span></span>'
+        + '<em>' + esc(it.series) + '</em></a>';
+    }).join('') : '<p class="srch-empty">「' + esc(input.value) + '」に一致する商品が見つかりません。<a href="/products" class="underline">製品一覧</a>からお探しください。</p>';
+  }
+  function open(){
+    if (!box) build();
+    box.classList.add('is-open'); document.documentElement.style.overflow = 'hidden';
+    var m = document.getElementById('navMobile'); if (m) m.classList.add('hidden');
+    load().then(function(){ render(); });
+    setTimeout(function(){ input.focus(); }, 30);
+  }
+  function close(){ box.classList.remove('is-open'); document.documentElement.style.overflow = ''; }
+  btns.forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(); }); });
+})();

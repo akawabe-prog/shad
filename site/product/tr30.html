@@ -98,6 +98,7 @@ window.SHAD_GALLERY = {
 };
 </script>
 
+<button type="button" class="pd-side-tab" id="pdSideTab" aria-controls="pdSide" aria-expanded="false"><i class="ti ti-list"></i>Index</button>
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
   <a href="#spec" class="pd-side-a"><small>01</small><span>スペック</span></a>
@@ -368,7 +369,14 @@ window.SHAD_GALLERY = {
 (function(){
   /* ② アンカーナビ／右側Index：現在地のハイライトと、Indexの表示切替 */
   var links=[].slice.call(document.querySelectorAll(".pd-nav-a, .pd-side-a")), secs=[];
-  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide");
+  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide"), tab=document.getElementById("pdSideTab");
+  /* スマホ：右端の INDEX タブで開閉（PCは常時表示） */
+  function closeSide(){ if(side) side.classList.remove("is-open"); if(tab){ tab.classList.remove("is-open"); tab.setAttribute("aria-expanded","false"); } }
+  if(tab && side){
+    tab.addEventListener("click",function(e){ e.stopPropagation(); var o=!side.classList.contains("is-open"); side.classList.toggle("is-open",o); tab.classList.toggle("is-open",o); tab.setAttribute("aria-expanded",o?"true":"false"); });
+    side.addEventListener("click",function(e){ if(e.target.closest("a")) closeSide(); });
+    document.addEventListener("click",function(e){ if(side.classList.contains("is-open") && !side.contains(e.target) && !tab.contains(e.target)) closeSide(); });
+  }
   links.forEach(function(a){ var t=document.querySelector(a.getAttribute("href")); if(t) secs.push({a:a,sec:t}); });
   function sync(){
     /* 現在地＝「基準線より上に見出しがある、いちばん下のセクション」。
@@ -384,7 +392,8 @@ window.SHAD_GALLERY = {
     if(navBar && side){
       var gone=navBar.getBoundingClientRect().bottom<0;
       var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;
-      side.classList.toggle("is-on", gone && !nearFoot);
+      var on=gone && !nearFoot; side.classList.toggle("is-on", on); if(tab) tab.classList.toggle("is-on", on);
+      if(!on) closeSide();
     }
   }
   var last=0, waiting=false;

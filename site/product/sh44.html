@@ -87,7 +87,6 @@
     <a href="#fitment" data-fit-jump class="btn w-full justify-center mt-5 border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-search"></i>適合確認はこちら</a>
     <p class="text-[12px] text-neutral-400 mt-2 text-center">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p>
   </div>
-
 </main>
 <script>
 /* カラー選択で看板画像を切り替える（purchase.js が参照） */
@@ -102,6 +101,7 @@ window.SHAD_GALLERY = {
 };
 </script>
 
+<button type="button" class="pd-side-tab" id="pdSideTab" aria-controls="pdSide" aria-expanded="false"><i class="ti ti-list"></i>Index</button>
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
   <a href="#spec" class="pd-side-a"><small>01</small><span>スペック</span></a>
@@ -365,7 +365,14 @@ window.SHAD_GALLERY = {
 (function(){
   /* ② アンカーナビ／右側Index：現在地のハイライトと、Indexの表示切替 */
   var links=[].slice.call(document.querySelectorAll(".pd-nav-a, .pd-side-a")), secs=[];
-  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide");
+  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide"), tab=document.getElementById("pdSideTab");
+  /* スマホ：右端の INDEX タブで開閉（PCは常時表示） */
+  function closeSide(){ if(side) side.classList.remove("is-open"); if(tab){ tab.classList.remove("is-open"); tab.setAttribute("aria-expanded","false"); } }
+  if(tab && side){
+    tab.addEventListener("click",function(e){ e.stopPropagation(); var o=!side.classList.contains("is-open"); side.classList.toggle("is-open",o); tab.classList.toggle("is-open",o); tab.setAttribute("aria-expanded",o?"true":"false"); });
+    side.addEventListener("click",function(e){ if(e.target.closest("a")) closeSide(); });
+    document.addEventListener("click",function(e){ if(side.classList.contains("is-open") && !side.contains(e.target) && !tab.contains(e.target)) closeSide(); });
+  }
   links.forEach(function(a){ var t=document.querySelector(a.getAttribute("href")); if(t) secs.push({a:a,sec:t}); });
   function sync(){
     /* 現在地＝「基準線より上に見出しがある、いちばん下のセクション」。
@@ -381,7 +388,8 @@ window.SHAD_GALLERY = {
     if(navBar && side){
       var gone=navBar.getBoundingClientRect().bottom<0;
       var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;
-      side.classList.toggle("is-on", gone && !nearFoot);
+      var on=gone && !nearFoot; side.classList.toggle("is-on", on); if(tab) tab.classList.toggle("is-on", on);
+      if(!on) closeSide();
     }
   }
   var last=0, waiting=false;
@@ -409,6 +417,12 @@ window.SHAD_GALLERY = {
       var ps=e.variants.map(function(v){return Number(v.msrpTaxIn)||0;}).filter(Boolean); if(!ps.length) return;
       var mn=Math.min.apply(null,ps), mx=Math.max.apply(null,ps);
       el.textContent="¥"+mn.toLocaleString("ja-JP")+(mx>mn?"〜":"")+"（税込）"; }); }).catch(function(){}); }
+
+  /* ＋α ワンキー化：キーシリンダーの定価（accessories.json / others.json）*/
+  var ae=[].slice.call(document.querySelectorAll("[data-acc-price]"));
+  if(ae.length){ Promise.all(["/data/catalog/accessories.json","/data/catalog/others.json"].map(function(u){return fetch(u).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];});}))
+    .then(function(rs){ var all=rs[0].concat(rs[1]); ae.forEach(function(el){ var c=el.getAttribute("data-acc-price"); var a=all.filter(function(x){return String(x.cjCode)===c;})[0];
+      if(a&&a.msrpTaxIn) el.textContent="¥"+Number(a.msrpTaxIn).toLocaleString("ja-JP")+"（税込）"; }); }); }
 
   /* ⑧ 縦型映像：画面に入ったら再生、外れたら停止 */
   var vids=[].slice.call(document.querySelectorAll("video[data-inview]"));

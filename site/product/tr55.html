@@ -115,6 +115,7 @@ window.SHAD_GALLERY = {
 };
 </script>
 
+<button type="button" class="pd-side-tab" id="pdSideTab" aria-controls="pdSide" aria-expanded="false"><i class="ti ti-list"></i>Index</button>
 <nav class="pd-side" id="pdSide" aria-label="ページ内Index">
   <p class="pd-side-lb">Index</p>
   <a href="#spec" class="pd-side-a"><small>01</small><span>スペック</span></a>
@@ -133,7 +134,7 @@ window.SHAD_GALLERY = {
     <summary>Specifications<small>スペック・商品説明</small><span class="pd-acc-mark"><i class="ti ti-plus"></i></span></summary>
     <div class="pd-acc-body grid md:grid-cols-2 gap-10">
       <div><h2 class="sr-only">Spec</h2><table class="pd-spec"><tr><th>質量</th><td>約5.5kg</td></tr><tr><th>材質</th><td>本体：アルミニウム合金材<br>ロックシステム：ステンレススチール</td></tr><tr><th>サイズ</th><td>本体サイズ：H322mm×W570mm×D418mm</td></tr><tr><th>仕様</th><td>耐荷重：10kg<br>フリップアップヘルメット2個収納可能<br>対応キーシリンダー品番：19708799、27727454(持ち手が黒いキーです。)</td></tr></table></div>
-      <div><p class="text-[14.5px] leading-[2]">フリップアップ2個を収納するTERRA TR55トップケース。5.4kgとアルミケース市場最軽量で、設計・製造は100%バルセロナ。革新的デザインで車体への視覚的インパクトを最小化しました。TERRAを基準たらしめた特許「TERRAロックシステム」など全技術を搭載し、デザイン性でABCアワードを受賞しています。※取付プレートは別売。</p><p class="pd-note">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p></div>
+      <div><p class="text-[14.5px] leading-[2]">フリップアップ2個を収納するTERRA TR55トップケース。約5.5kgとアルミケースとして市場最軽量クラスで、設計・製造は100%バルセロナ。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステムを備え、ミニマルな造形で車体に溶け込みます。ロックシリンダーには防塵プロテクター、トップフレームにはバックレスト取付穴をあらかじめ用意。TERRAの全技術を、シリーズ最大の55Lに。</p><p class="pd-note">メーカー・車種・年式から、必要なフィッティングキットを確認できます。</p></div>
     </div>
   </details>
   <details class="pd-acc">
@@ -265,7 +266,7 @@ window.SHAD_GALLERY = {
   <div class="pd-hero-in">
     <p class="lp-kick">TERRA</p>
     <h2 class="pd-hero-h is-jp">アルミで、旅を軽くする。</h2>
-    <p class="pd-hero-sub">モジュラーヘルメット2個が入る55L。同クラス最軽量5.4kgのアルミトップケースを、TERRAシリーズの映像とともに。</p>
+    <p class="pd-hero-sub">モジュラーヘルメット2個が入る55L。同クラス最軽量クラスの約5.5kgのアルミトップケースを、TERRAシリーズの映像とともに。</p>
     <button type="button" class="pd-play" data-video="/media/products/terra/film.mp4" data-poster="/img/products/terra/poster_film.webp"><i class="ti ti-player-play-filled"></i>TERRAの映像を見る（15秒）</button>
   </div>
 </section>
@@ -286,9 +287,9 @@ window.SHAD_GALLERY = {
       <a href="/engineered-for-riding" class="font-disp text-[14px] tracking-[.16em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition shrink-0">SHAD Technology <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="lp-story"><div class="lp-block">
-      <div class="lp-block-img"><img src="/img/products/tr55/story_light.webp" alt="アルミ市場最軽量、5.4kg。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/tr55/story_light.webp" alt="アルミ市場最軽量クラス、約5.5kg。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">Lightest</span>
-        <h3 class="lp-block-h">アルミ市場最軽量、5.4kg。</h3>
+        <h3 class="lp-block-h">アルミ市場最軽量クラス、約5.5kg。</h3>
         <p class="lp-block-p">設計・製造を100%バルセロナで実施。軽さが装着時の負担と走行中の振動を抑える。</p></div>
     </div><div class="lp-block lp-rev">
       <div class="lp-block-img"><img src="/img/products/tr55/story_ride.webp" alt="車体に、溶け込む。" loading="lazy"></div>
@@ -418,7 +419,14 @@ window.SHAD_GALLERY = {
 (function(){
   /* ② アンカーナビ／右側Index：現在地のハイライトと、Indexの表示切替 */
   var links=[].slice.call(document.querySelectorAll(".pd-nav-a, .pd-side-a")), secs=[];
-  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide");
+  var navBar=document.getElementById("pdNav"), side=document.getElementById("pdSide"), tab=document.getElementById("pdSideTab");
+  /* スマホ：右端の INDEX タブで開閉（PCは常時表示） */
+  function closeSide(){ if(side) side.classList.remove("is-open"); if(tab){ tab.classList.remove("is-open"); tab.setAttribute("aria-expanded","false"); } }
+  if(tab && side){
+    tab.addEventListener("click",function(e){ e.stopPropagation(); var o=!side.classList.contains("is-open"); side.classList.toggle("is-open",o); tab.classList.toggle("is-open",o); tab.setAttribute("aria-expanded",o?"true":"false"); });
+    side.addEventListener("click",function(e){ if(e.target.closest("a")) closeSide(); });
+    document.addEventListener("click",function(e){ if(side.classList.contains("is-open") && !side.contains(e.target) && !tab.contains(e.target)) closeSide(); });
+  }
   links.forEach(function(a){ var t=document.querySelector(a.getAttribute("href")); if(t) secs.push({a:a,sec:t}); });
   function sync(){
     /* 現在地＝「基準線より上に見出しがある、いちばん下のセクション」。
@@ -434,7 +442,8 @@ window.SHAD_GALLERY = {
     if(navBar && side){
       var gone=navBar.getBoundingClientRect().bottom<0;
       var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;
-      side.classList.toggle("is-on", gone && !nearFoot);
+      var on=gone && !nearFoot; side.classList.toggle("is-on", on); if(tab) tab.classList.toggle("is-on", on);
+      if(!on) closeSide();
     }
   }
   var last=0, waiting=false;

@@ -150,7 +150,7 @@ script = r'''
       t.classList.toggle('on',t.dataset.code===st.side);
       var na=false;
       if(tg){ var sg=groupOf(R.sides,t.dataset.code); var tfs= tg.family==='ask'?['red','black']:[tg.family]; var sfs= sg.family==='ask'?['red','black']:[sg.family];
-        na = tfs.every(function(tf){ return sfs.every(function(sf){ var m=R.matrix[tf+'|'+sf]; if(!m) return true; if(m.only_sides&&m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'}; return m.status==='no'; }); }); }
+        na = tfs.every(function(tf){ return sfs.every(function(sf){ var m=R.matrix[tf+'|'+sf]; if(!m) return true; if(m.only_sides&&m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'}; return m.status==='no'||m.status==='no_jp'; }); }); }
       t.classList.toggle('na',na);
     });
     /* STEP3：鍵の色 */
@@ -189,8 +189,8 @@ script = r'''
     if(r.status==='no'){
       h+='<p class="lg-txt">鍵の系統が異なるため、シリンダーの差し替えでは統一できません。TERRAキーの組み合わせはTERRA同士、レッドキーとブラックキーは同系統か、対応する変換部品がある組み合わせでご検討ください。</p>';
       h+='<a href="/products?feat=fullpannier" class="lg-link">フルパニア対応の商品を見る <i class="ti ti-arrow-right"></i></a>';
-    } else if(r.status==='mech_contact'){
-      h+='<p class="lg-txt">'+esc(r.note)+'</p><a href="/contact" class="lg-link">お問い合わせ <i class="ti ti-arrow-right"></i></a>';
+    } else if(r.status==='no_jp'){
+      h+='<p class="lg-txt">'+esc(r.note)+'</p><a href="/products?feat=fullpannier" class="lg-link">統一できる組み合わせを見る <i class="ti ti-arrow-right"></i></a>';
     } else {
       if(r.note) h+='<p class="lg-txt">'+esc(r.note)+'</p>';
       var n=0;
