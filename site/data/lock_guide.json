@@ -1,17 +1,13 @@
 {
-  "_readme": "ワンキー化ガイドのルール（/lock-guide と 商品ページの＋αブロックが参照）。本国 LOCK_GUIDE_2026.pdf を日本で販売中の商品に絞って整理（TR40 は 2026-09 マスターで廃番解除され復帰）。family＝キーシリンダーの系統（terra／red／black）、ask＝製造時期で赤／黒が混在するため利用者に選ばせる。",
+  "_readme": "ワンキー化ガイドのルール（/lock-guide と 商品ページの＋αブロックが参照）。本国 LOCK_GUIDE_2026.pdf を日本で販売中の商品に絞って整理。family＝鍵の系統（red／black。TERRAアルミ・TR50のキーはブラックキーと同じ）、ask＝製造時期で赤／黒が混在するため利用者に選ばせる。overrides＝系統の組み合わせ（matrix）より優先する組み合わせ別ルール。",
   "families": {
-    "terra": {
-      "label": "TERRAキー",
-      "hint": "TERRAアルミ／TR50のシリンダー"
-    },
     "red": {
       "label": "レッドキー",
       "hint": "赤い樹脂ヘッドの鍵。従来のSHADシリンダー"
     },
     "black": {
       "label": "ブラックキー",
-      "hint": "黒いヘッドで刻印入りの鍵。プレミアムシリンダー"
+      "hint": "黒いヘッドで刻印入りの鍵。プレミアムシリンダー（TERRAアルミ・TR50も同じ鍵）"
     }
   },
   "tops": [
@@ -23,7 +19,7 @@
         "TR48",
         "TR55"
       ],
-      "family": "terra",
+      "family": "black",
       "video": "htIF0iBIKdU"
     },
     {
@@ -32,7 +28,7 @@
       "codes": [
         "TR50"
       ],
-      "family": "terra",
+      "family": "black",
       "video": "qOKs_5MUTGs"
     },
     {
@@ -118,7 +114,7 @@
         "TR36",
         "TR47"
       ],
-      "family": "terra",
+      "family": "black",
       "spare": true,
       "video": "ylVNGlngqd4"
     },
@@ -242,20 +238,6 @@
     }
   },
   "matrix": {
-    "terra|terra": {
-      "status": "ok",
-      "spare": true,
-      "part": "19708799"
-    },
-    "terra|black": {
-      "status": "parts",
-      "spare": false,
-      "part": "29177073",
-      "note": "トップ（TERRA）側とサイドをブラックキー系のセットで揃えます。"
-    },
-    "terra|red": {
-      "status": "no"
-    },
     "black|black": {
       "status": "ok",
       "spare": true,
@@ -267,9 +249,6 @@
       "part": "17460910",
       "mech": "top",
       "note": "トップケースのロック機構をレッドキー仕様に交換（別売ロックカバー）したうえで、シリンダーをレッドキーで揃えます。"
-    },
-    "black|terra": {
-      "status": "no"
     },
     "red|red": {
       "status": "ok",
@@ -288,9 +267,6 @@
         "status": "no_jp",
         "note": "トップケースのロック機構をブラックキー仕様へアップグレードする本国パーツが必要ですが、国内では取扱いがありません。この組み合わせでは鍵を統一できません。"
       }
-    },
-    "red|terra": {
-      "status": "no"
     }
   },
   "labels": {
@@ -314,5 +290,88 @@
       "badge": "統一できません（必要な部品の国内取扱なし）",
       "tone": "no"
     }
-  }
+  },
+  "overrides": [
+    {
+      "tops": [
+        "terra_alu",
+        "tr50"
+      ],
+      "sides": [
+        "terra_side"
+      ],
+      "rule": {
+        "status": "ok",
+        "spare": true,
+        "part": "19708799"
+      }
+    },
+    {
+      "tops": [
+        "terra_alu",
+        "tr50"
+      ],
+      "sides": [
+        "sh38x",
+        "tr30",
+        "tr40"
+      ],
+      "rule": {
+        "status": "parts",
+        "spare": false,
+        "part": "29177073",
+        "note": "TERRA側とサイドのシリンダーを、ブラックキー3個セット（SH35／SH36／SH38X／TR30／TR40対応）で揃えます。"
+      }
+    },
+    {
+      "tops": [
+        "terra_alu",
+        "tr50"
+      ],
+      "sides": [
+        "sh3536"
+      ],
+      "skey": "black",
+      "rule": {
+        "status": "parts",
+        "spare": false,
+        "part": "29177073",
+        "note": "TERRA側とサイドのシリンダーを、ブラックキー3個セット（SH35／SH36／SH38X／TR30／TR40対応）で揃えます。"
+      }
+    },
+    {
+      "tops": [
+        "terra_alu",
+        "tr50"
+      ],
+      "side_family": "red",
+      "rule": {
+        "status": "no",
+        "note": "TERRAアルミ／TR50のロック機構はレッドキー仕様に変更できないため、レッドキーのサイドとは統一できません。"
+      }
+    },
+    {
+      "tops": [
+        "sh_prem",
+        "sh51"
+      ],
+      "sides": [
+        "terra_side"
+      ],
+      "rule": {
+        "status": "no",
+        "note": "TERRAサイドケースのシリンダーはSHトップケースには対応しないため、この組み合わせは統一できません。"
+      }
+    },
+    {
+      "top_family": "red",
+      "sides": [
+        "terra_side"
+      ],
+      "rule": {
+        "status": "no",
+        "note": "TERRAサイドケースのシリンダーはレッドキーのトップケースには対応しないため、統一できません。"
+      }
+    }
+  ]
 }

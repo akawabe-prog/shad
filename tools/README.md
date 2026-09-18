@@ -81,8 +81,9 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ## ワンキー化ガイド（/lock-guide）
 
-- ルール：`site/data/lock_guide.json`（本国 LOCK_GUIDE_2026.pdf を日本販売品に絞って整理。tops／sides のグループ、キー系統 family＝terra／red／black（ask＝赤黒混在で利用者が選ぶ）、
-  matrix＝系統の組み合わせごとの結果（ok／parts／mech／mech_contact／no）、parts＝CJ品番と本国品番の対応、各グループの本国手順動画ID）
+- ルール：`site/data/lock_guide.json`（本国 LOCK_GUIDE_2026.pdf を日本販売品に絞って整理。tops／sides のグループ、キー系統 family＝red／black（TERRAアルミ・TR50の鍵はブラックキーと同じ。ask＝赤黒混在で利用者が選ぶ）、
+  matrix＝系統の組み合わせごとの結果（ok／parts／mech／no／no_jp）、overrides＝組み合わせ別の上書き（TERRA同士＝TERRA専用セット、TERRA×SH38X/TR30＝204116R、TERRA×レッド＝不可、TERRAサイド×SHトップ＝不可 など）、
+  parts＝CJ品番と本国品番の対応、各グループの本国手順動画ID）
 - 生成：`python3 tools/build_lock_guide.py` → `site/lock-guide.html`（ヘッダー／ナビ／フッターは fitting-kits.html から複製）
 - ページは JSON を実行時に読み、トップ→サイド→鍵の色 の3ステップで診断。部品の定価は accessories.json から実行時表示。`?top=TR46&side=TR27` で初期選択でき、
   商品ページの「＋α ワンキー化」ブロックの「ワンキー化ガイドで手順を見る」がこのURLに飛ぶ
@@ -120,7 +121,7 @@ python3 tools/build_product_max.py tools/product_max/tr41.json
 - **フルパニア構成（setup）**：トップ＋サイドの組み合わせ提案。`setup` を持つ商品だけに「フルパニア」セクションとナビ項目が入り、
   番号は自動で振り直されます。定価は `products.json` から実行時に表示（複数カラーは最安値に「〜」）。TR46 と TR27 が同じ設定を共有
 - **＋α ワンキー化（setup.onekey）**：フルパニア構成の下に、キーシリンダー差し替えで3ケースを1本の鍵にする案内を出す。
-  Option A（サイド付属の予備シリンダーを使う）／Option B（CJ品番のキーシリンダーセットを購入。定価は accessories.json から実行時表示、購入ページへリンク）と、
+  サイド付属の予備シリンダーで統一できる組み合わせは「How」の1項目だけ（部品セットは出さない。2026-09-18 指示）。予備が無い組み合わせ（TR50×TR30）は「必要な部品」としてCJ品番のセットを表示（定価は accessories.json から実行時表示、購入ページへリンク）。
   本国 Lock Guide（PDF）へのリンク。組み合わせ別の部品：TERRAアルミ＝19708799（D1TRBOR）、TR46/TR41×TR27＝17460910（200062R・レッドキー）、
   SH51/SH58X/SH59X×SH38X＝17460927（203134R・ブラックキー）、TR50×TR30＝29177073（204116R・ブラックキー）
 - **関連商品（related）**：品番リストを指定すると cards.json からカードを自動生成（自商品は除外）。`related_title` で表示見出しを変えられる（例：防水系4点を「Waterproof Series」）。内部の「Same Series」見出しは purchase.js の差し込み位置に使うため sr-only で残る

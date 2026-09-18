@@ -110,21 +110,20 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       <div class="lg-card">
         <p class="pd-sec-en">Key Types</p>
         <h2 class="text-[20px] font-bold mt-1">鍵の種類の見分け方</h2>
-        <div class="grid grid-cols-3 gap-4 mt-5 text-center">
-          <div><img src="/img/lock-guide/key_red.webp" alt="レッドキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">レッドキー</b><span class="block text-[12px] text-neutral-500 mt-1">赤い樹脂ヘッド。従来のSHADシリンダー。TR41・TR46・SH47・SH44・SH33 など</span></div>
-          <div><img src="/img/lock-guide/key_black.webp" alt="ブラックキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">ブラックキー</b><span class="block text-[12px] text-neutral-500 mt-1">黒いヘッドで刻印入りのプレミアムシリンダー。SH51・SH38X・TR30、近年のSH58X／SH59X／SH48</span></div>
-          <div><div class="lg-keyimg flex items-center justify-center bg-mist rounded-[12px]"><span class="font-disp font-semibold text-[26px] tracking-[.08em] text-ink">TERRA</span></div><b class="block mt-2 text-[14px]">TERRAキー</b><span class="block text-[12px] text-neutral-500 mt-1">TERRAアルミケースとTR50専用のシリンダー</span></div>
+        <div class="grid grid-cols-2 gap-4 mt-5 text-center">
+          <div><img src="/img/lock-guide/key_red.webp" alt="レッドキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">レッドキー</b><span class="block text-[12px] text-neutral-500 mt-1">赤い樹脂ヘッド。従来のSHADシリンダー。TR41・TR46・TR27・SH47・SH44・SH33・SH23 など</span></div>
+          <div><img src="/img/lock-guide/key_black.webp" alt="ブラックキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">ブラックキー</b><span class="block text-[12px] text-neutral-500 mt-1">黒いヘッドで刻印入りのプレミアムシリンダー。SH51・SH38X・TR30、近年のSH58X／SH59X／SH48。TERRAアルミケース・TR50の鍵も同じブラックキーです</span></div>
         </div>
       </div>
       <div class="lg-card">
         <p class="pd-sec-en">How It Works</p>
         <h2 class="text-[20px] font-bold mt-1">ワンキー化の仕組み</h2>
         <ol class="lg-steps mt-5">
-          <li><b>予備シリンダーを用意する</b><span>多くのサイドケースには右側に予備のキーシリンダーが1個付属しています（Option A）。ない場合や3個まとめて揃えたい場合はキーシリンダーセットを購入します（Option B）。</span></li>
+          <li><b>予備シリンダーを用意する</b><span>多くのサイドケースには右側に予備のキーシリンダーが1個付属しています。付属しないバッグ類や、形状が合わない組み合わせはキーシリンダーセットを購入します。</span></li>
           <li><b>トップケースのシリンダーを差し替える</b><span>ロック部のカバーを外し、シリンダーを引き抜いて、サイドと同じ鍵のシリンダーを差し込みます。</span></li>
           <li><b>3つのケースを1本の鍵で</b><span>差し替え後はトップもサイドも同じ鍵で開閉・着脱できます。余った鍵は予備として保管してください。</span></li>
         </ol>
-        <p class="text-[12px] text-neutral-500 mt-4 leading-relaxed">鍵の系統（TERRA／レッド／ブラック）が異なる組み合わせは、シリンダーの差し替えだけでは統一できません。上の診断でご確認ください。</p>
+        <p class="text-[12px] text-neutral-500 mt-4 leading-relaxed">鍵の系統（レッド／ブラック）が異なる組み合わせや、シリンダーの形状が合わない組み合わせは、差し替えだけでは統一できません。上の診断でご確認ください。</p>
       </div>
     </section>
 
@@ -213,8 +212,13 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
   function statusFor(){
     var tg=groupOf(R.tops,st.top), sg=groupOf(R.sides,st.side); if(!tg||!sg) return null;
     var tf=famOf(tg,st.tkey), sf=famOf(sg,st.skey); if(!tf||!sf) return {pending:true};
-    var m=R.matrix[tf+'|'+sf]; if(!m) return {status:'no'};
+    var m=R.matrix[tf+'|'+sf]; if(!m) m={status:'no'};
     if(m.only_sides && m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'};
+    (R.overrides||[]).forEach(function(o){
+      var okT = o.tops ? o.tops.indexOf(tg.id)>=0 : (o.top_family ? o.top_family===tf : true);
+      var okS = o.sides ? o.sides.indexOf(sg.id)>=0 : (o.side_family ? o.side_family===sf : true);
+      if(okT && okS && (!o.tkey||o.tkey===tf) && (!o.skey||o.skey===sf)) m=o.rule;
+    });
     return Object.assign({tf:tf,sf:sf,tg:tg,sg:sg},m);
   }
   function sync(){
@@ -225,7 +229,9 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       t.classList.toggle('on',t.dataset.code===st.side);
       var na=false;
       if(tg){ var sg=groupOf(R.sides,t.dataset.code); var tfs= tg.family==='ask'?['red','black']:[tg.family]; var sfs= sg.family==='ask'?['red','black']:[sg.family];
-        na = tfs.every(function(tf){ return sfs.every(function(sf){ var m=R.matrix[tf+'|'+sf]; if(!m) return true; if(m.only_sides&&m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'}; return m.status==='no'||m.status==='no_jp'; }); }); }
+        na = tfs.every(function(tf){ return sfs.every(function(sf){ var m=R.matrix[tf+'|'+sf]||{status:'no'}; if(m.only_sides&&m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'};
+          (R.overrides||[]).forEach(function(o){ var okT=o.tops?o.tops.indexOf(tg.id)>=0:(o.top_family?o.top_family===tf:true); var okS=o.sides?o.sides.indexOf(sg.id)>=0:(o.side_family?o.side_family===sf:true); if(okT&&okS&&(!o.tkey||o.tkey===tf)&&(!o.skey||o.skey===sf)) m=o.rule; });
+          return m.status==='no'||m.status==='no_jp'; }); }); }
       t.classList.toggle('na',na);
     });
     /* STEP3：鍵の色 */
@@ -270,8 +276,9 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       if(r.note) h+='<p class="lg-txt">'+esc(r.note)+'</p>';
       var n=0;
       if(r.mech==='top'){ n++; var codes=(tg.downgrade&&tg.downgrade[st.top])||[]; h+='<div class="lg-opt"><span class="lg-opt-lb">Step '+n+'</span><b>トップケースのロック機構をレッドキー仕様に交換</b><p>専用ロックカバー（レッドキー付属）に交換します。カラーに合うものをお選びください。</p>'+codes.map(partCard).join('')+'</div>'; }
-      if(r.spare && sg.spare){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">Option A</span><b>サイドケース付属の予備シリンダーを使う</b><p>'+esc(sg.label)+'の右側ケースに付属する予備キーシリンダーを、トップケースのシリンダーと差し替えます。追加費用はかかりません。</p></div>'; }
-      if(r.part){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">'+(r.spare&&sg.spare?'Option B':'必要な部品')+'</span><b>キーシリンダーセットで揃える</b><p>'+(r.spare&&sg.spare?'3個をまとめて同じ鍵に統一したい場合や、予備が必要な場合はこちら。':'このセットのシリンダーに差し替えて、トップとサイドの鍵を統一します。')+'</p>'+partCard(r.part)+'</div>'; }
+      var useSpare = r.spare && sg.spare;
+      if(useSpare){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">How</span><b>サイドケース付属の予備シリンダーを使う</b><p>'+esc(sg.label)+'の右側ケースに付属する予備キーシリンダーを、トップケースのシリンダーと差し替えます。追加部品は不要です。</p></div>'; }
+      else if(r.part){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">必要な部品</span><b>キーシリンダーセットで揃える</b><p>このセットのシリンダーに差し替えて、トップとサイドの鍵を統一します。</p>'+partCard(r.part)+'</div>'; }
       var vt = tg.family==='ask' ? tg['video_'+r.tf] : tg.video;
       var vids=video(vt,tg.label+' の交換手順')+video(sg.video,sg.label+' の交換手順');
       if(vids) h+='<div class="lg-videos"><p class="lg-opt-lb">Watch</p>'+vids+'<small>本国SHADの手順動画（英語）。作業は自己責任で、難しい場合は取扱店へご相談ください。</small></div>';

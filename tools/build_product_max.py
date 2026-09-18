@@ -214,7 +214,9 @@ def render(cfg, P):
                             % (o["part"], o["part"], o["name"], o["part"], o["part"]))
                 return ('    <div class="pd-onekey-opt"><span class="pd-onekey-lb">%s</span><b>%s</b><p>%s</p>%s</div>\n'
                         % (label, o["title"], o["text"], part))
-            opts = "".join(opt(lb, ok[k]) for lb, k in (("Option A", "optionA"), ("Option B", "optionB")) if ok.get(k))
+            both = ok.get("optionA") and ok.get("optionB")
+            opts = "".join(opt(lb if both else ("必要な部品" if ok[k].get("part") else "How"), ok[k])
+                           for lb, k in (("Option A", "optionA"), ("Option B", "optionB")) if ok.get(k))
             guide = ""
             if ok.get("jp_link"):   # サイト内の日本語ガイド（/lock-guide?top=…&side=…）
                 guide += ('<a href="%s" class="pd-onekey-guide is-jp"><i class="ti ti-key"></i>%s</a>'
