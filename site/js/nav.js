@@ -196,8 +196,13 @@
       cards = items; return cards;
     }).catch(function(){ cards = []; return cards; });
   }
+  // 表記ゆらぎ（リアボックス→トップケース 等）を正規化してから照合
+  var SYN = [[/リアボックス|リヤボックス|トップボックス|テールボックス|リアケース|リヤケース/g, 'トップケース'],
+             [/サイドボックス|パニアケース|パニア/g, 'サイドケース'], [/シートバック|リアバッグ|リヤバッグ/g, 'シートバッグ'],
+             [/バック/g, 'バッグ'], [/ボックス/g, 'ケース'], [/ハードケース/g, 'ケース'], [/防水バッグ/g, '防水']];
+  function syn(s){ SYN.forEach(function(p){ s = s.replace(p[0], p[1]); }); return s; }
   function render(){
-    var q = norm(input.value); active = -1;
+    var q = norm(syn(input.value)); active = -1;
     if (!q) { list.innerHTML = ''; return; }
     var hit = items.filter(function(it){ return it.key.indexOf(q) >= 0; });
     hit.sort(function(a,b){ var ac = norm(a.code).indexOf(q)===0 ? 0 : 1, bc = norm(b.code).indexOf(q)===0 ? 0 : 1; return ac - bc || a.code.localeCompare(b.code); });

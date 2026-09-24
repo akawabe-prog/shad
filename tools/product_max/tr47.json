@@ -70,21 +70,21 @@
   "stories": [
     {
       "img": "/img/products/tr47/alu_02.webp",
-      "kick": "Adventure",
-      "h": "積める、TERRAサイド。",
-      "p": "左右47Lの大容量。重心を低く、積載を最大に。"
+      "kick": "Capacity",
+      "h": "片側47L、長旅の収納力。",
+      "p": "長距離ツーリングの装備を受け止める大容量が特長。左右に分けて積載でき、荷物の整理にも便利です。"
     },
     {
       "img": "/img/products/terra/set_ls_at14.webp",
-      "kick": "Perfect Match",
-      "h": "TERRAトップと、揃える。",
-      "p": "同シリーズと組み合わせ、統一された旅仕様へ。"
+      "kick": "Low Centre of Gravity",
+      "h": "低い位置に積んで、安定感へ。",
+      "p": "車体側面へ荷物を振り分けることで、トップケースだけに積む場合より重心を抑えやすい構成です。走行時のバランスに配慮しています。"
     },
     {
       "img": "/img/products/terra/story_lock.webp",
       "kick": "TERRA Lock System",
-      "h": "特許ロックで、確実に。",
-      "p": "鍵ひとつで開閉も着脱も行える。"
+      "h": "開閉も着脱も、ひとつのキーで。",
+      "p": "TERRAロックシステムを搭載。ケースの開閉と車体への着脱をひとつのキーで行え、操作性と防犯性を両立します。"
     }
   ],
   "diagrams": [

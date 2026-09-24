@@ -70,21 +70,21 @@
   "stories": [
     {
       "img": "/img/products/terra/story_at_rear.webp",
-      "kick": "Adventure",
-      "h": "スリムな、TERRAサイド。",
-      "p": "36Lでもすり抜けを諦めないスリム設計。"
+      "kick": "Slim",
+      "h": "車幅を抑えた、TERRAサイド。",
+      "p": "片側36Lの収納力を備えながら、張り出しを抑えた形状が特長。走行時の取り回しに配慮しています。"
     },
     {
       "img": "/img/products/terra/set_at_terra.webp",
       "kick": "Perfect Match",
-      "h": "TERRAトップと、揃える。",
-      "p": "同シリーズと組み合わせ、統一された旅仕様へ。"
+      "h": "トップケースと揃う、旅の装備。",
+      "p": "TERRAシリーズのトップケースと組み合わせれば、統一感のある積載システムを構築できます。長距離ツーリングの荷物にも対応します。"
     },
     {
       "img": "/img/products/terra/story_lock.webp",
       "kick": "TERRA Lock System",
-      "h": "特許ロックで、確実に。",
-      "p": "鍵ひとつで開閉も着脱も行える。"
+      "h": "開閉も着脱も、ひとつのキーで。",
+      "p": "TERRAロックシステムを搭載。ケースの開閉と車体への着脱をひとつのキーで行え、操作性と防犯性を両立します。"
     }
   ],
   "diagrams": [
