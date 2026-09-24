@@ -25,7 +25,7 @@
     "poster_sp": "/img/products/tr30/poster_hero_sp.webp",
     "kick": "Waterproof",
     "heading": "雨の日も、<br>荷物は乾いたまま。",
-    "sub": "IPX6の完全防水と、鍵で守るダブルロック。3P／4Pシステムに数秒で着脱できる、TERRAの防水サドルバッグ。",
+    "sub": "IPX6相当の防水性能と、鍵で守るダブルロック。3P／4Pシステムに数秒で着脱できる、TERRAの防水サドルバッグ。",
     "film": "/media/products/tr30/film.mp4",
     "poster_film": "/img/products/tr30/poster_film.webp",
     "film_label": "フル映像を見る（25秒）"
@@ -44,7 +44,7 @@
   ],
   "features": {
     "en": "Features",
-    "heading": "完全防水と、鍵のかかるソフトバッグ。"
+    "heading": "高い防水性と、鍵のかかるソフトバッグ。"
   },
   "stories": [
     {
@@ -95,7 +95,7 @@
   "setup": {
     "en": "TERRA Adventure Bags",
     "heading": "TR50 × TR30。ソフトバッグで、フルパニア。",
-    "lead": "フルフェイス2個が入る40LのTR50ツーリングバッグに、完全防水の30L×2、TR30サドルバッグを組み合わせたTERRAのソフトバッグ構成。合計100L。どれも鍵で車体に固定でき、ハードケースより軽く、転倒時も車体にやさしい。",
+    "lead": "フルフェイス2個が入る40LのTR50ツーリングバッグに、IPX6相当の防水性能をもつ30L×2、TR30サドルバッグを組み合わせたTERRAのソフトバッグ構成。合計100L。どれも鍵で車体に固定でき、ハードケースより軽く、転倒時も車体にやさしい。",
     "total": "100",
     "visuals": [
       {
@@ -161,7 +161,7 @@
       "src": "/media/products/tr30/reel_waterproof.mp4",
       "poster": "/img/products/tr30/poster_reel_waterproof.webp",
       "en": "Waterproof",
-      "jp": "IPX6の完全防水。"
+      "jp": "IPX6相当の防水性能。"
     },
     {
       "src": "/media/products/tr30/hero_sp.mp4",

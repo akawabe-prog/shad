@@ -44,7 +44,7 @@
     "poster_pc": "/img/products/terra/poster_hero.webp",
     "kick": "TERRA",
     "heading": "アルミで、旅を軽くする。",
-    "sub": "片側47L。トレイルヘルメット1個、またはフルフェイスとジェットの2個が収まるTERRAのアルミサイドケース。",
+    "sub": "片側47L。ヘルメットはフルフェイス・オフロードヘルメットであれば1個、フリップアップとジェットヘルメットの組み合わせであれば2個収納可能な、TERRAのアルミサイドケース。",
     "film": "/media/products/terra/film.mp4",
     "poster_film": "/img/products/terra/poster_film.webp",
     "film_label": "TERRAの映像を見る（15秒）",
@@ -110,13 +110,13 @@
       "img": "/img/products/terra/det_black_net.webp",
       "alt": "インナーメッシュ",
       "b": "Inner Mesh",
-      "span": "右側ケースにインナーメッシュ1枚が付属。"
+      "span": "インナーメッシュ（別売）で、荷物の飛び出しを抑える。"
     }
   ],
   "setup": {
     "en": "TERRA Full Pannier",
     "heading": "TR48 × TR47。TERRAの基準、フルパニア。",
-    "lead": "ヘルメット（フリップアップ＋ジェットで2個）が入るTR48トップケースに、片側47LのTR47サイドケースを組み合わせた、TERRAの本命フルパニア。合計142Lの積載を、硬質アルミの軽さで。",
+    "lead": "TR48トップケース（ヘルメットはフルフェイス・オフロードは1個、フリップアップ＋ジェットで2個）に、片側47LのTR47サイドケースを組み合わせた、TERRAの本命フルパニア。合計142Lの積載を、硬質アルミの軽さで。",
     "total": "142",
     "visuals": [
       {
@@ -137,7 +137,7 @@
         "img": "/img/products/tr48/alu_01.webp",
         "role": "Top",
         "name": "TR48 TERRA トップケース",
-        "sub": "48L／フリップアップ＋ジェット2個"
+        "sub": "48L／フルフェイス・オフロード1個、フリップアップ＋ジェット2個"
       },
       {
         "code": "TR47",
@@ -179,7 +179,7 @@
       "src": "/media/products/terra/reel_capacity.mp4",
       "poster": "/img/products/terra/poster_reel_capacity.webp",
       "en": "Capacity",
-      "jp": "TR47に、トレイルヘルメット。"
+      "jp": "TR47に、オフロードヘルメット1個。"
     },
     {
       "src": "/media/products/terra/reel_locking.mp4",

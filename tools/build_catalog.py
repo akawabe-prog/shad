@@ -376,6 +376,8 @@ def apply_overrides(item):
             item[k] = (item.get(k) or "").replace(a, b)
     for k, v in (o.get("set") or {}).items():
         item[k] = v
+    for k, v in (o.get("append") or {}).items():          # 末尾に追記（注意事項に一文足す等）
+        item[k] = ((item.get(k) or "").rstrip() + "\n" + v).strip() if item.get(k) else v
     if o.get("images0") and item.get("images"):
         item["images"] = [o["images0"]] + list(item["images"][1:])
         item["thumb"] = o["images0"]
