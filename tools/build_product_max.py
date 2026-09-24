@@ -60,6 +60,20 @@ def esc(s):
     return (s or "").replace("&", "&amp;").replace('"', "&quot;")
 
 
+def master_notes_html(code):
+    """products.json（商品マスター由来）の注意事項を Notes ブロックにする。無ければ空文字"""
+    path = os.path.join(SITE, "data", "catalog", "products.json")
+    if not os.path.exists(path):
+        return ""
+    e = json.load(open(path, encoding="utf-8")).get(code) or {}
+    v = (e.get("variants") or [{}])[0]
+    note = (v.get("note") or "").strip()
+    if not note:
+        return ""
+    t = note.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>")
+    return '<div class="pd-notes"><h3 class="pd-notes-h">Notes</h3><p>%s</p></div>' % t
+
+
 def grab(s, a, b):
     m = re.search(a + r".*?" + b, s, re.S)
     if not m:
@@ -300,7 +314,7 @@ window.SHAD_GALLERY = {ov};
     <summary>Specifications<small>スペック・商品説明</small><span class="pd-acc-mark"><i class="ti ti-plus"></i></span></summary>
     <div class="pd-acc-body grid md:grid-cols-2 gap-10">
       <div><h2 class="sr-only">Spec</h2><table class="pd-spec">{P["spec_rows"]}</table></div>
-      <div><p class="text-[14.5px] leading-[2]">{P["desc"]}</p><p class="pd-note">{P["notes"]}</p></div>
+      <div><p class="text-[14.5px] leading-[2]">{P["desc"]}</p><p class="pd-note">{P["notes"]}</p>{P["master_notes"]}</div>
     </div>
   </details>
   <details class="pd-acc">
@@ -468,6 +482,7 @@ def main():
     path = os.path.join(SITE, "product", code.lower() + ".html")
     s = open(path, encoding="utf-8").read()
     P = extract(s)
+    P["master_notes"] = master_notes_html(code)   # 注意事項は常に products.json から
 
     # メインキャッチ（本文＋meta 3箇所）
     if cfg.get("catch"):

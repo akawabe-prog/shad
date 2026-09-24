@@ -23,7 +23,7 @@
   }
   function imgUrl(p) {
     if (!p) return "";
-    return /^https?:/.test(p) ? p : IMG_HOST + p;
+    return (/^https?:/.test(p) || p.indexOf("/img/") === 0) ? p : IMG_HOST + p;   // /img/… はサイト内画像
   }
   function currentCode() {
     var el = document.querySelector("[data-product-fitment-checker]");

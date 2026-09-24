@@ -487,3 +487,35 @@ python3 tools/gen_pages_from_catalog.py # 追加ページに反映（既存ペ�
 
 ---
 
+
+## 商品マスターの上書きルール（tools/master_overrides.json）
+
+商品マスター（ItemList_SHAD.csv）の値が実物と違うとき、マスター側の修正を待たずにサイトだけ直すための仕組みです。
+`build_catalog.py` が products.json を作るときに、品番（CJコード）単位で適用します。
+
+```json
+"18319279": {"_memo": "TR48 シルバー：ロット番号シールは黄色", "replace": {"remarks": [["青色シール", "黄色シール"]]}},
+```
+
+- `replace`：項目内の文字列置換　`set`：項目を丸ごと置き換え　`images0`：画像1枚目を差し替え（`/img/…` はサイト内画像）
+- マスター側が直ったらルールは削除する（残っていても害はない）
+- 現在の登録：TR48/TR55/TR37 のロット番号シール色（青→黄）
+- カラー別の看板画像は MAX 設定JSONの `gallery_override` 側（例：TR41 アルミパネルは 1600×1600 の正方形に揃えた画像を使用。横長だと正方形枠で拡大表示されて「寄りすぎ」になる）
+
+## 商品ページの Notes（注意事項）と保証文
+
+- **Notes** はマスターの「注意」欄（products.json の `note`）を載せる。MAXテンプレートは `build_product_max.py` が毎回 products.json から生成
+  （SPECアコーディオン内 `.pd-notes`）。旧テンプレートのページは Description 列の末尾に `<h2>Notes</h2>` ブロックとして静的に入れてある
+- **保証文（1年保証の中身）** はマスターの「備考」欄（`remarks`）と同じ文にする。以前は全ページ「トップケース…青色シール」の固定文だったため、
+  バッグ（PO#タグ）やサイドケース、アルミケース（黄色シール）で食い違っていた。remarks が無い商品はシールの一文を外した汎用文
+- マスターに注意事項が無い商品（E04・SC25・SL58）は Notes を出していない
+
+## マスターとの食い違いチェック（tools/check_master_consistency.py）
+
+```bash
+python3 tools/check_master_consistency.py            # 全商品
+python3 tools/check_master_consistency.py TR48 SH44  # 型番を絞る
+```
+
+質量・保証文・Notes・ヘルメットアイコン（一覧と詳細の一致、「収納できません」との矛盾）・色数・古い kg 表記の残りを一覧します。
+ページの文言は手書き部分が多くマスター更新で自動では直らないので、**マスター更新後と公開前に必ず実行**してください。

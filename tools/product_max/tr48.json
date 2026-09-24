@@ -30,7 +30,7 @@
     "poster_pc": "/img/products/terra/poster_hero.webp",
     "kick": "TERRA",
     "heading": "アルミで、旅を軽くする。",
-    "sub": "フルフェイス2個が入る48L。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステム。TERRAの基準となるトップケース。",
+    "sub": "フルフェイス・オフロードヘルメットなら1個、フリップアップ＋ジェットなら2個が入る48L。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステム。TERRAの基準となるトップケース。",
     "film": "/media/products/terra/film.mp4",
     "poster_film": "/img/products/terra/poster_film.webp",
     "film_label": "TERRAの映像を見る（15秒）"
@@ -39,7 +39,7 @@
     {
       "src": "/img/products/terra/img_edit.webp",
       "alt": "TR48に荷物を積む",
-      "caption": "フルフェイス2個。旅の荷物が、ここに収まる。"
+      "caption": "ヘルメットも、旅の荷物も。ここに収まる。"
     },
     {
       "src": "/img/products/terra/img_at16.webp",
@@ -49,7 +49,7 @@
   ],
   "features": {
     "en": "Features",
-    "heading": "フルフェイス2個。TERRAの基準器。"
+    "heading": "ヘルメットと荷物を、確実に。TERRAの基準器。"
   },
   "stories": [
     {
@@ -100,7 +100,7 @@
   "setup": {
     "en": "TERRA Full Pannier",
     "heading": "TR48 × TR47。TERRAの基準、フルパニア。",
-    "lead": "フルフェイス2個が入るTR48トップケースに、片側47LのTR47サイドケースを組み合わせた、TERRAの本命フルパニア。合計142Lの積載を、硬質アルミの軽さで。",
+    "lead": "ヘルメット（フリップアップ＋ジェットで2個）が入るTR48トップケースに、片側47LのTR47サイドケースを組み合わせた、TERRAの本命フルパニア。合計142Lの積載を、硬質アルミの軽さで。",
     "total": "142",
     "visuals": [
       {
@@ -121,7 +121,7 @@
         "img": "/img/products/tr48/alu_01.webp",
         "role": "Top",
         "name": "TR48 TERRA トップケース",
-        "sub": "48L／フルフェイス2個"
+        "sub": "48L／フリップアップ＋ジェット2個"
       },
       {
         "code": "TR47",

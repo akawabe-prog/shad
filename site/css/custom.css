@@ -1414,3 +1414,8 @@ html{scroll-behavior:smooth;}
 .srch-quick a{font-size:12.5px;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);}
 .srch-quick a:hover{border-color:#fff;color:#fff;}
 @media (max-width:640px){ .srch-in{padding:72px 18px 40px;} .srch-box input{font-size:17px;} }
+
+/* 商品ページ：Notes（商品マスターの注意事項）— MAXテンプレートのSPECアコーディオン内 */
+.pd-notes{margin-top:22px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);}
+.pd-notes-h{font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:12.5px;color:#9a9a9a;}
+.pd-notes p{font-size:12.5px;line-height:1.95;color:#666;margin-top:8px;}

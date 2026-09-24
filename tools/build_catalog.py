@@ -43,6 +43,8 @@ from datetime import datetime, timezone, timedelta
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(ROOT, "data-source", "ItemList_SHAD.csv")
 OUT_DIR = os.path.join(ROOT, "site", "data", "catalog")
+OVERRIDES_PATH = os.path.join(ROOT, "tools", "master_overrides.json")   # マスター値のサイト側上書き（品番ごと）
+
 # 容量はマスターの「容量」欄が空のことがあるため、ECのAPIから取得した値で補完する
 # （生成： python3 tools/fetch_api_sizes.py）
 API_SIZES_PATH = os.path.join(ROOT, "site", "data", "catalog", "api_sizes.json")
@@ -354,6 +356,31 @@ def images_of(row):
     return out
 
 
+def load_overrides():
+    """tools/master_overrides.json を読む（無ければ空）。キー=品番、値={replace:{項目:[[前,後]]}, set:{項目:値}, images0:パス}"""
+    if not os.path.exists(OVERRIDES_PATH):
+        return {}
+    return {k: v for k, v in json.load(open(OVERRIDES_PATH, encoding="utf-8")).items() if not k.startswith("_")}
+
+
+OVERRIDES = load_overrides()
+
+
+def apply_overrides(item):
+    """本体商品1行に上書きルールを適用（該当品番が無ければ何もしない）"""
+    o = OVERRIDES.get(item.get("cjCode") or "")
+    if not o:
+        return
+    for k, pairs in (o.get("replace") or {}).items():
+        for a, b in pairs:
+            item[k] = (item.get(k) or "").replace(a, b)
+    for k, v in (o.get("set") or {}).items():
+        item[k] = v
+    if o.get("images0") and item.get("images"):
+        item["images"] = [o["images0"]] + list(item["images"][1:])
+        item["thumb"] = o["images0"]
+
+
 def base_item(row):
     """1商品（1品番）の共通フィールド。"""
     code = cell(row, "品番")
@@ -430,6 +457,7 @@ def main():
             item["descSub"] = cell(r, "商品説明サブ")
             item["remarks"] = cell(r, "備考")
             item["note"] = cell(r, "注意")
+            apply_overrides(item)
             entry = products.setdefault(code, OrderedDict([("code", code), ("variants", [])]))
             entry["variants"].append(item)
             continue
