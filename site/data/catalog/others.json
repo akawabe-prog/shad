@@ -196,50 +196,6 @@
   "displayName": "TERRA専用キーシリンダー 3個セット"
  },
  {
-  "cjCode": "27641019",
-  "name": "E48SR サイドバッグ 30L ブラック",
-  "maker": "SHAD(シャッド)",
-  "series": "サイドバッグ",
-  "category": "サイドバッグ",
-  "mainCategory": "収納・BOX",
-  "color": "ブラック",
-  "colorMain": "ブラック/レッド",
-  "size": "15L/15L",
-  "msrpTaxIn": 72600,
-  "makerCode": "X0SE48SR",
-  "jan": "8430358680470",
-  "capacity": "15L",
-  "capacitySpec": "30L(片側15L)",
-  "capacityPerUnit": [
-   "15L/15L"
-  ],
-  "capacityTotal": "",
-  "weight": "",
-  "material": "本体：ABS樹脂",
-  "dimensions": "本体：W450mm×D270mm×H290mm",
-  "spec": "・セキュリティロック\n耐荷重量：3.5kg(片側)\n対応キーシリンダー品番：17460910(持ち手が赤いキーです。)",
-  "included": "左右2個セット\nインナーバッグ・鍵付属",
-  "catch": "ABS樹脂製ハードシェルの頑丈さと持ち運びに便利なハンドルを備え、ライダーが本当に必要とする機能を追求したサイドバッグです。",
-  "fitModels": "",
-  "fitMakers": "",
-  "images": [
-   "/items/27641019_1.jpg",
-   "/items/27641019_2.jpg",
-   "/items/27641019_3.jpg",
-   "/items/27641019_4.jpg",
-   "/items/27641019_5.jpg",
-   "/items/27641019_6.jpg",
-   "/items/27641019_7.jpg",
-   "/items/27641019_8.jpg",
-   "/items/27641019_9.jpg"
-  ],
-  "thumb": "https://img.customjapan.net/items/27641019_1.jpg",
-  "forCodes": [
-   "E48"
-  ],
-  "displayName": "E48SR サイドバッグ 30L ブラック"
- },
- {
   "cjCode": "27727454",
   "name": "TERRA専用キーシリンダー 1個セット",
   "maker": "SHAD(シャッド)",

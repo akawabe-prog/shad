@@ -836,7 +836,8 @@
   "thumb": "https://img.customjapan.net/items/17415545_1.jpg",
   "forCodes": [
    "SR38",
-   "E48"
+   "E48",
+   "E48SR"
   ],
   "displayName": "SR38/E48SR専用ウォールラック"
  },
@@ -876,6 +877,7 @@
    "SH35",
    "SH36",
    "E48",
+   "E48SR",
    "SR38"
   ],
   "displayName": "キーシリンダー レッドキー 3個セット"

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-25T09:03:14+09:00",
+ "generatedAt": "2026-09-25T11:30:44+09:00",
  "source": "data-source/ItemList_SHAD.csv",
  "totalRows": 1841,
  "kept": 884,
@@ -12,12 +12,12 @@
   "販売終了(ステータス DC4)": 1
  },
  "counts": {
-  "products": 46,
-  "productVariants": 72,
+  "products": 47,
+  "productVariants": 73,
   "fitting": 662,
   "accessories": 114,
-  "others": 36,
-  "accessoryIndexCodes": 33
+  "others": 35,
+  "accessoryIndexCodes": 34
  },
  "exclusionRules": [
   "CJ廃番 = 1（廃盤）",
