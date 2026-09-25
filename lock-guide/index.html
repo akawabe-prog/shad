@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ワンキー化ガイド｜SHAD JAPAN — トップとサイドの鍵をひとつに</title>
+<meta name="description" content="SHADのトップケースとサイドケースの鍵をひとつにまとめる方法を、組み合わせごとに案内します。付属の予備シリンダーで済むか、追加部品が必要かを3ステップで確認できます。">
+
+<!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SHAD JAPAN">
+<meta property="og:title" content="ワンキー化ガイド｜SHAD JAPAN — トップとサイドの鍵をひとつに">
+<meta property="og:description" content="SHADのトップケースとサイドケースの鍵をひとつに。組み合わせを選ぶと必要な部品と手順がわかります。">
+<meta property="og:url" content="https://www.shad-japan.com/lock-guide">
+<meta property="og:image" content="/shad/img/og_default.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ワンキー化ガイド｜SHAD JAPAN — トップとサイドの鍵をひとつに">
+<meta name="twitter:description" content="SHADのトップケースとサイドケースの鍵をひとつに。組み合わせを選ぶと必要な部品と手順がわかります。">
+<meta name="twitter:image" content="/shad/img/og_default.jpg">
+<link rel="canonical" href="https://www.shad-japan.com/lock-guide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#161616',mist:'#F4F3F1'},fontFamily:{disp:['"Barlow Condensed"','"Noto Sans JP"','sans-serif'],sans:['"Noto Sans JP"','"Hiragino Kaku Gothic ProN"','sans-serif']},maxWidth:{site:'1180px'}}}};
+</script>
+<link rel="stylesheet" href="/shad/css/custom.css">
+</head>
+<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="sticky top-0 z-50 bg-[rgba(10,10,10,.92)] backdrop-blur-md text-white">
+  <div class="w-full px-6 md:px-12 h-[72px] flex items-center gap-10">
+    <a href="/shad/" class="shrink-0">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-10 w-auto">
+    </a>
+    <ul class="hidden lg:flex gap-6 xl:gap-8 ml-auto font-disp uppercase tracking-[.12em] xl:tracking-[.14em] text-[14px] xl:text-[15.5px] font-medium text-white/80 whitespace-nowrap">
+      <li><a class="hover:text-white transition" href="/shad/products">Products</a></li>
+      <li><a class="hover:text-white transition" href="/shad/fitment">For Your Motorcycle</a></li><li><a class="hover:text-white transition" href="/shad/fitting-kits">Fitting Kits</a></li>
+      <li><a class="hover:text-white transition" href="/shad/engineered-for-riding">Technology</a></li>
+      <li><a class="hover:text-white transition" href="/shad/about">About</a></li>
+      <li><a class="hover:text-white transition" href="/shad/store-locator">Store</a></li>
+    </ul>
+    <div class="flex items-center gap-6 ml-auto lg:ml-0">
+      <button id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile" class="lg:hidden text-white/85 hover:text-white transition order-last"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+      <button aria-label="検索" class="text-white/80 hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div id="navMobile" class="lg:hidden hidden fixed inset-x-0 top-[72px] z-40 bg-[rgba(10,10,10,.98)] backdrop-blur-md text-white px-6 pb-6 pt-2 max-h-[calc(100vh-72px)] overflow-y-auto">
+    <a href="/shad/products" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Products</a>
+    <a href="/shad/fitment" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">For Your Motorcycle</a>
+    <a href="/shad/fitting-kits" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Fitting Kits</a>
+    <a href="/shad/engineered-for-riding" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Technology</a>
+    <a href="/shad/about" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">About</a>
+    <a href="/shad/store-locator" class="block py-3.5 border-b border-white/10 font-disp uppercase tracking-[.14em] text-[16px] text-white/85 hover:text-white transition">Store</a>
+    <a href="/shad/contact" class="block py-3.5 font-disp uppercase tracking-[.14em] text-[16px] text-shad">Contact</a>
+</div>
+
+<!-- ===== ワンキー化ガイド（生成：tools/build_lock_guide.py ／ ルール：/data/lock_guide.json）===== -->
+<header class="bg-ink text-white">
+  <div class="max-w-site mx-auto px-7 pt-16 pb-14">
+    <p class="font-disp font-semibold text-[13px] tracking-[.3em] uppercase text-shad">One Key Guide</p>
+    <h1 class="sec-ttl text-white mt-3 lg-h1">トップとサイドの鍵を、ひとつに。</h1>
+    <p class="text-white/65 text-[15px] mt-5 max-w-[680px] leading-[1.9]">SHADのケースはキーシリンダーが差し替え式。トップケースとサイドケースのシリンダーを同じ鍵のものに揃えれば、3つのケースを1本の鍵で開ける・閉める・外すことができます。お使いの組み合わせを選ぶと、付属の予備シリンダーで済むのか、追加部品が必要なのかがわかります。</p>
+    <div class="flex flex-wrap gap-x-8 gap-y-2 mt-6 text-[13px] text-white/55">
+      <span><i class="ti ti-clock mr-1.5 text-shad"></i>作業時間の目安：数分</span>
+      <span><i class="ti ti-tool mr-1.5 text-shad"></i>工具：プラスドライバー程度</span>
+      <span><i class="ti ti-key mr-1.5 text-shad"></i>本国 SHAD Lock Guide 2026 準拠</span>
+    </div>
+  </div>
+</header>
+
+<main class="bg-mist">
+  <div class="max-w-site mx-auto px-7 py-12 lg:py-16">
+    <div class="lg:grid lg:grid-cols-[1fr_380px] lg:gap-10 items-start">
+      <div class="space-y-10">
+        <!-- STEP 1 -->
+        <section class="lg-step" id="step1">
+          <div class="lg-step-h"><span class="lg-step-num">1</span><div><h2>トップケースを選ぶ</h2><p>お使いの、または検討中のトップケース（リアバッグ）</p></div></div>
+          <div class="lg-tiles" id="topTiles"></div>
+        </section>
+        <!-- STEP 2 -->
+        <section class="lg-step" id="step2">
+          <div class="lg-step-h"><span class="lg-step-num">2</span><div><h2>サイドケース／バッグを選ぶ</h2><p>統一できない組み合わせはグレーで表示します</p></div></div>
+          <div class="lg-tiles" id="sideTiles"></div>
+        </section>
+        <!-- STEP 3 -->
+        <section class="lg-step" id="step3" hidden>
+          <div class="lg-step-h"><span class="lg-step-num">3</span><div><h2>鍵の色を選ぶ</h2><p>製造時期によってレッドキー／ブラックキーが混在するモデルです。お手元の鍵をご確認ください</p></div></div>
+          <div class="lg-keys" id="keyPick"></div>
+        </section>
+      </div>
+
+      <!-- 結果 -->
+      <aside class="lg-result mt-10 lg:mt-0 lg:sticky lg:top-[92px]" id="result" aria-live="polite">
+        <div class="lg-result-empty">
+          <i class="ti ti-key text-[34px] text-shad"></i>
+          <p class="font-bold text-[16px] mt-3">トップとサイドを選ぶと、ここに結果が出ます</p>
+          <p class="text-[13px] text-neutral-500 mt-2 leading-relaxed">必要な部品・費用の目安・手順動画へのリンクを表示します。</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 鍵の見分け方・仕組み -->
+    <section class="mt-16 grid md:grid-cols-2 gap-6">
+      <div class="lg-card">
+        <p class="pd-sec-en">Key Types</p>
+        <h2 class="text-[20px] font-bold mt-1">鍵の種類の見分け方</h2>
+        <div class="grid grid-cols-2 gap-4 mt-5 text-center">
+          <div><img src="/shad/img/lock-guide/key_red.webp" alt="レッドキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">レッドキー</b><span class="block text-[12px] text-neutral-500 mt-1">赤い樹脂ヘッド。従来のSHADシリンダー。TR41・TR46・TR27・SH47・SH44・SH33・SH23 など</span></div>
+          <div><img src="/shad/img/lock-guide/key_black.webp" alt="ブラックキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">ブラックキー</b><span class="block text-[12px] text-neutral-500 mt-1">黒いヘッドで刻印入りのプレミアムシリンダー。SH51・SH38X・TR30、近年のSH58X／SH59X／SH48。TERRAアルミケース・TR50の鍵も同じブラックキーです</span></div>
+        </div>
+      </div>
+      <div class="lg-card">
+        <p class="pd-sec-en">How It Works</p>
+        <h2 class="text-[20px] font-bold mt-1">ワンキー化の仕組み</h2>
+        <ol class="lg-steps mt-5">
+          <li><b>予備シリンダーを用意する</b><span>多くのサイドケースには右側に予備のキーシリンダーが1個付属しています。付属しないバッグ類や、形状が合わない組み合わせはキーシリンダーセットを購入します。</span></li>
+          <li><b>トップケースのシリンダーを差し替える</b><span>ロック部のカバーを外し、シリンダーを引き抜いて、サイドと同じ鍵のシリンダーを差し込みます。</span></li>
+          <li><b>3つのケースを1本の鍵で</b><span>差し替え後はトップもサイドも同じ鍵で開閉・着脱できます。余った鍵は予備として保管してください。</span></li>
+        </ol>
+        <p class="text-[12px] text-neutral-500 mt-4 leading-relaxed">鍵の系統（レッド／ブラック）が異なる組み合わせや、シリンダーの形状が合わない組み合わせは、差し替えだけでは統一できません。上の診断でご確認ください。</p>
+      </div>
+    </section>
+
+    <div class="mt-10 flex flex-wrap items-center gap-3">
+      <a href="/shad/fitting-kits" class="btn border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white"><i class="ti ti-tool"></i>フィッティングキットとは</a>
+      <a href="/shad/faq" class="btn border border-black/25 text-ink hover:bg-white"><i class="ti ti-help-circle"></i>FAQ</a>
+      <a href="https://www.shad.es/assets/anexos/ANEXOS_WEB/LOCK_GUIDE_2026.pdf" target="_blank" rel="noopener" class="btn border border-black/25 text-ink hover:bg-white"><i class="ti ti-file-type-pdf"></i>本国 Lock Guide（英語PDF）</a>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-[#0A0A0A] text-white pt-16 pb-8">
+  <div class="max-w-site mx-auto px-7">
+    <div class="flex flex-wrap items-center justify-between gap-6">
+      <img src="/shad/img/logo_slogan.svg" alt="SHAD — Engineered for Riding" class="h-[56px] w-auto">
+      <!-- SNS（ロゴ隣・目立たせ）-->
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-white/45 text-[12px] font-disp tracking-[.2em] uppercase mr-1">Follow</span>
+        <a href="https://www.instagram.com/shad_japan/" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100063772623152" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="w-11 h-11 rounded-full bg-white/10 hover:bg-shad flex items-center justify-center transition"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </div>
+    </div>
+    <p class="text-[22px] font-bold tracking-[.04em] mt-8">本物にこだわるライダーへ。</p>
+    <!-- ご購入導線（カスタムジャパンEC）-->
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
+      <a href="https://moto.customjapan.net/" target="_blank" rel="noopener" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-shopping-bag"></i>ご購入の方はこちら</a>
+      <span class="text-[12px] text-white/45 leading-relaxed">※ご購入は日本総代理店の株式会社カスタムジャパンにて承ります。</span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Products</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/products" class="hover:text-white transition">TERRA</a></li><li><a href="/shad/products" class="hover:text-white transition">トップケース</a></li><li><a href="/shad/products" class="hover:text-white transition">サイドケース</a></li><li><a href="/shad/products" class="hover:text-white transition">バッグ</a></li><li><a href="/shad/products" class="hover:text-white transition">SHAD LOCKS</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Technology</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Expandable</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">3P System</a></li><li><a href="/shad/engineered-for-riding" class="hover:text-white transition">Click System</a></li><li><a href="/shad/quality-lab" class="hover:text-white transition">Quality Lab</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">About</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/about" class="hover:text-white transition">About</a></li><li><a href="/shad/about" class="hover:text-white transition">OEM</a></li><li><a href="/shad/awards" class="hover:text-white transition">Awards</a></li><li><a href="/shad/sustainability" class="hover:text-white transition">Sustainability</a></li><li><a href="/shad/movies" class="hover:text-white transition">Movies</a></li><li><a href="/shad/news" class="hover:text-white transition">News</a></li></ul>
+      </div>
+      <div>
+        <h3 class="font-disp font-semibold text-[14px] tracking-[.24em] uppercase text-white/90">Support</h3>
+        <ul class="mt-3.5 text-[14px] text-white/60 leading-[2.2]"><li><a href="/shad/store-locator" class="hover:text-white transition">取扱店・SHAD BASE</a></li><li><a href="/shad/faq" class="hover:text-white transition">FAQ・取扱説明書</a></li><li><a href="/shad/fitting-kits" class="hover:text-white transition">フィッティングキットとは</a></li><li><a href="/shad/install-guide" class="hover:text-white transition">取付ガイド</a></li><li><a href="/shad/warranty" class="hover:text-white transition">保証について</a></li><li><a href="/shad/contact" class="hover:text-white transition">お問い合わせ</a></li></ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+      <span class="flex gap-4 text-white/70">
+        <a href="https://www.instagram.com/shad_japan/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100063772623152" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+      </span>
+      <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/shad/company" class="hover:text-white transition">会社情報</a><a href="/shad/tokushoho" class="hover:text-white transition">特定商取引法に基づく表記</a><a href="/shad/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/shad/terms" class="hover:text-white transition">利用規約</a></span>
+      <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== ワンキー化ガイド：ルール（/data/lock_guide.json）を読んで診断する ===== */
+(function(){
+  var R=null, CARDS={}, ACC={}, st={top:null, side:null, tkey:null, skey:null};
+  var q=new URLSearchParams(location.search);
+  function el(h){ var d=document.createElement('div'); d.innerHTML=h.trim(); return d.firstChild; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function yen(n){ return n?('¥'+Number(n).toLocaleString('ja-JP')+'（税込）'):''; }
+  function groupOf(list,code){ for(var i=0;i<list.length;i++) if(list[i].codes.indexOf(code)>=0) return list[i]; return null; }
+  function famOf(g,key){ return g.family==='ask' ? key : g.family; }
+
+  function tiles(host,list,kind){
+    host.innerHTML='';
+    list.forEach(function(g){
+      g.codes.forEach(function(code){
+        var c=CARDS[code]||{}; if(c.status) return;           // 生産終了は出さない
+        var t=el('<button type="button" class="lg-tile" data-code="'+code+'"><span class="lg-tile-img"><img src="'+(c.img||'')+'" alt="" loading="lazy"></span><span class="lg-tile-code">'+code+'</span><span class="lg-tile-jp">'+esc(c.jp||g.label)+'</span><span class="lg-tile-na">統一不可</span></button>');
+        t.addEventListener('click',function(){ pick(kind,code); });
+        host.appendChild(t);
+      });
+    });
+  }
+  function pick(kind,code){
+    if(kind==='top'){ st.top=code; st.tkey=null; } else { st.side=code; st.skey=null; }
+    sync();
+  }
+  function statusFor(){
+    var tg=groupOf(R.tops,st.top), sg=groupOf(R.sides,st.side); if(!tg||!sg) return null;
+    var tf=famOf(tg,st.tkey), sf=famOf(sg,st.skey); if(!tf||!sf) return {pending:true};
+    var m=R.matrix[tf+'|'+sf]; if(!m) m={status:'no'};
+    if(m.only_sides && m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'};
+    (R.overrides||[]).forEach(function(o){
+      var okT = o.tops ? o.tops.indexOf(tg.id)>=0 : (o.top_family ? o.top_family===tf : true);
+      var okS = o.sides ? o.sides.indexOf(sg.id)>=0 : (o.side_family ? o.side_family===sf : true);
+      if(okT && okS && (!o.tkey||o.tkey===tf) && (!o.skey||o.skey===sf)) m=o.rule;
+    });
+    return Object.assign({tf:tf,sf:sf,tg:tg,sg:sg},m);
+  }
+  function sync(){
+    /* タイルの選択・不可表示 */
+    document.querySelectorAll('#topTiles .lg-tile').forEach(function(t){ t.classList.toggle('on',t.dataset.code===st.top); });
+    var tg=groupOf(R.tops,st.top);
+    document.querySelectorAll('#sideTiles .lg-tile').forEach(function(t){
+      t.classList.toggle('on',t.dataset.code===st.side);
+      var na=false;
+      if(tg){ var sg=groupOf(R.sides,t.dataset.code); var tfs= tg.family==='ask'?['red','black']:[tg.family]; var sfs= sg.family==='ask'?['red','black']:[sg.family];
+        na = tfs.every(function(tf){ return sfs.every(function(sf){ var m=R.matrix[tf+'|'+sf]||{status:'no'}; if(m.only_sides&&m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'};
+          (R.overrides||[]).forEach(function(o){ var okT=o.tops?o.tops.indexOf(tg.id)>=0:(o.top_family?o.top_family===tf:true); var okS=o.sides?o.sides.indexOf(sg.id)>=0:(o.side_family?o.side_family===sf:true); if(okT&&okS&&(!o.tkey||o.tkey===tf)&&(!o.skey||o.skey===sf)) m=o.rule; });
+          return m.status==='no'||m.status==='no_jp'; }); }); }
+      t.classList.toggle('na',na);
+    });
+    /* STEP3：鍵の色 */
+    var kp=document.getElementById('keyPick'), s3=document.getElementById('step3'); kp.innerHTML='';
+    var asks=[]; var sg=groupOf(R.sides,st.side);
+    if(tg&&tg.family==='ask') asks.push({kind:'tkey',label:tg.label+'（トップ）の鍵'});
+    if(sg&&sg.family==='ask') asks.push({kind:'skey',label:sg.label+'（サイド）の鍵'});
+    s3.hidden=!asks.length;
+    asks.forEach(function(a){
+      var row=el('<div class="lg-keyrow"><p class="lg-keyrow-lb">'+esc(a.label)+'</p><div class="lg-keyopts"></div></div>');
+      ['red','black'].forEach(function(k){
+        var b=el('<button type="button" class="lg-keyopt'+(st[a.kind]===k?' on':'')+'" data-k="'+k+'"><img src="/shad/img/lock-guide/key_'+k+'.webp" alt=""><b>'+R.families[k].label+'</b><span>'+esc(R.families[k].hint)+'</span></button>');
+        b.addEventListener('click',function(){ st[a.kind]=k; sync(); });
+        row.querySelector('.lg-keyopts').appendChild(b);
+      });
+      kp.appendChild(row);
+    });
+    render();
+    var u=new URLSearchParams(); if(st.top)u.set('top',st.top); if(st.side)u.set('side',st.side); if(st.tkey)u.set('tkey',st.tkey); if(st.skey)u.set('skey',st.skey);
+    history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():''));
+  }
+  function partCard(code){
+    var p=R.parts[code]||{}, a=ACC[code]||{};
+    return '<a href="https://moto.customjapan.net/i/'+code+'" target="_blank" rel="noopener" class="lg-part"><img src="https://img.customjapan.net/items/'+code+'_1.jpg" alt="" loading="lazy"><span><b>'+esc(p.name||a.name||code)+'</b><em>'+(yen(a.msrpTaxIn)||'定価はリンク先でご確認ください')+'</em><small>品番：'+code+(p.shad?'（SHAD '+p.shad+'）':'')+(p.note?' ／ '+esc(p.note):'')+'</small></span><i class="ti ti-external-link"></i></a>';
+  }
+  function video(id,label){ return id?'<a href="https://youtu.be/'+id+'" target="_blank" rel="noopener" class="lg-video"><i class="ti ti-brand-youtube"></i>'+esc(label)+'</a>':''; }
+  function render(){
+    var box=document.getElementById('result'); var r=statusFor();
+    if(!r){ box.innerHTML='<div class="lg-result-empty"><i class="ti ti-key text-[34px] text-shad"></i><p class="font-bold text-[16px] mt-3">トップとサイドを選ぶと、ここに結果が出ます</p><p class="text-[13px] text-neutral-500 mt-2 leading-relaxed">必要な部品・費用の目安・手順動画へのリンクを表示します。</p></div>'; return; }
+    var tg=groupOf(R.tops,st.top), sg=groupOf(R.sides,st.side);
+    var head='<div class="lg-pair"><span>'+st.top+'</span><i class="ti ti-plus"></i><span>'+st.side+'</span></div>';
+    if(r.pending){ box.innerHTML=head+'<p class="lg-badge is-wait"><i class="ti ti-key"></i>STEP 3 で鍵の色を選んでください</p>'; return; }
+    var L=R.labels[r.status]; var h=head+'<p class="lg-badge is-'+L.tone+'">'+esc(L.badge)+'</p>';
+    var tf=R.families[r.tf].label, sf=R.families[r.sf].label;
+    h+='<p class="lg-fam">トップ：'+esc(tf)+'　／　サイド：'+esc(sf)+'</p>';
+    if(r.status==='no'){
+      h+='<p class="lg-txt">鍵の系統が異なるため、シリンダーの差し替えでは統一できません。TERRAキーの組み合わせはTERRA同士、レッドキーとブラックキーは同系統か、対応する変換部品がある組み合わせでご検討ください。</p>';
+      h+='<a href="/shad/products?feat=fullpannier" class="lg-link">フルパニア対応の商品を見る <i class="ti ti-arrow-right"></i></a>';
+    } else if(r.status==='no_jp'){
+      h+='<p class="lg-txt">'+esc(r.note)+'</p><a href="/shad/products?feat=fullpannier" class="lg-link">統一できる組み合わせを見る <i class="ti ti-arrow-right"></i></a>';
+    } else {
+      if(r.note) h+='<p class="lg-txt">'+esc(r.note)+'</p>';
+      var n=0;
+      if(r.mech==='top'){ n++; var codes=(tg.downgrade&&tg.downgrade[st.top])||[]; h+='<div class="lg-opt"><span class="lg-opt-lb">Step '+n+'</span><b>トップケースのロック機構をレッドキー仕様に交換</b><p>専用ロックカバー（レッドキー付属）に交換します。カラーに合うものをお選びください。</p>'+codes.map(partCard).join('')+'</div>'; }
+      var useSpare = r.spare && sg.spare;
+      if(useSpare){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">How</span><b>サイドケース付属の予備シリンダーを使う</b><p>'+esc(sg.label)+'の右側ケースに付属する予備キーシリンダーを、トップケースのシリンダーと差し替えます。追加部品は不要です。</p></div>'; }
+      else if(r.part){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">必要な部品</span><b>キーシリンダーセットで揃える</b><p>このセットのシリンダーに差し替えて、トップとサイドの鍵を統一します。</p>'+partCard(r.part)+'</div>'; }
+      var vt = tg.family==='ask' ? tg['video_'+r.tf] : tg.video;
+      var vids=video(vt,tg.label+' の交換手順')+video(sg.video,sg.label+' の交換手順');
+      if(vids) h+='<div class="lg-videos"><p class="lg-opt-lb">Watch</p>'+vids+'<small>本国SHADの手順動画（英語）。作業は自己責任で、難しい場合は取扱店へご相談ください。</small></div>';
+      h+='<div class="lg-cta"><a href="/shad/product/'+st.top.toLowerCase()+'" class="lg-link">'+st.top+' の商品ページ <i class="ti ti-arrow-right"></i></a><a href="/shad/store-locator" class="lg-link">取扱店を探す <i class="ti ti-arrow-right"></i></a></div>';
+    }
+    box.innerHTML=h;
+  }
+  Promise.all(['/shad/data/lock_guide.json','/shad/data/catalog/cards.json','/shad/data/catalog/accessories.json','/shad/data/catalog/others.json'].map(function(u){return fetch(u).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});}))
+  .then(function(rs){
+    R=rs[0]; CARDS=rs[1]||{}; (rs[2]||[]).concat(rs[3]||[]).forEach(function(a){ ACC[String(a.cjCode)]=a; });
+    if(!R){ document.getElementById('result').innerHTML='<p class="p-6 text-neutral-500">ガイドのデータを読み込めませんでした。</p>'; return; }
+    tiles(document.getElementById('topTiles'),R.tops,'top'); tiles(document.getElementById('sideTiles'),R.sides,'side');
+    var t=(q.get('top')||'').toUpperCase(), s=(q.get('side')||'').toUpperCase();
+    if(groupOf(R.tops,t)) st.top=t; if(groupOf(R.sides,s)) st.side=s;
+    if(['red','black'].indexOf(q.get('tkey'))>=0) st.tkey=q.get('tkey'); if(['red','black'].indexOf(q.get('skey'))>=0) st.skey=q.get('skey');
+    sync();
+  });
+})();
+</script>
+
+<script src="/shad/js/nav.js"></script>
+</body>
+</html>
