@@ -26,6 +26,11 @@
       "label": "ソフト（生地）",
       "en": "Soft"
     },
+    "abs": {
+      "group": "material",
+      "label": "ABS樹脂",
+      "en": "ABS"
+    },
     "expandable": {
       "group": "feature",
       "label": "可変容量",
@@ -55,8 +60,7 @@
       "group": "feature",
       "label": "フルパニア対応",
       "en": "Full Pannier"
-    },
-    "E48SR": []
+    }
   },
   "products": {
     "TR41": [
@@ -239,6 +243,9 @@
       "click"
     ],
     "LOCK": [],
-    "SEAT": []
+    "SEAT": [],
+    "E48SR": [
+      "abs"
+    ]
   }
 }

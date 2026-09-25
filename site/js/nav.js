@@ -189,7 +189,7 @@
   function load(){
     if (cards) return Promise.resolve(cards);
     return fetch('/data/catalog/cards.json').then(function(r){ return r.ok ? r.json() : {}; }).then(function(d){
-      var TAGJP = { alu:'アルミ', pp:'PP 樹脂 ポリプロピレン', soft:'ソフト 生地 バッグ', expandable:'可変容量 エクスパンダブル', waterproof:'防水', smartlock:'スマートロック', terralock:'TERRAロック テラ', click:'クリックシステム タンクバッグ', fullpannier:'フルパニア' };
+      var TAGJP = { alu:'アルミ', pp:'PP 樹脂 ポリプロピレン', soft:'ソフト 生地 バッグ', abs:'ABS樹脂 ハードシェル', expandable:'可変容量 エクスパンダブル', waterproof:'防水', smartlock:'スマートロック', terralock:'TERRAロック テラ', click:'クリックシステム タンクバッグ', fullpannier:'フルパニア' };
       items = Object.keys(d).map(function(k){ var c = d[k]; var tj = (c.tags||[]).map(function(t){ return TAGJP[t]||t; }).join(' ');
         return { code:k, jp:c.jp||'', series:c.series||'', cap:c.cap||'', copy:c.copy||'', img:c.img||'', tags:tj, status:c.status||'',
         key: norm(k+' '+(c.jp||'')+' '+(c.series||'')+' '+(c.copy||'')+' '+(c.tags||[]).join(' ')+' '+tj) }; });
