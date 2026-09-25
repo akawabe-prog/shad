@@ -115,43 +115,19 @@
   ],
   "gallery": [
     {
-      "src": "/img/products/sh47/gal_01.webp",
+      "src": "/img/products/sh47/gal_02.webp",
       "cls": "is-tall is-wide"
-    },
-    {
-      "src": "/img/products/sh47/gal_02.webp"
-    },
-    {
-      "src": "/img/products/sh47/gal_03.webp"
-    },
-    {
-      "src": "/img/products/sh47/gal_04.webp"
     },
     {
       "src": "/img/products/sh47/gal_05.webp",
       "cls": "is-wide"
     },
     {
-      "src": "/img/products/sh47/gal_06.webp"
-    },
-    {
-      "src": "/img/products/sh47/gal_07.webp"
-    },
-    {
       "src": "/img/products/sh47/gal_08.webp",
       "cls": "is-tall is-wide"
     },
     {
-      "src": "/img/products/sh47/gal_09.webp"
-    },
-    {
-      "src": "/img/products/sh47/gal_10.webp"
-    },
-    {
       "src": "/img/products/sh47/gal_11.webp"
-    },
-    {
-      "src": "/img/products/sh47/gal_12.webp"
     }
   ],
   "userguide": "/docs/sh47_userguide.pdf"

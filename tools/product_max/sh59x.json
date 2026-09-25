@@ -157,26 +157,10 @@
       "cls": "is-tall is-wide"
     },
     {
-      "src": "/img/products/sh59x/render_01.webp"
-    },
-    {
       "src": "/img/products/sh59x/topcase_gs.webp"
     },
     {
       "src": "/img/products/sh59x/ms_59x_bike.webp"
-    },
-    {
-      "src": "/img/products/sh59x/render_02.webp",
-      "cls": "is-wide"
-    },
-    {
-      "src": "/img/products/sh58x/render_01.webp"
-    },
-    {
-      "src": "/img/products/sh58x/gal_38x.webp"
-    },
-    {
-      "src": "https://img.customjapan.net/items/17460903_5.jpg"
     }
   ],
   "userguide": "/docs/sh58x_userguide.pdf",

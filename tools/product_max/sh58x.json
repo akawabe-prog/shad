@@ -152,30 +152,12 @@
   "reels": [],
   "gallery": [
     {
-      "src": "/img/products/sh58x/render_01.webp",
+      "src": "/img/products/sh58x/ms_58x_bike.webp",
       "cls": "is-tall is-wide"
-    },
-    {
-      "src": "/img/products/sh58x_1.webp"
-    },
-    {
-      "src": "/img/products/sh58x/ms_58x_bike.webp"
     },
     {
       "src": "/img/products/sh59x/gal_gs.webp",
       "cls": "is-wide"
-    },
-    {
-      "src": "/img/products/sh58x/render_02.webp"
-    },
-    {
-      "src": "/img/products/sh58x/gal_38x.webp"
-    },
-    {
-      "src": "/img/products/sh59x/render_01.webp"
-    },
-    {
-      "src": "/img/products/sh58x/size_xl.webp"
     }
   ],
   "userguide": "/docs/sh58x_userguide.pdf",

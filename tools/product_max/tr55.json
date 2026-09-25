@@ -196,9 +196,6 @@
       "src": "/img/products/tr55/gal_load.webp"
     },
     {
-      "src": "/img/products/tr55/det_open.webp"
-    },
-    {
       "src": "/img/products/tr55/gal_ride3.webp"
     },
     {
@@ -206,26 +203,11 @@
       "cls": "is-wide"
     },
     {
-      "src": "/img/products/tr55/det_helmets.webp"
-    },
-    {
       "src": "/img/products/tr55/gal_pure_ride.webp"
     },
     {
       "src": "/img/products/tr55/gal_ride4.webp",
       "cls": "is-tall is-wide"
-    },
-    {
-      "src": "/img/products/tr55/det_pure_lock.webp"
-    },
-    {
-      "src": "/img/products/tr55/alu_04.webp"
-    },
-    {
-      "src": "/img/products/tr55/blk_04.webp"
-    },
-    {
-      "src": "/img/products/tr55/pure_04.webp"
     }
   ],
   "userguide": "/docs/tr55_userguide.pdf",
