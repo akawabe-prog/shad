@@ -169,7 +169,7 @@
     box.innerHTML = '<button type="button" class="srch-close" aria-label="閉じる"><i class="ti ti-x"></i></button>'
       + '<div class="srch-in"><label class="srch-box"><i class="ti ti-search"></i>'
       + '<input type="search" placeholder="品番・商品名で検索（例：TR46、トップケース、防水）" autocomplete="off" enterkeyhint="search"></label>'
-      + '<p class="srch-hint">品番（TR46 / SH38X）、商品名、シリーズ名、特徴で絞り込めます</p>'
+      + '<p class="srch-hint">型番（TR46 / SH38X）・品番・メーカー品番・JAN・商品名・特徴で検索。Enter で該当ページへ</p>'
       + '<div class="srch-list" role="listbox"></div>'
       + '<div class="srch-quick"><a href="/products">すべての製品</a><a href="/products?cat=TOP">トップケース</a><a href="/products?cat=SIDE">サイドケース</a>'
       + '<a href="/products?feat=expandable">Expandable</a><a href="/products?feat=waterproof">防水バッグ</a><a href="/fitment">車種から探す</a><a href="/lock-guide">ワンキー化ガイド</a></div></div>';
@@ -181,20 +181,29 @@
     input.addEventListener('keydown', function(e){
       if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
-      else if (e.key === 'Enter') { e.preventDefault(); var a = list.querySelectorAll('.srch-item')[Math.max(active,0)]; if (a) location.href = a.getAttribute('href'); else if (input.value.trim()) location.href = '/products'; }
+      else if (e.key === 'Enter') { e.preventDefault(); var q = norm(syn(input.value)); var a = list.querySelectorAll('.srch-item')[Math.max(active,0)]; var hit = exact(q); if (hit) location.href = '/product/' + hit.code.toLowerCase(); else if (a) location.href = a.getAttribute('href'); else if (input.value.trim()) load().then(function(){ var h = exact(q); location.href = h ? '/product/' + h.code.toLowerCase() : '/products'; }); }
     });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
   }
+  function exact(q){ if (!q || !items.length) return null; return items.filter(function(it){ return norm(it.code) === q || it.ids.split(' ').indexOf(q) >= 0; })[0] || null; }
   function move(d){ var as = [].slice.call(list.querySelectorAll('.srch-item')); if(!as.length) return; active = (active + d + as.length) % as.length; as.forEach(function(a,i){ a.classList.toggle('is-active', i===active); }); }
   function load(){
     if (cards) return Promise.resolve(cards);
-    return fetch('/data/catalog/cards.json').then(function(r){ return r.ok ? r.json() : {}; }).then(function(d){
+    // cards.json（一覧カード）＋ products.json（品番・メーカー品番・JAN）を合わせて検索キーにする
+    return Promise.all([
+      fetch('/data/catalog/cards.json').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }),
+      fetch('/data/catalog/products.json').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+    ]).then(function(res){
+      var d = res[0], P = res[1];
       var TAGJP = { alu:'アルミ', pp:'PP 樹脂 ポリプロピレン', soft:'ソフト 生地 バッグ', abs:'ABS樹脂 ハードシェル', expandable:'可変容量 エクスパンダブル', waterproof:'防水', smartlock:'スマートロック', terralock:'TERRAロック テラ', click:'クリックシステム タンクバッグ', fullpannier:'フルパニア' };
       items = Object.keys(d).map(function(k){ var c = d[k]; var tj = (c.tags||[]).map(function(t){ return TAGJP[t]||t; }).join(' ');
+        var vs = (P[k] && P[k].variants) || [];
+        var ids = vs.map(function(v){ return [v.cjCode, v.makerCode, v.jan, v.name].filter(Boolean).join(' '); }).join(' ');
         return { code:k, jp:c.jp||'', series:c.series||'', cap:c.cap||'', copy:c.copy||'', img:c.img||'', tags:tj, status:c.status||'',
-        key: norm(k+' '+(c.jp||'')+' '+(c.series||'')+' '+(c.copy||'')+' '+(c.tags||[]).join(' ')+' '+tj) }; });
+        ids: norm(vs.map(function(v){ return [v.cjCode, v.makerCode, v.jan].filter(Boolean).join(' '); }).join(' ')),
+        key: norm(k+' '+(c.jp||'')+' '+(c.series||'')+' '+(c.copy||'')+' '+(c.tags||[]).join(' ')+' '+tj+' '+ids) }; });
       cards = items; return cards;
-    }).catch(function(){ cards = []; return cards; });
+    });
   }
   // 表記ゆらぎ（リアボックス→トップケース 等）を正規化してから照合
   var SYN = [[/リアボックス|リヤボックス|トップボックス|テールボックス|リアケース|リヤケース/g, 'トップケース'],
@@ -202,10 +211,11 @@
              [/バック/g, 'バッグ'], [/ボックス/g, 'ケース'], [/ハードケース/g, 'ケース'], [/防水バッグ/g, '防水']];
   function syn(s){ SYN.forEach(function(p){ s = s.replace(p[0], p[1]); }); return s; }
   function render(){
+    if (!cards) { load().then(render); return; }
     var q = norm(syn(input.value)); active = -1;
     if (!q) { list.innerHTML = ''; return; }
     var hit = items.filter(function(it){ return it.key.indexOf(q) >= 0; });
-    hit.sort(function(a,b){ var ac = norm(a.code).indexOf(q)===0 ? 0 : 1, bc = norm(b.code).indexOf(q)===0 ? 0 : 1; return ac - bc || a.code.localeCompare(b.code); });
+    hit.sort(function(a,b){ function rank(x){ return norm(x.code) === q ? 0 : norm(x.code).indexOf(q)===0 ? 1 : x.ids.indexOf(q) >= 0 ? 2 : 3; } return rank(a) - rank(b) || a.code.localeCompare(b.code); });
     hit = hit.slice(0, 8);
     list.innerHTML = hit.length ? hit.map(function(it){
       return '<a class="srch-item" href="/product/' + it.code.toLowerCase() + '" role="option">'
