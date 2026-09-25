@@ -277,12 +277,23 @@ def render(cfg, P):
                         '<p class="text-[13px] text-neutral-500 mt-2">%s</p>' % (cfg["related_title"], link, cfg.get("related_lead", "")))
     else:
         related_head = '<h2 class="sec-ttl sec-ttl-quiet">Same Series</h2>'
-    gallery = "".join('      <figure%s><img src="%s" alt="" loading="lazy"></figure>\n'
-                      % ((' class="%s"' % g["cls"]) if g.get("cls") else "", g["src"]) for g in (cfg.get("gallery") or []))
+    def gfig(g):
+        """ギャラリー1枚。ローカル画像は幅・高さを付けて、読み込み中に段組みが動かないようにする"""
+        src = g["src"]; dim = ""
+        lp = os.path.join(SITE, src.lstrip("/"))
+        if os.path.exists(lp):
+            try:
+                from PIL import Image
+                w, h = Image.open(lp).size; dim = ' width="%d" height="%d"' % (w, h)
+            except Exception:
+                pass
+        return '      <figure><img src="%s" alt=""%s loading="lazy"></figure>\n' % (src, dim)
+    gallery = "".join(gfig(g) for g in (cfg.get("gallery") or []))
+    gallery_n = len(cfg.get("gallery") or [])
     # ギャラリーはイメージ写真（ライフスタイル）だけを載せる。商品写真しか無い商品は gallery を空にして節ごと省く
     gallery_section = ('<!-- ===== ⑨ ギャラリー ===== -->\n<section id="gallery" class="scroll-mt-[132px] pd-sec">\n  <div class="max-w-site mx-auto px-7">\n'
                        '    <div class="pd-sec-head" data-reveal><div><p class="pd-sec-en">Gallery</p><h2 class="pd-sec-h is-disp">%s on the road</h2></div></div>\n'
-                       '    <div class="pd-gallery" data-reveal>\n%s    </div>\n  </div>\n</section>\n' % (code, gallery)) if gallery else ""
+                       '    <div class="pd-gallery" data-n="%d" data-reveal>\n%s    </div>\n  </div>\n</section>\n' % (code, gallery_n, gallery)) if gallery else ""
     feat = cfg.get("features", {})
     sp_poster = hero.get("poster_sp") or hero.get("poster_pc", "")
     ov = json.dumps(cfg.get("gallery_override", {}), ensure_ascii=False, indent=2)

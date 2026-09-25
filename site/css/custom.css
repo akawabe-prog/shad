@@ -633,14 +633,16 @@
 .pd-reel-cap{margin-top:10px;font-size:13px;color:rgba(255,255,255,.72);}
 .pd-reel-cap b{display:block;color:#fff;font-weight:600;font-size:14px;}
 /* --- ⑨ ギャラリー --- */
-.pd-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:220px;gap:8px;}
-.pd-gallery a,.pd-gallery figure{margin:0;overflow:hidden;border-radius:10px;background:#111;display:block;}
-.pd-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;display:block;}
+/* ギャラリー：ピンタレスト風メイソンリー（多段組）。写真は縦横比のまま、枚数が少なくても列を減らして自然に並ぶ */
+.pd-gallery{column-count:4;column-gap:10px;}
+.pd-gallery[data-n="1"]{column-count:1;max-width:760px;}
+.pd-gallery[data-n="2"]{column-count:2;max-width:1000px;}
+.pd-gallery[data-n="3"],.pd-gallery[data-n="4"],.pd-gallery[data-n="5"]{column-count:3;}
+.pd-gallery a,.pd-gallery figure{margin:0 0 10px;overflow:hidden;border-radius:12px;background:#111;display:block;break-inside:avoid;-webkit-column-break-inside:avoid;}
+.pd-gallery img{width:100%;height:auto;object-fit:cover;transition:transform .7s ease;display:block;}
 .pd-gallery figure:hover img{transform:scale(1.04);}
-.pd-gallery .is-tall{grid-row:span 2;}
-.pd-gallery .is-wide{grid-column:span 2;}
-@media(max-width:1023px){.pd-gallery{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:180px;}}
-@media(max-width:640px){.pd-gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;}.pd-gallery .is-wide{grid-column:span 2;}}
+@media(max-width:1023px){.pd-gallery,.pd-gallery[data-n="3"],.pd-gallery[data-n="4"],.pd-gallery[data-n="5"]{column-count:3;}.pd-gallery[data-n="2"]{column-count:2;}.pd-gallery[data-n="1"]{column-count:1;}}
+@media(max-width:640px){.pd-gallery,.pd-gallery[data-n="2"],.pd-gallery[data-n="3"],.pd-gallery[data-n="4"],.pd-gallery[data-n="5"]{column-count:2;column-gap:8px;}.pd-gallery figure{margin-bottom:8px;border-radius:10px;}.pd-gallery[data-n="1"]{column-count:1;}}
 /* --- ⑪ 関連（他商品への誘導） --- */
 /* ---- 商品ページ MAXテンプレート：フルパニア構成（トップ＋サイドの組み合わせ提案） ---- */
 .pd-setup{background:#F5F4F0;padding:76px 0;}
