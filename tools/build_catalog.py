@@ -88,6 +88,7 @@ BODY_SERIES = (
     "TERRA", "トップケース", "サイドケース", "クリックシステム",
     "ソフトバッグ", "システムバッグ", "カフェレーサーバッグ", "X-FRAME",
     "SHADロック", "コンフォートシート",
+    "サイドバッグ",          # 2026-09-24 マスターから E48/SL58/SR38 などがこのシリーズに移動
 )
 # アクセサリー・補修パーツと判定する「メインシリーズ」
 # （本体と同じ型番を名前に含むが、本体ではないもの）
@@ -333,7 +334,7 @@ def detect_body_code(row):
     name = raw_name.upper()
     # 本体は「型番で始まる」のが基本（例: TR41 TERRA トップケース / SH48 トップケース）
     for code in SITE_CODES_SORTED:
-        if re.match(r"^\s*" + re.escape(code) + r"(?![0-9])", name):
+        if re.match(r"^\s*" + re.escape(code) + r"(?![0-9])(?!SR)", name):   # E48SR（別型番）を E48 と誤認しない。TR10CL のような型番＋接尾辞は同一商品
             # 「SH38X専用 インナーメッシュ」のような “型番＋専用○○” は付属品
             if re.match(r"^\s*" + re.escape(code) + r"[^\s]*\s*専用", raw_name):
                 return None

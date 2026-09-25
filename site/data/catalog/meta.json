@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-24T18:29:00+09:00",
+ "generatedAt": "2026-09-25T09:03:14+09:00",
  "source": "data-source/ItemList_SHAD.csv",
  "totalRows": 1841,
  "kept": 884,
@@ -13,10 +13,10 @@
  },
  "counts": {
   "products": 46,
-  "productVariants": 73,
+  "productVariants": 72,
   "fitting": 662,
   "accessories": 114,
-  "others": 35,
+  "others": 36,
   "accessoryIndexCodes": 33
  },
  "exclusionRules": [

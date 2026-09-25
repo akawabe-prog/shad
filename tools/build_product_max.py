@@ -53,6 +53,8 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from master_spec import spec_table_html, notes_html, warranty_html   # マスター由来ブロックの共通部品
 SITE = os.path.join(ROOT, "site")
 
 
@@ -482,7 +484,11 @@ def main():
     path = os.path.join(SITE, "product", code.lower() + ".html")
     s = open(path, encoding="utf-8").read()
     P = extract(s)
-    P["master_notes"] = master_notes_html(code)   # 注意事項は常に products.json から
+    # スペック表・Notes・保証文は常に products.json（商品マスター＋上書きルール）から作る
+    P["spec_rows"] = spec_table_html(code, "max") or P["spec_rows"]
+    P["master_notes"] = notes_html(code, "max")
+    P["warranty"] = warranty_html(code)
+    P["info_col"] = re.sub(r'(<div class="warranty-body">).*?(</div>)', lambda m: m.group(1) + P["warranty"] + m.group(2), P["info_col"], count=1, flags=re.S)
 
     # メインキャッチ（本文＋meta 3箇所）
     if cfg.get("catch"):
