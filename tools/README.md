@@ -497,7 +497,9 @@ python3 tools/build_catalog.py            # ① マスター → site/data/catal
 python3 tools/apply_master_to_pages.py    # ② スペック表・Notes・保証文を全商品ページへ
 for f in tools/product_max/*.json; do python3 tools/build_product_max.py $f; done   # ③ MAXページ再生成
 python3 tools/build_cards_json.py         # ④ 一覧カード → cards.json
-python3 tools/audit_master.py             # ⑤ 監査（docs/audit/ にレポート）
+python3 tools/fitment/build.py && python3 tools/fitment/postprocess.py   # ⑤ 適合検索データ（build だけでは site/ に反映されない）
+python3 tools/audit_master.py             # ⑥ 商品監査（docs/audit/ にレポート）
+python3 tools/audit_fitment.py            # ⑦ 適合監査（docs/audit/ にレポート）
 ```
 
 ## 商品マスターの上書きルール（tools/master_overrides.json）
@@ -538,3 +540,19 @@ python3 tools/audit_master.py TR48 SH44  # 型番を絞る
 | INFO | マスター側の品質（バリエーション間で仕様・注意が違う、質量・サイズが空欄 等） | マスター（EC側）を直す |
 
 本文中の数値は、適合・FAQ・関連商品・フルパニア構成（他商品の容量が並ぶ）を除いた範囲で見ています。
+
+## 適合情報の監査（tools/audit_fitment.py）
+
+```bash
+python3 tools/audit_fitment.py            # → docs/audit/fitment_audit_<日付>.md
+```
+
+| 区分 | 内容 | 直し方 |
+|---|---|---|
+| ERROR | 適合データが今のマスターと合っていない（参照キット・商品が廃番／販売終了、キット名が古い、品番が products.json と食い違う） | `tools/fitment/build.py` → `postprocess.py` |
+| WARN | マスターの登録どうしの矛盾（キット仕様欄「対応モデル」とコード列〈メーカータイプ〉の不一致、プレート対応とトップケース側記載の不一致、商品注意書きの3P/4Pとキット側宣言の不一致、有効キットが適合データに出ていない） | EC側のマスターを直す |
+| INFO | 検索の見え方に影響する表記ゆれ（年式違いで同じ車種が別々に出る、メーカー名ゆれ）、適合検索対象外のキット（SHADロック） | マスターの表記統一 |
+
+- 適合データはマスターの「メーカータイプ（対応コード列）」「代表適合車種」「セット内容の品番」「仕様欄の対応モデル」から機械的に作られるため、
+  サイト側で手を入れる場所は無い。監査で出た WARN/INFO はマスターの登録を直せば次の生成で反映される
+- ページの無い商品（例：E48SR）は適合結果にECリンクで出る。サイトに載せるなら `build_catalog.py` の SITE_CODES に追加し商品ページを作る
