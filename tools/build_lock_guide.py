@@ -47,6 +47,20 @@ content = r'''
 
 <main class="bg-mist">
   <div class="max-w-site mx-auto px-7 py-12 lg:py-16">
+    <!-- ワンキー化の仕組み（重要なので診断の上に置く） -->
+    <section class="lg-card lg-how mb-10" id="how">
+      <div class="lg-how-head">
+        <div><p class="pd-sec-en">How It Works</p><h2 class="text-[20px] font-bold mt-1">ワンキー化の仕組み</h2></div>
+        <p class="text-[13px] text-neutral-500 leading-relaxed max-w-[520px]">キーシリンダーは差し替え式。サイドケースに付属する予備シリンダーをトップケースに入れ替えるだけで、3つのケースを1本の鍵で開閉・着脱できます。</p>
+      </div>
+      <ol class="lg-steps lg-steps-row mt-5">
+          <li><b>予備シリンダーを用意する</b><span>多くのサイドケースには右側に予備のキーシリンダーが1個付属しています。付属しないバッグ類や、形状が合わない組み合わせはキーシリンダーセットを購入します。</span></li>
+          <li><b>トップケースのシリンダーを差し替える</b><span>ロック部のカバーを外し、シリンダーを引き抜いて、サイドと同じ鍵のシリンダーを差し込みます。</span></li>
+          <li><b>3つのケースを1本の鍵で</b><span>差し替え後はトップもサイドも同じ鍵で開閉・着脱できます。余った鍵は予備として保管してください。</span></li>
+        </ol>
+      <p class="text-[12px] text-neutral-500 mt-4 leading-relaxed">鍵の系統（レッド／ブラック）が異なる組み合わせや、シリンダーの形状が合わない組み合わせは、差し替えだけでは統一できません。上の診断でご確認ください。</p>
+    </section>
+
     <div class="lg:grid lg:grid-cols-[1fr_380px] lg:gap-10 items-start">
       <div class="space-y-10">
         <!-- STEP 1 -->
@@ -76,27 +90,14 @@ content = r'''
       </aside>
     </div>
 
-    <!-- 鍵の見分け方・仕組み -->
-    <section class="mt-16 grid md:grid-cols-2 gap-6">
-      <div class="lg-card">
-        <p class="pd-sec-en">Key Types</p>
-        <h2 class="text-[20px] font-bold mt-1">鍵の種類の見分け方</h2>
-        <div class="grid grid-cols-2 gap-4 mt-5 text-center">
-          <div><img src="/img/lock-guide/key_red.webp" alt="レッドキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">レッドキー</b><span class="block text-[12px] text-neutral-500 mt-1">赤い樹脂ヘッド。従来のSHADシリンダー。TR41・TR46・TR27・SH47・SH44・SH33・SH23 など</span></div>
-          <div><img src="/img/lock-guide/key_black.webp" alt="ブラックキー" class="lg-keyimg"><b class="block mt-2 text-[14px]">ブラックキー</b><span class="block text-[12px] text-neutral-500 mt-1">黒いヘッドで刻印入りのプレミアムシリンダー。SH51・SH38X・TR30、近年のSH58X／SH59X／SH48。TERRAアルミケース・TR50の鍵も同じブラックキーです</span></div>
-        </div>
+    <!-- 鍵の種類の見分け方（補足。必要な鍵は診断結果に出るので控えめに） -->
+    <details class="lg-keytypes mt-10">
+      <summary><i class="ti ti-key text-shad"></i><span>鍵の種類の見分け方（レッドキー／ブラックキー）</span><i class="ti ti-chevron-down lg-keytypes-mark"></i></summary>
+      <div class="lg-keytypes-body">
+        <div class="lg-keytype"><img src="/img/lock-guide/key_red.webp" alt="レッドキー"><div><b>レッドキー</b><span>赤い樹脂ヘッド。従来のSHADシリンダー。TR41・TR46・TR27・SH47・SH44・SH33・SH23 など</span></div></div>
+        <div class="lg-keytype"><img src="/img/lock-guide/key_black.webp" alt="ブラックキー"><div><b>ブラックキー</b><span>黒いヘッドで刻印入りのプレミアムシリンダー。SH51・SH38X・TR30、近年のSH58X／SH59X／SH48。TERRAアルミケース・TR50の鍵も同じブラックキーです</span></div></div>
       </div>
-      <div class="lg-card">
-        <p class="pd-sec-en">How It Works</p>
-        <h2 class="text-[20px] font-bold mt-1">ワンキー化の仕組み</h2>
-        <ol class="lg-steps mt-5">
-          <li><b>予備シリンダーを用意する</b><span>多くのサイドケースには右側に予備のキーシリンダーが1個付属しています。付属しないバッグ類や、形状が合わない組み合わせはキーシリンダーセットを購入します。</span></li>
-          <li><b>トップケースのシリンダーを差し替える</b><span>ロック部のカバーを外し、シリンダーを引き抜いて、サイドと同じ鍵のシリンダーを差し込みます。</span></li>
-          <li><b>3つのケースを1本の鍵で</b><span>差し替え後はトップもサイドも同じ鍵で開閉・着脱できます。余った鍵は予備として保管してください。</span></li>
-        </ol>
-        <p class="text-[12px] text-neutral-500 mt-4 leading-relaxed">鍵の系統（レッド／ブラック）が異なる組み合わせや、シリンダーの形状が合わない組み合わせは、差し替えだけでは統一できません。上の診断でご確認ください。</p>
-      </div>
-    </section>
+    </details>
 
     <div class="mt-10 flex flex-wrap items-center gap-3">
       <a href="/fitting-kits" class="btn border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white"><i class="ti ti-tool"></i>フィッティングキットとは</a>

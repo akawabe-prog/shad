@@ -90,7 +90,7 @@
         + '</div></section>'
         + '<div class="max-w-site mx-auto px-7 pt-7"><a href="/news" class="inline-flex items-center gap-2 text-[13px] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>NEWS一覧</a></div>'
         + '<main class="pb-[70px]">' + (img ? '<div class="news-hero-img"><img src="' + esc(img) + '" alt="' + esc(title) + '"></div>' : "")
-        + '<article class="news-body"><p class="news-lead">' + esc(lead) + '</p>' + clean((p.content || {}).rendered, codes) + '</article></main>'
+        + '<article class="news-body">' + clean((p.content || {}).rendered, codes) + '</article></main>'
         + '<section class="max-w-site mx-auto px-7 pb-[80px]"><div class="mt-9 text-center"><a href="/news" class="btn border border-black/15 bg-white hover:border-shad hover:text-shad"><i class="ti ti-list"></i>NEWS一覧へ</a></div></section>';
       if (window.gsap) window.dispatchEvent(new Event("resize"));
     })

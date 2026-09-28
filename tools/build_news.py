@@ -235,7 +235,6 @@ DETAIL = """{nav}
 <main class="pb-[70px]">
   {figure}
   <article class="news-body">
-    <p class="news-lead">{lead}</p>
     {body}
   </article>
 </main>
