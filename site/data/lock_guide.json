@@ -3,7 +3,7 @@
   "families": {
     "red": {
       "label": "レッドキー",
-      "hint": "赤い樹脂ヘッドの鍵。従来のSHADシリンダー"
+      "hint": "赤い樹脂ヘッドの鍵。従来のSHADシリンダー（SR38・E48SR も同じ）"
     },
     "black": {
       "label": "ブラックキー",
@@ -184,6 +184,16 @@
       "label": "SR38",
       "codes": [
         "SR38"
+      ],
+      "family": "red",
+      "spare": false,
+      "video": "OJzdf13bZZg"
+    },
+    {
+      "id": "e48sr",
+      "label": "E48SR",
+      "codes": [
+        "E48SR"
       ],
       "family": "red",
       "spare": false,
