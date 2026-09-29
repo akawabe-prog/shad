@@ -56,7 +56,7 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 
 ## NEWS（APIのみ掲載）
 
-- 掲載ソースは CJ の CMS（`https://cms.customjapan.net/wp-json/custom/v1/posts?categories=480…`）＝ カテゴリ **90_SHAD（site:SHAD、SHAD公式サイト用）** の記事だけ。
+- 掲載ソースは CJ の CMS（`https://cms.customjapan.net/wp-json/custom/v1/posts?categories=480&per_page=24&_embed`。2026-09-29 CJ山内さんの指示で `publish_codes` パラメータは付けない。付けると公開コード未設定の記事が落ちる）＝ カテゴリ **90_SHAD（site:SHAD、SHAD公式サイト用）** の記事だけ。
   ブランドタグ ™️SHAD（tags=78）は他サイト向け記事も含むため使わない
 - 更新：`python3 tools/fetch_news_api.py && python3 tools/build_news.py`（TOPの最新4件・カテゴリチップ、/news 一覧、記事ページ、シンプル版トップまで更新）
 - `build_news.py` の `API_ONLY=True` により news.json の自社記事は表示しない。混ぜたい場合は False に戻す

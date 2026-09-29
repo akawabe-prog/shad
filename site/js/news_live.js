@@ -8,7 +8,7 @@
    ・カテゴリの判定（タグ → News/Feature/Event/Media/Guide）は fetch_news_api.py と同じ
    ========================================================= */
 (function () {
-  var API = "https://cms.customjapan.net/wp-json/custom/v1/posts?categories=480&publish_codes=n&per_page=24&_embed"
+  var API = "https://cms.customjapan.net/wp-json/custom/v1/posts?categories=480&per_page=24&_embed"
           + "&_fields=id,date,title.rendered,excerpt.rendered,link,_embedded";
   var TAG_TO_CATEGORY = [["#出展", "Event"], ["#ニュース", "News"], ["#特集", "Feature"], ["#メディア", "Media"]];
   var ORDER = ["News", "Feature", "Event", "Racing", "Media", "Guide"];

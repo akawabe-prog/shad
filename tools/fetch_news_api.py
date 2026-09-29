@@ -17,7 +17,7 @@ SHAD関連記事の原本はCJのCMS（WordPress）です。ここで取得し�
     GET https://cms.customjapan.net/wp-json/custom/v1/posts
         ?categories=480      … カテゴリ「90_SHAD」（slug: site_shad、説明「SHAD公式サイト用」）。**この指定でSHAD公式サイト向け記事だけが返る**
                                ※ ブランドタグ「™️SHAD」（tags=78）とは別。タグ側は他サイト向け記事も含むため使わない
-        &publish_codes=n&per_page=24&_embed
+        &per_page=24&_embed
     ページングあり（X-WP-TotalPages）。全ページを順に取得します。
 
 ■ 記事の種別
@@ -43,7 +43,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_PATH = os.path.join(ROOT, "site", "data", "news", "news_api.json")
 
 API = ("https://cms.customjapan.net/wp-json/custom/v1/posts"
-       "?categories=480&publish_codes=n&per_page=24&_embed"
+       "?categories=480&per_page=24&_embed"
        "&_fields=id,date,title.rendered,excerpt.rendered,content.rendered,link,_embedded")
 
 # CJのタグ → サイト側のカテゴリ（絞り込みチップに出る名前）
