@@ -20,6 +20,7 @@ RewriteRule ^product/(sl18|sw80)/?$ /products [R=301,L,NC]
 
 # 旧URL（フラット構成）→ 新URL（階層構成）
 RewriteRule ^for-your-motorcycle/?$ /fitment [R=301,L,NC]
+RewriteRule ^tokushoho(\.html)?/?$ /company [R=301,L,NC]   # 特商法ページは廃止（2026-09-30）→ 会社情報へ
 RewriteRule ^product-([A-Za-z0-9]+)\.html/?$ /product/$1 [R=301,L,NC]
 RewriteRule ^product-([A-Za-z0-9]+)/?$ /product/$1 [R=301,L,NC]
 
