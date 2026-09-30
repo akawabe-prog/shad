@@ -403,6 +403,9 @@ window.SHAD_GALLERY = {
     var lastSec=secs.length ? secs[secs.length-1].sec : null;
     if(lastSec && lastSec.getBoundingClientRect().bottom<=line) cur=lastSec;
     links.forEach(function(a){ a.classList.toggle("is-current", !!cur && document.querySelector(a.getAttribute("href"))===cur); });
+    /* スマホの横スクロールナビ：現在地のリンクが見える位置へ */
+    var ca=[].filter.call(links,function(a){ return a.classList.contains("is-current"); })[0], wrap=navBar&&navBar.querySelector(".pd-nav-in");
+    if(ca && wrap && wrap.scrollWidth>wrap.clientWidth){ var x=ca.offsetLeft-(wrap.clientWidth-ca.offsetWidth)/2; if(Math.abs(wrap.scrollLeft-x)>8) wrap.scrollTo({left:x,behavior:"smooth"}); }
     if(navBar && side){
       var gone=navBar.getBoundingClientRect().bottom<0;
       var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;

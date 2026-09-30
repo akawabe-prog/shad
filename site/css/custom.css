@@ -350,6 +350,11 @@
 .fk-nav-in::-webkit-scrollbar{display:none;}
 .fk-nav-a{position:relative;flex:0 0 auto;padding:15px 0 14px;
   font-size:13.5px;font-weight:500;color:rgba(255,255,255,.62);white-space:nowrap;transition:.18s;}
+/* PC：項目を幅いっぱいに等間隔で広げ、文字も一回り大きく（詰まった印象を解消） */
+@media(min-width:1024px){
+  .fk-nav-in{justify-content:space-between;gap:36px;padding:0 40px;}
+  .fk-nav-a{font-size:15px;padding:17px 0 15px;letter-spacing:.02em;}
+}
 .fk-nav-a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
   background:#E31E24;transform:scaleX(0);transition:transform .2s ease;}
 .fk-nav-a:hover{color:#fff;}
@@ -515,9 +520,13 @@
 .pd-nav-a.is-current{color:#0E0E0E;border-bottom-color:#E31E24;}
 .pd-nav-a.is-current small{color:#E31E24;}
 @media(max-width:640px){
-  .pd-nav-in{padding:0 8px;}
-  .pd-nav-a{padding:12px 1px;font-size:11px;letter-spacing:-.02em;gap:0;}  /* 8項目（フルパニア付き）でも375pxに収まる */
-  .pd-nav-a small{display:none;}
+  /* スマホ：詰め込まず横スクロール（スワイプ）。現在地は自動で見える位置へ。右端のグラデーションで続きがあることを示す */
+  .pd-nav{position:relative;}
+  .pd-nav-in{padding:0 12px;justify-content:flex-start;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;}
+  .pd-nav-in::-webkit-scrollbar{display:none;}
+  .pd-nav-a{flex:0 0 auto;padding:13px 12px;font-size:13px;letter-spacing:0;gap:6px;white-space:nowrap;scroll-snap-align:center;}
+  .pd-nav-a small{display:inline;font-size:10.5px;}
+  .pd-nav::after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),#fff 80%);}
 }
 /* 右側のフローティングIndex：アンカーナビが画面から消えたら出る */
 .pd-side{position:fixed;right:16px;top:50%;transform:translateY(-50%) translateX(12px);z-index:35;
