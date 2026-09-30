@@ -162,7 +162,8 @@ script = r'''
     document.querySelectorAll('#sideTiles .lg-tile').forEach(function(t){
       t.classList.toggle('on',t.dataset.code===st.side);
       var na=false;
-      if(tg){ var sg=groupOf(R.sides,t.dataset.code); var tfs= tg.family==='ask'?['red','black']:[tg.family]; var sfs= sg.family==='ask'?['red','black']:[sg.family];
+      if(tg){ var sg=groupOf(R.sides,t.dataset.code); var kf0=keyFree(tg,sg); var tfs= tg.family==='ask'?['red','black']:[tg.family]; var sfs= sg.family==='ask'?['red','black']:[sg.family];
+        if(kf0){ na = kf0.rule.status==='no'||kf0.rule.status==='no_jp'; } else
         na = tfs.every(function(tf){ return sfs.every(function(sf){ var m=R.matrix[tf+'|'+sf]||{status:'no'}; if(m.only_sides&&m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'};
           (R.overrides||[]).forEach(function(o){ var okT=o.tops?o.tops.indexOf(tg.id)>=0:(o.top_family?o.top_family===tf:true); var okS=o.sides?o.sides.indexOf(sg.id)>=0:(o.side_family?o.side_family===sf:true); if(okT&&okS&&(!o.tkey||o.tkey===tf)&&(!o.skey||o.skey===sf)) m=o.rule; });
           return m.status==='no'||m.status==='no_jp'; }); }); }
@@ -171,13 +172,13 @@ script = r'''
     /* STEP3：鍵の色 */
     var kp=document.getElementById('keyPick'), s3=document.getElementById('step3'); kp.innerHTML='';
     var asks=[]; var sg=groupOf(R.sides,st.side);
-    if(tg&&tg.family==='ask') asks.push({kind:'tkey',label:tg.label+'（トップ）の鍵'});
+    if(tg&&tg.family==='ask' && !(sg&&keyFree(tg,sg))) asks.push({kind:'tkey',label:tg.label+'（トップ）の鍵'});
     if(sg&&sg.family==='ask' && !(tg&&keyFree(tg,sg))) asks.push({kind:'skey',label:sg.label+'（サイド）の鍵'});
     s3.hidden=!asks.length;
     asks.forEach(function(a){
       var row=el('<div class="lg-keyrow"><p class="lg-keyrow-lb">'+esc(a.label)+'</p><div class="lg-keyopts"></div></div>');
       ['red','black'].forEach(function(k){
-        var b=el('<button type="button" class="lg-keyopt'+(st[a.kind]===k?' on':'')+'" data-k="'+k+'"><img src="/img/lock-guide/key_'+k+'.webp" alt=""><b>'+R.families[k].label+'</b><span>'+esc(R.families[k].hint)+'</span></button>');
+        var b=el('<button type="button" class="lg-keyopt'+(st[a.kind]===k?' on':'')+'" data-k="'+k+'"><img src="/img/lock-guide/key_'+k+'.webp" alt=""><div><b>'+R.families[k].label+'</b><span>'+esc(R.families[k].hint)+'</span></div></button>');
         b.addEventListener('click',function(){ st[a.kind]=k; sync(); });
         row.querySelector('.lg-keyopts').appendChild(b);
       });
@@ -202,7 +203,7 @@ script = r'''
     var tf=R.families[r.tf].label, sf=R.families[r.sf].label;
     h+='<p class="lg-fam">トップ：'+esc(tf)+'　／　サイド：'+(keyFree(tg,sg)&&sg.family==='ask'?'レッド／ブラックどちらでも':esc(sf))+'</p>';
     if(r.status==='no'){
-      h+='<p class="lg-txt">鍵の系統が異なるため、シリンダーの差し替えでは統一できません。TERRAキーの組み合わせはTERRA同士、レッドキーとブラックキーは同系統か、対応する変換部品がある組み合わせでご検討ください。</p>';
+      if(r.note) h+='<p class="lg-txt">'+esc(r.note)+'</p>'; else h+='<p class="lg-txt">鍵の系統が異なるため、シリンダーの差し替えでは統一できません。TERRAキーの組み合わせはTERRA同士、レッドキーとブラックキーは同系統か、対応する変換部品がある組み合わせでご検討ください。</p>';
       h+='<a href="/products?feat=fullpannier" class="lg-link">フルパニア対応の商品を見る <i class="ti ti-arrow-right"></i></a>';
     } else if(r.status==='no_jp'){
       h+='<p class="lg-txt">'+esc(r.note)+'</p><a href="/products?feat=fullpannier" class="lg-link">統一できる組み合わせを見る <i class="ti ti-arrow-right"></i></a>';

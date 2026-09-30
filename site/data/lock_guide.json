@@ -331,6 +331,20 @@
   "overrides": [
     {
       "tops": [
+        "sh_prem",
+        "sh51"
+      ],
+      "sides": [
+        "terra_side"
+      ],
+      "ignore_keys": true,
+      "rule": {
+        "status": "no",
+        "note": "TERRAサイドケース（TR36・TR47）のシリンダーは SH48／SH58X／SH59X／SH51 に対応しないため、鍵の色にかかわらず統一できません。"
+      }
+    },
+    {
+      "tops": [
         "terra_alu"
       ],
       "sides": [
