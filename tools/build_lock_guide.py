@@ -134,16 +134,25 @@ script = r'''
     if(kind==='top'){ st.top=code; st.tkey=null; } else { st.side=code; st.skey=null; }
     sync();
   }
+  function keyFree(tg,sg){
+    /* 鍵の色に関係なく結果が決まる組み合わせ（ignore_keys）。該当すれば STEP3 を出さない */
+    var hit=null; (R.overrides||[]).forEach(function(o){ if(o.ignore_keys && o.tops && o.tops.indexOf(tg.id)>=0 && o.sides && o.sides.indexOf(sg.id)>=0) hit=o; }); return hit;
+  }
   function statusFor(){
     var tg=groupOf(R.tops,st.top), sg=groupOf(R.sides,st.side); if(!tg||!sg) return null;
+    var kf=keyFree(tg,sg);
+    if(kf){ var m0=Object.assign({},kf.rule); if(m0.status==='ok' && !(m0.spare && sg.spare)) m0.status='parts';
+      return Object.assign({tf:tg.family==='ask'?(st.tkey||'black'):tg.family, sf:sg.family==='ask'?'black':sg.family, tg:tg, sg:sg},m0); }
     var tf=famOf(tg,st.tkey), sf=famOf(sg,st.skey); if(!tf||!sf) return {pending:true};
     var m=R.matrix[tf+'|'+sf]; if(!m) m={status:'no'};
     if(m.only_sides && m.only_sides.indexOf(sg.id)<0) m=m['else']||{status:'no'};
     (R.overrides||[]).forEach(function(o){
       var okT = o.tops ? o.tops.indexOf(tg.id)>=0 : (o.top_family ? o.top_family===tf : true);
       var okS = o.sides ? o.sides.indexOf(sg.id)>=0 : (o.side_family ? o.side_family===sf : true);
-      if(okT && okS && (!o.tkey||o.tkey===tf) && (!o.skey||o.skey===sf)) m=o.rule;
+      if(!o.ignore_keys && okT && okS && (!o.tkey||o.tkey===tf) && (!o.skey||o.skey===sf)) m=o.rule;
     });
+    m=Object.assign({},m);
+    if(m.status==='ok' && !(m.spare && sg.spare)) m.status='parts';   // 予備シリンダーが無ければ部品購入
     return Object.assign({tf:tf,sf:sf,tg:tg,sg:sg},m);
   }
   function sync(){
@@ -163,7 +172,7 @@ script = r'''
     var kp=document.getElementById('keyPick'), s3=document.getElementById('step3'); kp.innerHTML='';
     var asks=[]; var sg=groupOf(R.sides,st.side);
     if(tg&&tg.family==='ask') asks.push({kind:'tkey',label:tg.label+'（トップ）の鍵'});
-    if(sg&&sg.family==='ask') asks.push({kind:'skey',label:sg.label+'（サイド）の鍵'});
+    if(sg&&sg.family==='ask' && !(tg&&keyFree(tg,sg))) asks.push({kind:'skey',label:sg.label+'（サイド）の鍵'});
     s3.hidden=!asks.length;
     asks.forEach(function(a){
       var row=el('<div class="lg-keyrow"><p class="lg-keyrow-lb">'+esc(a.label)+'</p><div class="lg-keyopts"></div></div>');
@@ -191,7 +200,7 @@ script = r'''
     if(r.pending){ box.innerHTML=head+'<p class="lg-badge is-wait"><i class="ti ti-key"></i>STEP 3 で鍵の色を選んでください</p>'; return; }
     var L=R.labels[r.status]; var h=head+'<p class="lg-badge is-'+L.tone+'">'+esc(L.badge)+'</p>';
     var tf=R.families[r.tf].label, sf=R.families[r.sf].label;
-    h+='<p class="lg-fam">トップ：'+esc(tf)+'　／　サイド：'+esc(sf)+'</p>';
+    h+='<p class="lg-fam">トップ：'+esc(tf)+'　／　サイド：'+(keyFree(tg,sg)&&sg.family==='ask'?'レッド／ブラックどちらでも':esc(sf))+'</p>';
     if(r.status==='no'){
       h+='<p class="lg-txt">鍵の系統が異なるため、シリンダーの差し替えでは統一できません。TERRAキーの組み合わせはTERRA同士、レッドキーとブラックキーは同系統か、対応する変換部品がある組み合わせでご検討ください。</p>';
       h+='<a href="/products?feat=fullpannier" class="lg-link">フルパニア対応の商品を見る <i class="ti ti-arrow-right"></i></a>';

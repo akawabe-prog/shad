@@ -82,7 +82,7 @@ python3 tools/build_cards_json.py     # → site/data/catalog/cards.json
 ## ワンキー化ガイド（/lock-guide）
 
 - ルール：`site/data/lock_guide.json`（本国 LOCK_GUIDE_2026.pdf を日本販売品に絞って整理。tops／sides のグループ、キー系統 family＝red／black（TERRAアルミ・TR50の鍵はブラックキーと同じ。ask＝赤黒混在で利用者が選ぶ）、
-  matrix＝系統の組み合わせごとの結果（ok／parts／mech／no／no_jp）、overrides＝組み合わせ別の上書き（TERRA同士＝TERRA専用セット、TERRA×SH38X/TR30＝204116R、TERRA×レッド＝不可、TERRAサイド×SHトップ＝不可 など）、
+  matrix＝系統の組み合わせごとの結果（ok／parts／mech／no／no_jp）。表示は予備シリンダーの有無で決まり、サイドに予備が無ければ ok でも「部品を追加すれば統一できます」になる。overrides の `ignore_keys` は鍵の色を聞かずに適用（TERRA×SH35/36 はブラックキー3個セット固定でSTEP3を出さない）、overrides＝組み合わせ別の上書き（TERRA同士＝TERRA専用セット、TERRA×SH38X/TR30＝204116R、TERRA×レッド＝不可、TERRAサイド×SHトップ＝不可 など）、
   parts＝CJ品番と本国品番の対応、各グループの本国手順動画ID）
 - 生成：`python3 tools/build_lock_guide.py` → `site/lock-guide.html`（ヘッダー／ナビ／フッターは fitting-kits.html から複製）
 - ページは JSON を実行時に読み、トップ→サイド→鍵の色 の3ステップで診断。部品の定価は accessories.json から実行時表示。`?top=TR46&side=TR27` で初期選択でき、

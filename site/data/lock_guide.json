@@ -1,5 +1,5 @@
 {
-  "_readme": "ワンキー化ガイドのルール（/lock-guide と 商品ページの＋αブロックが参照）。本国 LOCK_GUIDE_2026.pdf を日本で販売中の商品に絞って整理。family＝鍵の系統（red／black。TERRAアルミ・TR50のキーはブラックキーと同じ）、ask＝製造時期で赤／黒が混在するため利用者に選ばせる。overrides＝系統の組み合わせ（matrix）より優先する組み合わせ別ルール。",
+  "_readme": "ワンキー化ガイドのルール（/lock-guide と 商品ページの＋αブロックが参照）。本国 LOCK_GUIDE_2026.pdf を日本で販売中の商品に絞って整理。family＝鍵の系統（red／black。TERRAアルミ・TR50のキーはブラックキーと同じ）、ask＝製造時期で赤／黒が混在するため利用者に選ばせる。overrides＝系統の組み合わせ（matrix）より優先する組み合わせ別ルール。 overrides の ignore_keys=true は鍵の色を選ばせずに適用（STEP3 を出さない）。status=ok でもサイドに予備シリンダーが無ければ表示は「部品を追加すれば統一できます」になる。",
   "families": {
     "red": {
       "label": "レッドキー",
@@ -304,8 +304,7 @@
   "overrides": [
     {
       "tops": [
-        "terra_alu",
-        "tr50"
+        "terra_alu"
       ],
       "sides": [
         "terra_side"
@@ -314,6 +313,20 @@
         "status": "ok",
         "spare": true,
         "part": "19708799"
+      }
+    },
+    {
+      "tops": [
+        "tr50"
+      ],
+      "sides": [
+        "terra_side"
+      ],
+      "rule": {
+        "status": "parts",
+        "spare": false,
+        "part": "19708799",
+        "note": "TR50 はサイドケース付属の予備シリンダーを流用できないため、TERRA専用キーシリンダー3個セットで揃えます。"
       }
     },
     {
@@ -341,13 +354,13 @@
       "sides": [
         "sh3536"
       ],
-      "skey": "black",
       "rule": {
         "status": "parts",
         "spare": false,
         "part": "29177073",
-        "note": "TERRA側とサイドのシリンダーを、ブラックキー3個セット（SH35／SH36／SH38X／TR30／TR40対応）で揃えます。"
-      }
+        "note": "サイドの鍵の色にかかわらず、トップ・サイドのシリンダーをブラックキー3個セット（SH35／SH36／SH38X／TR30／TR40対応）に差し替えて揃えます。"
+      },
+      "ignore_keys": true
     },
     {
       "tops": [
@@ -381,6 +394,56 @@
       "rule": {
         "status": "no",
         "note": "TERRAサイドケースのシリンダーはレッドキーのトップケースには対応しないため、統一できません。"
+      }
+    },
+    {
+      "tops": [
+        "sh_prem",
+        "sh51"
+      ],
+      "sides": [
+        "tr30",
+        "tr40"
+      ],
+      "tkey": "black",
+      "rule": {
+        "status": "parts",
+        "spare": false,
+        "part": "17460927",
+        "note": "TR30／TR40 には予備シリンダーが付属しないため、ブラックキー3個セットで揃えます。※レッドキー仕様のトップケースをお持ちの場合は、別途ロックカバー（ロック機構）のアップグレードとキーシリンダーの購入が必要です（国内では取扱いがありません）。"
+      }
+    },
+    {
+      "tops": [
+        "sh_prem",
+        "sh51"
+      ],
+      "sides": [
+        "sh38x"
+      ],
+      "tkey": "black",
+      "rule": {
+        "status": "ok",
+        "spare": true,
+        "part": "17460927",
+        "note": "※レッドキー仕様のトップケースをお持ちの場合は、別途ロックカバー（ロック機構）のアップグレードとキーシリンダーの購入が必要です（国内では取扱いがありません）。"
+      }
+    },
+    {
+      "tops": [
+        "sh_prem",
+        "sh51"
+      ],
+      "sides": [
+        "sh3536"
+      ],
+      "tkey": "black",
+      "skey": "black",
+      "rule": {
+        "status": "ok",
+        "spare": true,
+        "part": "17460927",
+        "note": "※レッドキー仕様のトップケースをお持ちの場合は、別途ロックカバー（ロック機構）のアップグレードとキーシリンダーの購入が必要です（国内では取扱いがありません）。"
       }
     }
   ]
