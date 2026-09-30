@@ -263,16 +263,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh51/poster_hero.webp"
-         data-src-pc="/media/products/sh51/hero.mp4" data-src-sp="/media/products/sh51/hero_sp.mp4" data-poster-sp="/img/products/sh51/poster_hero_sp.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Movie</p>
-    <h2 class="pd-hero-h is-jp">ふたりの旅に、<br>ちょうどいい51L。</h2>
-    <p class="pd-hero-sub">モジュラーヘルメット2個が入る51L。ひとつの鍵で開ける、閉める、外す。SH51のローンチムービー。</p>
-    <button type="button" class="pd-play" data-video="/media/products/sh51/film.mp4" data-poster="/img/products/sh51/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（30秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh51/poster_hero.webp"
+           data-src-pc="/media/products/sh51/hero.mp4" data-src-sp="/media/products/sh51/hero_sp.mp4" data-poster-sp="/img/products/sh51/poster_hero_sp.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/sh51/film.mp4" data-poster="/img/products/sh51/poster_film.webp" aria-label="フル映像を見る（30秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Movie</p>
+      <h2 class="pd-movie-h">ふたりの旅に、<br>ちょうどいい51L。</h2>
+      <p class="pd-movie-sub">モジュラーヘルメット2個が入る51L。ひとつの鍵で開ける、閉める、外す。SH51のローンチムービー。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/sh51/film.mp4" data-poster="/img/products/sh51/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（30秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->
@@ -291,12 +294,12 @@ window.SHAD_GALLERY = {
       <a href="/engineered-for-riding" class="font-disp text-[14px] tracking-[.16em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition shrink-0">SHAD Technology <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="lp-story"><div class="lp-block">
-      <div class="lp-block-img"><img src="/img/products/sh51/story_capacity.webp" alt="モジュラーヘルメット2個を収納。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/sh51/story_touring.webp" alt="モジュラーヘルメット2個を収納。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">2 Helmets</span>
         <h3 class="lp-block-h">モジュラーヘルメット2個を収納。</h3>
         <p class="lp-block-p">51Lの収納スペースにモジュラーヘルメット2個を収められます。タンデムや長距離ツーリングの荷物にも対応します。</p></div>
     </div><div class="lp-block lp-rev">
-      <div class="lp-block-img"><img src="/img/products/sh51/story_touring.webp" alt="タフさと空力を、ひとつに。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/sh51/story_capacity.webp" alt="タフさと空力を、ひとつに。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">Tough &amp; Aero</span>
         <h3 class="lp-block-h">タフさと空力を、ひとつに。</h3>
         <p class="lp-block-p">高耐久素材と空力を意識したデザインが特長。アドベンチャースタイルの外観と、走行時の安定性に配慮しています。</p></div>

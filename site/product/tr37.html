@@ -263,16 +263,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/terra/poster_hero.webp"
-         data-src-pc="/media/products/terra/hero.mp4" data-src-sp="/media/products/terra/hero.mp4" data-poster-sp="/img/products/terra/poster_hero.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">TERRA</p>
-    <h2 class="pd-hero-h is-jp">アルミで、旅を軽くする。</h2>
-    <p class="pd-hero-sub">37Lの軽快なアルミトップケース。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステム。</p>
-    <button type="button" class="pd-play" data-video="/media/products/terra/film.mp4" data-poster="/img/products/terra/poster_film.webp"><i class="ti ti-player-play-filled"></i>TERRAの映像を見る（15秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/terra/poster_hero.webp"
+           data-src-pc="/media/products/terra/hero.mp4" data-src-sp="/media/products/terra/hero.mp4" data-poster-sp="/img/products/terra/poster_hero.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/terra/film.mp4" data-poster="/img/products/terra/poster_film.webp" aria-label="TERRAの映像を見る（15秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">TERRA</p>
+      <h2 class="pd-movie-h">アルミで、旅を軽くする。</h2>
+      <p class="pd-movie-sub">37Lの軽快なアルミトップケース。1.2mm厚の硬質アルミ合金と、AISI 304ステンレスのTERRAロックシステム。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/terra/film.mp4" data-poster="/img/products/terra/poster_film.webp"><i class="ti ti-player-play-filled"></i>TERRAの映像を見る（15秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->

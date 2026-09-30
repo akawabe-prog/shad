@@ -256,16 +256,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh58x/poster_hero.webp"
-         data-src-pc="/media/products/expandable/hero.mp4" data-src-sp="/media/products/expandable/hero.mp4" data-poster-sp="/img/products/sh58x/poster_hero.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Expandable</p>
-    <h2 class="pd-hero-h is-jp">荷物に合わせて、<br>ケースが変わる。</h2>
-    <p class="pd-hero-sub">46L、52L、58L。レバーひとつで3段階に伸縮する、世界唯一の可変容量トップケース。SHADのExpandableシリーズをムービーで。</p>
-    <button type="button" class="pd-play" data-video="/media/products/expandable/film.mp4" data-poster="/img/products/sh58x/poster_film.webp"><i class="ti ti-player-play-filled"></i>Expandableの映像を見る（25秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh58x/poster_hero.webp"
+           data-src-pc="/media/products/expandable/hero.mp4" data-src-sp="/media/products/expandable/hero.mp4" data-poster-sp="/img/products/sh58x/poster_hero.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/expandable/film.mp4" data-poster="/img/products/sh58x/poster_film.webp" aria-label="Expandableの映像を見る（25秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Expandable</p>
+      <h2 class="pd-movie-h">荷物に合わせて、<br>ケースが変わる。</h2>
+      <p class="pd-movie-sub">46L、52L、58L。レバーひとつで3段階に伸縮する、世界唯一の可変容量トップケース。SHADのExpandableシリーズをムービーで。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/expandable/film.mp4" data-poster="/img/products/sh58x/poster_film.webp"><i class="ti ti-player-play-filled"></i>Expandableの映像を見る（25秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->
@@ -284,15 +287,17 @@ window.SHAD_GALLERY = {
       <a href="/engineered-for-riding" class="font-disp text-[14px] tracking-[.16em] uppercase text-neutral-500 inline-flex items-center gap-2 hover:text-shad transition shrink-0">SHAD Technology <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="lp-story"><div class="lp-block">
-      <div class="lp-block-img"><img src="/img/products/sh58x/story_expand3.webp" alt="3段階に、容量を調整。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/sh58x/size_xxl.webp" alt="3段階に、容量を調整。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">Expandable</span>
         <h3 class="lp-block-h">3段階に、容量を調整。</h3>
         <p class="lp-block-p">容量を46L・52L・58Lの3段階に変えられる可変構造が特長。日常からロングツーリングまで、荷物量に合わせて使えます。</p></div>
-    </div><div class="lp-block lp-noimg"><div class="lp-block-tx"><span class="lp-block-kick">Smart Lock</span>
+    </div><div class="lp-block lp-rev">
+      <div class="lp-block-img"><img src="/img/products/sh58x/render_02.webp" alt="スマートロックで、扱いやすく。" loading="lazy"></div>
+      <div class="lp-block-tx"><span class="lp-block-kick">Smart Lock</span>
         <h3 class="lp-block-h">スマートロックで、扱いやすく。</h3>
         <p class="lp-block-p">ケースの開閉と車体への着脱を管理できるスマートロックシステムを搭載。日常の操作性と防犯性に配慮しています。</p></div>
     </div><div class="lp-block">
-      <div class="lp-block-img"><img src="/img/products/sh58x/story_panels.webp" alt="車体に合わせて、表情を変える。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/sh58x/info_accessories.webp" alt="車体に合わせて、表情を変える。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">Your Style</span>
         <h3 class="lp-block-h">車体に合わせて、表情を変える。</h3>
         <p class="lp-block-p">カラーカバーを選べる設計です。車体のカラーやスタイルに合わせて、トップケースの印象を整えられます。</p></div>

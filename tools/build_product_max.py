@@ -178,6 +178,9 @@ def render(cfg, P):
     play = ('<button type="button" class="pd-play" data-video="%s" data-poster="%s">'
             '<i class="ti ti-player-play-filled"></i>%s</button>'
             % (hero["film"], hero.get("poster_film", hero.get("poster_pc", "")), hero.get("film_label", "フル映像を見る"))) if hero.get("film") else ""
+    # 動画の中央にも再生ボタン（同じフル映像を開く）
+    play_center = ('<button type="button" class="pd-movie-play" data-video="%s" data-poster="%s" aria-label="%s"><i class="ti ti-player-play-filled"></i></button>'
+                   % (hero["film"], hero.get("poster_film", hero.get("poster_pc", "")), hero.get("film_label", "フル映像を見る"))) if hero.get("film") else ""
     visual = ""
     if cfg.get("visual_pair"):
         def vfig(v):
@@ -363,16 +366,19 @@ window.SHAD_GALLERY = {ov};
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="{hero.get("poster_pc","")}"
-         data-src-pc="{hero["video_pc"]}" data-src-sp="{hero.get("video_sp") or hero["video_pc"]}" data-poster-sp="{sp_poster}"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">{hero.get("kick","Movie")}</p>
-    <h2 class="pd-hero-h is-jp">{hero["heading"]}</h2>
-    <p class="pd-hero-sub">{hero.get("sub","")}</p>
-    {play}
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="{hero.get("poster_pc","")}"
+           data-src-pc="{hero["video_pc"]}" data-src-sp="{hero.get("video_sp") or hero["video_pc"]}" data-poster-sp="{sp_poster}"></video>
+    {play_center}
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">{hero.get("kick","Movie")}</p>
+      <h2 class="pd-movie-h">{hero["heading"]}</h2>
+      <p class="pd-movie-sub">{hero.get("sub","")}</p></div>
+    {play}
+  </div></div>
 </section>
 
 {visual}<!-- ===== ⑦ 商品の特徴 ===== -->

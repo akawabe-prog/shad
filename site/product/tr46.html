@@ -263,16 +263,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr46/poster_hero.webp"
-         data-src-pc="/media/products/tr46/hero.mp4" data-src-sp="/media/products/tr46/hero_sp.mp4" data-poster-sp="/img/products/tr46/poster_hero_sp.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Movie</p>
-    <h2 class="pd-hero-h is-jp">冒険へ連れ出す、<br>ハードケース。</h2>
-    <p class="pd-hero-sub">TR41の思想を受け継ぎ、容量を46Lへ拡大。よりタフで、より実用的に進化したTERRAのトップケースを映像で。</p>
-    <button type="button" class="pd-play" data-video="/media/products/tr46/film.mp4" data-poster="/img/products/tr46/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（57秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr46/poster_hero.webp"
+           data-src-pc="/media/products/tr46/hero.mp4" data-src-sp="/media/products/tr46/hero_sp.mp4" data-poster-sp="/img/products/tr46/poster_hero_sp.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/tr46/film.mp4" data-poster="/img/products/tr46/poster_film.webp" aria-label="フル映像を見る（57秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Movie</p>
+      <h2 class="pd-movie-h">冒険へ連れ出す、<br>ハードケース。</h2>
+      <p class="pd-movie-sub">TR41の思想を受け継ぎ、容量を46Lへ拡大。よりタフで、より実用的に進化したTERRAのトップケースを映像で。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/tr46/film.mp4" data-poster="/img/products/tr46/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（57秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->

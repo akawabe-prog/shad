@@ -604,6 +604,26 @@
 .pd-play i{font-size:20px;}
 .pd-play:hover{background:#E31E24;border-color:#E31E24;}
 @media(max-width:760px){.pd-hero{aspect-ratio:9/13;}.pd-hero-in{padding-bottom:12%;}}
+/* ⑤ Movie：動画は全幅（文字を重ねない）＋ 下の帯に見出し・説明・フル映像ボタン */
+.pd-movie{background:#0E0E0E;color:#fff;}
+.pd-movie-vid{position:relative;aspect-ratio:16/8;overflow:hidden;background:#000;}
+.pd-movie-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pd-movie-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;
+  background:rgba(0,0,0,.42);border:1.5px solid rgba(255,255,255,.85);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);transition:.2s;}
+.pd-movie-play:hover{background:#E31E24;border-color:#E31E24;transform:translate(-50%,-50%) scale(1.06);}
+.pd-movie-cap{border-top:1px solid rgba(255,255,255,.1);}
+.pd-movie-cap-in{max-width:1180px;margin:0 auto;padding:30px 28px 36px;display:grid;grid-template-columns:1fr auto;gap:18px 40px;align-items:end;}
+.pd-movie-h{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.4;margin-top:8px;}
+.pd-movie-sub{font-size:14.5px;line-height:1.85;color:rgba(255,255,255,.78);max-width:720px;margin-top:8px;}
+.pd-movie-cap .pd-play{margin-top:0;}
+@media(max-width:760px){
+  .pd-movie-vid{aspect-ratio:9/12;}
+  .pd-movie-play{width:64px;height:64px;font-size:24px;}
+  .pd-movie-cap-in{grid-template-columns:1fr;padding:24px 20px 28px;gap:14px;align-items:start;}
+  .pd-movie-h{font-size:22px;text-wrap:balance;}
+  .pd-movie-sub{font-size:13.5px;}
+}
 /* --- ⑥ イメージ画像 --- */
 .pd-visual{width:100%;}
 .pd-visual-wide{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;}

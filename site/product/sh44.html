@@ -254,16 +254,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh44/img_action1.webp"
-         data-src-pc="/media/products/sh44/hero.mp4" data-src-sp="/media/products/sh44/hero_sp.mp4" data-poster-sp="/img/products/sh44/poster_story.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Movie</p>
-    <h2 class="pd-hero-h is-jp">毎日に、ちょうどいい44L。</h2>
-    <p class="pd-hero-sub">フルフェイス2個が入る44L。ダブルロックとひとつの鍵で、開ける・外すを片手で。SH44のムービー。</p>
-    <button type="button" class="pd-play" data-video="/media/products/sh44/film.mp4" data-poster="/img/products/sh44/img_action2.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（49秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh44/img_action1.webp"
+           data-src-pc="/media/products/sh44/hero.mp4" data-src-sp="/media/products/sh44/hero_sp.mp4" data-poster-sp="/img/products/sh44/poster_story.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/sh44/film.mp4" data-poster="/img/products/sh44/img_action2.webp" aria-label="フル映像を見る（49秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Movie</p>
+      <h2 class="pd-movie-h">毎日に、ちょうどいい44L。</h2>
+      <p class="pd-movie-sub">フルフェイス2個が入る44L。ダブルロックとひとつの鍵で、開ける・外すを片手で。SH44のムービー。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/sh44/film.mp4" data-poster="/img/products/sh44/img_action2.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（49秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->
@@ -286,7 +289,9 @@ window.SHAD_GALLERY = {
       <div class="lp-block-tx"><span class="lp-block-kick">2 Helmets</span>
         <h3 class="lp-block-h">ヘルメット2個を、ひとつに。</h3>
         <p class="lp-block-p">フルフェイスヘルメット2個を収納できる44L容量が特長。タンデムや日常の荷物をまとめて収められます。</p></div>
-    </div><div class="lp-block lp-noimg"><div class="lp-block-tx"><span class="lp-block-kick">Easy Lock</span>
+    </div><div class="lp-block lp-rev">
+      <div class="lp-block-img"><img src="/img/products/sh44/story_hinge.webp" alt="開閉も着脱も、スムーズに。" loading="lazy"></div>
+      <div class="lp-block-tx"><span class="lp-block-kick">Easy Lock</span>
         <h3 class="lp-block-h">開閉も着脱も、スムーズに。</h3>
         <p class="lp-block-p">開閉と車体への着脱を扱いやすくまとめたロック機構。日常の操作性に配慮しています。</p></div>
     </div><div class="lp-block">

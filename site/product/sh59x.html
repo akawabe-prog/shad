@@ -80,8 +80,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- ===== ① 看板（商品ビジュアル＋購入情報） ===== -->
 <main id="pdTop" class="max-w-site mx-auto px-7 py-8 grid md:grid-cols-2 gap-10 items-start">
   <div>
-    <div class="g-main"><img id="gMain" src="https://img.customjapan.net/items/17460903_1.jpg" alt="SH59X トップケース"></div>
-    <div class="flex flex-wrap gap-2.5 mt-3"><button class="g-thumb on" data-src="https://img.customjapan.net/items/17460903_1.jpg"><img src="https://img.customjapan.net/items/17460903_1.jpg" alt=""></button><button class="g-thumb" data-src="/img/products/sh59x/render_01.webp"><img src="/img/products/sh59x/render_01.webp" alt=""></button><button class="g-thumb" data-src="/img/products/sh59x/topcase_gs.webp"><img src="/img/products/sh59x/topcase_gs.webp" alt=""></button><button class="g-thumb" data-src="https://img.customjapan.net/items/17460903_2.jpg"><img src="https://img.customjapan.net/items/17460903_2.jpg" alt=""></button><button class="g-thumb" data-src="https://img.customjapan.net/items/17460903_3.jpg"><img src="https://img.customjapan.net/items/17460903_3.jpg" alt=""></button></div>
+    <div class="g-main"><img id="gMain" src="/img/products/sh59x/render_01.webp" alt="SH59X トップケース"></div>
+    <div class="flex flex-wrap gap-2.5 mt-3"><button class="g-thumb on" data-src="/img/products/sh59x/render_01.webp"><img src="/img/products/sh59x/render_01.webp" alt=""></button><button class="g-thumb" data-src="https://img.customjapan.net/items/17460903_1.jpg"><img src="https://img.customjapan.net/items/17460903_1.jpg" alt=""></button><button class="g-thumb" data-src="/img/products/sh59x/topcase_gs.webp"><img src="/img/products/sh59x/topcase_gs.webp" alt=""></button><button class="g-thumb" data-src="https://img.customjapan.net/items/17460903_2.jpg"><img src="https://img.customjapan.net/items/17460903_2.jpg" alt=""></button><button class="g-thumb" data-src="https://img.customjapan.net/items/17460903_3.jpg"><img src="https://img.customjapan.net/items/17460903_3.jpg" alt=""></button></div>
     <!-- YT:START 生成 tools/apply_product_videos.py -->
     <div class="pd-yt"><p class="pd-yt-lb"><i class="ti ti-brand-youtube"></i>Technical Video<span>本国SHADのテクニカル動画（英語）</span></p><div class="pd-yt-grid"><div class="pd-yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/X99o1CSlrJM?rel=0" title="Top case SH59X Expandable - Technical Video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div></div>
     <!-- YT:END -->
@@ -104,7 +104,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 /* カラー選択で看板画像を切り替える（purchase.js が参照） */
 window.SHAD_GALLERY = {
-  "17460903": ["https://img.customjapan.net/items/17460903_1.jpg","/img/products/sh59x/render_01.webp","/img/products/sh59x/topcase_gs.webp","https://img.customjapan.net/items/17460903_2.jpg","https://img.customjapan.net/items/17460903_3.jpg"]
+  "17460903": [
+    "/img/products/sh59x/render_01.webp",
+    "https://img.customjapan.net/items/17460903_1.jpg",
+    "/img/products/sh59x/topcase_gs.webp",
+    "https://img.customjapan.net/items/17460903_2.jpg",
+    "https://img.customjapan.net/items/17460903_3.jpg"
+  ]
 };
 </script>
 
@@ -252,16 +258,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh59x/poster_hero.webp"
-         data-src-pc="/media/products/expandable/hero.mp4" data-src-sp="/media/products/expandable/hero.mp4" data-poster-sp="/img/products/sh59x/poster_hero.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Expandable</p>
-    <h2 class="pd-hero-h is-jp">荷物に合わせて、<br>ケースが変わる。</h2>
-    <p class="pd-hero-sub">46L、52L、58L。レバーひとつで3段階に伸縮する、世界唯一の可変容量トップケース。SHADのExpandableシリーズをムービーで。</p>
-    <button type="button" class="pd-play" data-video="/media/products/expandable/film.mp4" data-poster="/img/products/sh58x/poster_film.webp"><i class="ti ti-player-play-filled"></i>Expandableの映像を見る（25秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh59x/poster_hero.webp"
+           data-src-pc="/media/products/expandable/hero.mp4" data-src-sp="/media/products/expandable/hero.mp4" data-poster-sp="/img/products/sh59x/poster_hero.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/expandable/film.mp4" data-poster="/img/products/sh58x/poster_film.webp" aria-label="Expandableの映像を見る（25秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Expandable</p>
+      <h2 class="pd-movie-h">荷物に合わせて、<br>ケースが変わる。</h2>
+      <p class="pd-movie-sub">46L、52L、58L。レバーひとつで3段階に伸縮する、世界唯一の可変容量トップケース。SHADのExpandableシリーズをムービーで。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/expandable/film.mp4" data-poster="/img/products/sh58x/poster_film.webp"><i class="ti ti-player-play-filled"></i>Expandableの映像を見る（25秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->

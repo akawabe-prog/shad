@@ -261,16 +261,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh47/img_tmax.webp"
-         data-src-pc="/media/products/sh47/hero.mp4" data-src-sp="/media/products/sh47/hero_sp.mp4" data-poster-sp="/img/products/sh47/poster_red.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Movie</p>
-    <h2 class="pd-hero-h is-jp">エアロフォルムの、47L。</h2>
-    <p class="pd-hero-sub">フルフェイス2個が入る47L。レッド／ホワイトのカーボン調カバーと、片手で扱えるダブルロック。SH47のムービー。</p>
-    <button type="button" class="pd-play" data-video="/media/products/sh47/hero.mp4" data-poster="/img/products/sh47/img_mt07.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（20秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/sh47/img_tmax.webp"
+           data-src-pc="/media/products/sh47/hero.mp4" data-src-sp="/media/products/sh47/hero_sp.mp4" data-poster-sp="/img/products/sh47/poster_red.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/sh47/hero.mp4" data-poster="/img/products/sh47/img_mt07.webp" aria-label="フル映像を見る（20秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Movie</p>
+      <h2 class="pd-movie-h">エアロフォルムの、47L。</h2>
+      <p class="pd-movie-sub">フルフェイス2個が入る47L。レッド／ホワイトのカーボン調カバーと、片手で扱えるダブルロック。SH47のムービー。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/sh47/hero.mp4" data-poster="/img/products/sh47/img_mt07.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（20秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->
@@ -294,11 +297,13 @@ window.SHAD_GALLERY = {
         <h3 class="lp-block-h">車体を引き立てる、エアロデザイン。</h3>
         <p class="lp-block-p">バルセロナで設計された流線形のフォルムが特長。大容量を確保しながら、装着時の一体感に配慮しています。</p></div>
     </div><div class="lp-block lp-rev">
-      <div class="lp-block-img"><img src="/img/products/sh47/wht_03.webp" alt="街からロングツーリングまで。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/sh47/story_city.webp" alt="街からロングツーリングまで。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">Versatile</span>
         <h3 class="lp-block-h">街からロングツーリングまで。</h3>
         <p class="lp-block-p">スクーターから中・大型バイクまで合わせやすい47L容量です。日常の荷物も旅の装備も、ひとつにまとめられます。</p></div>
-    </div><div class="lp-block lp-noimg"><div class="lp-block-tx"><span class="lp-block-kick">Easy Lock</span>
+    </div><div class="lp-block">
+      <div class="lp-block-img"><img src="/img/products/sh47/story_open.webp" alt="毎日扱いやすい、ロック機構。" loading="lazy"></div>
+      <div class="lp-block-tx"><span class="lp-block-kick">Easy Lock</span>
         <h3 class="lp-block-h">毎日扱いやすい、ロック機構。</h3>
         <p class="lp-block-p">ケースの開閉と車体への着脱をスムーズに行える設計です。荷物の出し入れが多い日常での操作性に配慮しています。</p></div>
     </div></div>

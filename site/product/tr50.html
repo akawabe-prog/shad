@@ -227,16 +227,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr50/poster_hero.webp"
-         data-src-pc="/media/products/tr50/hero.mp4" data-src-sp="/media/products/tr50/hero_sp.mp4" data-poster-sp="/img/products/tr50/poster_reel_2.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Adventure Bags</p>
-    <h2 class="pd-hero-h is-jp">ケースじゃなくても、<br>鍵はかかる。</h2>
-    <p class="pd-hero-sub">フルフェイス2個が入る40L。ベースプレートにワンタッチで固定・施錠できる、TERRAの防水ツーリングバッグ。</p>
-    <button type="button" class="pd-play" data-video="/media/products/tr50/film.mp4" data-poster="/img/products/tr50/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（20秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr50/poster_hero.webp"
+           data-src-pc="/media/products/tr50/hero.mp4" data-src-sp="/media/products/tr50/hero_sp.mp4" data-poster-sp="/img/products/tr50/poster_reel_2.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/tr50/film.mp4" data-poster="/img/products/tr50/poster_film.webp" aria-label="フル映像を見る（20秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Adventure Bags</p>
+      <h2 class="pd-movie-h">ケースじゃなくても、<br>鍵はかかる。</h2>
+      <p class="pd-movie-sub">フルフェイス2個が入る40L。ベースプレートにワンタッチで固定・施錠できる、TERRAの防水ツーリングバッグ。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/tr50/film.mp4" data-poster="/img/products/tr50/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（20秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->

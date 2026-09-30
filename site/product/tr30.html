@@ -224,16 +224,19 @@ window.SHAD_GALLERY = {
 </nav>
 
 <!-- ===== ⑤ HERO映像（フルブリード） ===== -->
-<section id="movie" class="pd-hero scroll-mt-[132px]" data-reveal>
-  <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr30/poster_hero.webp"
-         data-src-pc="/media/products/tr30/hero.mp4" data-src-sp="/media/products/tr30/hero_sp.mp4" data-poster-sp="/img/products/tr30/poster_hero_sp.webp"></video>
-  <div class="pd-hero-shade"></div>
-  <div class="pd-hero-in">
-    <p class="lp-kick">Waterproof</p>
-    <h2 class="pd-hero-h is-jp">雨の日も、<br>荷物は乾いたまま。</h2>
-    <p class="pd-hero-sub">IPX6相当の防水性能と、鍵で守るダブルロック。3P／4Pシステムに数秒で着脱できる、TERRAの防水サドルバッグ。</p>
-    <button type="button" class="pd-play" data-video="/media/products/tr30/film.mp4" data-poster="/img/products/tr30/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（25秒）</button>
+<section id="movie" class="pd-movie scroll-mt-[132px]" data-reveal>
+  <!-- 動画にはタイトル文字が焼き込まれているものがあるため、サイトの見出しは動画の上に重ねず下の帯に出す -->
+  <div class="pd-movie-vid">
+    <video id="pdHeroVideo" autoplay muted loop playsinline preload="metadata" poster="/img/products/tr30/poster_hero.webp"
+           data-src-pc="/media/products/tr30/hero.mp4" data-src-sp="/media/products/tr30/hero_sp.mp4" data-poster-sp="/img/products/tr30/poster_hero_sp.webp"></video>
+    <button type="button" class="pd-movie-play" data-video="/media/products/tr30/film.mp4" data-poster="/img/products/tr30/poster_film.webp" aria-label="フル映像を見る（25秒）"><i class="ti ti-player-play-filled"></i></button>
   </div>
+  <div class="pd-movie-cap"><div class="pd-movie-cap-in">
+    <div><p class="lp-kick">Waterproof</p>
+      <h2 class="pd-movie-h">雨の日も、<br>荷物は乾いたまま。</h2>
+      <p class="pd-movie-sub">IPX6相当の防水性能と、鍵で守るダブルロック。3P／4Pシステムに数秒で着脱できる、TERRAの防水サドルバッグ。</p></div>
+    <button type="button" class="pd-play" data-video="/media/products/tr30/film.mp4" data-poster="/img/products/tr30/poster_film.webp"><i class="ti ti-player-play-filled"></i>フル映像を見る（25秒）</button>
+  </div></div>
 </section>
 
 <!-- ===== ⑥ イメージ画像 ===== -->
@@ -257,7 +260,7 @@ window.SHAD_GALLERY = {
         <h3 class="lp-block-h">ロールトップで守る、IPX6。</h3>
         <p class="lp-block-p">420Dナイロンに両面PVCコーティングを施した防水構造が特長。雨天のツーリングでも収納物を守ります。</p></div>
     </div><div class="lp-block lp-rev">
-      <div class="lp-block-img"><img src="/img/products/tr30/blk_03.webp" alt="バッグも車体も、ダブルロック。" loading="lazy"></div>
+      <div class="lp-block-img"><img src="/img/products/tr30/story_lock.webp" alt="バッグも車体も、ダブルロック。" loading="lazy"></div>
       <div class="lp-block-tx"><span class="lp-block-kick">Double Lock</span>
         <h3 class="lp-block-h">バッグも車体も、ダブルロック。</h3>
         <p class="lp-block-p">バッグをフィッティングへ固定し、開口部も施錠できる特許ダブルロックを採用。旅先での防犯性に配慮しています。</p></div>
