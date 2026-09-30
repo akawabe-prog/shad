@@ -391,7 +391,9 @@ window.SHAD_GALLERY = {
     var ca=[].filter.call(links,function(a){ return a.classList.contains("is-current"); })[0], wrap=navBar&&navBar.querySelector(".pd-nav-in");
     if(ca && wrap && wrap.scrollWidth>wrap.clientWidth){ var x=ca.offsetLeft-(wrap.clientWidth-ca.offsetWidth)/2; if(Math.abs(wrap.scrollLeft-x)>8) wrap.scrollTo({left:x,behavior:"smooth"}); }
     if(navBar && side){
+      /* PC：アンカーナビが画面上に消えたら出す。スマホ（INDEXタブ）：商品名が画面上端に来たあたりから出し、上に戻っても消さない */
       var gone=navBar.getBoundingClientRect().bottom<0;
+      if(tab && getComputedStyle(tab).display!=="none"){ var h1=document.querySelector("#pdTop h1"); if(h1){ gone = h1.getBoundingClientRect().top<=120; } }
       var foot=document.querySelector("footer"); var nearFoot=foot && foot.getBoundingClientRect().top<window.innerHeight*0.6;
       var on=gone && !nearFoot; side.classList.toggle("is-on", on); if(tab) tab.classList.toggle("is-on", on);
       if(!on) closeSide();
