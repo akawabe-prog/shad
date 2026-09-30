@@ -10,6 +10,10 @@ RewriteEngine On
 # 非www → www（本番は https://www.shad-japan.com/ が正規URL）
 RewriteCond %{HTTP_HOST} ^shad-japan\.com$ [NC]
 RewriteRule ^ https://www.shad-japan.com%{REQUEST_URI} [R=301,L]
+# 本番ドメインは常時 https（さくらの無料SSL有効化後に効く。初期ドメインでの確認時は動かない）
+RewriteCond %{HTTP_HOST} ^www\.shad-japan\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://www.shad-japan.com%{REQUEST_URI} [R=301,L]
 
 # 非公開にした商品ページ（2026-08-17）。404にせず一覧へ逃がす
 RewriteRule ^product/(sl18|sw80)/?$ /products [R=301,L,NC]
@@ -44,3 +48,6 @@ ExpiresByType image/webp "access plus 30 days"
 ExpiresByType video/mp4 "access plus 30 days"
 ExpiresByType application/json "access plus 1 hours"
 </IfModule>
+
+# 404 ページ
+ErrorDocument 404 /404.html

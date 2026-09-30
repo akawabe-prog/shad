@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /thanks
+Disallow: /form-error
+Disallow: /top-simple
+Disallow: /news/article
+Disallow: /contact.php
+
+Sitemap: https://www.shad-japan.com/sitemap.xml
