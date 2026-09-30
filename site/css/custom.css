@@ -624,6 +624,8 @@
 .lp-block-h{font-size:clamp(24px,3.2vw,34px);font-weight:700;line-height:1.4;margin-top:10px;}
 .lp-block-p{font-size:15px;line-height:2;color:#444;margin-top:14px;}
 .lp-rev .lp-block-img{order:2;}
+.lp-block.lp-noimg{grid-template-columns:1fr;padding:34px 0;}
+.lp-block.lp-noimg .lp-block-tx{max-width:760px;}
 .pd-diagrams{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
 .pd-diagram{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden;}
 .pd-diagram img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
