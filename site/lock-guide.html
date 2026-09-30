@@ -287,7 +287,7 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       if(r.mech==='top'){ n++; var codes=(tg.downgrade&&tg.downgrade[st.top])||[]; h+='<div class="lg-opt"><span class="lg-opt-lb">Step '+n+'</span><b>トップケースのロック機構をレッドキー仕様に交換</b><p>専用ロックカバー（レッドキー付属）に交換します。カラーに合うものをお選びください。</p>'+codes.map(partCard).join('')+'</div>'; }
       var useSpare = r.spare && sg.spare;
       if(useSpare){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">How</span><b>サイドケース付属の予備シリンダーを使う</b><p>'+esc(sg.label)+'の右側ケースに付属する予備キーシリンダーを、トップケースのシリンダーと差し替えます。追加部品は不要です。</p></div>'; }
-      else if(r.part){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">必要な部品</span><b>キーシリンダーセットで揃える</b><p>このセットのシリンダーに差し替えて、トップとサイドの鍵を統一します。</p>'+partCard(r.part)+'</div>'; }
+      else if(r.part){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">必要な部品（別売）</span><b>キーシリンダーセットの購入と差し替えが必要</b><p>予備シリンダーでは対応できない組み合わせです。別売のキーシリンダーセットを購入し、トップ・サイドのシリンダーを差し替える必要があります。</p>'+partCard(r.part)+'</div>'; }
       var vt = tg.family==='ask' ? tg['video_'+r.tf] : tg.video;
       var vids=video(vt,tg.label+' の交換手順')+video(sg.video,sg.label+' の交換手順');
       if(vids) h+='<div class="lg-videos"><p class="lg-opt-lb">Watch</p>'+vids+'<small>本国SHADの手順動画（英語）。作業は自己責任で、難しい場合は取扱店へご相談ください。</small></div>';
