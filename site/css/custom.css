@@ -707,7 +707,7 @@
 .pd-onekey-part em{display:block;font-style:normal;font-size:13px;font-weight:700;margin-top:3px;}
 .pd-onekey-part small{display:block;font-size:11px;color:#777;margin-top:2px;}
 .pd-onekey-part i{color:#999;flex:none;}
-.pd-onekey-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;}
+.pd-onekey-foot{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:20px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;}   /* ガイドへのリンク → その下に注記 */
 .pd-onekey-links{display:flex;flex-wrap:wrap;gap:8px;}
 .pd-onekey-guide.is-jp{background:#E31E24;border-color:#E31E24;}
 .pd-onekey-guide.is-jp:hover{background:#c4151b;color:#fff;border-color:#c4151b;}

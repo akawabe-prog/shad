@@ -230,9 +230,8 @@ def render(cfg, P):
                             % (o["part"], o["part"], o["name"], o["part"], o["part"]))
                 return ('    <div class="pd-onekey-opt"><span class="pd-onekey-lb">%s</span><b>%s</b><p>%s</p>%s</div>\n'
                         % (label, o["title"], o["text"], part))
-            both = ok.get("optionA") and ok.get("optionB")
-            opts = "".join(opt(lb if both else ("必要な部品" if ok[k].get("part") else "How"), ok[k])
-                           for lb, k in (("Option A", "optionA"), ("Option B", "optionB")) if ok.get(k))
+            # 商品ページには「予備シリンダーを使う（How）」の案内は載せない（手順はワンキー化ガイド側）。部品購入が必要な場合だけ「必要な部品」を出す
+            opts = "".join(opt("必要な部品", ok[k]) for k in ("optionA", "optionB") if ok.get(k) and ok[k].get("part"))
             guide = ""
             if ok.get("jp_link"):   # サイト内の日本語ガイド（/lock-guide?top=…&side=…）
                 guide += ('<a href="%s" class="pd-onekey-guide is-jp"><i class="ti ti-key"></i>%s</a>'
@@ -243,9 +242,7 @@ def render(cfg, P):
             guide = '<div class="pd-onekey-links">%s</div>' % guide if guide else ""
             onekey = f'''    <div class="pd-onekey" data-reveal>
       <div class="pd-onekey-h"><p class="pd-sec-en">{ok.get("en", "+α One Key")}</p><h3>{ok["heading"]}</h3><p class="pd-onekey-lead">{ok.get("lead", "")}</p></div>
-      <div class="pd-onekey-opts">
-{opts}      </div>
-      <div class="pd-onekey-foot"><p>{ok.get("note", "")}</p>{guide}</div>
+{('      <div class="pd-onekey-opts">' + chr(10) + opts + '      </div>' + chr(10)) if opts else ''}      <div class="pd-onekey-foot">{guide}<p>{ok.get("note", "")}</p></div>
     </div>
 '''
         total = ('<p class="pd-setup-total"><b>%s</b><small>L</small><span>%s</span></p>' % (su["total"], su.get("total_label", "合計容量"))) if su.get("total") else ""
