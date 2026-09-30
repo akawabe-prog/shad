@@ -210,6 +210,7 @@ script = r'''
       if(r.note) h+='<p class="lg-txt">'+esc(r.note)+'</p>';
       var n=0;
       if(r.mech==='top'){ n++; var codes=(tg.downgrade&&tg.downgrade[st.top])||[]; h+='<div class="lg-opt"><span class="lg-opt-lb">Step '+n+'</span><b>トップケースのロック機構をレッドキー仕様に交換</b><p>専用ロックカバー（レッドキー付属）に交換します。カラーに合うものをお選びください。</p>'+codes.map(partCard).join('')+'</div>'; }
+      if(r.mech==='top_up'){ n++; var ucodes=(tg.upgrade&&tg.upgrade[st.top])||[]; h+='<div class="lg-opt"><span class="lg-opt-lb">Step '+n+'</span><b>トップケースのロック機構をブラックキー仕様にアップグレード</b><p>専用の新ロックカバー（ブラックキー付属）に交換します。'+(ucodes.length>1?'お使いのカラーに合う方を選んでください。':'')+'</p>'+ucodes.map(partCard).join('')+'</div>'; }
       var useSpare = r.spare && sg.spare;
       if(useSpare){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">How</span><b>サイドケース付属の予備シリンダーを使う</b><p>'+esc(sg.label)+'の右側ケースに付属する予備キーシリンダーを、トップケースのシリンダーと差し替えます。追加部品は不要です。</p></div>'; }
       else if(r.part){ n++; h+='<div class="lg-opt"><span class="lg-opt-lb">必要な部品（別売）</span><b>キーシリンダーセットの購入と差し替えが必要</b><p>予備シリンダーでは対応できない組み合わせです。別売のキーシリンダーセットを購入し、トップ・サイドのシリンダーを差し替える必要があります。</p>'+partCard(r.part)+'</div>'; }
