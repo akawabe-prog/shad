@@ -891,7 +891,7 @@ function buildTankSection() {
   const items = byModel(applyFilters(TANKBAGS));
   const sec = el('div', 'product-section');
   sec.appendChild(sectionTitle('タンクバッグ', items.length));
-  sec.appendChild(el('div', 'kit-line', 'タンクバッグは車種専用フィッティングキットが不要です（クリックシステム対応リングで装着します）'));
+  sec.appendChild(el('div', 'kit-line', 'ご注意：タンクバッグの車種専用フィッティングキットは商品詳細ページにてご確認をお願いいたします。'));
   if (items.length) sec.appendChild(productGrid(items));
   else sec.appendChild(el('div', 'no-fit', '絞り込み条件に合うタンクバッグはありません'));
   return sec;
@@ -1099,22 +1099,41 @@ if (MODE === "entry") {
   function renderClickSystem(kits) {
     var host = root.querySelector("[data-fitment-result]") || root;
     if (!kits.length) { render([], null); return; }
-    var rows = kits.slice().sort(function (a, b) {
-      return String(a.name).localeCompare(String(b.name), "ja");
+    /* メーカーでまとめて表示：国内4社（ホンダ→ヤマハ→スズキ→カワサキ）→ 海外メーカー（名前順）。
+       複数メーカー兼用のキットは、国内メーカーを含めばそのメーカー、含まなければ先頭のメーカーの下に置く */
+    var JP = ["ホンダ", "ヤマハ", "スズキ", "カワサキ"];
+    function norm(m) { m = String(m || "").trim(); var u = m.toUpperCase(); return u === "ROYAL ENFIELD" ? "Royal Enfield" : u === "MOTO GUZZI" ? "Moto Guzzi" : u === "QJ MOTOR" ? "QJ Motor" : m; }
+    function groupOf(k) {
+      var ms = String(k.maker || "").split("_").map(norm).filter(Boolean);
+      for (var i = 0; i < JP.length; i++) if (ms.indexOf(JP[i]) >= 0) return JP[i];
+      return ms[0] || "その他";
+    }
+    var groups = {};
+    kits.forEach(function (k) { var g = groupOf(k); (groups[g] = groups[g] || []).push(k); });
+    var names = Object.keys(groups).sort(function (a, b) {
+      var ia = JP.indexOf(a), ib = JP.indexOf(b);
+      if (ia >= 0 || ib >= 0) return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      return a.localeCompare(b, "en");
     });
+    var total = kits.length;
     host.innerHTML = ''
       + '<div class="fit-ok"><i class="ti ti-click"></i><div><p>クリックシステムで装着します</p>'
       +   '<span>タンクキャップに車種専用のクリックシステムフィッティングキットを取り付け、'
       +   'ワンタッチで着脱します。</span></div></div>'
-      + '<p class="pf-count">車種専用キット ' + rows.length + ' 種（対応車種は各キットのページでご確認ください）</p>'
-      + '<div class="pf-list">' + rows.map(function (k) {
-          var makers = String(k.maker || "").replace(/_/g, " / ");
-          return '<a class="pf-row" href="' + esc(k.url) + '" target="_blank" rel="noopener">'
-            + '<span class="pf-model">' + esc(k.name) + '</span>'
-            + (makers ? '<span class="pf-sys">' + esc(makers.slice(0, 28)) + '</span>' : '')
-            + '<span class="pf-go">キットを見る<i class="ti ti-arrow-right"></i></span></a>';
+      + '<p class="pf-count">車種専用キット ' + total + ' 種（対応車種は各キットのページでご確認ください）</p>'
+      + '<div class="pf-list">' + names.map(function (g) {
+          var rows = groups[g].slice().sort(function (a, b) { return String(a.name).localeCompare(String(b.name), "ja"); });
+          return '<div class="pf-group"><p class="pf-group-h">' + esc(g) + '<small>' + rows.length + '</small></p>'
+            + rows.map(function (k) {
+                var ms = String(k.maker || "").split("_").map(norm).filter(function (m) { return m && m !== g; });
+                return '<a class="pf-row" href="' + esc(k.url) + '" target="_blank" rel="noopener">'
+                  + '<span class="pf-txt"><span class="pf-model">' + esc(k.name) + '</span>'
+                  + (ms.length ? '<span class="pf-makers">兼用：' + esc(ms.join(" / ")) + '</span>' : '') + '</span>'
+                  + '<span class="pf-go">キットを見る<i class="ti ti-arrow-right"></i></span></a>';
+              }).join("") + '</div>';
         }).join("") + '</div>';
   }
+
 
   /* 商品ページの適合UI：メーカー → シリーズ → 車種 のプルダウンで選び、
      判定と必要なキットを表示する。全件の一覧は折りたたみで確認できる。 */

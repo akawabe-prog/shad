@@ -1386,6 +1386,15 @@ html{scroll-behavior:smooth;}
 .pf-group-ttl{font-size:11.5px;letter-spacing:.06em;color:#999;margin-bottom:4px;}
 .pf-row{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:7px;transition:.15s;}
 .pf-row:hover{background:#F4F3F1;}
+.pf-group-h{display:flex;align-items:baseline;gap:8px;font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:13px;letter-spacing:.16em;color:#E31E24;padding:14px 10px 4px;border-top:1px solid rgba(0,0,0,.06);margin-top:6px;}
+.pf-group-h small{font-size:11px;color:#999;letter-spacing:.1em;}
+.pf-group:first-child .pf-group-h{border-top:0;margin-top:0;}
+.pf-txt{flex:1;min-width:0;display:flex;flex-direction:column;}
+.pf-makers{font-size:11.5px;color:#8A8A85;line-height:1.5;margin-top:2px;}
+/* フィッティングキット注記：スマホで折り返しが崩れないように */
+.fk-note{flex-wrap:nowrap;}
+.fk-note>*:not(i){min-width:0;}
+.fk-note b{white-space:nowrap;}
 .pf-model{font-size:13.5px;color:#222;}
 .pf-sys{font-family:"Barlow Condensed",sans-serif;font-size:11px;letter-spacing:.14em;
   background:#0E0E0E;color:#fff;border-radius:4px;padding:2px 7px;}
