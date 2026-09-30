@@ -5,18 +5,20 @@
   "main_img": "/img/products/sh58x_0.webp",
   "thumbs": [
     "/img/products/sh58x_0.webp",
-    "/img/products/sh58x/size_l.webp",
-    "/img/products/sh58x/size_xl.webp",
-    "/img/products/sh58x/size_xxl.webp",
-    "/img/products/sh58x/render_01.webp"
+    "/img/products/sh58x/off_expanded.webp",
+    "/img/products/sh58x/off_helmets.webp",
+    "/img/products/sh58x/off_lock.webp",
+    "/img/products/sh58x/off_rear.webp",
+    "/img/products/sh58x/off_ride.webp"
   ],
   "gallery_override": {
     "17319140": [
       "/img/products/sh58x_0.webp",
-      "/img/products/sh58x/size_l.webp",
-      "/img/products/sh58x/size_xl.webp",
-      "/img/products/sh58x/size_xxl.webp",
-      "/img/products/sh58x/render_01.webp"
+      "/img/products/sh58x/off_expanded.webp",
+      "/img/products/sh58x/off_helmets.webp",
+      "/img/products/sh58x/off_lock.webp",
+      "/img/products/sh58x/off_rear.webp",
+      "/img/products/sh58x/off_ride.webp"
     ]
   },
   "hero": {
