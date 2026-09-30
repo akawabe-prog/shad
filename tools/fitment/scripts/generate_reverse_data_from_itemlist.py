@@ -280,8 +280,18 @@ def remap_mount_kit(model_name, known_models):
     return sorted(set(hits))
 
 
+_MAKER_WORDS = ("BMW", "BENELLI", "BENDA", "CAN-AM", "CANAM", "HUSQVARNA", "KTM", "KYMCO", "PIAGGIO", "PEUGEOT", "VESPA", "VOGE",
+                "ROYALENFIELD", "CFMOTO", "TRIUMPH", "DUCATI", "APRILIA", "MOTOGUZZI", "MOTOMORINI", "ZONTES", "SYM", "KOVE", "QJMOTOR", "BAJAJ")
+
+
 def bike_key(maker, model):
-    return f"{maker}|{model}"
+    # 「KLE 500(2026)」と「KLE500(2026)」、「BMW R1250GS」と「R1250GS」のような表記ゆれを同じ車種にまとめる
+    k = re.sub(r"\s+", "", model).upper()
+    for w in _MAKER_WORDS:
+        if k.startswith(w) and len(k) > len(w):
+            k = k[len(w):]
+            break
+    return f"{maker}|{k}"
 
 
 SIDEBAG_HOLDER_SERIES = "サイドバッグホルダーキット"

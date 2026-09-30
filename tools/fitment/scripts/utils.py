@@ -34,6 +34,44 @@ CJ_CODE_MODEL_SPLIT = {
 }
 
 
+
+# 車種名トークンとして認める形：英字で始まり数字を含む（Ninja 650 / Z650 / VERSYS-X 250）、または カタカナ＋数字（レブル250 / バーグマン400）
+_MODEL_TOKEN_RE = re.compile(r"^(?:[A-Za-z][A-Za-z0-9\- ]*\d|[ァ-ヶー]+\s?\d)")
+
+
+def auto_split_models(display_name: str, compatible_models: str):
+    """「Z650(16-26)/Ninja 650(17-26)」のように複数車種を「/」でつないだキット名を車種ごとに分ける。
+
+    条件（安全側）：代表適合車種が2件以上（｜区切り）で、キット名を括弧の外の「/」で分けた各トークンが
+    車種名の形をしているときだけ分割する。「Z900RS(18-26)/カフェ(20-24)」のようにグレード名が混ざるものは分割しない。
+    """
+    if not compatible_models or len([x for x in re.split(r"[｜│|]", compatible_models) if x.strip()]) < 2:
+        return None
+    tokens, cur, depth = [], "", 0
+    for ch in display_name:
+        if ch in "(（":
+            depth += 1
+        elif ch in ")）":
+            depth -= 1
+        if ch == "/" and depth == 0:
+            tokens.append(cur.strip()); cur = ""
+            continue
+        cur += ch
+    tokens.append(cur.strip())
+    tokens = [t for t in tokens if t]
+    if len(tokens) < 2 or any(not _MODEL_TOKEN_RE.match(t) for t in tokens):
+        return None
+    # 「CB650R/CBR650R(19-20)」のように末尾にだけ年式が付く書き方は、前のトークンにも同じ年式を補う
+    out = []
+    for i, t in enumerate(tokens):
+        if "(" not in t and "（" not in t:
+            nxt = next((u for u in tokens[i + 1:] if "(" in u or "（" in u), None)
+            m = re.search(r"[（(][^）)]*[）)]\s*$", nxt) if nxt else None
+            if m:
+                t = t + m.group(0).strip()
+        out.append(t)
+    return out
+
 def expand_models(cj_code: str, display_name: str, compatible_models: str,
                   compatible_maker: str, item_name: str) -> list:
     """(表示車種名, グループ名) のリストを返す。
@@ -41,7 +79,7 @@ def expand_models(cj_code: str, display_name: str, compatible_models: str,
     CJ_CODE_MODEL_SPLIT に登録された cj_code は複数ペアに分割され、
     グループは分割後の各車種名から判定される。それ以外は1ペア。
     """
-    names = CJ_CODE_MODEL_SPLIT.get(cj_code)
+    names = CJ_CODE_MODEL_SPLIT.get(cj_code) or auto_split_models(display_name, compatible_models)
     if not names:
         return [(display_name,
                  get_group(compatible_models, compatible_maker, item_name, cj_code))]
