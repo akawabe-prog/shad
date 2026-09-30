@@ -133,6 +133,8 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       <button class="chip" data-f="TANK">タンクバッグ</button>
       <button class="chip" data-f="FITTING">フィッティングキット</button>
     </div>
+    <button type="button" id="moreFiltersBtn" class="sm:hidden inline-flex items-center gap-1.5 text-[12.5px] text-white/70 hover:text-white mt-1" aria-expanded="false" aria-controls="moreFilters"><i class="ti ti-adjustments-horizontal"></i>容量・素材・機能で絞り込む<i class="ti ti-chevron-down"></i></button>
+    <div id="moreFilters" class="space-y-3.5 hidden sm:block">
     <div class="flex items-center gap-2.5 flex-wrap" id="capChips">
       <span class="filter-lb w-full sm:w-[76px] shrink-0">Capacity</span>
       <button class="chip on" data-cap="ALL">すべて</button>
@@ -143,6 +145,7 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
     <!-- 素材・機能のチップは tools/product_tags.json（→ var TAGS）から生成 -->
     <div class="flex items-center gap-2.5 flex-wrap" id="matChips"><span class="filter-lb w-full sm:w-[76px] shrink-0">Material</span></div>
     <div class="flex items-center gap-2.5 flex-wrap" id="featChips"><span class="filter-lb w-full sm:w-[76px] shrink-0">Feature</span></div>
+    </div>
   </div>
 </header>
 
@@ -332,8 +335,10 @@ var lastCols=0;
 function placeKeyless(cols){
   var kf=document.getElementById('kfBanner'), host=document.getElementById('kfHost');
   if(!kf||!host) return;
-  if(cols<=1){
-    var at=grid.children[3]||null;
+  if(cols<=1 || window.matchMedia('(max-width:639px)').matches){
+    /* スマホ：一番上に置かず、商品の中段（最低6件のあと・行の切れ目）に差し込む */
+    var n=grid.querySelectorAll('.pcard').length, idx=snapToRow(Math.max(6, Math.floor(n/2)), Math.max(cols,1));
+    var at=grid.children[idx]||null;
     kf.classList.add('col-span-full'); kf.classList.remove('mb-10');
     grid.insertBefore(kf, at);
   }else{
@@ -407,6 +412,13 @@ function bindChips(id,key){
     syncUrl(); render();
   });
 }
+(function(){
+  var btn=document.getElementById('moreFiltersBtn'), box=document.getElementById('moreFilters'); if(!btn||!box) return;
+  function setOpen(o){ box.classList.toggle('hidden',!o); btn.setAttribute('aria-expanded',o?'true':'false');
+    btn.innerHTML='<i class="ti ti-adjustments-horizontal"></i>'+(o?'絞り込みを閉じる':'容量・素材・機能で絞り込む')+'<i class="ti '+(o?'ti-chevron-up':'ti-chevron-down')+'"></i>'; }
+  btn.addEventListener('click',function(){ setOpen(box.classList.contains('hidden')); });
+  var q=new URLSearchParams(location.search); if(q.get('cap')||q.get('mat')||q.get('feat')) setOpen(true);
+})();
 bindChips('catChips','cat');
 bindChips('capChips','cap');
 tagChips('matChips','material','mat');
