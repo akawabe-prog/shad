@@ -1116,12 +1116,13 @@ if (MODE === "entry") {
       return a.localeCompare(b, "en");
     });
     var total = kits.length;
-    host.innerHTML = ''
-      + '<div class="fit-ok"><i class="ti ti-click"></i><div><p>クリックシステムで装着します</p>'
-      +   '<span>タンクキャップに車種専用のクリックシステムフィッティングキットを取り付け、'
-      +   'ワンタッチで着脱します。</span></div></div>'
-      + '<p class="pf-count">車種専用キット ' + total + ' 種（対応車種は各キットのページでご確認ください）</p>'
-      + '<div class="pf-list">' + names.map(function (g) {
+    /* メーカーで絞り込む：国内4社はそれぞれ、海外メーカーは「その他」にまとめる */
+    var FILTERS = [["ALL", "すべて"], ["ホンダ", "HONDA"], ["ヤマハ", "YAMAHA"], ["スズキ", "SUZUKI"], ["カワサキ", "KAWASAKI"], ["OTHER", "その他"]];
+    var cur = "ALL";
+    function listHtml() {
+      var shown = names.filter(function (g) { return cur === "ALL" || (cur === "OTHER" ? JP.indexOf(g) < 0 : g === cur); });
+      if (!shown.length) return '<p class="pf-none">該当するキットはありません。</p>';
+      return shown.map(function (g) {
           var rows = groups[g].slice().sort(function (a, b) { return String(a.name).localeCompare(String(b.name), "ja"); });
           return '<div class="pf-group"><p class="pf-group-h">' + esc(g) + '<small>' + rows.length + '</small></p>'
             + rows.map(function (k) {
@@ -1131,7 +1132,25 @@ if (MODE === "entry") {
                   + (ms.length ? '<span class="pf-makers">兼用：' + esc(ms.join(" / ")) + '</span>' : '') + '</span>'
                   + '<span class="pf-go">キットを見る<i class="ti ti-arrow-right"></i></span></a>';
               }).join("") + '</div>';
-        }).join("") + '</div>';
+        }).join("");
+    }
+    function countOf(f) { return names.filter(function (g) { return f === "ALL" || (f === "OTHER" ? JP.indexOf(g) < 0 : g === f); }).reduce(function (n, g) { return n + groups[g].length; }, 0); }
+    host.innerHTML = ''
+      + '<div class="fit-ok"><i class="ti ti-click"></i><div><p>クリックシステムで装着します</p>'
+      +   '<span>タンクキャップに車種専用のクリックシステムフィッティングキットを取り付け、'
+      +   'ワンタッチで着脱します。</span></div></div>'
+      + '<p class="pf-count">車種専用キット ' + total + ' 種（対応車種は各キットのページでご確認ください）</p>'
+      + '<div class="pf-filter" role="tablist" aria-label="メーカーで絞り込む">' + FILTERS.map(function (f) {
+          var n = countOf(f[0]); if (!n) return "";
+          return '<button type="button" class="pf-chip' + (f[0] === cur ? " on" : "") + '" data-f="' + f[0] + '">' + f[1] + '<small>' + n + '</small></button>';
+        }).join("") + '</div>'
+      + '<div class="pf-list">' + listHtml() + '</div>';
+    host.querySelector(".pf-filter").addEventListener("click", function (e) {
+      var b = e.target.closest(".pf-chip"); if (!b) return;
+      cur = b.dataset.f;
+      host.querySelectorAll(".pf-chip").forEach(function (c) { c.classList.toggle("on", c === b); });
+      host.querySelector(".pf-list").innerHTML = listHtml();
+    });
   }
 
 

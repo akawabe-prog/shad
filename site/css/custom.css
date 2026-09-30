@@ -1381,6 +1381,15 @@ html{scroll-behavior:smooth;}
   padding:0 14px 0 38px;font-size:14px;background:#fff;}
 .pf-search input:focus{outline:none;border-color:#E31E24;}
 .pf-count{font-size:12.5px;color:#777;margin-top:14px;}
+/* タンクバッグ：フィッティングキットをメーカーで絞り込むチップ（PC・スマホ共通、横スクロール可） */
+.pf-filter{display:flex;gap:8px;margin-top:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+.pf-filter::-webkit-scrollbar{display:none;}
+.pf-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;font-family:"Barlow Condensed","Noto Sans JP",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.06em;
+  padding:7px 14px;border-radius:9999px;border:1px solid rgba(0,0,0,.18);color:#444;background:#fff;cursor:pointer;transition:.18s;white-space:nowrap;}
+.pf-chip small{font-size:11px;color:#999;letter-spacing:0;}
+.pf-chip:hover{border-color:#111;color:#111;}
+.pf-chip.on{background:#E31E24;border-color:#E31E24;color:#fff;} .pf-chip.on small{color:rgba(255,255,255,.75);}
+.pf-none{padding:18px 10px;font-size:13px;color:#777;}
 .pf-list{margin-top:8px;max-height:460px;overflow-y:auto;border-top:1px solid rgba(0,0,0,.08);}
 .pf-group{border-bottom:1px solid rgba(0,0,0,.08);padding:12px 0;}
 .pf-group-ttl{font-size:11.5px;letter-spacing:.06em;color:#999;margin-bottom:4px;}
