@@ -74,6 +74,8 @@ if (!empty($errors)) {
 $topicLabel = $topicCodes[$topic];
 
 $to = 'info@customjapan.jp';
+// 切り分け用：Google（customjapan.biz）側にも同じメールを送る。info@ に届くことが確認できたらこの行は削除してよい
+$to .= ', a.kawabe@customjapan.biz';
 $subject = '【SHAD JAPAN】お問い合わせ（' . $topicLabel . '）';
 $body = implode("\n", [
     'SHAD JAPAN サイトのお問い合わせフォームより送信されました。',
@@ -110,7 +112,8 @@ $from = 'noreply@shad-japan.com';
  * （exs.mobi のメールもこの初期ドメインのサーバーで動いている）
  * noreply@shad-japan.com をコントロールパネルで作成済みなら、$envelope = $from; に戻してよい。
  */
-$envelope = 'noreply@partsdirect.sakura.ne.jp';
+$envelope = $from;   // noreply@shad-japan.com はサーバーに作成済み（MX も partsdirect.sakura.ne.jp に向いている）
+// もし送信が通らない場合の代替： $envelope = 'noreply@partsdirect.sakura.ne.jp';
 
 $headers = [
     'From: SHAD JAPAN <' . $from . '>',
