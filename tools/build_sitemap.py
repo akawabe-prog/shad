@@ -17,7 +17,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 BASE = "https://www.shad-japan.com"
 EXCLUDE = {"thanks", "form-error", "404", "top-simple", "news/article", "install-guide"}
-PRIORITY = {"": "1.0", "products": "0.9", "fitment": "0.9", "lock-guide": "0.7", "news": "0.7"}
+PRIORITY = {"": "1.0", "products": "0.9", "fitment": "0.9", "lock-guide": "0.7", "news": "0.7",
+            "top-cases": "0.9", "side-cases": "0.9", "bags": "0.9", "waterproof": "0.8", "helmet-storage": "0.8", "guide/top-case-size": "0.8"}
 
 def url_of(path):
     rel = os.path.relpath(path, SITE)[:-5].replace(os.sep, "/")
@@ -28,7 +29,7 @@ def url_of(path):
     return rel
 
 def main():
-    files = sorted(glob.glob(os.path.join(SITE, "*.html")) + glob.glob(os.path.join(SITE, "product", "*.html")) + glob.glob(os.path.join(SITE, "news", "*.html")))
+    files = sorted(glob.glob(os.path.join(SITE, "*.html")) + glob.glob(os.path.join(SITE, "product", "*.html")) + glob.glob(os.path.join(SITE, "news", "*.html")) + glob.glob(os.path.join(SITE, "guide", "*.html")))
     items = []
     for f in files:
         u = url_of(f)

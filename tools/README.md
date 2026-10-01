@@ -563,3 +563,16 @@ python3 tools/audit_fitment.py            # → docs/audit/fitment_audit_<日付
 - レイアウトはピンタレスト風メイソンリー（CSS多段組、写真は縦横比のまま）。枚数に応じて列数が変わる（1枚=1列、2枚=2列、3〜5枚=3列、6枚以上=4列。タブレット3列、スマホ2列）ので少ない枚数でも成立する
 - イメージ写真が無い商品は `gallery` を空にすると、節ごと省かれアンカーメニューからも消える（`build_product_max.py`）
 - 2026-09-25：TR55／SH44／SH47／TR50／TR30／SH58X／SH59X から商品写真を外した
+
+## SEO 用ページと商品ページの title／description（2026-10-01 追加）
+
+商品名・ブランド名以外の検索語（「バイク リアボックス」「防水 サイドバッグ」「ヘルメット 2個 トップケース」など）の受け皿。
+
+| 手順 | コマンド | 内容 |
+|---|---|---|
+| 1 | `python3 tools/build_landing.py` | `/top-cases` `/side-cases` `/bags` `/guide/top-case-size` `/waterproof` `/helmet-storage` を products.json／cards.json／product_tags.json から生成（本文コピーはスクリプト内） |
+| 2 | `python3 tools/apply_seo_meta.py` | 全商品ページの `<title>`・meta description をマスター値（容量・重量・素材・ヘルメット数・定価）から作り直す。何度実行しても同じ結果 |
+| 3 | `python3 tools/build_sitemap.py` | 新ページを sitemap に反映 |
+
+商品マスターを更新したとき（README 上部の手順）の最後に 1〜3 を実行してください。
+競合ブランド名を含む比較・乗り換えページは未作成（方針確認待ち）。
