@@ -26,6 +26,7 @@ SHAD JAPAN — 商品カタログ ビルドスクリプト
 
 ■ 除外ルール（★ ここを変えれば除外条件を変更できます）
     ・CJ廃番 = 1        → 廃盤のため除外
+    ・Web非表示 = 1     → EC で非公開の品番（梱包資材・什器・販促品など）を除外
     ・セット   = 1        → セット商品のため除外
     ・品番が YY / ZZ 始まり → 社内用品番のため除外
 =============================================================================
@@ -60,6 +61,10 @@ EXCLUDE_INTERNAL_PREFIX = ("YY", "ZZ")  # 社内用品番の接頭辞
 # 在庫状況は表示に影響させない：SE=◯在庫あり / SF=△残りわずか / SO=入荷待 /
 #   BO=取寄 / SL=★在庫限り はすべて表示する
 EXCLUDE_STATUS_CODES = {"DC1", "DC2", "DC4"}
+
+# EC で「Web非表示 = 1」の品番を除外する（梱包資材・店頭什器・カタログ・販促品など、
+# 一般のお客様に見せない品番。適合検索（tools/fitment）も同じ条件で除外している）
+EXCLUDE_WEB_HIDDEN = True
 
 # ★ サイト側だけで廃番扱いにする品番（マスターのCJ廃番がまだ立っていないもの）
 #    キー＝品番、値＝理由（メモとしてビルド時に表示されます）
@@ -288,6 +293,8 @@ def is_excluded(row):
         return "廃盤(CJ廃番)"
     if cell(row, "商品ステータスコード") in EXCLUDE_STATUS_CODES:
         return "販売終了(ステータス %s)" % cell(row, "商品ステータスコード")
+    if EXCLUDE_WEB_HIDDEN and cell(row, "Web非表示") == "1":
+        return "Web非表示"
     if EXCLUDE_SETS and cell(row, "セット") == "1":
         return "セット商品"
     if cell(row, "品番").upper().startswith(EXCLUDE_INTERNAL_PREFIX):

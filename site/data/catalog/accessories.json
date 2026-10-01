@@ -3027,47 +3027,6 @@
   "displayName": "シーシーバーキット MORBIDELLI C1002V(24-25)"
  },
  {
-  "cjCode": "29327287",
-  "name": "LEDテールランプ SH26/SH29/SH33/SH34/SH48/SH58X/SH59X",
-  "maker": "SHAD(シャッド)",
-  "series": "アクセサリー",
-  "category": "ケース・バッグアクセサリー",
-  "mainCategory": "収納・BOX",
-  "color": "",
-  "colorMain": "",
-  "size": "",
-  "msrpTaxIn": 8800,
-  "makerCode": "201604",
-  "jan": "8430358486515",
-  "capacity": "",
-  "capacitySpec": "",
-  "capacityPerUnit": [],
-  "capacityTotal": "",
-  "weight": "",
-  "material": "",
-  "dimensions": "",
-  "spec": "対応モデル：SH26/SH29/SH33/SH34/SH48/SH58X/SH59X\n対応ベースプレート：D1B29PAR/D1B591PA\n発光色： 赤\n※D0B29KLの品番が変更になりました。ご了承ください。",
-  "included": "LEDライト本体、取付パーツ",
-  "catch": "",
-  "fitModels": "",
-  "fitMakers": "",
-  "images": [
-   "/items/29327287_1.jpg",
-   "/items/29327287_2.jpg"
-  ],
-  "thumb": "https://img.customjapan.net/items/29327287_1.jpg",
-  "forCodes": [
-   "SH26",
-   "SH29",
-   "SH33",
-   "SH34",
-   "SH48",
-   "SH58X",
-   "SH59X"
-  ],
-  "displayName": "LEDテールランプ"
- },
- {
   "cjCode": "29327409",
   "name": "バックレストキット トリシティ125(2026)",
   "maker": "SHAD(シャッド)",
