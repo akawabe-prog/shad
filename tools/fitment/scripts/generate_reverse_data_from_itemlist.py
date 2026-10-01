@@ -54,7 +54,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # scripts/ を i
 from utils import expand_models, override_maker
 from itemlist_common import (
     load_items, is_catalog_visible, is_kit_visible,
-    normalize_maker, product_url, product_img, capacity_for,
+    normalize_maker, resolve_maker, product_url, product_img, capacity_for,
 )
 
 DIST_DIR = os.path.join(ROOT, "dist")
@@ -303,6 +303,7 @@ def collect_bikes(items, plates, side_codes, sidebags):
     mount_kits = []   # 「◯◯取付(車種…)」の形のキット（あとで実車種へ振り替える）
 
     def get_bike(maker, model, group):
+        maker = resolve_maker(maker, model)       # 連名メーカーは車種名から1社に
         key = bike_key(maker, model)
         if key not in bikes:
             bikes[key] = {"maker": maker, "model": model, "group": group,
@@ -328,7 +329,7 @@ def collect_bikes(items, plates, side_codes, sidebags):
                                                row["対応メーカー"], row["商品名"]):
             if MOUNT_KIT_RE.match(model_name):
                 # 車種ではなく取付方法（シーシーバー取付 等）。あとで実車種に振り替える
-                mount_kits.append({"maker": maker, "model": model_name, "group": group,
+                mount_kits.append({"maker": resolve_maker(maker, model_name), "model": model_name, "group": group,
                                    "plates": kit_plates, "url": url, "name": row["商品名"],
                                    "models": spec_models, "noPlate": no_plate})
                 continue

@@ -31,6 +31,9 @@ MAKER_NORMALIZE = {
     "RIEJU": "Rieju",
     "Husqvarna_KTM": "KTM/Husqvarna",
     "PEUGEOT": "Peugeot",
+    # 大文字小文字のゆれ（表示名を1つに）
+    "NERVA": "Nerva", "WOTTAN": "Wottan", "HUSQVARNA": "Husqvarna", "APRILIA": "Aprilia",
+    "BENELLI": "Benelli", "QJ MOTOR": "QJ Motor", "QJMOTOR": "QJ Motor",
 }
 
 
@@ -38,7 +41,24 @@ def normalize_maker(maker):
     maker = MAKER_NORMALIZE.get(maker, maker)
     if "_" in maker:
         maker = maker.replace("_", "/")
+    # 連名（KTM/Husqvarna 等）は各社ごとに表記を統一
+    if "/" in maker:
+        maker = "/".join(MAKER_NORMALIZE.get(m.strip(), m.strip()) for m in maker.split("/"))
     return maker
+
+
+def resolve_maker(maker, model):
+    """マスターの「対応メーカー」が連名（KTM/Husqvarna、Aprilia/GILERA 等）のとき、
+    車種名に含まれるメーカー名から1社に決める。どれも含まれなければ先頭のメーカー。
+    （メーカーのプルダウンに「KTM」と「KTM/Husqvarna」が別々に並ぶのを防ぐ）"""
+    if "/" not in maker:
+        return maker
+    parts = [p.strip() for p in maker.split("/") if p.strip()]
+    low = (model or "").lower()
+    hits = [(low.find(p.lower()), p) for p in parts if p.lower() in low]
+    if hits:
+        return sorted(hits)[0][1]          # 車種名の先頭に近いメーカー
+    return parts[0]
 
 
 def product_url(cj_code):
