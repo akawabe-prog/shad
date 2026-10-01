@@ -216,7 +216,7 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       <span class="flex gap-4 text-white/70">
         <a href="https://www.instagram.com/shad_japan/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5l0 .01"/></svg></a>
         <a href="https://www.facebook.com/profile.php?id=100063772623152" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
-        <a href="#" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
+        <a href="https://www.youtube.com/@SHADmotorcycles" target="_blank" rel="noopener" aria-label="YouTube" class="hover:text-white transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4z"/><path d="M10 9l5 3l-5 3z"/></svg></a>
       </span>
       <span class="flex flex-wrap gap-x-4 gap-y-1"><a href="/company" class="hover:text-white transition">会社情報</a><a href="/privacy" class="hover:text-white transition">プライバシーポリシー</a><a href="/terms" class="hover:text-white transition">利用規約</a></span>
       <span class="md:ml-auto">© SHAD JAPAN — 日本総代理店 株式会社カスタムジャパン</span>
@@ -260,14 +260,14 @@ function card(p){
     +'</div></a>';
 }
 var grid=document.getElementById('grid');
-var BAN_VIDEO='<a href="/expandable" class="pbanner group" data-series="EXPANDABLE" data-reveal>'
+var BAN_VIDEO='<a href="/products?feat=expandable" class="pbanner group" data-series="EXPANDABLE" data-reveal>'
  +'<video src="/media/banner_expandable.mp4" muted loop playsinline preload="metadata"></video>'
  +'<span class="shade"></span><span class="inner">'
  +'<span class="kick">Patented Technology</span>'
  +'<span class="ttl">Expandable —<br>容量が、変わる。</span>'
  +'<span class="cp">走るときはスリム、停まれば大容量。世界でSHADだけの可変容量ケース。</span>'
  +'<span class="cta">SH38X / SH58X を見る <i class="ti ti-arrow-right"></i></span></span></a>';
-var BAN_IMG='<a href="/terra" class="pbanner group" data-series="TERRA" data-reveal>'
+var BAN_IMG='<a href="/products?cat=TERRA" class="pbanner group" data-series="TERRA" data-reveal>'
  +'<img class="bg" src="/img/banner_terra.webp" alt="TERRA シリーズ" loading="lazy">'
  +'<span class="shade"></span><span class="inner">'
  +'<span class="kick">Adventure Proof</span>'

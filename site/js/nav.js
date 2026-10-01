@@ -71,9 +71,9 @@
   var item = link.closest("li") || link;
 
   var SERIES = [
-    { href: "/terra", img: "/img/banner_terra.webp", en: "Terra",
+    { href: "/products?cat=TERRA", img: "/img/banner_terra.webp", en: "Terra",
       jp: "旅の道具の、最高峰。" },
-    { href: "/expandable", img: "/img/story_sh38x.webp", en: "Expandable",
+    { href: "/products?feat=expandable", img: "/img/story_sh38x.webp", en: "Expandable",
       jp: "容量が、変わる。" }
   ];
   var CATEGORIES = [

@@ -402,7 +402,7 @@ window.SHAD_GALLERY = {ov};
     {related_head}
     {P["same_grid"]}
     <div class="pd-cta" data-reveal>
-      <a href="/terra"><span><b>TERRAシリーズをすべて見る</b><span>トップケース・サイドケース・バッグのラインアップ</span></span><i class="ti ti-arrow-right"></i></a>
+      <a href="/products?cat=TERRA"><span><b>TERRAシリーズをすべて見る</b><span>トップケース・サイドケース・バッグのラインアップ</span></span><i class="ti ti-arrow-right"></i></a>
       <a href="/fitment"><span><b>車種から探す</b><span>あなたのバイクに合うケースと必要なキットを確認</span></span><i class="ti ti-search"></i></a>
       <a href="/fitting-kits"><span><b>フィッティングキットとは</b><span>装着の仕組みとキットの種類</span></span><i class="ti ti-tool"></i></a>
       <a href="/products"><span><b>すべての製品</b><span>カテゴリ・容量から選ぶ</span></span><i class="ti ti-layout-grid"></i></a>
