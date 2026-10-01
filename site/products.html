@@ -148,8 +148,8 @@ tailwind.config={theme:{extend:{colors:{shad:'#E31E24',ink:'#0E0E0E',ink2:'#1616
       <button class="chip" data-f="TANK">タンクバッグ</button>
       <button class="chip" data-f="FITTING">フィッティングキット</button>
     </div>
-    <button type="button" id="moreFiltersBtn" class="sm:hidden inline-flex items-center gap-1.5 text-[12.5px] text-white/70 hover:text-white mt-1" aria-expanded="false" aria-controls="moreFilters"><i class="ti ti-adjustments-horizontal"></i>容量・素材・機能で絞り込む<i class="ti ti-chevron-down"></i></button>
-    <div id="moreFilters" class="space-y-3.5 hidden sm:block">
+    <button type="button" id="moreFiltersBtn" class="inline-flex items-center gap-1.5 text-[12.5px] text-white/70 hover:text-white mt-1" aria-expanded="false" aria-controls="moreFilters"><i class="ti ti-adjustments-horizontal"></i>容量・素材・機能で絞り込む<i class="ti ti-chevron-down"></i></button>
+    <div id="moreFilters" class="space-y-3.5 hidden">
     <div class="flex items-center gap-2.5 flex-wrap" id="capChips">
       <span class="filter-lb w-full sm:w-[76px] shrink-0">Capacity</span>
       <button class="chip on" data-cap="ALL">すべて</button>
@@ -432,7 +432,14 @@ function bindChips(id,key){
   function setOpen(o){ box.classList.toggle('hidden',!o); btn.setAttribute('aria-expanded',o?'true':'false');
     btn.innerHTML='<i class="ti ti-adjustments-horizontal"></i>'+(o?'絞り込みを閉じる':'容量・素材・機能で絞り込む')+'<i class="ti '+(o?'ti-chevron-up':'ti-chevron-down')+'"></i>'; }
   btn.addEventListener('click',function(){ setOpen(box.classList.contains('hidden')); });
-  var q=new URLSearchParams(location.search); if(q.get('cap')||q.get('mat')||q.get('feat')) setOpen(true);
+  /* 最初は PC・スマホとも閉じた状態。URL の絞り込み（?cap= ?mat= ?feat=）があるときはボタンに条件名を添える */
+  var q=new URLSearchParams(location.search);
+  if(q.get('cap')||q.get('mat')||q.get('feat')){
+    setTimeout(function(){
+      var on=[].map.call(document.querySelectorAll('#capChips .on,#matChips .on,#featChips .on'),function(c){return c.textContent.trim();}).filter(function(t){return t&&t!=='すべて';});
+      if(on.length && box.classList.contains('hidden')){ btn.innerHTML='<i class="ti ti-adjustments-horizontal"></i>絞り込み中：'+on.join('・')+'<i class="ti ti-chevron-down"></i>'; }
+    },0);
+  }
 })();
 bindChips('catChips','cat');
 bindChips('capChips','cap');
