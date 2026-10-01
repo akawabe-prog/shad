@@ -21,7 +21,9 @@ SHAD JAPAN — GitHub Pages 確認用ビルド
     python3 tools/build_ghpages.py --push     # 作って gh-pages に push
 
 ■ 注意
-    確認専用です。Drive/GCSへ納品するのは site/（= dist/shad/）の方です。
+    確認専用です。本番（さくら）へ上げるのは site/（= dist/shad/）の方です。
+    確認用サイトは noindex（meta robots＋robots.txt 全拒否、sitemap.xml 無し）で、
+    本番 https://www.shad-japan.com/ と検索結果で重複しないようにしています。
 =============================================================================
 """
 
@@ -80,6 +82,11 @@ def main():
     changed = prepare(OUT, PREFIX)
 
     open(os.path.join(OUT, ".nojekyll"), "w").close()
+    # robots.txt も全拒否に差し替え（sitemap.xml は本番ドメインのものなので消す）
+    open(os.path.join(OUT, "robots.txt"), "w").write("User-agent: *\nDisallow: /\n")
+    sm = os.path.join(OUT, "sitemap.xml")
+    if os.path.exists(sm):
+        os.remove(sm)
     print("dist/ghpages を作成：パス書き換え %d ファイル" % changed)
 
     if "--push" in sys.argv:
@@ -97,6 +104,9 @@ def prepare(root, prefix):
             with open(path, encoding="utf-8", errors="ignore") as fh:
                 src = fh.read()
             new = rewrite(src, prefix)
+            # 確認用サイトは検索エンジンに載せない（本番 www.shad-japan.com と重複させない）
+            if name.endswith(".html") and "<head>" in new and 'name="robots"' not in new:
+                new = new.replace("<head>", '<head>\n<meta name="robots" content="noindex,nofollow">', 1)
             if new != src:
                 with open(path, "w", encoding="utf-8") as fh:
                     fh.write(new)
