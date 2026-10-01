@@ -420,9 +420,9 @@
 /* 暗い帯の中で使うとき */
 .fk-sys-dark{background:#1D1D1D;border:1px solid rgba(255,255,255,.08);}
 .fk-sys-dark h3{color:#fff;}
-.fk-spec-dark{border-top-color:rgba(255,255,255,.14);}
-.fk-spec-dark dt{color:rgba(255,255,255,.7);}
-.fk-spec-dark dd{color:#fff;}
+.fk-spec.fk-spec-dark{border-top-color:rgba(255,255,255,.14);}
+.fk-spec.fk-spec-dark dt{color:rgba(255,255,255,.7);}
+.fk-spec.fk-spec-dark dd{color:#fff;}
 .fk-note.fk-note-dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);
   color:rgba(255,255,255,.72);}
 .fk-note.fk-note-dark b{color:#fff;}
