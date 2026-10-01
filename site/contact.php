@@ -95,17 +95,39 @@ $body = implode("\n", [
     'UA: ' . ($_SERVER['HTTP_USER_AGENT'] ?? '-'),
 ]);
 
+/*
+ * 差出人（From）。さくらのレンタルサーバから送るので、このドメインの DNS に
+ * SPF（TXT）を入れておくこと → docs/deploy-guide.md §5.6
+ *   shad-japan.com  TXT  "v=spf1 a:www959.sakura.ne.jp ip4:219.94.128.199 ~all"
+ * DNS を触れない場合の代替：サーバーの初期ドメイン（SPF 設定済み）の
+ * 'noreply@partsdirect.sakura.ne.jp' に変えると認証は通る。
+ */
+$from = 'noreply@shad-japan.com';
+
 $headers = [
-    'From: noreply@shad-japan.com',   // ※送信ドメインのSPF/DKIM設定が必要
+    'From: SHAD JAPAN <' . $from . '>',
     'Reply-To: ' . $email,
     'Content-Type: text/plain; charset=UTF-8',
 ];
 
 $sent = false;
 if (function_exists('mb_send_mail')) {
-    $sent = mb_send_mail($to, $subject, $body, implode("\r\n", $headers));
+    // 第5引数 -f：エンベロープ送信者（Return-Path）も From と同じにする。
+    // 無いと Return-Path がサーバーのアカウント名になり、SPF/DMARC の照合に失敗しやすい。
+    $sent = mb_send_mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $from);
 } else {
-    $sent = mail($to, $subject, $body, implode("\r\n", $headers));
+    $sent = mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $from);
+}
+
+// 送信記録（公開領域の外 /home/<アカウント>/shad_contact.log）。届かないときの切り分け用：
+// ここに OK が残っていれば PHP からサーバーのメール送信には渡っている（＝その先の迷惑判定・DNS の問題）
+if (preg_match('#^(/home/[^/]+)/#', __DIR__, $m)) {
+    $maskedEmail = preg_replace('/^(.).*(@.*)$/u', '$1***$2', $email);
+    @file_put_contents(
+        $m[1] . '/shad_contact.log',
+        date('Y-m-d H:i:s') . "\t" . ($sent ? 'OK' : 'NG') . "\t" . $topic . "\t" . $maskedEmail . "\n",
+        FILE_APPEND | LOCK_EX
+    );
 }
 
 header('Location: ' . ($sent ? 'thanks' : 'form-error'));
