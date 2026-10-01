@@ -104,6 +104,14 @@ $body = implode("\n", [
  */
 $from = 'noreply@shad-japan.com';
 
+/*
+ * エンベロープ送信者（Return-Path）。さくらは「このサーバーに登録されていないアドレス」を
+ * 送信者にしたメールを送らないことがあるため、必ず存在するサーバー初期ドメインのアドレスにする。
+ * （exs.mobi のメールもこの初期ドメインのサーバーで動いている）
+ * noreply@shad-japan.com をコントロールパネルで作成済みなら、$envelope = $from; に戻してよい。
+ */
+$envelope = 'noreply@partsdirect.sakura.ne.jp';
+
 $headers = [
     'From: SHAD JAPAN <' . $from . '>',
     'Reply-To: ' . $email,
@@ -112,11 +120,9 @@ $headers = [
 
 $sent = false;
 if (function_exists('mb_send_mail')) {
-    // 第5引数 -f：エンベロープ送信者（Return-Path）も From と同じにする。
-    // 無いと Return-Path がサーバーのアカウント名になり、SPF/DMARC の照合に失敗しやすい。
-    $sent = mb_send_mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $from);
+    $sent = mb_send_mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $envelope);
 } else {
-    $sent = mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $from);
+    $sent = mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $envelope);
 }
 
 // 送信記録（公開領域の外 /home/<アカウント>/shad_contact.log）。届かないときの切り分け用：
