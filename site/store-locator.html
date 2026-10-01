@@ -11,19 +11,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>取扱店・SHAD BASE｜SHAD JAPAN</title>
-<meta name="description" content="SHADの体験ショールーム「SHAD BASE」と展示店を、地図と現在地から探せます。">
+<meta name="description" content="SHADの体験ショールーム「SHAD BASE」を、地図と現在地から探せます。">
 
 <!-- OGP / Twitter（画像パスは実装ガイド2.5に従いルート相対）-->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SHAD JAPAN">
 <meta property="og:title" content="取扱店・SHAD BASE｜SHAD JAPAN">
-<meta property="og:description" content="SHADの体験ショールーム「SHAD BASE」と展示店を、地図と現在地から探せます。">
+<meta property="og:description" content="SHADの体験ショールーム「SHAD BASE」を、地図と現在地から探せます。">
 <meta property="og:url" content="https://www.shad-japan.com/store-locator">
 <meta property="og:image" content="https://www.shad-japan.com/img/og_default.jpg">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="取扱店・SHAD BASE｜SHAD JAPAN">
-<meta name="twitter:description" content="SHADの体験ショールーム「SHAD BASE」と展示店を、地図と現在地から探せます。">
+<meta name="twitter:description" content="SHADの体験ショールーム「SHAD BASE」を、地図と現在地から探せます。">
 <meta name="twitter:image" content="/img/og_default.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="bg-ink text-white">
   <div class="max-w-site mx-auto px-7 pt-14 pb-10">
     <h1 class="sec-ttl text-white" style="font-size:38px;">Store</h1>
-    <p class="text-white/65 text-[15px] mt-4 max-w-[660px]">店舗は2種類から探せます。<b class="text-white">お近くの店舗</b>では製品の展示・お取り寄せに対応。<b class="text-white">SHAD BASE</b>は購入から<b class="text-white">商品の取り付けまで</b>対応する体験拠点です。気になる製品は<a href="/fitment" class="text-white underline decoration-shad decoration-2 underline-offset-4 hover:text-shad transition">あなたのバイクから探す</a>で適合確認のうえ、お近くの店舗でもお取り寄せ・取付いただけます。</p>
+    <p class="text-white/65 text-[15px] mt-4 max-w-[660px]"><b class="text-white">SHAD BASE</b>は、購入から<b class="text-white">商品の取り付けまで</b>対応する体験拠点です。気になる製品は<a href="/fitment" class="text-white underline decoration-shad decoration-2 underline-offset-4 hover:text-shad transition">あなたのバイクから探す</a>で適合を確認のうえ、お近くの SHAD BASE へご相談ください。</p>
   </div>
 </header>
 
@@ -98,7 +98,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="flex flex-wrap items-center gap-4 mt-7 mb-5">
       <div class="flex gap-3 border-b border-black/10 flex-1 min-w-[200px]">
         <button class="tabbtn on" data-tab="base">SHAD BASE 取り付け対応可</button>
-        <button class="tabbtn" data-tab="display">お近くの店舗</button>
+        <!-- お近くの店舗（展示店）は一旦非表示（2026-10-01）。再表示するときはこの行を戻す：<button class="tabbtn" data-tab="display">お近くの店舗</button> -->
       </div>
       <button id="geo" class="geobtn"><i class="ti ti-current-location"></i>現在地から探す</button>
     </div>
@@ -112,7 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="max-w-site mx-auto px-7 md:flex items-center gap-10">
     <div class="flex-1">
       <h2 class="text-[22px] font-bold leading-[1.5]">取扱店は全国に。<br>まずはバイクから適合を確認。</h2>
-      <p class="text-neutral-500 text-[14px] mt-3">SHAD BASE・展示店以外でも、全国の取扱店で製品のお取り寄せと取付に対応しています。</p>
+      <p class="text-neutral-500 text-[14px] mt-3">SHAD BASE 以外でも、全国の取扱店で製品のお取り寄せと取付に対応しています。</p>
     </div>
     <a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b] mt-6 md:mt-0 shrink-0"><i class="ti ti-motorbike"></i>あなたのバイクから探す</a>
   </div>
@@ -250,7 +250,7 @@ fetch('stores.json').then(function(r){return r.json();}).then(function(d){
   DATA=d;
   // ?tab=display / base で初期タブ切替（商品ページ「商品を見て購入する」→展示店 等）
   var q=new URLSearchParams(location.search), tab=q.get('tab');
-  if(tab==='display'||tab==='base'){ state.tab=tab; document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('on',b.dataset.tab===tab);}); }
+  if(tab==='base'){ state.tab=tab; document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('on',b.dataset.tab===tab);}); }
   render();
   // TOPからの ?lat&lng で現在地ソート
   var la=parseFloat(q.get('lat')), ln=parseFloat(q.get('lng'));

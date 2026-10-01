@@ -354,11 +354,13 @@ tailwind.config = {
       var m = L.circleMarker(s.ll, { radius: 8, color: "#fff", weight: 2, fillColor: "#E31E24", fillOpacity: 1 }).addTo(map);
       m.bindPopup('<b>SHAD BASE ' + s.code + '</b><br>' + s.name + '<br>' + s.pref + '<br><a href="/store-locator?tab=base">詳しく見る</a>');
     });
+    /* 展示店（お近くの店舗）のピンは一旦非表示（2026-10-01）。再表示するときはコメントを外す
     (d.display || []).forEach(function (s) {
       if (!s.ll) return;
       var m = L.circleMarker(s.ll, { radius: 6, color: "#fff", weight: 2, fillColor: "#0E0E0E", fillOpacity: 1 }).addTo(map);
       m.bindPopup('<b>展示店</b><br>' + s.name + '<br>' + (s.pref || '') + '<br><a href="/store-locator?tab=display">詳しく見る</a>');
     });
+    */
     setTimeout(function () { map.invalidateSize(); }, 250);
   }).catch(function () {});
 })();
