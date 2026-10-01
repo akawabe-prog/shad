@@ -4,7 +4,7 @@ declare(strict_types=1);
 /*
  * SHAD JAPAN お問い合わせ受付
  * 参照: eXs (exs.customjapan.net) の contact.php と同じ方式
- *   - POST を検証し、info@customjapan.jp へメール送信
+ *   - POST を検証し、order@customjapan.jp へメール送信
  *   - 成功: thanks.html / 失敗・不備: form-error.html へリダイレクト
  */
 
@@ -73,9 +73,7 @@ if (!empty($errors)) {
 
 $topicLabel = $topicCodes[$topic];
 
-$to = 'info@customjapan.jp';
-// 切り分け用：Google（customjapan.biz）側にも同じメールを送る。info@ に届くことが確認できたらこの行は削除してよい
-$to .= ', a.kawabe@customjapan.biz';
+$to = 'order@customjapan.jp';   // 問い合わせの受信先（2026-10-01 info@ → order@ に変更）
 $subject = '【SHAD JAPAN】お問い合わせ（' . $topicLabel . '）';
 $body = implode("\n", [
     'SHAD JAPAN サイトのお問い合わせフォームより送信されました。',
