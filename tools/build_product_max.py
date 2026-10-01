@@ -360,7 +360,7 @@ window.SHAD_GALLERY = {ov};
 </section>
 
 <!-- ===== ② アンカーナビ（FAQの直後・ムービーの直上。スクロールで見えなくなると右側の pd-side に切り替わる） ===== -->
-<nav class="pd-nav mt-14" id="pdNav" aria-label="ページ内ナビゲーション">
+<nav class="pd-nav mt-16 md:mt-24" id="pdNav" aria-label="ページ内ナビゲーション">
   <div class="pd-nav-in">
 {nav}  </div>
 </nav>
