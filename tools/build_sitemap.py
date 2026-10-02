@@ -18,7 +18,7 @@ SITE = os.path.join(ROOT, "site")
 BASE = "https://www.shad-japan.com"
 EXCLUDE = {"thanks", "form-error", "404", "top-simple", "news/article", "install-guide"}
 PRIORITY = {"": "1.0", "products": "0.9", "fitment": "0.9", "lock-guide": "0.7", "news": "0.7",
-            "top-cases": "0.9", "side-cases": "0.9", "bags": "0.9", "waterproof": "0.8", "helmet-storage": "0.8", "guide/top-case-size": "0.8"}
+            "top-cases": "0.9", "locks": "0.8", "side-cases": "0.9", "bags": "0.9", "waterproof": "0.8", "helmet-storage": "0.8", "guide/top-case-size": "0.8"}
 
 def url_of(path):
     rel = os.path.relpath(path, SITE)[:-5].replace(os.sep, "/")

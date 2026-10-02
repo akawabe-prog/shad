@@ -13,6 +13,7 @@ SHAD JAPAN — SEO 用ランディングページ（カテゴリ／用途／特�
   /guide/top-case-size  トップケースの容量の選び方（30L／40L／50L で入るもの）
   /waterproof         防水・耐水のバイク用バッグとケース（IPX 等級の説明＋該当モデル）
   /helmet-storage     ヘルメットが入るトップケース・サイドケース（収納数別）
+  /locks              SHAD LOCKS：スクーター用ハンドルバーロックの仕組み・本体・車種専用キット一覧（マスターから生成）
 
 ・本文のコピーはこのファイル内（PAGES）。モデル一覧・容量・ヘルメット数・価格は
   site/data/catalog/products.json / cards.json / tools/product_tags.json から自動で入る。
@@ -301,10 +302,69 @@ def build_helmet():
          "バイク用トップケース・サイドケースをヘルメット収納数別に一覧。フルフェイス2個が入る大容量モデル、フルフェイス1個、ジェット1個の軽量モデル。各モデルの収納目安と容量、フルフェイスが入る容量の目安を解説。SHAD日本総代理店公式。",
          body, [crumbs_ld(path, name), itemlist_ld("ヘルメットが入る SHAD ケース", two + one), faq_ld(faq)], "/img/products/sh58x/off_helmets.webp")
 
+# ---------- SHAD LOCKS（スクーター用ハンドルバーロック）：本体＋車種専用キット一覧 ----------
+import csv as _csv
+CSV_PATH = os.path.join(ROOT, "data-source", "ItemList_SHAD.csv")
+LOCK_LEN = {"203": "38cm", "205": "44cm", "207": "49cm"}   # 対応SHADロック C0S2xxH → 長さ（本国：size3/5/7）
+MAKER_FIX = {"VOGE": "Voge", "PEUGEOT": "Peugeot", "Vespa": "PIAGGIO（Vespa）"}
+MAKER_ORDER = ["ホンダ", "ヤマハ", "スズキ", "BMW", "PIAGGIO", "PIAGGIO（Vespa）", "Aprilia", "KYMCO", "SYM", "QJ Motor", "Voge", "ZONTES", "Peugeot"]
+def lock_kits():
+    if not os.path.exists(CSV_PATH):
+        return []
+    rows = list(_csv.DictReader(open(CSV_PATH, encoding="cp932", newline="")))
+    out = []
+    for r in rows:
+        if "ロックフィッティングキット" not in r["商品名"] or r["CJ廃番"] == "1" or r["商品ステータスコード"].startswith("DC") or r.get("Web非表示") == "1":
+            continue
+        codes = sorted(set(re.findall(r"C0S(20[357])H", r.get("仕様") or "")))
+        mk = MAKER_FIX.get(r["対応メーカー"], r["対応メーカー"])
+        out.append({"cj": r["品番"], "maker": mk, "name": r["商品名"].replace("SHADロックフィッティングキット ", ""),
+                    "bikes": r["代表適合車種"].replace("\n", " ").replace("｜", "／"), "len": "／".join(LOCK_LEN.get(c, c) for c in codes) or "—",
+                    "price": r.get("希望小売価格(税込)") or ""})
+    out.sort(key=lambda k: (MAKER_ORDER.index(k["maker"]) if k["maker"] in MAKER_ORDER else 99, k["name"]))
+    return out
+
+def build_locks():
+    path = "/locks"; name = "SHAD LOCKS（ハンドルバーロック）"
+    kits = lock_kits()
+    lock = P.get("LOCK"); pr = price("LOCK") if lock else ""
+    by_mk = []
+    for k in kits:
+        if not by_mk or by_mk[-1][0] != k["maker"]:
+            by_mk.append((k["maker"], []))
+        by_mk[-1][1].append(k)
+    def kit_rows(ks):
+        return table(["車種（年式）", "キット品番", "対応するロック本体", "キット定価（税込）"],
+                     [(esc(k["name"]), "<a href='https://www.customjapan.net/i/%s' target='_blank' rel='noopener' class='text-shad font-semibold'>%s</a>" % (k["cj"], k["cj"]), esc(k["len"]), ("¥{:,}".format(int(k["price"])) if k["price"].isdigit() else esc(k["price"]))) for k in ks])
+    kits_html = "".join('<div class="mt-8"><h3 class="font-disp font-semibold text-[22px] tracking-[.06em] uppercase">%s<span class="font-sans normal-case tracking-normal text-[13px] text-neutral-500 font-normal ml-3">%d 車種</span></h3>%s</div>' % (esc(mk), len(ks), kit_rows(ks)) for mk, ks in by_mk)
+    faq = [
+        ("ロック本体だけで取り付けられますか？", "<p>いいえ。本体を固定するブラケットは車種ごとに形が違うため、<b>車種専用の SHAD ロックフィッティングキット（別売）</b>が必要です。キットには本体は付属しません。</p>"),
+        ("38cm と 44cm のどちらを選べばよいですか？", "<p>車種ごとにキットが指定するロック本体が決まっています。上の表の「対応するロック本体」をご確認ください。49cm（本国 サイズ7）が指定されている車種は、日本では本体の取り扱いがないため販売店にご相談ください。</p>"),
+        ("ヘルメットも固定できますか？", "<p>はい。ハンドルとシートの間に掛けたロックに、ヘルメットの D リングを通して固定できます。ケースを付けていないスクーターでも、ヘルメットを車体に残して離れられます。</p>"),
+        ("鍵をなくしたら？", "<p>ロック本体にはリバーシブルキーが付属します。紛失に備えてスペアキーは別の場所に保管してください。シリンダーは 30,000 回の開閉に耐える耐久試験をクリアしています。</p>"),
+        ("他社のロックやブラケットと組み合わせられますか？", "<p>他社製品との互換性は確認していません。取り付けは専門知識のある販売店へのご依頼をおすすめします。</p>"),
+    ]
+    body = hero("SHAD Locks", "スクーター用ハンドルバーロック", "降りて数秒、屈まず、手を汚さずに。ハンドルとシートをつないで車体を固定し、ヘルメットも一緒にロックできる SHAD のスクーター専用ハンドルバーロック。使わないときはシート下のブラケットに収納しておけます。", "/img/locks/hero.webp")
+    body += section("How it works", "ハンドルとシートを、1本でつなぐ。",
+        p("ロック本体は車種専用ブラケットでシート下に収納しておき、停めたら引き出してハンドルバーに掛けるだけ。ハンドルが切れなくなるので車体を動かせず、ディスクロックのように屈んで地面近くで作業する必要もありません。鍵穴は 360° 回転するヘッドにあり、どの向きからでも施錠・解錠できます。")
+        + '<div class="grid sm:grid-cols-3 gap-4 mt-8 max-w-[1000px]">%s</div>' % "".join('<figure class="rounded-[14px] overflow-hidden bg-mist"><img src="%s" alt="%s" loading="lazy" class="w-full aspect-square object-cover"><figcaption class="text-[13px] text-neutral-600 px-4 py-3 leading-[1.7]">%s</figcaption></figure>' % (src, esc(alt), esc(cap)) for src, alt, cap in (("/img/locks/use_mounted.webp", "ハンドルとシートをつないだ状態", "ハンドルとシートをつないで固定。ハンドルが切れないので車体を動かせません"), ("/img/locks/use_head.webp", "360°回転するロックヘッド", "360°回転ヘッド。鍵穴の向きを気にせず、立ったまま施錠できます"), ("/img/locks/use_helmet.webp", "ヘルメットをロックに掛けた状態", "ヘルメットの D リングを通せば、ヘルメットも車体に残せます")))
+        + ul(["<b>5mm 径の亜鉛メッキスチールケーブル</b>をボールジョイントで覆った構造。切断や曲げに強く、車体を傷つけません。", "<b>30,000 回の開閉</b>に耐える高品質シリンダーと、表裏どちらでも差せる<b>リバーシブルキー</b>。", "本体は <b>38cm（シリーズ2 レギュラー）と 44cm</b> の 2 サイズ。どちらを使うかは車種専用キットで決まります。", "設計は 100% ヨーロッパ（SHAD／スペイン）。REACH 規制に適合。"])
+        + links([("ロック本体の商品ページ", "/product/lock"), ("フィッティングキットの考え方", "/fitting-kits#locks")]))
+    if lock:
+        body += section("Product", "ロック本体", '<div class="mt-6 max-w-[520px]">%s</div>' % card("LOCK") + p("定価 %s（税込）。38cm・44cm とも同価格です。" % pr if pr else ""), "pb-6")
+    body += section("Fitting Kits", "車種専用フィッティングキット（%d 車種）" % len(kits),
+        p("SHAD ロックは、車種ごとに専用のブラケット（フィッティングキット）でシート下に取り付けます。お使いの車種の行にある「対応するロック本体」の長さを選んでください。年式はキット登録時点のもので、同じ車名でも年式が外れる場合は適合しないことがあります。")
+        + kits_html
+        + p("表にない車種は順次追加されます。適合が不明な場合は<a href='/contact' class='text-shad underline underline-offset-4'>お問い合わせ</a>ください。"), "pb-14 md:pb-20")
+    body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
+    page(path, "SHAD LOCKS｜スクーター用ハンドルバーロック・車種専用フィッティングキット — SHAD JAPAN",
+         "スクーターのハンドルとシートをつないで固定し、ヘルメットも一緒にロックできる SHAD ハンドルバーロック。5mm 亜鉛メッキケーブル、360°回転ヘッド、30,000回耐久シリンダー。38cm／44cm と、%d 車種の専用フィッティングキット一覧。" % len(kits),
+         body, [crumbs_ld(path, name), faq_ld(faq)], "/img/locks/hero.webp")
+
 def main():
-    for f in (build_top_cases, build_side_cases, build_bags, build_size_guide, build_waterproof, build_helmet):
+    for f in (build_top_cases, build_side_cases, build_bags, build_size_guide, build_waterproof, build_helmet, build_locks):
         f()
-    print("ランディングページ 6 ページを生成（/top-cases /side-cases /bags /guide/top-case-size /waterproof /helmet-storage）")
+    print("ランディングページ 7 ページを生成（/top-cases /side-cases /bags /guide/top-case-size /waterproof /helmet-storage /locks）")
 
 if __name__ == "__main__":
     main()
