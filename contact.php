@@ -1,0 +1,141 @@
+<?php
+declare(strict_types=1);
+
+/*
+ * SHAD JAPAN お問い合わせ受付
+ * 参照: eXs (exs.customjapan.net) の contact.php と同じ方式
+ *   - POST を検証し、order@customjapan.jp へメール送信
+ *   - 成功: thanks.html / 失敗・不備: form-error.html へリダイレクト
+ */
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: contact.html');
+    exit;
+}
+
+mb_internal_encoding('UTF-8');
+
+function posted(string $key): string
+{
+    return trim((string)($_POST[$key] ?? ''));
+}
+
+// --- スパム対策（ハニーポット）: 人間には非表示の website に入力があれば無視 ---
+if (posted('website') !== '') {
+    header('Location: thanks');
+    exit;
+}
+
+$topicCodes = [
+    'product'  => '製品について（仕様・使い方）',
+    'fit'      => '適合・取り付けについて',
+    'order'    => '購入・お届け・返品について',
+    'warranty' => '保証・不具合・補修部品について',
+    'dealer'   => '取扱店・SHAD BASE になりたい',
+    'press'    => '取材・OEM・その他',
+];
+
+$topic   = posted('topic');
+$name    = posted('name');
+$company = posted('company');
+$email   = posted('email');
+$tel     = posted('tel');
+$bike    = posted('bike');
+$product = posted('product');
+$message = posted('message');
+$agree   = (string)($_POST['agree'] ?? '');
+
+$errors = [];
+if (!isset($topicCodes[$topic])) {
+    $errors[] = 'topic';
+}
+if ($name === '') {
+    $errors[] = 'name';
+}
+if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'email';
+}
+if (mb_strlen($message) < 10) {
+    $errors[] = 'message';
+}
+if ($agree !== 'on' && $agree !== '1') {
+    $errors[] = 'agree';
+}
+// 適合・取り付けの相談は車種必須
+if ($topic === 'fit' && $bike === '') {
+    $errors[] = 'bike';
+}
+
+if (!empty($errors)) {
+    header('Location: form-error.html?form=contact');
+    exit;
+}
+
+$topicLabel = $topicCodes[$topic];
+
+$to = 'order@customjapan.jp';   // 問い合わせの受信先（2026-10-01 info@ → order@ に変更）
+$subject = '【SHAD JAPAN】お問い合わせ（' . $topicLabel . '）';
+$body = implode("\n", [
+    'SHAD JAPAN サイトのお問い合わせフォームより送信されました。',
+    '',
+    'お問い合わせ種別: ' . $topicLabel,
+    'お名前: ' . $name,
+    '会社名・店舗名: ' . ($company !== '' ? $company : '-'),
+    'メールアドレス: ' . $email,
+    '電話番号: ' . ($tel !== '' ? $tel : '-'),
+    '車種: ' . ($bike !== '' ? $bike : '-'),
+    '製品名・品番: ' . ($product !== '' ? $product : '-'),
+    '',
+    '── お問い合わせ内容 ──',
+    $message,
+    '',
+    '---',
+    '送信日時: ' . date('Y-m-d H:i:s'),
+    '送信元IP: ' . ($_SERVER['REMOTE_ADDR'] ?? '-'),
+    'UA: ' . ($_SERVER['HTTP_USER_AGENT'] ?? '-'),
+]);
+
+/*
+ * 差出人（From）。さくらのレンタルサーバから送るので、このドメインの DNS に
+ * SPF（TXT）を入れておくこと → docs/deploy-guide.md §5.6
+ *   shad-japan.com  TXT  "v=spf1 a:www959.sakura.ne.jp ip4:219.94.128.199 ~all"
+ * DNS を触れない場合の代替：サーバーの初期ドメイン（SPF 設定済み）の
+ * 'noreply@partsdirect.sakura.ne.jp' に変えると認証は通る。
+ */
+$from = 'noreply@shad-japan.com';
+
+/*
+ * エンベロープ送信者（Return-Path）。さくらは「このサーバーに登録されていないアドレス」を
+ * 送信者にしたメールを送らないことがあるため、必ず存在するサーバー初期ドメインのアドレスにする。
+ * （exs.mobi のメールもこの初期ドメインのサーバーで動いている）
+ * noreply@shad-japan.com をコントロールパネルで作成済みなら、$envelope = $from; に戻してよい。
+ */
+$envelope = $from;   // noreply@shad-japan.com はサーバーに作成済み（MX も partsdirect.sakura.ne.jp に向いている）
+// もし送信が通らない場合の代替： $envelope = 'noreply@partsdirect.sakura.ne.jp';
+
+$headers = [
+    'From: SHAD JAPAN <' . $from . '>',
+    'Reply-To: ' . $email,
+    'Content-Type: text/plain; charset=UTF-8',
+];
+
+$sent = false;
+if (function_exists('mb_send_mail')) {
+    $sent = mb_send_mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $envelope);
+} else {
+    $sent = mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $envelope);
+}
+
+// 送信記録（公開領域の外 /home/<アカウント>/shad_contact.log）。届かないときの切り分け用：
+// ここに OK が残っていれば PHP からサーバーのメール送信には渡っている（＝その先の迷惑判定・DNS の問題）
+if (preg_match('#^(/home/[^/]+)/#', __DIR__, $m)) {
+    $maskedEmail = preg_replace('/^(.).*(@.*)$/u', '$1***$2', $email);
+    @file_put_contents(
+        $m[1] . '/shad_contact.log',
+        date('Y-m-d H:i:s') . "\t" . ($sent ? 'OK' : 'NG') . "\t" . $topic . "\t" . $maskedEmail . "\n",
+        FILE_APPEND | LOCK_EX
+    );
+}
+
+header('Location: ' . ($sent ? 'thanks' : 'form-error'));
+exit;
