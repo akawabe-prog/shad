@@ -573,7 +573,7 @@ python3 tools/audit_fitment.py            # → docs/audit/fitment_audit_<日付
 
 | 手順 | コマンド | 内容 |
 |---|---|---|
-| 1 | `python3 tools/build_landing.py` | `/top-cases` `/side-cases`（サイドバッグ含む） `/bags` `/tank-bags` `/guide/top-case-size` `/waterproof` `/helmet-storage` `/locks` を products.json／cards.json／product_tags.json から生成（本文コピーはスクリプト内）。`/locks` のキット一覧はマスター CSV の「SHADロックフィッティングキット」行（Web非表示・廃番を除く）から自動生成 |
+| 1 | `python3 tools/build_landing.py` | `/top-cases` `/side-cases` `/side-bags` `/bags` `/tank-bags` `/guide/top-case-size` `/waterproof` `/helmet-storage` `/locks` を products.json／cards.json／product_tags.json から生成（本文コピーはスクリプト内）。`/locks` のキット一覧はマスター CSV の「SHADロックフィッティングキット」行（Web非表示・廃番を除く）から自動生成 |
 | 2 | `python3 tools/apply_seo_meta.py` | 全商品ページの `<title>`・meta description をマスター値（容量・重量・素材・ヘルメット数・定価）から作り直す。何度実行しても同じ結果 |
 | 3 | `python3 tools/apply_site_tagline.py` | 全ページの description 末尾に「SHAD日本公式サイト。」を付ける（総代理店名は入れない） |
 | 4 | `python3 tools/build_sitemap.py` | 新ページを sitemap に反映 |
