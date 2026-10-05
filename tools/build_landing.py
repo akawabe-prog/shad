@@ -8,7 +8,8 @@ SHAD JAPAN — SEO 用ランディングページ（カテゴリ／用途／特�
 
 生成するページ（商品名・ブランド名以外の検索語の受け皿）
   /top-cases          バイク用トップケース・リアボックス（容量帯別の全モデル＋選び方＋FAQ）
-  /side-cases         サイドケース・パニアケース（3P/4P システムの説明＋全モデル＋FAQ）
+  /side-cases         サイドケース・サイドバッグ（3P/4P システムの説明＋全モデル＋サイドバッグの固定方法＋FAQ）
+  /tank-bags          タンクバッグ（クリックシステムの説明＋選び方＋全モデル＋FAQ）
   /bags               サイドバッグ・タンクバッグ・シートバッグ（用途別＋FAQ）
   /guide/top-case-size  トップケースの容量の選び方（30L／40L／50L で入るもの）
   /waterproof         防水・耐水のバイク用バッグとケース（IPX 等級の説明＋該当モデル）
@@ -198,25 +199,35 @@ def build_top_cases():
          body, [crumbs_ld(path, name), itemlist_ld("SHAD トップケース", by_cap(TOP)), faq_ld(faq)], "/img/products/sh58x/off_ride.webp")
 
 def build_side_cases():
-    path = "/side-cases"; name = "サイドケース・パニアケース"
+    path = "/side-cases"; name = "サイドケース・サイドバッグ"
     alu = [c for c in by_cap(SIDE) if "alu" in tags(c)]; pp = [c for c in by_cap(SIDE) if "alu" not in tags(c)]
+    bags = by_cap(SIDEBAG)
     rows = [(("<a href='/product/%s' class='text-shad font-semibold'>%s</a>" % (c.lower(), c)), esc((C.get(c) or {}).get("jp", "")), esc(v0(c).get("capacity") or ""), esc(sys_support(c) or "—"), "アルミ" if "alu" in tags(c) else "PP", esc(price(c))) for c in by_cap(SIDE)]
+    BAG_MOUNT = {"TR30": "4P システム（一部 3P）", "TR40": "4P システム（一部 3P）", "E48": "SR キット／サイドバッグホルダー／汎用ストラップ", "E48SR": "SR フィッティングキット", "SL58": "サイドバッグホルダー／汎用ストラップ", "SR38": "SR フィッティングキット"}
+    bag_rows = [(("<a href='/product/%s' class='text-shad font-semibold'>%s</a>" % (c.lower(), c)), esc((C.get(c) or {}).get("jp", "")), esc(v0(c).get("capacity") or ""), esc(BAG_MOUNT.get(c, "—")), esc(ipx(c) or ("防水" if "waterproof" in tags(c) else "レインカバー等")), esc(price(c))) for c in bags]
     faq = [
         ("サイドケースの取り付けには何が必要ですか？", "<p>車種専用の<a href='/fitting-kits'>サイドケース用フィッティングキット</a>（3P システムまたは 4P システム）が必要です。3P はケースを外すとステーがほとんど目立たない SHAD 特許の方式、4P は TERRA アルミケースなど重量のあるケース向けの4点支持です。</p>"),
         ("3P システムと 4P システムの違いは？", "<p>3P システムは3点でケースを支え、取り外すと車体がすっきり見えるのが特長です。4P システムは4点支持で TERRA のアルミサイドケースのような大型・高積載のケースに対応します。モデルごとの対応は上の表と<a href='/fitment'>適合検索</a>で確認できます。</p>"),
+        ("サイドケースとサイドバッグ、どちらを選べばよいですか？", "<p>鍵をかけて荷物を置いて離れたい、ヘルメットを入れたい、長期間使いたいならハードのサイドケース。軽さ、価格、外したときの身軽さを優先するならサイドバッグです。TERRA の TR30／TR40 はバッグでも鍵1本で固定と開口部を守るダブルロックを備えています。</p>"),
+        ("サイドバッグはどうやって車体に固定しますか？", "<p>モデルによって異なります。TR30／TR40 は 4P システムのキット、E48SR／SR38 は車種別の SR フィッティングキット、E48／SL58 はサイドバッグホルダーまたは付属の汎用ストラップで固定します。ストラップのみの場合も、ホルダーを併用するとマフラーやタイヤへの接触を防げます。</p>"),
         ("すり抜けを考えると幅はどのくらいになりますか？", "<p>SH23・SH36・TR36 のようなスリム設計のモデルは張り出しを抑えています。車種とキットの組み合わせで全幅が変わるため、商品ページの寸法と適合情報をご確認ください。</p>"),
         ("トップケースと鍵をひとつにできますか？", "<p>対応する組み合わせであればキーシリンダーの入れ替えで1本の鍵にまとめられます。<a href='/lock-guide'>ワンキー化ガイド</a>で組み合わせごとの可否を確認できます。</p>"),
     ]
-    body = hero("Side Cases", "バイク用サイドケース・パニアケース", "左右で重心を低く、積載を最大に。硬化アルミ合金の TERRA、軽量な PP、走行中に容量を変えられる Expandable まで %d モデル。3P／4P システムの車種専用キットで取り付けます。" % len(SIDE), "/img/terra/corner.webp")
+    body = hero("Side Cases & Bags", "バイク用サイドケース・サイドバッグ", "左右に振り分けて、重心を低く、積載を大きく。硬化アルミ合金の TERRA、軽量な PP、走行中に容量を変えられる Expandable のハードケース %d モデルと、軽さと身軽さで選ぶサイドバッグ %d モデル。" % (len(SIDE), len(bags)), "/img/terra/corner.webp")
     body += section("How to choose", "サイドケースの選び方",
         p("サイドケースは<b>取り付け方式（3P／4P）</b>と<b>素材</b>で選びます。街乗りでケースを外す機会が多いなら、外したときに目立たない 3P システム対応のモデル。アドベンチャーや長距離で重い荷物を積むなら、4P システムで支える TERRA アルミサイドケース（TR36／TR47）が向きます。")
         + table(["モデル", "名称", "容量（片側）", "取付方式", "素材", "定価（税込）"], rows)
         + links([("フィッティングキットとは", "/fitting-kits"), ("TERRA（アルミ）シリーズ", "/terra"), ("ワンキー化ガイド", "/lock-guide")]))
-    body += section("Lineup", "全モデル", group("アルミ（TERRA）", "4P システム対応", alu) + group("PP（樹脂）", "軽量・3P システム対応モデルを含む", pp), "pb-14 md:pb-20")
+    body += section("Side Cases", "サイドケース 全モデル", group("アルミ（TERRA）", "4P システム対応", alu) + group("PP（樹脂）", "軽量・3P システム対応モデルを含む", pp), "pb-10")
+    body += section("Side Bags", "サイドバッグ（サドルバッグ）",
+        p("ハードケースほど大げさにしたくない日や、オフロードで軽さが欲しい日はサイドバッグ。TERRA の TR30（IPX6 防水）と TR40 は、鍵1本で固定と開口部の両方を守るダブルロックシステムを備え、ケースに近い安心感があります。E48SR は ABS 樹脂のハードシェルにダイヤルロック、SR38 はクラシック車に合う合成皮革。E48／SL58 は容量を変えられる定番のソフトバッグです。")
+        + table(["モデル", "名称", "容量", "固定方法", "防水", "定価（税込）"], bag_rows)
+        + '<div class="mt-6">%s</div>' % grid(bags)
+        + links([("防水・耐水バッグ", "/waterproof"), ("バッグ全モデル（タンク・シート含む）", "/bags")]), "pb-14 md:pb-20")
     body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
-    page(path, "バイク用サイドケース・パニアケース｜3P／4Pシステムで車種専用に取付 — SHAD JAPAN",
-         "バイク用サイドケース（パニアケース）%dモデル。硬化アルミ合金のTERRA、軽量PP、可変容量のExpandable。SHAD特許の3Pシステム／4Pシステムの車種専用フィッティングキットで取り付け。容量・取付方式・定価の一覧表付き。" % len(SIDE),
-         body, [crumbs_ld(path, name), itemlist_ld("SHAD サイドケース", by_cap(SIDE)), faq_ld(faq)], "/img/terra/corner.webp")
+    page(path, "バイク用サイドケース・サイドバッグ｜3P／4Pシステムで車種専用に取付 — SHAD JAPAN",
+         "バイク用サイドケース（パニアケース）%dモデルとサイドバッグ%dモデル。硬化アルミ合金のTERRA、軽量PP、可変容量のExpandable、防水サドルバッグTR30／TR40。SHAD特許の3Pシステム／4Pシステムの車種専用フィッティングキットで取り付け。容量・取付方式・定価の一覧表付き。" % (len(SIDE), len(bags)),
+         body, [crumbs_ld(path, name), itemlist_ld("SHAD サイドケース・サイドバッグ", by_cap(SIDE) + bags), faq_ld(faq)], "/img/terra/corner.webp")
 
 def build_bags():
     path = "/bags"; name = "バイク用バッグ"
@@ -302,6 +313,37 @@ def build_helmet():
          "バイク用トップケース・サイドケースをヘルメット収納数別に一覧。フルフェイス2個が入る大容量モデル、フルフェイス1個、ジェット1個の軽量モデル。各モデルの収納目安と容量、フルフェイスが入る容量の目安を解説。SHAD日本公式サイト。",
          body, [crumbs_ld(path, name), itemlist_ld("ヘルメットが入る SHAD ケース", two + one), faq_ld(faq)], "/img/products/sh58x/off_helmets.webp")
 
+def build_tank_bags():
+    path = "/tank-bags"; name = "タンクバッグ"
+    click = [c for c in by_cap(TANK, desc=False) if "click" in tags(c)]
+    std = [c for c in click if c in ("E02C", "E03C", "E09C", "E09CM")]
+    pro = [c for c in click if c in ("E03CL", "E09CL")]
+    terra = [c for c in click if c in ("TR15CL", "TR10")]
+    uni = [c for c in by_cap(TANK, desc=False) if "click" not in tags(c)]
+    LOCKS = {"E02C": "—", "E03C": "—", "E09C": "—", "E09CM": "—", "E03CL": "キーロック＋ファスナーロック", "E09CL": "キーロック＋ファスナーロック", "TR15CL": "キーロック", "TR10": "キーロック", "E04": "—"}
+    EXTRA = {"E03CL": "容量拡張 3→4L", "E09CL": "容量拡張 5→8L", "E09CM": "約8cm 前方のミドルポジション", "TR10": "防水 IPX5", "TR15CL": "TERRA デザイン", "E04": "ユニバーサルタンクベースで固定（クリックシステム不要）"}
+    rows = [(("<a href='/product/%s' class='text-shad font-semibold'>%s</a>" % (c.lower(), c)), esc((C.get(c) or {}).get("jp", "")), esc(v0(c).get("capacity") or ""), esc(LOCKS.get(c, "—")), esc(EXTRA.get(c, "")), esc(price(c))) for c in click + uni]
+    faq = [
+        ("クリックシステムとは何ですか？", "<p>タンクキャップのボルトに車種専用のアタッチメント（タンクリング）を共締めし、そこにバッグ側の受け部をはめ込む SHAD の取付方式です。ワンタッチで着脱でき、磁石や吸盤を使わないので塗装を傷めません。給油のたびに外す手間が数秒で済みます。</p>"),
+        ("バッグだけ買えば取り付けられますか？", "<p>クリックシステムのバッグは、車種ごとに形が違う<b>クリックシステム フィッティングキット（別売）</b>が必要です。お使いの車種に合うキットは<a href='/fitment'>適合検索</a>で確認できます。E04 は付属のユニバーサルタンクベースで固定するので、キットは不要です。</p>"),
+        ("雨に濡れても大丈夫ですか？", "<p>TR10CL は IPX5 相当の防水仕様です。そのほかのモデルは防水ではないため、付属のレインカバーを掛けてください。PRO モデルのスマートフォン用ポケットは防水を考慮していますが完全防水ではありません。</p>"),
+        ("スマートフォンは操作できますか？", "<p>上面に透明窓を備えたモデルは、収納したままタッチ操作ができます。使えるかどうかは機種や保護フィルムによるため、商品ページの仕様をご確認ください。</p>"),
+        ("タンクに傷はつきませんか？", "<p>アタッチメントは金属製と樹脂製があり、車種に合わせて使い分けます。バッグの底が当たる位置が気になる場合は、市販のタンク用プロテクションシートの併用をおすすめします。</p>"),
+    ]
+    body = hero("Tank Bags", "バイク用タンクバッグ", "地図、スマホ、財布。走りながら取り出したいものは、タンクの上に。SHAD のタンクバッグは、車種専用のアタッチメントにワンタッチで着脱できるクリックシステムが中心。3L のミニから、鍵と防水を備えた TERRA の 13L まで %d モデル。" % len(TANK), "/img/products/cards/tr15cl.webp")
+    body += section("Click System", "1秒で着脱。磁石を使わない固定方式。",
+        p("クリックシステムは、タンクキャップを留めているボルトに車種専用のアタッチメントを共締めし、そこにバッグをはめ込む方式です。給油のときはバッグをつまんで持ち上げるだけ。磁石や吸盤ではないので塗装を傷めず、走行中にずれることもありません。アタッチメントはキャップの見た目を損なわない小さなリングで、バッグを外した状態でも目立ちません。")
+        + ul(["<b>着脱は1秒</b>：工具もストラップも不要。給油・駐車のたびのストレスがなくなります。", "<b>車種専用</b>：ボルトの配置に合わせたアタッチメントを使うため、確実に固定できます。対応車種は<a href='/fitment' class='text-shad'>適合検索</a>で。", "<b>塗装にやさしい</b>：磁石・吸盤を使わないので、タンクに跡が残りません。"])
+        + links([("フィッティングキットの仕組み", "/fitting-kits"), ("車種から適合を探す", "/fitment")]))
+    body += section("How to choose", "タンクバッグの選び方", table(["モデル", "名称", "容量", "ロック", "特長", "定価（税込）"], rows)
+        + p("容量は、スマホと財布なら 3L、レインウェアや補給食まで入れるなら 5L 以上が目安です。駐車中にバッグを置いて離れることが多いなら、キーロック付きの PRO（E03CL／E09CL）か TERRA（TR15CL／TR10CL）を。雨の日も使うなら防水の TR10CL が安心です。E09CM はタンクの手前側に座るライダー向けに、通常より約8cm 前方に付くモデルです。"), "pb-6")
+    body += section("Lineup", "全モデル", group("クリックシステム スタンダード", "ワンタッチ着脱の基本モデル", std) + group("クリックシステム PRO", "キーロック＋ファスナーロック、容量拡張", pro) + group("TERRA クリックシステム", "キーロック、TR10CL は防水 IPX5", terra) + group("ユニバーサル", "タンクベースで固定（キット不要）", uni), "pb-14 md:pb-20")
+    body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
+    page(path, "バイク用タンクバッグ｜クリックシステムで1秒着脱・キーロック・防水 — SHAD JAPAN",
+         "バイク用タンクバッグ%dモデル。車種専用アタッチメントにワンタッチで着脱できるクリックシステム、キーロック付きのPRO、防水IPX5のTERRA TR10CL、キット不要のユニバーサルE04。容量・ロック・特長・定価の一覧と選び方。" % len(TANK),
+         body, [crumbs_ld(path, name), itemlist_ld("SHAD タンクバッグ", click + uni), faq_ld(faq)], "/img/products/cards/tr15cl.webp")
+
+
 # ---------- SHAD LOCKS（スクーター用ハンドルバーロック）：本体＋車種専用キット一覧 ----------
 import csv as _csv
 CSV_PATH = os.path.join(ROOT, "data-source", "ItemList_SHAD.csv")
@@ -362,9 +404,9 @@ def build_locks():
          body, [crumbs_ld(path, name), faq_ld(faq)], "/img/locks/hero.webp")
 
 def main():
-    for f in (build_top_cases, build_side_cases, build_bags, build_size_guide, build_waterproof, build_helmet, build_locks):
+    for f in (build_top_cases, build_side_cases, build_bags, build_tank_bags, build_size_guide, build_waterproof, build_helmet, build_locks):
         f()
-    print("ランディングページ 7 ページを生成（/top-cases /side-cases /bags /guide/top-case-size /waterproof /helmet-storage /locks）")
+    print("ランディングページ 8 ページを生成（/top-cases /side-cases /bags /tank-bags /guide/top-case-size /waterproof /helmet-storage /locks）")
 
 if __name__ == "__main__":
     main()

@@ -109,12 +109,26 @@
                           + '<span class="text-[11px] text-neutral-400 font-normal ml-1">（税込）</span></span>' : "")
         + "</span></div>";
     }).join("");
-    return '<div class="mt-5 rounded-[18px] border border-black/10 bg-white p-6 md:p-8">'
+    return '<div id="parts" class="mt-5 rounded-[18px] border border-black/10 bg-white p-6 md:p-8 scroll-mt-[132px]">'
       + '<span class="font-disp text-[13px] tracking-[.22em] uppercase text-neutral-400">Accessories &amp; Parts</span>'
       + '<h3 class="text-[19px] font-bold mt-1">対応アクセサリー・補修パーツ</h3>'
       + '<p class="text-[13px] text-neutral-500 mt-2">この商品にお使いいただけるアクセサリー・補修パーツです。</p>'
       + '<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">' + cards + "</div>"
       + "</div>";
+  }
+
+
+  /* ---- 補修パーツのナビ（INDEX）：節が無い商品ではリンクを外し、番号を振り直す ---- */
+  function syncPartsNav() {
+    var has = !!document.getElementById("parts");
+    var links = [].slice.call(document.querySelectorAll('a[href="#parts"]'));
+    if (!has) links.forEach(function (a) { a.parentNode && a.parentNode.removeChild(a); });
+    ["pd-nav-a", "pd-side-a"].forEach(function (cls) {
+      [].slice.call(document.querySelectorAll("." + cls)).forEach(function (a, i) {
+        var n = a.querySelector("small"); if (n && /^\d+$/.test(n.textContent.trim())) n.textContent = ("0" + (i + 1)).slice(-2);
+      });
+    });
+    if (window.__pdNavSync) window.__pdNavSync();
   }
 
   /* ---- ④ 購入導線（日本総代理店カスタムジャパンの商品ページへ）---- */
@@ -189,7 +203,7 @@
       var accs = accAll.filter(function (a) { return wanted.indexOf(a.cjCode) >= 0; })
                        .sort(function (a, b) { return (a.msrpTaxIn || 0) - (b.msrpTaxIn || 0); });
 
-      if (!entry && !accs.length) return;  // データが無い製品は何も出さない
+      if (!entry && !accs.length) { syncPartsNav(); return; }  // データが無い製品は何も出さない（補修パーツのナビも外す）
 
       /* ②③ 対応アクセサリー＋購入導線 → SPEC の後
          （購入ボタンの href はこの後の applyVariant で選択中の品番に更新される）*/
@@ -201,6 +215,7 @@
         sec.innerHTML = body;
         insertSection(sec);
       }
+      syncPartsNav();   // 補修パーツ節の有無でナビ（INDEX）を整える
 
       /* ① 定価＋カラー選択 → 商品情報エリア（ギャラリー横）の器に描画 */
       var slot = document.querySelector("[data-variant-slot]");

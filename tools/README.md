@@ -491,7 +491,10 @@ python3 tools/gen_pages_from_catalog.py # 追加ページに反映（既存ペ�
 ## 商品マスターの更新手順（標準）
 
 ```bash
-# 0. 新しいマスターを data-source/ItemList_SHAD.csv に置く（xlsx で届いたら tools/xlsx_to_master_csv.py で変換）
+# 0. 新しいマスターを data-source/ItemList_SHAD.csv に置く
+#    CSV で届いたら（EC 出力は「～」が「?」に化けるので旧CSVから復元する）：
+python3 tools/import_master_csv.py ~/Downloads/ItemList_xxxx.csv
+#    xlsx で届いたら：
 python3 tools/xlsx_to_master_csv.py ~/Downloads/ItemList_xxxx.xlsx
 python3 tools/build_catalog.py            # ① マスター → site/data/catalog/*.json（上書きルール適用）
 python3 tools/apply_master_to_pages.py    # ② スペック表・Notes・保証文を全商品ページへ
@@ -570,7 +573,7 @@ python3 tools/audit_fitment.py            # → docs/audit/fitment_audit_<日付
 
 | 手順 | コマンド | 内容 |
 |---|---|---|
-| 1 | `python3 tools/build_landing.py` | `/top-cases` `/side-cases` `/bags` `/guide/top-case-size` `/waterproof` `/helmet-storage` `/locks` を products.json／cards.json／product_tags.json から生成（本文コピーはスクリプト内）。`/locks` のキット一覧はマスター CSV の「SHADロックフィッティングキット」行（Web非表示・廃番を除く）から自動生成 |
+| 1 | `python3 tools/build_landing.py` | `/top-cases` `/side-cases`（サイドバッグ含む） `/bags` `/tank-bags` `/guide/top-case-size` `/waterproof` `/helmet-storage` `/locks` を products.json／cards.json／product_tags.json から生成（本文コピーはスクリプト内）。`/locks` のキット一覧はマスター CSV の「SHADロックフィッティングキット」行（Web非表示・廃番を除く）から自動生成 |
 | 2 | `python3 tools/apply_seo_meta.py` | 全商品ページの `<title>`・meta description をマスター値（容量・重量・素材・ヘルメット数・定価）から作り直す。何度実行しても同じ結果 |
 | 3 | `python3 tools/apply_site_tagline.py` | 全ページの description 末尾に「SHAD日本公式サイト。」を付ける（総代理店名は入れない） |
 | 4 | `python3 tools/build_sitemap.py` | 新ページを sitemap に反映 |

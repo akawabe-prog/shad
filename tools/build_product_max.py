@@ -122,6 +122,7 @@ BASE_ITEMS = [  # (アンカー, ナビ表記, INDEX日本語, INDEX英語)
     ("#setup", "フルパニア", "フルパニア構成", "Full Pannier Set-up"),   # setup 設定がある商品のみ
     ("#gallery", "ギャラリー", "ギャラリー", "Gallery"),
     ("#fitment", "適合車種", "装着できる車種", "Fitment"),
+    ("#parts", "補修パーツ", "アクセサリー・補修パーツ", "Parts"),   # purchase.js が節を描画。無い商品ではナビから自動で外れる
     ("#related", "関連商品", "関連商品", "Related"),
 ]
 
