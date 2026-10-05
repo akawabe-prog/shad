@@ -31,6 +31,9 @@ RewriteRule ^news/?$ /news/index.html [L]
 RewriteCond %{DOCUMENT_ROOT}/news/cj-$1.html !-f
 RewriteRule ^news/cj-(\d+)/?$ /news/article.html?id=$1 [L,QSA]
 
+# /bags：サーバー上に旧 bags/ ディレクトリが残っていると DirectorySlash が先に効くため、明示的に bags.html へ
+RewriteRule ^bags/?$ /bags.html [L]
+
 # .html つきのアクセスは拡張子なしへ 301
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
