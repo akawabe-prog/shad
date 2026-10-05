@@ -194,7 +194,7 @@ def build_top_cases():
     body += section("Lineup", "全モデル（容量順）", group("50L〜", "タンデム・ロングツーリング", big) + group("40〜49L", "ツーリングの定番", mid) + group("〜39L", "日常使いの軽量クラス", small), "pb-14 md:pb-20")
     body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
     page(path, "バイク用トップケース・リアボックス｜容量・ヘルメット収納数で選ぶ — SHAD JAPAN",
-         "バイク用トップケース（リアボックス）%dモデルを容量順に掲載。ジェット・フルフェイスのヘルメット収納数、アルミ／PP素材、スマートロックや可変容量で選べます。車種専用フィッティングキットで純正のように取付。SHAD日本総代理店公式。" % len(TOP),
+         "バイク用トップケース（リアボックス）%dモデルを容量順に掲載。ジェット・フルフェイスのヘルメット収納数、アルミ／PP素材、スマートロックや可変容量で選べます。車種専用フィッティングキットで純正のように取付。SHAD日本公式サイト。" % len(TOP),
          body, [crumbs_ld(path, name), itemlist_ld("SHAD トップケース", by_cap(TOP)), faq_ld(faq)], "/img/products/sh58x/off_ride.webp")
 
 def build_side_cases():
@@ -234,7 +234,7 @@ def build_bags():
     body += section("Lineup", "全モデル", group("サイドバッグ・サドルバッグ", "", by_cap(SIDEBAG)) + group("タンクバッグ", "クリックシステム対応モデルを含む", by_cap(TANK)) + group("シートバッグ・ツーリングバッグ", "", by_cap(SEATBAG)) + group("そのほかのバッグ", "", by_cap(OTHERBAG)), "pb-14 md:pb-20")
     body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
     page(path, "バイク用サイドバッグ・タンクバッグ・シートバッグ｜防水・ロック付き — SHAD JAPAN",
-         "バイク用バッグ%dモデル。防水のサドルバッグ（TR30／TR40）、1秒で着脱できるクリックシステムのタンクバッグ、フルフェイス2個が入るロック付きシートバッグ TR50。用途別の選び方と全モデル一覧。SHAD日本総代理店公式。" % len(allb),
+         "バイク用バッグ%dモデル。防水のサドルバッグ（TR30／TR40）、1秒で着脱できるクリックシステムのタンクバッグ、フルフェイス2個が入るロック付きシートバッグ TR50。用途別の選び方と全モデル一覧。SHAD日本公式サイト。" % len(allb),
          body, [crumbs_ld(path, name), itemlist_ld("SHAD バッグ", by_cap(allb)), faq_ld(faq)], "/img/terra/urban.webp")
 
 def build_size_guide():
@@ -277,7 +277,7 @@ def build_waterproof():
     body += section("IPX", "IPX 等級の読み方", table(["等級", "目安", "SHAD のモデル"], [("IPX6", "強い噴流水に耐える。豪雨や水しぶきでも中身を守る", "TR30"), ("IPX5", "あらゆる方向からの噴流水に耐える。雨天走行に十分", "TR10CL、SR38、IB20（TR41／TR46／TR27 は相当）"), ("IPX4", "飛沫に耐える。通り雨に対応", "TR08")]), "pb-14 md:pb-20")
     body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
     page(path, "バイク用の防水・耐水バッグとケース｜IPX6／IPX5／IPX4 等級別一覧 — SHAD JAPAN",
-         "バイク用の防水バッグ・耐水ケースをIPX等級別に一覧。IPX6の防水サドルバッグTR30、IPX5の防水タンクバッグTR10CL、IPX4のTR08、防水インナーバッグIB20。ハードケースの耐水性とIPX等級の読み方も解説。SHAD日本総代理店公式。",
+         "バイク用の防水バッグ・耐水ケースをIPX等級別に一覧。IPX6の防水サドルバッグTR30、IPX5の防水タンクバッグTR10CL、IPX4のTR08、防水インナーバッグIB20。ハードケースの耐水性とIPX等級の読み方も解説。SHAD日本公式サイト。",
          body, [crumbs_ld(path, name), itemlist_ld("SHAD 防水バッグ", by_cap(wp)), faq_ld(faq)], "/img/terra/ride2.webp")
 
 def build_helmet():
@@ -299,7 +299,7 @@ def build_helmet():
     body += section("Models", "ヘルメット1個が入るモデル", '<div class="mt-6">%s</div>' % grid(one), "pb-14 md:pb-20")
     body += section("FAQ", "よくあるご質問", '<div class="mt-6 max-w-[860px]">%s</div>' % faq_html(faq), "pb-16 md:pb-24")
     page(path, "ヘルメットが入るトップケース・サイドケース｜フルフェイス2個・1個の収納数別一覧 — SHAD JAPAN",
-         "バイク用トップケース・サイドケースをヘルメット収納数別に一覧。フルフェイス2個が入る大容量モデル、フルフェイス1個、ジェット1個の軽量モデル。各モデルの収納目安と容量、フルフェイスが入る容量の目安を解説。SHAD日本総代理店公式。",
+         "バイク用トップケース・サイドケースをヘルメット収納数別に一覧。フルフェイス2個が入る大容量モデル、フルフェイス1個、ジェット1個の軽量モデル。各モデルの収納目安と容量、フルフェイスが入る容量の目安を解説。SHAD日本公式サイト。",
          body, [crumbs_ld(path, name), itemlist_ld("ヘルメットが入る SHAD ケース", two + one), faq_ld(faq)], "/img/products/sh58x/off_helmets.webp")
 
 # ---------- SHAD LOCKS（スクーター用ハンドルバーロック）：本体＋車種専用キット一覧 ----------

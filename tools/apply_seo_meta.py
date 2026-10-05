@@ -8,7 +8,7 @@ SHAD JAPAN — 商品ページの <title>／meta description を商品マスタ�
     python3 tools/apply_seo_meta.py --dry      # 変更内容を表示だけ
 
 ・title       : 品番｜シリーズ＋カテゴリ 容量（一般名：バイク用リアボックス 等）— SHAD JAPAN
-・description : 品番は容量・重量の素材製バイク用カテゴリ。ヘルメット収納・特長。定価（税込）。…（70〜120文字）
+・description : 品番は容量・重量の素材製バイク用カテゴリ。ヘルメット収納・特長。定価（税込）。SHAD日本公式サイト。（70〜120文字）
   「商品名で探す人」だけでなく「リアボックス」「パニアケース」「サドルバッグ」のような一般名で探す人にも
   検索結果で内容が伝わるようにするのが目的。本文（商品説明）は変更しない。
 ・データ源：site/data/catalog/products.json（マスター由来）、cards.json（ヘルメット数）、tools/product_tags.json
@@ -93,10 +93,9 @@ def build(code):
     if f: parts.append(f + "。")
     price = e.get("priceMin")
     if price: parts.append("定価¥%s（税込）。" % format(price, ","))
-    parts.append("SHAD日本総代理店カスタムジャパンの公式サイト。")
+    parts.append("SHAD日本公式サイト。")
     desc = "".join(parts)
-    if len(desc) > 125:
-        desc = desc.replace("SHAD日本総代理店カスタムジャパンの公式サイト。", "SHAD公式。")
+    # 末尾の「SHAD日本公式サイト。」は全ページ共通の決まり文句（2026-10-05 指示：総代理店名は入れない）
     return title, desc
 
 def apply(path, title, desc, dry):
