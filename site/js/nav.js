@@ -77,10 +77,10 @@
       jp: "容量が、変わる。" }
   ];
   var CATEGORIES = [
-    { href: "/products?cat=TOP", img: "/img/products/sh48.webp", label: "トップケース" },
-    { href: "/products?cat=SIDE", img: "/img/products/sh38x.webp", label: "サイドケース" },
-    { href: "/products?cat=SIDEBAG", img: "/img/products/tr30.webp", label: "サイドバッグ" },
-    { href: "/products?cat=TANK", img: "/img/products/tr10.webp", label: "タンクバッグ" },
+    { href: "/products?cat=TOP", img: "/img/products/sh58x.webp", label: "トップケース" },
+    { href: "/products?cat=SIDE", img: "/img/products/cards/tr47.webp", label: "サイドケース" },
+    { href: "/products?cat=SIDEBAG", img: "/img/products/tr40.webp", label: "サイドバッグ" },
+    { href: "/products?cat=TANK", img: "/img/products/cards/tr15cl.webp", label: "タンクバッグ" },
     { href: "/products?cat=FITTING", img: "/img/fitting/plate_l.webp", label: "フィッティングキット" }
   ];
 

@@ -1,11 +1,10 @@
 {
   "code": "SH59X",
-  "name_jp": "トップケース",
+  "name_jp": "可変容量トップケース",
   "catch": "街乗りから長旅まで、荷物に合わせて大きさを変えられます。",
   "desc": "Red Dot デザイン賞受賞の可変容量トップケース、SH59X。46L・52L・58Lの3段階に容量を変えられる機構を搭載し、ツーリング先で荷物が増えても余裕を持って収納できます。58Lモードではモトクロスタイプのフルフェイスヘルメットを2個収納。アルミパネル装着の洗練されたデザインに、格納式ハンドルとプレスロックシステムを備え、ハンドルの出し入れを含む2段階のロック解除でセキュリティ面でも高い性能を発揮します。日常のライディングからロングツーリングまで、これひとつで。",
-  "main_img": "/img/products/sh59x/render_01.webp",
+  "main_img": "https://img.customjapan.net/items/17460903_1.jpg",
   "thumbs": [
-    "/img/products/sh59x/render_01.webp",
     "https://img.customjapan.net/items/17460903_1.jpg",
     "/img/products/sh59x/topcase_gs.webp",
     "https://img.customjapan.net/items/17460903_2.jpg",
@@ -13,7 +12,6 @@
   ],
   "gallery_override": {
     "17460903": [
-      "/img/products/sh59x/render_01.webp",
       "https://img.customjapan.net/items/17460903_1.jpg",
       "/img/products/sh59x/topcase_gs.webp",
       "https://img.customjapan.net/items/17460903_2.jpg",

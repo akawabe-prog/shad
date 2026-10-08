@@ -499,6 +499,7 @@ python3 tools/xlsx_to_master_csv.py ~/Downloads/ItemList_xxxx.xlsx
 python3 tools/build_catalog.py            # ① マスター → site/data/catalog/*.json（上書きルール適用）
 python3 tools/apply_master_to_pages.py    # ② スペック表・Notes・保証文を全商品ページへ
 for f in tools/product_max/*.json; do python3 tools/build_product_max.py $f; done   # ③ MAXページ再生成
+python3 tools/apply_cap_sort.py           # ④-a 製品一覧の並び順用の最大容量（左右セットは合計・可変は最大）を PRODUCTS に付与
 python3 tools/build_cards_json.py         # ④ 一覧カード → cards.json
 python3 tools/fitment/build.py && python3 tools/fitment/postprocess.py   # ⑤ 適合検索データ（build だけでは site/ に反映されない）
 python3 tools/audit_master.py             # ⑥ 商品監査（docs/audit/ にレポート）
