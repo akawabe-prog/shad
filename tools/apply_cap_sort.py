@@ -7,9 +7,9 @@ SHAD JAPAN — 製品一覧の並び順用「最大容量」(capSort) を PRODUC
     python3 tools/apply_cap_sort.py      # 商品マスター更新（build_catalog.py）のあとに実行。何度実行しても同じ結果
 
 並び順のルール（site/products.html の sortList）：
-  シリーズ TERRA → EXPANDABLE → TOP CASE → SIDE CASE → BAG → LOCK/SEAT … の順、
-  同じシリーズ内は capSort（最大容量）の大きい順。「すべて」でもカテゴリ・容量・素材・機能で
-  絞り込んだときでも、同じルールで並ぶ。
+  TERRA（トップ→ツーリングバッグ→サイドケース→サイドバッグ→タンクバッグ）→ EXPANDABLE（トップ→サイド）
+  → トップケース → サイドケース → サイドバッグ → タンクバッグ → その他。各グループ内は capSort（最大容量）の
+  大きい順。「すべて」でもカテゴリ・容量・素材・機能で絞り込んだときでも、同じルールで並ぶ。
 
 capSort の決め方（products.json の容量表記から）：
   ・左右セット品は左右合計（例：TR27 27L/27L → 54、SH36 合計72L → 72、TR40 64L(片側32L) → 64）

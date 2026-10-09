@@ -279,10 +279,12 @@ var BAN_IMG='<a href="/products?cat=TERRA" class="pbanner group" data-series="TE
  +'<span class="ttl">Terra —<br>旅の道具の、最高峰。</span>'
  +'<span class="cp">アルミ／高強度PPの本体と統合ダブルロック。過酷な旅のための堅牢。</span>'
  +'<span class="cta">TERRA シリーズを見る <i class="ti ti-arrow-right"></i></span></span></a>';
+/* TERRA 判定：series が TERRA、または品番が TR で始まるもの（TR40・TR10・TR15CL などバッグ類も TERRA として扱う）*/
+function isTerra(p){ return p.series==='TERRA' || /^TR/.test(p.code); }
 /* カテゴリ判定：series と 商品名から機能タイプを付与（1商品が複数該当可）*/
 function typesOf(p){
   var t=[], jp=p.jp||'';
-  if(p.series==='TERRA') t.push('TERRA');
+  if(isTerra(p)) t.push('TERRA');
   if(jp.indexOf('トップケース')>=0) t.push('TOP');
   if(jp.indexOf('サイドケース')>=0) t.push('SIDE');
   if(jp.indexOf('サイドバッグ')>=0) t.push('SIDEBAG');
@@ -290,11 +292,21 @@ function typesOf(p){
   return t;
 }
 /* 並び順（すべて／カテゴリ／容量・素材・機能の絞り込み、どの組み合わせでも同じルール）：
-   ① シリーズ：TERRA → EXPANDABLE → TOP CASE → SIDE CASE → BAG → その他
-   ② 同じシリーズ内は最大容量の大きい順（可変容量は最大値、左右セット品は左右合計。tools/apply_cap_sort.py が capSort を付与）
-   ③ 容量が無い商品はそのシリーズの最後、同順位は品番順 */
-var SERIES_ORDER=['TERRA','EXPANDABLE','TOP CASE','SIDE CASE','ADVENTURE','BAG','LOCK','SEAT','ACCESSORY'];
-function seriesIndex(p){ var i=SERIES_ORDER.indexOf(p.series); return i<0?SERIES_ORDER.length:i; }
+   ① TERRA（トップケース → ツーリングバッグ → サイドケース → サイドバッグ → タンクバッグ → その他）
+   ② EXPANDABLE（トップケース → サイドケース）
+   ③ トップケース → サイドケース → サイドバッグ → タンクバッグ → その他（スクーターバッグ・ロック・シート）
+   各グループ内は最大容量の大きい順（可変容量は最大値、左右セット品は左右合計。tools/apply_cap_sort.py が capSort を付与）。
+   容量が無い商品はグループの最後、同順位は品番順 */
+function kindIndex(p){
+  var jp=p.jp||'';
+  if(jp.indexOf('トップケース')>=0) return 0;
+  if(jp.indexOf('ツーリングバッグ')>=0) return 1;
+  if(jp.indexOf('サイドケース')>=0) return 2;
+  if(jp.indexOf('サイドバッグ')>=0) return 3;
+  if(jp.indexOf('タンクバッグ')>=0) return 4;
+  return 5;
+}
+function lineIndex(p){ return isTerra(p) ? 0 : (p.series==='EXPANDABLE' ? 1 : 2); }
 function capMax(p){
   if(p.capSort) return p.capSort;
   if(!p.cap) return -1;
@@ -303,9 +315,9 @@ function capMax(p){
 }
 function sortList(list){
   return list.slice().sort(function(a,b){
-    var g=seriesIndex(a)-seriesIndex(b); if(g) return g;
-    var d=capMax(b)-capMax(a);            /* 容量の降順 */
-    if(d) return d;
+    var g=lineIndex(a)-lineIndex(b); if(g) return g;      /* TERRA → EXPANDABLE → その他 */
+    var k=kindIndex(a)-kindIndex(b); if(k) return k;      /* トップ → ツーリング → サイド → サイドバッグ → タンク */
+    var d=capMax(b)-capMax(a); if(d) return d;            /* 容量の降順 */
     return a.code<b.code?-1:(a.code>b.code?1:0);
   });
 }
