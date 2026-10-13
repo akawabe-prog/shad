@@ -7,8 +7,15 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# /bags：サーバー上に旧 bags/ ディレクトリが残っていても bags.html を返す（他のルールより先に評価）
-RewriteRule ^bags/?$ /bags.html [L]
+# /bags /locks のページは別名ファイル（bags-lineup.html / shad-locks.html）で持つ。
+# 同名の bags.html / locks.html があると、Apache の MultiViews が /bags/〜 /locks/〜（旧サイトの URL）を
+# そのファイルに結び付けてしまい、下の旧 URL 転送が効かず 404 になるため
+RewriteRule ^bags$ /bags-lineup.html [L]
+RewriteRule ^locks$ /shad-locks.html [L]
+RewriteCond %{THE_REQUEST} \s/+bags-lineup(\.html)?[\s?]
+RewriteRule ^ /bags [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+shad-locks(\.html)?[\s?]
+RewriteRule ^ /locks [R=301,L]
 
 # 非www → www（本番は https://www.shad-japan.com/ が正規URL）
 RewriteCond %{HTTP_HOST} ^shad-japan\.com$ [NC]
@@ -29,6 +36,7 @@ RewriteRule ^product-([A-Za-z0-9]+)/?$ /product/$1 [R=301,L,NC]
 
 # /news はディレクトリなので index.html を明示（DirectoryIndex 未設定サーバー対策）
 RewriteRule ^news/?$ /news/index.html [L]
+RewriteRule ^bike/?$ /bike/index.html [L]
 
 # まだ静的ページを生成していない新着記事（/news/cj-<id>）は、APIから本文を表示するライブ記事ページへ
 RewriteCond %{DOCUMENT_ROOT}/news/cj-$1.html !-f

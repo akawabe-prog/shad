@@ -73,6 +73,9 @@ NAV = TERRA[TERRA.index("<!-- ===== NAV ====="):TERRA.index("<!-- ===== ① HERO
 FOOTER = TERRA[TERRA.index("<footer"):TERRA.index("</footer>") + len("</footer>")]
 HEAD_TOP = TERRA[:TERRA.index("<title>")]          # GTM・charset・viewport
 HEAD_ASSETS = TERRA[TERRA.index('<link rel="preconnect"'):TERRA.index("</head>")]
+# 流用元（terra.html）固有の canonical・構造化データは持ち込まない（重複 canonical で全ページが /terra 扱いになるのを防ぐ）
+HEAD_ASSETS = re.sub(r'<link rel="canonical"[^>]*>\s*', '', HEAD_ASSETS)
+HEAD_ASSETS = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', '', HEAD_ASSETS, flags=re.S)
 
 def esc(s): return html.escape(s, quote=True)
 
@@ -160,6 +163,10 @@ def cta():
             '<div class="flex flex-wrap gap-3 mt-7 justify-center"><a href="/fitment" class="btn bg-shad text-white hover:bg-[#c4151b]"><i class="ti ti-search"></i>車種から探す</a><a href="/store-locator" class="btn border border-white/45 text-white hover:border-white">取扱店を探す</a></div>'
             '</div></section>')
 
+# URL と同名の .html が置けないページ（/bags/〜 /locks/〜 の旧 URL が Apache の MultiViews で bags.html / locks.html に
+# 吸い込まれて転送できなくなるため）。.htaccess で /bags → bags-lineup.html、/locks → shad-locks.html に内部転送する
+FILE_ALIAS = {"/bags": "bags-lineup", "/locks": "shad-locks"}
+
 def page(path, title, desc, body, lds, og_img="/img/og_default.jpg"):
     url = BASE + path
     head = (HEAD_TOP + "<title>%s</title>\n<meta name=\"description\" content=\"%s\">\n\n"
@@ -172,7 +179,7 @@ def page(path, title, desc, body, lds, og_img="/img/og_default.jpg"):
     body_html = ('<body class="font-sans text-[15px] leading-relaxed text-neutral-900 bg-white antialiased">\n'
                  '<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WR5JQJ8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->\n'
                  + NAV + body + cta() + FOOTER + '\n<script src="/js/nav.js"></script>\n</body>\n</html>\n')
-    out = os.path.join(SITE, path.lstrip("/") + ".html")
+    out = os.path.join(SITE, FILE_ALIAS.get(path, path.lstrip("/")) + ".html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(head + body_html)
     return out
