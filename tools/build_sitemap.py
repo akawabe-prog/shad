@@ -29,14 +29,14 @@ def url_of(path):
     return rel
 
 def main():
-    files = sorted(glob.glob(os.path.join(SITE, "*.html")) + glob.glob(os.path.join(SITE, "product", "*.html")) + glob.glob(os.path.join(SITE, "news", "*.html")) + glob.glob(os.path.join(SITE, "guide", "*.html")))
+    files = sorted(glob.glob(os.path.join(SITE, "*.html")) + glob.glob(os.path.join(SITE, "product", "*.html")) + glob.glob(os.path.join(SITE, "news", "*.html")) + glob.glob(os.path.join(SITE, "guide", "*.html")) + glob.glob(os.path.join(SITE, "bike", "*.html")))
     items = []
     for f in files:
         u = url_of(f)
         if u in EXCLUDE:
             continue
         mtime = datetime.date.fromtimestamp(os.path.getmtime(f)).isoformat()
-        pr = PRIORITY.get(u, "0.8" if u.startswith("product/") else "0.6" if u.startswith("news/") else "0.7")
+        pr = PRIORITY.get(u, "0.8" if u.startswith("product/") else "0.6" if u.startswith(("news/", "bike/")) else "0.7")
         items.append((BASE + "/" + u, mtime, pr))
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, lm, pr in items:

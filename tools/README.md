@@ -581,3 +581,13 @@ python3 tools/audit_fitment.py            # → docs/audit/fitment_audit_<日付
 
 商品マスターを更新したとき（README 上部の手順）の最後に 1〜4 を実行してください。NEWS を再生成したあとも 3 を実行してください。
 競合ブランド名を含む比較・乗り換えページは未作成（方針確認待ち）。
+
+## SEO 追加施策（2026-10-13、Search Console の結果をもとに）
+
+| コマンド | 内容 | 実行タイミング |
+|---|---|---|
+| `python3 tools/build_bike_pages.py` | 車種別の適合ページ `/bike/<slug>`（約500）と一覧 `/bike` を適合データから生成。「XSR125 トップケース」のような車種名検索の受け皿 | 適合データ更新（fitment/build.py → postprocess.py）のあと |
+| `python3 tools/apply_product_schema.py` | 商品ページの Product 構造化データ（在庫状況・カテゴリ・価格帯）と、カテゴリ経由のパンくずをマスターから作り直す | 商品マスター更新・商品ページ再生成（build_product_max.py 等）のあと |
+
+- 旧サイト（WordPress）の URL は `site/.htaccess` の「旧サイト URL → 新サイト」ブロックで 301 転送する。サーバー上の `cases/` などのフォルダに頼らない。
+- 実行順（商品マスター更新時の最後）：`apply_cap_sort.py` → `build_cards_json.py` → `build_landing.py` → `build_bike_pages.py` → `apply_seo_meta.py` → `apply_product_schema.py` → `apply_site_tagline.py` → `build_sitemap.py`
