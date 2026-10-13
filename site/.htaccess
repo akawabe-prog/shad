@@ -34,6 +34,47 @@ RewriteRule ^news/?$ /news/index.html [L]
 RewriteCond %{DOCUMENT_ROOT}/news/cj-$1.html !-f
 RewriteRule ^news/cj-(\d+)/?$ /news/article.html?id=$1 [L,QSA]
 
+# ===== 旧サイト（WordPress）URL → 新サイト：Google に登録済みの旧 URL を 301 で引き継ぐ（2026-10-13）
+# サーバー上の cases/ bags/ などのフォルダに頼らず、ここで一括管理する（フォルダを消しても転送が切れないように）
+# --- 個別の読み替え（品番の表記ゆれ・統合）
+RewriteRule ^cases/top-cases/sh40-cargo/?$ /product/sh40cg [R=301,L,NC]
+RewriteRule ^cases/side-cases/sh38x-(carbon|aluminium)/?$ /product/sh38x [R=301,L,NC]
+RewriteRule ^cases/terra/tr55(b|-pure-black)/?$ /product/tr55 [R=301,L,NC]
+RewriteRule ^cases/terra/tr48b/?$ /product/tr48 [R=301,L,NC]
+RewriteRule ^cases/terra/tr37b/?$ /product/tr37 [R=301,L,NC]
+RewriteRule ^bags/click-system-bags/(e091cl|e09cl-pro)/?$ /product/e09cl [R=301,L,NC]
+RewriteRule ^bags/click-system-bags/e03cl-pro/?$ /product/e03cl [R=301,L,NC]
+RewriteRule ^bags/click-system-bags/(tr15c|tr15cl)/?$ /product/tr15cl [R=301,L,NC]
+RewriteRule ^bags/click-system-bags/tr10cl/?$ /product/tr10 [R=301,L,NC]
+RewriteRule ^bags/side-bags/e48-\d+/?$ /product/e48 [R=301,L,NC]
+RewriteRule ^bags/cafe-racer-bags/sr38(-[a-z]+)?/?$ /product/sr38 [R=301,L,NC]
+# --- 商品ページ：/cases/〇〇/sh23/ や /bags/〇〇/tr30/ → /product/sh23（新サイトにページがあるものだけ）
+RewriteCond %{DOCUMENT_ROOT}/product/$1.html -f
+RewriteRule ^(?:cases|bags|locks)/[^/]+/([a-z]+\d+[a-z]*)(?:-[a-z0-9-]+)?/?$ /product/$1 [R=301,L,NC]
+# --- カテゴリ
+RewriteRule ^cases/?$ /products [R=301,L,NC]
+RewriteRule ^cases/top-cases/?$ /top-cases [R=301,L,NC]
+RewriteRule ^cases/side-cases/?$ /side-cases [R=301,L,NC]
+RewriteRule ^cases/(terra|terra-side-cases|terra-top-cases)/?$ /terra [R=301,L,NC]
+RewriteRule ^bags/side-bags/?$ /side-bags [R=301,L,NC]
+RewriteRule ^bags/click-system-bags/?$ /tank-bags [R=301,L,NC]
+RewriteRule ^bags/(terra-bags|adventure-bags)/?$ /terra [R=301,L,NC]
+RewriteRule ^bags/cafe-racer-bags/?$ /side-bags [R=301,L,NC]
+RewriteRule ^bags/.+$ /bags [R=301,L,NC]
+RewriteRule ^cases/.+$ /products [R=301,L,NC]
+RewriteRule ^locks(/.*)?$ /locks [R=301,L,NC]
+RewriteRule ^shad_base/?$ /store-locator [R=301,L,NC]
+# --- 旧カタログ PDF → 新サイトのカタログ
+RewriteRule ^wp-content/uploads/.*catalog_2024.*\.pdf$ /docs/catalog/shad_catalog_2024.pdf [R=301,L,NC]
+RewriteRule ^wp-content/uploads/.*2025.*catalog.*\.pdf$ /docs/catalog/shad_catalog_2025.pdf [R=301,L,NC]
+RewriteRule ^wp-content/uploads/.*catalog.*\.pdf$ /docs/catalog/shad_catalog_2026.pdf [R=301,L,NC]
+RewriteRule ^wp-content/.*$ / [R=301,L,NC]
+# --- 旧ニュース（/2024-10-17-news3693/ /category/news/ /2025/10 など）→ NEWS 一覧
+RewriteRule ^\d{4}-\d{2}-\d{2}-(news|media)\d+/?$ /news [R=301,L,NC]
+RewriteRule ^(category|tag)/.*$ /news [R=301,L,NC]
+RewriteRule ^\d{4}/\d{2}(/.*)?$ /news [R=301,L,NC]
+# ===== /旧サイト URL
+
 # .html つきのアクセスは拡張子なしへ 301
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
