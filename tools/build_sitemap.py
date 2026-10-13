@@ -45,7 +45,9 @@ def main():
     for loc, lm, pr in items:
         xml.append("  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>" % (loc.rstrip("/") + ("/" if loc.endswith(BASE + "/") else ""), lm, pr))
     xml.append("</urlset>")
-    open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(xml) + "\n")
+    out = "\n".join(xml) + "\n"
+    out = out.replace(BASE + "/bike</loc>", BASE + "/bike/</loc>")   # ディレクトリの一覧ページは末尾スラッシュが正規
+    open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(out)
     robots = ["User-agent: *", "Allow: /", "Disallow: /thanks", "Disallow: /form-error", "Disallow: /top-simple", "Disallow: /news/article",
               "Disallow: /contact.php", "", "Sitemap: %s/sitemap.xml" % BASE, ""]
     open(os.path.join(SITE, "robots.txt"), "w", encoding="utf-8").write("\n".join(robots))

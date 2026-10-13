@@ -115,12 +115,12 @@ def build_one(b, slug):
         L.ul(["ケース本体とフィッティングキットは別売です（ベースプレートが付属するトップケースもあります）。",
               "年式・型式・純正オプション（キャリア・パニアステー等）の有無で適合が変わることがあります。キットの商品ページで適合をご確認ください。",
               "タンクバッグはクリックシステムの車種別アタッチメントで取り付けます。<a href='/tank-bags' class='text-shad'>タンクバッグの選び方</a>"])
-        + L.links([("適合検索でこの車種を見る", "/fitment?bike=" + html.escape(maker + "|" + model, quote=True)), ("ほかの車種を探す", "/bike"), ("フィッティングキットとは", "/fitting-kits"), ("取扱店・SHAD BASE", "/store-locator")]), "pb-16 md:pb-24")
+        + L.links([("適合検索でこの車種を見る", "/fitment?bike=" + html.escape(maker + "|" + model, quote=True)), ("ほかの車種を探す", "/bike/"), ("フィッティングキットとは", "/fitting-kits"), ("取扱店・SHAD BASE", "/store-locator")]), "pb-16 md:pb-24")
     title = "%s（%s）のトップケース・サイドケース｜SHAD 適合フィッティングキット — SHAD JAPAN" % (model, maker)
     desc = "%s %s に適合する SHAD の%sと、必要な車種専用フィッティングキット（品番）を掲載。%s" % (maker, model,
             "・".join(x for x in (("トップケース%dモデル" % n_top) if n_top else "", ("サイドケース%dモデル" % n_side) if n_side else "", ("サイドバッグ%dモデル" % n_bag) if n_bag else "") if x), "SHAD日本公式サイト。")
     items = bycap(tcodes) + bycap(list(dict.fromkeys(cases + bags)))
-    L.page(path, title, desc, body, [L.crumbs_ld(path, name, ("車種から探す", "/bike")), L.itemlist_ld("%s に付く SHAD 製品" % model, items)], "/img/fitting/topcase_banner.webp")
+    L.page(path, title, desc, body, [L.crumbs_ld(path, name, ("車種から探す", "/bike/")), L.itemlist_ld("%s に付く SHAD 製品" % model, items)], "/img/fitting/topcase_banner.webp")
     return {"maker": maker, "model": model, "slug": slug, "n": n_top + n_side + n_bag}
 
 def main():
@@ -145,9 +145,9 @@ def main():
     body += L.section("Makers", "メーカーから選ぶ（%d 車種）" % len(made), nav + lists + L.links([("適合検索（キーワードで探す）", "/fitment")]), "py-12 md:py-16")
     L.page("/bike/index", "車種別 適合一覧｜SHAD のトップケース・サイドケースが付くバイク — SHAD JAPAN",
            "SHAD のトップケース・サイドケース・サイドバッグが付く %d 車種をメーカー別に一覧。ホンダ・ヤマハ・スズキ・カワサキ・BMW ほか。車種ごとに対応ケースと必要なフィッティングキットを掲載。SHAD日本公式サイト。" % len(made),
-           body, [L.crumbs_ld("/bike", "車種から探す")], "/img/fitting/topcase_banner.webp")
-    # canonical を /bike に（index.html で生成したため）
-    f = os.path.join(OUT, "index.html"); s = open(f, encoding="utf-8").read().replace(BASE + "/bike/index", BASE + "/bike")
+           body, [L.crumbs_ld("/bike/", "車種から探す")], "/img/fitting/topcase_banner.webp")
+    # canonical を /bike/ に（index.html で生成したため。サーバーは /bike → /bike/ に転送する）
+    f = os.path.join(OUT, "index.html"); s = open(f, encoding="utf-8").read().replace(BASE + "/bike/index", BASE + "/bike/")
     open(f, "w", encoding="utf-8").write(s)
     print("車種ページ %d ＋ 一覧 /bike を生成" % len(made))
 
