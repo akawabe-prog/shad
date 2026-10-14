@@ -137,5 +137,7 @@ if (preg_match('#^(/home/[^/]+)/#', __DIR__, $m)) {
     );
 }
 
-header('Location: ' . ($sent ? 'thanks' : 'form-error'));
+// 送信成功時だけ完了ページに目印を付ける（GA4 のキーイベント判定用。sent=1 はメール送信成功、topic は種別コードのみ＝個人情報は含めない）
+// ※ハニーポットで弾いたスパムは目印なしの thanks に送るので、計測には入らない
+header('Location: ' . ($sent ? 'thanks?sent=1&topic=' . rawurlencode($topic) : 'form-error'));
 exit;
