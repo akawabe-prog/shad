@@ -6,7 +6,7 @@ SHAD JAPAN — 商品ページの構造化データ（Product／パンくず）�
 =============================================================================
     python3 tools/apply_product_schema.py      # 商品マスター更新後・商品ページ再生成後に実行（何度実行しても同じ結果）
 
-・Product：名前・品番（mpn）・JAN（gtin13）・画像・説明（meta description と同じ文）・カテゴリ・
+・Product：名前・品番（mpn）・JAN（gtin13）・画像・説明（meta description と同じ文）・
   Offer（定価・JPY・在庫状況・新品）。カラー違いで価格が違う商品は AggregateOffer（最安〜最高）
   在庫状況は商品マスターの「商品ステータスコード」：SE/SF=在庫あり、SO=入荷待ち（BackOrder）、それ以外=在庫あり扱い
 ・パンくず：ホーム ＞ カテゴリページ（/top-cases 等）＞ 商品。見える位置の「← 製品一覧」の横にもカテゴリへのリンクを置く
@@ -56,7 +56,8 @@ def main():
         cpath, cname = category(code)
         prod = {"@context": "https://schema.org", "@type": "Product", "name": "%s %s" % (code if code != "SH40CG" else "SH40 CARGO", (C.get(code) or {}).get("jp", "")),
                 "sku": code, "mpn": v0.get("makerCode") or None, "gtin13": v0.get("jan") or None, "brand": {"@type": "Brand", "name": "SHAD"},
-                "category": cname, "image": img.group(1) if img else None, "description": desc, "url": url, "offers": offer}
+                "image": img.group(1) if img else None, "description": desc, "url": url, "offers": offer}
+        # category は Google の商品分類形式でないと「無効な値」になるため入れない（2026-10-14 Search Console 指摘）
         prod = {k: v for k, v in prod.items() if v not in (None, "")}
         crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "ホーム", "item": BASE + "/"},

@@ -234,3 +234,28 @@
   function close(){ box.classList.remove('is-open'); document.documentElement.style.overflow = ''; }
   btns.forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(); }); });
 })();
+
+/* ---- ④ カスタムジャパン（EC）へのリンクに流入元の目印（UTM）を付ける ----
+   どのページから EC に送ったかを、カスタムジャパン側の GA4 で見分けるため。
+   （ブラウザは他サイトへドメインしか渡さないので、参照元 URL だけではページがわからない）
+   押した瞬間に付けるので、JS で後から作られる購入ボタンにも効く。 */
+(function () {
+  var EC_HOST = /(^|\.)customjapan\.net$/;
+  function tag(a) {
+    if (!a || !a.href) return;
+    var u;
+    try { u = new URL(a.href, location.href); } catch (e) { return; }
+    if (!EC_HOST.test(u.hostname) || /^(img|cms)\./.test(u.hostname)) return;
+    if (u.searchParams.has("utm_source")) return;
+    u.searchParams.set("utm_source", "shad-japan.com");
+    u.searchParams.set("utm_medium", "referral");
+    u.searchParams.set("utm_campaign", "shad_brand_site");
+    u.searchParams.set("utm_content", location.pathname);
+    a.href = u.toString();
+  }
+  ["mousedown", "touchstart", "keydown", "click"].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      tag(e.target && e.target.closest ? e.target.closest("a[href]") : null);
+    }, { capture: true, passive: true });
+  });
+})();
