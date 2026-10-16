@@ -86,11 +86,24 @@ def is_sales_ended(row):
     return (row.get("商品ステータスコード") or "").strip() in DISCONTINUED_STATUS
 
 
+# CJ廃番 = 1 でも「在庫限り」の間は掲載を続けるケース本体（tools/build_catalog.py の
+# KEEP_WHILE_STOCK_STATUS と同じ方針。例：TR37・SH45・SH48 チタニウム）。2026-10-16
+LAST_STOCK_STATUS = {"SL"}
+LAST_STOCK_CATEGORIES = ("トップケース", "サイドケース")
+
+
+def is_last_stock_case(row):
+    return (row["CJ廃番"] == "1"
+            and (row.get("商品ステータスコード") or "").strip() in LAST_STOCK_STATUS
+            and any(c in (row.get("カテゴリ名") or "") for c in LAST_STOCK_CATEGORIES)
+            and "フィッティングキット" not in (row.get("商品名") or ""))
+
+
 def is_catalog_visible(row):
     """一覧・Webに表示される、セット品/アウトレット品/廃番品以外の単品SKU"""
     return (row["一覧非表示"] == "0" and row["Web非表示"] == "0"
             and row["セット"] == "0" and row["アウトレット"] == "0"
-            and row["CJ廃番"] == "0" and not is_sales_ended(row))
+            and (row["CJ廃番"] == "0" or is_last_stock_case(row)) and not is_sales_ended(row))
 
 
 def is_kit_visible(row):

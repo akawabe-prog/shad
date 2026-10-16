@@ -86,7 +86,8 @@
       + "</div>"
       + '<p class="mt-0.5"><b data-price class="text-[30px] font-bold text-ink leading-none"></b>'
       +   '<span class="text-[12px] text-neutral-400 ml-1">（税込）</span></p>'
-      + '<p class="text-[12.5px] text-neutral-500 mt-2">品番：<span data-sku class="font-medium text-neutral-700"></span></p>'
+      + '<p class="text-[12.5px] text-neutral-500 mt-2">品番：<span data-sku class="font-medium text-neutral-700"></span>'
+      +   '<span data-last-stock hidden class="ml-2 inline-block rounded-full bg-shad/10 text-shad text-[11.5px] font-bold px-2.5 py-0.5 align-middle">在庫限り</span></p>'
       + chips
       + '<p class="text-[11.5px] text-neutral-400 mt-3 leading-relaxed">※定価（税込）です。ご購入は日本総代理店 株式会社カスタムジャパンにて承ります。</p>'
       + "</div>";
@@ -175,6 +176,9 @@
     var s = root.querySelector("[data-sku]");
     if (p) p.textContent = yen(v.msrpTaxIn) || "お問い合わせください";
     if (s) s.textContent = v.cjCode || "—";
+    // 廃番が決まり在庫限りで販売中のカラー・仕様（build_catalog.py の KEEP_WHILE_STOCK_STATUS）
+    var ls = root.querySelector("[data-last-stock]");
+    if (ls) ls.hidden = !v.lastStock;
     // 購入ボタンは選択中のカラー・仕様の商品ページへ
     document.querySelectorAll("[data-buy-link]").forEach(function (a) {
       a.href = v.cjCode ? BUY_BASE + encodeURIComponent(v.cjCode) : BUY_BASE;

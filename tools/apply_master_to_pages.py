@@ -25,7 +25,10 @@ from master_spec import SITE, load_products, spec_table_html, notes_html, warran
 LEGACY_TABLE = re.compile(r'(<h2 class="sec-ttl sec-ttl-quiet">Spec</h2>\s*<table class="w-full mt-5 text-\[14px\] table-fixed">).*?(</table>)', re.S)
 MAX_TABLE = re.compile(r'(<table class="pd-spec">).*?(</table>)', re.S)
 LEGACY_NOTES = re.compile(r'(<h2 class="sec-ttl sec-ttl-quiet(?: mt-10)?">Notes</h2>\s*)<p[^>]*>.*?</p>', re.S)
-MAX_NOTES = re.compile(r'<div class="pd-notes">.*?</div></div>|<div class="pd-notes"><h3 class="pd-notes-h">Notes</h3><p>.*?</p></div>', re.S)
+# 注意：以前は '<div class="pd-notes">.*?</div></div>' も候補にしていたが、Notes ブロックの直後に
+# '</div></div>' は無いため、ページ後半の最初の '</div></div>'（HERO映像など）まで食い込んで
+# 保証・FAQ・アンカーナビ・HERO映像を消していた（2026-10-16 修正）。Notes ブロックの形は1種類だけ。
+MAX_NOTES = re.compile(r'<div class="pd-notes"><h3 class="pd-notes-h">Notes</h3><p>[^<]*(?:<(?!/p>)[^<]*)*</p></div>')
 WARRANTY_BODY = re.compile(r'(<div class="warranty-body">).*?(</div>)', re.S)
 WARRANTY_ACC = re.compile(r'(1年保証</p>\s*<p[^>]*>).*?(</p>)', re.S)
 
@@ -34,7 +37,9 @@ def apply(path):
     s = open(path, encoding="utf-8").read()
     if code not in load_products():
         return code, "マスターに無い（スキップ）"
-    is_max = 'id="pdTop"' in s
+    # MAX テンプレートかどうかはスペック表の形で判定する。id="pdTop" は従来テンプレートにも
+    # 付くようになったため判定に使えない（従来ページのスペック表・Notes が更新されなくなっていた）
+    is_max = '<table class="pd-spec">' in s
     changed = []
     # ① スペック表
     rows = spec_table_html(code, "max" if is_max else "legacy")

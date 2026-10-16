@@ -8,7 +8,7 @@ SHAD JAPAN — 商品ページの構造化データ（Product／パンくず）�
 
 ・Product：名前・品番（mpn）・JAN（gtin13）・画像・説明（meta description と同じ文）・
   Offer（定価・JPY・在庫状況・新品）。カラー違いで価格が違う商品は AggregateOffer（最安〜最高）
-  在庫状況は商品マスターの「商品ステータスコード」：SE/SF=在庫あり、SO=入荷待ち（BackOrder）、それ以外=在庫あり扱い
+  在庫状況は商品マスターの「商品ステータスコード」：SE=在庫あり、SF/SL=残りわずか・在庫限り、SO=入荷待ち（BackOrder）、それ以外=在庫あり扱い
 ・パンくず：ホーム ＞ カテゴリページ（/top-cases 等）＞ 商品。見える位置の「← 製品一覧」の横にもカテゴリへのリンクを置く
 =============================================================================
 """
@@ -19,7 +19,7 @@ SITE = os.path.join(ROOT, "site"); BASE = "https://www.shad-japan.com"
 P = json.load(open(os.path.join(SITE, "data/catalog/products.json"), encoding="utf-8"))
 C = json.load(open(os.path.join(SITE, "data/catalog/cards.json"), encoding="utf-8"))
 ROWS = {r["品番"]: r for r in csv.DictReader(open(os.path.join(ROOT, "data-source/ItemList_SHAD.csv"), encoding="cp932", newline=""))}
-AV = {"SE": "InStock", "SF": "LimitedAvailability", "SO": "BackOrder"}
+AV = {"SE": "InStock", "SF": "LimitedAvailability", "SL": "LimitedAvailability", "SO": "BackOrder"}
 
 def category(code):
     jp = (C.get(code) or {}).get("jp", "") + " " + P[code]["variants"][0].get("category", "")
@@ -69,7 +69,8 @@ def main():
         new = re.sub(r'<script type="application/ld\+json">\{"@context":\s*"https://schema.org",\s*"@type":\s*"BreadcrumbList".*?</script>',
                      lambda m: '<script type="application/ld+json">%s</script>' % json.dumps(crumbs, ensure_ascii=False, separators=(",", ":")), new, count=1, flags=re.S)
         # 見える位置のパンくず：「← 製品一覧」の後ろにカテゴリリンク
-        new = re.sub(r'(<a href="/products" class="inline-flex items-center gap-2 text-\[13px\] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>製品一覧</a>)(?:<span class="pd-crumb">.*?</span>)?',
+        # （既存の pd-crumb はすべて置き換える。以前は class 名の一致漏れで実行のたびに重複していた）
+        new = re.sub(r'(<a href="/products" class="inline-flex items-center gap-2 text-\[13px\] text-neutral-500 hover:text-shad transition"><i class="ti ti-arrow-left"></i>製品一覧</a>)(?:<span class="pd-crumb[^"]*">(?:(?!</span>).)*</a></span>)*',
                      lambda m: m.group(1) + ('<span class="pd-crumb text-[13px] text-neutral-400"> ／ <a href="%s" class="text-neutral-500 hover:text-shad transition">%s</a></span>' % (cpath, cname) if cpath != "/products" else ""), new, count=1, flags=re.S)
         if new != s:
             open(f, "w", encoding="utf-8").write(new); n += 1

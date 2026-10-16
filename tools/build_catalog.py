@@ -62,6 +62,13 @@ EXCLUDE_INTERNAL_PREFIX = ("YY", "ZZ")  # 社内用品番の接頭辞
 #   BO=取寄 / SL=★在庫限り はすべて表示する
 EXCLUDE_STATUS_CODES = {"DC1", "DC2", "DC4"}
 
+# CJ廃番 = 1 でも、製品ページがある本体商品で「在庫限り」の間は掲載を続ける（2026-10-16）
+#   例：TR37・SH45・SH48 チタニウム。ステータスが DC2（廃番）等になった時点で自動的に外れる。
+#   該当バリエーションには lastStock=true を付け、商品ページに「在庫限り」と表示する。
+KEEP_WHILE_STOCK_STATUS = {"SL"}
+# ただし以下のモデルは対象外（LOCK：旧シリーズ2/3 のハンドルバーロックは以前から非掲載のまま）
+KEEP_WHILE_STOCK_SKIP = {"LOCK"}
+
 # EC で「Web非表示 = 1」の品番を除外する（梱包資材・店頭什器・カタログ・販促品など、
 # 一般のお客様に見せない品番。適合検索（tools/fitment）も同じ条件で除外している）
 EXCLUDE_WEB_HIDDEN = True
@@ -77,6 +84,9 @@ EXCLUDE_CJCODES = {
     "27666128": "スマホホルダー ミラークランプ式 X0SG71M（世代確認中）",
     "27666111": "スマホホルダー ハンドルバークランプ式 X0SG71H（世代確認中）",
     "27798737": "スマホホルダー ハンドルバークランプ式 X0SG76H（世代確認中）",
+    # SH23/TR27 用 4P 装着アダプター：マスターで手動廃番・DC3、4Pキットの対応モデルからも
+    # SH23・TR27 が外れたため非公開（2026-10-16）
+    "29585380": "SH23/TR27専用 4Pシステムフィッティングキット装着アダプター D1TR27FIR（非公開）",
 }
 
 # ---------------------------------------------------------------- 分類ルール
@@ -287,9 +297,17 @@ def to_int(value):
     return int(v) if v else None
 
 
+def is_last_stock(row):
+    """CJ廃番だが在庫限りで掲載を続ける本体商品か（KEEP_WHILE_STOCK_STATUS 参照）"""
+    return (cell(row, "CJ廃番") == "1"
+            and cell(row, "商品ステータスコード") in KEEP_WHILE_STOCK_STATUS
+            and "フィッティングキット" not in cell(row, "商品名")
+            and detect_body_code(row) not in (None, "", *KEEP_WHILE_STOCK_SKIP))
+
+
 def is_excluded(row):
     """除外ルールに該当するか。（理由の文字列 or None）"""
-    if EXCLUDE_DISCONTINUED and cell(row, "CJ廃番") == "1":
+    if EXCLUDE_DISCONTINUED and cell(row, "CJ廃番") == "1" and not is_last_stock(row):
         return "廃盤(CJ廃番)"
     if cell(row, "商品ステータスコード") in EXCLUDE_STATUS_CODES:
         return "販売終了(ステータス %s)" % cell(row, "商品ステータスコード")
@@ -465,6 +483,8 @@ def main():
         code = detect_body_code(r)
         if code:
             # 製品ページ用の説明文は本体商品にだけ持たせる（他のJSONを軽く保つ）
+            if is_last_stock(r):
+                item["lastStock"] = True
             item["descSub"] = cell(r, "商品説明サブ")
             item["remarks"] = cell(r, "備考")
             item["note"] = cell(r, "注意")

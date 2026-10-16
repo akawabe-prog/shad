@@ -301,15 +301,14 @@ def main():
       <img class="logo" src="{IMG['logo_4p']}" loading="lazy" alt="4P SYSTEM">
       <img class="system-photo" src="{IMG['nav_4p']}" loading="lazy" alt="4P System">
       <h3>4Pシステム</h3>
-      <p>バルセロナで100%設計・製造。TERRAケース・サイドバッグ専用に開発されており、SH23/SH35/SH36/SH38Xにも対応します。
+      <p>バルセロナで100%設計・製造。TERRAケース・サイドバッグ専用に開発されており、SH35/SH36/SH38Xにも対応します。
       20mm径（業界最厚クラス）の高強度スチール構造に加え、クロスバーで補強することで、過酷な走行にも耐える最大級の
       強度と安定性を実現しています。</p>
       <table class="spec-table">
         <tr><th>素材</th><td>20mm径スチールフレーム（業界最大級）。粉体焼付塗装。</td></tr>
         <tr><th>耐久性</th><td>過酷な使用を想定した設計。2つのケース間の強度を高めるクロスサポート付き。</td></tr>
-        <tr><th>対応ケース</th><td>TR47, TR36, TR27, TR40, TR30, SH38X, SH36, SH35, SH23</td></tr>
+        <tr><th>対応ケース</th><td>TR47, TR36, TR40, TR30, SH38X, SH36, SH35</td></tr>
       </table>
-      <p class="spec-note">※SH23・TR27の装着にはD1TR27FIRアダプターが必要です。</p>
     </div>
   </div>
 

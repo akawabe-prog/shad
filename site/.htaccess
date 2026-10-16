@@ -41,6 +41,12 @@ RewriteRule ^news/?$ /news/index.html [L]
 RewriteCond %{DOCUMENT_ROOT}/news/cj-$1.html !-f
 RewriteRule ^news/cj-(\d+)/?$ /news/article.html?id=$1 [L,QSA]
 
+# ===== 車種別ページ /bike/<車種> の URL 変更（マスターで車種名・年式が変わったもの）→ 新 URL へ 301（2026-10-16）
+RewriteCond %{REQUEST_URI} ^/bike/honda-x-adv-21-25(\.html)?/?$ [NC]
+RewriteRule ^ /bike/honda-x-adv-21-26 [R=301,L]
+RewriteCond %{REQUEST_URI} ^/bike/suzuki-125-2026-6e9337(\.html)?/?$ [NC]
+RewriteRule ^ /bike/suzuki-125-2026-ed295c [R=301,L]
+
 # ===== 旧サイト（WordPress）URL → 新サイト：Google に登録済みの旧 URL を 301 で引き継ぐ（2026-10-13）
 # ・%{REQUEST_URI}（実際にリクエストされた URL）で判定する。bags.html / locks.html があると Apache が /bags/〜 を
 #   先にそのファイルへ結び付けてしまい、通常の RewriteRule のパターンでは照合できないため

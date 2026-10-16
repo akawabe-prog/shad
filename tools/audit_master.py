@@ -165,7 +165,7 @@ def audit(code):
     prose = re.sub(r'<section id="fitment".*?</section>|<section id="related".*?</section>|<section id="setup".*?</section>|'
                    r'<section class="bg-mist py-12 mt-8"><div class="max-w-site mx-auto px-7"><h2 class="sec-ttl sec-ttl-quiet">Same Series</h2>.*?</section>|'
                    r'<section[^>]*>(?:(?!</section>).)*?(?:Waterproof Series|Same Series)</h2>.*?</section>|'
-                   r'<!-- FAQ:START.*?<!-- FAQ:END -->|<table.*?</table>|<div class="pd-notes">.*?</div></div>|'
+                   r'<!-- FAQ:START.*?<!-- FAQ:END -->|<table.*?</table>|<div class="pd-notes"><h3 class="pd-notes-h">Notes</h3><p>.*?</p></div>|'
                    r'<div class="warranty-body">.*?</div>|<details class="pd-acc">.*?</details>|<script.*?</script>', "", page, flags=re.S)
     prose_t = text(prose)
     mnums = set(re.findall(r"\d+(?:\.\d+)?", " ".join((v.get("weight") or "") + " " + (v.get("spec") or "") + " " + (v.get("capacitySpec") or "") + " " + (v.get("capacity") or "") + " " + (v.get("name") or "") + " " + (v.get("dimensions") or "") for v in vs)))

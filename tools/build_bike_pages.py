@@ -28,11 +28,18 @@ esc = L.esc
 def mslug(m):
     return MAKER_SLUG.get(m) or re.sub(r"[^a-z0-9]+", "-", m.lower()).strip("-") or hashlib.sha1(m.encode()).hexdigest()[:6]
 
+SLUG_STRIP_WHOLE = {"can-am"}   # 上記コメント参照
+
 def slug_of(b):
     model = b["model"]
     ms = mslug(b["maker"])
     a = re.sub(r"[^a-z0-9]+", "-", model.lower()).strip("-")
-    for pre in {ms, ms.split("-")[0], "hd"}:            # 車種名の先頭にメーカー名があれば重ねない（aprilia-aprilia-… を防ぐ）
+    # 車種名の先頭にメーカー名があれば重ねない（aprilia-aprilia-… を防ぐ）。
+    # 以前は set で回していたため実行ごとに順序が変わり、moto-guzzi-guzzi-… と moto-guzzi-… の
+    # ように URL が揺れていた。公開済み（2026-10-13 サイトマップ送信）の URL を保つため順序を固定：
+    # 「先頭の語 → メーカー全体 → hd」。ただし can-am だけは公開時にメーカー全体を外していた。
+    order = [ms, "hd"] if ms in SLUG_STRIP_WHOLE else [ms.split("-")[0], ms, "hd"]
+    for pre in dict.fromkeys(order):
         if a.startswith(pre + "-"): a = a[len(pre) + 1:]
     h = hashlib.sha1((b["maker"] + "|" + model).encode("utf-8")).hexdigest()[:6]
     if len(re.sub(r"[^a-z]", "", a)) < 2 or re.search(r"[^\x00-\x7f]", model):

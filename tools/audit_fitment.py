@@ -85,7 +85,11 @@ for it in prod_refs:
     r = BY_CJ.get(cj)
     if not r:
         E.append(("product", f"適合データの商品 {cj}『{it.get('name','')[:30]}』がマスターに無い")); continue
-    if not visible(r):
+    # CJ廃番でも在庫限り（SL）のケース本体は掲載を続ける方針（tools/build_catalog.py KEEP_WHILE_STOCK_STATUS）
+    last_stock = r["CJ廃番"] == "1" and r["商品ステータスコード"] == "SL" and code in P
+    if last_stock:
+        I.append(("product", f"適合データの商品 {cj}『{it.get('name','')[:30]}』は CJ廃番・在庫限り（SL）のため掲載継続中"))
+    elif not visible(r):
         E.append(("product", f"適合データの商品 {cj}『{it.get('name','')[:30]}』はマスターで {r['商品ステータスコード']}／CJ廃番={r['CJ廃番']}"))
     if code and code in P and cj not in {v["cjCode"] for v in P[code]["variants"]}:
         E.append(("product", f"{code} の品番 {cj} が products.json のバリエーションに無い"))
