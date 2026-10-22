@@ -27,6 +27,10 @@ RewriteRule ^ https://www.shad-japan.com%{REQUEST_URI} [R=301,L]
 
 # 非公開にした商品ページ（2026-08-17）。404にせず一覧へ逃がす
 RewriteRule ^product/(sl18|sw80)/?$ /products [R=301,L,NC]
+# E03CL PRO / E09CL PRO：不具合のため非公開（2026-10-22）→ タンクバッグ一覧へ。
+# サーバーに e03cl.html 等が残っていても MultiViews に吸われないよう、実際のリクエスト行で判定
+RewriteCond %{THE_REQUEST} \s/+product/(?:e03cl|e09cl)(?:\.html)?/?[\s?] [NC]
+RewriteRule ^ /tank-bags [R=301,L]
 
 # 旧URL（フラット構成）→ 新URL（階層構成）
 RewriteRule ^for-your-motorcycle/?$ /fitment [R=301,L,NC]
@@ -62,9 +66,9 @@ RewriteRule ^ /product/tr48 [R=301,L]
 RewriteCond %{REQUEST_URI} ^/cases/terra/tr37b/?$ [NC]
 RewriteRule ^ /product/tr37 [R=301,L]
 RewriteCond %{REQUEST_URI} ^/bags/click-system-bags/(e091cl|e09cl-pro)/?$ [NC]
-RewriteRule ^ /product/e09cl [R=301,L]
+RewriteRule ^ /tank-bags [R=301,L]
 RewriteCond %{REQUEST_URI} ^/bags/click-system-bags/e03cl-pro/?$ [NC]
-RewriteRule ^ /product/e03cl [R=301,L]
+RewriteRule ^ /tank-bags [R=301,L]
 RewriteCond %{REQUEST_URI} ^/bags/click-system-bags/(tr15c|tr15cl)/?$ [NC]
 RewriteRule ^ /product/tr15cl [R=301,L]
 RewriteCond %{REQUEST_URI} ^/bags/click-system-bags/tr10cl/?$ [NC]

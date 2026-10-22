@@ -99,11 +99,17 @@ def is_last_stock_case(row):
             and "フィッティングキット" not in (row.get("商品名") or ""))
 
 
+# サイトで非公開にしている品番（tools/build_catalog.py の EXCLUDE_CJCODES のうち本体商品）
+#   E03CL PRO / E09CL PRO：不具合のため非公開（2026-10-22）
+HIDDEN_CJCODES = {"27956977", "27956984"}
+
+
 def is_catalog_visible(row):
     """一覧・Webに表示される、セット品/アウトレット品/廃番品以外の単品SKU"""
     return (row["一覧非表示"] == "0" and row["Web非表示"] == "0"
             and row["セット"] == "0" and row["アウトレット"] == "0"
-            and (row["CJ廃番"] == "0" or is_last_stock_case(row)) and not is_sales_ended(row))
+            and (row["CJ廃番"] == "0" or is_last_stock_case(row)) and not is_sales_ended(row)
+            and row["品番"] not in HIDDEN_CJCODES)
 
 
 def is_kit_visible(row):
