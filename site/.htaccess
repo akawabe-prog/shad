@@ -99,7 +99,7 @@ RewriteCond %{REQUEST_URI} ^/cases/.+$ [NC]
 RewriteRule ^ /products [R=301,L]
 RewriteCond %{REQUEST_URI} ^/locks/.*$ [NC]
 RewriteRule ^ /locks [R=301,L]
-RewriteCond %{REQUEST_URI} ^/shad_base/?$ [NC]
+RewriteCond %{REQUEST_URI} ^/shad_base(?:/.*)?$ [NC]
 RewriteRule ^ /store-locator [R=301,L]
 RewriteCond %{REQUEST_URI} ^/wp-content/uploads/.*catalog_2024.*\.pdf$ [NC]
 RewriteRule ^ /docs/catalog/shad_catalog_2024.pdf [R=301,L]
@@ -114,6 +114,32 @@ RewriteRule ^ /news [R=301,L]
 RewriteCond %{REQUEST_URI} ^/(category|tag)/.*$ [NC]
 RewriteRule ^ /news [R=301,L]
 RewriteCond %{REQUEST_URI} ^/\d{4}/\d{2}(/.*)?$ [NC]
+RewriteRule ^ /news [R=301,L]
+# --- 2026-10-22 追加（Search Console「見つかりませんでした（404）」の一覧より）---
+# さらに古い旧サイトの商品 URL（/product/top_cases/sh26/・/sp/product/〜・/product/terra/tr48）
+RewriteCond %{REQUEST_URI} ^/(?:sp/)?product/[a-z_-]+/(tr15cl|sh40cg|sh58x|sh59x|e48sr|sh38x|e03cl|e09cl|e09cm|sh33|sc25|sh23|sh48|sr38|seat|sh35|sh36|sh34|tr48|tr37|tr36|tr47|ib20|sh47|sl58|lock|sh44|tr40|tr55|tr50|e03c|e09c|e02c|tr10|tr30|tr41|tr46|sh51|tr27|tr08|sh26|sh29|sh39|sh40|sh45|e04|e48)/?$ [NC]
+RewriteRule ^ /product/%1 [R=301,L]
+RewriteCond %{REQUEST_URI} ^/line-up/cases/top-cases/?$ [NC]
+RewriteRule ^ /top-cases [R=301,L]
+RewriteCond %{REQUEST_URI} ^/(?:line-up|sp)(?:/.*)?$ [NC]
+RewriteRule ^ / [R=301,L]
+RewriteCond %{REQUEST_URI} ^/shad/?$ [NC]
+RewriteRule ^ / [R=301,L]
+# FTP の入れ子事故で一時的にできていた /shad-japan--com/〜 → 先頭を外して転送（その先は上の規則で振り分け）
+RewriteCond %{REQUEST_URI} ^/shad-japan--com(/.*)$ [NC]
+RewriteRule ^ %1 [R=301,L]
+# 末尾スラッシュ付き・/html 付きの固定ページ。about.html 等が実在するため MultiViews で REQUEST_URI が
+# /about.html/ に化ける。実際のリクエスト行（THE_REQUEST）で判定する
+RewriteCond %{THE_REQUEST} \s/+(about|contact|faq|fitting-kits)/(?:html)?[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+RewriteCond %{REQUEST_URI} ^/privacy-policy/?$ [NC]
+RewriteRule ^ /privacy [R=301,L]
+# 旧ブログ：年別・ページ送り・お知らせ一覧・投稿者・press 記事・末尾 /html 付き
+RewriteCond %{REQUEST_URI} ^/\d{4}(?:/.*)?$ [NC]
+RewriteRule ^ /news [R=301,L]
+RewriteCond %{REQUEST_URI} ^/\d{4}-\d{2}-\d{2}-(?:news|media|press)\d+/.*$ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/\d{4}-\d{2}-\d{2}-press\d+/?$ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/(?:information|author)(?:/.*)?$ [NC]
 RewriteRule ^ /news [R=301,L]
 # ===== /旧サイト URL
 
