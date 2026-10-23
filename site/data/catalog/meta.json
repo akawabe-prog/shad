@@ -1,20 +1,21 @@
 {
- "generatedAt": "2026-10-22T17:41:43+09:00",
+ "generatedAt": "2026-10-23T17:53:56+09:00",
  "source": "data-source/ItemList_SHAD.csv",
- "totalRows": 1841,
- "kept": 859,
+ "totalRows": 1853,
+ "kept": 858,
  "excluded": {
   "Web非表示": 5,
   "サイト側で廃番扱い": 8,
   "セット商品": 179,
-  "廃盤(CJ廃番)": 783,
+  "廃盤(CJ廃番)": 784,
+  "社内用品番(YY/ZZ)": 12,
   "販売終了(ステータス DC2)": 6,
   "販売終了(ステータス DC4)": 1
  },
  "counts": {
   "products": 45,
   "productVariants": 71,
-  "fitting": 658,
+  "fitting": 657,
   "accessories": 113,
   "others": 17,
   "accessoryIndexCodes": 34
